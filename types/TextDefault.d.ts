@@ -86,7 +86,7 @@ import type { WarichuAlignment } from './Enums/WarichuAlignment';
 /**
  * Application- or document-level default character and paragraph formatting applied to new text.
  */
-export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
+export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.TextDefault<M> {
   /** Resolves the proxy into the individual {@link TextDefault} objects it stands for. */
   getElements(): TextDefault<'single'>[];
 

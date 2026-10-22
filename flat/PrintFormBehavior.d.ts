@@ -24,7 +24,7 @@ import type { BehaviorParent } from './_base/Parents';
 /**
  * A behavior that prints the interactive PDF form.
  */
-export interface PrintFormBehavior {
+export interface PrintFormBehavior extends InDesignPlugins.PrintFormBehavior<'single'> {
   /**
    * A collection of events
    */
@@ -141,7 +141,7 @@ export interface PrintFormBehavior {
 /**
  * A behavior that prints the interactive PDF form.
  */
-export interface PrintFormBehaviorPlural {
+export interface PrintFormBehaviorPlural extends InDesignPlugins.PrintFormBehavior<'plural'> {
   /**
    * A collection of events
    */

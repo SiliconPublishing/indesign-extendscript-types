@@ -40,7 +40,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * A placed EPS (Encapsulated PostScript) graphic. See {@link Graphic} for the
  * shared placed-graphic surface.
  */
-export interface EPS<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M> {
+export interface EPS<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignPlugins.EPS<M> {
   /** Resolves the proxy into the individual {@link EPS} objects it stands for. */
   getElements(): EPS<TParent, 'single'>[];
 

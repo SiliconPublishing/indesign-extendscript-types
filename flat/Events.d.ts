@@ -17,7 +17,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Event
  */
-export interface Events {
+export interface Events extends InDesignPlugins.Events {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

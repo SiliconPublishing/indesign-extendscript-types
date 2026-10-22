@@ -22,7 +22,7 @@ import type { Document } from './Document';
 export interface EventListener<M extends Mode = 'single'>
   extends IndexedDOMObject<unknown, M>,
     LabelableDOMObject<unknown, M>,
-    NamableDOMObject<unknown, M> {
+    NamableDOMObject<unknown, M>, InDesignPlugins.EventListener<M> {
   /** Resolves the proxy into the individual {@link EventListener} objects it stands for. */
   getElements(): EventListener<'single'>[];
 

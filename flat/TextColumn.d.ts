@@ -161,7 +161,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * A single column of composed text — one per column in a multi-column frame,
  * or per frame in a story threaded across frames.
  */
-export interface TextColumn<TParent = TextParent> {
+export interface TextColumn<TParent = TextParent> extends InDesignPlugins.TextColumn<'single'> {
   /**
    * A collection of events
    */
@@ -1553,7 +1553,7 @@ export interface TextColumn<TParent = TextParent> {
  * A single column of composed text — one per column in a multi-column frame,
  * or per frame in a story threaded across frames.
  */
-export interface TextColumnPlural<TParent = TextParent> {
+export interface TextColumnPlural<TParent = TextParent> extends InDesignPlugins.TextColumn<'plural'> {
   /**
    * A collection of events
    */

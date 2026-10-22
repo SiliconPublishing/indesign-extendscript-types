@@ -25,7 +25,7 @@ import type { FilePath } from './_base/Types';
  * The application's tools panel — reports and sets the currently active
  * drawing/selection tool.
  */
-export interface ToolBox {
+export interface ToolBox extends InDesignPlugins.ToolBox<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -122,7 +122,7 @@ export interface ToolBox {
  * The application's tools panel — reports and sets the currently active
  * drawing/selection tool.
  */
-export interface ToolBoxPlural {
+export interface ToolBoxPlural extends InDesignPlugins.ToolBox<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

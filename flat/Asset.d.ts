@@ -28,7 +28,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A stored item in an object {@link Library} — reusable content (a page item,
  * graphic, or text) that can be placed back into any document.
  */
-export interface Asset {
+export interface Asset extends InDesignPlugins.Asset<'single'> {
   /**
    * A collection of events
    */
@@ -158,7 +158,7 @@ export interface Asset {
  * A stored item in an object {@link Library} — reusable content (a page item,
  * graphic, or text) that can be placed back into any document.
  */
-export interface AssetPlural {
+export interface AssetPlural extends InDesignPlugins.Asset<'plural'> {
   /**
    * A collection of events
    */

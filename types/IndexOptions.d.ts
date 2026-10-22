@@ -16,7 +16,7 @@ import type { IndexFormat } from './Enums/IndexFormat';
  * How a generated index is laid out — its title and title style, the section headings,
  * the separators between entries and page numbers, and whether empty sections are kept.
  */
-export interface IndexOptions<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
+export interface IndexOptions<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.IndexOptions<M> {
   /** Resolves the proxy into the individual {@link IndexOptions} objects it stands for. */
   getElements(): IndexOptions<'single'>[];
 

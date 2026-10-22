@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection ColorGroupSwatch
  */
-export interface ColorGroupSwatches {
+export interface ColorGroupSwatches extends InDesignPlugins.ColorGroupSwatches {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

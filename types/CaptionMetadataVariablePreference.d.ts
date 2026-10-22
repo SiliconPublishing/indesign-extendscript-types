@@ -12,7 +12,7 @@ import type { TextVariable } from './TextVariable';
 /**
  * The preferences for a caption metadata variable.
  */
-export interface CaptionMetadataVariablePreference<M extends Mode = 'single'> extends EventTargetDOMObject<TextVariable, M> {
+export interface CaptionMetadataVariablePreference<M extends Mode = 'single'> extends EventTargetDOMObject<TextVariable, M>, InDesignPlugins.CaptionMetadataVariablePreference<M> {
   /** Resolves the proxy into the individual {@link CaptionMetadataVariablePreference} objects it stands for. */
   getElements(): CaptionMetadataVariablePreference<'single'>[];
 

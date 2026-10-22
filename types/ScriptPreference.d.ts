@@ -17,7 +17,7 @@ import type { UserInteractionLevels } from './Enums/UserInteractionLevels';
  * Settings controlling how scripts run — dialog/alert interaction level,
  * measurement units, and whether the screen redraws during execution.
  */
-export interface ScriptPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface ScriptPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.ScriptPreference<M> {
   /** Resolves the proxy into the individual {@link ScriptPreference} objects it stands for. */
   getElements(): ScriptPreference<'single'>[];
 

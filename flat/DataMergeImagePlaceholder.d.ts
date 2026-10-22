@@ -25,7 +25,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A page item marked to receive an image data merge field's file during a
  * merge.
  */
-export interface DataMergeImagePlaceholder {
+export interface DataMergeImagePlaceholder extends InDesignPlugins.DataMergeImagePlaceholder<'single'> {
   /**
    * A collection of events
    */
@@ -121,7 +121,7 @@ export interface DataMergeImagePlaceholder {
  * A page item marked to receive an image data merge field's file during a
  * merge.
  */
-export interface DataMergeImagePlaceholderPlural {
+export interface DataMergeImagePlaceholderPlural extends InDesignPlugins.DataMergeImagePlaceholder<'plural'> {
   /**
    * A collection of events
    */

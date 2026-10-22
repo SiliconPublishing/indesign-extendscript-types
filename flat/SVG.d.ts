@@ -87,7 +87,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * A placed SVG (Scalable Vector Graphics) graphic. See {@link Graphic} for the
  * shared placed-graphic surface.
  */
-export interface SVG<TParent = PageItemParent> {
+export interface SVG<TParent = PageItemParent> extends InDesignPlugins.SVG<'single'> {
   /**
    * A collection of events
    */
@@ -674,7 +674,7 @@ export interface SVG<TParent = PageItemParent> {
  * A placed SVG (Scalable Vector Graphics) graphic. See {@link Graphic} for the
  * shared placed-graphic surface.
  */
-export interface SVGPlural<TParent = PageItemParent> {
+export interface SVGPlural<TParent = PageItemParent> extends InDesignPlugins.SVG<'plural'> {
   /**
    * A collection of events
    */

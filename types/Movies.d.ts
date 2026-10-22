@@ -27,5 +27,5 @@ export interface Movies<TParent = PageItemParent>
     BaseCollection<Movie<TParent>, Movie, Movie<TParent, 'plural'>>,
     IdCollection<Movie<TParent>>,
     NamedCollection<Movie<TParent>>,
-    AddablePageItemCollection<Movie<TParent>, Movie> {
+    AddablePageItemCollection<Movie<TParent>, Movie>, InDesignPlugins.Movies {
 }

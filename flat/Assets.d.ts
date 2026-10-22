@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Asset
  */
-export interface Assets {
+export interface Assets extends InDesignPlugins.Assets {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -12,7 +12,7 @@ import type { Application } from './Application';
 /**
  * Options controlling a GREP find/change operation.
  */
-export interface FindChangeGrepOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface FindChangeGrepOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.FindChangeGrepOption<M> {
   /** Resolves the proxy into the individual {@link FindChangeGrepOption} objects it stands for. */
   getElements(): FindChangeGrepOption<'single'>[];
 

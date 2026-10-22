@@ -26,7 +26,7 @@ export interface BookContents
   extends
     BaseCollection<BookContent, BookContent, BookContent<'plural'>>,
     IdCollection<BookContent>,
-    NamedCollection<BookContent> {
+    NamedCollection<BookContent>, InDesignPlugins.BookContents {
   /**
    * Adds an InDesign document to the book.
    *

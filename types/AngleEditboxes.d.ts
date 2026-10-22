@@ -17,7 +17,7 @@ import type { Dialog } from './Dialog';
  * @collection AngleEditbox
  */
 export interface AngleEditboxes
-  extends BaseCollection<AngleEditbox, AngleEditbox, AngleEditbox<'plural'>>, IdCollection<AngleEditbox> {
+  extends BaseCollection<AngleEditbox, AngleEditbox, AngleEditbox<'plural'>>, IdCollection<AngleEditbox>, InDesignPlugins.AngleEditboxes {
   /**
    * Creates and adds a new angle editbox control to the dialog.
    * @param withProperties Initial values for properties of the new control.

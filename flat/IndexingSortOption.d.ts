@@ -29,7 +29,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A single sort-priority rule used when generating an {@link Index}.
  */
-export interface IndexingSortOption {
+export interface IndexingSortOption extends InDesignPlugins.IndexingSortOption<'single'> {
   /**
    * A collection of events
    */
@@ -131,7 +131,7 @@ export interface IndexingSortOption {
 /**
  * A single sort-priority rule used when generating an {@link Index}.
  */
-export interface IndexingSortOptionPlural {
+export interface IndexingSortOptionPlural extends InDesignPlugins.IndexingSortOption<'plural'> {
   /**
    * A collection of events
    */

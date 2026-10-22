@@ -25,7 +25,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * paragraph numbering, controlling whether numbering continues across
  * stories and across book documents.
  */
-export interface NumberingList {
+export interface NumberingList extends InDesignPlugins.NumberingList<'single'> {
   /**
    * A collection of events
    */
@@ -147,7 +147,7 @@ export interface NumberingList {
  * paragraph numbering, controlling whether numbering continues across
  * stories and across book documents.
  */
-export interface NumberingListPlural {
+export interface NumberingListPlural extends InDesignPlugins.NumberingList<'plural'> {
   /**
    * A collection of events
    */

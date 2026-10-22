@@ -19,7 +19,7 @@ import type { Spread } from "./Spread";
  */
 export interface TimingTarget<M extends Mode = 'single'>
   extends EventTargetDOMObject<TimingGroup | Spread, M>,
-    IndexedDOMObject<TimingGroup | Spread, M> {
+    IndexedDOMObject<TimingGroup | Spread, M>, InDesignPlugins.TimingTarget<M> {
   /** Resolves the proxy into the individual {@link TimingTarget} objects it stands for. */
   getElements(): TimingTarget<'single'>[];
 

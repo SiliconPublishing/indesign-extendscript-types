@@ -68,7 +68,7 @@ import type { DocumentPreference } from './DocumentPreference';
 export interface Page<TParent = Spread | MasterSpread, M extends Mode = 'single'>
   extends LabelableEventDOMObject<TParent, M>,
     IndexedDOMObject<TParent, M>,
-    ReadonlyNamedDOMObject<TParent, M> {
+    ReadonlyNamedDOMObject<TParent, M>, InDesignPlugins.Page<M> {
   /** Resolves the proxy into the individual {@link Page} objects it stands for. */
   getElements(): Page<TParent, 'single'>[];
 

@@ -25,7 +25,7 @@ import type { FilePath } from './_base/Types';
  * cell, and image elements, and whether an element is removed along with the
  * content it tags.
  */
-export interface XMLPreference {
+export interface XMLPreference extends InDesignPlugins.XMLPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -159,7 +159,7 @@ export interface XMLPreference {
  * cell, and image elements, and whether an element is removed along with the
  * content it tags.
  */
-export interface XMLPreferencePlural {
+export interface XMLPreferencePlural extends InDesignPlugins.XMLPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

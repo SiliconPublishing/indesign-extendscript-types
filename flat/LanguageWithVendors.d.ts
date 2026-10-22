@@ -27,7 +27,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * This is the surface behind the Dictionary preferences panel, as opposed to
  * the per-document {@link Language}.
  */
-export interface LanguageWithVendors {
+export interface LanguageWithVendors extends InDesignPlugins.LanguageWithVendors<'single'> {
   /**
    * A collection of events
    */
@@ -176,7 +176,7 @@ export interface LanguageWithVendors {
  * This is the surface behind the Dictionary preferences panel, as opposed to
  * the per-document {@link Language}.
  */
-export interface LanguageWithVendorsPlural {
+export interface LanguageWithVendorsPlural extends InDesignPlugins.LanguageWithVendors<'plural'> {
   /**
    * A collection of events
    */

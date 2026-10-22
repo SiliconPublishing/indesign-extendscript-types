@@ -34,7 +34,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * tracking the source file's status ({@link status}, {@link edited},
  * {@link needed}) and providing update/relink/embed operations.
  */
-export interface Link {
+export interface Link extends InDesignPlugins.Link<'single'> {
   /**
    * A collection of events
    */
@@ -220,7 +220,7 @@ export interface Link {
  * tracking the source file's status ({@link status}, {@link edited},
  * {@link needed}) and providing update/relink/embed operations.
  */
-export interface LinkPlural {
+export interface LinkPlural extends InDesignPlugins.Link<'plural'> {
   /**
    * A collection of events
    */

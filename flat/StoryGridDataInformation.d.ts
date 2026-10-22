@@ -30,7 +30,7 @@ import type { FilePath } from './_base/Types';
  * Default character-grid formatting properties for the document or
  * application-wide story (frame) grid.
  */
-export interface StoryGridDataInformation {
+export interface StoryGridDataInformation extends InDesignPlugins.StoryGridDataInformation<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -157,7 +157,7 @@ export interface StoryGridDataInformation {
  * Default character-grid formatting properties for the document or
  * application-wide story (frame) grid.
  */
-export interface StoryGridDataInformationPlural {
+export interface StoryGridDataInformationPlural extends InDesignPlugins.StoryGridDataInformation<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -24,7 +24,7 @@ export interface TOCStyles
   extends
     BaseCollection<TOCStyle, TOCStyle, TOCStyle<'plural'>>,
     IdCollection<TOCStyle>,
-    NamedCollection<TOCStyle> {
+    NamedCollection<TOCStyle>, InDesignPlugins.TOCStyles {
   /**
    * Creates a new TOC style.
    *

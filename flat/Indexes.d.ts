@@ -24,7 +24,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Index
  */
-export interface Indexes {
+export interface Indexes extends InDesignPlugins.Indexes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

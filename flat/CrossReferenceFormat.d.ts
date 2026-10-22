@@ -30,7 +30,7 @@ import type { PropertiesSetter } from './_base/Properties';
  *
  * For example, "See page 12" or "See [Paragraph Text] on page 12".
  */
-export interface CrossReferenceFormat {
+export interface CrossReferenceFormat extends InDesignPlugins.CrossReferenceFormat<'single'> {
   /**
    * A collection of events
    */
@@ -153,7 +153,7 @@ export interface CrossReferenceFormat {
  *
  * For example, "See page 12" or "See [Paragraph Text] on page 12".
  */
-export interface CrossReferenceFormatPlural {
+export interface CrossReferenceFormatPlural extends InDesignPlugins.CrossReferenceFormat<'plural'> {
   /**
    * A collection of events
    */

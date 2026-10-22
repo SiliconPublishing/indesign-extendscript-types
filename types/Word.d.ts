@@ -71,7 +71,7 @@ import type { XMLItem } from './XMLItem';
 /**
  * A single word in a text range.
  */
-export interface Word<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M> {
+export interface Word<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M>, InDesignPlugins.Word<M> {
   /** Resolves the proxy into the individual {@link Word} objects it stands for. */
   getElements(): Word<TParent, 'single'>[];
 }

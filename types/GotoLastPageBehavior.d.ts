@@ -14,7 +14,7 @@ import type { BehaviorEvents } from './Enums/BehaviorEvents';
 /**
  * A behavior that jumps to the last page of the document.
  */
-export interface GotoLastPageBehavior<M extends Mode = 'single'> extends Behavior<M>{
+export interface GotoLastPageBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignPlugins.GotoLastPageBehavior<M>{
   /** Resolves the proxy into the individual {@link GotoLastPageBehavior} objects it stands for. */
   getElements(): GotoLastPageBehavior<'single'>[];
 

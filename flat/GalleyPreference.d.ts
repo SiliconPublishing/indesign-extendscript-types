@@ -28,7 +28,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Galley preferences.
  */
-export interface GalleyPreference {
+export interface GalleyPreference extends InDesignPlugins.GalleyPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -157,7 +157,7 @@ export interface GalleyPreference {
 /**
  * Galley preferences.
  */
-export interface GalleyPreferencePlural {
+export interface GalleyPreferencePlural extends InDesignPlugins.GalleyPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

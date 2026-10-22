@@ -14,7 +14,7 @@ import type { TextImportCharacterSet } from './Enums/TextImportCharacterSet';
 /**
  * Formatting and encoding options applied when importing a plain-text file into a document.
  */
-export interface TextImportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface TextImportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.TextImportPreference<M> {
   /** Resolves the proxy into the individual {@link TextImportPreference} objects it stands for. */
   getElements(): TextImportPreference<'single'>[];
 

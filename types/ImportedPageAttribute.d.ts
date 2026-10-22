@@ -13,7 +13,7 @@ import type { ImportedPageCropOptions } from './Enums/ImportedPageCropOptions';
 /**
  * Placed InDesign page attribute.
  */
-export interface ImportedPageAttribute<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface ImportedPageAttribute<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.ImportedPageAttribute<M> {
   /** Resolves the proxy into the individual {@link ImportedPageAttribute} objects it stands for. */
   getElements(): ImportedPageAttribute<'single'>[];
 

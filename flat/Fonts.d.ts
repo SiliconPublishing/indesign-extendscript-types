@@ -16,7 +16,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Font
  */
-export interface Fonts {
+export interface Fonts extends InDesignPlugins.Fonts {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

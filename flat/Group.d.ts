@@ -112,7 +112,7 @@ import type { AnyGraphic } from './_base/Unions';
  * page items, and {@link articleChildren} tracks which are also members of an
  * {@link Article} for reading-order export.
  */
-export interface Group<TParent = PageItemParent> {
+export interface Group<TParent = PageItemParent> extends InDesignPlugins.Group<'single'> {
   /**
    * A collection of events
    */
@@ -743,7 +743,7 @@ export interface Group<TParent = PageItemParent> {
  * page items, and {@link articleChildren} tracks which are also members of an
  * {@link Article} for reading-order export.
  */
-export interface GroupPlural<TParent = PageItemParent> {
+export interface GroupPlural<TParent = PageItemParent> extends InDesignPlugins.Group<'plural'> {
   /**
    * A collection of events
    */

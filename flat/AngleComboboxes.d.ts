@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * 
  * @collection AngleCombobox
  */
-export interface AngleComboboxes {
+export interface AngleComboboxes extends InDesignPlugins.AngleComboboxes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

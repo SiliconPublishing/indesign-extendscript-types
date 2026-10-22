@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection MotionPreset
  */
-export interface MotionPresets {
+export interface MotionPresets extends InDesignPlugins.MotionPresets {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

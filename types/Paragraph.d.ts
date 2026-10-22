@@ -75,7 +75,7 @@ import type { XMLItem } from './XMLItem';
  * level number actually rendered for this paragraph, as opposed to the numbering settings
  * ({@link bulletsAndNumberingListType}, {@link numberingFormat} and the rest) that produce them.
  */
-export interface Paragraph<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M> {
+export interface Paragraph<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M>, InDesignPlugins.Paragraph<M> {
   /** Resolves the proxy into the individual {@link Paragraph} objects it stands for. */
   getElements(): Paragraph<TParent, 'single'>[];
 

@@ -39,7 +39,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * A placed SVG (Scalable Vector Graphics) graphic. See {@link Graphic} for the
  * shared placed-graphic surface.
  */
-export interface SVG<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M> {
+export interface SVG<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignPlugins.SVG<M> {
   /** Resolves the proxy into the individual {@link SVG} objects it stands for. */
   getElements(): SVG<TParent, 'single'>[];
 

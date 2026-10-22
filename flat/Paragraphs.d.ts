@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Paragraph
  */
-export interface Paragraphs<TParent = TextParent> {
+export interface Paragraphs<TParent = TextParent> extends InDesignPlugins.Paragraphs {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

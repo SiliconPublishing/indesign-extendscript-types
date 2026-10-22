@@ -28,7 +28,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
 /**
  * Application- or document-level default page-item formatting (fill, stroke, object styles) applied to newly created page items.
  */
-export interface PageItemDefault<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
+export interface PageItemDefault<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.PageItemDefault<M> {
   /** Resolves the proxy into the individual {@link PageItemDefault} objects it stands for. */
   getElements(): PageItemDefault<'single'>[];
 

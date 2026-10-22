@@ -24,7 +24,7 @@ import type { BehaviorParent } from './_base/Parents';
 /**
  * A behavior that opens an external file.
  */
-export interface OpenFileBehavior {
+export interface OpenFileBehavior extends InDesignPlugins.OpenFileBehavior<'single'> {
   /**
    * A collection of events
    */
@@ -144,7 +144,7 @@ export interface OpenFileBehavior {
 /**
  * A behavior that opens an external file.
  */
-export interface OpenFileBehaviorPlural {
+export interface OpenFileBehaviorPlural extends InDesignPlugins.OpenFileBehavior<'plural'> {
   /**
    * A collection of events
    */

@@ -17,7 +17,7 @@ import type { TimingList } from './TimingList';
  *
  * @collection TimingList
  */
-export interface TimingLists extends BaseCollection<TimingList, TimingList, TimingList<'plural'>> {
+export interface TimingLists extends BaseCollection<TimingList, TimingList, TimingList<'plural'>>, InDesignPlugins.TimingLists {
   /**
    * Adds a new event-triggered timing list.
    * * Each `TimingList` is tied to exactly one `triggerEvent`. To trigger animations on multiple events (e.g., both Page Load and Click), you must create separate timing lists.

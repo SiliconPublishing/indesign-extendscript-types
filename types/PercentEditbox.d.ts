@@ -12,7 +12,7 @@ import type { NumericEditboxSurface } from './_base/WidgetMixins';
 /**
  * A numeric entry field for percentage values.
  */
-export interface PercentEditbox<M extends Mode = 'single'> extends Widget<M>, NumericEditboxSurface<M>{
+export interface PercentEditbox<M extends Mode = 'single'> extends Widget<M>, NumericEditboxSurface<M>, InDesignPlugins.PercentEditbox<M>{
   /** Resolves the proxy into the individual {@link PercentEditbox} objects it stands for. */
   getElements(): PercentEditbox<'single'>[];
 }

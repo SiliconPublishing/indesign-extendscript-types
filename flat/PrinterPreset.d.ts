@@ -48,7 +48,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A named set of print settings, applied by {@link Application.printerPresets}
  * when printing a document.
  */
-export interface PrinterPreset {
+export interface PrinterPreset extends InDesignPlugins.PrinterPreset<'single'> {
   /**
    * A collection of events
    */
@@ -502,7 +502,7 @@ export interface PrinterPreset {
  * A named set of print settings, applied by {@link Application.printerPresets}
  * when printing a document.
  */
-export interface PrinterPresetPlural {
+export interface PrinterPresetPlural extends InDesignPlugins.PrinterPreset<'plural'> {
   /**
    * A collection of events
    */

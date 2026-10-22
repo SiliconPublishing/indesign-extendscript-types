@@ -16,7 +16,7 @@ import type { TableFormattingOptions } from './Enums/TableFormattingOptions';
  * range, cell alignment and decimal formatting, and whether inline graphics and
  * hidden cells are included.
  */
-export interface ExcelImportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface ExcelImportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.ExcelImportPreference<M> {
   /** Resolves the proxy into the individual {@link ExcelImportPreference} objects it stands for. */
   getElements(): ExcelImportPreference<'single'>[];
 

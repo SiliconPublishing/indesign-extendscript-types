@@ -25,7 +25,7 @@ import type { PropertiesSetter } from './_base/Properties';
  *
  * @collection Row
  */
-export interface Rows {
+export interface Rows extends InDesignPlugins.Rows {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

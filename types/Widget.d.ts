@@ -17,7 +17,7 @@ import type { Dropdown } from './Dropdown';
  */
 export interface Widget<M extends Mode = 'single'>
   extends EventTargetDOMObject<WidgetParent, M>,
-    IndexedDOMObject<WidgetParent, M> {
+    IndexedDOMObject<WidgetParent, M>, InDesignPlugins.Widget<M> {
   /** Resolves the proxy into the individual {@link Widget} objects it stands for. */
   getElements(): Widget<'single'>[];
 

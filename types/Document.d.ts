@@ -235,7 +235,7 @@ import type { AnyGraphic, AnyPageItem, SelectionItem } from './_base/Unions';
 export interface Document<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Application, M>,
     IndexedDOMObject<Application, M>,
-    NamableDOMObject<Application, M> {
+    NamableDOMObject<Application, M>, InDesignPlugins.Document<M> {
   /** Resolves the proxy into the individual {@link Document} objects it stands for. */
   getElements(): Document<'single'>[];
 

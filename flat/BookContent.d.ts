@@ -24,7 +24,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A single document entry inside a {@link Book}.
  */
-export interface BookContent {
+export interface BookContent extends InDesignPlugins.BookContent<'single'> {
   /**
    * A collection of events
    */
@@ -164,7 +164,7 @@ export interface BookContent {
 /**
  * A single document entry inside a {@link Book}.
  */
-export interface BookContentPlural {
+export interface BookContentPlural extends InDesignPlugins.BookContent<'plural'> {
   /**
    * A collection of events
    */

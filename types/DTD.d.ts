@@ -17,7 +17,7 @@ import type { XMLItem } from "./XMLItem";
  * The document type declaration governing XML validation and the tag
  * structure of a document's XML view.
  */
-export interface DTD<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, IndexedDOMObject<Document, M> {
+export interface DTD<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, IndexedDOMObject<Document, M>, InDesignPlugins.DTD<M> {
   /** Resolves the proxy into the individual {@link DTD} objects it stands for. */
   getElements(): DTD<'single'>[];
 

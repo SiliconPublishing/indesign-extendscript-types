@@ -15,7 +15,7 @@ import type { Document } from './Document';
  */
 export interface HyphenationException<M extends Mode = 'single'>
   extends EventTargetDOMObject<Document, M>,
-    IndexedDOMObject<Document, M> {
+    IndexedDOMObject<Document, M>, InDesignPlugins.HyphenationException<M> {
   /** Resolves the proxy into the individual {@link HyphenationException} objects it stands for. */
   getElements(): HyphenationException<'single'>[];
 

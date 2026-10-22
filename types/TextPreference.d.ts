@@ -14,7 +14,7 @@ import type { AddPageOptions } from './Enums/AddPageOptions';
 /**
  * Application- or document-wide text composition and editing defaults (smart text reflow, highlighting, key increments).
  */
-export interface TextPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
+export interface TextPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.TextPreference<M> {
   /** Resolves the proxy into the individual {@link TextPreference} objects it stands for. */
   getElements(): TextPreference<'single'>[];
 

@@ -17,7 +17,7 @@ import type { PageItem } from './PageItem';
  */
 export interface DataMergeImagePlaceholder<M extends Mode = 'single'>
   extends EventTargetDOMObject<Document, M>,
-    IndexedDOMObject<Document, M> {
+    IndexedDOMObject<Document, M>, InDesignPlugins.DataMergeImagePlaceholder<M> {
   /** Resolves the proxy into the individual {@link DataMergeImagePlaceholder} objects it stands for. */
   getElements(): DataMergeImagePlaceholder<'single'>[];
 

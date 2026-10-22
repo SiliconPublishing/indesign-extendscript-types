@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection MasterSpread
  */
-export interface MasterSpreads {
+export interface MasterSpreads extends InDesignPlugins.MasterSpreads {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -71,7 +71,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * A PDF list-box form field: a scrollable list of choices, optionally
  * multi-selectable, in an interactive PDF form.
  */
-export interface ListBox<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, ListBox, M>, FormFieldSurface<ListBox, M> {
+export interface ListBox<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, ListBox, M>, FormFieldSurface<ListBox, M>, InDesignPlugins.ListBox<M> {
   /** Resolves the proxy into the individual {@link ListBox} objects it stands for. */
   getElements(): ListBox<TParent, 'single'>[];
 

@@ -71,7 +71,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * A PDF combo-box form field: an editable or fixed drop-down list of choices
  * in an interactive PDF form.
  */
-export interface ComboBox<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, ComboBox, M>, FormFieldSurface<ComboBox, M> {
+export interface ComboBox<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, ComboBox, M>, FormFieldSurface<ComboBox, M>, InDesignPlugins.ComboBox<M> {
   /** Resolves the proxy into the individual {@link ComboBox} objects it stands for. */
   getElements(): ComboBox<TParent, 'single'>[];
 

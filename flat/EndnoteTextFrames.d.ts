@@ -26,7 +26,7 @@ import type { PageItemAddReference } from './_base/Collections';
  *
  * @collection EndnoteTextFrame
  */
-export interface EndnoteTextFrames<TParent = PageItemParent> {
+export interface EndnoteTextFrames<TParent = PageItemParent> extends InDesignPlugins.EndnoteTextFrames {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

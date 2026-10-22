@@ -17,7 +17,7 @@ import type { Topic } from './Topic';
  */
 export interface IndexSection<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Index, M>,
-    IndexedDOMObject<Index, M> {
+    IndexedDOMObject<Index, M>, InDesignPlugins.IndexSection<M> {
   /** Resolves the proxy into the individual {@link IndexSection} objects it stands for. */
   getElements(): IndexSection<'single'>[];
 

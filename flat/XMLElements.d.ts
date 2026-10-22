@@ -28,7 +28,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * between the visual layout and data structure.
  * @collection XMLElement
  */
-export interface XMLElements {
+export interface XMLElements extends InDesignPlugins.XMLElements {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

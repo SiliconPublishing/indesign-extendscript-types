@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Application-wide defaults for how transformations (move, scale, rotate) affect content and strokes.
  */
-export interface TransformPreference {
+export interface TransformPreference extends InDesignPlugins.TransformPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -128,7 +128,7 @@ export interface TransformPreference {
 /**
  * Application-wide defaults for how transformations (move, scale, rotate) affect content and strokes.
  */
-export interface TransformPreferencePlural {
+export interface TransformPreferencePlural extends InDesignPlugins.TransformPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -26,7 +26,7 @@ export interface Behaviors
   extends
     BaseCollection<AnyBehavior, Behavior, BehaviorsPlural>,
     IdCollection<AnyBehavior>,
-    NamedCollection<AnyBehavior> {
+    NamedCollection<AnyBehavior>, InDesignPlugins.Behaviors {
 }
 
 /**

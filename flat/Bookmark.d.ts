@@ -30,7 +30,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * navigation to a page, text location, or external page. Bookmarks can
  * nest arbitrarily deep via their own {@link bookmarks} collection.
  */
-export interface Bookmark {
+export interface Bookmark extends InDesignPlugins.Bookmark<'single'> {
   /**
    * A collection of events
    */
@@ -163,7 +163,7 @@ export interface Bookmark {
  * navigation to a page, text location, or external page. Bookmarks can
  * nest arbitrarily deep via their own {@link bookmarks} collection.
  */
-export interface BookmarkPlural {
+export interface BookmarkPlural extends InDesignPlugins.Bookmark<'plural'> {
   /**
    * A collection of events
    */

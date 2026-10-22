@@ -26,7 +26,7 @@ import type { PageItemParent } from './_base/Parents';
  * @collection Group
  */
 export interface Groups<TParent = PageItemParent>
-  extends BaseCollection<Group<TParent>, Group, Group<TParent, 'plural'>>, IdCollection<Group<TParent>>, NamedCollection<Group<TParent>> {
+  extends BaseCollection<Group<TParent>, Group, Group<TParent, 'plural'>>, IdCollection<Group<TParent>>, NamedCollection<Group<TParent>>, InDesignPlugins.Groups {
   /**
    * Creates a new Group relative to a specific reference object.
    *

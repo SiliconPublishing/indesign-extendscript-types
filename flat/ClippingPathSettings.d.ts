@@ -34,7 +34,7 @@ import type { FilePath } from './_base/Types';
  * The path can come from an alpha channel or a Photoshop path stored in the file, or
  * be detected from the image's own edges — see {@link clippingType}.
  */
-export interface ClippingPathSettings {
+export interface ClippingPathSettings extends InDesignPlugins.ClippingPathSettings<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -183,7 +183,7 @@ export interface ClippingPathSettings {
  * The path can come from an alpha channel or a Photoshop path stored in the file, or
  * be detected from the image's own edges — see {@link clippingType}.
  */
-export interface ClippingPathSettingsPlural {
+export interface ClippingPathSettingsPlural extends InDesignPlugins.ClippingPathSettings<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

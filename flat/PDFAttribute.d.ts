@@ -24,7 +24,7 @@ import type { FilePath } from './_base/Types';
 /**
  * PDF attributes.
  */
-export interface PDFAttribute {
+export interface PDFAttribute extends InDesignPlugins.PDFAttribute<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -117,7 +117,7 @@ export interface PDFAttribute {
 /**
  * PDF attributes.
  */
-export interface PDFAttributePlural {
+export interface PDFAttributePlural extends InDesignPlugins.PDFAttribute<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

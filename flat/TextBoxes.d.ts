@@ -26,7 +26,7 @@ import type { PageItemAddReference } from './_base/Collections';
  *
  * @collection TextBox
  */
-export interface TextBoxes<TParent = PageItemParent> {
+export interface TextBoxes<TParent = PageItemParent> extends InDesignPlugins.TextBoxes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

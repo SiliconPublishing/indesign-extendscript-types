@@ -13,7 +13,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
 /**
  * The collection of built-in display performance settings ({@link DisplaySetting}).
  */
-export interface DisplaySettings {
+export interface DisplaySettings extends InDesignPlugins.DisplaySettings {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -26,7 +26,7 @@ import type { BehaviorParent } from './_base/Parents';
 /**
  * A behavior that controls playback of a {@link Movie} page item.
  */
-export interface MovieBehavior {
+export interface MovieBehavior extends InDesignPlugins.MovieBehavior<'single'> {
   /**
    * A collection of events
    */
@@ -156,7 +156,7 @@ export interface MovieBehavior {
 /**
  * A behavior that controls playback of a {@link Movie} page item.
  */
-export interface MovieBehaviorPlural {
+export interface MovieBehaviorPlural extends InDesignPlugins.MovieBehavior<'plural'> {
   /**
    * A collection of events
    */

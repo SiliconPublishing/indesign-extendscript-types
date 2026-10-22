@@ -17,7 +17,7 @@ import type { Dialog } from './Dialog';
  * @collection TextEditbox
  */
 export interface TextEditboxes
-  extends BaseCollection<TextEditbox, TextEditbox, TextEditbox<'plural'>>, IdCollection<TextEditbox> {
+  extends BaseCollection<TextEditbox, TextEditbox, TextEditbox<'plural'>>, IdCollection<TextEditbox>, InDesignPlugins.TextEditboxes {
   /**
    * Creates and adds a new text editbox control to the dialog.
    * @param withProperties Initial values for properties of the new control.

@@ -61,7 +61,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * inline, while its content flows at the bottom of the column or page. See
  * also {@link Endnote} for note text collected at the end of the story instead.
  */
-export interface Footnote {
+export interface Footnote extends InDesignPlugins.Footnote<'single'> {
   /**
    * A collection of events
    */
@@ -226,7 +226,7 @@ export interface Footnote {
  * inline, while its content flows at the bottom of the column or page. See
  * also {@link Endnote} for note text collected at the end of the story instead.
  */
-export interface FootnotePlural {
+export interface FootnotePlural extends InDesignPlugins.Footnote<'plural'> {
   /**
    * A collection of events
    */

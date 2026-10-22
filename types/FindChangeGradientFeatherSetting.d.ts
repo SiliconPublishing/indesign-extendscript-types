@@ -21,7 +21,7 @@ import type { GradientFeatherSetting } from './GradientFeatherSetting';
  * Gradient feather search/replace criteria — the same soft fade to transparent as
  * {@link GradientFeatherSetting}, matched or applied by find/change.
  */
-export interface FindChangeGradientFeatherSetting<M extends Mode = 'single'> extends EventTargetDOMObject<FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting | FindChangeContentTransparencySetting, M> {
+export interface FindChangeGradientFeatherSetting<M extends Mode = 'single'> extends EventTargetDOMObject<FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting | FindChangeContentTransparencySetting, M>, InDesignPlugins.FindChangeGradientFeatherSetting<M> {
   /** Resolves the proxy into the individual {@link FindChangeGradientFeatherSetting} objects it stands for. */
   getElements(): FindChangeGradientFeatherSetting<'single'>[];
 

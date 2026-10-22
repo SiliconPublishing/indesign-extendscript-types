@@ -80,7 +80,7 @@ import type { AnyGraphic } from './_base/Unions';
  * frame for master-page text threading, and the applied-master chain (a
  * master can be based on another master).
  */
-export interface MasterSpread {
+export interface MasterSpread extends InDesignPlugins.MasterSpread<'single'> {
   /**
    * A collection of events
    */
@@ -382,7 +382,7 @@ export interface MasterSpread {
  * frame for master-page text threading, and the applied-master chain (a
  * master can be based on another master).
  */
-export interface MasterSpreadPlural {
+export interface MasterSpreadPlural extends InDesignPlugins.MasterSpread<'plural'> {
   /**
    * A collection of events
    */

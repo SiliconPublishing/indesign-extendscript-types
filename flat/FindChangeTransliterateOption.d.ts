@@ -24,7 +24,7 @@ import type { FilePath } from './_base/Types';
  * {@link Application.changeTransliterate}, the transliteration find/change used to
  * convert between Japanese script forms.
  */
-export interface FindChangeTransliterateOption {
+export interface FindChangeTransliterateOption extends InDesignPlugins.FindChangeTransliterateOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -143,7 +143,7 @@ export interface FindChangeTransliterateOption {
  * {@link Application.changeTransliterate}, the transliteration find/change used to
  * convert between Japanese script forms.
  */
-export interface FindChangeTransliterateOptionPlural {
+export interface FindChangeTransliterateOptionPlural extends InDesignPlugins.FindChangeTransliterateOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -21,7 +21,7 @@ import type { TabStops } from './TabStops';
  */
 export interface TabStop<M extends Mode = 'single'>
   extends EventTargetDOMObject<ParagraphAttributeOwner, M>,
-    IndexedDOMObject<ParagraphAttributeOwner, M> {
+    IndexedDOMObject<ParagraphAttributeOwner, M>, InDesignPlugins.TabStop<M> {
   /** Resolves the proxy into the individual {@link TabStop} objects it stands for. */
   getElements(): TabStop<'single'>[];
 

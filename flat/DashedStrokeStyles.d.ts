@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection DashedStrokeStyle
  */
-export interface DashedStrokeStyles {
+export interface DashedStrokeStyles extends InDesignPlugins.DashedStrokeStyles {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

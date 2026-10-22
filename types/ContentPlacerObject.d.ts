@@ -14,7 +14,7 @@ import type { PageItem } from './PageItem';
  * The content-linking placer used to load page items for link-aware pasting
  * or placement (Edit > Content Placer workflows).
  */
-export interface ContentPlacerObject<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface ContentPlacerObject<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.ContentPlacerObject<M> {
   /** Resolves the proxy into the individual {@link ContentPlacerObject} objects it stands for. */
   getElements(): ContentPlacerObject<'single'>[];
 

@@ -253,7 +253,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * Document-scoped state — `activeLayer`, page items, the document body — is on
  * {@link Document}, not here.
  */
-export interface Application {
+export interface Application extends InDesignPlugins.Application<'single'> {
   /**
    * A collection of events
    */
@@ -1187,7 +1187,7 @@ export interface Application {
  * Document-scoped state — `activeLayer`, page items, the document body — is on
  * {@link Document}, not here.
  */
-export interface ApplicationPlural {
+export interface ApplicationPlural extends InDesignPlugins.Application<'plural'> {
   /**
    * A collection of events
    */

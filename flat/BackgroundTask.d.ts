@@ -25,7 +25,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A long-running operation (such as preflight or export) executing outside
  * the main script thread.
  */
-export interface BackgroundTask {
+export interface BackgroundTask extends InDesignPlugins.BackgroundTask<'single'> {
   /**
    * A collection of events
    */
@@ -135,7 +135,7 @@ export interface BackgroundTask {
  * A long-running operation (such as preflight or export) executing outside
  * the main script thread.
  */
-export interface BackgroundTaskPlural {
+export interface BackgroundTaskPlural extends InDesignPlugins.BackgroundTask<'plural'> {
   /**
    * A collection of events
    */

@@ -19,7 +19,7 @@ import type { CellStyleGroup } from './CellStyleGroup';
 export interface CellStyleGroups
   extends BaseCollection<CellStyleGroup, CellStyleGroup, CellStyleGroup<'plural'>>,
     IdCollection<CellStyleGroup>,
-    NamedCollection<CellStyleGroup> {
+    NamedCollection<CellStyleGroup>, InDesignPlugins.CellStyleGroups {
   /**
    * Creates a new cell style group.
    *

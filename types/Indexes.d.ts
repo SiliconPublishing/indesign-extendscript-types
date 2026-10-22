@@ -23,7 +23,7 @@ import type { Index } from './Index';
  * @collection Index
  */
 export interface Indexes
-  extends BaseCollection<Index, Index, Index<'plural'>>, IdCollection<Index>, NamedCollection<Index> {
+  extends BaseCollection<Index, Index, Index<'plural'>>, IdCollection<Index>, NamedCollection<Index>, InDesignPlugins.Indexes {
   /**
    * Creates a new index.
    * @param withProperties Initial values for properties of the new {@link Index}.

@@ -29,7 +29,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * held in a {@link TabStops} collection. Governs where the text following a
  * tab character aligns and what leader character fills the gap before it.
  */
-export interface TabStop {
+export interface TabStop extends InDesignPlugins.TabStop<'single'> {
   /**
    * A collection of events
    */
@@ -139,7 +139,7 @@ export interface TabStop {
  * held in a {@link TabStops} collection. Governs where the text following a
  * tab character aligns and what leader character fills the gap before it.
  */
-export interface TabStopPlural {
+export interface TabStopPlural extends InDesignPlugins.TabStop<'plural'> {
   /**
    * A collection of events
    */

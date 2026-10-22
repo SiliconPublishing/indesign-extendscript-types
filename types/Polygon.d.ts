@@ -73,7 +73,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * graphic line. New polygons are created using the current polygon preferences
  * (side count and star inset).
  */
-export interface Polygon<TParent = PageItemParent, M extends Mode = 'single'> extends SplineItem<TParent, Polygon, M> {
+export interface Polygon<TParent = PageItemParent, M extends Mode = 'single'> extends SplineItem<TParent, Polygon, M>, InDesignPlugins.Polygon<M> {
   /** Resolves the proxy into the individual {@link Polygon} objects it stands for. */
   getElements(): Polygon<TParent, 'single'>[];
 

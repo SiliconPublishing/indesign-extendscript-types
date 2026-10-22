@@ -26,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A single anchor point on a {@link Path}, with its incoming and outgoing
  * Bézier direction handles.
  */
-export interface PathPoint {
+export interface PathPoint extends InDesignPlugins.PathPoint<'single'> {
   /**
    * A collection of events
    */
@@ -139,7 +139,7 @@ export interface PathPoint {
  * A single anchor point on a {@link Path}, with its incoming and outgoing
  * Bézier direction handles.
  */
-export interface PathPointPlural {
+export interface PathPointPlural extends InDesignPlugins.PathPoint<'plural'> {
   /**
    * A collection of events
    */

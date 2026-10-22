@@ -71,7 +71,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * A PDF digital-signature form field, used to hold an electronic signature in
  * an interactive PDF form.
  */
-export interface SignatureField<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, SignatureField, M>, FormFieldSurface<SignatureField, M> {
+export interface SignatureField<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, SignatureField, M>, FormFieldSurface<SignatureField, M>, InDesignPlugins.SignatureField<M> {
   /** Resolves the proxy into the individual {@link SignatureField} objects it stands for. */
   getElements(): SignatureField<TParent, 'single'>[];
 }

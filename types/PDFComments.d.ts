@@ -22,5 +22,5 @@ export interface PDFComments
   extends
     BaseCollection<PDFComment, PDFComment, PDFComment<'plural'>>,
     IdCollection<PDFComment>,
-    NamedCollection<PDFComment> {
+    NamedCollection<PDFComment>, InDesignPlugins.PDFComments {
 }

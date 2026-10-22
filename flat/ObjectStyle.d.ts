@@ -69,7 +69,7 @@ import type { ArrowHeadAlignmentEnum } from './Enums/ArrowHeadAlignmentEnum';
  * attributes any drawable object has, but none of the geometry — a gradient's start point and
  * length, and the dash-and-gap pattern, belong to the drawn object rather than to the style.
  */
-export interface ObjectStyle {
+export interface ObjectStyle extends InDesignPlugins.ObjectStyle<'single'> {
   /**
    * A collection of events
    */
@@ -445,7 +445,7 @@ export interface ObjectStyle {
  * attributes any drawable object has, but none of the geometry — a gradient's start point and
  * length, and the dash-and-gap pattern, belong to the drawn object rather than to the style.
  */
-export interface ObjectStylePlural {
+export interface ObjectStylePlural extends InDesignPlugins.ObjectStyle<'plural'> {
   /**
    * A collection of events
    */

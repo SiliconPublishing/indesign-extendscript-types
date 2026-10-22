@@ -21,7 +21,7 @@ import type { XMLTransformFile } from './Enums/XMLTransformFile';
 /**
  * XML export preferences.
  */
-export interface XMLExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
+export interface XMLExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.XMLExportPreference<M> {
   /** Resolves the proxy into the individual {@link XMLExportPreference} objects it stands for. */
   getElements(): XMLExportPreference<'single'>[];
 

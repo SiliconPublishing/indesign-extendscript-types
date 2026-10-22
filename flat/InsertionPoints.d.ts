@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection InsertionPoint
  */
-export interface InsertionPoints<TParent = TextParent> {
+export interface InsertionPoints<TParent = TextParent> extends InDesignPlugins.InsertionPoints {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

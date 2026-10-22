@@ -16,7 +16,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection LayoutWindow
  */
-export interface LayoutWindows {
+export interface LayoutWindows extends InDesignPlugins.LayoutWindows {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

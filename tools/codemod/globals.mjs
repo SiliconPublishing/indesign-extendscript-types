@@ -14,10 +14,11 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { Node } from 'ts-morph';
+import { hookDeclarations } from './plugin-hooks.mjs';
 
 const SNAPSHOT = 'snapshots/indesign-21.6';
 
-export function generateGlobals(project, typesDir, root) {
+export function generateGlobals(project, typesDir, root, hooks = []) {
     const dictionary = JSON.parse(readFileSync(join(root, SNAPSHOT, 'dictionary.json'), 'utf8')).classes;
     const globals = JSON.parse(readFileSync(join(root, SNAPSHOT, 'globals.json'), 'utf8'));
     const barrel = project.getSourceFileOrThrow(join(typesDir, 'indesign.d.ts'));
@@ -123,6 +124,15 @@ declare global {
     (this: never, ...args: never[]): void;
     readonly prototype: T;
     readonly reflect: Reflection;
+  }
+
+  /**
+   * Extension points for plugins: every DOM class extends its (empty) namesake here, so a
+   * plugin's declarations can add members to InDesign's classes by declaration merging.
+   * See tools/plugin.
+   */
+  namespace InDesignPlugins {
+${hookDeclarations(hooks)}
   }
 
 ${enums.join('\n')}

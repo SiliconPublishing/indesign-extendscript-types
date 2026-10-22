@@ -24,7 +24,7 @@ export interface GotoNextPageBehaviors
   extends
     BaseCollection<GotoNextPageBehavior, GotoNextPageBehavior, GotoNextPageBehavior<'plural'>>,
     IdCollection<GotoNextPageBehavior>,
-    NamedCollection<GotoNextPageBehavior> {
+    NamedCollection<GotoNextPageBehavior>, InDesignPlugins.GotoNextPageBehaviors {
   /**
    * Creates a new {@link GotoNextPageBehavior} from a properties bag alone.
    */

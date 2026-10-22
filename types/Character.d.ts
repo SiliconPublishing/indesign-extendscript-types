@@ -71,7 +71,7 @@ import type { XMLItem } from './XMLItem';
 /**
  * A single character in a text range.
  */
-export interface Character<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M> {
+export interface Character<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M>, InDesignPlugins.Character<M> {
   /** Resolves the proxy into the individual {@link Character} objects it stands for. */
   getElements(): Character<TParent, 'single'>[];
 }

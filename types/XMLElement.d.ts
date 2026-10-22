@@ -69,7 +69,7 @@ import type { FilePath, MeasurementValue } from './_base/Types';
  * structural node), and can itself contain child elements, attributes, comments, and
  * processing instructions.
  */
-export interface XMLElement<M extends Mode = 'single'> extends XMLItem<M>{
+export interface XMLElement<M extends Mode = 'single'> extends XMLItem<M>, InDesignPlugins.XMLElement<M>{
   /** Resolves the proxy into the individual {@link XMLElement} objects it stands for. */
   getElements(): XMLElement<'single'>[];
 

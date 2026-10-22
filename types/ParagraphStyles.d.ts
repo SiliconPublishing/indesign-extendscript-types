@@ -24,7 +24,7 @@ export interface ParagraphStyles
   extends
     BaseCollection<ParagraphStyle, ParagraphStyle, ParagraphStyle<'plural'>>,
     IdCollection<ParagraphStyle>,
-    NamedCollection<ParagraphStyle> {
+    NamedCollection<ParagraphStyle>, InDesignPlugins.ParagraphStyles {
   /**
    * Creates a new paragraph style.
    *

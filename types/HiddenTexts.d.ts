@@ -22,5 +22,5 @@ export interface HiddenTexts
   extends
     BaseCollection<HiddenText, HiddenText, HiddenText<'plural'>>,
     IdCollection<HiddenText>,
-    NamedCollection<HiddenText> {
+    NamedCollection<HiddenText>, InDesignPlugins.HiddenTexts {
 }

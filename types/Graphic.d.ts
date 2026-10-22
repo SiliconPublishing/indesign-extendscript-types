@@ -39,7 +39,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * An imported graphic in any graphic file format (including vector, metafile,
  * and bitmap formats).
  */
-export interface Graphic<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, PageItemParent, M> {
+export interface Graphic<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, PageItemParent, M>, InDesignPlugins.Graphic<M> {
   /** Resolves the proxy into the individual {@link Graphic} objects it stands for. */
   getElements(): Graphic<TParent, 'single'>[];
 

@@ -13,7 +13,7 @@ import type { WhenScalingOptions } from './Enums/WhenScalingOptions';
 /**
  * Application-wide defaults for how transformations (move, scale, rotate) affect content and strokes.
  */
-export interface TransformPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface TransformPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.TransformPreference<M> {
   /** Resolves the proxy into the individual {@link TransformPreference} objects it stands for. */
   getElements(): TransformPreference<'single'>[];
 

@@ -66,5 +66,5 @@ export interface PageItems<TParent = PageItemParent>
   extends
     BaseCollection<AnyPageItemOf<TParent>, PageItem, PageItemsPlural<TParent>>,
     IdCollection<AnyPageItemOf<TParent>>,
-    NamedCollection<AnyPageItemOf<TParent>> {
+    NamedCollection<AnyPageItemOf<TParent>>, InDesignPlugins.PageItems {
 }

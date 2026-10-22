@@ -21,7 +21,7 @@ import type { LocationOptions } from './Enums/LocationOptions';
  *
  * @collection Path
  */
-export interface Paths {
+export interface Paths extends InDesignPlugins.Paths {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

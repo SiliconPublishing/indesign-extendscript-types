@@ -24,7 +24,7 @@ export interface ObjectStyles
   extends
     BaseCollection<ObjectStyle, ObjectStyle, ObjectStyle<'plural'>>,
     IdCollection<ObjectStyle>,
-    NamedCollection<ObjectStyle> {
+    NamedCollection<ObjectStyle>, InDesignPlugins.ObjectStyles {
   /**
    * Creates a new object style.
    *

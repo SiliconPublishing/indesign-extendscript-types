@@ -19,7 +19,7 @@ import type { XMLRuleMatchData } from './XMLRuleMatchData';
 export interface XMLRuleProcessor<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Application, M>,
     IndexedDOMObject<Application, M>,
-    NamableDOMObject<Application, M> {
+    NamableDOMObject<Application, M>, InDesignPlugins.XMLRuleProcessor<M> {
   /** Resolves the proxy into the individual {@link XMLRuleProcessor} objects it stands for. */
   getElements(): XMLRuleProcessor<'single'>[];
 

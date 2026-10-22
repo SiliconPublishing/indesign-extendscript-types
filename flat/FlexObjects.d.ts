@@ -30,7 +30,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection FlexObject
  */
-export interface FlexObjects<TParent = PageItemParent> {
+export interface FlexObjects<TParent = PageItemParent> extends InDesignPlugins.FlexObjects {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

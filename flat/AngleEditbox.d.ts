@@ -23,7 +23,7 @@ import type { WidgetParent } from './_base/Parents';
 /**
  * A numeric entry field for angle values.
  */
-export interface AngleEditbox {
+export interface AngleEditbox extends InDesignPlugins.AngleEditbox<'single'> {
   /**
    * A collection of events
    */
@@ -156,7 +156,7 @@ export interface AngleEditbox {
 /**
  * A numeric entry field for angle values.
  */
-export interface AngleEditboxPlural {
+export interface AngleEditboxPlural extends InDesignPlugins.AngleEditbox<'plural'> {
   /**
    * A collection of events
    */

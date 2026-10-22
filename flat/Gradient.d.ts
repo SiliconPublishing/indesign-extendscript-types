@@ -27,7 +27,7 @@ import type { SwatchParent } from './_base/Parents';
 /**
  * A gradient swatch, blending between the colors of its {@link gradientStops}.
  */
-export interface Gradient {
+export interface Gradient extends InDesignPlugins.Gradient<'single'> {
   /**
    * A collection of events
    */
@@ -155,7 +155,7 @@ export interface Gradient {
 /**
  * A gradient swatch, blending between the colors of its {@link gradientStops}.
  */
-export interface GradientPlural {
+export interface GradientPlural extends InDesignPlugins.Gradient<'plural'> {
   /**
    * A collection of events
    */

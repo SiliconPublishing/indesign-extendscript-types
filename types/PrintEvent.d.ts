@@ -14,7 +14,7 @@ import type { LayoutWindow } from './LayoutWindow';
 /**
  * An event dispatched before or after a document is printed.
  */
-export interface PrintEvent<M extends Mode = 'single'> extends Event<M>{
+export interface PrintEvent<M extends Mode = 'single'> extends Event<M>, InDesignPlugins.PrintEvent<M>{
   /** Resolves the proxy into the individual {@link PrintEvent} objects it stands for. */
   getElements(): PrintEvent<'single'>[];
 

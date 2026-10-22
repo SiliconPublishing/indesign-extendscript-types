@@ -22,7 +22,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Options controlling a GREP find/change operation.
  */
-export interface FindChangeGrepOption {
+export interface FindChangeGrepOption extends InDesignPlugins.FindChangeGrepOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -133,7 +133,7 @@ export interface FindChangeGrepOption {
 /**
  * Options controlling a GREP find/change operation.
  */
-export interface FindChangeGrepOptionPlural {
+export interface FindChangeGrepOptionPlural extends InDesignPlugins.FindChangeGrepOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

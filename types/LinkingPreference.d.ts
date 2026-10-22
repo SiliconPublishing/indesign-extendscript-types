@@ -13,7 +13,7 @@ import type { LinkResourceRenditionType } from './Enums/LinkResourceRenditionTyp
 /**
  * Linking preferences.
  */
-export interface LinkingPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface LinkingPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.LinkingPreference<M> {
   /** Resolves the proxy into the individual {@link LinkingPreference} objects it stands for. */
   getElements(): LinkingPreference<'single'>[];
 

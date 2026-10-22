@@ -93,7 +93,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  *
  * @collection Graphic
  */
-export interface Graphics<TParent = PageItemParent> {
+export interface Graphics<TParent = PageItemParent> extends InDesignPlugins.Graphics {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

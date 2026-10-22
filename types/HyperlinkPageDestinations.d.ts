@@ -24,7 +24,7 @@ export interface HyperlinkPageDestinations
   extends
     BaseCollection<HyperlinkPageDestination, HyperlinkPageDestination, HyperlinkPageDestination<'plural'>>,
     IdCollection<HyperlinkPageDestination>,
-    NamedCollection<HyperlinkPageDestination> {
+    NamedCollection<HyperlinkPageDestination>, InDesignPlugins.HyperlinkPageDestinations {
   /**
    * Creates a new hyperlink page destination from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link HyperlinkPageDestination}.

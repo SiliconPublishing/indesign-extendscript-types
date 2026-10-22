@@ -38,7 +38,7 @@ import type { Swatch } from './Swatch';
  * Stores the same border, inset and alternating-fill attributes a live {@link Table} carries,
  * but as a reusable named definition rather than formatting applied to one table.
  */
-export interface TableStyle {
+export interface TableStyle extends InDesignPlugins.TableStyle<'single'> {
   /**
    * A collection of events
    */
@@ -525,7 +525,7 @@ export interface TableStyle {
  * Stores the same border, inset and alternating-fill attributes a live {@link Table} carries,
  * but as a reusable named definition rather than formatting applied to one table.
  */
-export interface TableStylePlural {
+export interface TableStylePlural extends InDesignPlugins.TableStyle<'plural'> {
   /**
    * A collection of events
    */

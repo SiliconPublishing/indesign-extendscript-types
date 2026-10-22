@@ -19,7 +19,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
 export interface XMLAttribute<M extends Mode = 'single'>
   extends EventTargetDOMObject<XMLElement, M>,
     IndexedDOMObject<XMLElement, M>,
-    NamableDOMObject<XMLElement, M> {
+    NamableDOMObject<XMLElement, M>, InDesignPlugins.XMLAttribute<M> {
   /** Resolves the proxy into the individual {@link XMLAttribute} objects it stands for. */
   getElements(): XMLAttribute<'single'>[];
 

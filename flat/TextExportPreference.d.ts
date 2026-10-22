@@ -24,7 +24,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Text export preferences.
  */
-export interface TextExportPreference {
+export interface TextExportPreference extends InDesignPlugins.TextExportPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -117,7 +117,7 @@ export interface TextExportPreference {
 /**
  * Text export preferences.
  */
-export interface TextExportPreferencePlural {
+export interface TextExportPreferencePlural extends InDesignPlugins.TextExportPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

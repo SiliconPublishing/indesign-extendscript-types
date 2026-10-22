@@ -24,7 +24,7 @@ export interface GotoLastPageBehaviors
   extends
     BaseCollection<GotoLastPageBehavior, GotoLastPageBehavior, GotoLastPageBehavior<'plural'>>,
     IdCollection<GotoLastPageBehavior>,
-    NamedCollection<GotoLastPageBehavior> {
+    NamedCollection<GotoLastPageBehavior>, InDesignPlugins.GotoLastPageBehaviors {
   /**
    * Creates a new {@link GotoLastPageBehavior} from a properties bag alone.
    */

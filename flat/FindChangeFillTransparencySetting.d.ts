@@ -34,7 +34,7 @@ import type { FilePath } from './_base/Types';
 /**
  * The fill-transparency criteria used in a find/change object operation.
  */
-export interface FindChangeFillTransparencySetting {
+export interface FindChangeFillTransparencySetting extends InDesignPlugins.FindChangeFillTransparencySetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -143,7 +143,7 @@ export interface FindChangeFillTransparencySetting {
 /**
  * The fill-transparency criteria used in a find/change object operation.
  */
-export interface FindChangeFillTransparencySettingPlural {
+export interface FindChangeFillTransparencySettingPlural extends InDesignPlugins.FindChangeFillTransparencySetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

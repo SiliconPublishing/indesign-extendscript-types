@@ -21,7 +21,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Gradient
  */
-export interface Gradients {
+export interface Gradients extends InDesignPlugins.Gradients {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -20,7 +20,7 @@ import type { CrossReferenceSource } from './CrossReferenceSource';
 export interface HyperlinkTextSource<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document, M>,
     IndexedDOMObject<Document, M>,
-    NamableDOMObject<Document, M> {
+    NamableDOMObject<Document, M>, InDesignPlugins.HyperlinkTextSource<M> {
   /** Resolves the proxy into the individual {@link HyperlinkTextSource} objects it stands for. */
   getElements(): HyperlinkTextSource<'single'>[];
 

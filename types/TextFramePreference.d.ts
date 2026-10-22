@@ -23,7 +23,7 @@ import type { VerticalJustification } from './Enums/VerticalJustification';
 /**
  * Text-frame column layout, inset, vertical-justification, and baseline-grid defaults, applicable at the application/document default level, on a live frame, or on an object style.
  */
-export interface TextFramePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application | Document | TextFrame | EndnoteTextFrame | ObjectStyle, M> {
+export interface TextFramePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application | Document | TextFrame | EndnoteTextFrame | ObjectStyle, M>, InDesignPlugins.TextFramePreference<M> {
   /** Resolves the proxy into the individual {@link TextFramePreference} objects it stands for. */
   getElements(): TextFramePreference<'single'>[];
 

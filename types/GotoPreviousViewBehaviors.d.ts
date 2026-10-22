@@ -24,7 +24,7 @@ export interface GotoPreviousViewBehaviors
   extends
     BaseCollection<GotoPreviousViewBehavior, GotoPreviousViewBehavior, GotoPreviousViewBehavior<'plural'>>,
     IdCollection<GotoPreviousViewBehavior>,
-    NamedCollection<GotoPreviousViewBehavior> {
+    NamedCollection<GotoPreviousViewBehavior>, InDesignPlugins.GotoPreviousViewBehaviors {
   /**
    * Creates a new {@link GotoPreviousViewBehavior} from a properties bag alone.
    */

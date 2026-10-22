@@ -37,7 +37,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * A page item that embeds raw HTML content (used in fixed-layout EPUB and
  * publish-online output). See {@link PageItem} for the shared page-item surface.
  */
-export interface HtmlItem<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, PageItemParent, M> {
+export interface HtmlItem<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, PageItemParent, M>, InDesignPlugins.HtmlItem<M> {
   /** Resolves the proxy into the individual {@link HtmlItem} objects it stands for. */
   getElements(): HtmlItem<TParent, 'single'>[];
 

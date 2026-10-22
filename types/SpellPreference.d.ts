@@ -13,7 +13,7 @@ import type { UIColors } from './Enums/UIColors';
 /**
  * Spell-check preferences.
  */
-export interface SpellPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface SpellPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.SpellPreference<M> {
   /** Resolves the proxy into the individual {@link SpellPreference} objects it stands for. */
   getElements(): SpellPreference<'single'>[];
 

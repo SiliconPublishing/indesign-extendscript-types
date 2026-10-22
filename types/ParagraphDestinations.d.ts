@@ -27,7 +27,7 @@ export interface ParagraphDestinations
   extends
     BaseCollection<ParagraphDestination, ParagraphDestination, ParagraphDestination<'plural'>>,
     IdCollection<ParagraphDestination>,
-    NamedCollection<ParagraphDestination> {
+    NamedCollection<ParagraphDestination>, InDesignPlugins.ParagraphDestinations {
   /**
    * Creates a new {@link ParagraphDestination} anchoring to the specified text location.
    *

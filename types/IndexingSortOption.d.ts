@@ -22,7 +22,7 @@ import type { Index } from './Index';
 export interface IndexingSortOption<M extends Mode = 'single'>
   extends EventTargetDOMObject<DocumentOrApplication, M>,
     IndexedDOMObject<DocumentOrApplication, M>,
-    ReadonlyNamedDOMObject<DocumentOrApplication, M> {
+    ReadonlyNamedDOMObject<DocumentOrApplication, M>, InDesignPlugins.IndexingSortOption<M> {
   /** Resolves the proxy into the individual {@link IndexingSortOption} objects it stands for. */
   getElements(): IndexingSortOption<'single'>[];
 

@@ -29,7 +29,7 @@ import type { BlendMode } from './Enums/BlendMode';
 /**
  * The same {@link InnerShadowSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeInnerShadowSetting {
+export interface FindChangeInnerShadowSetting extends InDesignPlugins.FindChangeInnerShadowSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -160,7 +160,7 @@ export interface FindChangeInnerShadowSetting {
 /**
  * The same {@link InnerShadowSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeInnerShadowSettingPlural {
+export interface FindChangeInnerShadowSettingPlural extends InDesignPlugins.FindChangeInnerShadowSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

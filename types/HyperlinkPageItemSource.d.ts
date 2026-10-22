@@ -18,7 +18,7 @@ import type { Hyperlink } from './Hyperlink';
 export interface HyperlinkPageItemSource<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document, M>,
     IndexedDOMObject<Document, M>,
-    NamableDOMObject<Document, M> {
+    NamableDOMObject<Document, M>, InDesignPlugins.HyperlinkPageItemSource<M> {
   /** Resolves the proxy into the individual {@link HyperlinkPageItemSource} objects it stands for. */
   getElements(): HyperlinkPageItemSource<'single'>[];
 

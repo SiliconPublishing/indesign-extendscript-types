@@ -16,7 +16,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection DTD
  */
-export interface DTDs {
+export interface DTDs extends InDesignPlugins.DTDs {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

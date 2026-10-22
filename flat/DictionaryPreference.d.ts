@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * User dictionary preferences.
  */
-export interface DictionaryPreference {
+export interface DictionaryPreference extends InDesignPlugins.DictionaryPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -119,7 +119,7 @@ export interface DictionaryPreference {
 /**
  * User dictionary preferences.
  */
-export interface DictionaryPreferencePlural {
+export interface DictionaryPreferencePlural extends InDesignPlugins.DictionaryPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

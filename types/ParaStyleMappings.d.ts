@@ -17,7 +17,7 @@ import type { ParaStyleMapping } from './ParaStyleMapping';
  *
  * @collection ParaStyleMapping
  */
-export interface ParaStyleMappings extends BaseCollection<ParaStyleMapping, ParaStyleMapping, ParaStyleMapping<'plural'>> {
+export interface ParaStyleMappings extends BaseCollection<ParaStyleMapping, ParaStyleMapping, ParaStyleMapping<'plural'>>, InDesignPlugins.ParaStyleMappings {
   /**
    * Adds a new paragraph style mapping.
    *

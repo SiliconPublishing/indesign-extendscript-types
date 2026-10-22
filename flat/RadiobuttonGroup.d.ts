@@ -25,7 +25,7 @@ import type { WidgetParent } from './_base/Parents';
 /**
  * A bordered group of mutually-exclusive {@link RadiobuttonControl}s.
  */
-export interface RadiobuttonGroup {
+export interface RadiobuttonGroup extends InDesignPlugins.RadiobuttonGroup<'single'> {
   /**
    * A collection of events
    */
@@ -131,7 +131,7 @@ export interface RadiobuttonGroup {
 /**
  * A bordered group of mutually-exclusive {@link RadiobuttonControl}s.
  */
-export interface RadiobuttonGroupPlural {
+export interface RadiobuttonGroupPlural extends InDesignPlugins.RadiobuttonGroup<'plural'> {
   /**
    * A collection of events
    */

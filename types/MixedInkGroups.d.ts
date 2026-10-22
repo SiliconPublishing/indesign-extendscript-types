@@ -25,7 +25,7 @@ export interface MixedInkGroups
   extends
     BaseCollection<MixedInkGroup, MixedInkGroup, MixedInkGroup<'plural'>>,
     IdCollection<MixedInkGroup>,
-    NamedCollection<MixedInkGroup> {
+    NamedCollection<MixedInkGroup>, InDesignPlugins.MixedInkGroups {
   /**
    * Creates a new mixed ink group and its component swatches.
    *

@@ -24,7 +24,7 @@ import type { FilePath } from './_base/Types';
 /**
  * The preferences for a page number variable.
  */
-export interface PageNumberVariablePreference {
+export interface PageNumberVariablePreference extends InDesignPlugins.PageNumberVariablePreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -123,7 +123,7 @@ export interface PageNumberVariablePreference {
 /**
  * The preferences for a page number variable.
  */
-export interface PageNumberVariablePreferencePlural {
+export interface PageNumberVariablePreferencePlural extends InDesignPlugins.PageNumberVariablePreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

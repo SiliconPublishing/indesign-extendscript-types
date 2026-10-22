@@ -27,5 +27,5 @@ export interface ListBoxes<TParent = PageItemParent>
     BaseCollection<ListBox<TParent>, ListBox, ListBox<TParent, 'plural'>>,
     IdCollection<ListBox<TParent>>,
     NamedCollection<ListBox<TParent>>,
-    AddablePageItemCollection<ListBox<TParent>, ListBox> {
+    AddablePageItemCollection<ListBox<TParent>, ListBox>, InDesignPlugins.ListBoxes {
 }

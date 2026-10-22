@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection IdleTask
  */
-export interface IdleTasks {
+export interface IdleTasks extends InDesignPlugins.IdleTasks {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

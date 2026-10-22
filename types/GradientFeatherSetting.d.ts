@@ -19,7 +19,7 @@ import type { GradientType } from './Enums/GradientType';
  * A soft fade to transparent along a gradient, defined by
  * {@link opacityGradientStops} and this object's angle, length, and type.
  */
-export interface GradientFeatherSetting<M extends Mode = 'single'> extends EventTargetDOMObject<TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, M> {
+export interface GradientFeatherSetting<M extends Mode = 'single'> extends EventTargetDOMObject<TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, M>, InDesignPlugins.GradientFeatherSetting<M> {
   /** Resolves the proxy into the individual {@link GradientFeatherSetting} objects it stands for. */
   getElements(): GradientFeatherSetting<'single'>[];
 

@@ -14,7 +14,7 @@ import type { LocationOptions } from './Enums/LocationOptions';
 /**
  * A comment (`<!-- ... -->`) in a document's underlying XML structure.
  */
-export interface XMLComment<M extends Mode = 'single'> extends XMLItem<M>{
+export interface XMLComment<M extends Mode = 'single'> extends XMLItem<M>, InDesignPlugins.XMLComment<M>{
   /** Resolves the proxy into the individual {@link XMLComment} objects it stands for. */
   getElements(): XMLComment<'single'>[];
 

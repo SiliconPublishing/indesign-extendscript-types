@@ -15,7 +15,7 @@ import type { SearchStrategies } from './Enums/SearchStrategies';
 /**
  * The preferences for a running header/footer (match paragraph style) variable.
  */
-export interface MatchParagraphStylePreference<M extends Mode = 'single'> extends EventTargetDOMObject<TextVariable, M> {
+export interface MatchParagraphStylePreference<M extends Mode = 'single'> extends EventTargetDOMObject<TextVariable, M>, InDesignPlugins.MatchParagraphStylePreference<M> {
   /** Resolves the proxy into the individual {@link MatchParagraphStylePreference} objects it stands for. */
   getElements(): MatchParagraphStylePreference<'single'>[];
 

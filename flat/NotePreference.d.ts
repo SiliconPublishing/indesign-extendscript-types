@@ -26,7 +26,7 @@ import type { FilePath } from './_base/Types';
  * Settings for how notes are colored, and how their content is treated by
  * Find/Change and Spell Check.
  */
-export interface NotePreference {
+export interface NotePreference extends InDesignPlugins.NotePreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -132,7 +132,7 @@ export interface NotePreference {
  * Settings for how notes are colored, and how their content is treated by
  * Find/Change and Spell Check.
  */
-export interface NotePreferencePlural {
+export interface NotePreferencePlural extends InDesignPlugins.NotePreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -20,7 +20,7 @@ import type { ParagraphDestination } from './ParagraphDestination';
 export interface HyperlinkTextDestination<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document, M>,
     IndexedDOMObject<Document, M>,
-    NamableDOMObject<Document, M> {
+    NamableDOMObject<Document, M>, InDesignPlugins.HyperlinkTextDestination<M> {
   /** Resolves the proxy into the individual {@link HyperlinkTextDestination} objects it stands for. */
   getElements(): HyperlinkTextDestination<'single'>[];
 

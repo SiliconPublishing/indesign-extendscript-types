@@ -34,7 +34,7 @@ import type { FilePath } from './_base/Types';
  * metadata (title, creator, publisher, rights…), accessibility metadata, image
  * conversion, and spread/navigation options specific to fixed layout.
  */
-export interface EPubFixedLayoutExportPreference {
+export interface EPubFixedLayoutExportPreference extends InDesignPlugins.EPubFixedLayoutExportPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -221,7 +221,7 @@ export interface EPubFixedLayoutExportPreference {
  * metadata (title, creator, publisher, rights…), accessibility metadata, image
  * conversion, and spread/navigation options specific to fixed layout.
  */
-export interface EPubFixedLayoutExportPreferencePlural {
+export interface EPubFixedLayoutExportPreferencePlural extends InDesignPlugins.EPubFixedLayoutExportPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

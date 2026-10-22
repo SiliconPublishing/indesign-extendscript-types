@@ -160,7 +160,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
 /**
  * A single word in a text range.
  */
-export interface Word<TParent = TextParent> {
+export interface Word<TParent = TextParent> extends InDesignPlugins.Word<'single'> {
   /**
    * A collection of events
    */
@@ -1551,7 +1551,7 @@ export interface Word<TParent = TextParent> {
 /**
  * A single word in a text range.
  */
-export interface WordPlural<TParent = TextParent> {
+export interface WordPlural<TParent = TextParent> extends InDesignPlugins.Word<'plural'> {
   /**
    * A collection of events
    */

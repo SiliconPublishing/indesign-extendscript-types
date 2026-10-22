@@ -31,7 +31,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Drop shadow settings.
  */
-export interface DropShadowSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> {
+export interface DropShadowSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.DropShadowSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -180,7 +180,7 @@ export interface DropShadowSetting<TParent = TransparencySetting | StrokeTranspa
 /**
  * Drop shadow settings.
  */
-export interface DropShadowSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> {
+export interface DropShadowSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.DropShadowSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -74,7 +74,7 @@ export interface FlexObject<TParent = PageItemParent, M extends Mode = 'single'>
     // has no flex participation in the C++ layout engine.
     Omit<ShapeContainer<FlexObject>, 'epstexts'>,
     FormFieldContainer<FlexObject, M>,
-    EndnoteFrameContainer<FlexObject, M> {
+    EndnoteFrameContainer<FlexObject, M>, InDesignPlugins.FlexObject<M> {
   /** Resolves the proxy into the individual {@link FlexObject} objects it stands for. */
   getElements(): FlexObject<TParent, 'single'>[];
 

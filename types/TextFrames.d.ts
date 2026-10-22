@@ -28,5 +28,5 @@ export interface TextFrames<TParent = PageItemParent>
     BaseCollection<TextFrame<TParent>, TextFrame, TextFrame<TParent, 'plural'>>,
     IdCollection<TextFrame<TParent>>,
     NamedCollection<TextFrame<TParent>>,
-    AddablePageItemCollection<TextFrame<TParent>, TextFrame> {
+    AddablePageItemCollection<TextFrame<TParent>, TextFrame>, InDesignPlugins.TextFrames {
 }

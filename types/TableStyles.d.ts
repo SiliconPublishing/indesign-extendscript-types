@@ -24,7 +24,7 @@ export interface TableStyles
   extends
     BaseCollection<TableStyle, TableStyle, TableStyle<'plural'>>,
     IdCollection<TableStyle>,
-    NamedCollection<TableStyle> {
+    NamedCollection<TableStyle>, InDesignPlugins.TableStyles {
   /**
    * Creates a new table style.
    *

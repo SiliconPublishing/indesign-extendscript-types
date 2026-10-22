@@ -122,7 +122,7 @@ import type { LockStateValues } from './Enums/LockStateValues';
 /**
  * An ellipse — the round counterpart of {@link Rectangle}.
  */
-export interface Oval<TParent = PageItemParent> {
+export interface Oval<TParent = PageItemParent> extends InDesignPlugins.Oval<'single'> {
   /**
    * A collection of events
    */
@@ -809,7 +809,7 @@ export interface Oval<TParent = PageItemParent> {
 /**
  * An ellipse — the round counterpart of {@link Rectangle}.
  */
-export interface OvalPlural<TParent = PageItemParent> {
+export interface OvalPlural<TParent = PageItemParent> extends InDesignPlugins.Oval<'plural'> {
   /**
    * A collection of events
    */

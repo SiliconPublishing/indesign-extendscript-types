@@ -27,7 +27,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A {@link Hyperlink} source that is a range of text or an insertion point —
  * the clickable "hotspot" leading to the hyperlink's destination.
  */
-export interface HyperlinkTextSource {
+export interface HyperlinkTextSource extends InDesignPlugins.HyperlinkTextSource<'single'> {
   /**
    * A collection of events
    */
@@ -152,7 +152,7 @@ export interface HyperlinkTextSource {
  * A {@link Hyperlink} source that is a range of text or an insertion point —
  * the clickable "hotspot" leading to the hyperlink's destination.
  */
-export interface HyperlinkTextSourcePlural {
+export interface HyperlinkTextSourcePlural extends InDesignPlugins.HyperlinkTextSource<'plural'> {
   /**
    * A collection of events
    */

@@ -12,7 +12,7 @@ import type { Application } from './Application';
 /**
  * Default settings to use when creating a polygon.
  */
-export interface PolygonPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface PolygonPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.PolygonPreference<M> {
   /** Resolves the proxy into the individual {@link PolygonPreference} objects it stands for. */
   getElements(): PolygonPreference<'single'>[];
 

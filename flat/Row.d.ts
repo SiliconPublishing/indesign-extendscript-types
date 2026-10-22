@@ -46,7 +46,7 @@ import type { VerticalJustification } from './Enums/VerticalJustification';
  * {@link Column}; the inner-gridline stroke properties are unique to a
  * multi-cell range like this one.
  */
-export interface Row {
+export interface Row extends InDesignPlugins.Row<'single'> {
   /**
    * A collection of events
    */
@@ -540,7 +540,7 @@ export interface Row {
  * {@link Column}; the inner-gridline stroke properties are unique to a
  * multi-cell range like this one.
  */
-export interface RowPlural {
+export interface RowPlural extends InDesignPlugins.Row<'plural'> {
   /**
    * A collection of events
    */

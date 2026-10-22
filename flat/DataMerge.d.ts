@@ -28,7 +28,7 @@ import type { Event } from './Event';
  * fields read from it, and drives merging records into the layout or
  * exporting the merged result directly to PDF.
  */
-export interface DataMerge {
+export interface DataMerge extends InDesignPlugins.DataMerge<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -143,7 +143,7 @@ export interface DataMerge {
  * fields read from it, and drives merging records into the layout or
  * exporting the merged result directly to PDF.
  */
-export interface DataMergePlural {
+export interface DataMergePlural extends InDesignPlugins.DataMerge<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

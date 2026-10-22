@@ -40,7 +40,7 @@ import type { PrintPreference } from './PrintPreference';
  * booklet-imposition print feature — kept separate from the document's
  * regular {@link PrintPreference}.
  */
-export interface PrintBookletPrintPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M> {
+export interface PrintBookletPrintPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, InDesignPlugins.PrintBookletPrintPreference<M> {
   /** Resolves the proxy into the individual {@link PrintBookletPrintPreference} objects it stands for. */
   getElements(): PrintBookletPrintPreference<'single'>[];
 

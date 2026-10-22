@@ -37,7 +37,7 @@ import type { PropertiesSetter } from './_base/Properties';
  *
  * Its appearance ({@link highlight}, {@link width}, {@link borderColor}, {@link borderStyle}) only matters for interactive PDF export.
  */
-export interface Hyperlink {
+export interface Hyperlink extends InDesignPlugins.Hyperlink<'single'> {
   /**
    * A collection of events
    */
@@ -201,7 +201,7 @@ export interface Hyperlink {
  *
  * Its appearance ({@link highlight}, {@link width}, {@link borderColor}, {@link borderStyle}) only matters for interactive PDF export.
  */
-export interface HyperlinkPlural {
+export interface HyperlinkPlural extends InDesignPlugins.Hyperlink<'plural'> {
   /**
    * A collection of events
    */

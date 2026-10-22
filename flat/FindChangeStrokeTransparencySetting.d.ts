@@ -34,7 +34,7 @@ import type { FilePath } from './_base/Types';
 /**
  * The stroke-transparency criteria used in a find/change object operation.
  */
-export interface FindChangeStrokeTransparencySetting {
+export interface FindChangeStrokeTransparencySetting extends InDesignPlugins.FindChangeStrokeTransparencySetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -143,7 +143,7 @@ export interface FindChangeStrokeTransparencySetting {
 /**
  * The stroke-transparency criteria used in a find/change object operation.
  */
-export interface FindChangeStrokeTransparencySettingPlural {
+export interface FindChangeStrokeTransparencySettingPlural extends InDesignPlugins.FindChangeStrokeTransparencySetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

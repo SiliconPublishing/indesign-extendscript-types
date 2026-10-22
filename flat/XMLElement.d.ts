@@ -79,7 +79,7 @@ import type { Document } from './Document';
  * structural node), and can itself contain child elements, attributes, comments, and
  * processing instructions.
  */
-export interface XMLElement {
+export interface XMLElement extends InDesignPlugins.XMLElement<'single'> {
   /**
    * A collection of events
    */
@@ -426,7 +426,7 @@ export interface XMLElement {
  * structural node), and can itself contain child elements, attributes, comments, and
  * processing instructions.
  */
-export interface XMLElementPlural {
+export interface XMLElementPlural extends InDesignPlugins.XMLElement<'plural'> {
   /**
    * A collection of events
    */

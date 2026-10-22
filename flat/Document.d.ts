@@ -241,7 +241,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * behaviour to this file, and the file-level operations — save, close, export,
  * package and place.
  */
-export interface Document {
+export interface Document extends InDesignPlugins.Document<'single'> {
   /**
    * A collection of events
    */
@@ -1214,7 +1214,7 @@ export interface Document {
  * behaviour to this file, and the file-level operations — save, close, export,
  * package and place.
  */
-export interface DocumentPlural {
+export interface DocumentPlural extends InDesignPlugins.Document<'plural'> {
   /**
    * A collection of events
    */

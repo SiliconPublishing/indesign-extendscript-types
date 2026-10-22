@@ -23,7 +23,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A user dictionary — application-level word lists used for spelling and
  * hyphenation, tracking words added to or removed from the base dictionary.
  */
-export interface UserDictionary {
+export interface UserDictionary extends InDesignPlugins.UserDictionary<'single'> {
   /**
    * A collection of events
    */
@@ -135,7 +135,7 @@ export interface UserDictionary {
  * A user dictionary — application-level word lists used for spelling and
  * hyphenation, tracking words added to or removed from the base dictionary.
  */
-export interface UserDictionaryPlural {
+export interface UserDictionaryPlural extends InDesignPlugins.UserDictionary<'plural'> {
   /**
    * A collection of events
    */

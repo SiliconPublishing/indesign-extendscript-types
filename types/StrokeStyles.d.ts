@@ -23,5 +23,5 @@ export interface StrokeStyles
   extends
     BaseCollection<StrokeStyle, StrokeStyle, StrokeStyle<'plural'>>,
     IdCollection<StrokeStyle>,
-    NamedCollection<StrokeStyle> {
+    NamedCollection<StrokeStyle>, InDesignPlugins.StrokeStyles {
 }

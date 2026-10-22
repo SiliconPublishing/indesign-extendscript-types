@@ -24,7 +24,7 @@ import type { LocationOptions } from './Enums/LocationOptions';
  */
 export interface CellStyleGroup<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document | Application | CellStyleGroup, M>,
-    IndexedDOMObject<Document | Application | CellStyleGroup, M> {
+    IndexedDOMObject<Document | Application | CellStyleGroup, M>, InDesignPlugins.CellStyleGroup<M> {
   /** Resolves the proxy into the individual {@link CellStyleGroup} objects it stands for. */
   getElements(): CellStyleGroup<'single'>[];
 

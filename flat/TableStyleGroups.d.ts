@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection TableStyleGroup
  */
-export interface TableStyleGroups {
+export interface TableStyleGroups extends InDesignPlugins.TableStyleGroups {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

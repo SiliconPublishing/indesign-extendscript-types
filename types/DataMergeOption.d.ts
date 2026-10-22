@@ -14,7 +14,7 @@ import type { Fitting } from './Enums/Fitting';
  * Configuration for a data merge — how placed images fit their frames, whether
  * merged images link or embed, and how the merged records split across output documents.
  */
-export interface DataMergeOption<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
+export interface DataMergeOption<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.DataMergeOption<M> {
   /** Resolves the proxy into the individual {@link DataMergeOption} objects it stands for. */
   getElements(): DataMergeOption<'single'>[];
 

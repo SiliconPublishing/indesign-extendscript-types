@@ -86,7 +86,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
 /**
  * A placed WMF (Windows Metafile) graphic.
  */
-export interface WMF<TParent = PageItemParent> {
+export interface WMF<TParent = PageItemParent> extends InDesignPlugins.WMF<'single'> {
   /**
    * A collection of events
    */
@@ -664,7 +664,7 @@ export interface WMF<TParent = PageItemParent> {
 /**
  * A placed WMF (Windows Metafile) graphic.
  */
-export interface WMFPlural<TParent = PageItemParent> {
+export interface WMFPlural<TParent = PageItemParent> extends InDesignPlugins.WMF<'plural'> {
   /**
    * A collection of events
    */

@@ -25,7 +25,7 @@ export interface Assignments
   extends
     BaseCollection<Assignment, Assignment, Assignment<'plural'>>,
     IdCollection<Assignment>,
-    NamedCollection<Assignment> {
+    NamedCollection<Assignment>, InDesignPlugins.Assignments {
   /**
    * Creates a new assignment.
    *

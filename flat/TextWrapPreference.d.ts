@@ -34,7 +34,7 @@ import type { FilePath } from './_base/Types';
  * Settings controlling how surrounding text wraps around an object — the wrap
  * shape, the offset from the object's edges, and which side(s) text flows along.
  */
-export interface TextWrapPreference {
+export interface TextWrapPreference extends InDesignPlugins.TextWrapPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -156,7 +156,7 @@ export interface TextWrapPreference {
  * Settings controlling how surrounding text wraps around an object — the wrap
  * shape, the offset from the object's edges, and which side(s) text flows along.
  */
-export interface TextWrapPreferencePlural {
+export interface TextWrapPreferencePlural extends InDesignPlugins.TextWrapPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

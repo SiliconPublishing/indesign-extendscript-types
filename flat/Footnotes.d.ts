@@ -26,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
  *
  * @collection Footnote
  */
-export interface Footnotes {
+export interface Footnotes extends InDesignPlugins.Footnotes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

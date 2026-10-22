@@ -25,7 +25,7 @@ import type { FilePath } from './_base/Types';
  * Default character-grid formatting properties for the document or
  * application-wide layout grid.
  */
-export interface LayoutGridDataInformation {
+export interface LayoutGridDataInformation extends InDesignPlugins.LayoutGridDataInformation<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -134,7 +134,7 @@ export interface LayoutGridDataInformation {
  * Default character-grid formatting properties for the document or
  * application-wide layout grid.
  */
-export interface LayoutGridDataInformationPlural {
+export interface LayoutGridDataInformationPlural extends InDesignPlugins.LayoutGridDataInformation<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -25,7 +25,7 @@ import type { FilePath } from './_base/Types';
 /**
  * The link options for a linked story.
  */
-export interface LinkedStoryOption {
+export interface LinkedStoryOption extends InDesignPlugins.LinkedStoryOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -124,7 +124,7 @@ export interface LinkedStoryOption {
 /**
  * The link options for a linked story.
  */
-export interface LinkedStoryOptionPlural {
+export interface LinkedStoryOptionPlural extends InDesignPlugins.LinkedStoryOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -12,7 +12,7 @@ import type { DocumentOrApplication } from './_base/Parents';
 /**
  * XML view preferences.
  */
-export interface XMLViewPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
+export interface XMLViewPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.XMLViewPreference<M> {
   /** Resolves the proxy into the individual {@link XMLViewPreference} objects it stands for. */
   getElements(): XMLViewPreference<'single'>[];
 

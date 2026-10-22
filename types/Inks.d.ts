@@ -20,5 +20,5 @@ import type { Ink } from './Ink';
  * @collection Ink
  */
 export interface Inks
-  extends BaseCollection<Ink, Ink, Ink<'plural'>>, IdCollection<Ink>, NamedCollection<Ink> {
+  extends BaseCollection<Ink, Ink, Ink<'plural'>>, IdCollection<Ink>, NamedCollection<Ink>, InDesignPlugins.Inks {
 }

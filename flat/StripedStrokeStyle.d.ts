@@ -22,7 +22,7 @@ import type { DocumentOrApplication } from './_base/Parents';
 /**
  * A stroke style of parallel stripes running along the stroke.
  */
-export interface StripedStrokeStyle {
+export interface StripedStrokeStyle extends InDesignPlugins.StripedStrokeStyle<'single'> {
   /**
    * A collection of events
    */
@@ -135,7 +135,7 @@ export interface StripedStrokeStyle {
 /**
  * A stroke style of parallel stripes running along the stroke.
  */
-export interface StripedStrokeStylePlural {
+export interface StripedStrokeStylePlural extends InDesignPlugins.StripedStrokeStyle<'plural'> {
   /**
    * A collection of events
    */

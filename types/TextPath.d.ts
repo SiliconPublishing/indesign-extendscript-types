@@ -31,7 +31,7 @@ import type { Path } from './Path';
 /**
  * A text object flowed along a {@link Path} rather than inside a frame.
  */
-export interface TextPath<M extends Mode = 'single'> extends EventTargetDOMObject<TextPathOwner, M>, IndexedDOMObject<TextPathOwner, M> {
+export interface TextPath<M extends Mode = 'single'> extends EventTargetDOMObject<TextPathOwner, M>, IndexedDOMObject<TextPathOwner, M>, InDesignPlugins.TextPath<M> {
   /** Resolves the proxy into the individual {@link TextPath} objects it stands for. */
   getElements(): TextPath<'single'>[];
 

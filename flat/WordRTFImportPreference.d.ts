@@ -25,7 +25,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Word RTF import preferences.
  */
-export interface WordRTFImportPreference {
+export interface WordRTFImportPreference extends InDesignPlugins.WordRTFImportPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -160,7 +160,7 @@ export interface WordRTFImportPreference {
 /**
  * Word RTF import preferences.
  */
-export interface WordRTFImportPreferencePlural {
+export interface WordRTFImportPreferencePlural extends InDesignPlugins.WordRTFImportPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

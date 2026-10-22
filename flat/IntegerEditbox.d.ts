@@ -24,7 +24,7 @@ import type { WidgetParent } from './_base/Parents';
  * A numeric entry field whose typed value rounds to the nearest whole
  * number (`.5` rounds up).
  */
-export interface IntegerEditbox {
+export interface IntegerEditbox extends InDesignPlugins.IntegerEditbox<'single'> {
   /**
    * A collection of events
    */
@@ -158,7 +158,7 @@ export interface IntegerEditbox {
  * A numeric entry field whose typed value rounds to the nearest whole
  * number (`.5` rounds up).
  */
-export interface IntegerEditboxPlural {
+export interface IntegerEditboxPlural extends InDesignPlugins.IntegerEditbox<'plural'> {
   /**
    * A collection of events
    */

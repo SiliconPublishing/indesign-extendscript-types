@@ -24,7 +24,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * configuration parameters.
  * @collection PreflightRuleInstance
  */
-export interface PreflightRuleInstances {
+export interface PreflightRuleInstances extends InDesignPlugins.PreflightRuleInstances {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -27,7 +27,7 @@ import type { PageItemAddReference } from './_base/Collections';
  *
  * @collection RadioButton
  */
-export interface RadioButtons<TParent = PageItemParent> {
+export interface RadioButtons<TParent = PageItemParent> extends InDesignPlugins.RadioButtons {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

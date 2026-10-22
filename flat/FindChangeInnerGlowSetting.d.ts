@@ -31,7 +31,7 @@ import type { MeasurementValue } from './_base/Types';
 /**
  * The same {@link InnerGlowSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeInnerGlowSetting {
+export interface FindChangeInnerGlowSetting extends InDesignPlugins.FindChangeInnerGlowSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -154,7 +154,7 @@ export interface FindChangeInnerGlowSetting {
 /**
  * The same {@link InnerGlowSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeInnerGlowSettingPlural {
+export interface FindChangeInnerGlowSettingPlural extends InDesignPlugins.FindChangeInnerGlowSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

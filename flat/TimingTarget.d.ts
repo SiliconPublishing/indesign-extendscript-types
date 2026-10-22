@@ -27,7 +27,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A single animated, media, or button-behavior target within a
  * {@link TimingGroup}, optionally delayed relative to the group's start.
  */
-export interface TimingTarget {
+export interface TimingTarget extends InDesignPlugins.TimingTarget<'single'> {
   /**
    * A collection of events
    */
@@ -142,7 +142,7 @@ export interface TimingTarget {
  * A single animated, media, or button-behavior target within a
  * {@link TimingGroup}, optionally delayed relative to the group's start.
  */
-export interface TimingTargetPlural {
+export interface TimingTargetPlural extends InDesignPlugins.TimingTarget<'plural'> {
   /**
    * A collection of events
    */

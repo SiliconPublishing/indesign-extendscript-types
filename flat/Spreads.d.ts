@@ -24,7 +24,7 @@ import type { PropertiesSetter } from './_base/Properties';
  *
  * @collection Spread
  */
-export interface Spreads {
+export interface Spreads extends InDesignPlugins.Spreads {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

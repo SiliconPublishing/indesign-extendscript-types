@@ -23,7 +23,7 @@ import type { SelectAll } from './Enums/SelectAll';
  * through {@link associatedLibrary}, and use this panel only to control what the
  * user sees and has selected.
  */
-export interface LibraryPanel<M extends Mode = 'single'> extends Panel<M>{
+export interface LibraryPanel<M extends Mode = 'single'> extends Panel<M>, InDesignPlugins.LibraryPanel<M>{
   /** Resolves the proxy into the individual {@link LibraryPanel} objects it stands for. */
   getElements(): LibraryPanel<'single'>[];
 

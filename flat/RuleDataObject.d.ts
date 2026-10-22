@@ -26,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A single named data value attached to a {@link PreflightProfileRule} or
  * {@link PreflightRuleInstance}, configuring that preflight rule's behavior.
  */
-export interface RuleDataObject {
+export interface RuleDataObject extends InDesignPlugins.RuleDataObject<'single'> {
   /**
    * A collection of events
    */
@@ -129,7 +129,7 @@ export interface RuleDataObject {
  * A single named data value attached to a {@link PreflightProfileRule} or
  * {@link PreflightRuleInstance}, configuring that preflight rule's behavior.
  */
-export interface RuleDataObjectPlural {
+export interface RuleDataObjectPlural extends InDesignPlugins.RuleDataObject<'plural'> {
   /**
    * A collection of events
    */

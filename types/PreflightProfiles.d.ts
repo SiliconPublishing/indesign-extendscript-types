@@ -24,7 +24,7 @@ export interface PreflightProfiles
   extends
     BaseCollection<PreflightProfile, PreflightProfile, PreflightProfile<'plural'>>,
     IdCollection<PreflightProfile>,
-    NamedCollection<PreflightProfile> {
+    NamedCollection<PreflightProfile>, InDesignPlugins.PreflightProfiles {
   /**
    * Creates a new, empty {@link PreflightProfile}.
    * After creation, specific rules can be configured through the returned

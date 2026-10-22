@@ -26,7 +26,7 @@ import type { SatinSetting } from './SatinSetting';
 /**
  * Transparency settings for the fill applied to the parent object.
  */
-export interface FillTransparencySetting<M extends Mode = 'single'> extends EventTargetDOMObject<PageItemUnion | FormField | PageItemDefault | ObjectStyle, M> {
+export interface FillTransparencySetting<M extends Mode = 'single'> extends EventTargetDOMObject<PageItemUnion | FormField | PageItemDefault | ObjectStyle, M>, InDesignPlugins.FillTransparencySetting<M> {
   /** Resolves the proxy into the individual {@link FillTransparencySetting} objects it stands for. */
   getElements(): FillTransparencySetting<'single'>[];
 

@@ -120,7 +120,7 @@ import type { LockStateValues } from './Enums/LockStateValues';
  * A straight line defined by two endpoints. It cannot hold placed content, so
  * it has no frame-fitting options.
  */
-export interface GraphicLine<TParent = PageItemParent> {
+export interface GraphicLine<TParent = PageItemParent> extends InDesignPlugins.GraphicLine<'single'> {
   /**
    * A collection of events
    */
@@ -799,7 +799,7 @@ export interface GraphicLine<TParent = PageItemParent> {
  * A straight line defined by two endpoints. It cannot hold placed content, so
  * it has no frame-fitting options.
  */
-export interface GraphicLinePlural<TParent = PageItemParent> {
+export interface GraphicLinePlural<TParent = PageItemParent> extends InDesignPlugins.GraphicLine<'plural'> {
   /**
    * A collection of events
    */

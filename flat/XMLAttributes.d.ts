@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection XMLAttribute
  */
-export interface XMLAttributes {
+export interface XMLAttributes extends InDesignPlugins.XMLAttributes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

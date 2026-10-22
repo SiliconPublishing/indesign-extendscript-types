@@ -119,7 +119,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * A PDF digital-signature form field, used to hold an electronic signature in
  * an interactive PDF form.
  */
-export interface SignatureField<TParent = PageItemParent> {
+export interface SignatureField<TParent = PageItemParent> extends InDesignPlugins.SignatureField<'single'> {
   /**
    * A collection of events
    */
@@ -783,7 +783,7 @@ export interface SignatureField<TParent = PageItemParent> {
  * A PDF digital-signature form field, used to hold an electronic signature in
  * an interactive PDF form.
  */
-export interface SignatureFieldPlural<TParent = PageItemParent> {
+export interface SignatureFieldPlural<TParent = PageItemParent> extends InDesignPlugins.SignatureField<'plural'> {
   /**
    * A collection of events
    */

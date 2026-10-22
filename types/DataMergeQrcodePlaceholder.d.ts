@@ -17,7 +17,7 @@ import type { PageItem } from './PageItem';
  */
 export interface DataMergeQrcodePlaceholder<M extends Mode = 'single'>
   extends EventTargetDOMObject<Document, M>,
-    IndexedDOMObject<Document, M> {
+    IndexedDOMObject<Document, M>, InDesignPlugins.DataMergeQrcodePlaceholder<M> {
   /** Resolves the proxy into the individual {@link DataMergeQrcodePlaceholder} objects it stands for. */
   getElements(): DataMergeQrcodePlaceholder<'single'>[];
 

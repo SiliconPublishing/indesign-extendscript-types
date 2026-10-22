@@ -26,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A named group of {@link Swatch} references, shown together in the Swatches
  * panel — for example a palette imported from a library or another document.
  */
-export interface ColorGroup {
+export interface ColorGroup extends InDesignPlugins.ColorGroup<'single'> {
   /**
    * A collection of events
    */
@@ -147,7 +147,7 @@ export interface ColorGroup {
  * A named group of {@link Swatch} references, shown together in the Swatches
  * panel — for example a palette imported from a library or another document.
  */
-export interface ColorGroupPlural {
+export interface ColorGroupPlural extends InDesignPlugins.ColorGroup<'plural'> {
   /**
    * A collection of events
    */

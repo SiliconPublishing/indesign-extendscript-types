@@ -27,7 +27,7 @@ import type { PageItemAddReference } from './_base/Collections';
  *
  * @collection MultiStateObject
  */
-export interface MultiStateObjects<TParent = PageItemParent> {
+export interface MultiStateObjects<TParent = PageItemParent> extends InDesignPlugins.MultiStateObjects {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

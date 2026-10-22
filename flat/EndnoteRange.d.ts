@@ -36,7 +36,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * every other endnote's range in the same story) at the end of the story
  * rather than inline — see {@link Endnote} for the in-text marker it belongs to.
  */
-export interface EndnoteRange {
+export interface EndnoteRange extends InDesignPlugins.EndnoteRange<'single'> {
   /**
    * A collection of events
    */
@@ -165,7 +165,7 @@ export interface EndnoteRange {
  * every other endnote's range in the same story) at the end of the story
  * rather than inline — see {@link Endnote} for the in-text marker it belongs to.
  */
-export interface EndnoteRangePlural {
+export interface EndnoteRangePlural extends InDesignPlugins.EndnoteRange<'plural'> {
   /**
    * A collection of events
    */

@@ -18,7 +18,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * update automatically to reflect the current state of the document or its environment.
  * @collection TextVariable
  */
-export interface TextVariables {
+export interface TextVariables extends InDesignPlugins.TextVariables {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

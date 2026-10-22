@@ -23,7 +23,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A reference to a {@link Swatch} as a member of a {@link ColorGroup}.
  */
-export interface ColorGroupSwatch {
+export interface ColorGroupSwatch extends InDesignPlugins.ColorGroupSwatch<'single'> {
   /**
    * A collection of events
    */
@@ -118,7 +118,7 @@ export interface ColorGroupSwatch {
 /**
  * A reference to a {@link Swatch} as a member of a {@link ColorGroup}.
  */
-export interface ColorGroupSwatchPlural {
+export interface ColorGroupSwatchPlural extends InDesignPlugins.ColorGroupSwatch<'plural'> {
   /**
    * A collection of events
    */

@@ -41,7 +41,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
 /**
  * The settings for an anchored object.
  */
-export interface AnchoredObjectSetting<M extends Mode = 'single'> extends EventTargetDOMObject<FlexObject | Application | Document | EPSText | Polygon | GraphicLine | Rectangle | Oval | Group | TextFrame | EndnoteTextFrame | Button | FormField | SignatureField | TextBox | RadioButton | ListBox | ComboBox | CheckBox | MultiStateObject | ObjectStyle, M> {
+export interface AnchoredObjectSetting<M extends Mode = 'single'> extends EventTargetDOMObject<FlexObject | Application | Document | EPSText | Polygon | GraphicLine | Rectangle | Oval | Group | TextFrame | EndnoteTextFrame | Button | FormField | SignatureField | TextBox | RadioButton | ListBox | ComboBox | CheckBox | MultiStateObject | ObjectStyle, M>, InDesignPlugins.AnchoredObjectSetting<M> {
   /** Resolves the proxy into the individual {@link AnchoredObjectSetting} objects it stands for. */
   getElements(): AnchoredObjectSetting<'single'>[];
 

@@ -24,7 +24,7 @@ export interface CellStyles
   extends
     BaseCollection<CellStyle, CellStyle, CellStyle<'plural'>>,
     IdCollection<CellStyle>,
-    NamedCollection<CellStyle> {
+    NamedCollection<CellStyle>, InDesignPlugins.CellStyles {
   /**
    * Creates a new cell style.
    *

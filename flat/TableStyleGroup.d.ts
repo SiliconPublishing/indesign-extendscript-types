@@ -32,7 +32,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * nestable inside a document's or the application's
  * {@link TableStyleGroups} collection (or another group).
  */
-export interface TableStyleGroup {
+export interface TableStyleGroup extends InDesignPlugins.TableStyleGroup<'single'> {
   /**
    * A collection of events
    */
@@ -162,7 +162,7 @@ export interface TableStyleGroup {
  * nestable inside a document's or the application's
  * {@link TableStyleGroups} collection (or another group).
  */
-export interface TableStyleGroupPlural {
+export interface TableStyleGroupPlural extends InDesignPlugins.TableStyleGroup<'plural'> {
   /**
    * A collection of events
    */

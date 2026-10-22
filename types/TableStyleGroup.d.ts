@@ -24,7 +24,7 @@ import type { LocationOptions } from './Enums/LocationOptions';
  */
 export interface TableStyleGroup<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document | Application | TableStyleGroup, M>,
-    IndexedDOMObject<Document | Application | TableStyleGroup, M> {
+    IndexedDOMObject<Document | Application | TableStyleGroup, M>, InDesignPlugins.TableStyleGroup<M> {
   /** Resolves the proxy into the individual {@link TableStyleGroup} objects it stands for. */
   getElements(): TableStyleGroup<'single'>[];
 

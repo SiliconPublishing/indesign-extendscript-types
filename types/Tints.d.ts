@@ -21,7 +21,7 @@ import type { Tint } from './Tint';
  * @collection Tint
  */
 export interface Tints
-  extends BaseCollection<Tint, Tint, Tint<'plural'>>, IdCollection<Tint>, NamedCollection<Tint> {
+  extends BaseCollection<Tint, Tint, Tint<'plural'>>, IdCollection<Tint>, NamedCollection<Tint>, InDesignPlugins.Tints {
   /**
    * Creates a new tint from a properties bag alone. The bag must include `baseColor`.
    * @param withProperties Initial values for properties of the new {@link Tint}.

@@ -12,7 +12,7 @@ import type { DocumentOrApplication } from './_base/Parents';
 /**
  * Mojikumi UI preferences.
  */
-export interface MojikumiUiPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
+export interface MojikumiUiPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.MojikumiUiPreference<M> {
   /** Resolves the proxy into the individual {@link MojikumiUiPreference} objects it stands for. */
   getElements(): MojikumiUiPreference<'single'>[];
 

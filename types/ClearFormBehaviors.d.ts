@@ -24,7 +24,7 @@ export interface ClearFormBehaviors
   extends
     BaseCollection<ClearFormBehavior, ClearFormBehavior, ClearFormBehavior<'plural'>>,
     IdCollection<ClearFormBehavior>,
-    NamedCollection<ClearFormBehavior> {
+    NamedCollection<ClearFormBehavior>, InDesignPlugins.ClearFormBehaviors {
   /**
    * Creates a new clear form behavior.
    * @param withProperties Initial values for properties of the new {@link ClearFormBehavior}.

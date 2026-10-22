@@ -25,7 +25,7 @@ import type { WidgetParent } from './_base/Parents';
  * An editable dropdown for measurement values, interpreted internally in
  * points and converted to {@link editUnits} for display when the dialog opens.
  */
-export interface MeasurementCombobox {
+export interface MeasurementCombobox extends InDesignPlugins.MeasurementCombobox<'single'> {
   /**
    * A collection of events
    */
@@ -165,7 +165,7 @@ export interface MeasurementCombobox {
  * An editable dropdown for measurement values, interpreted internally in
  * points and converted to {@link editUnits} for display when the dialog opens.
  */
-export interface MeasurementComboboxPlural {
+export interface MeasurementComboboxPlural extends InDesignPlugins.MeasurementCombobox<'plural'> {
   /**
    * A collection of events
    */

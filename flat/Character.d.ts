@@ -159,7 +159,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
 /**
  * A single character in a text range.
  */
-export interface Character<TParent = TextParent> {
+export interface Character<TParent = TextParent> extends InDesignPlugins.Character<'single'> {
   /**
    * A collection of events
    */
@@ -1550,7 +1550,7 @@ export interface Character<TParent = TextParent> {
 /**
  * A single character in a text range.
  */
-export interface CharacterPlural<TParent = TextParent> {
+export interface CharacterPlural<TParent = TextParent> extends InDesignPlugins.Character<'plural'> {
   /**
    * A collection of events
    */

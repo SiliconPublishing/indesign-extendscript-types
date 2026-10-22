@@ -70,7 +70,7 @@ import type { XMLTag } from './XMLTag';
 /**
  * GREP search-and-replace criteria and formatting options, used with {@link Application.changeGrep}.
  */
-export interface ChangeGrepPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface ChangeGrepPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.ChangeGrepPreference<M> {
   /** Resolves the proxy into the individual {@link ChangeGrepPreference} objects it stands for. */
   getElements(): ChangeGrepPreference<'single'>[];
 

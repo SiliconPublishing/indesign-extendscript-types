@@ -54,7 +54,7 @@ import type { Word } from './Word';
 export interface Footnote<M extends Mode = 'single'>
   extends LabelableEventDOMObject<XmlStory | Cell | Story | TextFrame | EndnoteTextFrame | InsertionPoint, M>,
     IndexedDOMObject<XmlStory | Cell | Story | TextFrame | EndnoteTextFrame | InsertionPoint, M>,
-    NamableDOMObject<XmlStory | Cell | Story | TextFrame | EndnoteTextFrame | InsertionPoint, M> {
+    NamableDOMObject<XmlStory | Cell | Story | TextFrame | EndnoteTextFrame | InsertionPoint, M>, InDesignPlugins.Footnote<M> {
   /** Resolves the proxy into the individual {@link Footnote} objects it stands for. */
   getElements(): Footnote<'single'>[];
 

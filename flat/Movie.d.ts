@@ -92,7 +92,7 @@ import type { Paths } from './Paths';
  * A placed movie clip (legacy SWF/PDF interactive media). See {@link MediaItem}
  * for the shared media-item surface.
  */
-export interface Movie<TParent = PageItemParent> {
+export interface Movie<TParent = PageItemParent> extends InDesignPlugins.Movie<'single'> {
   /**
    * A collection of events
    */
@@ -729,7 +729,7 @@ export interface Movie<TParent = PageItemParent> {
  * A placed movie clip (legacy SWF/PDF interactive media). See {@link MediaItem}
  * for the shared media-item surface.
  */
-export interface MoviePlural<TParent = PageItemParent> {
+export interface MoviePlural<TParent = PageItemParent> extends InDesignPlugins.Movie<'plural'> {
   /**
    * A collection of events
    */

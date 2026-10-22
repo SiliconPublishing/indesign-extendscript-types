@@ -17,7 +17,7 @@ import type { ParagraphStyle } from './ParagraphStyle';
  * text within a paragraph based on defined delimiters or character counts.
  * @collection NestedStyle
  */
-export interface NestedStyles extends BaseCollection<NestedStyle, NestedStyle, NestedStyle<'plural'>> {
+export interface NestedStyles extends BaseCollection<NestedStyle, NestedStyle, NestedStyle<'plural'>>, InDesignPlugins.NestedStyles {
   /**
    * Creates a new nested style rule.
    * @param withProperties Initial values for properties of the new rule.

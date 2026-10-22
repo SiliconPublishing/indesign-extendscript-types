@@ -23,7 +23,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A single opacity stop within a gradient feather setting's opacity ramp.
  */
-export interface OpacityGradientStop {
+export interface OpacityGradientStop extends InDesignPlugins.OpacityGradientStop<'single'> {
   /**
    * A collection of events
    */
@@ -125,7 +125,7 @@ export interface OpacityGradientStop {
 /**
  * A single opacity stop within a gradient feather setting's opacity ramp.
  */
-export interface OpacityGradientStopPlural {
+export interface OpacityGradientStopPlural extends InDesignPlugins.OpacityGradientStop<'plural'> {
   /**
    * A collection of events
    */

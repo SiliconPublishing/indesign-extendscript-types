@@ -19,6 +19,7 @@ import { Node, Project, SyntaxKind } from 'ts-morph';
 import { generateGlobals } from './globals.mjs';
 import { widenByRuntime } from './widen.mjs';
 import { fillFromDictionary } from './fill.mjs';
+import { addPluginHooks } from './plugin-hooks.mjs';
 import { writeFlat } from '../flatten/index.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -403,11 +404,16 @@ export function runCodemod({ from = 'upstream/main', out = join(root, 'types') }
     if (widened.unhandled.length) console.log(`       ${widened.unhandled.length} observations need an overlay:\n         ${widened.unhandled.join('\n         ')}`);
     project.saveSync();
 
+    // Extension points for plugins' declarations (tools/plugin).
+    const hooks = addPluginHooks(project, src, JSON.parse(readFileSync(join(root, SNAPSHOT, 'dictionary.json'), 'utf8')).classes);
+    console.log(`  ok  ${String(hooks.length).padStart(5)}  plugin hooks (InDesignPlugins.<Class>)`);
+    project.saveSync();
+
     // module.d.ts declared the UXP `indesign` module's `app` export; ExtendScript has no modules.
     rmSync(join(src, 'module.d.ts'), { force: true });
 
     // Globals entry, generated from the measured globals list.
-    writeFileSync(join(src, 'globals.d.ts'), generateGlobals(project, src, root));
+    writeFileSync(join(src, 'globals.d.ts'), generateGlobals(project, src, root, hooks));
 
     if (existsSync(join(root, 'overlays', 'types'))) cpSync(join(root, 'overlays', 'types'), src, { recursive: true });
 
@@ -432,7 +438,7 @@ export function runCodemod({ from = 'upstream/main', out = join(root, 'types') }
     writeFlat(out, flatOut);
     const flatProject = new Project({ skipAddingFilesFromTsConfig: true, compilerOptions: { noLib: true } });
     flatProject.addSourceFilesAtPaths(join(flatOut, '**/*.d.ts'));
-    writeFileSync(join(flatOut, 'globals.d.ts'), generateGlobals(flatProject, flatOut, root));
+    writeFileSync(join(flatOut, 'globals.d.ts'), generateGlobals(flatProject, flatOut, root, hooks));
     console.log(`wrote ${relative(root, flatOut)}/`);
 }
 

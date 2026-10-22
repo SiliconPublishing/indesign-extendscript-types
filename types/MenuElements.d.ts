@@ -14,5 +14,5 @@ import type { MenuElement } from './MenuElement';
  *
  * @collection MenuElement
  */
-export interface MenuElements extends BaseCollection<MenuElement, MenuElement, MenuElement<'plural'>> {
+export interface MenuElements extends BaseCollection<MenuElement, MenuElement, MenuElement<'plural'>>, InDesignPlugins.MenuElements {
 }

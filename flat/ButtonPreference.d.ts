@@ -22,7 +22,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * Button preferences.
  */
-export interface ButtonPreference {
+export interface ButtonPreference extends InDesignPlugins.ButtonPreference<'single'> {
   /**
    * A collection of events
    */
@@ -114,7 +114,7 @@ export interface ButtonPreference {
 /**
  * Button preferences.
  */
-export interface ButtonPreferencePlural {
+export interface ButtonPreferencePlural extends InDesignPlugins.ButtonPreference<'plural'> {
   /**
    * A collection of events
    */

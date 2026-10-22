@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * specific color values used for consistent formatting across page items.
  * @collection Color
  */
-export interface Colors {
+export interface Colors extends InDesignPlugins.Colors {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

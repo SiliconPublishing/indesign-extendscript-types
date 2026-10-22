@@ -26,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A location in story text marked to receive a data merge field's text value
  * during a merge.
  */
-export interface DataMergeTextPlaceholder {
+export interface DataMergeTextPlaceholder extends InDesignPlugins.DataMergeTextPlaceholder<'single'> {
   /**
    * A collection of events
    */
@@ -127,7 +127,7 @@ export interface DataMergeTextPlaceholder {
  * A location in story text marked to receive a data merge field's text value
  * during a merge.
  */
-export interface DataMergeTextPlaceholderPlural {
+export interface DataMergeTextPlaceholderPlural extends InDesignPlugins.DataMergeTextPlaceholder<'plural'> {
   /**
    * A collection of events
    */

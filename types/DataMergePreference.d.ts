@@ -18,7 +18,7 @@ import type { RecordsPerPage } from './Enums/RecordsPerPage';
  * {@link DataMerge} — which records to include, their arrangement and spacing,
  * and the page margins.
  */
-export interface DataMergePreference<M extends Mode = 'single'> extends EventTargetDOMObject<DataMerge, M> {
+export interface DataMergePreference<M extends Mode = 'single'> extends EventTargetDOMObject<DataMerge, M>, InDesignPlugins.DataMergePreference<M> {
   /** Resolves the proxy into the individual {@link DataMergePreference} objects it stands for. */
   getElements(): DataMergePreference<'single'>[];
 

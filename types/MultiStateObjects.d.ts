@@ -28,5 +28,5 @@ export interface MultiStateObjects<TParent = PageItemParent>
     BaseCollection<MultiStateObject<TParent>, MultiStateObject, MultiStateObject<TParent, 'plural'>>,
     IdCollection<MultiStateObject<TParent>>,
     NamedCollection<MultiStateObject<TParent>>,
-    AddablePageItemCollection<MultiStateObject<TParent>, MultiStateObject> {
+    AddablePageItemCollection<MultiStateObject<TParent>, MultiStateObject>, InDesignPlugins.MultiStateObjects {
 }

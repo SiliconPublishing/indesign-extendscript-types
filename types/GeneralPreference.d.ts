@@ -18,7 +18,7 @@ import type { ToolsPanelOptions } from './Enums/ToolsPanelOptions';
 /**
  * Application-wide general UI and behavior preferences.
  */
-export interface GeneralPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface GeneralPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.GeneralPreference<M> {
   /** Resolves the proxy into the individual {@link GeneralPreference} objects it stands for. */
   getElements(): GeneralPreference<'single'>[];
 

@@ -24,7 +24,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Formatting and encoding options applied when importing a plain-text file into a document.
  */
-export interface TextImportPreference {
+export interface TextImportPreference extends InDesignPlugins.TextImportPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -135,7 +135,7 @@ export interface TextImportPreference {
 /**
  * Formatting and encoding options applied when importing a plain-text file into a document.
  */
-export interface TextImportPreferencePlural {
+export interface TextImportPreferencePlural extends InDesignPlugins.TextImportPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

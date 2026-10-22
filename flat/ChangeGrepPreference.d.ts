@@ -80,7 +80,7 @@ import type { FilePath } from './_base/Types';
 /**
  * GREP search-and-replace criteria and formatting options, used with {@link Application.changeGrep}.
  */
-export interface ChangeGrepPreference {
+export interface ChangeGrepPreference extends InDesignPlugins.ChangeGrepPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -838,7 +838,7 @@ export interface ChangeGrepPreference {
 /**
  * GREP search-and-replace criteria and formatting options, used with {@link Application.changeGrep}.
  */
-export interface ChangeGrepPreferencePlural {
+export interface ChangeGrepPreferencePlural extends InDesignPlugins.ChangeGrepPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

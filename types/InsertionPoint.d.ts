@@ -79,7 +79,7 @@ import type { XMLItem } from './XMLItem';
  * {@link endnotes} collection and the endnote/text-fragment creation methods
  * below.
  */
-export interface InsertionPoint<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M> {
+export interface InsertionPoint<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M>, InDesignPlugins.InsertionPoint<M> {
   /**
    * The type of pair kerning. Unlike every other text object, an insertion point also reports
    * `'Manual'` — the state it enters when {@link kerningValue} is set by hand.

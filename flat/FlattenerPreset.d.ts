@@ -24,7 +24,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A named set of transparency-flattening settings, applied when flattening
  * transparent artwork for printing, export, or per-spread overrides.
  */
-export interface FlattenerPreset {
+export interface FlattenerPreset extends InDesignPlugins.FlattenerPreset<'single'> {
   /**
    * A collection of events
    */
@@ -181,7 +181,7 @@ export interface FlattenerPreset {
  * A named set of transparency-flattening settings, applied when flattening
  * transparent artwork for printing, export, or per-spread overrides.
  */
-export interface FlattenerPresetPlural {
+export interface FlattenerPresetPlural extends InDesignPlugins.FlattenerPreset<'plural'> {
   /**
    * A collection of events
    */

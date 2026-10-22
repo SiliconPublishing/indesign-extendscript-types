@@ -25,7 +25,7 @@ import type { BehaviorParent } from './_base/Parents';
 /**
  * A behavior that jumps to the first page of the document.
  */
-export interface GotoFirstPageBehavior {
+export interface GotoFirstPageBehavior extends InDesignPlugins.GotoFirstPageBehavior<'single'> {
   /**
    * A collection of events
    */
@@ -145,7 +145,7 @@ export interface GotoFirstPageBehavior {
 /**
  * A behavior that jumps to the first page of the document.
  */
-export interface GotoFirstPageBehaviorPlural {
+export interface GotoFirstPageBehaviorPlural extends InDesignPlugins.GotoFirstPageBehavior<'plural'> {
   /**
    * A collection of events
    */

@@ -123,7 +123,7 @@ import type { LockStateValues } from './Enums/LockStateValues';
  * A rectangular frame — the most common page item, used for graphic frames,
  * color blocks, and placed images.
  */
-export interface Rectangle<TParent = PageItemParent> {
+export interface Rectangle<TParent = PageItemParent> extends InDesignPlugins.Rectangle<'single'> {
   /**
    * A collection of events
    */
@@ -813,7 +813,7 @@ export interface Rectangle<TParent = PageItemParent> {
  * A rectangular frame — the most common page item, used for graphic frames,
  * color blocks, and placed images.
  */
-export interface RectanglePlural<TParent = PageItemParent> {
+export interface RectanglePlural<TParent = PageItemParent> extends InDesignPlugins.Rectangle<'plural'> {
   /**
    * A collection of events
    */

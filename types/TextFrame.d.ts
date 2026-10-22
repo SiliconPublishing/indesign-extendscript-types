@@ -98,7 +98,7 @@ export interface TextFrame<TParent = PageItemParent, M extends Mode = 'single'>
     TextContainerContent<TextParent, M>,
     ShapeContainer<Character, M>,
     FormFieldContainer<Character, M>,
-    EndnoteFrameContainer<Character, M> {
+    EndnoteFrameContainer<Character, M>, InDesignPlugins.TextFrame<M> {
   /** Resolves the proxy into the individual {@link TextFrame} objects it stands for. */
   getElements(): TextFrame<TParent, 'single'>[];
 

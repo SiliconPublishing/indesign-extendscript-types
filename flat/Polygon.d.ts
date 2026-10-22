@@ -123,7 +123,7 @@ import type { LockStateValues } from './Enums/LockStateValues';
  * graphic line. New polygons are created using the current polygon preferences
  * (side count and star inset).
  */
-export interface Polygon<TParent = PageItemParent> {
+export interface Polygon<TParent = PageItemParent> extends InDesignPlugins.Polygon<'single'> {
   /**
    * A collection of events
    */
@@ -812,7 +812,7 @@ export interface Polygon<TParent = PageItemParent> {
  * graphic line. New polygons are created using the current polygon preferences
  * (side count and star inset).
  */
-export interface PolygonPlural<TParent = PageItemParent> {
+export interface PolygonPlural<TParent = PageItemParent> extends InDesignPlugins.Polygon<'plural'> {
   /**
    * A collection of events
    */

@@ -18,7 +18,7 @@ import type { InsertionPoint } from './InsertionPoint';
  * @collection XMLInstruction
  */
 export interface XMLInstructions
-  extends BaseCollection<XMLInstruction, XMLInstruction, XMLInstruction<'plural'>>, IdCollection<XMLInstruction> {
+  extends BaseCollection<XMLInstruction, XMLInstruction, XMLInstruction<'plural'>>, IdCollection<XMLInstruction>, InDesignPlugins.XMLInstructions {
   /**
    * Creates a new XML processing instruction (PI) and adds it to the collection.
    *

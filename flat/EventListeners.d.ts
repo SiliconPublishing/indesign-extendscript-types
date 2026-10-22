@@ -25,7 +25,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection EventListener
  */
-export interface EventListeners {
+export interface EventListeners extends InDesignPlugins.EventListeners {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

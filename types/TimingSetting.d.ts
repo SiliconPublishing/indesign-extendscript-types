@@ -16,7 +16,7 @@ import type { TimingLists } from './TimingLists';
 /**
  * Timing settings.
  */
-export interface TimingSetting<M extends Mode = 'single'> extends EventTargetDOMObject<PageItemUnion | FormField | MasterSpread | Spread, M> {
+export interface TimingSetting<M extends Mode = 'single'> extends EventTargetDOMObject<PageItemUnion | FormField | MasterSpread | Spread, M>, InDesignPlugins.TimingSetting<M> {
   /** Resolves the proxy into the individual {@link TimingSetting} objects it stands for. */
   getElements(): TimingSetting<'single'>[];
 

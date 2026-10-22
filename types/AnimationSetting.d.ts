@@ -58,7 +58,7 @@ export interface AnimationKeyFrame<M extends Mode = 'single'> {
  * SWF/interactive export: timing, easing, and per-property keyframes for opacity,
  * rotation, and scale.
  */
-export interface AnimationSetting<M extends Mode = 'single'> extends EventTargetDOMObject<PageItemUnion | FormField, M> {
+export interface AnimationSetting<M extends Mode = 'single'> extends EventTargetDOMObject<PageItemUnion | FormField, M>, InDesignPlugins.AnimationSetting<M> {
   /** Resolves the proxy into the individual {@link AnimationSetting}s it stands for. */
   getElements(): AnimationSetting<'single'>[];
 

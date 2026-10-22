@@ -20,7 +20,7 @@ import type { StripedStrokeStyle } from './StripedStrokeStyle';
 export interface StrokeStyle<M extends Mode = 'single'>
   extends EventTargetDOMObject<DocumentOrApplication, M>,
     IndexedDOMObject<DocumentOrApplication, M>,
-    NamableDOMObject<DocumentOrApplication, M> {
+    NamableDOMObject<DocumentOrApplication, M>, InDesignPlugins.StrokeStyle<M> {
   /** Resolves the proxy into the individual {@link StrokeStyle} objects it stands for. */
   getElements(): StrokeStyle<'single'>[];
 

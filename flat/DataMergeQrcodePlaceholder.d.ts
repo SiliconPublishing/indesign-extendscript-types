@@ -25,7 +25,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A page item marked to receive a generated QR code image built from a data
  * merge field's value during a merge.
  */
-export interface DataMergeQrcodePlaceholder {
+export interface DataMergeQrcodePlaceholder extends InDesignPlugins.DataMergeQrcodePlaceholder<'single'> {
   /**
    * A collection of events
    */
@@ -121,7 +121,7 @@ export interface DataMergeQrcodePlaceholder {
  * A page item marked to receive a generated QR code image built from a data
  * merge field's value during a merge.
  */
-export interface DataMergeQrcodePlaceholderPlural {
+export interface DataMergeQrcodePlaceholderPlural extends InDesignPlugins.DataMergeQrcodePlaceholder<'plural'> {
   /**
    * A collection of events
    */

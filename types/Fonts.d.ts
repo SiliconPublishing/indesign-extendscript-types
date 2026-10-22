@@ -14,5 +14,5 @@ import type { Font } from './Font';
  *
  * @collection Font
  */
-export interface Fonts extends BaseCollection<Font, Font, Font<'plural'>>, NamedCollection<Font> {
+export interface Fonts extends BaseCollection<Font, Font, Font<'plural'>>, NamedCollection<Font>, InDesignPlugins.Fonts {
 }

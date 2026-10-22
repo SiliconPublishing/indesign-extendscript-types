@@ -25,7 +25,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Document/application baseline and document-grid display defaults.
  */
-export interface GridPreference {
+export interface GridPreference extends InDesignPlugins.GridPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -154,7 +154,7 @@ export interface GridPreference {
 /**
  * Document/application baseline and document-grid display defaults.
  */
-export interface GridPreferencePlural {
+export interface GridPreferencePlural extends InDesignPlugins.GridPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

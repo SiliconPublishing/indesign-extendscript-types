@@ -119,7 +119,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * A PDF list-box form field: a scrollable list of choices, optionally
  * multi-selectable, in an interactive PDF form.
  */
-export interface ListBox<TParent = PageItemParent> {
+export interface ListBox<TParent = PageItemParent> extends InDesignPlugins.ListBox<'single'> {
   /**
    * A collection of events
    */
@@ -804,7 +804,7 @@ export interface ListBox<TParent = PageItemParent> {
  * A PDF list-box form field: a scrollable list of choices, optionally
  * multi-selectable, in an interactive PDF form.
  */
-export interface ListBoxPlural<TParent = PageItemParent> {
+export interface ListBoxPlural<TParent = PageItemParent> extends InDesignPlugins.ListBox<'plural'> {
   /**
    * A collection of events
    */

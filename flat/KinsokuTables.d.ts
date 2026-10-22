@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * line.
  * @collection KinsokuTable
  */
-export interface KinsokuTables {
+export interface KinsokuTables extends InDesignPlugins.KinsokuTables {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

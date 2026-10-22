@@ -24,7 +24,7 @@ export interface GotoPageBehaviors
   extends
     BaseCollection<GotoPageBehavior, GotoPageBehavior, GotoPageBehavior<'plural'>>,
     IdCollection<GotoPageBehavior>,
-    NamedCollection<GotoPageBehavior> {
+    NamedCollection<GotoPageBehavior>, InDesignPlugins.GotoPageBehaviors {
   /**
    * Creates a new goto page behavior.
    * @param withProperties Initial values for properties of the new {@link GotoPageBehavior}.

@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection GradientStop
  */
-export interface GradientStops {
+export interface GradientStops extends InDesignPlugins.GradientStops {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

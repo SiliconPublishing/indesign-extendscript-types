@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection TOCStyleEntry
  */
-export interface TOCStyleEntries {
+export interface TOCStyleEntries extends InDesignPlugins.TOCStyleEntries {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

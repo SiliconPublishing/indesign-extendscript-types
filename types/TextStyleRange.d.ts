@@ -71,7 +71,7 @@ import type { XMLItem } from './XMLItem';
 /**
  * A run of text sharing identical character formatting.
  */
-export interface TextStyleRange<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M> {
+export interface TextStyleRange<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M>, InDesignPlugins.TextStyleRange<M> {
   /** Resolves the proxy into the individual {@link TextStyleRange} objects it stands for. */
   getElements(): TextStyleRange<TParent, 'single'>[];
 }

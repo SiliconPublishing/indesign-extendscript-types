@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection GotoNextStateBehavior
  */
-export interface GotoNextStateBehaviors {
+export interface GotoNextStateBehaviors extends InDesignPlugins.GotoNextStateBehaviors {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

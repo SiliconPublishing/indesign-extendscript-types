@@ -61,7 +61,7 @@ export interface ParagraphStyle<M extends Mode = 'single'>
     IndexedDOMObject<Document | Application | ParagraphStyleGroup, M>,
     ParagraphStyleAttributes<M, NothingEnum.NOTHING>,
     CharacterStyleAttributes<M, never, never, NothingEnum.NOTHING>,
-    TextGraphicAttributes<M, NothingEnum.NOTHING> {
+    TextGraphicAttributes<M, NothingEnum.NOTHING>, InDesignPlugins.ParagraphStyle<M> {
   /** Resolves the proxy into the individual {@link ParagraphStyle} objects it stands for. */
   getElements(): ParagraphStyle<'single'>[];
 

@@ -24,7 +24,7 @@ import type { Tint } from './Tint';
 export interface Swatch<M extends Mode = 'single'>
   extends LabelableEventDOMObject<SwatchParent, M>,
     IndexedDOMObject<SwatchParent, M>,
-    NamableDOMObject<SwatchParent, M> {
+    NamableDOMObject<SwatchParent, M>, InDesignPlugins.Swatch<M> {
   /** Resolves the proxy into the individual {@link Swatch} objects it stands for. */
   getElements(): Swatch<'single'>[];
 

@@ -20,7 +20,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection PDFComment
  */
-export interface PDFComments {
+export interface PDFComments extends InDesignPlugins.PDFComments {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * document's content based on the rules defined in the profile.
  * @collection PreflightProcess
  */
-export interface PreflightProcesses {
+export interface PreflightProcesses extends InDesignPlugins.PreflightProcesses {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

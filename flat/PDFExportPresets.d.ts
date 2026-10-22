@@ -18,7 +18,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection PDFExportPreset
  */
-export interface PDFExportPresets {
+export interface PDFExportPresets extends InDesignPlugins.PDFExportPresets {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

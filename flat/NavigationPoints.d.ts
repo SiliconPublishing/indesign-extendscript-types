@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection NavigationPoint
  */
-export interface NavigationPoints {
+export interface NavigationPoints extends InDesignPlugins.NavigationPoints {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

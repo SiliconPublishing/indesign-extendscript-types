@@ -16,7 +16,7 @@ import type { LayoutWindow } from './LayoutWindow';
 /**
  * An event dispatched before or after a file is imported into, or exported from, a document.
  */
-export interface ImportExportEvent<M extends Mode = 'single'> extends Event<M>{
+export interface ImportExportEvent<M extends Mode = 'single'> extends Event<M>, InDesignPlugins.ImportExportEvent<M>{
   /** Resolves the proxy into the individual {@link ImportExportEvent} objects it stands for. */
   getElements(): ImportExportEvent<'single'>[];
 

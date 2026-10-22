@@ -28,7 +28,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * {@link Submenu} — a {@link MenuItem}, a {@link MenuSeparator}, or a nested
  * {@link Submenu}.
  */
-export interface MenuElement {
+export interface MenuElement extends InDesignPlugins.MenuElement<'single'> {
   /**
    * A collection of events
    */
@@ -123,7 +123,7 @@ export interface MenuElement {
  * {@link Submenu} — a {@link MenuItem}, a {@link MenuSeparator}, or a nested
  * {@link Submenu}.
  */
-export interface MenuElementPlural {
+export interface MenuElementPlural extends InDesignPlugins.MenuElement<'plural'> {
   /**
    * A collection of events
    */

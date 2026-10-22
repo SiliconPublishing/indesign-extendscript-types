@@ -25,7 +25,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * checkboxes, radio controls, static text, and the panel/grouping controls
  * (`EnablingGroup`, `BorderPanel`) that contain them.
  */
-export interface Widget {
+export interface Widget extends InDesignPlugins.Widget<'single'> {
   /**
    * A collection of events
    */
@@ -126,7 +126,7 @@ export interface Widget {
  * checkboxes, radio controls, static text, and the panel/grouping controls
  * (`EnablingGroup`, `BorderPanel`) that contain them.
  */
-export interface WidgetPlural {
+export interface WidgetPlural extends InDesignPlugins.Widget<'plural'> {
   /**
    * A collection of events
    */

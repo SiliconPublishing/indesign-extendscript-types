@@ -14,7 +14,7 @@ import type { TagTextForm } from './Enums/TagTextForm';
 /**
  * Tagged text export preferences.
  */
-export interface TaggedTextExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface TaggedTextExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.TaggedTextExportPreference<M> {
   /** Resolves the proxy into the individual {@link TaggedTextExportPreference} objects it stands for. */
   getElements(): TaggedTextExportPreference<'single'>[];
 

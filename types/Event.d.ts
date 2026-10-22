@@ -17,7 +17,7 @@ import type { LayoutWindow } from './LayoutWindow';
  * An event dispatched by an InDesign DOM object during a script-observable
  * lifecycle transition (creation, deletion, save, place, and so on).
  */
-export interface Event<M extends Mode = 'single'> extends IndexedDOMObject<unknown, M> {
+export interface Event<M extends Mode = 'single'> extends IndexedDOMObject<unknown, M>, InDesignPlugins.Event<M> {
   /** Resolves the proxy into the individual {@link Event} objects it stands for. */
   getElements(): Event<'single'>[];
 

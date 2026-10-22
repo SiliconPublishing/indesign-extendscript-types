@@ -109,13 +109,15 @@ function dictMembers(cls, dict) {
 // Declaration side
 // ---------------------------------------------------------------------------------------------
 
-function createProgram(entry, classNames, enumNames) {
+function createProgram(entry, classNames, enumNames, globalNames = new Set()) {
     const dir = mkdtempSync(join(tmpdir(), 'idx-compare-'));
     const probe = join(dir, 'probe.ts');
     const lines = [`/// <reference path="${resolve(root, entry)}" />`];
     for (const n of classNames) {
-        lines.push(`type __${n} = InDesign.${n};`);
-        if (enumNames.has(n)) lines.push(`declare const __value_${n}: typeof InDesign.${n};`);
+        // A plugin's classes are globals of their own, not part of the InDesign namespace.
+        const q = globalNames.has(n) ? n : `InDesign.${n}`;
+        lines.push(`type __${n} = ${q};`);
+        if (enumNames.has(n)) lines.push(`declare const __value_${n}: typeof ${q};`);
     }
     writeFileSync(probe, lines.join('\n'));
     const files = ['lib/global.d.ts', 'lib/ScriptUI.d.ts'].map((f) => join(root, f));
@@ -170,7 +172,8 @@ const sameParam = (declared, dictName) => declared === dictName || (RESERVED_PAR
 
 // ---------------------------------------------------------------------------------------------
 
-export function compare({ entry = 'types/globals.d.ts', snapshot = 'snapshots/indesign-21.6' } = {}) {
+/** globalClasses: dictionary classes declared as plain globals (a plugin's, by tools/plugin). */
+export function compare({ entry = 'types/globals.d.ts', snapshot = 'snapshots/indesign-21.6', globalClasses = [] } = {}) {
     const dict = JSON.parse(readFileSync(join(root, snapshot, 'dictionary.json'), 'utf8')).classes;
     const names = Object.keys(dict).sort();
     const enumAliases = JSON.parse(readFileSync(join(root, snapshot, 'enum-aliases.json'), 'utf8'));
@@ -180,7 +183,7 @@ export function compare({ entry = 'types/globals.d.ts', snapshot = 'snapshots/in
         ? JSON.parse(readFileSync(join(root, snapshot, 'runtime-crashers.json'), 'utf8'))
         : {};
     const enumNames = new Set(names.filter((n) => dict[n].kind === 'enum'));
-    const { program, probe } = createProgram(entry, names, enumNames);
+    const { program, probe } = createProgram(entry, names, enumNames, new Set(globalClasses));
     const checker = program.getTypeChecker();
     const sf = program.getSourceFile(probe);
     const atoms = new TypeAtoms(ts, checker, enumNames);

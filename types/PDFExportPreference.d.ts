@@ -34,7 +34,7 @@ import type { Document } from './Document';
 /**
  * The application's default PDF export options, used by {@link Document.exportFile} and {@link Book.exportFile} when no explicit preset is supplied.
  */
-export interface PDFExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface PDFExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.PDFExportPreference<M> {
   /** Resolves the proxy into the individual {@link PDFExportPreference} objects it stands for. */
   getElements(): PDFExportPreference<'single'>[];
 

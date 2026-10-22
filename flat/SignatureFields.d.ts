@@ -27,7 +27,7 @@ import type { PageItemAddReference } from './_base/Collections';
  *
  * @collection SignatureField
  */
-export interface SignatureFields<TParent = PageItemParent> {
+export interface SignatureFields<TParent = PageItemParent> extends InDesignPlugins.SignatureFields {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

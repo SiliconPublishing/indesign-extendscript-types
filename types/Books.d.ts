@@ -17,7 +17,7 @@ import type { Book } from './Book';
  *
  * @collection Book
  */
-export interface Books extends BaseCollection<Book, Book, Book<'plural'>>, NamedCollection<Book> {
+export interface Books extends BaseCollection<Book, Book, Book<'plural'>>, NamedCollection<Book>, InDesignPlugins.Books {
   /**
    * Creates or opens a book.
    *

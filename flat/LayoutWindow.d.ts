@@ -43,7 +43,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * ordinary document window showing pages and spreads, as opposed to a
  * {@link StoryWindow}'s text-only story-editor view.
  */
-export interface LayoutWindow {
+export interface LayoutWindow extends InDesignPlugins.LayoutWindow<'single'> {
   /**
    * A collection of events
    */
@@ -234,7 +234,7 @@ export interface LayoutWindow {
  * ordinary document window showing pages and spreads, as opposed to a
  * {@link StoryWindow}'s text-only story-editor view.
  */
-export interface LayoutWindowPlural {
+export interface LayoutWindowPlural extends InDesignPlugins.LayoutWindow<'plural'> {
   /**
    * A collection of events
    */

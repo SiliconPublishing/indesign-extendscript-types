@@ -21,7 +21,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Text
  */
-export interface Texts<TParent = TextParent> {
+export interface Texts<TParent = TextParent> extends InDesignPlugins.Texts {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

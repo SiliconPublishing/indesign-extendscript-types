@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
  * The list of external applications available for previewing an exported EPUB,
  * and whether the export result opens automatically.
  */
-export interface EPubExportPreviewAppPreference {
+export interface EPubExportPreviewAppPreference extends InDesignPlugins.EPubExportPreviewAppPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -140,7 +140,7 @@ export interface EPubExportPreviewAppPreference {
  * The list of external applications available for previewing an exported EPUB,
  * and whether the export result opens automatically.
  */
-export interface EPubExportPreviewAppPreferencePlural {
+export interface EPubExportPreviewAppPreferencePlural extends InDesignPlugins.EPubExportPreviewAppPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

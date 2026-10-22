@@ -16,5 +16,5 @@ import type { XMLItem } from './XMLItem';
  * @collection XMLItem
  */
 export interface XMLItems
-  extends BaseCollection<XMLItem, XMLItem, XMLItem<'plural'>>, IdCollection<XMLItem> {
+  extends BaseCollection<XMLItem, XMLItem, XMLItem<'plural'>>, IdCollection<XMLItem>, InDesignPlugins.XMLItems {
 }

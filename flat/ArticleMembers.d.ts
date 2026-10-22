@@ -21,7 +21,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection ArticleMember
  */
-export interface ArticleMembers {
+export interface ArticleMembers extends InDesignPlugins.ArticleMembers {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

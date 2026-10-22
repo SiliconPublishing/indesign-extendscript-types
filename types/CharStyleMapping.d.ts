@@ -15,7 +15,7 @@ import type { MapType } from './Enums/MapType';
  */
 export interface CharStyleMapping<M extends Mode = 'single'>
   extends EventTargetDOMObject<StyleMappingParent, M>,
-    IndexedDOMObject<StyleMappingParent, M> {
+    IndexedDOMObject<StyleMappingParent, M>, InDesignPlugins.CharStyleMapping<M> {
   /** Resolves the proxy into the individual {@link CharStyleMapping} objects it stands for. */
   getElements(): CharStyleMapping<'single'>[];
 

@@ -31,7 +31,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * {@link MixedInk}, and {@link MixedInkGroup} — usable as a fill, stroke, or
  * text color.
  */
-export interface Swatch {
+export interface Swatch extends InDesignPlugins.Swatch<'single'> {
   /**
    * A collection of events
    */
@@ -156,7 +156,7 @@ export interface Swatch {
  * {@link MixedInk}, and {@link MixedInkGroup} — usable as a fill, stroke, or
  * text color.
  */
-export interface SwatchPlural {
+export interface SwatchPlural extends InDesignPlugins.Swatch<'plural'> {
   /**
    * A collection of events
    */

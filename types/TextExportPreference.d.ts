@@ -14,7 +14,7 @@ import type { TextExportCharacterSet } from './Enums/TextExportCharacterSet';
 /**
  * Text export preferences.
  */
-export interface TextExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface TextExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.TextExportPreference<M> {
   /** Resolves the proxy into the individual {@link TextExportPreference} objects it stands for. */
   getElements(): TextExportPreference<'single'>[];
 

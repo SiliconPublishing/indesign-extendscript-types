@@ -22,7 +22,7 @@ import type { FilePath } from './_base/Types';
 /**
  * The preferences for a file name variable.
  */
-export interface FileNameVariablePreference {
+export interface FileNameVariablePreference extends InDesignPlugins.FileNameVariablePreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -121,7 +121,7 @@ export interface FileNameVariablePreference {
 /**
  * The preferences for a file name variable.
  */
-export interface FileNameVariablePreferencePlural {
+export interface FileNameVariablePreferencePlural extends InDesignPlugins.FileNameVariablePreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

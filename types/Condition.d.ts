@@ -21,7 +21,7 @@ import type { UIColors } from './Enums/UIColors';
 export interface Condition<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Application | Document, M>,
     IndexedDOMObject<Application | Document, M>,
-    NamableDOMObject<Application | Document, M> {
+    NamableDOMObject<Application | Document, M>, InDesignPlugins.Condition<M> {
   /** Resolves the proxy into the individual {@link Condition} objects it stands for. */
   getElements(): Condition<'single'>[];
 

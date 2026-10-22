@@ -20,7 +20,7 @@ import type { Submenu } from './Submenu';
  */
 export interface MenuElement<M extends Mode = 'single'>
   extends EventTargetDOMObject<MenuElementParent, M>,
-    IndexedDOMObject<MenuElementParent, M> {
+    IndexedDOMObject<MenuElementParent, M>, InDesignPlugins.MenuElement<M> {
   /** Resolves the proxy into the individual {@link MenuElement} objects it stands for. */
   getElements(): MenuElement<'single'>[];
 

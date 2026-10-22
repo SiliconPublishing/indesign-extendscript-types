@@ -12,7 +12,7 @@ import type { NumericComboboxSurface } from './_base/WidgetMixins';
 /**
  * An editable dropdown for high-precision numeric values.
  */
-export interface RealCombobox<M extends Mode = 'single'> extends Widget<M>, NumericComboboxSurface<M>{
+export interface RealCombobox<M extends Mode = 'single'> extends Widget<M>, NumericComboboxSurface<M>, InDesignPlugins.RealCombobox<M>{
   /** Resolves the proxy into the individual {@link RealCombobox} objects it stands for. */
   getElements(): RealCombobox<'single'>[];
 }

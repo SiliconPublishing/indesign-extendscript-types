@@ -21,7 +21,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection WMF
  */
-export interface WMFs<TParent = PageItemParent> {
+export interface WMFs<TParent = PageItemParent> extends InDesignPlugins.WMFs {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

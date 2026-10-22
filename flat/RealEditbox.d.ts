@@ -23,7 +23,7 @@ import type { WidgetParent } from './_base/Parents';
 /**
  * A high-precision (non-rounding) numeric entry field.
  */
-export interface RealEditbox {
+export interface RealEditbox extends InDesignPlugins.RealEditbox<'single'> {
   /**
    * A collection of events
    */
@@ -156,7 +156,7 @@ export interface RealEditbox {
 /**
  * A high-precision (non-rounding) numeric entry field.
  */
-export interface RealEditboxPlural {
+export interface RealEditboxPlural extends InDesignPlugins.RealEditbox<'plural'> {
   /**
    * A collection of events
    */

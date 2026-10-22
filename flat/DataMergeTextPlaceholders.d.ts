@@ -21,7 +21,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection DataMergeTextPlaceholder
  */
-export interface DataMergeTextPlaceholders {
+export interface DataMergeTextPlaceholders extends InDesignPlugins.DataMergeTextPlaceholders {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

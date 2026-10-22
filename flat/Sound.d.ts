@@ -89,7 +89,7 @@ import type { Paths } from './Paths';
  * A placed sound clip (legacy PDF interactive media). See {@link MediaItem}
  * for the shared media-item surface.
  */
-export interface Sound<TParent = PageItemParent> {
+export interface Sound<TParent = PageItemParent> extends InDesignPlugins.Sound<'single'> {
   /**
    * A collection of events
    */
@@ -704,7 +704,7 @@ export interface Sound<TParent = PageItemParent> {
  * A placed sound clip (legacy PDF interactive media). See {@link MediaItem}
  * for the shared media-item surface.
  */
-export interface SoundPlural<TParent = PageItemParent> {
+export interface SoundPlural<TParent = PageItemParent> extends InDesignPlugins.Sound<'plural'> {
   /**
    * A collection of events
    */

@@ -91,7 +91,7 @@ import type { TextStyleRanges } from './TextStyleRanges';
  * names on {@link Row} and {@link Column}, since all three describe the same
  * grid.
  */
-export interface Cell {
+export interface Cell extends InDesignPlugins.Cell<'single'> {
   /**
    * A collection of events
    */
@@ -694,7 +694,7 @@ export interface Cell {
  * names on {@link Row} and {@link Column}, since all three describe the same
  * grid.
  */
-export interface CellPlural {
+export interface CellPlural extends InDesignPlugins.Cell<'plural'> {
   /**
    * A collection of events
    */

@@ -25,7 +25,7 @@ import type { DocumentOrApplication } from './_base/Parents';
 /**
  * A stroke style of alternating dashes and gaps.
  */
-export interface DashedStrokeStyle {
+export interface DashedStrokeStyle extends InDesignPlugins.DashedStrokeStyle<'single'> {
   /**
    * A collection of events
    */
@@ -143,7 +143,7 @@ export interface DashedStrokeStyle {
 /**
  * A stroke style of alternating dashes and gaps.
  */
-export interface DashedStrokeStylePlural {
+export interface DashedStrokeStylePlural extends InDesignPlugins.DashedStrokeStyle<'plural'> {
   /**
    * A collection of events
    */

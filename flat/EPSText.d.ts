@@ -87,7 +87,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * A legacy page item that holds text exported as EPS artwork rather than live
  * text. See {@link PageItem} for the shared page-item surface.
  */
-export interface EPSText<TParent = PageItemParent> {
+export interface EPSText<TParent = PageItemParent> extends InDesignPlugins.EPSText<'single'> {
   /**
    * A collection of events
    */
@@ -673,7 +673,7 @@ export interface EPSText<TParent = PageItemParent> {
  * A legacy page item that holds text exported as EPS artwork rather than live
  * text. See {@link PageItem} for the shared page-item surface.
  */
-export interface EPSTextPlural<TParent = PageItemParent> {
+export interface EPSTextPlural<TParent = PageItemParent> extends InDesignPlugins.EPSText<'plural'> {
   /**
    * A collection of events
    */

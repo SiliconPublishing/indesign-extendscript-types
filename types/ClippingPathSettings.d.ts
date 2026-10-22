@@ -24,7 +24,7 @@ import type { ClippingPathType } from './Enums/ClippingPathType';
  * The path can come from an alpha channel or a Photoshop path stored in the file, or
  * be detected from the image's own edges — see {@link clippingType}.
  */
-export interface ClippingPathSettings<M extends Mode = 'single'> extends EventTargetDOMObject<Image | EPS | WMF | PICT | PDF | ImportedPage, M> {
+export interface ClippingPathSettings<M extends Mode = 'single'> extends EventTargetDOMObject<Image | EPS | WMF | PICT | PDF | ImportedPage, M>, InDesignPlugins.ClippingPathSettings<M> {
   /** Resolves the proxy into the individual {@link ClippingPathSettings} objects it stands for. */
   getElements(): ClippingPathSettings<'single'>[];
 

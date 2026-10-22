@@ -34,7 +34,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * the anchor that displays the variable's resolved {@link resultText} at a
  * specific position.
  */
-export interface TextVariableInstance {
+export interface TextVariableInstance extends InDesignPlugins.TextVariableInstance<'single'> {
   /**
    * A collection of events
    */
@@ -156,7 +156,7 @@ export interface TextVariableInstance {
  * the anchor that displays the variable's resolved {@link resultText} at a
  * specific position.
  */
-export interface TextVariableInstancePlural {
+export interface TextVariableInstancePlural extends InDesignPlugins.TextVariableInstance<'plural'> {
   /**
    * A collection of events
    */

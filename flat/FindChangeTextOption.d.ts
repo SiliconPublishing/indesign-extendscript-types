@@ -22,7 +22,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Options controlling a text find/change operation (case sensitivity, whole word, search scope).
  */
-export interface FindChangeTextOption {
+export interface FindChangeTextOption extends InDesignPlugins.FindChangeTextOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -145,7 +145,7 @@ export interface FindChangeTextOption {
 /**
  * Options controlling a text find/change operation (case sensitivity, whole word, search scope).
  */
-export interface FindChangeTextOptionPlural {
+export interface FindChangeTextOptionPlural extends InDesignPlugins.FindChangeTextOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

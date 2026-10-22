@@ -27,7 +27,7 @@ import type { PreflightRuleFlag } from './Enums/PreflightRuleFlag';
  * {@link PreflightProfile.preflightRuleInstances} collection (as opposed to
  * one enabled from the profile's built-in rule set).
  */
-export interface PreflightRuleInstance {
+export interface PreflightRuleInstance extends InDesignPlugins.PreflightRuleInstance<'single'> {
   /**
    * A collection of events
    */
@@ -147,7 +147,7 @@ export interface PreflightRuleInstance {
  * {@link PreflightProfile.preflightRuleInstances} collection (as opposed to
  * one enabled from the profile's built-in rule set).
  */
-export interface PreflightRuleInstancePlural {
+export interface PreflightRuleInstancePlural extends InDesignPlugins.PreflightRuleInstance<'plural'> {
   /**
    * A collection of events
    */

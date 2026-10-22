@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Image I/O preferences.
  */
-export interface ImageIOPreference {
+export interface ImageIOPreference extends InDesignPlugins.ImageIOPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -121,7 +121,7 @@ export interface ImageIOPreference {
 /**
  * Image I/O preferences.
  */
-export interface ImageIOPreferencePlural {
+export interface ImageIOPreferencePlural extends InDesignPlugins.ImageIOPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

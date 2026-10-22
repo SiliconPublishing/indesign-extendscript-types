@@ -26,7 +26,7 @@ export interface Sections
   extends
     BaseCollection<Section, Section, Section<'plural'>>,
     IdCollection<Section>,
-    NamedCollection<Section> {
+    NamedCollection<Section>, InDesignPlugins.Sections {
   /** Creates a new section from a properties bag alone. */
   add(withProperties: PropertiesSetter<Section>): Section;
 

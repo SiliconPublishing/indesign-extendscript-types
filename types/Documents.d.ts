@@ -25,7 +25,7 @@ export interface Documents
   extends
     BaseCollection<Document, Document, Document<'plural'>>,
     IdCollection<Document>,
-    NamedCollection<Document> {
+    NamedCollection<Document>, InDesignPlugins.Documents {
   /**
    * Creates a new document from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link Document}.

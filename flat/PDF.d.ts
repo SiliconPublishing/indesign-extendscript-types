@@ -89,7 +89,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
 /**
  * A placed PDF page.
  */
-export interface PDF<TParent = PageItemParent> {
+export interface PDF<TParent = PageItemParent> extends InDesignPlugins.PDF<'single'> {
   /**
    * A collection of events
    */
@@ -680,7 +680,7 @@ export interface PDF<TParent = PageItemParent> {
 /**
  * A placed PDF page.
  */
-export interface PDFPlural<TParent = PageItemParent> {
+export interface PDFPlural<TParent = PageItemParent> extends InDesignPlugins.PDF<'plural'> {
   /**
    * A collection of events
    */

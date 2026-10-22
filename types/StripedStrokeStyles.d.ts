@@ -24,7 +24,7 @@ export interface StripedStrokeStyles
   extends
     BaseCollection<StripedStrokeStyle, StripedStrokeStyle, StripedStrokeStyle<'plural'>>,
     IdCollection<StripedStrokeStyle>,
-    NamedCollection<StripedStrokeStyle> {
+    NamedCollection<StripedStrokeStyle>, InDesignPlugins.StripedStrokeStyles {
   /**
    * Creates a new striped stroke style.
    *

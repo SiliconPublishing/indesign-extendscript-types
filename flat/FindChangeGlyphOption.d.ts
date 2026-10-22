@@ -22,7 +22,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Options controlling a glyph find/change operation.
  */
-export interface FindChangeGlyphOption {
+export interface FindChangeGlyphOption extends InDesignPlugins.FindChangeGlyphOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -127,7 +127,7 @@ export interface FindChangeGlyphOption {
 /**
  * Options controlling a glyph find/change operation.
  */
-export interface FindChangeGlyphOptionPlural {
+export interface FindChangeGlyphOptionPlural extends InDesignPlugins.FindChangeGlyphOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

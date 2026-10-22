@@ -244,7 +244,7 @@ import type { ScriptArg } from "./ScriptArg";
  * Document-scoped state — `activeLayer`, page items, the document body — is on
  * {@link Document}, not here.
  */
-export interface Application<M extends Mode = 'single'> extends LabelableEventDOMObject<Application, M> {
+export interface Application<M extends Mode = 'single'> extends LabelableEventDOMObject<Application, M>, InDesignPlugins.Application<M> {
   /** Resolves the proxy into the individual {@link Application} objects it stands for. */
   getElements(): Application<'single'>[];
 

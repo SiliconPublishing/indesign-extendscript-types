@@ -24,7 +24,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * items and text to be categorized for XML export or manipulation.
  * @collection XMLTag
  */
-export interface XMLTags {
+export interface XMLTags extends InDesignPlugins.XMLTags {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

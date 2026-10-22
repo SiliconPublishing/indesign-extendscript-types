@@ -132,7 +132,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * {@link Path paths}, and the full set of PDF interactive behaviors —
  * page/view/state navigation, media playback, form submission.
  */
-export interface Button<TParent = PageItemParent> {
+export interface Button<TParent = PageItemParent> extends InDesignPlugins.Button<'single'> {
   /**
    * A collection of events
    */
@@ -809,7 +809,7 @@ export interface Button<TParent = PageItemParent> {
  * {@link Path paths}, and the full set of PDF interactive behaviors —
  * page/view/state navigation, media playback, form submission.
  */
-export interface ButtonPlural<TParent = PageItemParent> {
+export interface ButtonPlural<TParent = PageItemParent> extends InDesignPlugins.Button<'plural'> {
   /**
    * A collection of events
    */

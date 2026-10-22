@@ -148,7 +148,7 @@ export type TextThreadEnd = TextFrame | TextPath;
  * {@link previousTextFrame}), and carries its own frame-level text and path
  * settings.
  */
-export interface TextFrame<TParent = PageItemParent> {
+export interface TextFrame<TParent = PageItemParent> extends InDesignPlugins.TextFrame<'single'> {
   /**
    * A collection of events
    */
@@ -920,7 +920,7 @@ export interface TextFrame<TParent = PageItemParent> {
  * {@link previousTextFrame}), and carries its own frame-level text and path
  * settings.
  */
-export interface TextFramePlural<TParent = PageItemParent> {
+export interface TextFramePlural<TParent = PageItemParent> extends InDesignPlugins.TextFrame<'plural'> {
   /**
    * A collection of events
    */

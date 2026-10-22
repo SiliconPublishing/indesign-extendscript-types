@@ -27,7 +27,7 @@ import type { PageItemAddReference } from './_base/Collections';
  *
  * @collection GraphicLine
  */
-export interface GraphicLines<TParent = PageItemParent> {
+export interface GraphicLines<TParent = PageItemParent> extends InDesignPlugins.GraphicLines {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

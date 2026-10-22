@@ -35,7 +35,7 @@ import type { FilePath } from './_base/Types';
  * Export settings for InDesign's HTML output: element class attributes, content
  * order, image conversion, and the external CSS/JavaScript to reference.
  */
-export interface HTMLExportPreference {
+export interface HTMLExportPreference extends InDesignPlugins.HTMLExportPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -204,7 +204,7 @@ export interface HTMLExportPreference {
  * Export settings for InDesign's HTML output: element class attributes, content
  * order, image conversion, and the external CSS/JavaScript to reference.
  */
-export interface HTMLExportPreferencePlural {
+export interface HTMLExportPreferencePlural extends InDesignPlugins.HTMLExportPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

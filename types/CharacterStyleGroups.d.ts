@@ -24,7 +24,7 @@ export interface CharacterStyleGroups
   extends
     BaseCollection<CharacterStyleGroup, CharacterStyleGroup, CharacterStyleGroup<'plural'>>,
     IdCollection<CharacterStyleGroup>,
-    NamedCollection<CharacterStyleGroup> {
+    NamedCollection<CharacterStyleGroup>, InDesignPlugins.CharacterStyleGroups {
   /**
    * Creates a new character style group from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link CharacterStyleGroup}.

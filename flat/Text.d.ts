@@ -185,7 +185,7 @@ export type TextDuplicateReference = Text | Story | Cell | Row | Column | Table 
  * and ascent, and operations on the resolved text: placing files, exporting,
  * generating QR codes, and converting to a table.
  */
-export interface Text<TParent = TextParent> {
+export interface Text<TParent = TextParent> extends InDesignPlugins.Text<'single'> {
   /**
    * A collection of events
    */
@@ -1585,7 +1585,7 @@ export interface Text<TParent = TextParent> {
  * and ascent, and operations on the resolved text: placing files, exporting,
  * generating QR codes, and converting to a table.
  */
-export interface TextPlural<TParent = TextParent> {
+export interface TextPlural<TParent = TextParent> extends InDesignPlugins.Text<'plural'> {
   /**
    * A collection of events
    */

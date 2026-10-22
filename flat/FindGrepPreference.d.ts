@@ -77,7 +77,7 @@ import type { FilePath } from './_base/Types';
 /**
  * GREP search criteria and formatting options, used with {@link Application.findGrep}.
  */
-export interface FindGrepPreference {
+export interface FindGrepPreference extends InDesignPlugins.FindGrepPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -826,7 +826,7 @@ export interface FindGrepPreference {
 /**
  * GREP search criteria and formatting options, used with {@link Application.findGrep}.
  */
-export interface FindGrepPreferencePlural {
+export interface FindGrepPreferencePlural extends InDesignPlugins.FindGrepPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

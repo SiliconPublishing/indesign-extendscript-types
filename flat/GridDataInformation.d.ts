@@ -30,7 +30,7 @@ import type { FilePath } from './_base/Types';
  * Default character-grid formatting properties, shared by named, layout, and
  * frame (story) grids.
  */
-export interface GridDataInformation {
+export interface GridDataInformation extends InDesignPlugins.GridDataInformation<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -157,7 +157,7 @@ export interface GridDataInformation {
  * Default character-grid formatting properties, shared by named, layout, and
  * frame (story) grids.
  */
-export interface GridDataInformationPlural {
+export interface GridDataInformationPlural extends InDesignPlugins.GridDataInformation<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

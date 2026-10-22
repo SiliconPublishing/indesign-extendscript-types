@@ -17,7 +17,7 @@ import type { CharStyleMapping } from './CharStyleMapping';
  *
  * @collection CharStyleMapping
  */
-export interface CharStyleMappings extends BaseCollection<CharStyleMapping, CharStyleMapping, CharStyleMapping<'plural'>> {
+export interface CharStyleMappings extends BaseCollection<CharStyleMapping, CharStyleMapping, CharStyleMapping<'plural'>>, InDesignPlugins.CharStyleMappings {
   /**
    * Adds a new character style mapping.
    *

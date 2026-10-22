@@ -16,7 +16,7 @@ import type { MenuSeparators } from './MenuSeparators';
  * A nested menu that can itself contain menu items, separators, and further
  * submenus.
  */
-export interface Submenu<M extends Mode = 'single'> extends MenuElement<M>{
+export interface Submenu<M extends Mode = 'single'> extends MenuElement<M>, InDesignPlugins.Submenu<M>{
   /** Resolves the proxy into the individual {@link Submenu} objects it stands for. */
   getElements(): Submenu<'single'>[];
 

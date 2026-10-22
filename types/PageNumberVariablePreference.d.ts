@@ -14,7 +14,7 @@ import type { VariableScopes } from './Enums/VariableScopes';
 /**
  * The preferences for a page number variable.
  */
-export interface PageNumberVariablePreference<M extends Mode = 'single'> extends EventTargetDOMObject<TextVariable, M> {
+export interface PageNumberVariablePreference<M extends Mode = 'single'> extends EventTargetDOMObject<TextVariable, M>, InDesignPlugins.PageNumberVariablePreference<M> {
   /** Resolves the proxy into the individual {@link PageNumberVariablePreference} objects it stands for. */
   getElements(): PageNumberVariablePreference<'single'>[];
 

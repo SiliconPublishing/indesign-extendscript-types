@@ -96,7 +96,7 @@ export interface SplineItem<
   extends PageItem<TParent, TChildParent, M>,
     ShapeContainer<TChildParent, M>,
     FormFieldContainer<TChildParent, M>,
-    EndnoteFrameContainer<TChildParent, M> {
+    EndnoteFrameContainer<TChildParent, M>, InDesignPlugins.SplineItem<M> {
   /** Resolves the proxy into the individual {@link SplineItem}s it stands for. */
   getElements(): SplineItem<TParent, TChildParent, 'single'>[];
 

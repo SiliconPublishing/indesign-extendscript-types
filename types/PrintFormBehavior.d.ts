@@ -13,7 +13,7 @@ import type { BehaviorEvents } from './Enums/BehaviorEvents';
 /**
  * A behavior that prints the interactive PDF form.
  */
-export interface PrintFormBehavior<M extends Mode = 'single'> extends Behavior<M>{
+export interface PrintFormBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignPlugins.PrintFormBehavior<M>{
   /** Resolves the proxy into the individual {@link PrintFormBehavior} objects it stands for. */
   getElements(): PrintFormBehavior<'single'>[];
 

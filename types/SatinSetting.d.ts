@@ -21,7 +21,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
  * Settings for the satin effect, which applies interior shading with a wavy,
  * satin-like appearance based on the object's shape.
  */
-export interface SatinSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M> {
+export interface SatinSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M>, InDesignPlugins.SatinSetting<M> {
   /** Resolves the proxy into the individual {@link SatinSetting} objects it stands for. */
   getElements(): SatinSetting<'single', TParent>[];
 

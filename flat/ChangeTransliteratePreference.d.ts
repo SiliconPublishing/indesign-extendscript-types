@@ -69,7 +69,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Character-type conversion criteria (e.g. half-width to full-width, katakana to hiragana) and formatting options, used with {@link Application.changeTransliterate}.
  */
-export interface ChangeTransliteratePreference {
+export interface ChangeTransliteratePreference extends InDesignPlugins.ChangeTransliteratePreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -750,7 +750,7 @@ export interface ChangeTransliteratePreference {
 /**
  * Character-type conversion criteria (e.g. half-width to full-width, katakana to hiragana) and formatting options, used with {@link Application.changeTransliterate}.
  */
-export interface ChangeTransliteratePreferencePlural {
+export interface ChangeTransliteratePreferencePlural extends InDesignPlugins.ChangeTransliteratePreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

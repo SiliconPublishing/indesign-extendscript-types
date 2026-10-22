@@ -44,7 +44,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * A placed movie clip (legacy SWF/PDF interactive media). See {@link MediaItem}
  * for the shared media-item surface.
  */
-export interface Movie<TParent = PageItemParent, M extends Mode = 'single'> extends MediaItem<TParent, M> {
+export interface Movie<TParent = PageItemParent, M extends Mode = 'single'> extends MediaItem<TParent, M>, InDesignPlugins.Movie<M> {
   /** Resolves the proxy into the individual {@link Movie} objects it stands for. */
   getElements(): Movie<TParent, 'single'>[];
 

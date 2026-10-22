@@ -24,7 +24,7 @@ export interface MasterSpreads
   extends
     BaseCollection<MasterSpread, MasterSpread, MasterSpread<'plural'>>,
     IdCollection<MasterSpread>,
-    NamedCollection<MasterSpread> {
+    NamedCollection<MasterSpread>, InDesignPlugins.MasterSpreads {
   /**
    * Creates a new master spread from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link MasterSpread}.

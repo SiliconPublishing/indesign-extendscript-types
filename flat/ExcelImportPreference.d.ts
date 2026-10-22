@@ -26,7 +26,7 @@ import type { FilePath } from './_base/Types';
  * range, cell alignment and decimal formatting, and whether inline graphics and
  * hidden cells are included.
  */
-export interface ExcelImportPreference {
+export interface ExcelImportPreference extends InDesignPlugins.ExcelImportPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -148,7 +148,7 @@ export interface ExcelImportPreference {
  * range, cell alignment and decimal formatting, and whether inline graphics and
  * hidden cells are included.
  */
-export interface ExcelImportPreferencePlural {
+export interface ExcelImportPreferencePlural extends InDesignPlugins.ExcelImportPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

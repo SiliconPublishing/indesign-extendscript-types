@@ -25,7 +25,7 @@ export interface FlattenerPresets
   extends
     BaseCollection<FlattenerPreset, FlattenerPreset, FlattenerPreset<'plural'>>,
     IdCollection<FlattenerPreset>,
-    NamedCollection<FlattenerPreset> {
+    NamedCollection<FlattenerPreset>, InDesignPlugins.FlattenerPresets {
   /**
    * Creates a new transparency {@link FlattenerPreset}, controlling the balance
    * between rasterization and vector preservation during output.

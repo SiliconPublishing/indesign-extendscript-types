@@ -26,7 +26,7 @@ import type { FilePath } from './_base/Types';
  * Settings for exporting pages or spreads as PNG images — resolution, color
  * space, quality, transparency, and which pages to include.
  */
-export interface PNGExportPreference {
+export interface PNGExportPreference extends InDesignPlugins.PNGExportPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -150,7 +150,7 @@ export interface PNGExportPreference {
  * Settings for exporting pages or spreads as PNG images — resolution, color
  * space, quality, transparency, and which pages to include.
  */
-export interface PNGExportPreferencePlural {
+export interface PNGExportPreferencePlural extends InDesignPlugins.PNGExportPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

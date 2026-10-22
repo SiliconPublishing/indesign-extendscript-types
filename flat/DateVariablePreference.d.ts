@@ -22,7 +22,7 @@ import type { FilePath } from './_base/Types';
 /**
  * The preferences for a date variable.
  */
-export interface DateVariablePreference {
+export interface DateVariablePreference extends InDesignPlugins.DateVariablePreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -118,7 +118,7 @@ export interface DateVariablePreference {
 /**
  * The preferences for a date variable.
  */
-export interface DateVariablePreferencePlural {
+export interface DateVariablePreferencePlural extends InDesignPlugins.DateVariablePreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

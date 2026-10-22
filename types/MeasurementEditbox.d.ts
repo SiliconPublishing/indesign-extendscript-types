@@ -14,7 +14,7 @@ import type { MeasurementUnits } from './Enums/MeasurementUnits';
  * A numeric entry field for measurement values, interpreted internally in
  * points and converted to {@link editUnits} for display when the dialog opens.
  */
-export interface MeasurementEditbox<M extends Mode = 'single'> extends Widget<M>, NumericEditboxSurface<M>{
+export interface MeasurementEditbox<M extends Mode = 'single'> extends Widget<M>, NumericEditboxSurface<M>, InDesignPlugins.MeasurementEditbox<M>{
   /** Resolves the proxy into the individual {@link MeasurementEditbox} objects it stands for. */
   getElements(): MeasurementEditbox<'single'>[];
 

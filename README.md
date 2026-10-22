@@ -115,6 +115,38 @@ Each line is a probe in `test/probes/` that runs against InDesign.
 In a `.jsx` file, TypeScript does not type the parameter of a function assigned to a property
 (`bt.onResult = function (reply) {}`); add `/** @param {BridgeTalk} reply */` or write `.ts`.
 
+## Declarations for plugins
+
+A C++ plugin can add classes, enumerations and members to InDesign's scripting API. `npm run
+plugin` declares them as an add-on package that sits beside this one:
+
+```sh
+# with the plugin installed, and InDesign running:
+npm run plugin -- --name acme-plugin-extendscript-types --setup acme-setup.jsx
+```
+
+It dumps InDesign's scripting dictionary with the plugin loaded and diffs it against the plugin-free
+snapshot. It then samples the plugin's members at runtime, the same way as for InDesign's own:
+what reads return and what writes accept, with crash-prone members recorded, skipped and
+documented. Finally it writes `plugins/<name>/` (`index.d.ts`, `package.json`, `REPORT.md`),
+typechecks the result with both trees, and compares it against the plugin's dictionary.
+
+- **Members added to InDesign's classes** are declared through extension points: every DOM class
+  extends an empty `InDesignPlugins.<Class>` interface, so the add-on merges into it
+  (`app.myPluginThing` simply type-checks). The plugin's own classes and enumerations become
+  globals, like InDesign's.
+- **`--setup file.jsx`** defines `pluginFixture(doc, root, dir)`, which creates the plugin's
+  objects so they can be sampled; pass each one to `root(obj)`.
+- **`--raw <dir>`** works offline from an existing dictionary dump (`tools/dump/dictionary.jsx`
+  output), without runtime samples.
+- **Consumers** list both packages: `"types": ["indesign-extendscript-types", "acme-plugin-extendscript-types"]`.
+- **Enumerators a plugin adds to InDesign's own enumerations** cannot be declared by augmentation;
+  the add-on lists them with their values.
+
+The main `npm run dump` refuses to update a snapshot while third-party plugins are installed, or
+when the dictionary has grown for the same InDesign version (`--allow-plugins` and
+`--accept-new-surface` override), so a plugin cannot leak into this package's declarations.
+
 ## How it is measured
 
 Everything runs in InDesign's pristine `main` ExtendScript engine, through AppleScript
@@ -145,6 +177,7 @@ npm run dump           # re-measure dictionary, globals, enum aliases, core JS
 npm run dump:runtime   # re-run the read sampler (may crash InDesign; crashes are recorded and skipped)
 npm run dump:writes    # re-run the write sampler (same)
 npm run report         # regenerate REPORT.md
+npm run plugin -- --name <package> [--setup file.jsx]   # declarations for a plugin (above)
 ```
 
 - **A new upstream release:** `git fetch upstream && npm run build && npm test`. The codemod

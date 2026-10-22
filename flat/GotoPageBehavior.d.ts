@@ -25,7 +25,7 @@ import type { BehaviorParent } from './_base/Parents';
 /**
  * A behavior that jumps to a specific page of the document.
  */
-export interface GotoPageBehavior {
+export interface GotoPageBehavior extends InDesignPlugins.GotoPageBehavior<'single'> {
   /**
    * A collection of events
    */
@@ -148,7 +148,7 @@ export interface GotoPageBehavior {
 /**
  * A behavior that jumps to a specific page of the document.
  */
-export interface GotoPageBehaviorPlural {
+export interface GotoPageBehaviorPlural extends InDesignPlugins.GotoPageBehavior<'plural'> {
   /**
    * A collection of events
    */

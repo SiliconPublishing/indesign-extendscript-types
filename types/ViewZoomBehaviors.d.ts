@@ -24,7 +24,7 @@ export interface ViewZoomBehaviors
   extends
     BaseCollection<ViewZoomBehavior, ViewZoomBehavior, ViewZoomBehavior<'plural'>>,
     IdCollection<ViewZoomBehavior>,
-    NamedCollection<ViewZoomBehavior> {
+    NamedCollection<ViewZoomBehavior>, InDesignPlugins.ViewZoomBehaviors {
   /**
    * Creates a new view zoom behavior.
    * @param withProperties Initial values for properties of the new {@link ViewZoomBehavior}.

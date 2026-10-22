@@ -20,7 +20,7 @@ import type { FootnotePrefixSuffix } from './Enums/FootnotePrefixSuffix';
 /**
  * Options for specifying default endnote formatting.
  */
-export interface EndnoteOption<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
+export interface EndnoteOption<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.EndnoteOption<M> {
   /** Resolves the proxy into the individual {@link EndnoteOption} objects it stands for. */
   getElements(): EndnoteOption<'single'>[];
 

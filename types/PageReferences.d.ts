@@ -29,7 +29,7 @@ export interface PageReferences
   extends
     BaseCollection<PageReference, PageReference, PageReference<'plural'>>,
     IdCollection<PageReference>,
-    NamedCollection<PageReference> {
+    NamedCollection<PageReference>, InDesignPlugins.PageReferences {
   /**
    * Creates a new page reference for an Index.
    *

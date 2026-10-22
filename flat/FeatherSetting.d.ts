@@ -30,7 +30,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Feather effect settings.
  */
-export interface FeatherSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> {
+export interface FeatherSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.FeatherSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -132,7 +132,7 @@ export interface FeatherSetting<TParent = TransparencySetting | StrokeTransparen
 /**
  * Feather effect settings.
  */
-export interface FeatherSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> {
+export interface FeatherSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.FeatherSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

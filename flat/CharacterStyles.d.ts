@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * while maintaining a consistent visual hierarchy across the document.
  * @collection CharacterStyle
  */
-export interface CharacterStyles {
+export interface CharacterStyles extends InDesignPlugins.CharacterStyles {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

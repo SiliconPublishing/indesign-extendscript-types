@@ -26,7 +26,7 @@ import type { PageItemAddReference } from './_base/Collections';
  *
  * @collection Oval
  */
-export interface Ovals<TParent = PageItemParent> {
+export interface Ovals<TParent = PageItemParent> extends InDesignPlugins.Ovals {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

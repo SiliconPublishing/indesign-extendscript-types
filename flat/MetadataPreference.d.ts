@@ -26,7 +26,7 @@ import type { Event } from './Event';
  * access to any XMP property by namespace and path, and sync with an external
  * metadata file.
  */
-export interface MetadataPreference {
+export interface MetadataPreference extends InDesignPlugins.MetadataPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -194,7 +194,7 @@ export interface MetadataPreference {
  * access to any XMP property by namespace and path, and sync with an external
  * metadata file.
  */
-export interface MetadataPreferencePlural {
+export interface MetadataPreferencePlural extends InDesignPlugins.MetadataPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

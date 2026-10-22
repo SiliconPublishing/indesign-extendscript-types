@@ -110,7 +110,7 @@ export interface Story<M extends Mode = 'single'>
     CharacterFormatAttributes<M>,
     ParagraphFormatAttributes<M>,
     TextGraphicAttributes<M>,
-    TextRangeContent<Story, M> {
+    TextRangeContent<Story, M>, InDesignPlugins.Story<M> {
   /** Resolves the proxy into the individual {@link Story} objects it stands for. */
   getElements(): Story<'single'>[];
 

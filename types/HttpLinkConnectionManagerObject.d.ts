@@ -17,7 +17,7 @@ import type { Application } from './Application';
  */
 export interface HttpLinkConnectionManagerObject<M extends Mode = 'single'>
   extends EventTargetDOMObject<Application, M>,
-    IndexedDOMObject<Application, M> {
+    IndexedDOMObject<Application, M>, InDesignPlugins.HttpLinkConnectionManagerObject<M> {
   /** Resolves the proxy into the individual {@link HttpLinkConnectionManagerObject} objects it stands for. */
   getElements(): HttpLinkConnectionManagerObject<'single'>[];
 

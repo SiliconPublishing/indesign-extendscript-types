@@ -23,7 +23,7 @@ import type { LocationOptions } from './Enums/LocationOptions';
  */
 export interface CharacterStyleGroup<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document | Application | CharacterStyleGroup, M>,
-    IndexedDOMObject<Document | Application | CharacterStyleGroup, M> {
+    IndexedDOMObject<Document | Application | CharacterStyleGroup, M>, InDesignPlugins.CharacterStyleGroup<M> {
   /** Resolves the proxy into the individual {@link CharacterStyleGroup} objects it stands for. */
   getElements(): CharacterStyleGroup<'single'>[];
 

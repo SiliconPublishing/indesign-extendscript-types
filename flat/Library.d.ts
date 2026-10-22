@@ -32,7 +32,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * An object library file (`.indl`) that stores reusable page items, graphics,
  * and text as {@link Asset}s for drag-and-drop reuse across documents.
  */
-export interface Library {
+export interface Library extends InDesignPlugins.Library<'single'> {
   /**
    * A collection of events
    */
@@ -145,7 +145,7 @@ export interface Library {
  * An object library file (`.indl`) that stores reusable page items, graphics,
  * and text as {@link Asset}s for drag-and-drop reuse across documents.
  */
-export interface LibraryPlural {
+export interface LibraryPlural extends InDesignPlugins.Library<'plural'> {
   /**
    * A collection of events
    */

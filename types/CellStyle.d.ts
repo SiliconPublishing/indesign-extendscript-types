@@ -29,7 +29,7 @@ import type { ParagraphStyle } from './ParagraphStyle';
 export interface CellStyle<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document | Application | CellStyleGroup, M>,
     IndexedDOMObject<Document | Application | CellStyleGroup, M>,
-    CellStyleAttributes<M>{
+    CellStyleAttributes<M>, InDesignPlugins.CellStyle<M>{
   /** Resolves the proxy into the individual {@link CellStyle} objects it stands for. */
   getElements(): CellStyle<'single'>[];
 

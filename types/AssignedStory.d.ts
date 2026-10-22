@@ -25,7 +25,7 @@ import type { LocationOptions } from './Enums/LocationOptions';
 export interface AssignedStory<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Assignment, M>,
     IndexedDOMObject<Assignment, M>,
-    NamableDOMObject<Assignment, M> {
+    NamableDOMObject<Assignment, M>, InDesignPlugins.AssignedStory<M> {
   /** Resolves the proxy into the individual {@link AssignedStory} objects it stands for. */
   getElements(): AssignedStory<'single'>[];
 

@@ -17,7 +17,7 @@ import type { PreflightRuleInstance } from './PreflightRuleInstance';
  */
 export interface PreflightRule<M extends Mode = 'single'>
   extends EventTargetDOMObject<Application, M>,
-    IndexedDOMObject<Application, M> {
+    IndexedDOMObject<Application, M>, InDesignPlugins.PreflightRule<M> {
   /** Resolves the proxy into the individual {@link PreflightRule} objects it stands for. */
   getElements(): PreflightRule<'single'>[];
 

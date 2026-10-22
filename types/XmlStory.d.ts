@@ -114,7 +114,7 @@ export interface XmlStory<M extends Mode = 'single'>
     CharacterFormatAttributes<M>,
     ParagraphFormatAttributes<M>,
     TextGraphicAttributes<M>,
-    TextRangeContent<XmlStory, M> {
+    TextRangeContent<XmlStory, M>, InDesignPlugins.XmlStory<M> {
   /** Resolves the proxy into the individual {@link XmlStory} objects it stands for. */
   getElements(): XmlStory<'single'>[];
 

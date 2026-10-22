@@ -20,7 +20,7 @@ import type { EventPhases } from './Enums/EventPhases';
 /**
  * An event dispatched before or after a file is imported into, or exported from, a document.
  */
-export interface ImportExportEvent {
+export interface ImportExportEvent extends InDesignPlugins.ImportExportEvent<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -106,7 +106,7 @@ export interface ImportExportEvent {
 /**
  * An event dispatched before or after a file is imported into, or exported from, a document.
  */
-export interface ImportExportEventPlural {
+export interface ImportExportEventPlural extends InDesignPlugins.ImportExportEvent<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

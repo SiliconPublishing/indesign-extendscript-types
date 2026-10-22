@@ -15,7 +15,7 @@ import type { BehaviorEvents } from './Enums/BehaviorEvents';
 /**
  * A behavior that plays a motion-preset animation applied to a page item.
  */
-export interface AnimationBehavior<M extends Mode = 'single'> extends Behavior<M>{
+export interface AnimationBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignPlugins.AnimationBehavior<M>{
   /** Resolves the proxy into the individual {@link AnimationBehavior} objects it stands for. */
   getElements(): AnimationBehavior<'single'>[];
 

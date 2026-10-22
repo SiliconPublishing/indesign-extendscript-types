@@ -13,7 +13,7 @@ import type { UIColors } from './Enums/UIColors';
 /**
  * Ruler-guide and margin/column-guide color, snap, and lock defaults.
  */
-export interface GuidePreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
+export interface GuidePreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.GuidePreference<M> {
   /** Resolves the proxy into the individual {@link GuidePreference} objects it stands for. */
   getElements(): GuidePreference<'single'>[];
 

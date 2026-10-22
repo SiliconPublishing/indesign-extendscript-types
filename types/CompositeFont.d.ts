@@ -20,7 +20,7 @@ import type { CompositeFontEntry } from './CompositeFontEntry';
 export interface CompositeFont<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Application | Document, M>,
     IndexedDOMObject<Application | Document, M>,
-    NamableDOMObject<Application | Document, M> {
+    NamableDOMObject<Application | Document, M>, InDesignPlugins.CompositeFont<M> {
   /** Resolves the proxy into the individual {@link CompositeFont} objects it stands for. */
   getElements(): CompositeFont<'single'>[];
 

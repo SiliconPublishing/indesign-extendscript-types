@@ -55,7 +55,7 @@ import type { ObjectStyle } from './ObjectStyle';
  * The formatting to apply to objects found by a find/change object operation, set via
  * {@link Application.changeObjectPreferences} and used by {@link Application.changeObject}.
  */
-export interface ChangeObjectPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface ChangeObjectPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.ChangeObjectPreference<M> {
   /** Resolves the proxy into the individual {@link ChangeObjectPreference} objects it stands for. */
   getElements(): ChangeObjectPreference<'single'>[];
 

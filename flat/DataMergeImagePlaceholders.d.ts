@@ -20,7 +20,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection DataMergeImagePlaceholder
  */
-export interface DataMergeImagePlaceholders {
+export interface DataMergeImagePlaceholders extends InDesignPlugins.DataMergeImagePlaceholders {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

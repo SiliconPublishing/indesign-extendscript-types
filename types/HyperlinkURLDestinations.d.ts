@@ -23,7 +23,7 @@ export interface HyperlinkURLDestinations
   extends
     BaseCollection<HyperlinkURLDestination, HyperlinkURLDestination, HyperlinkURLDestination<'plural'>>,
     IdCollection<HyperlinkURLDestination>,
-    NamedCollection<HyperlinkURLDestination> {
+    NamedCollection<HyperlinkURLDestination>, InDesignPlugins.HyperlinkURLDestinations {
   /**
    * Creates a new hyperlink URL destination from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link HyperlinkURLDestination}.

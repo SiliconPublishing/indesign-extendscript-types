@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * HTML FXL export preferences.
  */
-export interface HTMLFXLExportPreference {
+export interface HTMLFXLExportPreference extends InDesignPlugins.HTMLFXLExportPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -116,7 +116,7 @@ export interface HTMLFXLExportPreference {
 /**
  * HTML FXL export preferences.
  */
-export interface HTMLFXLExportPreferencePlural {
+export interface HTMLFXLExportPreferencePlural extends InDesignPlugins.HTMLFXLExportPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

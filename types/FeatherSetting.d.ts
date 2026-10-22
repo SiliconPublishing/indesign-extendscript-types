@@ -20,7 +20,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
 /**
  * Feather effect settings.
  */
-export interface FeatherSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M> {
+export interface FeatherSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M>, InDesignPlugins.FeatherSetting<M> {
   /** Resolves the proxy into the individual {@link FeatherSetting} objects it stands for. */
   getElements(): FeatherSetting<'single', TParent>[];
 

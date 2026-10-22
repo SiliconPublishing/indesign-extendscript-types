@@ -29,7 +29,7 @@ export interface Swatches
   extends
     BaseCollection<AnySwatch, Swatch, SwatchesPlural>,
     IdCollection<AnySwatch>,
-    NamedCollection<AnySwatch> {
+    NamedCollection<AnySwatch>, InDesignPlugins.Swatches {
 }
 
 /**

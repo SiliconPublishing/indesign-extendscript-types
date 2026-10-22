@@ -28,7 +28,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * The page reference for an {@link Index} topic — the location in the
  * document's text that the generated index entry points to.
  */
-export interface PageReference {
+export interface PageReference extends InDesignPlugins.PageReference<'single'> {
   /**
    * A collection of events
    */
@@ -159,7 +159,7 @@ export interface PageReference {
  * The page reference for an {@link Index} topic — the location in the
  * document's text that the generated index entry points to.
  */
-export interface PageReferencePlural {
+export interface PageReferencePlural extends InDesignPlugins.PageReference<'plural'> {
   /**
    * A collection of events
    */

@@ -22,7 +22,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Mojikumi UI preferences.
  */
-export interface MojikumiUiPreference {
+export interface MojikumiUiPreference extends InDesignPlugins.MojikumiUiPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -151,7 +151,7 @@ export interface MojikumiUiPreference {
 /**
  * Mojikumi UI preferences.
  */
-export interface MojikumiUiPreferencePlural {
+export interface MojikumiUiPreferencePlural extends InDesignPlugins.MojikumiUiPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

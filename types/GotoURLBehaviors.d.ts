@@ -24,7 +24,7 @@ export interface GotoURLBehaviors
   extends
     BaseCollection<GotoURLBehavior, GotoURLBehavior, GotoURLBehavior<'plural'>>,
     IdCollection<GotoURLBehavior>,
-    NamedCollection<GotoURLBehavior> {
+    NamedCollection<GotoURLBehavior>, InDesignPlugins.GotoURLBehaviors {
   /**
    * Creates a new goto URL behavior.
    * @param withProperties Initial values for properties of the new {@link GotoURLBehavior}.

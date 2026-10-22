@@ -49,7 +49,7 @@ export interface CharacterStyle<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document | Application | CharacterStyleGroup, M>,
     IndexedDOMObject<Document | Application | CharacterStyleGroup, M>,
     CharacterStyleAttributes<M, NothingEnum.NOTHING, null, NothingEnum.NOTHING>,
-    TextGraphicAttributes<M, NothingEnum.NOTHING> {
+    TextGraphicAttributes<M, NothingEnum.NOTHING>, InDesignPlugins.CharacterStyle<M> {
   /** Resolves the proxy into the individual {@link CharacterStyle} objects it stands for. */
   getElements(): CharacterStyle<'single'>[];
 

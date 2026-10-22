@@ -18,7 +18,7 @@ import type { Dialog } from './Dialog';
  * @collection IntegerCombobox
  */
 export interface IntegerComboboxes
-  extends BaseCollection<IntegerCombobox, IntegerCombobox, IntegerCombobox<'plural'>>, IdCollection<IntegerCombobox> {
+  extends BaseCollection<IntegerCombobox, IntegerCombobox, IntegerCombobox<'plural'>>, IdCollection<IntegerCombobox>, InDesignPlugins.IntegerComboboxes {
   /**
    * Creates and adds a new integer combobox control to the dialog.
    * @param withProperties Initial values for properties of the new control.

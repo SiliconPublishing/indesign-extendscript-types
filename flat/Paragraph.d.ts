@@ -164,7 +164,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * level number actually rendered for this paragraph, as opposed to the numbering settings
  * ({@link bulletsAndNumberingListType}, {@link numberingFormat} and the rest) that produce them.
  */
-export interface Paragraph<TParent = TextParent> {
+export interface Paragraph<TParent = TextParent> extends InDesignPlugins.Paragraph<'single'> {
   /**
    * A collection of events
    */
@@ -1563,7 +1563,7 @@ export interface Paragraph<TParent = TextParent> {
  * level number actually rendered for this paragraph, as opposed to the numbering settings
  * ({@link bulletsAndNumberingListType}, {@link numberingFormat} and the rest) that produce them.
  */
-export interface ParagraphPlural<TParent = TextParent> {
+export interface ParagraphPlural<TParent = TextParent> extends InDesignPlugins.Paragraph<'plural'> {
   /**
    * A collection of events
    */

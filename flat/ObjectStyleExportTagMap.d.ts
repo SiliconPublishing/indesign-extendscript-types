@@ -24,7 +24,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * class/attributes, owned by an {@link ObjectStyle} and consulted when
  * exporting styled frames.
  */
-export interface ObjectStyleExportTagMap {
+export interface ObjectStyleExportTagMap extends InDesignPlugins.ObjectStyleExportTagMap<'single'> {
   /**
    * A collection of events
    */
@@ -130,7 +130,7 @@ export interface ObjectStyleExportTagMap {
  * class/attributes, owned by an {@link ObjectStyle} and consulted when
  * exporting styled frames.
  */
-export interface ObjectStyleExportTagMapPlural {
+export interface ObjectStyleExportTagMapPlural extends InDesignPlugins.ObjectStyleExportTagMap<'plural'> {
   /**
    * A collection of events
    */

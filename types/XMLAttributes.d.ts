@@ -18,7 +18,7 @@ import type { XMLElement } from './XMLElement';
  * @collection XMLAttribute
  */
 export interface XMLAttributes
-  extends BaseCollection<XMLAttribute, XMLAttribute, XMLAttribute<'plural'>>, NamedCollection<XMLAttribute> {
+  extends BaseCollection<XMLAttribute, XMLAttribute, XMLAttribute<'plural'>>, NamedCollection<XMLAttribute>, InDesignPlugins.XMLAttributes {
   /**
    * Adds a new name-value pair attribute to the {@link XMLElement}.
    *

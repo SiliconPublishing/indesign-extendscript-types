@@ -64,7 +64,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * page items, and {@link articleChildren} tracks which are also members of an
  * {@link Article} for reading-order export.
  */
-export interface Group<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, Group, M>, PageItemContainer<Group, M> {
+export interface Group<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, Group, M>, PageItemContainer<Group, M>, InDesignPlugins.Group<M> {
   /** Resolves the proxy into the individual {@link Group} objects it stands for. */
   getElements(): Group<TParent, 'single'>[];
 

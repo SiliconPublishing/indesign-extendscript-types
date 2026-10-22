@@ -28,7 +28,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Document layout defaults (page size, orientation, facing pages, ruler origin) readable/writable at both the document and application-default level.
  */
-export interface DocumentPreference {
+export interface DocumentPreference extends InDesignPlugins.DocumentPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -208,7 +208,7 @@ export interface DocumentPreference {
 /**
  * Document layout defaults (page size, orientation, facing pages, ruler origin) readable/writable at both the document and application-default level.
  */
-export interface DocumentPreferencePlural {
+export interface DocumentPreferencePlural extends InDesignPlugins.DocumentPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

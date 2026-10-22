@@ -13,7 +13,7 @@ import type { BehaviorEvents } from './Enums/BehaviorEvents';
 /**
  * A behavior that opens a web URL in a browser.
  */
-export interface GotoURLBehavior<M extends Mode = 'single'> extends Behavior<M>{
+export interface GotoURLBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignPlugins.GotoURLBehavior<M>{
   /** Resolves the proxy into the individual {@link GotoURLBehavior} objects it stands for. */
   getElements(): GotoURLBehavior<'single'>[];
 

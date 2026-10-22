@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection TextStyleRange
  */
-export interface TextStyleRanges<TParent = TextParent> {
+export interface TextStyleRanges<TParent = TextParent> extends InDesignPlugins.TextStyleRanges {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

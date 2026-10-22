@@ -59,7 +59,7 @@ import type { XMLTag } from './XMLTag';
 /**
  * Character-type conversion criteria (e.g. half-width to full-width, katakana to hiragana) and formatting options, used with {@link Application.changeTransliterate}.
  */
-export interface ChangeTransliteratePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface ChangeTransliteratePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.ChangeTransliteratePreference<M> {
   /** Resolves the proxy into the individual {@link ChangeTransliteratePreference} objects it stands for. */
   getElements(): ChangeTransliteratePreference<'single'>[];
 

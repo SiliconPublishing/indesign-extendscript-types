@@ -33,7 +33,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Bevel and emboss effect settings.
  */
-export interface BevelAndEmbossSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> {
+export interface BevelAndEmbossSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.BevelAndEmbossSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -168,7 +168,7 @@ export interface BevelAndEmbossSetting<TParent = TransparencySetting | StrokeTra
 /**
  * Bevel and emboss effect settings.
  */
-export interface BevelAndEmbossSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> {
+export interface BevelAndEmbossSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.BevelAndEmbossSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

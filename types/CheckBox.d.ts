@@ -72,7 +72,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * A PDF check-box form field: a two-state (checked/unchecked) toggle control
  * in an interactive PDF form.
  */
-export interface CheckBox<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, CheckBox, M>, FormFieldSurface<CheckBox, M> {
+export interface CheckBox<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, CheckBox, M>, FormFieldSurface<CheckBox, M>, InDesignPlugins.CheckBox<M> {
   /** Resolves the proxy into the individual {@link CheckBox} objects it stands for. */
   getElements(): CheckBox<TParent, 'single'>[];
 

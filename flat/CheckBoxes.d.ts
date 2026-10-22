@@ -26,7 +26,7 @@ import type { PageItemAddReference } from './_base/Collections';
  *
  * @collection CheckBox
  */
-export interface CheckBoxes<TParent = PageItemParent> {
+export interface CheckBoxes<TParent = PageItemParent> extends InDesignPlugins.CheckBoxes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

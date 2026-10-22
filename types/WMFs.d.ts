@@ -20,5 +20,5 @@ import type { PageItemParent } from './_base/Parents';
  * @collection WMF
  */
 export interface WMFs<TParent = PageItemParent>
-  extends BaseCollection<WMF<TParent>, WMF, WMF<TParent, 'plural'>>, IdCollection<WMF<TParent>>, NamedCollection<WMF<TParent>> {
+  extends BaseCollection<WMF<TParent>, WMF, WMF<TParent, 'plural'>>, IdCollection<WMF<TParent>>, NamedCollection<WMF<TParent>>, InDesignPlugins.WMFs {
 }

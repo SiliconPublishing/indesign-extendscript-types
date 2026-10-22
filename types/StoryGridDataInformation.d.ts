@@ -20,7 +20,7 @@ import type { CharacterCountLocation } from './Enums/CharacterCountLocation';
  * Default character-grid formatting properties for the document or
  * application-wide story (frame) grid.
  */
-export interface StoryGridDataInformation<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
+export interface StoryGridDataInformation<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.StoryGridDataInformation<M> {
   /** Resolves the proxy into the individual {@link StoryGridDataInformation} objects it stands for. */
   getElements(): StoryGridDataInformation<'single'>[];
 

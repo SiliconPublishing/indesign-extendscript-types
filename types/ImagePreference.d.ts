@@ -12,7 +12,7 @@ import type { Application } from './Application';
 /**
  * Image preferences.
  */
-export interface ImagePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface ImagePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.ImagePreference<M> {
   /** Resolves the proxy into the individual {@link ImagePreference} objects it stands for. */
   getElements(): ImagePreference<'single'>[];
 

@@ -24,6 +24,9 @@ InDesign 2026 (21.6.0.57).
   reads/writes documented.
 - **XMP library** fully declared from measurement (`XMPMeta`, `XMPFile`, `XMPUtils`, `XMPDateTime`,
   `XMPIterator`, `XMPProperty`, `XMPConst`'s 161 constants), replacing a stub.
+- **Plugins:** `npm run plugin` declares a plugin's scripting API as an add-on package; every
+  DOM class has an `InDesignPlugins.<Class>` extension point. `npm run dump` refuses to snapshot
+  with third-party plugins installed.
 - **Corrections from probes:** `MasterSpread.primaryTextFrame` takes no `NothingEnum`;
   `PrintEvent.documentPrintUiOption` is an array; `TimingTarget.parent` can be a `Spread`;
   text objects' attribute setters take no `NothingEnum` (styles' do).

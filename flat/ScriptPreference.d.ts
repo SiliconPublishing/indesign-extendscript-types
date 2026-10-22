@@ -26,7 +26,7 @@ import type { Event } from './Event';
  * Settings controlling how scripts run — dialog/alert interaction level,
  * measurement units, and whether the screen redraws during execution.
  */
-export interface ScriptPreference {
+export interface ScriptPreference extends InDesignPlugins.ScriptPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -135,7 +135,7 @@ export interface ScriptPreference {
  * Settings controlling how scripts run — dialog/alert interaction level,
  * measurement units, and whether the screen redraws during execution.
  */
-export interface ScriptPreferencePlural {
+export interface ScriptPreferencePlural extends InDesignPlugins.ScriptPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -25,7 +25,7 @@ import type { Fonts } from './Fonts';
 export interface Font<M extends Mode = 'single'>
   extends EventTargetDOMObject<Application | Document, M>,
     IndexedDOMObject<Application | Document, M>,
-    ReadonlyNamedDOMObject<Application | Document, M> {
+    ReadonlyNamedDOMObject<Application | Document, M>, InDesignPlugins.Font<M> {
   /** Resolves the proxy into the individual {@link Font} objects it stands for. */
   getElements(): Font<'single'>[];
 

@@ -24,7 +24,7 @@ export interface MojikumiTables
   extends
     BaseCollection<MojikumiTable, MojikumiTable, MojikumiTable<'plural'>>,
     IdCollection<MojikumiTable>,
-    NamedCollection<MojikumiTable> {
+    NamedCollection<MojikumiTable>, InDesignPlugins.MojikumiTables {
   /**
    * Creates a new mojikumi table from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link MojikumiTable}. Must include `name`.

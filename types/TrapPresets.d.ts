@@ -24,7 +24,7 @@ export interface TrapPresets
   extends
     BaseCollection<TrapPreset, TrapPreset, TrapPreset<'plural'>>,
     IdCollection<TrapPreset>,
-    NamedCollection<TrapPreset> {
+    NamedCollection<TrapPreset>, InDesignPlugins.TrapPresets {
   /**
    * Creates a new trap preset.
    *

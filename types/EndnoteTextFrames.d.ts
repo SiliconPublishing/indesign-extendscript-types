@@ -27,5 +27,5 @@ export interface EndnoteTextFrames<TParent = PageItemParent>
     BaseCollection<EndnoteTextFrame<TParent>, EndnoteTextFrame, EndnoteTextFrame<TParent, 'plural'>>,
     IdCollection<EndnoteTextFrame<TParent>>,
     NamedCollection<EndnoteTextFrame<TParent>>,
-    AddablePageItemCollection<EndnoteTextFrame<TParent>, EndnoteTextFrame> {
+    AddablePageItemCollection<EndnoteTextFrame<TParent>, EndnoteTextFrame>, InDesignPlugins.EndnoteTextFrames {
 }

@@ -17,7 +17,7 @@ import type { PathPoint } from './PathPoint';
  *
  * @collection Path
  */
-export interface Paths extends BaseCollection<Path, Path, Path<'plural'>> {
+export interface Paths extends BaseCollection<Path, Path, Path<'plural'>>, InDesignPlugins.Paths {
   /**
    * Creates a new path on the parent object.
    * @param withProperties Initial values for properties of the new path.

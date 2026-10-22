@@ -31,7 +31,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * nestable inside a document's or the application's
  * {@link CharacterStyleGroups} collection (or another group).
  */
-export interface CharacterStyleGroup {
+export interface CharacterStyleGroup extends InDesignPlugins.CharacterStyleGroup<'single'> {
   /**
    * A collection of events
    */
@@ -161,7 +161,7 @@ export interface CharacterStyleGroup {
  * nestable inside a document's or the application's
  * {@link CharacterStyleGroups} collection (or another group).
  */
-export interface CharacterStyleGroupPlural {
+export interface CharacterStyleGroupPlural extends InDesignPlugins.CharacterStyleGroup<'plural'> {
   /**
    * A collection of events
    */

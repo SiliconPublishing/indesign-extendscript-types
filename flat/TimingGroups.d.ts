@@ -20,7 +20,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection TimingGroup
  */
-export interface TimingGroups {
+export interface TimingGroups extends InDesignPlugins.TimingGroups {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

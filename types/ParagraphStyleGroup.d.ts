@@ -23,7 +23,7 @@ import type { LocationOptions } from './Enums/LocationOptions';
  */
 export interface ParagraphStyleGroup<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document | Application | ParagraphStyleGroup, M>,
-    IndexedDOMObject<Document | Application | ParagraphStyleGroup, M> {
+    IndexedDOMObject<Document | Application | ParagraphStyleGroup, M>, InDesignPlugins.ParagraphStyleGroup<M> {
   /** Resolves the proxy into the individual {@link ParagraphStyleGroup} objects it stands for. */
   getElements(): ParagraphStyleGroup<'single'>[];
 

@@ -37,7 +37,7 @@ export interface RuleDataObjects
   extends
     BaseCollection<RuleDataObject, RuleDataObject, RuleDataObject<'plural'>>,
     IdCollection<RuleDataObject>,
-    NamedCollection<RuleDataObject> {
+    NamedCollection<RuleDataObject>, InDesignPlugins.RuleDataObjects {
   /**
    * Adds a new preflight rule data entry to a {@link PreflightProfileRule}.
    * Rule data objects function as the parameters for Preflight Rules

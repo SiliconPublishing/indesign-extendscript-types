@@ -71,7 +71,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * A PDF text-field form field: a single- or multi-line editable text box in
  * an interactive PDF form.
  */
-export interface TextBox<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, TextBox, M>, FormFieldSurface<TextBox, M> {
+export interface TextBox<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, TextBox, M>, FormFieldSurface<TextBox, M>, InDesignPlugins.TextBox<M> {
   /** Resolves the proxy into the individual {@link TextBox} objects it stands for. */
   getElements(): TextBox<TParent, 'single'>[];
 

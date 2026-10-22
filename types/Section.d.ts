@@ -19,7 +19,7 @@ import type { NumberingStyle } from './Enums/NumberingStyle';
 export interface Section<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document, M>,
     IndexedDOMObject<Document, M>,
-    NamableDOMObject<Document, M> {
+    NamableDOMObject<Document, M>, InDesignPlugins.Section<M> {
   /** Resolves the proxy into the individual {@link Section} objects it stands for. */
   getElements(): Section<'single'>[];
 

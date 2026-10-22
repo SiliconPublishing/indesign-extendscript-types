@@ -65,7 +65,7 @@ import type { FilePath } from './_base/Types';
  * The object criteria a find/change object operation matches against, set via
  * {@link Application.findObjectPreferences} and used by {@link Application.findObject}.
  */
-export interface FindObjectPreference {
+export interface FindObjectPreference extends InDesignPlugins.FindObjectPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -506,7 +506,7 @@ export interface FindObjectPreference {
  * The object criteria a find/change object operation matches against, set via
  * {@link Application.findObjectPreferences} and used by {@link Application.findObject}.
  */
-export interface FindObjectPreferencePlural {
+export interface FindObjectPreferencePlural extends InDesignPlugins.FindObjectPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

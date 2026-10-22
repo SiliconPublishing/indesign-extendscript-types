@@ -23,7 +23,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * The language on which hyphenation rules and spell checking are based, as applied to a text
  * range through its `appliedLanguage`.
  */
-export interface Language {
+export interface Language extends InDesignPlugins.Language<'single'> {
   /**
    * A collection of events
    */
@@ -149,7 +149,7 @@ export interface Language {
  * The language on which hyphenation rules and spell checking are based, as applied to a text
  * range through its `appliedLanguage`.
  */
-export interface LanguagePlural {
+export interface LanguagePlural extends InDesignPlugins.Language<'plural'> {
   /**
    * A collection of events
    */

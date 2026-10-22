@@ -21,7 +21,7 @@ import type { EventPhases } from './Enums/EventPhases';
  * An event dispatched during a document lifecycle transition — creation,
  * opening, saving, reverting, or closing.
  */
-export interface DocumentEvent {
+export interface DocumentEvent extends InDesignPlugins.DocumentEvent<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -106,7 +106,7 @@ export interface DocumentEvent {
  * An event dispatched during a document lifecycle transition — creation,
  * opening, saving, reverting, or closing.
  */
-export interface DocumentEventPlural {
+export interface DocumentEventPlural extends InDesignPlugins.DocumentEvent<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

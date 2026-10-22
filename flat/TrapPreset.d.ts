@@ -27,7 +27,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A named set of trapping settings, applied when trapping a document for
  * separations-based printing.
  */
-export interface TrapPreset {
+export interface TrapPreset extends InDesignPlugins.TrapPreset<'single'> {
   /**
    * A collection of events
    */
@@ -210,7 +210,7 @@ export interface TrapPreset {
  * A named set of trapping settings, applied when trapping a document for
  * separations-based printing.
  */
-export interface TrapPresetPlural {
+export interface TrapPresetPlural extends InDesignPlugins.TrapPreset<'plural'> {
   /**
    * A collection of events
    */

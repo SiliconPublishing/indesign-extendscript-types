@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
  * Settings controlling what format content copies and pastes in, and whether
  * PDF data placed on the system clipboard survives quitting the application.
  */
-export interface ClipboardPreference {
+export interface ClipboardPreference extends InDesignPlugins.ClipboardPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -132,7 +132,7 @@ export interface ClipboardPreference {
  * Settings controlling what format content copies and pastes in, and whether
  * PDF data placed on the system clipboard survives quitting the application.
  */
-export interface ClipboardPreferencePlural {
+export interface ClipboardPreferencePlural extends InDesignPlugins.ClipboardPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

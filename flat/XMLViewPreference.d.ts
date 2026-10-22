@@ -22,7 +22,7 @@ import type { FilePath } from './_base/Types';
 /**
  * XML view preferences.
  */
-export interface XMLViewPreference {
+export interface XMLViewPreference extends InDesignPlugins.XMLViewPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -126,7 +126,7 @@ export interface XMLViewPreference {
 /**
  * XML view preferences.
  */
-export interface XMLViewPreferencePlural {
+export interface XMLViewPreferencePlural extends InDesignPlugins.XMLViewPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

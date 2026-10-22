@@ -13,7 +13,7 @@ import type { ObjectTypes } from './Enums/ObjectTypes';
 /**
  * Options controlling which objects a find/change operation considers.
  */
-export interface FindChangeObjectOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface FindChangeObjectOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.FindChangeObjectOption<M> {
   /** Resolves the proxy into the individual {@link FindChangeObjectOption} objects it stands for. */
   getElements(): FindChangeObjectOption<'single'>[];
 

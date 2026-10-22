@@ -80,7 +80,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Search-and-replace criteria and formatting options, used with {@link Application.changeText}.
  */
-export interface ChangeTextPreference {
+export interface ChangeTextPreference extends InDesignPlugins.ChangeTextPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -838,7 +838,7 @@ export interface ChangeTextPreference {
 /**
  * Search-and-replace criteria and formatting options, used with {@link Application.changeText}.
  */
-export interface ChangeTextPreferencePlural {
+export interface ChangeTextPreferencePlural extends InDesignPlugins.ChangeTextPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

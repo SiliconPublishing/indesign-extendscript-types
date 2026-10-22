@@ -15,7 +15,7 @@ import type { RulerOrigin } from './Enums/RulerOrigin';
 /**
  * Application- or document-wide view defaults (rulers, guides, screen mode, measurement units).
  */
-export interface ViewPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
+export interface ViewPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.ViewPreference<M> {
   /** Resolves the proxy into the individual {@link ViewPreference} objects it stands for. */
   getElements(): ViewPreference<'single'>[];
 

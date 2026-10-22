@@ -21,7 +21,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
 export interface Asset<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Library, M>,
     IndexedDOMObject<Library, M>,
-    NamableDOMObject<Library, M> {
+    NamableDOMObject<Library, M>, InDesignPlugins.Asset<M> {
   /** Resolves the proxy into the individual {@link Asset} objects it stands for. */
   getElements(): Asset<'single'>[];
 

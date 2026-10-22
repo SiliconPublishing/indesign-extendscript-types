@@ -40,7 +40,7 @@ import type { VerticalJustification } from './Enums/VerticalJustification';
  * every attribute a live {@link Cell} carries. Reading an attribute that was never set
  * returns `NothingEnum.NOTHING` rather than a live default.
  */
-export interface CellStyle {
+export interface CellStyle extends InDesignPlugins.CellStyle<'single'> {
   /**
    * A collection of events
    */
@@ -385,7 +385,7 @@ export interface CellStyle {
  * every attribute a live {@link Cell} carries. Reading an attribute that was never set
  * returns `NothingEnum.NOTHING` rather than a live default.
  */
-export interface CellStylePlural {
+export interface CellStylePlural extends InDesignPlugins.CellStyle<'plural'> {
   /**
    * A collection of events
    */

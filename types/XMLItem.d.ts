@@ -21,7 +21,7 @@ import type { XMLInstruction } from './XMLInstruction';
  */
 export interface XMLItem<M extends Mode = 'single'>
   extends EventTargetDOMObject<Document | XMLElement, M>,
-    IndexedDOMObject<Document | XMLElement, M> {
+    IndexedDOMObject<Document | XMLElement, M>, InDesignPlugins.XMLItem<M> {
   /** Resolves the proxy into the individual {@link XMLItem} objects it stands for. */
   getElements(): XMLItem<'single'>[];
 

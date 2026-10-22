@@ -19,7 +19,7 @@ import type { InsertionPoint } from './InsertionPoint';
  *
  * @collection DataMergeTextPlaceholder
  */
-export interface DataMergeTextPlaceholders extends BaseCollection<DataMergeTextPlaceholder, DataMergeTextPlaceholder, DataMergeTextPlaceholder<'plural'>> {
+export interface DataMergeTextPlaceholders extends BaseCollection<DataMergeTextPlaceholder, DataMergeTextPlaceholder, DataMergeTextPlaceholder<'plural'>>, InDesignPlugins.DataMergeTextPlaceholders {
   /**
    * Creates a new data merge text placeholder.
    *

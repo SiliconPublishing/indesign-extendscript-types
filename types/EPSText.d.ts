@@ -39,7 +39,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * A legacy page item that holds text exported as EPS artwork rather than live
  * text. See {@link PageItem} for the shared page-item surface.
  */
-export interface EPSText<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, PageItemParent, M> {
+export interface EPSText<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, PageItemParent, M>, InDesignPlugins.EPSText<M> {
   /** Resolves the proxy into the individual {@link EPSText} objects it stands for. */
   getElements(): EPSText<TParent, 'single'>[];
 

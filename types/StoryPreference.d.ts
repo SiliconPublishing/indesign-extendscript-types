@@ -18,7 +18,7 @@ import type { StoryDirectionOptions } from './Enums/StoryDirectionOptions';
 /**
  * Story preferences.
  */
-export interface StoryPreference<M extends Mode = 'single'> extends EventTargetDOMObject<XmlStory | Application | Document | Story | ObjectStyle, M> {
+export interface StoryPreference<M extends Mode = 'single'> extends EventTargetDOMObject<XmlStory | Application | Document | Story | ObjectStyle, M>, InDesignPlugins.StoryPreference<M> {
   /** Resolves the proxy into the individual {@link StoryPreference} objects it stands for. */
   getElements(): StoryPreference<'single'>[];
 

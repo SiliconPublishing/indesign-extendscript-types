@@ -18,7 +18,7 @@ import type { Library } from './Library';
  * @collection Library
  */
 export interface Libraries
-  extends BaseCollection<Library, Library, Library<'plural'>>, NamedCollection<Library> {
+  extends BaseCollection<Library, Library, Library<'plural'>>, NamedCollection<Library>, InDesignPlugins.Libraries {
   /**
    * Creates or opens an object library.
    *

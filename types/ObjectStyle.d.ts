@@ -52,7 +52,7 @@ import type { FlexObject } from './FlexObject';
 export interface ObjectStyle<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document | Application | ObjectStyleGroup, M>,
     IndexedDOMObject<Document | Application | ObjectStyleGroup, M>,
-    GraphicAttributesBase<M>{
+    GraphicAttributesBase<M>, InDesignPlugins.ObjectStyle<M>{
   /** Resolves the proxy into the individual {@link ObjectStyle} objects it stands for. */
   getElements(): ObjectStyle<'single'>[];
 

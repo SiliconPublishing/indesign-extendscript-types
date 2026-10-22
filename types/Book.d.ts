@@ -31,7 +31,7 @@ import type { File, Folder, FilePath, FolderPath } from './_base/Types';
  */
 export interface Book<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Application, M>,
-    IndexedDOMObject<Application, M> {
+    IndexedDOMObject<Application, M>, InDesignPlugins.Book<M> {
   /** Resolves the proxy into the individual {@link Book} objects it stands for. */
   getElements(): Book<'single'>[];
 

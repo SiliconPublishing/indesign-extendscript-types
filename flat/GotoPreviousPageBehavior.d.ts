@@ -25,7 +25,7 @@ import type { BehaviorParent } from './_base/Parents';
 /**
  * A behavior that jumps to the previous page of the document.
  */
-export interface GotoPreviousPageBehavior {
+export interface GotoPreviousPageBehavior extends InDesignPlugins.GotoPreviousPageBehavior<'single'> {
   /**
    * A collection of events
    */
@@ -145,7 +145,7 @@ export interface GotoPreviousPageBehavior {
 /**
  * A behavior that jumps to the previous page of the document.
  */
-export interface GotoPreviousPageBehaviorPlural {
+export interface GotoPreviousPageBehaviorPlural extends InDesignPlugins.GotoPreviousPageBehavior<'plural'> {
   /**
    * A collection of events
    */

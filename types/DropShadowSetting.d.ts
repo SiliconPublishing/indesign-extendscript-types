@@ -21,7 +21,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
 /**
  * Drop shadow settings.
  */
-export interface DropShadowSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M> {
+export interface DropShadowSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M>, InDesignPlugins.DropShadowSetting<M> {
   /** Resolves the proxy into the individual {@link DropShadowSetting} objects it stands for. */
   getElements(): DropShadowSetting<'single', TParent>[];
 

@@ -22,7 +22,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Auto-correct preferences.
  */
-export interface AutoCorrectPreference {
+export interface AutoCorrectPreference extends InDesignPlugins.AutoCorrectPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -115,7 +115,7 @@ export interface AutoCorrectPreference {
 /**
  * Auto-correct preferences.
  */
-export interface AutoCorrectPreferencePlural {
+export interface AutoCorrectPreferencePlural extends InDesignPlugins.AutoCorrectPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

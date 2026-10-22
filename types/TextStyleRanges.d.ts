@@ -20,7 +20,7 @@ import type { Word } from './Word';
  *
  * @collection TextStyleRange
  */
-export interface TextStyleRanges<TParent = TextParent> extends BaseCollection<TextStyleRange<TParent>, Text, TextStyleRange<TParent, 'plural'>, Text<TParent, 'plural'>> {
+export interface TextStyleRanges<TParent = TextParent> extends BaseCollection<TextStyleRange<TParent>, Text, TextStyleRange<TParent, 'plural'>, Text<TParent, 'plural'>>, InDesignPlugins.TextStyleRanges {
   /**
    * Returns the contiguous {@link Text} range between two bounds (inclusive).
    *

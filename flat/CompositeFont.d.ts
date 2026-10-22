@@ -27,7 +27,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * substitute a different font (and scale/baseline adjustment) for a Unicode
  * character range, letting CJK and Latin text share one applied font name.
  */
-export interface CompositeFont {
+export interface CompositeFont extends InDesignPlugins.CompositeFont<'single'> {
   /**
    * A collection of events
    */
@@ -145,7 +145,7 @@ export interface CompositeFont {
  * substitute a different font (and scale/baseline adjustment) for a Unicode
  * character range, letting CJK and Latin text share one applied font name.
  */
-export interface CompositeFontPlural {
+export interface CompositeFontPlural extends InDesignPlugins.CompositeFont<'plural'> {
   /**
    * A collection of events
    */

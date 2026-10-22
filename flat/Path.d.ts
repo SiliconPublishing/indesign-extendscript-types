@@ -27,7 +27,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * The geometric outline of a spline item, text frame, or other path-bearing
  * object — an ordered sequence of {@link PathPoint}s.
  */
-export interface Path {
+export interface Path extends InDesignPlugins.Path<'single'> {
   /**
    * A collection of events
    */
@@ -137,7 +137,7 @@ export interface Path {
  * The geometric outline of a spline item, text frame, or other path-bearing
  * object — an ordered sequence of {@link PathPoint}s.
  */
-export interface PathPlural {
+export interface PathPlural extends InDesignPlugins.Path<'plural'> {
   /**
    * A collection of events
    */

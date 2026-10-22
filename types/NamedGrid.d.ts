@@ -22,7 +22,7 @@ import type { Preferences } from './Preferences';
 export interface NamedGrid<M extends Mode = 'single'>
   extends LabelableEventDOMObject<DocumentOrApplication, M>,
     IndexedDOMObject<DocumentOrApplication, M>,
-    NamableDOMObject<DocumentOrApplication, M> {
+    NamableDOMObject<DocumentOrApplication, M>, InDesignPlugins.NamedGrid<M> {
   /** Resolves the proxy into the individual {@link NamedGrid} objects it stands for. */
   getElements(): NamedGrid<'single'>[];
 

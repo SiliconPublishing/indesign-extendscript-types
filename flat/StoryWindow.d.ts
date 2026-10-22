@@ -30,7 +30,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * independent of its page layout -- as opposed to a {@link LayoutWindow}'s
  * page-geometry view of the same {@link Document}.
  */
-export interface StoryWindow {
+export interface StoryWindow extends InDesignPlugins.StoryWindow<'single'> {
   /**
    * A collection of events
    */
@@ -154,7 +154,7 @@ export interface StoryWindow {
  * independent of its page layout -- as opposed to a {@link LayoutWindow}'s
  * page-geometry view of the same {@link Document}.
  */
-export interface StoryWindowPlural {
+export interface StoryWindowPlural extends InDesignPlugins.StoryWindow<'plural'> {
   /**
    * A collection of events
    */

@@ -13,7 +13,7 @@ import type { ComposeUsing } from './Enums/ComposeUsing';
 /**
  * User dictionary preferences.
  */
-export interface DictionaryPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
+export interface DictionaryPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.DictionaryPreference<M> {
   /** Resolves the proxy into the individual {@link DictionaryPreference} objects it stands for. */
   getElements(): DictionaryPreference<'single'>[];
 

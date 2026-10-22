@@ -21,7 +21,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * "Paragraph Text," or "Chapter Number"—that constitute the formatted cross-reference.
  * @collection BuildingBlock
  */
-export interface BuildingBlocks {
+export interface BuildingBlocks extends InDesignPlugins.BuildingBlocks {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

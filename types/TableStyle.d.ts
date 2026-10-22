@@ -27,7 +27,7 @@ import type { TableCaptionPositionOptions } from './Enums/TableCaptionPositionOp
 export interface TableStyle<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document | Application | TableStyleGroup, M>,
     IndexedDOMObject<Document | Application | TableStyleGroup, M>,
-    TableStyleAttributes<M>{
+    TableStyleAttributes<M>, InDesignPlugins.TableStyle<M>{
   /** Resolves the proxy into the individual {@link TableStyle} objects it stands for. */
   getElements(): TableStyle<'single'>[];
 

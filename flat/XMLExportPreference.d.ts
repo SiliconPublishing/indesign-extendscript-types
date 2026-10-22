@@ -30,7 +30,7 @@ import type { Event } from './Event';
 /**
  * XML export preferences.
  */
-export interface XMLExportPreference {
+export interface XMLExportPreference extends InDesignPlugins.XMLExportPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -171,7 +171,7 @@ export interface XMLExportPreference {
 /**
  * XML export preferences.
  */
-export interface XMLExportPreferencePlural {
+export interface XMLExportPreferencePlural extends InDesignPlugins.XMLExportPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

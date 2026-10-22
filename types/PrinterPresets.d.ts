@@ -18,7 +18,7 @@ import type { PrinterPreset } from './PrinterPreset';
  * @collection PrinterPreset
  */
 export interface PrinterPresets
-  extends BaseCollection<PrinterPreset, PrinterPreset, PrinterPreset<'plural'>>, NamedCollection<PrinterPreset> {
+  extends BaseCollection<PrinterPreset, PrinterPreset, PrinterPreset<'plural'>>, NamedCollection<PrinterPreset>, InDesignPlugins.PrinterPresets {
   /**
    * Creates a new {@link PrinterPreset} with default printing values.
    * @param withProperties Initial values for properties of the new preset, such as its `name`.

@@ -15,5 +15,5 @@ import type { Dialog } from './Dialog';
  *
  * @collection Widget
  */
-export interface Widgets extends BaseCollection<Widget, Widget, Widget<'plural'>>, IdCollection<Widget> {
+export interface Widgets extends BaseCollection<Widget, Widget, Widget<'plural'>>, IdCollection<Widget>, InDesignPlugins.Widgets {
 }

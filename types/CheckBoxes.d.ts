@@ -27,5 +27,5 @@ export interface CheckBoxes<TParent = PageItemParent>
     BaseCollection<CheckBox<TParent>, CheckBox, CheckBox<TParent, 'plural'>>,
     IdCollection<CheckBox<TParent>>,
     NamedCollection<CheckBox<TParent>>,
-    AddablePageItemCollection<CheckBox<TParent>, CheckBox> {
+    AddablePageItemCollection<CheckBox<TParent>, CheckBox>, InDesignPlugins.CheckBoxes {
 }

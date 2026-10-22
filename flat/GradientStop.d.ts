@@ -24,7 +24,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A single color stop within a {@link Gradient}, at a position along its length.
  */
-export interface GradientStop {
+export interface GradientStop extends InDesignPlugins.GradientStop<'single'> {
   /**
    * A collection of events
    */
@@ -126,7 +126,7 @@ export interface GradientStop {
 /**
  * A single color stop within a {@link Gradient}, at a position along its length.
  */
-export interface GradientStopPlural {
+export interface GradientStopPlural extends InDesignPlugins.GradientStop<'plural'> {
   /**
    * A collection of events
    */

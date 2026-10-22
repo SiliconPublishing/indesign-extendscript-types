@@ -30,7 +30,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Inner shadow effect settings.
  */
-export interface InnerShadowSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> {
+export interface InnerShadowSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.InnerShadowSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -161,7 +161,7 @@ export interface InnerShadowSetting<TParent = TransparencySetting | StrokeTransp
 /**
  * Inner shadow effect settings.
  */
-export interface InnerShadowSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> {
+export interface InnerShadowSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.InnerShadowSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

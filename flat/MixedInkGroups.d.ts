@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection MixedInkGroup
  */
-export interface MixedInkGroups {
+export interface MixedInkGroups extends InDesignPlugins.MixedInkGroups {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

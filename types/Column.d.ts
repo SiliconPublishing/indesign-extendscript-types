@@ -34,7 +34,7 @@ export interface Column<M extends Mode = 'single'>
   extends EventTargetDOMObject<Table, M>,
     IndexedDOMObject<Table, M>,
     TableGeometry<M>,
-    TableCellAttributes<M>{
+    TableCellAttributes<M>, InDesignPlugins.Column<M>{
   /** Resolves the proxy into the individual {@link Column} objects it stands for. */
   getElements(): Column<'single'>[];
 

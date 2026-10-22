@@ -28,7 +28,7 @@ import type { SwatchParent } from './_base/Parents';
  * A tint swatch — a percentage of a {@link baseColor}. Every property besides
  * {@link tintValue} is derived and read-only.
  */
-export interface Tint {
+export interface Tint extends InDesignPlugins.Tint<'single'> {
   /**
    * A collection of events
    */
@@ -160,7 +160,7 @@ export interface Tint {
  * A tint swatch — a percentage of a {@link baseColor}. Every property besides
  * {@link tintValue} is derived and read-only.
  */
-export interface TintPlural {
+export interface TintPlural extends InDesignPlugins.Tint<'plural'> {
   /**
    * A collection of events
    */

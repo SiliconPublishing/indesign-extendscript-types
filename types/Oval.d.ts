@@ -72,7 +72,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
 /**
  * An ellipse — the round counterpart of {@link Rectangle}.
  */
-export interface Oval<TParent = PageItemParent, M extends Mode = 'single'> extends SplineItem<TParent, Oval, M> {
+export interface Oval<TParent = PageItemParent, M extends Mode = 'single'> extends SplineItem<TParent, Oval, M>, InDesignPlugins.Oval<M> {
   /** Resolves the proxy into the individual {@link Oval} objects it stands for. */
   getElements(): Oval<TParent, 'single'>[];
 

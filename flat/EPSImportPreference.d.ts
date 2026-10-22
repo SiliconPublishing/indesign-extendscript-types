@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * EPS import preferences.
  */
-export interface EPSImportPreference {
+export interface EPSImportPreference extends InDesignPlugins.EPSImportPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -119,7 +119,7 @@ export interface EPSImportPreference {
 /**
  * EPS import preferences.
  */
-export interface EPSImportPreferencePlural {
+export interface EPSImportPreferencePlural extends InDesignPlugins.EPSImportPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

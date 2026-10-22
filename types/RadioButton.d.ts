@@ -72,7 +72,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * A PDF radio-button form field: one button in a mutually-exclusive group of
  * radio buttons sharing the same export name in an interactive PDF form.
  */
-export interface RadioButton<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, RadioButton, M>, FormFieldSurface<RadioButton, M> {
+export interface RadioButton<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, RadioButton, M>, FormFieldSurface<RadioButton, M>, InDesignPlugins.RadioButton<M> {
   /** Resolves the proxy into the individual {@link RadioButton} objects it stands for. */
   getElements(): RadioButton<TParent, 'single'>[];
 

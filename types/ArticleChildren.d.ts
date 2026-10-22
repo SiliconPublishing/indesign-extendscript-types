@@ -17,5 +17,5 @@ import type { Article } from './Article';
  * @collection ArticleChild
  */
 export interface ArticleChildren
-  extends BaseCollection<ArticleChild, ArticleChild, ArticleChild<'plural'>>, IdCollection<ArticleChild> {
+  extends BaseCollection<ArticleChild, ArticleChild, ArticleChild<'plural'>>, IdCollection<ArticleChild>, InDesignPlugins.ArticleChildren {
 }

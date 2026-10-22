@@ -46,7 +46,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * together with other endnotes at the end of the story (via an {@link EndnoteTextFrame})
  * rather than inline like a {@link Footnote}.
  */
-export interface Endnote {
+export interface Endnote extends InDesignPlugins.Endnote<'single'> {
   /**
    * A collection of events
    */
@@ -189,7 +189,7 @@ export interface Endnote {
  * together with other endnotes at the end of the story (via an {@link EndnoteTextFrame})
  * rather than inline like a {@link Footnote}.
  */
-export interface EndnotePlural {
+export interface EndnotePlural extends InDesignPlugins.Endnote<'plural'> {
   /**
    * A collection of events
    */

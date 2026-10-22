@@ -63,6 +63,7 @@
     "test": "node test/run.mjs",
     "test:live": "node test/run.mjs --live",
     "report": "node tools/report.mjs",
-    "verify:flatten": "node tools/flatten/verify.mjs"
+    "verify:flatten": "node tools/flatten/verify.mjs",
+    "plugin": "node tools/plugin/index.mjs"
   }
 }

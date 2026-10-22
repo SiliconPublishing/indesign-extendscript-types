@@ -24,7 +24,7 @@ export interface PrintFormBehaviors
   extends
     BaseCollection<PrintFormBehavior, PrintFormBehavior, PrintFormBehavior<'plural'>>,
     IdCollection<PrintFormBehavior>,
-    NamedCollection<PrintFormBehavior> {
+    NamedCollection<PrintFormBehavior>, InDesignPlugins.PrintFormBehaviors {
   /**
    * Creates a new print form behavior.
    * @param withProperties Initial values for properties of the new {@link PrintFormBehavior}.

@@ -16,7 +16,7 @@ import type { LocationOptions } from './Enums/LocationOptions';
  */
 export interface ArticleMember<M extends Mode = 'single'>
   extends EventTargetDOMObject<Article, M>,
-    IndexedDOMObject<Article, M> {
+    IndexedDOMObject<Article, M>, InDesignPlugins.ArticleMember<M> {
   /** Resolves the proxy into the individual {@link ArticleMember} objects it stands for. */
   getElements(): ArticleMember<'single'>[];
 

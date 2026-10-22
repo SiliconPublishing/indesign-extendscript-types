@@ -18,7 +18,7 @@ import type { LocationOptions } from './Enums/LocationOptions';
  */
 export interface TimingGroup<M extends Mode = 'single'>
   extends EventTargetDOMObject<TimingList, M>,
-    IndexedDOMObject<TimingList, M> {
+    IndexedDOMObject<TimingList, M>, InDesignPlugins.TimingGroup<M> {
   /** Resolves the proxy into the individual {@link TimingGroup} objects it stands for. */
   getElements(): TimingGroup<'single'>[];
 

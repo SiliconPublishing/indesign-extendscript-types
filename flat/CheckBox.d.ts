@@ -120,7 +120,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * A PDF check-box form field: a two-state (checked/unchecked) toggle control
  * in an interactive PDF form.
  */
-export interface CheckBox<TParent = PageItemParent> {
+export interface CheckBox<TParent = PageItemParent> extends InDesignPlugins.CheckBox<'single'> {
   /**
    * A collection of events
    */
@@ -792,7 +792,7 @@ export interface CheckBox<TParent = PageItemParent> {
  * A PDF check-box form field: a two-state (checked/unchecked) toggle control
  * in an interactive PDF form.
  */
-export interface CheckBoxPlural<TParent = PageItemParent> {
+export interface CheckBoxPlural<TParent = PageItemParent> extends InDesignPlugins.CheckBox<'plural'> {
   /**
    * A collection of events
    */

@@ -14,7 +14,7 @@ import type { UIColors } from './Enums/UIColors';
 /**
  * Pasteboard preferences.
  */
-export interface PasteboardPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
+export interface PasteboardPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.PasteboardPreference<M> {
   /** Resolves the proxy into the individual {@link PasteboardPreference} objects it stands for. */
   getElements(): PasteboardPreference<'single'>[];
 

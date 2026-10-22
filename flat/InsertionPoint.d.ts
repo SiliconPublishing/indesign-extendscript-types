@@ -167,7 +167,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * {@link endnotes} collection and the endnote/text-fragment creation methods
  * below.
  */
-export interface InsertionPoint<TParent = TextParent> {
+export interface InsertionPoint<TParent = TextParent> extends InDesignPlugins.InsertionPoint<'single'> {
   /**
    * A collection of events
    */
@@ -1579,7 +1579,7 @@ export interface InsertionPoint<TParent = TextParent> {
  * {@link endnotes} collection and the endnote/text-fragment creation methods
  * below.
  */
-export interface InsertionPointPlural<TParent = TextParent> {
+export interface InsertionPointPlural<TParent = TextParent> extends InDesignPlugins.InsertionPoint<'plural'> {
   /**
    * A collection of events
    */

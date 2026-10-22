@@ -25,7 +25,7 @@ import type { BehaviorParent } from './_base/Parents';
 /**
  * A behavior that advances the associated {@link MultiStateObject} to its next state.
  */
-export interface GotoNextStateBehavior {
+export interface GotoNextStateBehavior extends InDesignPlugins.GotoNextStateBehavior<'single'> {
   /**
    * A collection of events
    */
@@ -148,7 +148,7 @@ export interface GotoNextStateBehavior {
 /**
  * A behavior that advances the associated {@link MultiStateObject} to its next state.
  */
-export interface GotoNextStateBehaviorPlural {
+export interface GotoNextStateBehaviorPlural extends InDesignPlugins.GotoNextStateBehavior<'plural'> {
   /**
    * A collection of events
    */

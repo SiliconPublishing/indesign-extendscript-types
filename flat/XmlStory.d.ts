@@ -180,7 +180,7 @@ import type { OverrideType } from './Enums/OverrideType';
  * check-in/out, revert, the story editor, and XML markup — since an XmlStory
  * has no on-page presence yet.
  */
-export interface XmlStory {
+export interface XmlStory extends InDesignPlugins.XmlStory<'single'> {
   /**
    * A collection of events
    */
@@ -1587,7 +1587,7 @@ export interface XmlStory {
  * check-in/out, revert, the story editor, and XML markup — since an XmlStory
  * has no on-page presence yet.
  */
-export interface XmlStoryPlural {
+export interface XmlStoryPlural extends InDesignPlugins.XmlStory<'plural'> {
   /**
    * A collection of events
    */

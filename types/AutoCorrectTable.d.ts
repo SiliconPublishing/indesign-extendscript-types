@@ -14,7 +14,7 @@ import type { Application } from './Application';
  */
 export interface AutoCorrectTable<M extends Mode = 'single'>
   extends EventTargetDOMObject<Application, M>,
-    IndexedDOMObject<Application, M> {
+    IndexedDOMObject<Application, M>, InDesignPlugins.AutoCorrectTable<M> {
   /** Resolves the proxy into the individual {@link AutoCorrectTable} objects it stands for. */
   getElements(): AutoCorrectTable<'single'>[];
 

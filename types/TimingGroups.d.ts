@@ -18,7 +18,7 @@ import type { TimingList } from './TimingList';
  *
  * @collection TimingGroup
  */
-export interface TimingGroups extends BaseCollection<TimingGroup, TimingGroup, TimingGroup<'plural'>> {
+export interface TimingGroups extends BaseCollection<TimingGroup, TimingGroup, TimingGroup<'plural'>>, InDesignPlugins.TimingGroups {
   /**
    * Adds a new timing group to the sequence.
    *

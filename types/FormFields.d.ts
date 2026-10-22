@@ -27,5 +27,5 @@ export interface FormFields<TParent = PageItemParent>
     BaseCollection<FormField<TParent>, FormField, FormField<TParent, PageItemParent, 'plural'>>,
     IdCollection<FormField<TParent>>,
     NamedCollection<FormField<TParent>>,
-    AddablePageItemCollection<FormField<TParent>, FormField> {
+    AddablePageItemCollection<FormField<TParent>, FormField>, InDesignPlugins.FormFields {
 }

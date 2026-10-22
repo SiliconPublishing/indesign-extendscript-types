@@ -29,7 +29,7 @@ import type { PageItemAddReference } from './_base/Collections';
  * converted), or unassigned frames for layout placeholders.
  * @collection Rectangle
  */
-export interface Rectangles<TParent = PageItemParent> {
+export interface Rectangles<TParent = PageItemParent> extends InDesignPlugins.Rectangles {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

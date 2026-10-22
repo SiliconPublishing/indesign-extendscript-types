@@ -24,7 +24,7 @@ export interface DocumentPresets
   extends
     BaseCollection<DocumentPreset, DocumentPreset, DocumentPreset<'plural'>>,
     IdCollection<DocumentPreset>,
-    NamedCollection<DocumentPreset> {
+    NamedCollection<DocumentPreset>, InDesignPlugins.DocumentPresets {
   /**
    * Creates a new document preset.
    *

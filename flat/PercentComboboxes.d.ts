@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection PercentCombobox
  */
-export interface PercentComboboxes {
+export interface PercentComboboxes extends InDesignPlugins.PercentComboboxes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

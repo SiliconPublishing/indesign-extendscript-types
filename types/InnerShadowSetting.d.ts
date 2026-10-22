@@ -20,7 +20,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
 /**
  * Inner shadow effect settings.
  */
-export interface InnerShadowSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M> {
+export interface InnerShadowSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M>, InDesignPlugins.InnerShadowSetting<M> {
   /** Resolves the proxy into the individual {@link InnerShadowSetting} objects it stands for. */
   getElements(): InnerShadowSetting<'single', TParent>[];
 

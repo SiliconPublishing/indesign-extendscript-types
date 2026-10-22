@@ -79,7 +79,7 @@ export interface MasterSpread<M extends Mode = 'single'>
     ShapeContainer<MasterSpread, M>,
     FormFieldContainer<MasterSpread, M>,
     EndnoteFrameContainer<MasterSpread, M>,
-    FlexObjectContainer<MasterSpread, M> {
+    FlexObjectContainer<MasterSpread, M>, InDesignPlugins.MasterSpread<M> {
   /** Resolves the proxy into the individual {@link MasterSpread} objects it stands for. */
   getElements(): MasterSpread<'single'>[];
 

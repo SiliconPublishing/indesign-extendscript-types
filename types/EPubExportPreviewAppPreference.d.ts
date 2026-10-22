@@ -13,7 +13,7 @@ import type { Application } from './Application';
  * The list of external applications available for previewing an exported EPUB,
  * and whether the export result opens automatically.
  */
-export interface EPubExportPreviewAppPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface EPubExportPreviewAppPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.EPubExportPreviewAppPreference<M> {
   /** Resolves the proxy into the individual {@link EPubExportPreviewAppPreference} objects it stands for. */
   getElements(): EPubExportPreviewAppPreference<'single'>[];
 

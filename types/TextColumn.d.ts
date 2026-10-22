@@ -72,7 +72,7 @@ import type { XMLItem } from './XMLItem';
  * A single column of composed text — one per column in a multi-column frame,
  * or per frame in a story threaded across frames.
  */
-export interface TextColumn<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M> {
+export interface TextColumn<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M>, InDesignPlugins.TextColumn<M> {
   /** Resolves the proxy into the individual {@link TextColumn} objects it stands for. */
   getElements(): TextColumn<TParent, 'single'>[];
 }

@@ -14,5 +14,5 @@ import type { Change } from './Change';
  *
  * @collection Change
  */
-export interface Changes extends BaseCollection<Change, Change, Change<'plural'>> {
+export interface Changes extends BaseCollection<Change, Change, Change<'plural'>>, InDesignPlugins.Changes {
 }

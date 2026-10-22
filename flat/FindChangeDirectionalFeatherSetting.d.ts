@@ -28,7 +28,7 @@ import type { FollowShapeModeOptions } from './Enums/FollowShapeModeOptions';
 /**
  * The same {@link DirectionalFeatherSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeDirectionalFeatherSetting {
+export interface FindChangeDirectionalFeatherSetting extends InDesignPlugins.FindChangeDirectionalFeatherSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -142,7 +142,7 @@ export interface FindChangeDirectionalFeatherSetting {
 /**
  * The same {@link DirectionalFeatherSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeDirectionalFeatherSettingPlural {
+export interface FindChangeDirectionalFeatherSettingPlural extends InDesignPlugins.FindChangeDirectionalFeatherSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

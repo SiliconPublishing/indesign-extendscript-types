@@ -23,7 +23,7 @@ export interface Gradients
   extends
     BaseCollection<Gradient, Gradient, Gradient<'plural'>>,
     IdCollection<Gradient>,
-    NamedCollection<Gradient> {
+    NamedCollection<Gradient>, InDesignPlugins.Gradients {
   /**
    * Creates a new gradient swatch.
    *

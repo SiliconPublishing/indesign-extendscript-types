@@ -24,7 +24,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A behavior that shows or hides a set of interactive form fields.
  */
-export interface ShowHideFieldsBehavior {
+export interface ShowHideFieldsBehavior extends InDesignPlugins.ShowHideFieldsBehavior<'single'> {
   /**
    * A collection of events
    */
@@ -147,7 +147,7 @@ export interface ShowHideFieldsBehavior {
 /**
  * A behavior that shows or hides a set of interactive form fields.
  */
-export interface ShowHideFieldsBehaviorPlural {
+export interface ShowHideFieldsBehaviorPlural extends InDesignPlugins.ShowHideFieldsBehavior<'plural'> {
   /**
    * A collection of events
    */

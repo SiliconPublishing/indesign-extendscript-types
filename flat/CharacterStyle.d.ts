@@ -73,7 +73,7 @@ import type { OutlineJoin } from './Enums/OutlineJoin';
  * A character style holds only the attributes explicitly set on it: any attribute left
  * unset reads back as {@link NothingEnum.NOTHING} rather than resolving to a value.
  */
-export interface CharacterStyle {
+export interface CharacterStyle extends InDesignPlugins.CharacterStyle<'single'> {
   /**
    * A collection of events
    */
@@ -707,7 +707,7 @@ export interface CharacterStyle {
  * A character style holds only the attributes explicitly set on it: any attribute left
  * unset reads back as {@link NothingEnum.NOTHING} rather than resolving to a value.
  */
-export interface CharacterStylePlural {
+export interface CharacterStylePlural extends InDesignPlugins.CharacterStyle<'plural'> {
   /**
    * A collection of events
    */

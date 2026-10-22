@@ -18,7 +18,7 @@ import type { InsertionPoint } from './InsertionPoint';
  * @collection XMLComment
  */
 export interface XMLComments
-  extends BaseCollection<XMLComment, XMLComment, XMLComment<'plural'>>, IdCollection<XMLComment> {
+  extends BaseCollection<XMLComment, XMLComment, XMLComment<'plural'>>, IdCollection<XMLComment>, InDesignPlugins.XMLComments {
   /**
    * Creates a new {@link XMLComment} node from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link XMLComment}.

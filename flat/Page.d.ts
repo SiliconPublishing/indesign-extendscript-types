@@ -74,7 +74,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A single page within a {@link Spread} or {@link MasterSpread}.
  */
-export interface Page<TParent = Spread | MasterSpread> {
+export interface Page<TParent = Spread | MasterSpread> extends InDesignPlugins.Page<'single'> {
   /**
    * A collection of events
    */
@@ -429,7 +429,7 @@ export interface Page<TParent = Spread | MasterSpread> {
 /**
  * A single page within a {@link Spread} or {@link MasterSpread}.
  */
-export interface PagePlural<TParent = Spread | MasterSpread> {
+export interface PagePlural<TParent = Spread | MasterSpread> extends InDesignPlugins.Page<'plural'> {
   /**
    * A collection of events
    */

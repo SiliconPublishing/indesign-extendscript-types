@@ -26,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A named markup tag applied to {@link XMLElement}s to identify their role in
  * a document's underlying XML structure.
  */
-export interface XMLTag {
+export interface XMLTag extends InDesignPlugins.XMLTag<'single'> {
   /**
    * A collection of events
    */
@@ -144,7 +144,7 @@ export interface XMLTag {
  * A named markup tag applied to {@link XMLElement}s to identify their role in
  * a document's underlying XML structure.
  */
-export interface XMLTagPlural {
+export interface XMLTagPlural extends InDesignPlugins.XMLTag<'plural'> {
   /**
    * A collection of events
    */

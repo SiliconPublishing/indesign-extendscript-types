@@ -19,7 +19,7 @@ import type { PublishFormatEnum } from './Enums/PublishFormatEnum';
 /**
  * Publish export preferences.
  */
-export interface PublishExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M> {
+export interface PublishExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, InDesignPlugins.PublishExportPreference<M> {
   /** Resolves the proxy into the individual {@link PublishExportPreference} objects it stands for. */
   getElements(): PublishExportPreference<'single'>[];
 

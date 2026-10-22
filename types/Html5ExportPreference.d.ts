@@ -13,7 +13,7 @@ import type { TextExportFormatEnum } from './Enums/TextExportFormatEnum';
 /**
  * HTML5 export preferences.
  */
-export interface Html5ExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M> {
+export interface Html5ExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, InDesignPlugins.Html5ExportPreference<M> {
   /** Resolves the proxy into the individual {@link Html5ExportPreference} objects it stands for. */
   getElements(): Html5ExportPreference<'single'>[];
 

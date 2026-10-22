@@ -18,7 +18,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
 /**
  * The same {@link FeatherSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeFeatherSetting<M extends Mode = 'single'> extends FeatherSetting<M, FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting, NothingEnum.NOTHING>{
+export interface FindChangeFeatherSetting<M extends Mode = 'single'> extends FeatherSetting<M, FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting, NothingEnum.NOTHING>, InDesignPlugins.FindChangeFeatherSetting<M>{
   /** Resolves the proxy into the individual {@link FindChangeFeatherSetting} objects it stands for. */
   getElements(): FindChangeFeatherSetting<'single'>[];
 }

@@ -15,7 +15,7 @@ import type { PreflightRule } from './PreflightRule';
  * {@link PreflightProfile.preflightRuleInstances} collection (as opposed to
  * one enabled from the profile's built-in rule set).
  */
-export interface PreflightRuleInstance<M extends Mode = 'single'> extends PreflightProfileRule<M>{
+export interface PreflightRuleInstance<M extends Mode = 'single'> extends PreflightProfileRule<M>, InDesignPlugins.PreflightRuleInstance<M>{
   /** Resolves the proxy into the individual {@link PreflightRuleInstance} objects it stands for. */
   getElements(): PreflightRuleInstance<'single'>[];
 }

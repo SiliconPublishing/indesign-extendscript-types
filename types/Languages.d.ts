@@ -22,5 +22,5 @@ export interface Languages
   extends
     BaseCollection<Language, Language, Language<'plural'>>,
     IdCollection<Language>,
-    NamedCollection<Language> {
+    NamedCollection<Language>, InDesignPlugins.Languages {
 }

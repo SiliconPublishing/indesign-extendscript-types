@@ -25,7 +25,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * paragraph containing that location.
  * @collection ParagraphDestination
  */
-export interface ParagraphDestinations {
+export interface ParagraphDestinations extends InDesignPlugins.ParagraphDestinations {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

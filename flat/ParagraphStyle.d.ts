@@ -119,7 +119,7 @@ import type { OutlineJoin } from './Enums/OutlineJoin';
  * Unlike a character style, a paragraph style always resolves every attribute to a
  * concrete value rather than leaving unset ones as {@link NothingEnum.NOTHING}.
  */
-export interface ParagraphStyle {
+export interface ParagraphStyle extends InDesignPlugins.ParagraphStyle<'single'> {
   /**
    * A collection of events
    */
@@ -1292,7 +1292,7 @@ export interface ParagraphStyle {
  * Unlike a character style, a paragraph style always resolves every attribute to a
  * concrete value rather than leaving unset ones as {@link NothingEnum.NOTHING}.
  */
-export interface ParagraphStylePlural {
+export interface ParagraphStylePlural extends InDesignPlugins.ParagraphStyle<'plural'> {
   /**
    * A collection of events
    */

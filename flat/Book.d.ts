@@ -38,7 +38,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * An InDesign book — an ordered collection of {@link BookContent} documents
  * managed and synchronized together.
  */
-export interface Book {
+export interface Book extends InDesignPlugins.Book<'single'> {
   /**
    * A collection of events
    */
@@ -300,7 +300,7 @@ export interface Book {
  * An InDesign book — an ordered collection of {@link BookContent} documents
  * managed and synchronized together.
  */
-export interface BookPlural {
+export interface BookPlural extends InDesignPlugins.Book<'plural'> {
   /**
    * A collection of events
    */

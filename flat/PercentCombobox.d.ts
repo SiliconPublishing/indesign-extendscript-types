@@ -23,7 +23,7 @@ import type { WidgetParent } from './_base/Parents';
 /**
  * An editable dropdown for percentage values.
  */
-export interface PercentCombobox {
+export interface PercentCombobox extends InDesignPlugins.PercentCombobox<'single'> {
   /**
    * A collection of events
    */
@@ -159,7 +159,7 @@ export interface PercentCombobox {
 /**
  * An editable dropdown for percentage values.
  */
-export interface PercentComboboxPlural {
+export interface PercentComboboxPlural extends InDesignPlugins.PercentCombobox<'plural'> {
   /**
    * A collection of events
    */

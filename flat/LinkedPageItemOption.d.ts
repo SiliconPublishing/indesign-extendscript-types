@@ -26,7 +26,7 @@ import type { FilePath } from './_base/Types';
  * Update behavior for a linked page item — whether InDesign warns before
  * overwriting local edits, and which kinds of edits survive an update.
  */
-export interface LinkedPageItemOption {
+export interface LinkedPageItemOption extends InDesignPlugins.LinkedPageItemOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -135,7 +135,7 @@ export interface LinkedPageItemOption {
  * Update behavior for a linked page item — whether InDesign warns before
  * overwriting local edits, and which kinds of edits survive an update.
  */
-export interface LinkedPageItemOptionPlural {
+export interface LinkedPageItemOptionPlural extends InDesignPlugins.LinkedPageItemOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

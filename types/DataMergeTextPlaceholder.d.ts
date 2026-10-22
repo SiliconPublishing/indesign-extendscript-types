@@ -18,7 +18,7 @@ import type { Story } from './Story';
  */
 export interface DataMergeTextPlaceholder<M extends Mode = 'single'>
   extends EventTargetDOMObject<Document, M>,
-    IndexedDOMObject<Document, M> {
+    IndexedDOMObject<Document, M>, InDesignPlugins.DataMergeTextPlaceholder<M> {
   /** Resolves the proxy into the individual {@link DataMergeTextPlaceholder} objects it stands for. */
   getElements(): DataMergeTextPlaceholder<'single'>[];
 

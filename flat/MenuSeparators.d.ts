@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection MenuSeparator
  */
-export interface MenuSeparators {
+export interface MenuSeparators extends InDesignPlugins.MenuSeparators {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

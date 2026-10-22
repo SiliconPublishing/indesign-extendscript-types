@@ -24,7 +24,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Conditional text preferences.
  */
-export interface ConditionalTextPreference {
+export interface ConditionalTextPreference extends InDesignPlugins.ConditionalTextPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -117,7 +117,7 @@ export interface ConditionalTextPreference {
 /**
  * Conditional text preferences.
  */
-export interface ConditionalTextPreferencePlural {
+export interface ConditionalTextPreferencePlural extends InDesignPlugins.ConditionalTextPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

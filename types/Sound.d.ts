@@ -41,7 +41,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * A placed sound clip (legacy PDF interactive media). See {@link MediaItem}
  * for the shared media-item surface.
  */
-export interface Sound<TParent = PageItemParent, M extends Mode = 'single'> extends MediaItem<TParent, M> {
+export interface Sound<TParent = PageItemParent, M extends Mode = 'single'> extends MediaItem<TParent, M>, InDesignPlugins.Sound<M> {
   /** Resolves the proxy into the individual {@link Sound} objects it stands for. */
   getElements(): Sound<TParent, 'single'>[];
 

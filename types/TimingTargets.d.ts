@@ -18,7 +18,7 @@ import type { TimingGroup } from './TimingGroup';
  *
  * @collection TimingTarget
  */
-export interface TimingTargets extends BaseCollection<TimingTarget, TimingTarget, TimingTarget<'plural'>> {
+export interface TimingTargets extends BaseCollection<TimingTarget, TimingTarget, TimingTarget<'plural'>>, InDesignPlugins.TimingTargets {
   /**
    * Adds a new target item to the timing group.
    *

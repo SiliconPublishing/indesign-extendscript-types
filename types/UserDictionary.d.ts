@@ -15,7 +15,7 @@ import type { Application } from './Application';
  */
 export interface UserDictionary<M extends Mode = 'single'>
   extends EventTargetDOMObject<Application, M>,
-    IndexedDOMObject<Application, M> {
+    IndexedDOMObject<Application, M>, InDesignPlugins.UserDictionary<M> {
   /** Resolves the proxy into the individual {@link UserDictionary} objects it stands for. */
   getElements(): UserDictionary<'single'>[];
 

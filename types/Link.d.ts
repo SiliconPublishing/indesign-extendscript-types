@@ -27,7 +27,7 @@ import type { FilePath, FolderPath } from './_base/Types';
  */
 export interface Link<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Story | Graphic | Movie | Sound, M>,
-    IndexedDOMObject<Story | Graphic | Movie | Sound, M> {
+    IndexedDOMObject<Story | Graphic | Movie | Sound, M>, InDesignPlugins.Link<M> {
   /** Resolves the proxy into the individual {@link Link} objects it stands for. */
   getElements(): Link<'single'>[];
 

@@ -26,5 +26,5 @@ export interface Columns
   extends
     BaseCollection<Column, Column, Column<'plural'>>,
     NamedCollection<Column>,
-    AddableTableElementCollection<Column, Row | Column | Cell | Table> {
+    AddableTableElementCollection<Column, Row | Column | Cell | Table>, InDesignPlugins.Columns {
 }

@@ -37,7 +37,7 @@ import type { MeasurementValue } from './_base/Types';
 export interface Guide<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Spread | Page | MasterSpread, M>,
     IndexedDOMObject<Spread | Page | MasterSpread, M>,
-    NamableDOMObject<Spread | Page | MasterSpread, M> {
+    NamableDOMObject<Spread | Page | MasterSpread, M>, InDesignPlugins.Guide<M> {
   /** Resolves the proxy into the individual {@link Guide} objects it stands for. */
   getElements(): Guide<'single'>[];
 

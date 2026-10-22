@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection IntegerCombobox
  */
-export interface IntegerComboboxes {
+export interface IntegerComboboxes extends InDesignPlugins.IntegerComboboxes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

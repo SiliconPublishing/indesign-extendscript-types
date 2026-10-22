@@ -119,7 +119,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * A PDF text-field form field: a single- or multi-line editable text box in
  * an interactive PDF form.
  */
-export interface TextBox<TParent = PageItemParent> {
+export interface TextBox<TParent = PageItemParent> extends InDesignPlugins.TextBox<'single'> {
   /**
    * A collection of events
    */
@@ -804,7 +804,7 @@ export interface TextBox<TParent = PageItemParent> {
  * A PDF text-field form field: a single- or multi-line editable text box in
  * an interactive PDF form.
  */
-export interface TextBoxPlural<TParent = PageItemParent> {
+export interface TextBoxPlural<TParent = PageItemParent> extends InDesignPlugins.TextBox<'plural'> {
   /**
    * A collection of events
    */

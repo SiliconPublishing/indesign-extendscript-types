@@ -29,7 +29,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * are collected into a TOC and how the resulting {@link TOCStyleEntry}s are
  * formatted when the TOC is generated.
  */
-export interface TOCStyle {
+export interface TOCStyle extends InDesignPlugins.TOCStyle<'single'> {
   /**
    * A collection of events
    */
@@ -183,7 +183,7 @@ export interface TOCStyle {
  * are collected into a TOC and how the resulting {@link TOCStyleEntry}s are
  * formatted when the TOC is generated.
  */
-export interface TOCStylePlural {
+export interface TOCStylePlural extends InDesignPlugins.TOCStyle<'plural'> {
   /**
    * A collection of events
    */

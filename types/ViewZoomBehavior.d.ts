@@ -14,7 +14,7 @@ import type { BehaviorEvents } from './Enums/BehaviorEvents';
 /**
  * A behavior that changes the view zoom level.
  */
-export interface ViewZoomBehavior<M extends Mode = 'single'> extends Behavior<M>{
+export interface ViewZoomBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignPlugins.ViewZoomBehavior<M>{
   /** Resolves the proxy into the individual {@link ViewZoomBehavior} objects it stands for. */
   getElements(): ViewZoomBehavior<'single'>[];
 

@@ -15,7 +15,7 @@ import type { FlattenerLevel } from './Enums/FlattenerLevel';
  * artwork when the spread is printed or exported — rasterization balance,
  * resolution, and stroke/text handling.
  */
-export interface FlattenerPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Spread, M> {
+export interface FlattenerPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Spread, M>, InDesignPlugins.FlattenerPreference<M> {
   /** Resolves the proxy into the individual {@link FlattenerPreference} objects it stands for. */
   getElements(): FlattenerPreference<'single'>[];
 

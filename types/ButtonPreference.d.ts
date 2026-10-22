@@ -12,7 +12,7 @@ import type { DocumentOrApplication } from './_base/Parents';
 /**
  * Button preferences.
  */
-export interface ButtonPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, NamableDOMObject<DocumentOrApplication, M> {
+export interface ButtonPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, NamableDOMObject<DocumentOrApplication, M>, InDesignPlugins.ButtonPreference<M> {
   /** Resolves the proxy into the individual {@link ButtonPreference} objects it stands for. */
   getElements(): ButtonPreference<'single'>[];
 

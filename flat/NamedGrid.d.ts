@@ -29,7 +29,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A named, reusable baseline/character grid definition, applicable to layout,
  * frame, and story grids.
  */
-export interface NamedGrid {
+export interface NamedGrid extends InDesignPlugins.NamedGrid<'single'> {
   /**
    * A collection of events
    */
@@ -148,7 +148,7 @@ export interface NamedGrid {
  * A named, reusable baseline/character grid definition, applicable to layout,
  * frame, and story grids.
  */
-export interface NamedGridPlural {
+export interface NamedGridPlural extends InDesignPlugins.NamedGrid<'plural'> {
   /**
    * A collection of events
    */

@@ -86,7 +86,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * A media object (movie or sound clip) placed on a page. The abstract base of
  * {@link Movie} and {@link Sound}.
  */
-export interface MediaItem<TParent = PageItemParent> {
+export interface MediaItem<TParent = PageItemParent> extends InDesignPlugins.MediaItem<'single'> {
   /**
    * A collection of events
    */
@@ -656,7 +656,7 @@ export interface MediaItem<TParent = PageItemParent> {
  * A media object (movie or sound clip) placed on a page. The abstract base of
  * {@link Movie} and {@link Sound}.
  */
-export interface MediaItemPlural<TParent = PageItemParent> {
+export interface MediaItemPlural<TParent = PageItemParent> extends InDesignPlugins.MediaItem<'plural'> {
   /**
    * A collection of events
    */

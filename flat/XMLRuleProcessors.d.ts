@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection XMLRuleProcessor
  */
-export interface XMLRuleProcessors {
+export interface XMLRuleProcessors extends InDesignPlugins.XMLRuleProcessors {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

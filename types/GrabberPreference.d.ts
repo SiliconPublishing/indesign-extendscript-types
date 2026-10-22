@@ -13,7 +13,7 @@ import type { PanningTypes } from './Enums/PanningTypes';
 /**
  * Grabber preferences.
  */
-export interface GrabberPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface GrabberPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.GrabberPreference<M> {
   /** Resolves the proxy into the individual {@link GrabberPreference} objects it stands for. */
   getElements(): GrabberPreference<'single'>[];
 

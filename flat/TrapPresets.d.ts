@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection TrapPreset
  */
-export interface TrapPresets {
+export interface TrapPresets extends InDesignPlugins.TrapPresets {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

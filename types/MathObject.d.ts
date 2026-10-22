@@ -20,7 +20,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * only through `Rectangle.mathObjects` or `Document.mathObjects`. Its parent is
  * always the `Rectangle` that hosts it.
  */
-export interface MathObject<M extends Mode = 'single'> extends LabelableEventDOMObject<Rectangle, M>, IndexedDOMObject<Rectangle, M> {
+export interface MathObject<M extends Mode = 'single'> extends LabelableEventDOMObject<Rectangle, M>, IndexedDOMObject<Rectangle, M>, InDesignPlugins.MathObject<M> {
   /** Resolves the proxy into the individual {@link MathObject} objects it stands for. */
   getElements(): MathObject<'single'>[];
 

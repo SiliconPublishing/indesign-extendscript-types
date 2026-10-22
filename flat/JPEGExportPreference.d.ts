@@ -26,7 +26,7 @@ import type { FilePath } from './_base/Types';
 /**
  * JPEG export preferences.
  */
-export interface JPEGExportPreference {
+export interface JPEGExportPreference extends InDesignPlugins.JPEGExportPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -152,7 +152,7 @@ export interface JPEGExportPreference {
 /**
  * JPEG export preferences.
  */
-export interface JPEGExportPreferencePlural {
+export interface JPEGExportPreferencePlural extends InDesignPlugins.JPEGExportPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

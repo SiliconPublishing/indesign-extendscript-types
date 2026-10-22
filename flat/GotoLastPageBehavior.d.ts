@@ -25,7 +25,7 @@ import type { BehaviorParent } from './_base/Parents';
 /**
  * A behavior that jumps to the last page of the document.
  */
-export interface GotoLastPageBehavior {
+export interface GotoLastPageBehavior extends InDesignPlugins.GotoLastPageBehavior<'single'> {
   /**
    * A collection of events
    */
@@ -145,7 +145,7 @@ export interface GotoLastPageBehavior {
 /**
  * A behavior that jumps to the last page of the document.
  */
-export interface GotoLastPageBehaviorPlural {
+export interface GotoLastPageBehaviorPlural extends InDesignPlugins.GotoLastPageBehavior<'plural'> {
   /**
    * A collection of events
    */

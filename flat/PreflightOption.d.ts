@@ -27,7 +27,7 @@ import type { FilePath } from './_base/Types';
  * The active preflight configuration for a document or book — which profile and
  * layers are checked, and whether preflight runs at all.
  */
-export interface PreflightOption {
+export interface PreflightOption extends InDesignPlugins.PreflightOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -139,7 +139,7 @@ export interface PreflightOption {
  * The active preflight configuration for a document or book — which profile and
  * layers are checked, and whether preflight runs at all.
  */
-export interface PreflightOptionPlural {
+export interface PreflightOptionPlural extends InDesignPlugins.PreflightOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

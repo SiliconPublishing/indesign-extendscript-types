@@ -18,7 +18,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection DialogColumn
  */
-export interface DialogColumns {
+export interface DialogColumns extends InDesignPlugins.DialogColumns {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

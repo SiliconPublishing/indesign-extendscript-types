@@ -88,7 +88,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * A placed EPS (Encapsulated PostScript) graphic. See {@link Graphic} for the
  * shared placed-graphic surface.
  */
-export interface EPS<TParent = PageItemParent> {
+export interface EPS<TParent = PageItemParent> extends InDesignPlugins.EPS<'single'> {
   /**
    * A collection of events
    */
@@ -682,7 +682,7 @@ export interface EPS<TParent = PageItemParent> {
  * A placed EPS (Encapsulated PostScript) graphic. See {@link Graphic} for the
  * shared placed-graphic surface.
  */
-export interface EPSPlural<TParent = PageItemParent> {
+export interface EPSPlural<TParent = PageItemParent> extends InDesignPlugins.EPS<'plural'> {
   /**
    * A collection of events
    */

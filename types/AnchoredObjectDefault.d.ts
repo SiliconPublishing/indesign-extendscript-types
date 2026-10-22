@@ -18,7 +18,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
  * Default content type, size, and style applied to a new anchored object
  * when none are specified explicitly.
  */
-export interface AnchoredObjectDefault<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
+export interface AnchoredObjectDefault<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.AnchoredObjectDefault<M> {
   /** Resolves the proxy into the individual {@link AnchoredObjectDefault} objects it stands for. */
   getElements(): AnchoredObjectDefault<'single'>[];
 

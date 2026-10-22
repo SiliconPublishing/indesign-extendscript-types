@@ -34,6 +34,679 @@ declare global {
     readonly reflect: Reflection;
   }
 
+  /**
+   * Extension points for plugins: every DOM class extends its (empty) namesake here, so a
+   * plugin's declarations can add members to InDesign's classes by declaration merging.
+   * See tools/plugin.
+   */
+  namespace InDesignPlugins {
+    interface AdjustLayoutPreference<M extends DOM.Mode = 'single'> {}
+    interface AlignDistributePreference<M extends DOM.Mode = 'single'> {}
+    interface AnchoredObjectDefault<M extends DOM.Mode = 'single'> {}
+    interface AnchoredObjectSetting<M extends DOM.Mode = 'single'> {}
+    interface AngleCombobox<M extends DOM.Mode = 'single'> {}
+    interface AngleComboboxes {}
+    interface AngleEditbox<M extends DOM.Mode = 'single'> {}
+    interface AngleEditboxes {}
+    interface AnimationBehavior<M extends DOM.Mode = 'single'> {}
+    interface AnimationBehaviors {}
+    interface AnimationSetting<M extends DOM.Mode = 'single'> {}
+    interface Application<M extends DOM.Mode = 'single'> {}
+    interface Article<M extends DOM.Mode = 'single'> {}
+    interface ArticleChild<M extends DOM.Mode = 'single'> {}
+    interface ArticleChildren {}
+    interface ArticleMember<M extends DOM.Mode = 'single'> {}
+    interface ArticleMembers {}
+    interface Articles {}
+    interface Asset<M extends DOM.Mode = 'single'> {}
+    interface Assets {}
+    interface AssignedStories {}
+    interface AssignedStory<M extends DOM.Mode = 'single'> {}
+    interface Assignment<M extends DOM.Mode = 'single'> {}
+    interface Assignments {}
+    interface AutoCorrectPreference<M extends DOM.Mode = 'single'> {}
+    interface AutoCorrectTable<M extends DOM.Mode = 'single'> {}
+    interface AutoCorrectTables {}
+    interface BackgroundTask<M extends DOM.Mode = 'single'> {}
+    interface BackgroundTasks {}
+    interface BaselineFrameGridOption<M extends DOM.Mode = 'single'> {}
+    interface Behavior<M extends DOM.Mode = 'single'> {}
+    interface Behaviors {}
+    interface BevelAndEmbossSetting<M extends DOM.Mode = 'single'> {}
+    interface BlendingSetting<M extends DOM.Mode = 'single'> {}
+    interface Book<M extends DOM.Mode = 'single'> {}
+    interface BookContent<M extends DOM.Mode = 'single'> {}
+    interface BookContents {}
+    interface Bookmark<M extends DOM.Mode = 'single'> {}
+    interface Bookmarks {}
+    interface Books {}
+    interface BorderPanel<M extends DOM.Mode = 'single'> {}
+    interface BorderPanels {}
+    interface BuildingBlock<M extends DOM.Mode = 'single'> {}
+    interface BuildingBlocks {}
+    interface Bullet<M extends DOM.Mode = 'single'> {}
+    interface Button<M extends DOM.Mode = 'single'> {}
+    interface ButtonPreference<M extends DOM.Mode = 'single'> {}
+    interface Buttons {}
+    interface CaptionMetadataVariablePreference<M extends DOM.Mode = 'single'> {}
+    interface Cell<M extends DOM.Mode = 'single'> {}
+    interface Cells {}
+    interface CellStyle<M extends DOM.Mode = 'single'> {}
+    interface CellStyleGroup<M extends DOM.Mode = 'single'> {}
+    interface CellStyleGroups {}
+    interface CellStyleMapping<M extends DOM.Mode = 'single'> {}
+    interface CellStyleMappings {}
+    interface CellStyles {}
+    interface Change<M extends DOM.Mode = 'single'> {}
+    interface ChangeColorPreference<M extends DOM.Mode = 'single'> {}
+    interface ChangeGlyphPreference<M extends DOM.Mode = 'single'> {}
+    interface ChangeGrepPreference<M extends DOM.Mode = 'single'> {}
+    interface ChangeObjectPreference<M extends DOM.Mode = 'single'> {}
+    interface Changes {}
+    interface ChangeTextPreference<M extends DOM.Mode = 'single'> {}
+    interface ChangeTransliteratePreference<M extends DOM.Mode = 'single'> {}
+    interface ChapterNumberPreference<M extends DOM.Mode = 'single'> {}
+    interface ChapterNumberVariablePreference<M extends DOM.Mode = 'single'> {}
+    interface Character<M extends DOM.Mode = 'single'> {}
+    interface Characters {}
+    interface CharacterStyle<M extends DOM.Mode = 'single'> {}
+    interface CharacterStyleGroup<M extends DOM.Mode = 'single'> {}
+    interface CharacterStyleGroups {}
+    interface CharacterStyles {}
+    interface CharStyleMapping<M extends DOM.Mode = 'single'> {}
+    interface CharStyleMappings {}
+    interface CheckBox<M extends DOM.Mode = 'single'> {}
+    interface CheckboxControl<M extends DOM.Mode = 'single'> {}
+    interface CheckboxControls {}
+    interface CheckBoxes {}
+    interface CjkGridPreference<M extends DOM.Mode = 'single'> {}
+    interface ClearFormBehavior<M extends DOM.Mode = 'single'> {}
+    interface ClearFormBehaviors {}
+    interface ClipboardPreference<M extends DOM.Mode = 'single'> {}
+    interface ClippingPathSettings<M extends DOM.Mode = 'single'> {}
+    interface Color<M extends DOM.Mode = 'single'> {}
+    interface ColorGroup<M extends DOM.Mode = 'single'> {}
+    interface ColorGroups {}
+    interface ColorGroupSwatch<M extends DOM.Mode = 'single'> {}
+    interface ColorGroupSwatches {}
+    interface Colors {}
+    interface ColorSetting<M extends DOM.Mode = 'single'> {}
+    interface Column<M extends DOM.Mode = 'single'> {}
+    interface Columns {}
+    interface ComboBox<M extends DOM.Mode = 'single'> {}
+    interface ComboBoxes {}
+    interface CompositeFont<M extends DOM.Mode = 'single'> {}
+    interface CompositeFontEntries {}
+    interface CompositeFontEntry<M extends DOM.Mode = 'single'> {}
+    interface CompositeFonts {}
+    interface Condition<M extends DOM.Mode = 'single'> {}
+    interface ConditionalTextPreference<M extends DOM.Mode = 'single'> {}
+    interface Conditions {}
+    interface ConditionSet<M extends DOM.Mode = 'single'> {}
+    interface ConditionSets {}
+    interface ContentPlacerObject<M extends DOM.Mode = 'single'> {}
+    interface ContentTransparencySetting<M extends DOM.Mode = 'single'> {}
+    interface ContourOption<M extends DOM.Mode = 'single'> {}
+    interface CrossReference<M extends DOM.Mode = 'single'> {}
+    interface CrossReferenceFormat<M extends DOM.Mode = 'single'> {}
+    interface CrossReferenceFormats {}
+    interface CrossReferences {}
+    interface CrossReferenceSource<M extends DOM.Mode = 'single'> {}
+    interface CrossReferenceSources {}
+    interface CustomTextVariablePreference<M extends DOM.Mode = 'single'> {}
+    interface DashedStrokeStyle<M extends DOM.Mode = 'single'> {}
+    interface DashedStrokeStyles {}
+    interface DataMerge<M extends DOM.Mode = 'single'> {}
+    interface DataMergeField<M extends DOM.Mode = 'single'> {}
+    interface DataMergeFields {}
+    interface DataMergeImagePlaceholder<M extends DOM.Mode = 'single'> {}
+    interface DataMergeImagePlaceholders {}
+    interface DataMergeOption<M extends DOM.Mode = 'single'> {}
+    interface DataMergePreference<M extends DOM.Mode = 'single'> {}
+    interface DataMergeQrcodePlaceholder<M extends DOM.Mode = 'single'> {}
+    interface DataMergeQrcodePlaceholders {}
+    interface DataMergeTextPlaceholder<M extends DOM.Mode = 'single'> {}
+    interface DataMergeTextPlaceholders {}
+    interface DateVariablePreference<M extends DOM.Mode = 'single'> {}
+    interface Dialog<M extends DOM.Mode = 'single'> {}
+    interface DialogColumn<M extends DOM.Mode = 'single'> {}
+    interface DialogColumns {}
+    interface DialogRow<M extends DOM.Mode = 'single'> {}
+    interface DialogRows {}
+    interface Dialogs {}
+    interface DictionaryPreference<M extends DOM.Mode = 'single'> {}
+    interface DirectionalFeatherSetting<M extends DOM.Mode = 'single'> {}
+    interface DisplayPerformancePreference<M extends DOM.Mode = 'single'> {}
+    interface DisplaySetting<M extends DOM.Mode = 'single'> {}
+    interface DisplaySettings {}
+    interface Document<M extends DOM.Mode = 'single'> {}
+    interface DocumentEvent<M extends DOM.Mode = 'single'> {}
+    interface DocumentPreference<M extends DOM.Mode = 'single'> {}
+    interface DocumentPreset<M extends DOM.Mode = 'single'> {}
+    interface DocumentPresets {}
+    interface Documents {}
+    interface DottedStrokeStyle<M extends DOM.Mode = 'single'> {}
+    interface DottedStrokeStyles {}
+    interface Dropdown<M extends DOM.Mode = 'single'> {}
+    interface Dropdowns {}
+    interface DropShadowSetting<M extends DOM.Mode = 'single'> {}
+    interface DTD<M extends DOM.Mode = 'single'> {}
+    interface DTDs {}
+    interface EnablingGroup<M extends DOM.Mode = 'single'> {}
+    interface EnablingGroups {}
+    interface Endnote<M extends DOM.Mode = 'single'> {}
+    interface EndnoteOption<M extends DOM.Mode = 'single'> {}
+    interface EndnoteRange<M extends DOM.Mode = 'single'> {}
+    interface EndnoteRanges {}
+    interface Endnotes {}
+    interface EndnoteTextFrame<M extends DOM.Mode = 'single'> {}
+    interface EndnoteTextFrames {}
+    interface EPS<M extends DOM.Mode = 'single'> {}
+    interface EPSExportPreference<M extends DOM.Mode = 'single'> {}
+    interface EPSImportPreference<M extends DOM.Mode = 'single'> {}
+    interface EPSs {}
+    interface EPSText<M extends DOM.Mode = 'single'> {}
+    interface EPSTexts {}
+    interface EPubExportPreference<M extends DOM.Mode = 'single'> {}
+    interface EPubExportPreviewAppPreference<M extends DOM.Mode = 'single'> {}
+    interface EPubFixedLayoutExportPreference<M extends DOM.Mode = 'single'> {}
+    interface Event<M extends DOM.Mode = 'single'> {}
+    interface EventListener<M extends DOM.Mode = 'single'> {}
+    interface EventListeners {}
+    interface Events {}
+    interface ExcelImportPreference<M extends DOM.Mode = 'single'> {}
+    interface ExportForWebPreference<M extends DOM.Mode = 'single'> {}
+    interface FeatherSetting<M extends DOM.Mode = 'single'> {}
+    interface FileNameVariablePreference<M extends DOM.Mode = 'single'> {}
+    interface FillTransparencySetting<M extends DOM.Mode = 'single'> {}
+    interface FindChangeBevelAndEmbossSetting<M extends DOM.Mode = 'single'> {}
+    interface FindChangeBlendingSetting<M extends DOM.Mode = 'single'> {}
+    interface FindChangeColorOption<M extends DOM.Mode = 'single'> {}
+    interface FindChangeContentTransparencySetting<M extends DOM.Mode = 'single'> {}
+    interface FindChangeDirectionalFeatherSetting<M extends DOM.Mode = 'single'> {}
+    interface FindChangeDropShadowSetting<M extends DOM.Mode = 'single'> {}
+    interface FindChangeFeatherSetting<M extends DOM.Mode = 'single'> {}
+    interface FindChangeFillTransparencySetting<M extends DOM.Mode = 'single'> {}
+    interface FindChangeGlyphOption<M extends DOM.Mode = 'single'> {}
+    interface FindChangeGradientFeatherSetting<M extends DOM.Mode = 'single'> {}
+    interface FindChangeGrepOption<M extends DOM.Mode = 'single'> {}
+    interface FindChangeInnerGlowSetting<M extends DOM.Mode = 'single'> {}
+    interface FindChangeInnerShadowSetting<M extends DOM.Mode = 'single'> {}
+    interface FindChangeObjectOption<M extends DOM.Mode = 'single'> {}
+    interface FindChangeOuterGlowSetting<M extends DOM.Mode = 'single'> {}
+    interface FindChangeSatinSetting<M extends DOM.Mode = 'single'> {}
+    interface FindChangeStrokeTransparencySetting<M extends DOM.Mode = 'single'> {}
+    interface FindChangeTextOption<M extends DOM.Mode = 'single'> {}
+    interface FindChangeTransliterateOption<M extends DOM.Mode = 'single'> {}
+    interface FindChangeTransparencySetting<M extends DOM.Mode = 'single'> {}
+    interface FindColorPreference<M extends DOM.Mode = 'single'> {}
+    interface FindGlyphPreference<M extends DOM.Mode = 'single'> {}
+    interface FindGrepPreference<M extends DOM.Mode = 'single'> {}
+    interface FindObjectPreference<M extends DOM.Mode = 'single'> {}
+    interface FindTextPreference<M extends DOM.Mode = 'single'> {}
+    interface FindTransliteratePreference<M extends DOM.Mode = 'single'> {}
+    interface FlattenerPreference<M extends DOM.Mode = 'single'> {}
+    interface FlattenerPreset<M extends DOM.Mode = 'single'> {}
+    interface FlattenerPresets {}
+    interface FlexLayoutAttributeOption<M extends DOM.Mode = 'single'> {}
+    interface FlexObject<M extends DOM.Mode = 'single'> {}
+    interface FlexObjects {}
+    interface Font<M extends DOM.Mode = 'single'> {}
+    interface FontLockingPreference<M extends DOM.Mode = 'single'> {}
+    interface Fonts {}
+    interface FontSyncPreference<M extends DOM.Mode = 'single'> {}
+    interface Footnote<M extends DOM.Mode = 'single'> {}
+    interface FootnoteOption<M extends DOM.Mode = 'single'> {}
+    interface Footnotes {}
+    interface FormField<M extends DOM.Mode = 'single'> {}
+    interface FormFields {}
+    interface FrameFittingOption<M extends DOM.Mode = 'single'> {}
+    interface GalleyPreference<M extends DOM.Mode = 'single'> {}
+    interface GeneralPreference<M extends DOM.Mode = 'single'> {}
+    interface GotoAnchorBehavior<M extends DOM.Mode = 'single'> {}
+    interface GotoAnchorBehaviors {}
+    interface GotoFirstPageBehavior<M extends DOM.Mode = 'single'> {}
+    interface GotoFirstPageBehaviors {}
+    interface GotoLastPageBehavior<M extends DOM.Mode = 'single'> {}
+    interface GotoLastPageBehaviors {}
+    interface GotoNextPageBehavior<M extends DOM.Mode = 'single'> {}
+    interface GotoNextPageBehaviors {}
+    interface GotoNextStateBehavior<M extends DOM.Mode = 'single'> {}
+    interface GotoNextStateBehaviors {}
+    interface GotoNextViewBehavior<M extends DOM.Mode = 'single'> {}
+    interface GotoNextViewBehaviors {}
+    interface GotoPageBehavior<M extends DOM.Mode = 'single'> {}
+    interface GotoPageBehaviors {}
+    interface GotoPreviousPageBehavior<M extends DOM.Mode = 'single'> {}
+    interface GotoPreviousPageBehaviors {}
+    interface GotoPreviousStateBehavior<M extends DOM.Mode = 'single'> {}
+    interface GotoPreviousStateBehaviors {}
+    interface GotoPreviousViewBehavior<M extends DOM.Mode = 'single'> {}
+    interface GotoPreviousViewBehaviors {}
+    interface GotoStateBehavior<M extends DOM.Mode = 'single'> {}
+    interface GotoStateBehaviors {}
+    interface GotoURLBehavior<M extends DOM.Mode = 'single'> {}
+    interface GotoURLBehaviors {}
+    interface GpuPerformancePreference<M extends DOM.Mode = 'single'> {}
+    interface GrabberPreference<M extends DOM.Mode = 'single'> {}
+    interface Gradient<M extends DOM.Mode = 'single'> {}
+    interface GradientFeatherSetting<M extends DOM.Mode = 'single'> {}
+    interface Gradients {}
+    interface GradientStop<M extends DOM.Mode = 'single'> {}
+    interface GradientStops {}
+    interface Graphic<M extends DOM.Mode = 'single'> {}
+    interface GraphicLayer<M extends DOM.Mode = 'single'> {}
+    interface GraphicLayerOption<M extends DOM.Mode = 'single'> {}
+    interface GraphicLayers {}
+    interface GraphicLine<M extends DOM.Mode = 'single'> {}
+    interface GraphicLines {}
+    interface Graphics {}
+    interface GridDataInformation<M extends DOM.Mode = 'single'> {}
+    interface GridPreference<M extends DOM.Mode = 'single'> {}
+    interface GridPrintingPreference<M extends DOM.Mode = 'single'> {}
+    interface Group<M extends DOM.Mode = 'single'> {}
+    interface Groups {}
+    interface Guide<M extends DOM.Mode = 'single'> {}
+    interface GuidePreference<M extends DOM.Mode = 'single'> {}
+    interface Guides {}
+    interface HiddenText<M extends DOM.Mode = 'single'> {}
+    interface HiddenTexts {}
+    interface Html5ExportPreference<M extends DOM.Mode = 'single'> {}
+    interface HTMLExportPreference<M extends DOM.Mode = 'single'> {}
+    interface HTMLFXLExportPreference<M extends DOM.Mode = 'single'> {}
+    interface HtmlItem<M extends DOM.Mode = 'single'> {}
+    interface HtmlItems {}
+    interface HttpLinkConnectionManagerObject<M extends DOM.Mode = 'single'> {}
+    interface Hyperlink<M extends DOM.Mode = 'single'> {}
+    interface HyperlinkExternalPageDestination<M extends DOM.Mode = 'single'> {}
+    interface HyperlinkExternalPageDestinations {}
+    interface HyperlinkPageDestination<M extends DOM.Mode = 'single'> {}
+    interface HyperlinkPageDestinations {}
+    interface HyperlinkPageItemSource<M extends DOM.Mode = 'single'> {}
+    interface HyperlinkPageItemSources {}
+    interface Hyperlinks {}
+    interface HyperlinkTextDestination<M extends DOM.Mode = 'single'> {}
+    interface HyperlinkTextDestinations {}
+    interface HyperlinkTextSource<M extends DOM.Mode = 'single'> {}
+    interface HyperlinkTextSources {}
+    interface HyperlinkURLDestination<M extends DOM.Mode = 'single'> {}
+    interface HyperlinkURLDestinations {}
+    interface HyphenationException<M extends DOM.Mode = 'single'> {}
+    interface HyphenationExceptions {}
+    interface IdleEvent<M extends DOM.Mode = 'single'> {}
+    interface IdleTask<M extends DOM.Mode = 'single'> {}
+    interface IdleTasks {}
+    interface Image<M extends DOM.Mode = 'single'> {}
+    interface ImageIOPreference<M extends DOM.Mode = 'single'> {}
+    interface ImagePreference<M extends DOM.Mode = 'single'> {}
+    interface Images {}
+    interface IMEPreference<M extends DOM.Mode = 'single'> {}
+    interface ImportedPage<M extends DOM.Mode = 'single'> {}
+    interface ImportedPageAttribute<M extends DOM.Mode = 'single'> {}
+    interface ImportedPages {}
+    interface ImportExportEvent<M extends DOM.Mode = 'single'> {}
+    interface InCopyExportOption<M extends DOM.Mode = 'single'> {}
+    interface Index<M extends DOM.Mode = 'single'> {}
+    interface Indexes {}
+    interface IndexingSortOption<M extends DOM.Mode = 'single'> {}
+    interface IndexingSortOptions {}
+    interface IndexOptions<M extends DOM.Mode = 'single'> {}
+    interface IndexSection<M extends DOM.Mode = 'single'> {}
+    interface IndexSections {}
+    interface Ink<M extends DOM.Mode = 'single'> {}
+    interface Inks {}
+    interface InnerGlowSetting<M extends DOM.Mode = 'single'> {}
+    interface InnerShadowSetting<M extends DOM.Mode = 'single'> {}
+    interface InsertionPoint<M extends DOM.Mode = 'single'> {}
+    interface InsertionPoints {}
+    interface IntegerCombobox<M extends DOM.Mode = 'single'> {}
+    interface IntegerComboboxes {}
+    interface IntegerEditbox<M extends DOM.Mode = 'single'> {}
+    interface IntegerEditboxes {}
+    interface InteractivePDFExportPreference<M extends DOM.Mode = 'single'> {}
+    interface JPEGExportPreference<M extends DOM.Mode = 'single'> {}
+    interface KinsokuTable<M extends DOM.Mode = 'single'> {}
+    interface KinsokuTables {}
+    interface Language<M extends DOM.Mode = 'single'> {}
+    interface Languages {}
+    interface LanguagesWithVendors {}
+    interface LanguageWithVendors<M extends DOM.Mode = 'single'> {}
+    interface Layer<M extends DOM.Mode = 'single'> {}
+    interface Layers {}
+    interface LayoutGridDataInformation<M extends DOM.Mode = 'single'> {}
+    interface LayoutWindow<M extends DOM.Mode = 'single'> {}
+    interface LayoutWindows {}
+    interface Libraries {}
+    interface Library<M extends DOM.Mode = 'single'> {}
+    interface LibraryPanel<M extends DOM.Mode = 'single'> {}
+    interface Line<M extends DOM.Mode = 'single'> {}
+    interface Lines {}
+    interface Link<M extends DOM.Mode = 'single'> {}
+    interface LinkedPageItemOption<M extends DOM.Mode = 'single'> {}
+    interface LinkedStoryOption<M extends DOM.Mode = 'single'> {}
+    interface LinkingPreference<M extends DOM.Mode = 'single'> {}
+    interface LinkMetadata<M extends DOM.Mode = 'single'> {}
+    interface Links {}
+    interface ListBox<M extends DOM.Mode = 'single'> {}
+    interface ListBoxes {}
+    interface MarginPreference<M extends DOM.Mode = 'single'> {}
+    interface MasterSpread<M extends DOM.Mode = 'single'> {}
+    interface MasterSpreads {}
+    interface MatchCharacterStylePreference<M extends DOM.Mode = 'single'> {}
+    interface MatchParagraphStylePreference<M extends DOM.Mode = 'single'> {}
+    interface MathObject<M extends DOM.Mode = 'single'> {}
+    interface MathObjects {}
+    interface MeasurementCombobox<M extends DOM.Mode = 'single'> {}
+    interface MeasurementComboboxes {}
+    interface MeasurementEditbox<M extends DOM.Mode = 'single'> {}
+    interface MeasurementEditboxes {}
+    interface MediaItem<M extends DOM.Mode = 'single'> {}
+    interface MediaItems {}
+    interface Menu<M extends DOM.Mode = 'single'> {}
+    interface MenuAction<M extends DOM.Mode = 'single'> {}
+    interface MenuActions {}
+    interface MenuElement<M extends DOM.Mode = 'single'> {}
+    interface MenuElements {}
+    interface MenuItem<M extends DOM.Mode = 'single'> {}
+    interface MenuItems {}
+    interface Menus {}
+    interface MenuSeparator<M extends DOM.Mode = 'single'> {}
+    interface MenuSeparators {}
+    interface MetadataPreference<M extends DOM.Mode = 'single'> {}
+    interface MixedInk<M extends DOM.Mode = 'single'> {}
+    interface MixedInkGroup<M extends DOM.Mode = 'single'> {}
+    interface MixedInkGroups {}
+    interface MixedInks {}
+    interface MojikumiTable<M extends DOM.Mode = 'single'> {}
+    interface MojikumiTables {}
+    interface MojikumiUiPreference<M extends DOM.Mode = 'single'> {}
+    interface MotionPreset<M extends DOM.Mode = 'single'> {}
+    interface MotionPresets {}
+    interface Movie<M extends DOM.Mode = 'single'> {}
+    interface MovieBehavior<M extends DOM.Mode = 'single'> {}
+    interface MovieBehaviors {}
+    interface Movies {}
+    interface MultiStateObject<M extends DOM.Mode = 'single'> {}
+    interface MultiStateObjects {}
+    interface MutationEvent<M extends DOM.Mode = 'single'> {}
+    interface NamedGrid<M extends DOM.Mode = 'single'> {}
+    interface NamedGrids {}
+    interface NavigationPoint<M extends DOM.Mode = 'single'> {}
+    interface NavigationPoints {}
+    interface NestedGrepStyle<M extends DOM.Mode = 'single'> {}
+    interface NestedGrepStyles {}
+    interface NestedLineStyle<M extends DOM.Mode = 'single'> {}
+    interface NestedLineStyles {}
+    interface NestedStyle<M extends DOM.Mode = 'single'> {}
+    interface NestedStyles {}
+    interface Note<M extends DOM.Mode = 'single'> {}
+    interface NotePreference<M extends DOM.Mode = 'single'> {}
+    interface Notes {}
+    interface NumberingList<M extends DOM.Mode = 'single'> {}
+    interface NumberingLists {}
+    interface NumberingRestartPolicy<M extends DOM.Mode = 'single'> {}
+    interface ObjectExportOption<M extends DOM.Mode = 'single'> {}
+    interface ObjectStyle<M extends DOM.Mode = 'single'> {}
+    interface ObjectStyleContentEffectsCategorySettings<M extends DOM.Mode = 'single'> {}
+    interface ObjectStyleExportTagMap<M extends DOM.Mode = 'single'> {}
+    interface ObjectStyleExportTagMaps {}
+    interface ObjectStyleFillEffectsCategorySettings<M extends DOM.Mode = 'single'> {}
+    interface ObjectStyleGroup<M extends DOM.Mode = 'single'> {}
+    interface ObjectStyleGroups {}
+    interface ObjectStyleObjectEffectsCategorySettings<M extends DOM.Mode = 'single'> {}
+    interface ObjectStyles {}
+    interface ObjectStyleStrokeEffectsCategorySettings<M extends DOM.Mode = 'single'> {}
+    interface OpacityGradientStop<M extends DOM.Mode = 'single'> {}
+    interface OpacityGradientStops {}
+    interface OpenFileBehavior<M extends DOM.Mode = 'single'> {}
+    interface OpenFileBehaviors {}
+    interface OuterGlowSetting<M extends DOM.Mode = 'single'> {}
+    interface Oval<M extends DOM.Mode = 'single'> {}
+    interface Ovals {}
+    interface Page<M extends DOM.Mode = 'single'> {}
+    interface PageItem<M extends DOM.Mode = 'single'> {}
+    interface PageItemDefault<M extends DOM.Mode = 'single'> {}
+    interface PageItems {}
+    interface PageNumberVariablePreference<M extends DOM.Mode = 'single'> {}
+    interface PageReference<M extends DOM.Mode = 'single'> {}
+    interface PageReferences {}
+    interface Pages {}
+    interface PagesPanel<M extends DOM.Mode = 'single'> {}
+    interface Panel<M extends DOM.Mode = 'single'> {}
+    interface Panels {}
+    interface Paragraph<M extends DOM.Mode = 'single'> {}
+    interface ParagraphDestination<M extends DOM.Mode = 'single'> {}
+    interface ParagraphDestinations {}
+    interface Paragraphs {}
+    interface ParagraphStyle<M extends DOM.Mode = 'single'> {}
+    interface ParagraphStyleGroup<M extends DOM.Mode = 'single'> {}
+    interface ParagraphStyleGroups {}
+    interface ParagraphStyles {}
+    interface ParaStyleMapping<M extends DOM.Mode = 'single'> {}
+    interface ParaStyleMappings {}
+    interface PasteboardPreference<M extends DOM.Mode = 'single'> {}
+    interface Path<M extends DOM.Mode = 'single'> {}
+    interface PathPoint<M extends DOM.Mode = 'single'> {}
+    interface PathPoints {}
+    interface Paths {}
+    interface PDF<M extends DOM.Mode = 'single'> {}
+    interface PDFAttribute<M extends DOM.Mode = 'single'> {}
+    interface PDFComment<M extends DOM.Mode = 'single'> {}
+    interface PDFComments {}
+    interface PDFExportPreference<M extends DOM.Mode = 'single'> {}
+    interface PDFExportPreset<M extends DOM.Mode = 'single'> {}
+    interface PDFExportPresets {}
+    interface PDFPlacePreference<M extends DOM.Mode = 'single'> {}
+    interface PDFs {}
+    interface PercentCombobox<M extends DOM.Mode = 'single'> {}
+    interface PercentComboboxes {}
+    interface PercentEditbox<M extends DOM.Mode = 'single'> {}
+    interface PercentEditboxes {}
+    interface PICT<M extends DOM.Mode = 'single'> {}
+    interface PICTs {}
+    interface PlaceGun<M extends DOM.Mode = 'single'> {}
+    interface PNGExportPreference<M extends DOM.Mode = 'single'> {}
+    interface Polygon<M extends DOM.Mode = 'single'> {}
+    interface PolygonPreference<M extends DOM.Mode = 'single'> {}
+    interface Polygons {}
+    interface Preference<M extends DOM.Mode = 'single'> {}
+    interface Preferences {}
+    interface PreflightBookOption<M extends DOM.Mode = 'single'> {}
+    interface PreflightOption<M extends DOM.Mode = 'single'> {}
+    interface PreflightProcess<M extends DOM.Mode = 'single'> {}
+    interface PreflightProcesses {}
+    interface PreflightProfile<M extends DOM.Mode = 'single'> {}
+    interface PreflightProfileRule<M extends DOM.Mode = 'single'> {}
+    interface PreflightProfileRules {}
+    interface PreflightProfiles {}
+    interface PreflightRule<M extends DOM.Mode = 'single'> {}
+    interface PreflightRuleInstance<M extends DOM.Mode = 'single'> {}
+    interface PreflightRuleInstances {}
+    interface PreflightRules {}
+    interface PrintBookletOption<M extends DOM.Mode = 'single'> {}
+    interface PrintBookletPrintPreference<M extends DOM.Mode = 'single'> {}
+    interface PrinterPreset<M extends DOM.Mode = 'single'> {}
+    interface PrinterPresets {}
+    interface PrintEvent<M extends DOM.Mode = 'single'> {}
+    interface PrintFormBehavior<M extends DOM.Mode = 'single'> {}
+    interface PrintFormBehaviors {}
+    interface PrintPreference<M extends DOM.Mode = 'single'> {}
+    interface PublishExportPreference<M extends DOM.Mode = 'single'> {}
+    interface RadioButton<M extends DOM.Mode = 'single'> {}
+    interface RadiobuttonControl<M extends DOM.Mode = 'single'> {}
+    interface RadiobuttonControls {}
+    interface RadiobuttonGroup<M extends DOM.Mode = 'single'> {}
+    interface RadiobuttonGroups {}
+    interface RadioButtons {}
+    interface RealCombobox<M extends DOM.Mode = 'single'> {}
+    interface RealComboboxes {}
+    interface RealEditbox<M extends DOM.Mode = 'single'> {}
+    interface RealEditboxes {}
+    interface Rectangle<M extends DOM.Mode = 'single'> {}
+    interface Rectangles {}
+    interface Replies {}
+    interface Reply<M extends DOM.Mode = 'single'> {}
+    interface Row<M extends DOM.Mode = 'single'> {}
+    interface Rows {}
+    interface RuleDataObject<M extends DOM.Mode = 'single'> {}
+    interface RuleDataObjects {}
+    interface SatinSetting<M extends DOM.Mode = 'single'> {}
+    interface ScriptArg<M extends DOM.Mode = 'single'> {}
+    interface ScriptMenuAction<M extends DOM.Mode = 'single'> {}
+    interface ScriptMenuActions {}
+    interface ScriptPreference<M extends DOM.Mode = 'single'> {}
+    interface Section<M extends DOM.Mode = 'single'> {}
+    interface Sections {}
+    interface ShowHideFieldsBehavior<M extends DOM.Mode = 'single'> {}
+    interface ShowHideFieldsBehaviors {}
+    interface SignatureField<M extends DOM.Mode = 'single'> {}
+    interface SignatureFields {}
+    interface SmartGuidePreference<M extends DOM.Mode = 'single'> {}
+    interface Snippet<M extends DOM.Mode = 'single'> {}
+    interface Snippets {}
+    interface Sound<M extends DOM.Mode = 'single'> {}
+    interface SoundBehavior<M extends DOM.Mode = 'single'> {}
+    interface SoundBehaviors {}
+    interface Sounds {}
+    interface SpellPreference<M extends DOM.Mode = 'single'> {}
+    interface SplineItem<M extends DOM.Mode = 'single'> {}
+    interface SplineItems {}
+    interface Spread<M extends DOM.Mode = 'single'> {}
+    interface Spreads {}
+    interface State<M extends DOM.Mode = 'single'> {}
+    interface States {}
+    interface StaticText<M extends DOM.Mode = 'single'> {}
+    interface StaticTexts {}
+    interface Stories {}
+    interface Story<M extends DOM.Mode = 'single'> {}
+    interface StoryGridDataInformation<M extends DOM.Mode = 'single'> {}
+    interface StoryPreference<M extends DOM.Mode = 'single'> {}
+    interface StoryWindow<M extends DOM.Mode = 'single'> {}
+    interface StoryWindows {}
+    interface StripedStrokeStyle<M extends DOM.Mode = 'single'> {}
+    interface StripedStrokeStyles {}
+    interface StrokeFillProxySetting<M extends DOM.Mode = 'single'> {}
+    interface StrokeStyle<M extends DOM.Mode = 'single'> {}
+    interface StrokeStyles {}
+    interface StrokeTransparencySetting<M extends DOM.Mode = 'single'> {}
+    interface StyleExportTagMap<M extends DOM.Mode = 'single'> {}
+    interface StyleExportTagMaps {}
+    interface Submenu<M extends DOM.Mode = 'single'> {}
+    interface Submenus {}
+    interface SubmitFormBehavior<M extends DOM.Mode = 'single'> {}
+    interface SubmitFormBehaviors {}
+    interface SVG<M extends DOM.Mode = 'single'> {}
+    interface SVGs {}
+    interface Swatch<M extends DOM.Mode = 'single'> {}
+    interface Swatches {}
+    interface Table<M extends DOM.Mode = 'single'> {}
+    interface Tables {}
+    interface TableStyle<M extends DOM.Mode = 'single'> {}
+    interface TableStyleGroup<M extends DOM.Mode = 'single'> {}
+    interface TableStyleGroups {}
+    interface TableStyleMapping<M extends DOM.Mode = 'single'> {}
+    interface TableStyleMappings {}
+    interface TableStyles {}
+    interface TabStop<M extends DOM.Mode = 'single'> {}
+    interface TabStops {}
+    interface TaggedPDFPreference<M extends DOM.Mode = 'single'> {}
+    interface TaggedTextExportPreference<M extends DOM.Mode = 'single'> {}
+    interface TaggedTextImportPreference<M extends DOM.Mode = 'single'> {}
+    interface Text<M extends DOM.Mode = 'single'> {}
+    interface TextBox<M extends DOM.Mode = 'single'> {}
+    interface TextBoxes {}
+    interface TextColumn<M extends DOM.Mode = 'single'> {}
+    interface TextColumns {}
+    interface TextDefault<M extends DOM.Mode = 'single'> {}
+    interface TextEditbox<M extends DOM.Mode = 'single'> {}
+    interface TextEditboxes {}
+    interface TextEditingPreference<M extends DOM.Mode = 'single'> {}
+    interface TextExportPreference<M extends DOM.Mode = 'single'> {}
+    interface TextFrame<M extends DOM.Mode = 'single'> {}
+    interface TextFramePreference<M extends DOM.Mode = 'single'> {}
+    interface TextFrames {}
+    interface TextImportPreference<M extends DOM.Mode = 'single'> {}
+    interface TextPath<M extends DOM.Mode = 'single'> {}
+    interface TextPaths {}
+    interface TextPreference<M extends DOM.Mode = 'single'> {}
+    interface Texts {}
+    interface TextStyleRange<M extends DOM.Mode = 'single'> {}
+    interface TextStyleRanges {}
+    interface TextVariable<M extends DOM.Mode = 'single'> {}
+    interface TextVariableInstance<M extends DOM.Mode = 'single'> {}
+    interface TextVariableInstances {}
+    interface TextVariables {}
+    interface TextWrapPreference<M extends DOM.Mode = 'single'> {}
+    interface TimingGroup<M extends DOM.Mode = 'single'> {}
+    interface TimingGroups {}
+    interface TimingList<M extends DOM.Mode = 'single'> {}
+    interface TimingLists {}
+    interface TimingSetting<M extends DOM.Mode = 'single'> {}
+    interface TimingTarget<M extends DOM.Mode = 'single'> {}
+    interface TimingTargets {}
+    interface Tint<M extends DOM.Mode = 'single'> {}
+    interface Tints {}
+    interface TOCStyle<M extends DOM.Mode = 'single'> {}
+    interface TOCStyleEntries {}
+    interface TOCStyleEntry<M extends DOM.Mode = 'single'> {}
+    interface TOCStyles {}
+    interface ToolBox<M extends DOM.Mode = 'single'> {}
+    interface Topic<M extends DOM.Mode = 'single'> {}
+    interface Topics {}
+    interface TrackChangesPreference<M extends DOM.Mode = 'single'> {}
+    interface TransformationMatrices {}
+    interface TransformationMatrix<M extends DOM.Mode = 'single'> {}
+    interface TransformAttributeOption<M extends DOM.Mode = 'single'> {}
+    interface TransformPreference<M extends DOM.Mode = 'single'> {}
+    interface TransparencyPreference<M extends DOM.Mode = 'single'> {}
+    interface TransparencySetting<M extends DOM.Mode = 'single'> {}
+    interface TrapPreset<M extends DOM.Mode = 'single'> {}
+    interface TrapPresets {}
+    interface TypeContextualUiPreference<M extends DOM.Mode = 'single'> {}
+    interface UserDictionaries {}
+    interface UserDictionary<M extends DOM.Mode = 'single'> {}
+    interface ValidationError<M extends DOM.Mode = 'single'> {}
+    interface ValidationErrors {}
+    interface ViewPreference<M extends DOM.Mode = 'single'> {}
+    interface ViewZoomBehavior<M extends DOM.Mode = 'single'> {}
+    interface ViewZoomBehaviors {}
+    interface WatermarkPreference<M extends DOM.Mode = 'single'> {}
+    interface Widget<M extends DOM.Mode = 'single'> {}
+    interface Widgets {}
+    interface Window<M extends DOM.Mode = 'single'> {}
+    interface Windows {}
+    interface WMF<M extends DOM.Mode = 'single'> {}
+    interface WMFs {}
+    interface Word<M extends DOM.Mode = 'single'> {}
+    interface WordRTFImportPreference<M extends DOM.Mode = 'single'> {}
+    interface Words {}
+    interface XMLAttribute<M extends DOM.Mode = 'single'> {}
+    interface XMLAttributes {}
+    interface XMLComment<M extends DOM.Mode = 'single'> {}
+    interface XMLComments {}
+    interface XMLElement<M extends DOM.Mode = 'single'> {}
+    interface XMLElements {}
+    interface XMLExportMap<M extends DOM.Mode = 'single'> {}
+    interface XMLExportMaps {}
+    interface XMLExportPreference<M extends DOM.Mode = 'single'> {}
+    interface XMLImportMap<M extends DOM.Mode = 'single'> {}
+    interface XMLImportMaps {}
+    interface XMLImportPreference<M extends DOM.Mode = 'single'> {}
+    interface XMLInstruction<M extends DOM.Mode = 'single'> {}
+    interface XMLInstructions {}
+    interface XMLItem<M extends DOM.Mode = 'single'> {}
+    interface XMLItems {}
+    interface XMLPreference<M extends DOM.Mode = 'single'> {}
+    interface XMLRuleMatchData<M extends DOM.Mode = 'single'> {}
+    interface XMLRuleProcessor<M extends DOM.Mode = 'single'> {}
+    interface XMLRuleProcessors {}
+    interface XmlStories {}
+    interface XmlStory<M extends DOM.Mode = 'single'> {}
+    interface XMLTag<M extends DOM.Mode = 'single'> {}
+    interface XMLTags {}
+    interface XMLViewPreference<M extends DOM.Mode = 'single'> {}
+  }
+
   export import AcrobatCompatibility = Enums.AcrobatCompatibility;
   export import AddPageOptions = Enums.AddPageOptions;
   export import AdornmentOverprint = Enums.AdornmentOverprint;

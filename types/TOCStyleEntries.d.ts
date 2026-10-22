@@ -18,7 +18,7 @@ import type { TOCStyle } from './TOCStyle';
  * @collection TOCStyleEntry
  */
 export interface TOCStyleEntries
-  extends BaseCollection<TOCStyleEntry, TOCStyleEntry, TOCStyleEntry<'plural'>>, NamedCollection<TOCStyleEntry> {
+  extends BaseCollection<TOCStyleEntry, TOCStyleEntry, TOCStyleEntry<'plural'>>, NamedCollection<TOCStyleEntry>, InDesignPlugins.TOCStyleEntries {
   /**
    * Creates a new {@link TOCStyleEntry} from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link TOCStyleEntry}.

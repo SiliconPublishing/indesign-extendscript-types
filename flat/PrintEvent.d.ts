@@ -18,7 +18,7 @@ import type { EventPhases } from './Enums/EventPhases';
 /**
  * An event dispatched before or after a document is printed.
  */
-export interface PrintEvent {
+export interface PrintEvent extends InDesignPlugins.PrintEvent<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -100,7 +100,7 @@ export interface PrintEvent {
 /**
  * An event dispatched before or after a document is printed.
  */
-export interface PrintEventPlural {
+export interface PrintEventPlural extends InDesignPlugins.PrintEvent<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

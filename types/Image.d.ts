@@ -43,7 +43,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * A bitmap image in any raster file format (including TIFF, JPEG, GIF, or
  * Photoshop). See {@link Graphic} for the shared placed-graphic surface.
  */
-export interface Image<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M> {
+export interface Image<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignPlugins.Image<M> {
   /** Resolves the proxy into the individual {@link Image} objects it stands for. */
   getElements(): Image<TParent, 'single'>[];
 

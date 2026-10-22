@@ -86,7 +86,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * An imported graphic in any graphic file format (including vector, metafile,
  * and bitmap formats).
  */
-export interface Graphic<TParent = PageItemParent> {
+export interface Graphic<TParent = PageItemParent> extends InDesignPlugins.Graphic<'single'> {
   /**
    * A collection of events
    */
@@ -663,7 +663,7 @@ export interface Graphic<TParent = PageItemParent> {
  * An imported graphic in any graphic file format (including vector, metafile,
  * and bitmap formats).
  */
-export interface GraphicPlural<TParent = PageItemParent> {
+export interface GraphicPlural<TParent = PageItemParent> extends InDesignPlugins.Graphic<'plural'> {
   /**
    * A collection of events
    */

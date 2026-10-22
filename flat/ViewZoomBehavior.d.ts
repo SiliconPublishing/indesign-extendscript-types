@@ -25,7 +25,7 @@ import type { BehaviorParent } from './_base/Parents';
 /**
  * A behavior that changes the view zoom level.
  */
-export interface ViewZoomBehavior {
+export interface ViewZoomBehavior extends InDesignPlugins.ViewZoomBehavior<'single'> {
   /**
    * A collection of events
    */
@@ -145,7 +145,7 @@ export interface ViewZoomBehavior {
 /**
  * A behavior that changes the view zoom level.
  */
-export interface ViewZoomBehaviorPlural {
+export interface ViewZoomBehaviorPlural extends InDesignPlugins.ViewZoomBehavior<'plural'> {
   /**
    * A collection of events
    */

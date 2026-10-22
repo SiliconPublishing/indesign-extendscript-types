@@ -24,7 +24,7 @@ export interface GotoFirstPageBehaviors
   extends
     BaseCollection<GotoFirstPageBehavior, GotoFirstPageBehavior, GotoFirstPageBehavior<'plural'>>,
     IdCollection<GotoFirstPageBehavior>,
-    NamedCollection<GotoFirstPageBehavior> {
+    NamedCollection<GotoFirstPageBehavior>, InDesignPlugins.GotoFirstPageBehaviors {
   /**
    * Creates a new {@link GotoFirstPageBehavior} from a properties bag alone.
    */

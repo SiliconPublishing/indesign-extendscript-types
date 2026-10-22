@@ -23,7 +23,7 @@ import type { LocationOptions } from './Enums/LocationOptions';
 export interface Bookmark<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document | Bookmark, M>,
     IndexedDOMObject<Document | Bookmark, M>,
-    NamableDOMObject<Document | Bookmark, M> {
+    NamableDOMObject<Document | Bookmark, M>, InDesignPlugins.Bookmark<M> {
   /** Resolves the proxy into the individual {@link Bookmark} objects it stands for. */
   getElements(): Bookmark<'single'>[];
 

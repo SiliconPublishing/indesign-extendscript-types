@@ -24,7 +24,7 @@ export interface AnimationBehaviors
   extends
     BaseCollection<AnimationBehavior, AnimationBehavior, AnimationBehavior<'plural'>>,
     IdCollection<AnimationBehavior>,
-    NamedCollection<AnimationBehavior> {
+    NamedCollection<AnimationBehavior>, InDesignPlugins.AnimationBehaviors {
   /**
    * Creates a new animation behavior.
    * @param withProperties Initial values for properties of the new {@link AnimationBehavior}.

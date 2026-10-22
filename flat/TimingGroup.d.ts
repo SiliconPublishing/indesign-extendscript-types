@@ -26,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * An ordered group of {@link TimingTarget}s within a {@link TimingList} that
  * play together (simultaneously), optionally looping.
  */
-export interface TimingGroup {
+export interface TimingGroup extends InDesignPlugins.TimingGroup<'single'> {
   /**
    * A collection of events
    */
@@ -139,7 +139,7 @@ export interface TimingGroup {
  * An ordered group of {@link TimingTarget}s within a {@link TimingList} that
  * play together (simultaneously), optionally looping.
  */
-export interface TimingGroupPlural {
+export interface TimingGroupPlural extends InDesignPlugins.TimingGroup<'plural'> {
   /**
    * A collection of events
    */

@@ -17,7 +17,7 @@ import type { Dialog } from './Dialog';
  * @collection DialogRow
  */
 export interface DialogRows
-  extends BaseCollection<DialogRow, DialogRow, DialogRow<'plural'>>, IdCollection<DialogRow> {
+  extends BaseCollection<DialogRow, DialogRow, DialogRow<'plural'>>, IdCollection<DialogRow>, InDesignPlugins.DialogRows {
   /**
    * Creates and adds a new dialog row to the layout.
    * @param withProperties Initial values for properties of the new row.

@@ -18,7 +18,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection IntegerEditbox
  */
-export interface IntegerEditboxes {
+export interface IntegerEditboxes extends InDesignPlugins.IntegerEditboxes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

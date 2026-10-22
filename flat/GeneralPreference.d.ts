@@ -28,7 +28,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Application-wide general UI and behavior preferences.
  */
-export interface GeneralPreference {
+export interface GeneralPreference extends InDesignPlugins.GeneralPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -269,7 +269,7 @@ export interface GeneralPreference {
 /**
  * Application-wide general UI and behavior preferences.
  */
-export interface GeneralPreferencePlural {
+export interface GeneralPreferencePlural extends InDesignPlugins.GeneralPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

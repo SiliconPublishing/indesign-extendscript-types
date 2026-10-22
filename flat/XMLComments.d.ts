@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection XMLComment
  */
-export interface XMLComments {
+export interface XMLComments extends InDesignPlugins.XMLComments {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -24,7 +24,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A single page item's membership entry within an {@link Article}.
  */
-export interface ArticleMember {
+export interface ArticleMember extends InDesignPlugins.ArticleMember<'single'> {
   /**
    * A collection of events
    */
@@ -127,7 +127,7 @@ export interface ArticleMember {
 /**
  * A single page item's membership entry within an {@link Article}.
  */
-export interface ArticleMemberPlural {
+export interface ArticleMemberPlural extends InDesignPlugins.ArticleMember<'plural'> {
   /**
    * A collection of events
    */

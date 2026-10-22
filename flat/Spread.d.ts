@@ -78,7 +78,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * flattening. Page items belong to the spread rather than to a page, so an
  * item straddling the spine is one item.
  */
-export interface Spread {
+export interface Spread extends InDesignPlugins.Spread<'single'> {
   /**
    * A collection of events
    */
@@ -412,7 +412,7 @@ export interface Spread {
  * flattening. Page items belong to the spread rather than to a page, so an
  * item straddling the spine is one item.
  */
-export interface SpreadPlural {
+export interface SpreadPlural extends InDesignPlugins.Spread<'plural'> {
   /**
    * A collection of events
    */

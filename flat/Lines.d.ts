@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Line
  */
-export interface Lines<TParent = TextParent> {
+export interface Lines<TParent = TextParent> extends InDesignPlugins.Lines {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

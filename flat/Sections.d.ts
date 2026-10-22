@@ -24,7 +24,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Section
  */
-export interface Sections {
+export interface Sections extends InDesignPlugins.Sections {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -91,7 +91,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * A bitmap image in any raster file format (including TIFF, JPEG, GIF, or
  * Photoshop). See {@link Graphic} for the shared placed-graphic surface.
  */
-export interface Image<TParent = PageItemParent> {
+export interface Image<TParent = PageItemParent> extends InDesignPlugins.Image<'single'> {
   /**
    * A collection of events
    */
@@ -688,7 +688,7 @@ export interface Image<TParent = PageItemParent> {
  * A bitmap image in any raster file format (including TIFF, JPEG, GIF, or
  * Photoshop). See {@link Graphic} for the shared placed-graphic surface.
  */
-export interface ImagePlural<TParent = PageItemParent> {
+export interface ImagePlural<TParent = PageItemParent> extends InDesignPlugins.Image<'plural'> {
   /**
    * A collection of events
    */

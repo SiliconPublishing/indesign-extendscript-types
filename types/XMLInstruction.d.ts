@@ -15,7 +15,7 @@ import type { LocationOptions } from './Enums/LocationOptions';
  * An XML processing instruction (`<?target data?>`) in a document's underlying
  * XML structure.
  */
-export interface XMLInstruction<M extends Mode = 'single'> extends XMLItem<M>{
+export interface XMLInstruction<M extends Mode = 'single'> extends XMLItem<M>, InDesignPlugins.XMLInstruction<M>{
   /** Resolves the proxy into the individual {@link XMLInstruction} objects it stands for. */
   getElements(): XMLInstruction<'single'>[];
 

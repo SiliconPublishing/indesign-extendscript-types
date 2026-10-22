@@ -14,7 +14,7 @@ import type { Application } from './Application';
  * method (`scaleMatrix`, `rotateMatrix`, `catenateMatrix`, ...) returns a new
  * {@link TransformationMatrix} rather than mutating the receiver.
  */
-export interface TransformationMatrix<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, IndexedDOMObject<Application, M> {
+export interface TransformationMatrix<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, IndexedDOMObject<Application, M>, InDesignPlugins.TransformationMatrix<M> {
   /** Resolves the proxy into the individual {@link TransformationMatrix} objects it stands for. */
   getElements(): TransformationMatrix<'single'>[];
 

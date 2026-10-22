@@ -30,7 +30,7 @@ import type { FilePath } from './_base/Types';
  * Settings for the directional feather effect, which fades an object's edges
  * outward by a different width on each of its four sides.
  */
-export interface DirectionalFeatherSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> {
+export interface DirectionalFeatherSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.DirectionalFeatherSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -145,7 +145,7 @@ export interface DirectionalFeatherSetting<TParent = TransparencySetting | Strok
  * Settings for the directional feather effect, which fades an object's edges
  * outward by a different width on each of its four sides.
  */
-export interface DirectionalFeatherSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> {
+export interface DirectionalFeatherSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.DirectionalFeatherSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

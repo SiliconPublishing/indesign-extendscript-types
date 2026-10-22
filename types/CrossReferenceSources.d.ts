@@ -26,7 +26,7 @@ export interface CrossReferenceSources
   extends
     BaseCollection<CrossReferenceSource, CrossReferenceSource, CrossReferenceSource<'plural'>>,
     IdCollection<CrossReferenceSource>,
-    NamedCollection<CrossReferenceSource> {
+    NamedCollection<CrossReferenceSource>, InDesignPlugins.CrossReferenceSources {
   /**
    * Creates a new cross-reference text source.
    *

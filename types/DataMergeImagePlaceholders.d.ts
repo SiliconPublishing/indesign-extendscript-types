@@ -18,7 +18,7 @@ import type { DataMergeImagePlaceholder } from './DataMergeImagePlaceholder';
  *
  * @collection DataMergeImagePlaceholder
  */
-export interface DataMergeImagePlaceholders extends BaseCollection<DataMergeImagePlaceholder, DataMergeImagePlaceholder, DataMergeImagePlaceholder<'plural'>> {
+export interface DataMergeImagePlaceholders extends BaseCollection<DataMergeImagePlaceholder, DataMergeImagePlaceholder, DataMergeImagePlaceholder<'plural'>>, InDesignPlugins.DataMergeImagePlaceholders {
   /**
    * Creates a new data merge image placeholder.
    *

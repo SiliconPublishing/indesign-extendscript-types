@@ -24,7 +24,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A single XML element matched by one or more rules while an
  * {@link XMLRuleProcessor} walks an XML rule set.
  */
-export interface XMLRuleMatchData {
+export interface XMLRuleMatchData extends InDesignPlugins.XMLRuleMatchData<'single'> {
   /**
    * A collection of events
    */
@@ -120,7 +120,7 @@ export interface XMLRuleMatchData {
  * A single XML element matched by one or more rules while an
  * {@link XMLRuleProcessor} walks an XML rule set.
  */
-export interface XMLRuleMatchDataPlural {
+export interface XMLRuleMatchDataPlural extends InDesignPlugins.XMLRuleMatchData<'plural'> {
   /**
    * A collection of events
    */

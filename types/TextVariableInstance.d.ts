@@ -26,7 +26,7 @@ import type { TextVariable } from './TextVariable';
  */
 export interface TextVariableInstance<M extends Mode = 'single'>
   extends LabelableEventDOMObject<XmlStory | TextFrame | EndnoteTextFrame | Story | Note | Cell | Footnote | Change, M>,
-    IndexedDOMObject<XmlStory | TextFrame | EndnoteTextFrame | Story | Note | Cell | Footnote | Change, M> {
+    IndexedDOMObject<XmlStory | TextFrame | EndnoteTextFrame | Story | Note | Cell | Footnote | Change, M>, InDesignPlugins.TextVariableInstance<M> {
   /** Resolves the proxy into the individual {@link TextVariableInstance} objects it stands for. */
   getElements(): TextVariableInstance<'single'>[];
 

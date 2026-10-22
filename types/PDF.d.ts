@@ -41,7 +41,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
 /**
  * A placed PDF page.
  */
-export interface PDF<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M> {
+export interface PDF<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignPlugins.PDF<M> {
   /** Resolves the proxy into the individual {@link PDF} objects it stands for. */
   getElements(): PDF<TParent, 'single'>[];
 

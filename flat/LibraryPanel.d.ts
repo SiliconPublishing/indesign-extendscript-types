@@ -34,7 +34,7 @@ import type { Application } from './Application';
  * through {@link associatedLibrary}, and use this panel only to control what the
  * user sees and has selected.
  */
-export interface LibraryPanel {
+export interface LibraryPanel extends InDesignPlugins.LibraryPanel<'single'> {
   /**
    * A collection of events
    */
@@ -162,7 +162,7 @@ export interface LibraryPanel {
  * through {@link associatedLibrary}, and use this panel only to control what the
  * user sees and has selected.
  */
-export interface LibraryPanelPlural {
+export interface LibraryPanelPlural extends InDesignPlugins.LibraryPanel<'plural'> {
   /**
    * A collection of events
    */

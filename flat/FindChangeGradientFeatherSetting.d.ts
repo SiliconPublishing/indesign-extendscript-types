@@ -31,7 +31,7 @@ import type { FilePath } from './_base/Types';
  * Gradient feather search/replace criteria — the same soft fade to transparent as
  * {@link GradientFeatherSetting}, matched or applied by find/change.
  */
-export interface FindChangeGradientFeatherSetting {
+export interface FindChangeGradientFeatherSetting extends InDesignPlugins.FindChangeGradientFeatherSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -142,7 +142,7 @@ export interface FindChangeGradientFeatherSetting {
  * Gradient feather search/replace criteria — the same soft fade to transparent as
  * {@link GradientFeatherSetting}, matched or applied by find/change.
  */
-export interface FindChangeGradientFeatherSettingPlural {
+export interface FindChangeGradientFeatherSettingPlural extends InDesignPlugins.FindChangeGradientFeatherSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -27,7 +27,7 @@ import type { XMLElement } from './XMLElement';
 /**
  * A comment (`<!-- ... -->`) in a document's underlying XML structure.
  */
-export interface XMLComment {
+export interface XMLComment extends InDesignPlugins.XMLComment<'single'> {
   /**
    * A collection of events
    */
@@ -140,7 +140,7 @@ export interface XMLComment {
 /**
  * A comment (`<!-- ... -->`) in a document's underlying XML structure.
  */
-export interface XMLCommentPlural {
+export interface XMLCommentPlural extends InDesignPlugins.XMLComment<'plural'> {
   /**
    * A collection of events
    */

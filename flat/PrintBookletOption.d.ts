@@ -27,7 +27,7 @@ import type { FilePath } from './_base/Types';
  * Settings for printing pages as an imposed booklet — how they're grouped into
  * signatures for binding, plus the spacing, margins, and bleed the imposition needs.
  */
-export interface PrintBookletOption {
+export interface PrintBookletOption extends InDesignPlugins.PrintBookletOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -154,7 +154,7 @@ export interface PrintBookletOption {
  * Settings for printing pages as an imposed booklet — how they're grouped into
  * signatures for binding, plus the spacing, margins, and bleed the imposition needs.
  */
-export interface PrintBookletOptionPlural {
+export interface PrintBookletOptionPlural extends InDesignPlugins.PrintBookletOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

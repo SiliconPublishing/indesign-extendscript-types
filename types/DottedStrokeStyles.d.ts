@@ -24,7 +24,7 @@ export interface DottedStrokeStyles
   extends
     BaseCollection<DottedStrokeStyle, DottedStrokeStyle, DottedStrokeStyle<'plural'>>,
     IdCollection<DottedStrokeStyle>,
-    NamedCollection<DottedStrokeStyle> {
+    NamedCollection<DottedStrokeStyle>, InDesignPlugins.DottedStrokeStyles {
   /**
    * Creates a new dotted stroke style.
    *

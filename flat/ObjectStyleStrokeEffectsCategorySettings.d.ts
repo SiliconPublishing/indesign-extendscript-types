@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
  * Which effect categories an {@link ObjectStyle} enables for an object's stroke,
  * independently of the object itself, its fill, or its content.
  */
-export interface ObjectStyleStrokeEffectsCategorySettings {
+export interface ObjectStyleStrokeEffectsCategorySettings extends InDesignPlugins.ObjectStyleStrokeEffectsCategorySettings<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -141,7 +141,7 @@ export interface ObjectStyleStrokeEffectsCategorySettings {
  * Which effect categories an {@link ObjectStyle} enables for an object's stroke,
  * independently of the object itself, its fill, or its content.
  */
-export interface ObjectStyleStrokeEffectsCategorySettingsPlural {
+export interface ObjectStyleStrokeEffectsCategorySettingsPlural extends InDesignPlugins.ObjectStyleStrokeEffectsCategorySettings<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

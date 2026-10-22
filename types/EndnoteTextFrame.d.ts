@@ -77,7 +77,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * Behaves exactly like a regular {@link TextFrame}; InDesign creates, resizes, and threads
  * these frames itself as endnotes are added or removed.
  */
-export interface EndnoteTextFrame<TParent = PageItemParent, M extends Mode = 'single'> extends TextFrame<TParent, M> {
+export interface EndnoteTextFrame<TParent = PageItemParent, M extends Mode = 'single'> extends TextFrame<TParent, M>, InDesignPlugins.EndnoteTextFrame<M> {
   /** Resolves the proxy into the individual {@link EndnoteTextFrame} objects it stands for. */
   getElements(): EndnoteTextFrame<TParent, 'single'>[];
 }

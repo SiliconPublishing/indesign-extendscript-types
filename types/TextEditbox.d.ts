@@ -11,7 +11,7 @@ import type { Widget } from './Widget';
 /**
  * A free-text entry field.
  */
-export interface TextEditbox<M extends Mode = 'single'> extends Widget<M>{
+export interface TextEditbox<M extends Mode = 'single'> extends Widget<M>, InDesignPlugins.TextEditbox<M>{
   /** Resolves the proxy into the individual {@link TextEditbox} objects it stands for. */
   getElements(): TextEditbox<'single'>[];
 

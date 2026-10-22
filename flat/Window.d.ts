@@ -35,7 +35,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * ordering) and the document selection, which is shared across all windows viewing the same
  * document.
  */
-export interface Window {
+export interface Window extends InDesignPlugins.Window<'single'> {
   /**
    * A collection of events
    */
@@ -161,7 +161,7 @@ export interface Window {
  * ordering) and the document selection, which is shared across all windows viewing the same
  * document.
  */
-export interface WindowPlural {
+export interface WindowPlural extends InDesignPlugins.Window<'plural'> {
   /**
    * A collection of events
    */

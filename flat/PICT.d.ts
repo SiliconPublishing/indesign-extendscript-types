@@ -86,7 +86,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
 /**
  * A placed PICT (Macintosh Picture) graphic.
  */
-export interface PICT<TParent = PageItemParent> {
+export interface PICT<TParent = PageItemParent> extends InDesignPlugins.PICT<'single'> {
   /**
    * A collection of events
    */
@@ -664,7 +664,7 @@ export interface PICT<TParent = PageItemParent> {
 /**
  * A placed PICT (Macintosh Picture) graphic.
  */
-export interface PICTPlural<TParent = PageItemParent> {
+export interface PICTPlural<TParent = PageItemParent> extends InDesignPlugins.PICT<'plural'> {
   /**
    * A collection of events
    */

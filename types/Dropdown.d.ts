@@ -11,7 +11,7 @@ import type { Widget } from './Widget';
 /**
  * A non-editable dropdown list of fixed choices.
  */
-export interface Dropdown<M extends Mode = 'single'> extends Widget<M>{
+export interface Dropdown<M extends Mode = 'single'> extends Widget<M>, InDesignPlugins.Dropdown<M>{
   /** Resolves the proxy into the individual {@link Dropdown} objects it stands for. */
   getElements(): Dropdown<'single'>[];
 

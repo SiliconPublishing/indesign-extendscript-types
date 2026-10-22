@@ -21,7 +21,7 @@ import type { Index } from './Index';
 export interface CrossReference<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Topic, M>,
     IndexedDOMObject<Topic, M>,
-    NamableDOMObject<Topic, M> {
+    NamableDOMObject<Topic, M>, InDesignPlugins.CrossReference<M> {
   /** Resolves the proxy into the individual {@link CrossReference} objects it stands for. */
   getElements(): CrossReference<'single'>[];
 

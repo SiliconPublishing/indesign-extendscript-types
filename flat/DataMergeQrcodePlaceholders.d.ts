@@ -20,7 +20,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection DataMergeQrcodePlaceholder
  */
-export interface DataMergeQrcodePlaceholders {
+export interface DataMergeQrcodePlaceholders extends InDesignPlugins.DataMergeQrcodePlaceholders {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

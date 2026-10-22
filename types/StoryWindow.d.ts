@@ -16,7 +16,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * independent of its page layout -- as opposed to a {@link LayoutWindow}'s
  * page-geometry view of the same {@link Document}.
  */
-export interface StoryWindow<M extends Mode = 'single'> extends Window<M>{
+export interface StoryWindow<M extends Mode = 'single'> extends Window<M>, InDesignPlugins.StoryWindow<M>{
   /** Resolves the proxy into the individual {@link StoryWindow} objects it stands for. */
   getElements(): StoryWindow<'single'>[];
 }

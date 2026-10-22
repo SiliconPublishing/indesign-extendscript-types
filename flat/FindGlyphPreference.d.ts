@@ -25,7 +25,7 @@ import type { FilePath } from './_base/Types';
  * Search criteria for the Find/Change Glyph feature — matches text by glyph
  * identity (GID/CID, font, design-axis coordinates) rather than by character.
  */
-export interface FindGlyphPreference {
+export interface FindGlyphPreference extends InDesignPlugins.FindGlyphPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -139,7 +139,7 @@ export interface FindGlyphPreference {
  * Search criteria for the Find/Change Glyph feature — matches text by glyph
  * identity (GID/CID, font, design-axis coordinates) rather than by character.
  */
-export interface FindGlyphPreferencePlural {
+export interface FindGlyphPreferencePlural extends InDesignPlugins.FindGlyphPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

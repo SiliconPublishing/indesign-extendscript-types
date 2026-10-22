@@ -119,7 +119,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * A PDF combo-box form field: an editable or fixed drop-down list of choices
  * in an interactive PDF form.
  */
-export interface ComboBox<TParent = PageItemParent> {
+export interface ComboBox<TParent = PageItemParent> extends InDesignPlugins.ComboBox<'single'> {
   /**
    * A collection of events
    */
@@ -801,7 +801,7 @@ export interface ComboBox<TParent = PageItemParent> {
  * A PDF combo-box form field: an editable or fixed drop-down list of choices
  * in an interactive PDF form.
  */
-export interface ComboBoxPlural<TParent = PageItemParent> {
+export interface ComboBoxPlural<TParent = PageItemParent> extends InDesignPlugins.ComboBox<'plural'> {
   /**
    * A collection of events
    */

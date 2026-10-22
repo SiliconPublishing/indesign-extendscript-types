@@ -15,7 +15,7 @@ import type { MeasurementValue } from './_base/Types';
  * Default character-grid formatting properties for the document or
  * application-wide layout grid.
  */
-export interface LayoutGridDataInformation<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
+export interface LayoutGridDataInformation<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.LayoutGridDataInformation<M> {
   /** Resolves the proxy into the individual {@link LayoutGridDataInformation} objects it stands for. */
   getElements(): LayoutGridDataInformation<'single'>[];
 

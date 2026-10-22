@@ -29,7 +29,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A custom modal dialog window built via scripting to gather user input or
  * display information.
  */
-export interface Dialog {
+export interface Dialog extends InDesignPlugins.Dialog<'single'> {
   /**
    * A collection of events
    */
@@ -154,7 +154,7 @@ export interface Dialog {
  * A custom modal dialog window built via scripting to gather user input or
  * display information.
  */
-export interface DialogPlural {
+export interface DialogPlural extends InDesignPlugins.Dialog<'plural'> {
   /**
    * A collection of events
    */

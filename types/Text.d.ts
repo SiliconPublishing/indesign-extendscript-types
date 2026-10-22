@@ -118,7 +118,7 @@ export interface Text<TParent = TextParent, M extends Mode = 'single'>
     CharacterFormatAttributes<M>,
     ParagraphFormatAttributes<M>,
     TextGraphicAttributes<M>,
-    TextRangeContent<TParent, M> {
+    TextRangeContent<TParent, M>, InDesignPlugins.Text<M> {
   /** Resolves the proxy into the individual {@link Text} ranges it stands for. */
   getElements(): Text<TParent, 'single'>[];
 

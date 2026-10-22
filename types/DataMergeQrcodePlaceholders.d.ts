@@ -18,7 +18,7 @@ import type { DataMergeQrcodePlaceholder } from './DataMergeQrcodePlaceholder';
  *
  * @collection DataMergeQrcodePlaceholder
  */
-export interface DataMergeQrcodePlaceholders extends BaseCollection<DataMergeQrcodePlaceholder, DataMergeQrcodePlaceholder, DataMergeQrcodePlaceholder<'plural'>> {
+export interface DataMergeQrcodePlaceholders extends BaseCollection<DataMergeQrcodePlaceholder, DataMergeQrcodePlaceholder, DataMergeQrcodePlaceholder<'plural'>>, InDesignPlugins.DataMergeQrcodePlaceholders {
   /**
    * Creates a new data merge QR code placeholder.
    *

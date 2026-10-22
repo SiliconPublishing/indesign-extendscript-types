@@ -30,5 +30,5 @@ export interface Buttons<TParent = PageItemParent>
     BaseCollection<Button<TParent>, Button, Button<TParent, 'plural'>>,
     IdCollection<Button<TParent>>,
     NamedCollection<Button<TParent>>,
-    AddablePageItemCollection<Button<TParent>, Button> {
+    AddablePageItemCollection<Button<TParent>, Button>, InDesignPlugins.Buttons {
 }

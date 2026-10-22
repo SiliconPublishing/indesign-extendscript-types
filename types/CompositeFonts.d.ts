@@ -24,7 +24,7 @@ export interface CompositeFonts
   extends
     BaseCollection<CompositeFont, CompositeFont, CompositeFont<'plural'>>,
     IdCollection<CompositeFont>,
-    NamedCollection<CompositeFont> {
+    NamedCollection<CompositeFont>, InDesignPlugins.CompositeFonts {
   /**
    * Creates a new composite font.
    *

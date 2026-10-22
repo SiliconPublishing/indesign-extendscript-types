@@ -13,7 +13,7 @@ import type { BlendingSpace } from './Enums/BlendingSpace';
 /**
  * Transparency preferences.
  */
-export interface TransparencyPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
+export interface TransparencyPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.TransparencyPreference<M> {
   /** Resolves the proxy into the individual {@link TransparencyPreference} objects it stands for. */
   getElements(): TransparencyPreference<'single'>[];
 

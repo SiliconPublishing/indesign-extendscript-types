@@ -12,7 +12,7 @@ import type { NumericComboboxSurface } from './_base/WidgetMixins';
 /**
  * An editable dropdown for percentage values.
  */
-export interface PercentCombobox<M extends Mode = 'single'> extends Widget<M>, NumericComboboxSurface<M>{
+export interface PercentCombobox<M extends Mode = 'single'> extends Widget<M>, NumericComboboxSurface<M>, InDesignPlugins.PercentCombobox<M>{
   /** Resolves the proxy into the individual {@link PercentCombobox} objects it stands for. */
   getElements(): PercentCombobox<'single'>[];
 }

@@ -26,7 +26,7 @@ export interface PreflightRuleInstances
   extends
     BaseCollection<PreflightRuleInstance, PreflightRuleInstance, PreflightRuleInstance<'plural'>>,
     IdCollection<PreflightRuleInstance>,
-    NamedCollection<PreflightRuleInstance> {
+    NamedCollection<PreflightRuleInstance>, InDesignPlugins.PreflightRuleInstances {
   /**
    * Adds a specific preflight rule to the parent profile.
    *

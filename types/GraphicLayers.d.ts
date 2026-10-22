@@ -23,5 +23,5 @@ export interface GraphicLayers
   extends
     BaseCollection<GraphicLayer, GraphicLayer, GraphicLayer<'plural'>>,
     IdCollection<GraphicLayer>,
-    NamedCollection<GraphicLayer> {
+    NamedCollection<GraphicLayer>, InDesignPlugins.GraphicLayers {
 }

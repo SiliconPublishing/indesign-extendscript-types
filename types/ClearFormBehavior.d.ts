@@ -13,7 +13,7 @@ import type { BehaviorEvents } from './Enums/BehaviorEvents';
 /**
  * A behavior that resets every field of the interactive PDF form to its default value.
  */
-export interface ClearFormBehavior<M extends Mode = 'single'> extends Behavior<M>{
+export interface ClearFormBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignPlugins.ClearFormBehavior<M>{
   /** Resolves the proxy into the individual {@link ClearFormBehavior} objects it stands for. */
   getElements(): ClearFormBehavior<'single'>[];
 

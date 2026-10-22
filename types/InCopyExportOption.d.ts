@@ -17,7 +17,7 @@ import type { XmlStory } from './XmlStory';
 /**
  * Export options for InCopy INCX document format.
  */
-export interface InCopyExportOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application | Story | XmlStory | Oval | Rectangle | Polygon, M> {
+export interface InCopyExportOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application | Story | XmlStory | Oval | Rectangle | Polygon, M>, InDesignPlugins.InCopyExportOption<M> {
   /** Resolves the proxy into the individual {@link InCopyExportOption} objects it stands for. */
   getElements(): InCopyExportOption<'single'>[];
 

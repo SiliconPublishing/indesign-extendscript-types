@@ -24,7 +24,7 @@ export interface HyperlinkTextDestinations
   extends
     BaseCollection<HyperlinkTextDestination, HyperlinkTextDestination, HyperlinkTextDestination<'plural'>>,
     IdCollection<HyperlinkTextDestination>,
-    NamedCollection<HyperlinkTextDestination> {
+    NamedCollection<HyperlinkTextDestination>, InDesignPlugins.HyperlinkTextDestinations {
   /**
    * Creates a new hyperlink text destination.
    *

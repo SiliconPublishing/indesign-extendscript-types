@@ -51,7 +51,7 @@ import type { Event } from './Event';
  * The "place gun" — content loaded onto the cursor via {@link loadPlaceGun},
  * ready to be placed with a subsequent click or drag.
  */
-export interface PlaceGun {
+export interface PlaceGun extends InDesignPlugins.PlaceGun<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -209,7 +209,7 @@ export interface PlaceGun {
  * The "place gun" — content loaded onto the cursor via {@link loadPlaceGun},
  * ready to be placed with a subsequent click or drag.
  */
-export interface PlaceGunPlural {
+export interface PlaceGunPlural extends InDesignPlugins.PlaceGun<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

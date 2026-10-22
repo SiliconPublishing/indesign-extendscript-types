@@ -136,7 +136,7 @@ import type { Character } from './Character';
  * Behaves exactly like a regular {@link TextFrame}; InDesign creates, resizes, and threads
  * these frames itself as endnotes are added or removed.
  */
-export interface EndnoteTextFrame<TParent = PageItemParent> {
+export interface EndnoteTextFrame<TParent = PageItemParent> extends InDesignPlugins.EndnoteTextFrame<'single'> {
   /**
    * A collection of events
    */
@@ -905,7 +905,7 @@ export interface EndnoteTextFrame<TParent = PageItemParent> {
  * Behaves exactly like a regular {@link TextFrame}; InDesign creates, resizes, and threads
  * these frames itself as endnotes are added or removed.
  */
-export interface EndnoteTextFramePlural<TParent = PageItemParent> {
+export interface EndnoteTextFramePlural<TParent = PageItemParent> extends InDesignPlugins.EndnoteTextFrame<'plural'> {
   /**
    * A collection of events
    */

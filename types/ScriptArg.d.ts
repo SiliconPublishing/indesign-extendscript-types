@@ -13,7 +13,7 @@ import type { Application } from './Application';
  * The command-line/host-script argument store — named string values passed
  * into InDesign at launch and readable from within a script.
  */
-export interface ScriptArg<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface ScriptArg<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.ScriptArg<M> {
   /** Resolves the proxy into the individual {@link ScriptArg} objects it stands for. */
   getElements(): ScriptArg<'single'>[];
 

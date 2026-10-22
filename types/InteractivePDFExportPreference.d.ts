@@ -21,7 +21,7 @@ import type { RasterResolutionOptions } from './Enums/RasterResolutionOptions';
 /**
  * Interactive PDF export settings for the application object.
  */
-export interface InteractivePDFExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface InteractivePDFExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.InteractivePDFExportPreference<M> {
   /** Resolves the proxy into the individual {@link InteractivePDFExportPreference} objects it stands for. */
   getElements(): InteractivePDFExportPreference<'single'>[];
 

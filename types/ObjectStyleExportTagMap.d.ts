@@ -16,7 +16,7 @@ import type { ObjectStyle } from './ObjectStyle';
  */
 export interface ObjectStyleExportTagMap<M extends Mode = 'single'>
   extends EventTargetDOMObject<ObjectStyle, M>,
-    IndexedDOMObject<ObjectStyle, M> {
+    IndexedDOMObject<ObjectStyle, M>, InDesignPlugins.ObjectStyleExportTagMap<M> {
   /** Resolves the proxy into the individual {@link ObjectStyleExportTagMap} objects it stands for. */
   getElements(): ObjectStyleExportTagMap<'single'>[];
 

@@ -668,7 +668,7 @@ export interface PageItemsPlural<TParent = PageItemParent> {
  *
  * @collection PageItem
  */
-export interface PageItems<TParent = PageItemParent> {
+export interface PageItems<TParent = PageItemParent> extends InDesignPlugins.PageItems {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

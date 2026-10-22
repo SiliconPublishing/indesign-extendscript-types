@@ -18,7 +18,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Dropdown
  */
-export interface Dropdowns {
+export interface Dropdowns extends InDesignPlugins.Dropdowns {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -28,5 +28,5 @@ export interface GraphicLines<TParent = PageItemParent>
     BaseCollection<GraphicLine<TParent>, GraphicLine, GraphicLine<TParent, 'plural'>>,
     IdCollection<GraphicLine<TParent>>,
     NamedCollection<GraphicLine<TParent>>,
-    AddablePageItemCollection<GraphicLine<TParent>, GraphicLine> {
+    AddablePageItemCollection<GraphicLine<TParent>, GraphicLine>, InDesignPlugins.GraphicLines {
 }

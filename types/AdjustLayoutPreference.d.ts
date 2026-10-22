@@ -13,7 +13,7 @@ import type { Document } from './Document';
  * Settings for Layout Adjustment — how page items, margins, and text resize
  * automatically when the page size, orientation, or margins change.
  */
-export interface AdjustLayoutPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M> {
+export interface AdjustLayoutPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, InDesignPlugins.AdjustLayoutPreference<M> {
   /** Resolves the proxy into the individual {@link AdjustLayoutPreference} objects it stands for. */
   getElements(): AdjustLayoutPreference<'single'>[];
 

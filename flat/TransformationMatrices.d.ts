@@ -18,7 +18,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection TransformationMatrix
  */
-export interface TransformationMatrices {
+export interface TransformationMatrices extends InDesignPlugins.TransformationMatrices {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

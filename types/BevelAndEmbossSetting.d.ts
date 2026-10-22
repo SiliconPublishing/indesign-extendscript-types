@@ -23,7 +23,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
 /**
  * Bevel and emboss effect settings.
  */
-export interface BevelAndEmbossSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M> {
+export interface BevelAndEmbossSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M>, InDesignPlugins.BevelAndEmbossSetting<M> {
   /** Resolves the proxy into the individual {@link BevelAndEmbossSetting} objects it stands for. */
   getElements(): BevelAndEmbossSetting<'single', TParent>[];
 

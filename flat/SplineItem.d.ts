@@ -136,7 +136,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * {@link intersectPath}, {@link excludeOverlapPath}, {@link minusBack} — combine
  * this shape's outline with others.
  */
-export interface SplineItem<TParent = PageItemParent> {
+export interface SplineItem<TParent = PageItemParent> extends InDesignPlugins.SplineItem<'single'> {
   /**
    * A collection of events
    */
@@ -822,7 +822,7 @@ export interface SplineItem<TParent = PageItemParent> {
  * {@link intersectPath}, {@link excludeOverlapPath}, {@link minusBack} — combine
  * this shape's outline with others.
  */
-export interface SplineItemPlural<TParent = PageItemParent> {
+export interface SplineItemPlural<TParent = PageItemParent> extends InDesignPlugins.SplineItem<'plural'> {
   /**
    * A collection of events
    */

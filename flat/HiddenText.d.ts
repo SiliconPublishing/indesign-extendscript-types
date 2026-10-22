@@ -36,7 +36,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A range of text hidden from its story flow (for example, by a conditional
  * text or a layout-adjustment operation) while remaining scriptable.
  */
-export interface HiddenText {
+export interface HiddenText extends InDesignPlugins.HiddenText<'single'> {
   /**
    * A collection of events
    */
@@ -167,7 +167,7 @@ export interface HiddenText {
  * A range of text hidden from its story flow (for example, by a conditional
  * text or a layout-adjustment operation) while remaining scriptable.
  */
-export interface HiddenTextPlural {
+export interface HiddenTextPlural extends InDesignPlugins.HiddenText<'plural'> {
   /**
    * A collection of events
    */

@@ -60,7 +60,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * content and the base building block {@link Button} specializes with PDF
  * behaviors.
  */
-export interface MultiStateObject<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, MultiStateObject, M> {
+export interface MultiStateObject<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, MultiStateObject, M>, InDesignPlugins.MultiStateObject<M> {
   /** Resolves the proxy into the individual {@link MultiStateObject} objects it stands for. */
   getElements(): MultiStateObject<TParent, 'single'>[];
 

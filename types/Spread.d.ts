@@ -73,7 +73,7 @@ export interface Spread<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document, M>,
     IndexedDOMObject<Document, M>,
     NamableDOMObject<Document, M>,
-    PageItemContainer<Spread, M> {
+    PageItemContainer<Spread, M>, InDesignPlugins.Spread<M> {
   /** Resolves the proxy into the individual {@link Spread} objects it stands for. */
   getElements(): Spread<'single'>[];
 

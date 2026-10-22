@@ -64,5 +64,5 @@ export interface TextVariableInstances
       | Word
       | Character
       | Change
-    > {
+    >, InDesignPlugins.TextVariableInstances {
 }

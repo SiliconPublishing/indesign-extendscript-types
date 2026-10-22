@@ -11,7 +11,7 @@ import type { StrokeStyle } from './StrokeStyle';
 /**
  * A stroke style of parallel stripes running along the stroke.
  */
-export interface StripedStrokeStyle<M extends Mode = 'single'> extends StrokeStyle<M>{
+export interface StripedStrokeStyle<M extends Mode = 'single'> extends StrokeStyle<M>, InDesignPlugins.StripedStrokeStyle<M>{
   /** Resolves the proxy into the individual {@link StripedStrokeStyle} objects it stands for. */
   getElements(): StripedStrokeStyle<'single'>[];
 

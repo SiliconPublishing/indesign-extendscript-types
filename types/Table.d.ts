@@ -90,7 +90,7 @@ export type TableParent =
 export interface Table<M extends Mode = 'single'>
   extends LabelableEventDOMObject<TableParent, M>,
     IndexedDOMObject<TableParent, M>,
-    TableFormatAttributes<M>{
+    TableFormatAttributes<M>, InDesignPlugins.Table<M>{
   /** Resolves the proxy into the individual {@link Table} objects it stands for. */
   getElements(): Table<'single'>[];
 

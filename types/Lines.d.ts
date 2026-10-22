@@ -21,7 +21,7 @@ import type { Word } from './Word';
  * @collection Line
  */
 export interface Lines<TParent = TextParent>
-  extends BaseCollection<Line<TParent>, Text, Line<TParent, 'plural'>, Text<TParent, 'plural'>> {
+  extends BaseCollection<Line<TParent>, Text, Line<TParent, 'plural'>, Text<TParent, 'plural'>>, InDesignPlugins.Lines {
   /**
    * Returns the contiguous {@link Text} range between two bounds (inclusive).
    *

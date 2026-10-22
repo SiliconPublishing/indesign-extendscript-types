@@ -35,7 +35,7 @@ export type RuleDataValue =
  *
  * @collection RuleDataObject
  */
-export interface RuleDataObjects {
+export interface RuleDataObjects extends InDesignPlugins.RuleDataObjects {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

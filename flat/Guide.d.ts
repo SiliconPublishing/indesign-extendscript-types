@@ -44,7 +44,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * Like any master-page object, a guide placed on a {@link MasterSpread} can be
  * overridden on document pages.
  */
-export interface Guide {
+export interface Guide extends InDesignPlugins.Guide<'single'> {
   /**
    * A collection of events
    */
@@ -248,7 +248,7 @@ export interface Guide {
  * Like any master-page object, a guide placed on a {@link MasterSpread} can be
  * overridden on document pages.
  */
-export interface GuidePlural {
+export interface GuidePlural extends InDesignPlugins.Guide<'plural'> {
   /**
    * A collection of events
    */

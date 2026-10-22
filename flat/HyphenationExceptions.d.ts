@@ -17,7 +17,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection HyphenationException
  */
-export interface HyphenationExceptions {
+export interface HyphenationExceptions extends InDesignPlugins.HyphenationExceptions {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

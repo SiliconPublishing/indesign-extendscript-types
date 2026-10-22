@@ -70,7 +70,7 @@ import type { XMLTag } from './XMLTag';
 /**
  * Search-and-replace criteria and formatting options, used with {@link Application.changeText}.
  */
-export interface ChangeTextPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface ChangeTextPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.ChangeTextPreference<M> {
   /** Resolves the proxy into the individual {@link ChangeTextPreference} objects it stands for. */
   getElements(): ChangeTextPreference<'single'>[];
 

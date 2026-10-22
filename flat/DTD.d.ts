@@ -27,7 +27,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * The document type declaration governing XML validation and the tag
  * structure of a document's XML view.
  */
-export interface DTD {
+export interface DTD extends InDesignPlugins.DTD<'single'> {
   /**
    * A collection of events
    */
@@ -144,7 +144,7 @@ export interface DTD {
  * The document type declaration governing XML validation and the tag
  * structure of a document's XML view.
  */
-export interface DTDPlural {
+export interface DTDPlural extends InDesignPlugins.DTD<'plural'> {
   /**
    * A collection of events
    */

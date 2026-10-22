@@ -30,7 +30,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection CrossReference
  */
-export interface CrossReferences {
+export interface CrossReferences extends InDesignPlugins.CrossReferences {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -13,7 +13,7 @@ import type { CreateProxy } from './Enums/CreateProxy';
 /**
  * EPS import preferences.
  */
-export interface EPSImportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface EPSImportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.EPSImportPreference<M> {
   /** Resolves the proxy into the individual {@link EPSImportPreference} objects it stands for. */
   getElements(): EPSImportPreference<'single'>[];
 

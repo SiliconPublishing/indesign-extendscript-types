@@ -48,7 +48,7 @@ export interface PDFCommentPathPoint<M extends Mode = 'single'> {
 /**
  * An imported PDF comment (markup annotation) attached to a document.
  */
-export interface PDFComment {
+export interface PDFComment extends InDesignPlugins.PDFComment<'single'> {
   /**
    * A collection of events
    */
@@ -184,7 +184,7 @@ export interface PDFComment {
 /**
  * An imported PDF comment (markup annotation) attached to a document.
  */
-export interface PDFCommentPlural {
+export interface PDFCommentPlural extends InDesignPlugins.PDFComment<'plural'> {
   /**
    * A collection of events
    */

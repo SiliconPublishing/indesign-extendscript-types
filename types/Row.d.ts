@@ -33,7 +33,7 @@ export interface Row<M extends Mode = 'single'>
   extends EventTargetDOMObject<Table, M>,
     IndexedDOMObject<Table, M>,
     TableGeometry<M>,
-    TableCellAttributes<M>{
+    TableCellAttributes<M>, InDesignPlugins.Row<M>{
   /** Resolves the proxy into the individual {@link Row} objects it stands for. */
   getElements(): Row<'single'>[];
 

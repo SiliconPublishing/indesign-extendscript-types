@@ -22,7 +22,7 @@ import type { TOCStyleEntry } from './TOCStyleEntry';
 export interface TOCStyle<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document, M>,
     IndexedDOMObject<Document, M>,
-    NamableDOMObject<Document, M> {
+    NamableDOMObject<Document, M>, InDesignPlugins.TOCStyle<M> {
   /** Resolves the proxy into the individual {@link TOCStyle} objects it stands for. */
   getElements(): TOCStyle<'single'>[];
 

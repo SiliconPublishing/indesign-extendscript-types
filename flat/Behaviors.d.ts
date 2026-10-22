@@ -34,7 +34,7 @@ import type { BehaviorParent } from './_base/Parents';
  *
  * @collection Behavior
  */
-export interface Behaviors {
+export interface Behaviors extends InDesignPlugins.Behaviors {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

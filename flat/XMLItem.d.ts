@@ -29,7 +29,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * {@link XMLInstruction}, and {@link DTD} all extend this. Represents any node
  * in a document's underlying XML structure.
  */
-export interface XMLItem {
+export interface XMLItem extends InDesignPlugins.XMLItem<'single'> {
   /**
    * A collection of events
    */
@@ -133,7 +133,7 @@ export interface XMLItem {
  * {@link XMLInstruction}, and {@link DTD} all extend this. Represents any node
  * in a document's underlying XML structure.
  */
-export interface XMLItemPlural {
+export interface XMLItemPlural extends InDesignPlugins.XMLItem<'plural'> {
   /**
    * A collection of events
    */

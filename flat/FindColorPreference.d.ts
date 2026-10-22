@@ -24,7 +24,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Find color preferences.
  */
-export interface FindColorPreference {
+export interface FindColorPreference extends InDesignPlugins.FindColorPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -123,7 +123,7 @@ export interface FindColorPreference {
 /**
  * Find color preferences.
  */
-export interface FindColorPreferencePlural {
+export interface FindColorPreferencePlural extends InDesignPlugins.FindColorPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection CrossReferenceFormat
  */
-export interface CrossReferenceFormats {
+export interface CrossReferenceFormats extends InDesignPlugins.CrossReferenceFormats {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

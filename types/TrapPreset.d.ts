@@ -20,7 +20,7 @@ import type { TrapImagePlacementTypes } from './Enums/TrapImagePlacementTypes';
 export interface TrapPreset<M extends Mode = 'single'>
   extends LabelableEventDOMObject<DocumentOrApplication, M>,
     IndexedDOMObject<DocumentOrApplication, M>,
-    NamableDOMObject<DocumentOrApplication, M> {
+    NamableDOMObject<DocumentOrApplication, M>, InDesignPlugins.TrapPreset<M> {
   /** Resolves the proxy into the individual {@link TrapPreset} objects it stands for. */
   getElements(): TrapPreset<'single'>[];
 

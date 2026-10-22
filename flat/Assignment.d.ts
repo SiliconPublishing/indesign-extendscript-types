@@ -35,7 +35,7 @@ export type AssignmentFrameColor = [number, number, number] | UIColors | Nothing
  * An InCopy assignment — a portable subset of a document's stories and page
  * items exported for editing outside InDesign.
  */
-export interface Assignment {
+export interface Assignment extends InDesignPlugins.Assignment<'single'> {
   /**
    * A collection of events
    */
@@ -188,7 +188,7 @@ export interface Assignment {
  * An InCopy assignment — a portable subset of a document's stories and page
  * items exported for editing outside InDesign.
  */
-export interface AssignmentPlural {
+export interface AssignmentPlural extends InDesignPlugins.Assignment<'plural'> {
   /**
    * A collection of events
    */

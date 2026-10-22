@@ -19,7 +19,7 @@ import type { RadiobuttonGroup } from './RadiobuttonGroup';
  * @collection RadiobuttonControl
  */
 export interface RadiobuttonControls
-  extends BaseCollection<RadiobuttonControl, RadiobuttonControl, RadiobuttonControl<'plural'>>, IdCollection<RadiobuttonControl> {
+  extends BaseCollection<RadiobuttonControl, RadiobuttonControl, RadiobuttonControl<'plural'>>, IdCollection<RadiobuttonControl>, InDesignPlugins.RadiobuttonControls {
   /**
    * Creates and adds a new radio button control to the parent radio button group.
    * @param withProperties Initial values for properties of the new control, such as its label or initial checked state.

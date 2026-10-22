@@ -24,7 +24,7 @@ export interface TableStyleGroups
   extends
     BaseCollection<TableStyleGroup, TableStyleGroup, TableStyleGroup<'plural'>>,
     IdCollection<TableStyleGroup>,
-    NamedCollection<TableStyleGroup> {
+    NamedCollection<TableStyleGroup>, InDesignPlugins.TableStyleGroups {
   /**
    * Creates a new table style group.
    *

@@ -29,7 +29,7 @@ import type { MeasurementValue } from './_base/Types';
 /**
  * The same {@link SatinSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeSatinSetting {
+export interface FindChangeSatinSetting extends InDesignPlugins.FindChangeSatinSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -150,7 +150,7 @@ export interface FindChangeSatinSetting {
 /**
  * The same {@link SatinSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeSatinSettingPlural {
+export interface FindChangeSatinSettingPlural extends InDesignPlugins.FindChangeSatinSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

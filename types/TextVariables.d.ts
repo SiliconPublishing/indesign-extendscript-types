@@ -17,7 +17,7 @@ import type { TextVariable } from './TextVariable';
  * @collection TextVariable
  */
 export interface TextVariables
-  extends BaseCollection<TextVariable, TextVariable, TextVariable<'plural'>>, NamedCollection<TextVariable> {
+  extends BaseCollection<TextVariable, TextVariable, TextVariable<'plural'>>, NamedCollection<TextVariable>, InDesignPlugins.TextVariables {
   /**
    * Creates a new text variable.
    *

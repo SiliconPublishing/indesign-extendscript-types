@@ -90,7 +90,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * A placed page imported from a PDF or another InDesign document. See
  * {@link Graphic} for the shared placed-graphic surface.
  */
-export interface ImportedPage<TParent = PageItemParent> {
+export interface ImportedPage<TParent = PageItemParent> extends InDesignPlugins.ImportedPage<'single'> {
   /**
    * A collection of events
    */
@@ -677,7 +677,7 @@ export interface ImportedPage<TParent = PageItemParent> {
  * A placed page imported from a PDF or another InDesign document. See
  * {@link Graphic} for the shared placed-graphic surface.
  */
-export interface ImportedPagePlural<TParent = PageItemParent> {
+export interface ImportedPagePlural<TParent = PageItemParent> extends InDesignPlugins.ImportedPage<'plural'> {
   /**
    * A collection of events
    */

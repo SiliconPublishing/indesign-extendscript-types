@@ -24,7 +24,7 @@ import type { FilePath } from './_base/Types';
  * Settings for Smart Guides — the alignment guides InDesign shows automatically
  * while dragging or resizing objects near other objects.
  */
-export interface SmartGuidePreference {
+export interface SmartGuidePreference extends InDesignPlugins.SmartGuidePreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -133,7 +133,7 @@ export interface SmartGuidePreference {
  * Settings for Smart Guides — the alignment guides InDesign shows automatically
  * while dragging or resizing objects near other objects.
  */
-export interface SmartGuidePreferencePlural {
+export interface SmartGuidePreferencePlural extends InDesignPlugins.SmartGuidePreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

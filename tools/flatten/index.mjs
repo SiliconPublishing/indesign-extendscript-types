@@ -35,6 +35,9 @@ function walk(dir) {
 
 const parse = (path, text) => ts.createSourceFile(path, text, ts.ScriptTarget.Latest, true);
 
+// Plugin extension points (tools/codemod/plugin-hooks.mjs): bases that stay as bases.
+const isHook = (h, sf) => h.expression.getText(sf).startsWith('InDesignPlugins.');
+
 // Interface name -> its type parameters' default texts, to spell `X<Default>` as `X`, as upstream does.
 let DEFAULTS = new Map();
 
@@ -257,7 +260,8 @@ export function flatten(inDir, outDir) {
     for (const f of files.values()) {
         if (relative(inDir, f.path).startsWith('Enums')) continue; // enumerations stay as they are
         for (const [name, decl] of f.interfaces) {
-            if (!decl.heritageClauses?.length) continue;
+            const real = (decl.heritageClauses ?? []).flatMap((c) => c.types).filter((h) => !isHook(h, f.sf));
+            if (!real.length) continue;
             // Only interfaces that can stand alone: a parameter without a default (InDesignDOMObject's
             // Parent) marks a building block, which upstream keeps generic.
             if ((decl.typeParameters ?? []).some((tp) => !tp.default)) continue;
@@ -310,6 +314,8 @@ export function flatten(inDir, outDir) {
             const paramUse = others.length ? `<${others.map((tp) => tp.name.text).join(', ')}>` : '';
             const variants = info.modeIndex >= 0 ? ['single', 'plural'] : [null];
             const docs = (decl.jsDoc ?? []).map((d) => d.getText(f.sf)).join('\n');
+            // Plugin hooks stay bases, with the mode fixed per variant.
+            const hooks = (decl.heritageClauses ?? []).flatMap((c) => c.types).filter((h) => isHook(h, f.sf));
             const blocks = [];
             for (const mode of variants) {
                 const iname = mode === 'plural' ? `${name}Plural` : name;
@@ -324,7 +330,8 @@ export function flatten(inDir, outDir) {
                     }
                 }
                 const body = renderMembers(entries, flattened, new Map([['this', `${iname}${paramUse}`]]));
-                blocks.push(`${mode === 'plural' ? '' : ''}${mode === 'plural' && docs ? `${rewriteDocs(docs, flattened)}\n` : ''}export interface ${iname}${paramDecl} {${body}\n}`);
+                const hookText = hooks.map((h) => h.getText(f.sf).replace(/<M>$/, mode ? `<'${mode}'>` : '<M>'));
+                blocks.push(`${mode === 'plural' && docs ? `${rewriteDocs(docs, flattened)}\n` : ''}export interface ${iname}${paramDecl}${hookText.length ? ` extends ${hookText.join(', ')}` : ''} {${body}\n}`);
             }
             const start = decl.getStart(f.sf);
             edits.push([start, decl.getEnd(), blocks.join('\n\n')]);

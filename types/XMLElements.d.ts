@@ -27,7 +27,7 @@ import type { Cell } from './Cell';
  * @collection XMLElement
  */
 export interface XMLElements
-  extends BaseCollection<XMLElement, XMLElement, XMLElement<'plural'>>, IdCollection<XMLElement> {
+  extends BaseCollection<XMLElement, XMLElement, XMLElement<'plural'>>, IdCollection<XMLElement>, InDesignPlugins.XMLElements {
   /**
    * Creates a new XML element as a child of the current element.
    * If `xmlContent` is provided, the layout object or text is associated with the new XML element,

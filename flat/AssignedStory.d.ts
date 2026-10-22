@@ -32,7 +32,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A single story or page item bound into an {@link Assignment}.
  */
-export interface AssignedStory {
+export interface AssignedStory extends InDesignPlugins.AssignedStory<'single'> {
   /**
    * A collection of events
    */
@@ -156,7 +156,7 @@ export interface AssignedStory {
 /**
  * A single story or page item bound into an {@link Assignment}.
  */
-export interface AssignedStoryPlural {
+export interface AssignedStoryPlural extends InDesignPlugins.AssignedStory<'plural'> {
   /**
    * A collection of events
    */

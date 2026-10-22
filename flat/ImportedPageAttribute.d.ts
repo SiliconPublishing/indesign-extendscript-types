@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Placed InDesign page attribute.
  */
-export interface ImportedPageAttribute {
+export interface ImportedPageAttribute extends InDesignPlugins.ImportedPageAttribute<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -116,7 +116,7 @@ export interface ImportedPageAttribute {
 /**
  * Placed InDesign page attribute.
  */
-export interface ImportedPageAttributePlural {
+export interface ImportedPageAttributePlural extends InDesignPlugins.ImportedPageAttribute<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

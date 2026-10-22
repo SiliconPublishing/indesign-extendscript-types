@@ -38,7 +38,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
 /**
  * A placed WMF (Windows Metafile) graphic.
  */
-export interface WMF<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M> {
+export interface WMF<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignPlugins.WMF<M> {
   /** Resolves the proxy into the individual {@link WMF} objects it stands for. */
   getElements(): WMF<TParent, 'single'>[];
 

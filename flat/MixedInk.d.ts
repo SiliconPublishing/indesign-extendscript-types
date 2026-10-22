@@ -29,7 +29,7 @@ import type { SwatchParent } from './_base/Parents';
  * A mixed ink swatch — a color built from percentages of two or more
  * {@link Ink} plates, optionally generated from a {@link MixedInkGroup}.
  */
-export interface MixedInk {
+export interface MixedInk extends InDesignPlugins.MixedInk<'single'> {
   /**
    * A collection of events
    */
@@ -166,7 +166,7 @@ export interface MixedInk {
  * A mixed ink swatch — a color built from percentages of two or more
  * {@link Ink} plates, optionally generated from a {@link MixedInkGroup}.
  */
-export interface MixedInkPlural {
+export interface MixedInkPlural extends InDesignPlugins.MixedInk<'plural'> {
   /**
    * A collection of events
    */

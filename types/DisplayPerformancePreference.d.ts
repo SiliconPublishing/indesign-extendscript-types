@@ -13,7 +13,7 @@ import type { ViewDisplaySettings } from './Enums/ViewDisplaySettings';
 /**
  * Default display performance settings for the application.
  */
-export interface DisplayPerformancePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface DisplayPerformancePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.DisplayPerformancePreference<M> {
   /** Resolves the proxy into the individual {@link DisplayPerformancePreference} objects it stands for. */
   getElements(): DisplayPerformancePreference<'single'>[];
 

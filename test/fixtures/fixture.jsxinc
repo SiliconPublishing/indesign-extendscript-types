@@ -551,6 +551,8 @@ function buildFixture(dir) {
         root(gun.epstexts[0]);
         root(gun.epss[0]);
     });
+    // A plugin's own objects (tools/plugin --setup): pluginFixture(doc, root, dir).
+    if (typeof pluginFixture === 'function') fixtureStep('plugin setup', function () { pluginFixture(doc, root, dir); });
     fixtureStep('fire document events', function () {
         doc.save();
         doc.exportFile(ExportFormat.JPG, new File(dir + '/events.jpg'));

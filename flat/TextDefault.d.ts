@@ -95,7 +95,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Application- or document-level default character and paragraph formatting applied to new text.
  */
-export interface TextDefault {
+export interface TextDefault extends InDesignPlugins.TextDefault<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -1166,7 +1166,7 @@ export interface TextDefault {
 /**
  * Application- or document-level default character and paragraph formatting applied to new text.
  */
-export interface TextDefaultPlural {
+export interface TextDefaultPlural extends InDesignPlugins.TextDefault<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

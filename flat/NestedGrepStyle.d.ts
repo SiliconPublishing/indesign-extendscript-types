@@ -27,7 +27,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * collection, automatically applying a {@link CharacterStyle} to every
  * substring matching a GREP regular expression.
  */
-export interface NestedGrepStyle {
+export interface NestedGrepStyle extends InDesignPlugins.NestedGrepStyle<'single'> {
   /**
    * A collection of events
    */
@@ -128,7 +128,7 @@ export interface NestedGrepStyle {
  * collection, automatically applying a {@link CharacterStyle} to every
  * substring matching a GREP regular expression.
  */
-export interface NestedGrepStylePlural {
+export interface NestedGrepStylePlural extends InDesignPlugins.NestedGrepStyle<'plural'> {
   /**
    * A collection of events
    */

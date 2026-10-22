@@ -16,7 +16,7 @@ import type { OpacityGradientStop } from './OpacityGradientStop';
  *
  * @collection OpacityGradientStop
  */
-export interface OpacityGradientStops extends BaseCollection<OpacityGradientStop, OpacityGradientStop, OpacityGradientStop<'plural'>> {
+export interface OpacityGradientStops extends BaseCollection<OpacityGradientStop, OpacityGradientStop, OpacityGradientStop<'plural'>>, InDesignPlugins.OpacityGradientStops {
   /**
    * Creates a new opacity gradient stop from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link OpacityGradientStop}.

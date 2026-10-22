@@ -15,7 +15,7 @@ import type { FindChangeGradientFeatherSetting } from './FindChangeGradientFeath
  */
 export interface OpacityGradientStop<M extends Mode = 'single'>
   extends EventTargetDOMObject<GradientFeatherSetting | FindChangeGradientFeatherSetting, M>,
-    IndexedDOMObject<GradientFeatherSetting | FindChangeGradientFeatherSetting, M> {
+    IndexedDOMObject<GradientFeatherSetting | FindChangeGradientFeatherSetting, M>, InDesignPlugins.OpacityGradientStop<M> {
   /** Resolves the proxy into the individual {@link OpacityGradientStop} objects it stands for. */
   getElements(): OpacityGradientStop<'single'>[];
 

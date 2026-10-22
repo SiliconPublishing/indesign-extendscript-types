@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection AssignedStory
  */
-export interface AssignedStories {
+export interface AssignedStories extends InDesignPlugins.AssignedStories {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection DocumentPreset
  */
-export interface DocumentPresets {
+export interface DocumentPresets extends InDesignPlugins.DocumentPresets {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -29,7 +29,7 @@ import type { TextStyleRanges } from './TextStyleRanges';
 export interface HiddenText<M extends Mode = 'single'>
   extends LabelableEventDOMObject<HiddenTextParent, M>,
     IndexedDOMObject<HiddenTextParent, M>,
-    NamableDOMObject<HiddenTextParent, M> {
+    NamableDOMObject<HiddenTextParent, M>, InDesignPlugins.HiddenText<M> {
   /** Resolves the proxy into the individual {@link HiddenText} objects it stands for. */
   getElements(): HiddenText<'single'>[];
 

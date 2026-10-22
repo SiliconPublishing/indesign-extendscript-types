@@ -29,7 +29,7 @@ import type { BehaviorParent } from './_base/Parents';
  * A behavior that jumps to a named anchor — a {@link Bookmark} or a text/page
  * hyperlink destination.
  */
-export interface GotoAnchorBehavior {
+export interface GotoAnchorBehavior extends InDesignPlugins.GotoAnchorBehavior<'single'> {
   /**
    * A collection of events
    */
@@ -158,7 +158,7 @@ export interface GotoAnchorBehavior {
  * A behavior that jumps to a named anchor — a {@link Bookmark} or a text/page
  * hyperlink destination.
  */
-export interface GotoAnchorBehaviorPlural {
+export interface GotoAnchorBehaviorPlural extends InDesignPlugins.GotoAnchorBehavior<'plural'> {
   /**
    * A collection of events
    */

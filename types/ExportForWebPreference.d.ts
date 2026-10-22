@@ -18,7 +18,7 @@ import type { JPEGOptionsQuality } from './Enums/JPEGOptionsQuality';
  * optimized, and formatted images to copy alongside the export, and how images
  * convert to GIF or JPEG.
  */
-export interface ExportForWebPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
+export interface ExportForWebPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.ExportForWebPreference<M> {
   /** Resolves the proxy into the individual {@link ExportForWebPreference} objects it stands for. */
   getElements(): ExportForWebPreference<'single'>[];
 

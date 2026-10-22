@@ -67,7 +67,7 @@ import type { ParagraphStyle } from './ParagraphStyle';
 /**
  * GREP search criteria and formatting options, used with {@link Application.findGrep}.
  */
-export interface FindGrepPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface FindGrepPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.FindGrepPreference<M> {
   /** Resolves the proxy into the individual {@link FindGrepPreference} objects it stands for. */
   getElements(): FindGrepPreference<'single'>[];
 

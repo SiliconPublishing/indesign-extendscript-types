@@ -23,7 +23,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A single layer of an imported layered graphic (PSD, AI, PDF).
  */
-export interface GraphicLayer {
+export interface GraphicLayer extends InDesignPlugins.GraphicLayer<'single'> {
   /**
    * A collection of events
    */
@@ -147,7 +147,7 @@ export interface GraphicLayer {
 /**
  * A single layer of an imported layered graphic (PSD, AI, PDF).
  */
-export interface GraphicLayerPlural {
+export interface GraphicLayerPlural extends InDesignPlugins.GraphicLayer<'plural'> {
   /**
    * A collection of events
    */

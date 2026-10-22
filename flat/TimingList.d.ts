@@ -27,7 +27,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * {@link TimingGroup}s that play for a given trigger event (page load,
  * button click, self roll-off…).
  */
-export interface TimingList {
+export interface TimingList extends InDesignPlugins.TimingList<'single'> {
   /**
    * A collection of events
    */
@@ -126,7 +126,7 @@ export interface TimingList {
  * {@link TimingGroup}s that play for a given trigger event (page load,
  * button click, self roll-off…).
  */
-export interface TimingListPlural {
+export interface TimingListPlural extends InDesignPlugins.TimingList<'plural'> {
   /**
    * A collection of events
    */

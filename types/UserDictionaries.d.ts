@@ -16,5 +16,5 @@ import type { UserDictionary } from './UserDictionary';
  * @collection UserDictionary
  */
 export interface UserDictionaries
-  extends BaseCollection<UserDictionary, UserDictionary, UserDictionary<'plural'>>, NamedCollection<UserDictionary> {
+  extends BaseCollection<UserDictionary, UserDictionary, UserDictionary<'plural'>>, NamedCollection<UserDictionary>, InDesignPlugins.UserDictionaries {
 }

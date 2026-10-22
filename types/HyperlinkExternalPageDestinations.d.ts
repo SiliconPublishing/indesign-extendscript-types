@@ -24,7 +24,7 @@ export interface HyperlinkExternalPageDestinations
   extends
     BaseCollection<HyperlinkExternalPageDestination, HyperlinkExternalPageDestination, HyperlinkExternalPageDestination<'plural'>>,
     IdCollection<HyperlinkExternalPageDestination>,
-    NamedCollection<HyperlinkExternalPageDestination> {
+    NamedCollection<HyperlinkExternalPageDestination>, InDesignPlugins.HyperlinkExternalPageDestinations {
   /**
    * Creates a new hyperlink external page destination from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link HyperlinkExternalPageDestination}.

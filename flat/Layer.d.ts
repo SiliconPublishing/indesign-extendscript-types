@@ -53,7 +53,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * a layer on page 1 obeys the same visibility and locking as one on page 40.
  * Their order in {@link Document.layers} is the stacking order, front to back.
  */
-export interface Layer {
+export interface Layer extends InDesignPlugins.Layer<'single'> {
   /**
    * A collection of events
    */
@@ -254,7 +254,7 @@ export interface Layer {
  * a layer on page 1 obeys the same visibility and locking as one on page 40.
  * Their order in {@link Document.layers} is the stacking order, front to back.
  */
-export interface LayerPlural {
+export interface LayerPlural extends InDesignPlugins.Layer<'plural'> {
   /**
    * A collection of events
    */

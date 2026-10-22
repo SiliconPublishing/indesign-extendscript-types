@@ -26,5 +26,5 @@ export interface Rows
   extends
     BaseCollection<Row, Row, Row<'plural'>>,
     NamedCollection<Row>,
-    AddableTableElementCollection<Row, Row | Column | Cell | Table> {
+    AddableTableElementCollection<Row, Row | Column | Cell | Table>, InDesignPlugins.Rows {
 }

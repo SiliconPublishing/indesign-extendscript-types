@@ -74,7 +74,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * color blocks, and placed images.
  */
 export interface Rectangle<TParent = PageItemParent, M extends Mode = 'single'>
-  extends SplineItem<TParent, Rectangle, M> {
+  extends SplineItem<TParent, Rectangle, M>, InDesignPlugins.Rectangle<M> {
   /** Resolves the proxy into the individual {@link Rectangle}s it stands for. */
   getElements(): Rectangle<TParent, 'single'>[];
 

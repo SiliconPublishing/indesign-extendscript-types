@@ -27,5 +27,5 @@ export interface ComboBoxes<TParent = PageItemParent>
     BaseCollection<ComboBox<TParent>, ComboBox, ComboBox<TParent, 'plural'>>,
     IdCollection<ComboBox<TParent>>,
     NamedCollection<ComboBox<TParent>>,
-    AddablePageItemCollection<ComboBox<TParent>, ComboBox> {
+    AddablePageItemCollection<ComboBox<TParent>, ComboBox>, InDesignPlugins.ComboBoxes {
 }

@@ -16,7 +16,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Preference
  */
-export interface Preferences {
+export interface Preferences extends InDesignPlugins.Preferences {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

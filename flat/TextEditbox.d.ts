@@ -22,7 +22,7 @@ import type { WidgetParent } from './_base/Parents';
 /**
  * A free-text entry field.
  */
-export interface TextEditbox {
+export interface TextEditbox extends InDesignPlugins.TextEditbox<'single'> {
   /**
    * A collection of events
    */
@@ -124,7 +124,7 @@ export interface TextEditbox {
 /**
  * A free-text entry field.
  */
-export interface TextEditboxPlural {
+export interface TextEditboxPlural extends InDesignPlugins.TextEditbox<'plural'> {
   /**
    * A collection of events
    */

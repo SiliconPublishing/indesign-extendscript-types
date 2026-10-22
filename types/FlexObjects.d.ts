@@ -32,7 +32,7 @@ export interface FlexObjects<TParent = PageItemParent>
   extends
     BaseCollection<FlexObject<TParent>, FlexObject, FlexObject<TParent, 'plural'>>,
     IdCollection<FlexObject<TParent>>,
-    NamedCollection<FlexObject<TParent>> {
+    NamedCollection<FlexObject<TParent>>, InDesignPlugins.FlexObjects {
   /**
    * Creates a new {@link FlexObject} flex container from a properties bag alone.
    *

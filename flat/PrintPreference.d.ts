@@ -51,7 +51,7 @@ import type { Event } from './Event';
 /**
  * A book's or document's print settings.
  */
-export interface PrintPreference {
+export interface PrintPreference extends InDesignPlugins.PrintPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -414,7 +414,7 @@ export interface PrintPreference {
 /**
  * A book's or document's print settings.
  */
-export interface PrintPreferencePlural {
+export interface PrintPreferencePlural extends InDesignPlugins.PrintPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

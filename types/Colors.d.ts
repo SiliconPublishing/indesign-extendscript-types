@@ -21,7 +21,7 @@ import type { Color } from './Color';
  * @collection Color
  */
 export interface Colors
-  extends BaseCollection<Color, Color, Color<'plural'>>, IdCollection<Color>, NamedCollection<Color> {
+  extends BaseCollection<Color, Color, Color<'plural'>>, IdCollection<Color>, NamedCollection<Color>, InDesignPlugins.Colors {
   /**
    * Creates a new color swatch.
    *

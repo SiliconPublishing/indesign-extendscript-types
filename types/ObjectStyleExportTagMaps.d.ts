@@ -16,7 +16,7 @@ import type { ObjectStyleExportTagMap } from './ObjectStyleExportTagMap';
  *
  * @collection ObjectStyleExportTagMap
  */
-export interface ObjectStyleExportTagMaps extends BaseCollection<ObjectStyleExportTagMap, ObjectStyleExportTagMap, ObjectStyleExportTagMap<'plural'>> {
+export interface ObjectStyleExportTagMaps extends BaseCollection<ObjectStyleExportTagMap, ObjectStyleExportTagMap, ObjectStyleExportTagMap<'plural'>>, InDesignPlugins.ObjectStyleExportTagMaps {
   /**
    * Creates a new object style export tag mapping.
    *

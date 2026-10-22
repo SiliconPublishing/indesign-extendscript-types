@@ -13,7 +13,7 @@ import type { NumericEditboxSurface } from './_base/WidgetMixins';
  * A numeric entry field whose typed value rounds to the nearest whole
  * number (`.5` rounds up).
  */
-export interface IntegerEditbox<M extends Mode = 'single'> extends Widget<M>, NumericEditboxSurface<M>{
+export interface IntegerEditbox<M extends Mode = 'single'> extends Widget<M>, NumericEditboxSurface<M>, InDesignPlugins.IntegerEditbox<M>{
   /** Resolves the proxy into the individual {@link IntegerEditbox} objects it stands for. */
   getElements(): IntegerEditbox<'single'>[];
 }

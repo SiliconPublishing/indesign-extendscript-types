@@ -15,7 +15,7 @@ import type { MapType } from './Enums/MapType';
  */
 export interface ParaStyleMapping<M extends Mode = 'single'>
   extends EventTargetDOMObject<StyleMappingParent, M>,
-    IndexedDOMObject<StyleMappingParent, M> {
+    IndexedDOMObject<StyleMappingParent, M>, InDesignPlugins.ParaStyleMapping<M> {
   /** Resolves the proxy into the individual {@link ParaStyleMapping} objects it stands for. */
   getElements(): ParaStyleMapping<'single'>[];
 

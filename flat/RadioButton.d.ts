@@ -120,7 +120,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * A PDF radio-button form field: one button in a mutually-exclusive group of
  * radio buttons sharing the same export name in an interactive PDF form.
  */
-export interface RadioButton<TParent = PageItemParent> {
+export interface RadioButton<TParent = PageItemParent> extends InDesignPlugins.RadioButton<'single'> {
   /**
    * A collection of events
    */
@@ -792,7 +792,7 @@ export interface RadioButton<TParent = PageItemParent> {
  * A PDF radio-button form field: one button in a mutually-exclusive group of
  * radio buttons sharing the same export name in an interactive PDF form.
  */
-export interface RadioButtonPlural<TParent = PageItemParent> {
+export interface RadioButtonPlural<TParent = PageItemParent> extends InDesignPlugins.RadioButton<'plural'> {
   /**
    * A collection of events
    */

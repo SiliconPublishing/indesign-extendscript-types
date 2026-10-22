@@ -113,7 +113,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * A flex-layout container page item (CSS-flexbox-style arrangement of child
  * page items). See {@link PageItem} for the shared page-item surface.
  */
-export interface FlexObject<TParent = PageItemParent> {
+export interface FlexObject<TParent = PageItemParent> extends InDesignPlugins.FlexObject<'single'> {
   /**
    * A collection of events
    */
@@ -791,7 +791,7 @@ export interface FlexObject<TParent = PageItemParent> {
  * A flex-layout container page item (CSS-flexbox-style arrangement of child
  * page items). See {@link PageItem} for the shared page-item surface.
  */
-export interface FlexObjectPlural<TParent = PageItemParent> {
+export interface FlexObjectPlural<TParent = PageItemParent> extends InDesignPlugins.FlexObject<'plural'> {
   /**
    * A collection of events
    */

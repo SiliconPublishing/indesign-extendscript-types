@@ -15,7 +15,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * Search criteria for the Find/Change Glyph feature — matches text by glyph
  * identity (GID/CID, font, design-axis coordinates) rather than by character.
  */
-export interface FindGlyphPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface FindGlyphPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.FindGlyphPreference<M> {
   /** Resolves the proxy into the individual {@link FindGlyphPreference} objects it stands for. */
   getElements(): FindGlyphPreference<'single'>[];
 

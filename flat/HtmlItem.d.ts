@@ -85,7 +85,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * A page item that embeds raw HTML content (used in fixed-layout EPUB and
  * publish-online output). See {@link PageItem} for the shared page-item surface.
  */
-export interface HtmlItem<TParent = PageItemParent> {
+export interface HtmlItem<TParent = PageItemParent> extends InDesignPlugins.HtmlItem<'single'> {
   /**
    * A collection of events
    */
@@ -659,7 +659,7 @@ export interface HtmlItem<TParent = PageItemParent> {
  * A page item that embeds raw HTML content (used in fixed-layout EPUB and
  * publish-online output). See {@link PageItem} for the shared page-item surface.
  */
-export interface HtmlItemPlural<TParent = PageItemParent> {
+export interface HtmlItemPlural<TParent = PageItemParent> extends InDesignPlugins.HtmlItem<'plural'> {
   /**
    * A collection of events
    */

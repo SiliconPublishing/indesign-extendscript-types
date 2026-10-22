@@ -13,7 +13,7 @@ import type { Application } from './Application';
  * Settings controlling what format content copies and pastes in, and whether
  * PDF data placed on the system clipboard survives quitting the application.
  */
-export interface ClipboardPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface ClipboardPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.ClipboardPreference<M> {
   /** Resolves the proxy into the individual {@link ClipboardPreference} objects it stands for. */
   getElements(): ClipboardPreference<'single'>[];
 

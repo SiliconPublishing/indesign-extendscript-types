@@ -25,7 +25,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A section within an {@link Index} (for example, a letter-of-the-alphabet
  * grouping), used to organize {@link Topic}s in the generated index.
  */
-export interface IndexSection {
+export interface IndexSection extends InDesignPlugins.IndexSection<'single'> {
   /**
    * A collection of events
    */
@@ -139,7 +139,7 @@ export interface IndexSection {
  * A section within an {@link Index} (for example, a letter-of-the-alphabet
  * grouping), used to organize {@link Topic}s in the generated index.
  */
-export interface IndexSectionPlural {
+export interface IndexSectionPlural extends InDesignPlugins.IndexSection<'plural'> {
   /**
    * A collection of events
    */

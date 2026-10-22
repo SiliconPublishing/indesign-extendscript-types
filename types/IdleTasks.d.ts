@@ -24,7 +24,7 @@ export interface IdleTasks
   extends
     BaseCollection<IdleTask, IdleTask, IdleTask<'plural'>>,
     IdCollection<IdleTask>,
-    NamedCollection<IdleTask> {
+    NamedCollection<IdleTask>, InDesignPlugins.IdleTasks {
   /**
    * Creates and registers a new idle task.
    * @param withProperties Initial values for properties of the new {@link IdleTask}.

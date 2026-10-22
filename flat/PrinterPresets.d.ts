@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * across different documents and print sessions.
  * @collection PrinterPreset
  */
-export interface PrinterPresets {
+export interface PrinterPresets extends InDesignPlugins.PrinterPresets {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

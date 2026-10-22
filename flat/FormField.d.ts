@@ -100,7 +100,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * {@link RadioButton}, {@link TextBox}, {@link SignatureField}, and
  * {@link MultiStateObject}.
  */
-export interface FormField<TParent = PageItemParent> {
+export interface FormField<TParent = PageItemParent> extends InDesignPlugins.FormField<'single'> {
   /**
    * A collection of events
    */
@@ -681,7 +681,7 @@ export interface FormField<TParent = PageItemParent> {
  * {@link RadioButton}, {@link TextBox}, {@link SignatureField}, and
  * {@link MultiStateObject}.
  */
-export interface FormFieldPlural<TParent = PageItemParent> {
+export interface FormFieldPlural<TParent = PageItemParent> extends InDesignPlugins.FormField<'plural'> {
   /**
    * A collection of events
    */

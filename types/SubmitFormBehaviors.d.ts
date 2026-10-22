@@ -24,7 +24,7 @@ export interface SubmitFormBehaviors
   extends
     BaseCollection<SubmitFormBehavior, SubmitFormBehavior, SubmitFormBehavior<'plural'>>,
     IdCollection<SubmitFormBehavior>,
-    NamedCollection<SubmitFormBehavior> {
+    NamedCollection<SubmitFormBehavior>, InDesignPlugins.SubmitFormBehaviors {
   /**
    * Creates a new submit form behavior.
    * @param withProperties Initial values for properties of the new {@link SubmitFormBehavior}.

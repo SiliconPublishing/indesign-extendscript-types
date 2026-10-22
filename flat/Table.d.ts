@@ -100,7 +100,7 @@ export type TableParent =
  * of its own — {@link findText} and related methods operate across its
  * cells' text instead.
  */
-export interface Table {
+export interface Table extends InDesignPlugins.Table<'single'> {
   /**
    * A collection of events
    */
@@ -741,7 +741,7 @@ export interface Table {
  * of its own — {@link findText} and related methods operate across its
  * cells' text instead.
  */
-export interface TablePlural {
+export interface TablePlural extends InDesignPlugins.Table<'plural'> {
   /**
    * A collection of events
    */

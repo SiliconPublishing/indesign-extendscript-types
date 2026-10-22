@@ -24,7 +24,7 @@ import type { Preferences } from './Preferences';
 /**
  * The stroke-transparency criteria used in a find/change object operation.
  */
-export interface FindChangeStrokeTransparencySetting<M extends Mode = 'single'> extends EventTargetDOMObject<FindObjectPreference | ChangeObjectPreference, M> {
+export interface FindChangeStrokeTransparencySetting<M extends Mode = 'single'> extends EventTargetDOMObject<FindObjectPreference | ChangeObjectPreference, M>, InDesignPlugins.FindChangeStrokeTransparencySetting<M> {
   /** Resolves the proxy into the individual {@link FindChangeStrokeTransparencySetting} objects it stands for. */
   getElements(): FindChangeStrokeTransparencySetting<'single'>[];
 

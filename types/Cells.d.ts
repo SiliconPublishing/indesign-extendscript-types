@@ -19,5 +19,5 @@ import type { Cell } from './Cell';
  * @collection Cell
  */
 export interface Cells
-  extends BaseCollection<Cell, Cell, Cell<'plural'>>, IdCollection<Cell>, NamedCollection<Cell> {
+  extends BaseCollection<Cell, Cell, Cell<'plural'>>, IdCollection<Cell>, NamedCollection<Cell>, InDesignPlugins.Cells {
 }

@@ -71,7 +71,7 @@ import type { XMLItem } from './XMLItem';
 /**
  * A single line of text as currently composed — it changes as the text reflows.
  */
-export interface Line<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M> {
+export interface Line<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M>, InDesignPlugins.Line<M> {
   /** Resolves the proxy into the individual {@link Line}s it stands for. */
   getElements(): Line<TParent, 'single'>[];
 }

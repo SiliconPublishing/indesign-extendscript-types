@@ -26,7 +26,7 @@ import type { PageItemAddReference } from './_base/Collections';
  *
  * @collection ComboBox
  */
-export interface ComboBoxes<TParent = PageItemParent> {
+export interface ComboBoxes<TParent = PageItemParent> extends InDesignPlugins.ComboBoxes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

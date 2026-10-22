@@ -55,7 +55,7 @@ import type { ObjectStyle } from './ObjectStyle';
  * The object criteria a find/change object operation matches against, set via
  * {@link Application.findObjectPreferences} and used by {@link Application.findObject}.
  */
-export interface FindObjectPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface FindObjectPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.FindObjectPreference<M> {
   /** Resolves the proxy into the individual {@link FindObjectPreference} objects it stands for. */
   getElements(): FindObjectPreference<'single'>[];
 

@@ -17,7 +17,7 @@ import type { EventPhases } from './Enums/EventPhases';
 /**
  * An event dispatched when the value of a property changes on its target.
  */
-export interface MutationEvent {
+export interface MutationEvent extends InDesignPlugins.MutationEvent<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -103,7 +103,7 @@ export interface MutationEvent {
 /**
  * An event dispatched when the value of a property changes on its target.
  */
-export interface MutationEventPlural {
+export interface MutationEventPlural extends InDesignPlugins.MutationEvent<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

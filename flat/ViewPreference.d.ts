@@ -25,7 +25,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Application- or document-wide view defaults (rulers, guides, screen mode, measurement units).
  */
-export interface ViewPreference {
+export interface ViewPreference extends InDesignPlugins.ViewPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -165,7 +165,7 @@ export interface ViewPreference {
 /**
  * Application- or document-wide view defaults (rulers, guides, screen mode, measurement units).
  */
-export interface ViewPreferencePlural {
+export interface ViewPreferencePlural extends InDesignPlugins.ViewPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

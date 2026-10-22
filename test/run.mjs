@@ -66,6 +66,14 @@ for (const config of ['tsconfig.json', 'tsconfig.flat.json']) {
     }
 }
 
+section('plugin declarations (tools/plugin, offline, a synthetic plugin)');
+try {
+    execFileSync('node', [join(root, 'test/plugin/synthetic.mjs')], { stdio: 'pipe' });
+    console.log('  ok');
+} catch (e) {
+    fail(`plugin tool:\n${e.stderr || e.stdout}`);
+}
+
 section('flattener reproduces upstream flat/ from upstream types/');
 try {
     console.log(`  ${execFileSync('node', [join(root, 'tools/flatten/verify.mjs'), '--show', '10'], { stdio: 'pipe' }).toString().split('\n')[0]}`);

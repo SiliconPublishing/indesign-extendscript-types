@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Default display performance settings for the application.
  */
-export interface DisplayPerformancePreference {
+export interface DisplayPerformancePreference extends InDesignPlugins.DisplayPerformancePreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -119,7 +119,7 @@ export interface DisplayPerformancePreference {
 /**
  * Default display performance settings for the application.
  */
-export interface DisplayPerformancePreferencePlural {
+export interface DisplayPerformancePreferencePlural extends InDesignPlugins.DisplayPerformancePreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

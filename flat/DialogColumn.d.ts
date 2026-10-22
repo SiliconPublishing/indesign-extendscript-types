@@ -45,7 +45,7 @@ import type { RadiobuttonGroups } from './RadiobuttonGroups';
  * A borderless column laid out inside a {@link Dialog} (or another dialog
  * container) that holds controls and nested {@link DialogRow}s.
  */
-export interface DialogColumn {
+export interface DialogColumn extends InDesignPlugins.DialogColumn<'single'> {
   /**
    * A collection of events
    */
@@ -177,7 +177,7 @@ export interface DialogColumn {
  * A borderless column laid out inside a {@link Dialog} (or another dialog
  * container) that holds controls and nested {@link DialogRow}s.
  */
-export interface DialogColumnPlural {
+export interface DialogColumnPlural extends InDesignPlugins.DialogColumn<'plural'> {
   /**
    * A collection of events
    */

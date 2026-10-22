@@ -27,7 +27,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * specified at creation time.
  * @collection Polygon
  */
-export interface Polygons<TParent = PageItemParent> {
+export interface Polygons<TParent = PageItemParent> extends InDesignPlugins.Polygons {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -20,7 +20,7 @@ import type { PageNumberPosition } from './Enums/PageNumberPosition';
 export interface TOCStyleEntry<M extends Mode = 'single'>
   extends EventTargetDOMObject<TOCStyle, M>,
     IndexedDOMObject<TOCStyle, M>,
-    NamableDOMObject<TOCStyle, M> {
+    NamableDOMObject<TOCStyle, M>, InDesignPlugins.TOCStyleEntry<M> {
   /** Resolves the proxy into the individual {@link TOCStyleEntry} objects it stands for. */
   getElements(): TOCStyleEntry<'single'>[];
 

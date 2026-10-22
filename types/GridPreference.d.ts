@@ -15,7 +15,7 @@ import type { UIColors } from './Enums/UIColors';
 /**
  * Document/application baseline and document-grid display defaults.
  */
-export interface GridPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
+export interface GridPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.GridPreference<M> {
   /** Resolves the proxy into the individual {@link GridPreference} objects it stands for. */
   getElements(): GridPreference<'single'>[];
 

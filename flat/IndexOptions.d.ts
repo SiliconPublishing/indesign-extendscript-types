@@ -26,7 +26,7 @@ import type { FilePath } from './_base/Types';
  * How a generated index is laid out — its title and title style, the section headings,
  * the separators between entries and page numbers, and whether empty sections are kept.
  */
-export interface IndexOptions {
+export interface IndexOptions extends InDesignPlugins.IndexOptions<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -180,7 +180,7 @@ export interface IndexOptions {
  * How a generated index is laid out — its title and title style, the section headings,
  * the separators between entries and page numbers, and whether empty sections are kept.
  */
-export interface IndexOptionsPlural {
+export interface IndexOptionsPlural extends InDesignPlugins.IndexOptions<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

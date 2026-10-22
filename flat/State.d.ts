@@ -52,7 +52,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * text frames — but not the interactive object types (buttons, form fields,
  * multi-state objects) that a full page or layer can hold.
  */
-export interface State {
+export interface State extends InDesignPlugins.State<'single'> {
   /**
    * A collection of events
    */
@@ -211,7 +211,7 @@ export interface State {
  * text frames — but not the interactive object types (buttons, form fields,
  * multi-state objects) that a full page or layer can hold.
  */
-export interface StatePlural {
+export interface StatePlural extends InDesignPlugins.State<'plural'> {
   /**
    * A collection of events
    */

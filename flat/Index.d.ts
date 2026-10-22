@@ -33,7 +33,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * An index for the document, containing {@link IndexSection}s and
  * {@link Topic}s that define its entries and generate an index {@link Story}.
  */
-export interface Index {
+export interface Index extends InDesignPlugins.Index<'single'> {
   /**
    * A collection of events
    */
@@ -180,7 +180,7 @@ export interface Index {
  * An index for the document, containing {@link IndexSection}s and
  * {@link Topic}s that define its entries and generate an index {@link Story}.
  */
-export interface IndexPlural {
+export interface IndexPlural extends InDesignPlugins.Index<'plural'> {
   /**
    * A collection of events
    */

@@ -18,7 +18,7 @@ import type { Hyperlink } from './Hyperlink';
  */
 export interface HyperlinkExternalPageDestination<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document, M>,
-    IndexedDOMObject<Document, M> {
+    IndexedDOMObject<Document, M>, InDesignPlugins.HyperlinkExternalPageDestination<M> {
   /** Resolves the proxy into the individual {@link HyperlinkExternalPageDestination} objects it stands for. */
   getElements(): HyperlinkExternalPageDestination<'single'>[];
 

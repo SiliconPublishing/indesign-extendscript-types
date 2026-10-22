@@ -21,7 +21,7 @@ import type { PreviewTypes } from './Enums/PreviewTypes';
 /**
  * EPS export preferences.
  */
-export interface EPSExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface EPSExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.EPSExportPreference<M> {
   /** Resolves the proxy into the individual {@link EPSExportPreference} objects it stands for. */
   getElements(): EPSExportPreference<'single'>[];
 

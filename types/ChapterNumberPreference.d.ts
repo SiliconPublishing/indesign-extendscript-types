@@ -14,7 +14,7 @@ import type { NumberingStyle } from './Enums/NumberingStyle';
 /**
  * Chapter numbering preferences.
  */
-export interface ChapterNumberPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M> {
+export interface ChapterNumberPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, InDesignPlugins.ChapterNumberPreference<M> {
   /** Resolves the proxy into the individual {@link ChapterNumberPreference} objects it stands for. */
   getElements(): ChapterNumberPreference<'single'>[];
 

@@ -12,7 +12,7 @@ import type { Application } from './Application';
 /**
  * Options controlling a text find/change operation (case sensitivity, whole word, search scope).
  */
-export interface FindChangeTextOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface FindChangeTextOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.FindChangeTextOption<M> {
   /** Resolves the proxy into the individual {@link FindChangeTextOption} objects it stands for. */
   getElements(): FindChangeTextOption<'single'>[];
 

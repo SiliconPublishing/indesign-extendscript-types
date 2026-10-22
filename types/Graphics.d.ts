@@ -49,7 +49,7 @@ export interface Graphics<TParent = PageItemParent>
   extends
     BaseCollection<AnyGraphicOf<TParent>, Graphic, GraphicsPlural<TParent>>,
     IdCollection<AnyGraphicOf<TParent>>,
-    NamedCollection<AnyGraphicOf<TParent>> {
+    NamedCollection<AnyGraphicOf<TParent>>, InDesignPlugins.Graphics {
 }
 
 /**

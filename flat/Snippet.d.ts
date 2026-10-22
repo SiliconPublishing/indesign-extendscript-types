@@ -49,7 +49,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * document. Exposes the page items it contains through the same child
  * collection accessors as a container object.
  */
-export interface Snippet {
+export interface Snippet extends InDesignPlugins.Snippet<'single'> {
   /**
    * A collection of events
    */
@@ -215,7 +215,7 @@ export interface Snippet {
  * document. Exposes the page items it contains through the same child
  * collection accessors as a container object.
  */
-export interface SnippetPlural {
+export interface SnippetPlural extends InDesignPlugins.Snippet<'plural'> {
   /**
    * A collection of events
    */

@@ -20,7 +20,7 @@ import type { DocumentIntentOptions } from './Enums/DocumentIntentOptions';
 export interface DocumentPreset<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Application, M>,
     IndexedDOMObject<Application, M>,
-    NamableDOMObject<Application, M> {
+    NamableDOMObject<Application, M>, InDesignPlugins.DocumentPreset<M> {
   /** Resolves the proxy into the individual {@link DocumentPreset} objects it stands for. */
   getElements(): DocumentPreset<'single'>[];
 

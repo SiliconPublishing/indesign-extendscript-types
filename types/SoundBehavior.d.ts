@@ -15,7 +15,7 @@ import type { BehaviorEvents } from './Enums/BehaviorEvents';
 /**
  * A behavior that controls playback of a {@link Sound} page item.
  */
-export interface SoundBehavior<M extends Mode = 'single'> extends Behavior<M>{
+export interface SoundBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignPlugins.SoundBehavior<M>{
   /** Resolves the proxy into the individual {@link SoundBehavior} objects it stands for. */
   getElements(): SoundBehavior<'single'>[];
 

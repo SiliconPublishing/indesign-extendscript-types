@@ -13,7 +13,7 @@ import type { StrokeCornerAdjustment } from './Enums/StrokeCornerAdjustment';
 /**
  * A stroke style of evenly spaced dots.
  */
-export interface DottedStrokeStyle<M extends Mode = 'single'> extends StrokeStyle<M>{
+export interface DottedStrokeStyle<M extends Mode = 'single'> extends StrokeStyle<M>, InDesignPlugins.DottedStrokeStyle<M>{
   /** Resolves the proxy into the individual {@link DottedStrokeStyle} objects it stands for. */
   getElements(): DottedStrokeStyle<'single'>[];
 

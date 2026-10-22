@@ -104,7 +104,7 @@ import type { AnyGraphic } from './_base/Unions';
  * export, apply a style, generate a QR code. A placed {@link Image} or
  * {@link PDF} holds content but cannot itself hold a rectangle.
  */
-export interface PageItem<TParent = PageItemParent> {
+export interface PageItem<TParent = PageItemParent> extends InDesignPlugins.PageItem<'single'> {
   /**
    * A collection of events
    */
@@ -679,7 +679,7 @@ export interface PageItem<TParent = PageItemParent> {
  * export, apply a style, generate a QR code. A placed {@link Image} or
  * {@link PDF} holds content but cannot itself hold a rectangle.
  */
-export interface PageItemPlural<TParent = PageItemParent> {
+export interface PageItemPlural<TParent = PageItemParent> extends InDesignPlugins.PageItem<'plural'> {
   /**
    * A collection of events
    */

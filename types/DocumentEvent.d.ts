@@ -17,7 +17,7 @@ import type { LayoutWindow } from './LayoutWindow';
  * An event dispatched during a document lifecycle transition — creation,
  * opening, saving, reverting, or closing.
  */
-export interface DocumentEvent<M extends Mode = 'single'> extends Event<M>{
+export interface DocumentEvent<M extends Mode = 'single'> extends Event<M>, InDesignPlugins.DocumentEvent<M>{
   /** Resolves the proxy into the individual {@link DocumentEvent} objects it stands for. */
   getElements(): DocumentEvent<'single'>[];
 

@@ -42,7 +42,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * A placed page imported from a PDF or another InDesign document. See
  * {@link Graphic} for the shared placed-graphic surface.
  */
-export interface ImportedPage<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M> {
+export interface ImportedPage<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignPlugins.ImportedPage<M> {
   /** Resolves the proxy into the individual {@link ImportedPage} objects it stands for. */
   getElements(): ImportedPage<TParent, 'single'>[];
 

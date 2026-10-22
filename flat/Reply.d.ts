@@ -26,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A reply posted to a {@link PDFComment} thread.
  */
-export interface Reply {
+export interface Reply extends InDesignPlugins.Reply<'single'> {
   /**
    * A collection of events
    */
@@ -144,7 +144,7 @@ export interface Reply {
 /**
  * A reply posted to a {@link PDFComment} thread.
  */
-export interface ReplyPlural {
+export interface ReplyPlural extends InDesignPlugins.Reply<'plural'> {
   /**
    * A collection of events
    */

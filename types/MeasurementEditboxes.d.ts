@@ -18,7 +18,7 @@ import type { Dialog } from './Dialog';
  * @collection MeasurementEditbox
  */
 export interface MeasurementEditboxes
-  extends BaseCollection<MeasurementEditbox, MeasurementEditbox, MeasurementEditbox<'plural'>>, IdCollection<MeasurementEditbox> {
+  extends BaseCollection<MeasurementEditbox, MeasurementEditbox, MeasurementEditbox<'plural'>>, IdCollection<MeasurementEditbox>, InDesignPlugins.MeasurementEditboxes {
   /**
    * Creates and adds a new measurement editbox control to the dialog.
    * @param withProperties Initial values for properties of the new control.

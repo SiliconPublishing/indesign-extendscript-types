@@ -13,7 +13,7 @@ import type { VariableNumberingStyles } from './Enums/VariableNumberingStyles';
 /**
  * The preferences for a chapter number variable.
  */
-export interface ChapterNumberVariablePreference<M extends Mode = 'single'> extends EventTargetDOMObject<TextVariable, M> {
+export interface ChapterNumberVariablePreference<M extends Mode = 'single'> extends EventTargetDOMObject<TextVariable, M>, InDesignPlugins.ChapterNumberVariablePreference<M> {
   /** Resolves the proxy into the individual {@link ChapterNumberVariablePreference} objects it stands for. */
   getElements(): ChapterNumberVariablePreference<'single'>[];
 

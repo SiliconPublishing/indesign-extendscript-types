@@ -26,7 +26,7 @@ import type { BehaviorParent } from './_base/Parents';
 /**
  * A behavior that controls playback of a {@link Sound} page item.
  */
-export interface SoundBehavior {
+export interface SoundBehavior extends InDesignPlugins.SoundBehavior<'single'> {
   /**
    * A collection of events
    */
@@ -149,7 +149,7 @@ export interface SoundBehavior {
 /**
  * A behavior that controls playback of a {@link Sound} page item.
  */
-export interface SoundBehaviorPlural {
+export interface SoundBehaviorPlural extends InDesignPlugins.SoundBehavior<'plural'> {
   /**
    * A collection of events
    */

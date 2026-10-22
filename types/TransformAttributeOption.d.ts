@@ -15,7 +15,7 @@ import type { TransformPositionReference } from './Enums/TransformPositionRefere
 /**
  * Options for applying layout attributes to any page item.
  */
-export interface TransformAttributeOption<M extends Mode = 'single'> extends EventTargetDOMObject<ObjectStyle, M> {
+export interface TransformAttributeOption<M extends Mode = 'single'> extends EventTargetDOMObject<ObjectStyle, M>, InDesignPlugins.TransformAttributeOption<M> {
   /** Resolves the proxy into the individual {@link TransformAttributeOption} objects it stands for. */
   getElements(): TransformAttributeOption<'single'>[];
 

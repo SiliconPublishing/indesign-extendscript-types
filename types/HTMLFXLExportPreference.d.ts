@@ -13,7 +13,7 @@ import type { PageRangeFormat } from './Enums/PageRangeFormat';
 /**
  * HTML FXL export preferences.
  */
-export interface HTMLFXLExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M> {
+export interface HTMLFXLExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, InDesignPlugins.HTMLFXLExportPreference<M> {
   /** Resolves the proxy into the individual {@link HTMLFXLExportPreference} objects it stands for. */
   getElements(): HTMLFXLExportPreference<'single'>[];
 

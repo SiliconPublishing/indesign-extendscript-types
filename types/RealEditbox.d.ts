@@ -12,7 +12,7 @@ import type { NumericEditboxSurface } from './_base/WidgetMixins';
 /**
  * A high-precision (non-rounding) numeric entry field.
  */
-export interface RealEditbox<M extends Mode = 'single'> extends Widget<M>, NumericEditboxSurface<M>{
+export interface RealEditbox<M extends Mode = 'single'> extends Widget<M>, NumericEditboxSurface<M>, InDesignPlugins.RealEditbox<M>{
   /** Resolves the proxy into the individual {@link RealEditbox} objects it stands for. */
   getElements(): RealEditbox<'single'>[];
 }

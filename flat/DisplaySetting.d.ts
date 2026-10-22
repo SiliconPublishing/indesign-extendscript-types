@@ -30,7 +30,7 @@ import type { FilePath } from './_base/Types';
  * Bundles the {@link raster}, {@link vector}, and {@link transparency}
  * settings applied together wherever the preset is selected.
  */
-export interface DisplaySetting {
+export interface DisplaySetting extends InDesignPlugins.DisplaySetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -136,7 +136,7 @@ export interface DisplaySetting {
  * Bundles the {@link raster}, {@link vector}, and {@link transparency}
  * settings applied together wherever the preset is selected.
  */
-export interface DisplaySettingPlural {
+export interface DisplaySettingPlural extends InDesignPlugins.DisplaySetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

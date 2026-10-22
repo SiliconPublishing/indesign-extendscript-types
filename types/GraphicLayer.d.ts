@@ -15,7 +15,7 @@ import type { GraphicLayers } from './GraphicLayers';
  */
 export interface GraphicLayer<M extends Mode = 'single'>
   extends EventTargetDOMObject<GraphicLayerParent, M>,
-    IndexedDOMObject<GraphicLayerParent, M> {
+    IndexedDOMObject<GraphicLayerParent, M>, InDesignPlugins.GraphicLayer<M> {
   /** Resolves the proxy into the individual {@link GraphicLayer} objects it stands for. */
   getElements(): GraphicLayer<'single'>[];
 

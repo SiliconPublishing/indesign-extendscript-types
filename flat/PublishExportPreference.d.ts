@@ -29,7 +29,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Publish export preferences.
  */
-export interface PublishExportPreference {
+export interface PublishExportPreference extends InDesignPlugins.PublishExportPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -155,7 +155,7 @@ export interface PublishExportPreference {
 /**
  * Publish export preferences.
  */
-export interface PublishExportPreferencePlural {
+export interface PublishExportPreferencePlural extends InDesignPlugins.PublishExportPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

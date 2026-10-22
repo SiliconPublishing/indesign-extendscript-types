@@ -27,7 +27,7 @@ import type { FilePath } from './_base/Types';
  * Layer visibility and link-update settings for a placed multi-layered
  * graphic, such as a layered PDF or Photoshop file.
  */
-export interface GraphicLayerOption {
+export interface GraphicLayerOption extends InDesignPlugins.GraphicLayerOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -120,7 +120,7 @@ export interface GraphicLayerOption {
  * Layer visibility and link-update settings for a placed multi-layered
  * graphic, such as a layered PDF or Photoshop file.
  */
-export interface GraphicLayerOptionPlural {
+export interface GraphicLayerOptionPlural extends InDesignPlugins.GraphicLayerOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

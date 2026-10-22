@@ -12,7 +12,7 @@ import type { Application } from './Application';
 /**
  * GPU performance settings for the application.
  */
-export interface GpuPerformancePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface GpuPerformancePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.GpuPerformancePreference<M> {
   /** Resolves the proxy into the individual {@link GpuPerformancePreference} objects it stands for. */
   getElements(): GpuPerformancePreference<'single'>[];
 

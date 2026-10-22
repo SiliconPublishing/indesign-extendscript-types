@@ -17,7 +17,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection IndexingSortOption
  */
-export interface IndexingSortOptions {
+export interface IndexingSortOptions extends InDesignPlugins.IndexingSortOptions {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

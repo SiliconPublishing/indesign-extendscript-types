@@ -160,7 +160,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
 /**
  * A single line of text as currently composed — it changes as the text reflows.
  */
-export interface Line<TParent = TextParent> {
+export interface Line<TParent = TextParent> extends InDesignPlugins.Line<'single'> {
   /**
    * A collection of events
    */
@@ -1551,7 +1551,7 @@ export interface Line<TParent = TextParent> {
 /**
  * A single line of text as currently composed — it changes as the text reflows.
  */
-export interface LinePlural<TParent = TextParent> {
+export interface LinePlural<TParent = TextParent> extends InDesignPlugins.Line<'plural'> {
   /**
    * A collection of events
    */

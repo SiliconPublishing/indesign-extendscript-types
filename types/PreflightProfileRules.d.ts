@@ -25,7 +25,7 @@ export interface PreflightProfileRules
   extends
     BaseCollection<PreflightProfileRule, PreflightProfileRule, PreflightProfileRule<'plural'>>,
     IdCollection<PreflightProfileRule>,
-    NamedCollection<PreflightProfileRule> {
+    NamedCollection<PreflightProfileRule>, InDesignPlugins.PreflightProfileRules {
   /**
    * Adds a new preflight rule to the profile.
    *

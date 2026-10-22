@@ -20,7 +20,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
  * Settings for the directional feather effect, which fades an object's edges
  * outward by a different width on each of its four sides.
  */
-export interface DirectionalFeatherSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M> {
+export interface DirectionalFeatherSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M>, InDesignPlugins.DirectionalFeatherSetting<M> {
   /** Resolves the proxy into the individual {@link DirectionalFeatherSetting} objects it stands for. */
   getElements(): DirectionalFeatherSetting<'single', TParent>[];
 

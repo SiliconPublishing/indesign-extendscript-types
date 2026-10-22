@@ -16,7 +16,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Menu
  */
-export interface Menus {
+export interface Menus extends InDesignPlugins.Menus {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

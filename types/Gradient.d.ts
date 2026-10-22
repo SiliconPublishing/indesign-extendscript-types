@@ -15,7 +15,7 @@ import type { GradientStop } from './GradientStop';
 /**
  * A gradient swatch, blending between the colors of its {@link gradientStops}.
  */
-export interface Gradient<M extends Mode = 'single'> extends Swatch<M>{
+export interface Gradient<M extends Mode = 'single'> extends Swatch<M>, InDesignPlugins.Gradient<M>{
   /** Resolves the proxy into the individual {@link Gradient} objects it stands for. */
   getElements(): Gradient<'single'>[];
 

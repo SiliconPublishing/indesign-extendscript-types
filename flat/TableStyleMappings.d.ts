@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection TableStyleMapping
  */
-export interface TableStyleMappings {
+export interface TableStyleMappings extends InDesignPlugins.TableStyleMappings {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

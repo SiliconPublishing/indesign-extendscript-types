@@ -16,7 +16,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
 /**
  * The same {@link BlendingSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeBlendingSetting<M extends Mode = 'single'> extends BlendingSetting<M, FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting, NothingEnum.NOTHING>{
+export interface FindChangeBlendingSetting<M extends Mode = 'single'> extends BlendingSetting<M, FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting, NothingEnum.NOTHING>, InDesignPlugins.FindChangeBlendingSetting<M>{
   /** Resolves the proxy into the individual {@link FindChangeBlendingSetting} objects it stands for. */
   getElements(): FindChangeBlendingSetting<'single'>[];
 }

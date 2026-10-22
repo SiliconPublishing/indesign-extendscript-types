@@ -17,7 +17,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection DataMergeField
  */
-export interface DataMergeFields {
+export interface DataMergeFields extends InDesignPlugins.DataMergeFields {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

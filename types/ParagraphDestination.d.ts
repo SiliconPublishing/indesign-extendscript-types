@@ -14,7 +14,7 @@ import type { Text } from './Text';
  * the destination type InDesign creates automatically for paragraph-based
  * cross-references (e.g. "See [paragraph text] on page 12").
  */
-export interface ParagraphDestination<M extends Mode = 'single'> extends HyperlinkTextDestination<M>{
+export interface ParagraphDestination<M extends Mode = 'single'> extends HyperlinkTextDestination<M>, InDesignPlugins.ParagraphDestination<M>{
   /** Resolves the proxy into the individual {@link ParagraphDestination} objects it stands for. */
   getElements(): ParagraphDestination<'single'>[];
 }

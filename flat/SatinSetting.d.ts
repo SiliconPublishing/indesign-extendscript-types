@@ -31,7 +31,7 @@ import type { FilePath } from './_base/Types';
  * Settings for the satin effect, which applies interior shading with a wavy,
  * satin-like appearance based on the object's shape.
  */
-export interface SatinSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> {
+export interface SatinSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.SatinSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -153,7 +153,7 @@ export interface SatinSetting<TParent = TransparencySetting | StrokeTransparency
  * Settings for the satin effect, which applies interior shading with a wavy,
  * satin-like appearance based on the object's shape.
  */
-export interface SatinSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> {
+export interface SatinSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.SatinSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

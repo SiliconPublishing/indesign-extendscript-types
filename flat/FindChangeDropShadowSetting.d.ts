@@ -30,7 +30,7 @@ import type { BlendMode } from './Enums/BlendMode';
 /**
  * The same {@link DropShadowSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeDropShadowSetting {
+export interface FindChangeDropShadowSetting extends InDesignPlugins.FindChangeDropShadowSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -179,7 +179,7 @@ export interface FindChangeDropShadowSetting {
 /**
  * The same {@link DropShadowSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeDropShadowSettingPlural {
+export interface FindChangeDropShadowSettingPlural extends InDesignPlugins.FindChangeDropShadowSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

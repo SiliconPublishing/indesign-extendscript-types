@@ -27,7 +27,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * collection, automatically applying a {@link CharacterStyle} to a run of
  * whole lines, optionally cycling back after a number of line-style rules.
  */
-export interface NestedLineStyle {
+export interface NestedLineStyle extends InDesignPlugins.NestedLineStyle<'single'> {
   /**
    * A collection of events
    */
@@ -134,7 +134,7 @@ export interface NestedLineStyle {
  * collection, automatically applying a {@link CharacterStyle} to a run of
  * whole lines, optionally cycling back after a number of line-style rules.
  */
-export interface NestedLineStylePlural {
+export interface NestedLineStylePlural extends InDesignPlugins.NestedLineStyle<'plural'> {
   /**
    * A collection of events
    */

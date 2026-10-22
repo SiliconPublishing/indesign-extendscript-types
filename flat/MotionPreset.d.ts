@@ -24,7 +24,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A reusable animation preset (as authored in the Animation panel), storing
  * motion, opacity, and timing settings that can be applied to page items.
  */
-export interface MotionPreset {
+export interface MotionPreset extends InDesignPlugins.MotionPreset<'single'> {
   /**
    * A collection of events
    */
@@ -149,7 +149,7 @@ export interface MotionPreset {
  * A reusable animation preset (as authored in the Animation panel), storing
  * motion, opacity, and timing settings that can be applied to page items.
  */
-export interface MotionPresetPlural {
+export interface MotionPresetPlural extends InDesignPlugins.MotionPreset<'plural'> {
   /**
    * A collection of events
    */

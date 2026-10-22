@@ -14,7 +14,7 @@ import type { PDFCrop } from './Enums/PDFCrop';
 /**
  * PDF attributes.
  */
-export interface PDFAttribute<M extends Mode = 'single'> extends EventTargetDOMObject<PDF | ImportedPage, M> {
+export interface PDFAttribute<M extends Mode = 'single'> extends EventTargetDOMObject<PDF | ImportedPage, M>, InDesignPlugins.PDFAttribute<M> {
   /** Resolves the proxy into the individual {@link PDFAttribute} objects it stands for. */
   getElements(): PDFAttribute<'single'>[];
 

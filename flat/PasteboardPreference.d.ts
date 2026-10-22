@@ -24,7 +24,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Pasteboard preferences.
  */
-export interface PasteboardPreference {
+export interface PasteboardPreference extends InDesignPlugins.PasteboardPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -126,7 +126,7 @@ export interface PasteboardPreference {
 /**
  * Pasteboard preferences.
  */
-export interface PasteboardPreferencePlural {
+export interface PasteboardPreferencePlural extends InDesignPlugins.PasteboardPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

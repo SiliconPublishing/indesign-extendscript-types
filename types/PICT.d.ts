@@ -38,7 +38,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
 /**
  * A placed PICT (Macintosh Picture) graphic.
  */
-export interface PICT<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M> {
+export interface PICT<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignPlugins.PICT<M> {
   /** Resolves the proxy into the individual {@link PICT} objects it stands for. */
   getElements(): PICT<TParent, 'single'>[];
 

@@ -18,7 +18,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection RealCombobox
  */
-export interface RealComboboxes {
+export interface RealComboboxes extends InDesignPlugins.RealComboboxes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

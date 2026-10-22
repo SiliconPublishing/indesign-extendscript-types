@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection GotoNextViewBehavior
  */
-export interface GotoNextViewBehaviors {
+export interface GotoNextViewBehaviors extends InDesignPlugins.GotoNextViewBehaviors {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

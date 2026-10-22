@@ -19,7 +19,7 @@ import type { BuildingBlocks } from './BuildingBlocks';
  */
 export interface BuildingBlock<M extends Mode = 'single'>
   extends EventTargetDOMObject<CrossReferenceFormat, M>,
-    IndexedDOMObject<CrossReferenceFormat, M> {
+    IndexedDOMObject<CrossReferenceFormat, M>, InDesignPlugins.BuildingBlock<M> {
   /** Resolves the proxy into the individual {@link BuildingBlock} objects it stands for. */
   getElements(): BuildingBlock<'single'>[];
 

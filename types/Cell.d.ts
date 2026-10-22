@@ -71,7 +71,7 @@ export interface Cell<M extends Mode = 'single'>
     IndexedDOMObject<Table, M>,
     TableGeometry<M>,
     TableCellAttributes<M>,
-    TextContainerContent<Cell, M> {
+    TextContainerContent<Cell, M>, InDesignPlugins.Cell<M> {
   /** Resolves the proxy into the individual {@link Cell} objects it stands for. */
   getElements(): Cell<'single'>[];
 

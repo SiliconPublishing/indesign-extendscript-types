@@ -20,7 +20,7 @@ import type { CharacterCountLocation } from './Enums/CharacterCountLocation';
  * Default character-grid formatting properties, shared by named, layout, and
  * frame (story) grids.
  */
-export interface GridDataInformation<M extends Mode = 'single'> extends EventTargetDOMObject<GridDataInformationParent, M> {
+export interface GridDataInformation<M extends Mode = 'single'> extends EventTargetDOMObject<GridDataInformationParent, M>, InDesignPlugins.GridDataInformation<M> {
   /** Resolves the proxy into the individual {@link GridDataInformation} objects it stands for. */
   getElements(): GridDataInformation<'single'>[];
 

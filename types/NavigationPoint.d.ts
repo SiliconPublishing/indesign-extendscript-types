@@ -16,7 +16,7 @@ import type { Movie } from './Movie';
 export interface NavigationPoint<M extends Mode = 'single'>
   extends EventTargetDOMObject<Movie, M>,
     IndexedDOMObject<Movie, M>,
-    NamableDOMObject<Movie, M> {
+    NamableDOMObject<Movie, M>, InDesignPlugins.NavigationPoint<M> {
   /** Resolves the proxy into the individual {@link NavigationPoint} objects it stands for. */
   getElements(): NavigationPoint<'single'>[];
 

@@ -67,7 +67,7 @@ export interface AnimationKeyFrame<M extends Mode = 'single'> {
  * SWF/interactive export: timing, easing, and per-property keyframes for opacity,
  * rotation, and scale.
  */
-export interface AnimationSetting {
+export interface AnimationSetting extends InDesignPlugins.AnimationSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -213,7 +213,7 @@ export interface AnimationSetting {
  * SWF/interactive export: timing, easing, and per-property keyframes for opacity,
  * rotation, and scale.
  */
-export interface AnimationSettingPlural {
+export interface AnimationSettingPlural extends InDesignPlugins.AnimationSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -22,5 +22,5 @@ export interface LanguagesWithVendors
   extends
     BaseCollection<LanguageWithVendors, LanguageWithVendors, LanguageWithVendors<'plural'>>,
     IdCollection<LanguageWithVendors>,
-    NamedCollection<LanguageWithVendors> {
+    NamedCollection<LanguageWithVendors>, InDesignPlugins.LanguagesWithVendors {
 }

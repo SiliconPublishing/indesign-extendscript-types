@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection NamedGrid
  */
-export interface NamedGrids {
+export interface NamedGrids extends InDesignPlugins.NamedGrids {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

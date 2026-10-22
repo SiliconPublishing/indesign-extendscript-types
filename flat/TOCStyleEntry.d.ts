@@ -27,7 +27,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * paragraph style to its formatting, indent level, and page-number display
  * in the generated table of contents.
  */
-export interface TOCStyleEntry {
+export interface TOCStyleEntry extends InDesignPlugins.TOCStyleEntry<'single'> {
   /**
    * A collection of events
    */
@@ -148,7 +148,7 @@ export interface TOCStyleEntry {
  * paragraph style to its formatting, indent level, and page-number display
  * in the generated table of contents.
  */
-export interface TOCStyleEntryPlural {
+export interface TOCStyleEntryPlural extends InDesignPlugins.TOCStyleEntry<'plural'> {
   /**
    * A collection of events
    */

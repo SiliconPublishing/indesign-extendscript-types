@@ -59,7 +59,7 @@ import type { ParagraphStyle } from './ParagraphStyle';
  * The character-type and formatting criteria a transliteration search matches against,
  * set via {@link Application.findTransliteratePreferences}.
  */
-export interface FindTransliteratePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface FindTransliteratePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.FindTransliteratePreference<M> {
   /** Resolves the proxy into the individual {@link FindTransliteratePreference} objects it stands for. */
   getElements(): FindTransliteratePreference<'single'>[];
 

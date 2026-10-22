@@ -16,7 +16,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Panel
  */
-export interface Panels {
+export interface Panels extends InDesignPlugins.Panels {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

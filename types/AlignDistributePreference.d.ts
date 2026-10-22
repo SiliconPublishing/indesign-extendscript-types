@@ -14,7 +14,7 @@ import type { AlignDistributeBounds } from './Enums/AlignDistributeBounds';
 /**
  * Preferences for alignment and distribution.
  */
-export interface AlignDistributePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface AlignDistributePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.AlignDistributePreference<M> {
   /** Resolves the proxy into the individual {@link AlignDistributePreference} objects it stands for. */
   getElements(): AlignDistributePreference<'single'>[];
 

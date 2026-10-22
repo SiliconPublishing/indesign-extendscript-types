@@ -25,7 +25,7 @@ export interface HyperlinkTextSources
   extends
     BaseCollection<HyperlinkTextSource, HyperlinkTextSource, HyperlinkTextSource<'plural'>>,
     IdCollection<HyperlinkTextSource>,
-    NamedCollection<HyperlinkTextSource> {
+    NamedCollection<HyperlinkTextSource>, InDesignPlugins.HyperlinkTextSources {
   /**
    * Creates a new hyperlink text source.
    *

@@ -70,7 +70,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * A straight line defined by two endpoints. It cannot hold placed content, so
  * it has no frame-fitting options.
  */
-export interface GraphicLine<TParent = PageItemParent, M extends Mode = 'single'> extends SplineItem<TParent, GraphicLine, M> {
+export interface GraphicLine<TParent = PageItemParent, M extends Mode = 'single'> extends SplineItem<TParent, GraphicLine, M>, InDesignPlugins.GraphicLine<M> {
   /** Resolves the proxy into the individual {@link GraphicLine} objects it stands for. */
   getElements(): GraphicLine<TParent, 'single'>[];
 }

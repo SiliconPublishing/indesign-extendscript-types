@@ -25,7 +25,7 @@ import type { FilePath } from './_base/Types';
 /**
  * The preferences for a running header/footer (match paragraph style) variable.
  */
-export interface MatchParagraphStylePreference {
+export interface MatchParagraphStylePreference extends InDesignPlugins.MatchParagraphStylePreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -130,7 +130,7 @@ export interface MatchParagraphStylePreference {
 /**
  * The preferences for a running header/footer (match paragraph style) variable.
  */
-export interface MatchParagraphStylePreferencePlural {
+export interface MatchParagraphStylePreferencePlural extends InDesignPlugins.MatchParagraphStylePreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

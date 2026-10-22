@@ -15,7 +15,7 @@ import type { ResolveStyleClash } from './Enums/ResolveStyleClash';
 /**
  * Word RTF import preferences.
  */
-export interface WordRTFImportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
+export interface WordRTFImportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.WordRTFImportPreference<M> {
   /** Resolves the proxy into the individual {@link WordRTFImportPreference} objects it stands for. */
   getElements(): WordRTFImportPreference<'single'>[];
 

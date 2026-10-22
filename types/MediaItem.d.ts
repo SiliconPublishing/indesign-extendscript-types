@@ -40,7 +40,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * A media object (movie or sound clip) placed on a page. The abstract base of
  * {@link Movie} and {@link Sound}.
  */
-export interface MediaItem<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, PageItemParent, M> {
+export interface MediaItem<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, PageItemParent, M>, InDesignPlugins.MediaItem<M> {
   /** Resolves the proxy into the individual {@link MediaItem} objects it stands for. */
   getElements(): MediaItem<TParent, 'single'>[];
 

@@ -26,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * An attribute (`name="value"`) on an {@link XMLElement} in a document's
  * underlying XML structure.
  */
-export interface XMLAttribute {
+export interface XMLAttribute extends InDesignPlugins.XMLAttribute<'single'> {
   /**
    * A collection of events
    */
@@ -139,7 +139,7 @@ export interface XMLAttribute {
  * An attribute (`name="value"`) on an {@link XMLElement} in a document's
  * underlying XML structure.
  */
-export interface XMLAttributePlural {
+export interface XMLAttributePlural extends InDesignPlugins.XMLAttribute<'plural'> {
   /**
    * A collection of events
    */

@@ -84,7 +84,7 @@ export interface PageItem<
     PageItemHolder<TChildParent, M>,
     DeepPageItemHolder<M>,
     FlexObjectContainer<TChildParent, M>,
-    PlacedGraphicContainer<TChildParent, M> {
+    PlacedGraphicContainer<TChildParent, M>, InDesignPlugins.PageItem<M> {
   /** Resolves the proxy into the individual {@link PageItem}s it stands for. */
   getElements(): PageItem<TParent, TChildParent, 'single'>[];
 

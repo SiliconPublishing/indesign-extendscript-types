@@ -108,7 +108,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * content and the base building block {@link Button} specializes with PDF
  * behaviors.
  */
-export interface MultiStateObject<TParent = PageItemParent> {
+export interface MultiStateObject<TParent = PageItemParent> extends InDesignPlugins.MultiStateObject<'single'> {
   /**
    * A collection of events
    */
@@ -739,7 +739,7 @@ export interface MultiStateObject<TParent = PageItemParent> {
  * content and the base building block {@link Button} specializes with PDF
  * behaviors.
  */
-export interface MultiStateObjectPlural<TParent = PageItemParent> {
+export interface MultiStateObjectPlural<TParent = PageItemParent> extends InDesignPlugins.MultiStateObject<'plural'> {
   /**
    * A collection of events
    */

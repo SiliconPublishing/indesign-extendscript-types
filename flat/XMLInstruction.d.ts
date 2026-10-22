@@ -28,7 +28,7 @@ import type { XMLElement } from './XMLElement';
  * An XML processing instruction (`<?target data?>`) in a document's underlying
  * XML structure.
  */
-export interface XMLInstruction {
+export interface XMLInstruction extends InDesignPlugins.XMLInstruction<'single'> {
   /**
    * A collection of events
    */
@@ -145,7 +145,7 @@ export interface XMLInstruction {
  * An XML processing instruction (`<?target data?>`) in a document's underlying
  * XML structure.
  */
-export interface XMLInstructionPlural {
+export interface XMLInstructionPlural extends InDesignPlugins.XMLInstruction<'plural'> {
   /**
    * A collection of events
    */

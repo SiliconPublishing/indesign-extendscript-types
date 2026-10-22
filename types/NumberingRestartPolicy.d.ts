@@ -29,7 +29,7 @@ import type { RestartPolicy } from './Enums/RestartPolicy';
  * Controls where automatic numbering restarts within a list, and the range
  * of levels the restart applies to.
  */
-export interface NumberingRestartPolicy<M extends Mode = 'single'> extends EventTargetDOMObject<TextDefault | ParagraphStyle | Text | InsertionPoint | TextStyleRange | Paragraph | TextColumn | Line | Word | Character | Story | XmlStory | FindTextPreference | ChangeTextPreference | FindGrepPreference | ChangeGrepPreference, M> {
+export interface NumberingRestartPolicy<M extends Mode = 'single'> extends EventTargetDOMObject<TextDefault | ParagraphStyle | Text | InsertionPoint | TextStyleRange | Paragraph | TextColumn | Line | Word | Character | Story | XmlStory | FindTextPreference | ChangeTextPreference | FindGrepPreference | ChangeGrepPreference, M>, InDesignPlugins.NumberingRestartPolicy<M> {
   /** Resolves the proxy into the individual {@link NumberingRestartPolicy} objects it stands for. */
   getElements(): NumberingRestartPolicy<'single'>[];
 

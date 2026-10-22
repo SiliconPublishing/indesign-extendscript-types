@@ -176,7 +176,7 @@ import type { OverrideType } from './Enums/OverrideType';
  * {@link lockState}, and the settings governing a linked or InCopy-managed
  * story.
  */
-export interface Story {
+export interface Story extends InDesignPlugins.Story<'single'> {
   /**
    * A collection of events
    */
@@ -1545,7 +1545,7 @@ export interface Story {
  * {@link lockState}, and the settings governing a linked or InCopy-managed
  * story.
  */
-export interface StoryPlural {
+export interface StoryPlural extends InDesignPlugins.Story<'plural'> {
   /**
    * A collection of events
    */

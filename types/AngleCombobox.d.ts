@@ -12,7 +12,7 @@ import type { NumericComboboxSurface } from './_base/WidgetMixins';
 /**
  * An editable dropdown for angle values.
  */
-export interface AngleCombobox<M extends Mode = 'single'> extends Widget<M>, NumericComboboxSurface<M>{
+export interface AngleCombobox<M extends Mode = 'single'> extends Widget<M>, NumericComboboxSurface<M>, InDesignPlugins.AngleCombobox<M>{
   /** Resolves the proxy into the individual {@link AngleCombobox} objects it stands for. */
   getElements(): AngleCombobox<'single'>[];
 }

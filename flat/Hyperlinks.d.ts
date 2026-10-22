@@ -30,7 +30,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Hyperlink
  */
-export interface Hyperlinks {
+export interface Hyperlinks extends InDesignPlugins.Hyperlinks {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

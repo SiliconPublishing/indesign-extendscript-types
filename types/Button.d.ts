@@ -84,7 +84,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * {@link Path paths}, and the full set of PDF interactive behaviors —
  * page/view/state navigation, media playback, form submission.
  */
-export interface Button<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, Button, M> {
+export interface Button<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, Button, M>, InDesignPlugins.Button<M> {
   /** Resolves the proxy into the individual {@link Button} objects it stands for. */
   getElements(): Button<TParent, 'single'>[];
 

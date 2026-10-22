@@ -33,7 +33,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Text-frame column layout, inset, vertical-justification, and baseline-grid defaults, applicable at the application/document default level, on a live frame, or on an object style.
  */
-export interface TextFramePreference {
+export interface TextFramePreference extends InDesignPlugins.TextFramePreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -234,7 +234,7 @@ export interface TextFramePreference {
 /**
  * Text-frame column layout, inset, vertical-justification, and baseline-grid defaults, applicable at the application/document default level, on a live frame, or on an object style.
  */
-export interface TextFramePreferencePlural {
+export interface TextFramePreferencePlural extends InDesignPlugins.TextFramePreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

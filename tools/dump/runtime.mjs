@@ -13,7 +13,7 @@ import { cpSync, existsSync, mkdtempSync, readFileSync, writeFileSync } from 'no
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { inlineIncludes, runExtendScriptFile } from '../run-extendscript.mjs';
+import { inlineIncludes, runExtendScript, runExtendScriptFile } from '../run-extendscript.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..', '..');
@@ -50,15 +50,20 @@ closed;`;
     } catch {}
 }
 
-export function sampleRuntime({ app = 'Adobe InDesign 2026', snapshot = 'snapshots/indesign-21.6', script = 'runtime.jsx', maxCrashes = 15 } = {}) {
-    const crashFile = join(root, snapshot, 'runtime-crashers.json');
+/**
+ * prelude: ExtendScript prepended to the sampler, such as a plugin's pluginFixture() (tools/plugin).
+ * snapshot: relative to the repository, or absolute.
+ */
+export function sampleRuntime({ app = 'Adobe InDesign 2026', snapshot = 'snapshots/indesign-21.6', script = 'runtime.jsx', prelude = '', maxCrashes = 15 } = {}) {
+    const crashFile = join(resolve(root, snapshot), 'runtime-crashers.json');
+    const source = `${prelude}\n${inlineIncludes(readFileSync(join(here, script), 'utf8'), here)}`;
     const crashers = existsSync(crashFile) ? JSON.parse(readFileSync(crashFile, 'utf8')) : {};
     for (let attempt = 0; attempt <= maxCrashes; attempt++) {
         // A fresh folder each attempt: after a crash InDesign may reopen the last attempt's document.
         const dir = mkdtempSync(join(tmpdir(), 'idx-fixture-'));
         cpSync(join(root, 'test/fixtures/media'), dir, { recursive: true });
         try {
-            return runExtendScriptFile(join(here, script), { app, arg: `${dir}|${JSON.stringify(Object.keys(crashers))}`, timeoutSec: 600 });
+            return runExtendScript(source, { app, arg: `${dir}|${JSON.stringify(Object.keys(crashers))}`, timeoutSec: 600 });
         } catch (e) {
             // Whatever went wrong, leave nothing of the fixture behind in InDesign.
             const cleanup = () => {

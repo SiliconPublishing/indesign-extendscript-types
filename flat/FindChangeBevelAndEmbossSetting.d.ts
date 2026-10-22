@@ -32,7 +32,7 @@ import type { BlendMode } from './Enums/BlendMode';
 /**
  * The same {@link BevelAndEmbossSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeBevelAndEmbossSetting {
+export interface FindChangeBevelAndEmbossSetting extends InDesignPlugins.FindChangeBevelAndEmbossSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -167,7 +167,7 @@ export interface FindChangeBevelAndEmbossSetting {
 /**
  * The same {@link BevelAndEmbossSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeBevelAndEmbossSettingPlural {
+export interface FindChangeBevelAndEmbossSettingPlural extends InDesignPlugins.FindChangeBevelAndEmbossSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

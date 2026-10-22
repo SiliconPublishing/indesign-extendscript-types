@@ -14,7 +14,7 @@ import type { BehaviorEvents } from './Enums/BehaviorEvents';
 /**
  * A behavior that jumps to the first page of the document.
  */
-export interface GotoFirstPageBehavior<M extends Mode = 'single'> extends Behavior<M>{
+export interface GotoFirstPageBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignPlugins.GotoFirstPageBehavior<M>{
   /** Resolves the proxy into the individual {@link GotoFirstPageBehavior} objects it stands for. */
   getElements(): GotoFirstPageBehavior<'single'>[];
 

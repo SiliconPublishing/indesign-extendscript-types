@@ -27,7 +27,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Export options for InCopy INCX document format.
  */
-export interface InCopyExportOption {
+export interface InCopyExportOption extends InDesignPlugins.InCopyExportOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -120,7 +120,7 @@ export interface InCopyExportOption {
 /**
  * Export options for InCopy INCX document format.
  */
-export interface InCopyExportOptionPlural {
+export interface InCopyExportOptionPlural extends InDesignPlugins.InCopyExportOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

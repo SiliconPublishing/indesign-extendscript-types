@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection SplineItem
  */
-export interface SplineItems<TParent = PageItemParent> {
+export interface SplineItems<TParent = PageItemParent> extends InDesignPlugins.SplineItems {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

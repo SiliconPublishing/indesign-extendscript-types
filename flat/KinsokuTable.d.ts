@@ -26,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A named kinsoku (Japanese line-breaking rule) table.
  */
-export interface KinsokuTable {
+export interface KinsokuTable extends InDesignPlugins.KinsokuTable<'single'> {
   /**
    * A collection of events
    */
@@ -152,7 +152,7 @@ export interface KinsokuTable {
 /**
  * A named kinsoku (Japanese line-breaking rule) table.
  */
-export interface KinsokuTablePlural {
+export interface KinsokuTablePlural extends InDesignPlugins.KinsokuTable<'plural'> {
   /**
    * A collection of events
    */

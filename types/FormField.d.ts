@@ -52,7 +52,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * {@link RadioButton}, {@link TextBox}, {@link SignatureField}, and
  * {@link MultiStateObject}.
  */
-export interface FormField<TParent = PageItemParent, TChildParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, TChildParent, M> {
+export interface FormField<TParent = PageItemParent, TChildParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, TChildParent, M>, InDesignPlugins.FormField<M> {
   /** Resolves the proxy into the individual {@link FormField} objects it stands for. */
   getElements(): FormField<TParent, TChildParent, 'single'>[];
 

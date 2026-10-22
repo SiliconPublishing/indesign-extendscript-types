@@ -65,7 +65,7 @@ import type { FilePath } from './_base/Types';
  * The formatting to apply to objects found by a find/change object operation, set via
  * {@link Application.changeObjectPreferences} and used by {@link Application.changeObject}.
  */
-export interface ChangeObjectPreference {
+export interface ChangeObjectPreference extends InDesignPlugins.ChangeObjectPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -506,7 +506,7 @@ export interface ChangeObjectPreference {
  * The formatting to apply to objects found by a find/change object operation, set via
  * {@link Application.changeObjectPreferences} and used by {@link Application.changeObject}.
  */
-export interface ChangeObjectPreferencePlural {
+export interface ChangeObjectPreferencePlural extends InDesignPlugins.ChangeObjectPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

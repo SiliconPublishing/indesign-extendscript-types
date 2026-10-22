@@ -27,7 +27,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A {@link Hyperlink} destination anchored to a specific {@link InsertionPoint}
  * or text range within the document's stories.
  */
-export interface HyperlinkTextDestination {
+export interface HyperlinkTextDestination extends InDesignPlugins.HyperlinkTextDestination<'single'> {
   /**
    * A collection of events
    */
@@ -149,7 +149,7 @@ export interface HyperlinkTextDestination {
  * A {@link Hyperlink} destination anchored to a specific {@link InsertionPoint}
  * or text range within the document's stories.
  */
-export interface HyperlinkTextDestinationPlural {
+export interface HyperlinkTextDestinationPlural extends InDesignPlugins.HyperlinkTextDestination<'plural'> {
   /**
    * A collection of events
    */

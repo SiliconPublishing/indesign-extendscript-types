@@ -24,7 +24,7 @@ import type { File, Folder } from './_base/Types';
  */
 export interface Library<M extends Mode = 'single'>
   extends EventTargetDOMObject<Application, M>,
-    IndexedDOMObject<Application, M> {
+    IndexedDOMObject<Application, M>, InDesignPlugins.Library<M> {
   /** Resolves the proxy into the individual {@link Library} objects it stands for. */
   getElements(): Library<'single'>[];
 

@@ -160,7 +160,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
 /**
  * A run of text sharing identical character formatting.
  */
-export interface TextStyleRange<TParent = TextParent> {
+export interface TextStyleRange<TParent = TextParent> extends InDesignPlugins.TextStyleRange<'single'> {
   /**
    * A collection of events
    */
@@ -1551,7 +1551,7 @@ export interface TextStyleRange<TParent = TextParent> {
 /**
  * A run of text sharing identical character formatting.
  */
-export interface TextStyleRangePlural<TParent = TextParent> {
+export interface TextStyleRangePlural<TParent = TextParent> extends InDesignPlugins.TextStyleRange<'plural'> {
   /**
    * A collection of events
    */

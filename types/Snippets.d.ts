@@ -22,5 +22,5 @@ export interface Snippets
   extends
     BaseCollection<Snippet, Snippet, Snippet<'plural'>>,
     IdCollection<Snippet>,
-    NamedCollection<Snippet> {
+    NamedCollection<Snippet>, InDesignPlugins.Snippets {
 }

@@ -16,7 +16,7 @@ import type { Document } from './Document';
 export interface Language<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document, M>,
     IndexedDOMObject<Document, M>,
-    ReadonlyNamedDOMObject<Document, M> {
+    ReadonlyNamedDOMObject<Document, M>, InDesignPlugins.Language<M> {
   /** Resolves the proxy into the individual {@link Language} objects it stands for. */
   getElements(): Language<'single'>[];
 

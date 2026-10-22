@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection ColorGroup
  */
-export interface ColorGroups {
+export interface ColorGroups extends InDesignPlugins.ColorGroups {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

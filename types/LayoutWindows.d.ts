@@ -15,5 +15,5 @@ import type { LayoutWindow } from './LayoutWindow';
  * @collection LayoutWindow
  */
 export interface LayoutWindows
-  extends BaseCollection<LayoutWindow, LayoutWindow, LayoutWindow<'plural'>>, NamedCollection<LayoutWindow> {
+  extends BaseCollection<LayoutWindow, LayoutWindow, LayoutWindow<'plural'>>, NamedCollection<LayoutWindow>, InDesignPlugins.LayoutWindows {
 }

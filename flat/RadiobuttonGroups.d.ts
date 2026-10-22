@@ -20,7 +20,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * within the same group.
  * @collection RadiobuttonGroup
  */
-export interface RadiobuttonGroups {
+export interface RadiobuttonGroups extends InDesignPlugins.RadiobuttonGroups {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

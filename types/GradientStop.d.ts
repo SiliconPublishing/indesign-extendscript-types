@@ -16,7 +16,7 @@ import type { MixedInk } from './MixedInk';
  */
 export interface GradientStop<M extends Mode = 'single'>
   extends EventTargetDOMObject<Gradient, M>,
-    IndexedDOMObject<Gradient, M> {
+    IndexedDOMObject<Gradient, M>, InDesignPlugins.GradientStop<M> {
   /** Resolves the proxy into the individual {@link GradientStop} objects it stands for. */
   getElements(): GradientStop<'single'>[];
 

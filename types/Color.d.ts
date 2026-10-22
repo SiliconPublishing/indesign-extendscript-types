@@ -16,7 +16,7 @@ import type { ColorGroup } from './ColorGroup';
  * A solid color swatch — process or spot, in the RGB, CMYK, LAB, or mixed-ink
  * color space.
  */
-export interface Color<M extends Mode = 'single'> extends Swatch<M>{
+export interface Color<M extends Mode = 'single'> extends Swatch<M>, InDesignPlugins.Color<M>{
   /** Resolves the proxy into the individual {@link Color} objects it stands for. */
   getElements(): Color<'single'>[];
 

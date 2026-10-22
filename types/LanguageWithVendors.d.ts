@@ -20,7 +20,7 @@ import type { Language } from './Language';
 export interface LanguageWithVendors<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Application, M>,
     IndexedDOMObject<Application, M>,
-    ReadonlyNamedDOMObject<Application, M> {
+    ReadonlyNamedDOMObject<Application, M>, InDesignPlugins.LanguageWithVendors<M> {
   /** Resolves the proxy into the individual {@link LanguageWithVendors} objects it stands for. */
   getElements(): LanguageWithVendors<'single'>[];
 

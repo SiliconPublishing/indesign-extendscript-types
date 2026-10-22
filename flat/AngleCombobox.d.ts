@@ -23,7 +23,7 @@ import type { WidgetParent } from './_base/Parents';
 /**
  * An editable dropdown for angle values.
  */
-export interface AngleCombobox {
+export interface AngleCombobox extends InDesignPlugins.AngleCombobox<'single'> {
   /**
    * A collection of events
    */
@@ -159,7 +159,7 @@ export interface AngleCombobox {
 /**
  * An editable dropdown for angle values.
  */
-export interface AngleComboboxPlural {
+export interface AngleComboboxPlural extends InDesignPlugins.AngleCombobox<'plural'> {
   /**
    * A collection of events
    */
