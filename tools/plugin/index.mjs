@@ -171,7 +171,17 @@ function memberDecls(cls, props, methods, ctx, { mode, indent }) {
         const notes = [];
         if (crashers[key]) notes.push(`**Crashes InDesign ${crashers[key].version}** when read (measured).`);
         for (const [k, v] of Object.entries(crashers)) if (k.startsWith(`${key}:`)) notes.push(`**Crashes InDesign ${v.version}** when assigned a ${k.split(':')[1]} value (measured).`);
-        const docs = docBlock(indent, [p.desc, observed.length ? `Measured: reads back ${observed.join(', ')}.` : '', ...notes, `From the plugin's scripting dictionary (InDesign ${version}).`]);
+        // Readable: `LinkUriType.FILE`, `array of number`, class names as they are.
+        const label = (a) => {
+            if (a.startsWith('enum:')) {
+                const [, value, n] = a.split(':');
+                const e = Object.values({ ...base, ...plugin }).find((c) => c.kind === 'enum' && c.enumValues[n] === Number(value));
+                return `\`${e ? `${e.name}.` : ''}${n}\``;
+            }
+            if (a.startsWith('array<')) return `an array of ${a.slice(6, -1).split('|').map(label).join(' or ') || 'nothing'}`;
+            return `\`${a}\``;
+        };
+        const docs = docBlock(indent, [p.desc, observed.length ? `Measured: reads back ${observed.map(label).join(', ')}.` : '', ...notes, `From the plugin's scripting dictionary (InDesign ${version}).`]);
         if (p.readonly) out.push(`${docs}\n${indent}readonly ${p.name}: ${read(get)};`);
         else out.push(`${docs}\n${indent}get ${p.name}(): ${read(get)};\n${indent}set ${p.name}(value: ${set});`);
     }
