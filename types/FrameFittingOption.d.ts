@@ -1,6 +1,7 @@
 /**
  * FrameFittingOption.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -15,14 +16,12 @@ import type { Polygon } from './Polygon';
 import type { Rectangle } from './Rectangle';
 import type { AnchorPoint } from './Enums/AnchorPoint';
 import type { EmptyFrameFittingOptions } from './Enums/EmptyFrameFittingOptions';
+import type { NothingEnum } from "./Enums/NothingEnum";
 
 /**
  * Options for fitting placed or pasted content in a frame.
  */
 export interface FrameFittingOption<M extends Mode = 'single'> extends EventTargetDOMObject<ObjectStyle | Oval | Rectangle | Polygon | Application | Document, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'FrameFittingOption';
-
   /** Resolves the proxy into the individual {@link FrameFittingOption} objects it stands for. */
   getElements(): FrameFittingOption<'single'>[];
 
@@ -32,19 +31,19 @@ export interface FrameFittingOption<M extends Mode = 'single'> extends EventTarg
 
   /** The amount in measurement units to crop the left edge of a graphic. */
   get leftCrop(): Read<M, number>;
-  set leftCrop(value: MeasurementValue);
+  set leftCrop(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** The amount in measurement units to crop the top edge of a graphic. */
   get topCrop(): Read<M, number>;
-  set topCrop(value: MeasurementValue);
+  set topCrop(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** The amount in measurement units to crop the right edge of a graphic. */
   get rightCrop(): Read<M, number>;
-  set rightCrop(value: MeasurementValue);
+  set rightCrop(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** The amount in measurement units to crop the bottom edge of a graphic. */
   get bottomCrop(): Read<M, number>;
-  set bottomCrop(value: MeasurementValue);
+  set bottomCrop(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** The frame fitting option to apply to placed or pasted content if the frame is empty. Can be applied to a frame, object style, or document or to the application. */
   get fittingOnEmptyFrame(): Read<M, EmptyFrameFittingOptions>;

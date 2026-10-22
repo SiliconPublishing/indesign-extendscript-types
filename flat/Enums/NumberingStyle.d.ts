@@ -1,10 +1,11 @@
 /**
  * NumberingStyle.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __NumberingStyle: unique symbol;
 
 
 interface NumberingStyle extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<NumberingStyle>): boolean;
-
   /**
    * @internal **WARNING:** `__NumberingStyle` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -333,11 +331,6 @@ export declare const NumberingStyle: typeof Enumeration & {
    */
   readonly upperRoman: NumberingStyle_UPPER_ROMAN;
   /**
-   * Uppercase Roman numerals.
-   */
-  readonly upperroman: NumberingStyle_UPPER_ROMAN;
-
-  /**
    * Lowercase Roman numerals.
    */
   readonly LOWER_ROMAN: NumberingStyle_LOWER_ROMAN;
@@ -345,11 +338,6 @@ export declare const NumberingStyle: typeof Enumeration & {
    * Lowercase Roman numerals.
    */
   readonly lowerRoman: NumberingStyle_LOWER_ROMAN;
-  /**
-   * Lowercase Roman numerals.
-   */
-  readonly lowerroman: NumberingStyle_LOWER_ROMAN;
-
   /**
    * Uppercase letters.
    */
@@ -359,11 +347,6 @@ export declare const NumberingStyle: typeof Enumeration & {
    */
   readonly upperLetters: NumberingStyle_UPPER_LETTERS;
   /**
-   * Uppercase letters.
-   */
-  readonly upperletters: NumberingStyle_UPPER_LETTERS;
-
-  /**
    * Lowercase letters.
    */
   readonly LOWER_LETTERS: NumberingStyle_LOWER_LETTERS;
@@ -371,11 +354,6 @@ export declare const NumberingStyle: typeof Enumeration & {
    * Lowercase letters.
    */
   readonly lowerLetters: NumberingStyle_LOWER_LETTERS;
-  /**
-   * Lowercase letters.
-   */
-  readonly lowerletters: NumberingStyle_LOWER_LETTERS;
-
   /**
    * Arabic numerals.
    */
@@ -403,11 +381,6 @@ export declare const NumberingStyle: typeof Enumeration & {
    */
   readonly katakanaModern: NumberingStyle_KATAKANA_MODERN;
   /**
-   * Katakana (a, i, u, e, o...).
-   */
-  readonly katakanamodern: NumberingStyle_KATAKANA_MODERN;
-
-  /**
    * Katakana (i, ro, ha, ni...).
    */
   readonly KATAKANA_TRADITIONAL: NumberingStyle_KATAKANA_TRADITIONAL;
@@ -415,11 +388,6 @@ export declare const NumberingStyle: typeof Enumeration & {
    * Katakana (i, ro, ha, ni...).
    */
   readonly katakanaTraditional: NumberingStyle_KATAKANA_TRADITIONAL;
-  /**
-   * Katakana (i, ro, ha, ni...).
-   */
-  readonly katakanatraditional: NumberingStyle_KATAKANA_TRADITIONAL;
-
   /**
    * Do not add characters.
    */
@@ -429,11 +397,6 @@ export declare const NumberingStyle: typeof Enumeration & {
    */
   readonly formatNone: NumberingStyle_FORMAT_NONE;
   /**
-   * Do not add characters.
-   */
-  readonly formatnone: NumberingStyle_FORMAT_NONE;
-
-  /**
    * Add single leading zeros.
    */
   readonly SINGLE_LEADING_ZEROS: NumberingStyle_SINGLE_LEADING_ZEROS;
@@ -441,11 +404,6 @@ export declare const NumberingStyle: typeof Enumeration & {
    * Add single leading zeros.
    */
   readonly singleLeadingZeros: NumberingStyle_SINGLE_LEADING_ZEROS;
-  /**
-   * Add single leading zeros.
-   */
-  readonly singleleadingzeros: NumberingStyle_SINGLE_LEADING_ZEROS;
-
   /**
    * Uses Arabic Alif Ba Tah.
    */
@@ -455,11 +413,6 @@ export declare const NumberingStyle: typeof Enumeration & {
    */
   readonly arabicAlifBaTah: NumberingStyle_ARABIC_ALIF_BA_TAH;
   /**
-   * Uses Arabic Alif Ba Tah.
-   */
-  readonly arabicalifbatah: NumberingStyle_ARABIC_ALIF_BA_TAH;
-
-  /**
    * Uses Arabic Abjad.
    */
   readonly ARABIC_ABJAD: NumberingStyle_ARABIC_ABJAD;
@@ -467,11 +420,6 @@ export declare const NumberingStyle: typeof Enumeration & {
    * Uses Arabic Abjad.
    */
   readonly arabicAbjad: NumberingStyle_ARABIC_ABJAD;
-  /**
-   * Uses Arabic Abjad.
-   */
-  readonly arabicabjad: NumberingStyle_ARABIC_ABJAD;
-
   /**
    * Uses Hebrew Biblical.
    */
@@ -481,11 +429,6 @@ export declare const NumberingStyle: typeof Enumeration & {
    */
   readonly hebrewBiblical: NumberingStyle_HEBREW_BIBLICAL;
   /**
-   * Uses Hebrew Biblical.
-   */
-  readonly hebrewbiblical: NumberingStyle_HEBREW_BIBLICAL;
-
-  /**
    * Uses Hebrew Non Standard.
    */
   readonly HEBREW_NON_STANDARD: NumberingStyle_HEBREW_NON_STANDARD;
@@ -493,11 +436,6 @@ export declare const NumberingStyle: typeof Enumeration & {
    * Uses Hebrew Non Standard.
    */
   readonly hebrewNonStandard: NumberingStyle_HEBREW_NON_STANDARD;
-  /**
-   * Uses Hebrew Non Standard.
-   */
-  readonly hebrewnonstandard: NumberingStyle_HEBREW_NON_STANDARD;
-
   /**
    * Add double leading zeros.
    */
@@ -507,11 +445,6 @@ export declare const NumberingStyle: typeof Enumeration & {
    */
   readonly doubleLeadingZeros: NumberingStyle_DOUBLE_LEADING_ZEROS;
   /**
-   * Add double leading zeros.
-   */
-  readonly doubleleadingzeros: NumberingStyle_DOUBLE_LEADING_ZEROS;
-
-  /**
    * Add triple leading zeros.
    */
   readonly TRIPLE_LEADING_ZEROS: NumberingStyle_TRIPLE_LEADING_ZEROS;
@@ -519,9 +452,4 @@ export declare const NumberingStyle: typeof Enumeration & {
    * Add triple leading zeros.
    */
   readonly tripleLeadingZeros: NumberingStyle_TRIPLE_LEADING_ZEROS;
-  /**
-   * Add triple leading zeros.
-   */
-  readonly tripleleadingzeros: NumberingStyle_TRIPLE_LEADING_ZEROS;
-
 }

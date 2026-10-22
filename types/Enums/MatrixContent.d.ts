@@ -1,10 +1,11 @@
 /**
  * MatrixContent.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __MatrixContent: unique symbol;
 
 
 interface MatrixContent extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<MatrixContent>): boolean;
-
   /**
    * @internal **WARNING:** `__MatrixContent` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -120,11 +118,6 @@ export declare const MatrixContent: typeof Enumeration & {
    */
   readonly scaleValues: MatrixContent_SCALE_VALUES;
   /**
-   * The matrix's scale values.
-   */
-  readonly scalevalues: MatrixContent_SCALE_VALUES;
-
-  /**
    * The matrix's shear value.
    */
   readonly SHEAR_VALUE: MatrixContent_SHEAR_VALUE;
@@ -132,11 +125,6 @@ export declare const MatrixContent: typeof Enumeration & {
    * The matrix's shear value.
    */
   readonly shearValue: MatrixContent_SHEAR_VALUE;
-  /**
-   * The matrix's shear value.
-   */
-  readonly shearvalue: MatrixContent_SHEAR_VALUE;
-
   /**
    * The matrix's rotation value.
    */
@@ -146,11 +134,6 @@ export declare const MatrixContent: typeof Enumeration & {
    */
   readonly rotationValue: MatrixContent_ROTATION_VALUE;
   /**
-   * The matrix's rotation value.
-   */
-  readonly rotationvalue: MatrixContent_ROTATION_VALUE;
-
-  /**
    * The matrix's translation values.
    */
   readonly TRANSLATION_VALUES: MatrixContent_TRANSLATION_VALUES;
@@ -158,9 +141,4 @@ export declare const MatrixContent: typeof Enumeration & {
    * The matrix's translation values.
    */
   readonly translationValues: MatrixContent_TRANSLATION_VALUES;
-  /**
-   * The matrix's translation values.
-   */
-  readonly translationvalues: MatrixContent_TRANSLATION_VALUES;
-
 }

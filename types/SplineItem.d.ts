@@ -1,6 +1,7 @@
 /**
  * SplineItem.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -96,9 +97,6 @@ export interface SplineItem<
     ShapeContainer<TChildParent, M>,
     FormFieldContainer<TChildParent, M>,
     EndnoteFrameContainer<TChildParent, M> {
-  /** The object's DOM class name — reports the specific kind, such as `'Oval'` when the object is a {@link Oval}. */
-  readonly constructorName: 'SplineItem' | 'GraphicLine' | 'Oval' | 'Polygon' | 'Rectangle';
-
   /** Resolves the proxy into the individual {@link SplineItem}s it stands for. */
   getElements(): SplineItem<TParent, TChildParent, 'single'>[];
 
@@ -212,7 +210,7 @@ export interface SplineItem<
  * A shape InDesign reports as a plain {@link SplineItem} rather than as a rectangle, oval,
  * polygon or graphic line.
  *
- * Handle it in the `'SplineItem'` case of a `constructorName` check. Only the members every
+ * Handle it in the `'SplineItem'` branch of an `instanceof` check. Only the members every
  * spline has — its paths, and the pathfinder operations — are available on it.
  */
 export interface PlainSplineItem<
@@ -220,6 +218,4 @@ export interface PlainSplineItem<
   TChildParent = PageItemParent,
   M extends Mode = 'single',
 > extends SplineItem<TParent, TChildParent, M> {
-  /** Always `'SplineItem'` — this is the generic case, by construction. */
-  readonly constructorName: 'SplineItem';
 }

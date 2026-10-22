@@ -1,10 +1,11 @@
 /**
  * PreflightLayerOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __PreflightLayerOptions: unique symbol;
 
 
 interface PreflightLayerOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<PreflightLayerOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__PreflightLayerOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const PreflightLayerOptions: typeof Enumeration & {
    */
   readonly preflightAllLayers: PreflightLayerOptions_PREFLIGHT_ALL_LAYERS;
   /**
-   * Preflight all layers.
-   */
-  readonly preflightalllayers: PreflightLayerOptions_PREFLIGHT_ALL_LAYERS;
-
-  /**
    * Preflight visible layers.
    */
   readonly PREFLIGHT_VISIBLE_LAYERS: PreflightLayerOptions_PREFLIGHT_VISIBLE_LAYERS;
@@ -115,11 +108,6 @@ export declare const PreflightLayerOptions: typeof Enumeration & {
    */
   readonly preflightVisibleLayers: PreflightLayerOptions_PREFLIGHT_VISIBLE_LAYERS;
   /**
-   * Preflight visible layers.
-   */
-  readonly preflightvisiblelayers: PreflightLayerOptions_PREFLIGHT_VISIBLE_LAYERS;
-
-  /**
    * Preflight visible and printable layers.
    */
   readonly PREFLIGHT_VISIBLE_PRINTABLE_LAYERS: PreflightLayerOptions_PREFLIGHT_VISIBLE_PRINTABLE_LAYERS;
@@ -127,9 +115,4 @@ export declare const PreflightLayerOptions: typeof Enumeration & {
    * Preflight visible and printable layers.
    */
   readonly preflightVisiblePrintableLayers: PreflightLayerOptions_PREFLIGHT_VISIBLE_PRINTABLE_LAYERS;
-  /**
-   * Preflight visible and printable layers.
-   */
-  readonly preflightvisibleprintablelayers: PreflightLayerOptions_PREFLIGHT_VISIBLE_PRINTABLE_LAYERS;
-
 }

@@ -1,6 +1,7 @@
 /**
  * BuildingBlock.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -19,9 +20,6 @@ import type { BuildingBlocks } from './BuildingBlocks';
 export interface BuildingBlock<M extends Mode = 'single'>
   extends EventTargetDOMObject<CrossReferenceFormat, M>,
     IndexedDOMObject<CrossReferenceFormat, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'BuildingBlock';
-
   /** Resolves the proxy into the individual {@link BuildingBlock} objects it stands for. */
   getElements(): BuildingBlock<'single'>[];
 
@@ -30,7 +28,7 @@ export interface BuildingBlock<M extends Mode = 'single'>
   set blockType(value: BuildingBlockTypes);
 
   /** The character style applied to this building block's generated text. Accepts a {@link CharacterStyle} or its name. */
-  get appliedCharacterStyle(): Read<M, CharacterStyle>;
+  get appliedCharacterStyle(): Read<M, CharacterStyle | null>;
   set appliedCharacterStyle(value: CharacterStyle | string);
 
   /**

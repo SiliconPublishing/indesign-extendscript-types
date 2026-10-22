@@ -1,6 +1,7 @@
 /**
  * Index.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -18,64 +19,21 @@ import type { Layer } from './Layer';
 import type { IndexCapitalizationOptions } from './Enums/IndexCapitalizationOptions';
 import type { MeasurementValue, FilePath } from './_base/Types';
 import type { IndexSection } from './IndexSection';
-import type { Event } from './Event';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { InDesignEventMap } from './_base/Events';
+import type { Event } from './Event';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+
 /**
  * An index for the document, containing {@link IndexSection}s and
  * {@link Topic}s that define its entries and generate an index {@link Story}.
  */
 export interface Index {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: Document;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<Index, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<Index, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -135,12 +93,49 @@ export interface Index {
    */
   readonly index: number;
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: Document;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<Index, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<Index, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */
   get name(): string;
   set name(value: string);
-  /** The object's DOM class name. */
-  readonly constructorName: 'Index';
   /** Resolves the proxy into the individual {@link Index} objects it stands for. */
   getElements(): Index[];
   /** The unique ID of the index. */
@@ -181,60 +176,11 @@ export interface Index {
   ): Story[];
 }
 
-
 /**
- * The broadcast proxy for {@link Index} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link Index} there.
+ * An index for the document, containing {@link IndexSection}s and
+ * {@link Topic}s that define its entries and generate an index {@link Story}.
  */
 export interface IndexPlural {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (Document)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<IndexPlural, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<IndexPlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -294,12 +240,49 @@ export interface IndexPlural {
    */
   readonly index: (number)[];
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (Document)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<IndexPlural, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<IndexPlural, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */
   get name(): (string)[];
   set name(value: string);
-  /** The object's DOM class name. */
-  readonly constructorName: 'Index';
   /** Resolves the proxy into the individual {@link Index} objects it stands for. */
   getElements(): Index[];
   /** The unique ID of the index. */

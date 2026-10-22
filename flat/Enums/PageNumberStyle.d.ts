@@ -1,10 +1,11 @@
 /**
  * PageNumberStyle.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __PageNumberStyle: unique symbol;
 
 
 interface PageNumberStyle extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<PageNumberStyle>): boolean;
-
   /**
    * @internal **WARNING:** `__PageNumberStyle` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -264,11 +262,6 @@ export declare const PageNumberStyle: typeof Enumeration & {
    */
   readonly upperRoman: PageNumberStyle_UPPER_ROMAN;
   /**
-   * Uses uppercase Roman numerals.
-   */
-  readonly upperroman: PageNumberStyle_UPPER_ROMAN;
-
-  /**
    * Uses lowercase Roman numerals.
    */
   readonly LOWER_ROMAN: PageNumberStyle_LOWER_ROMAN;
@@ -276,11 +269,6 @@ export declare const PageNumberStyle: typeof Enumeration & {
    * Uses lowercase Roman numerals.
    */
   readonly lowerRoman: PageNumberStyle_LOWER_ROMAN;
-  /**
-   * Uses lowercase Roman numerals.
-   */
-  readonly lowerroman: PageNumberStyle_LOWER_ROMAN;
-
   /**
    * Uses uppercase letters.
    */
@@ -290,11 +278,6 @@ export declare const PageNumberStyle: typeof Enumeration & {
    */
   readonly upperLetters: PageNumberStyle_UPPER_LETTERS;
   /**
-   * Uses uppercase letters.
-   */
-  readonly upperletters: PageNumberStyle_UPPER_LETTERS;
-
-  /**
    * Uses lowercase letters.
    */
   readonly LOWER_LETTERS: PageNumberStyle_LOWER_LETTERS;
@@ -302,11 +285,6 @@ export declare const PageNumberStyle: typeof Enumeration & {
    * Uses lowercase letters.
    */
   readonly lowerLetters: PageNumberStyle_LOWER_LETTERS;
-  /**
-   * Uses lowercase letters.
-   */
-  readonly lowerletters: PageNumberStyle_LOWER_LETTERS;
-
   /**
    * Uses Arabic numerals.
    */
@@ -334,11 +312,6 @@ export declare const PageNumberStyle: typeof Enumeration & {
    */
   readonly arabicAlifBaTah: PageNumberStyle_ARABIC_ALIF_BA_TAH;
   /**
-   * Uses Arabic Alif Ba Tah numbering.
-   */
-  readonly arabicalifbatah: PageNumberStyle_ARABIC_ALIF_BA_TAH;
-
-  /**
    * Uses Arabic Abjad numbering.
    */
   readonly ARABIC_ABJAD: PageNumberStyle_ARABIC_ABJAD;
@@ -346,11 +319,6 @@ export declare const PageNumberStyle: typeof Enumeration & {
    * Uses Arabic Abjad numbering.
    */
   readonly arabicAbjad: PageNumberStyle_ARABIC_ABJAD;
-  /**
-   * Uses Arabic Abjad numbering.
-   */
-  readonly arabicabjad: PageNumberStyle_ARABIC_ABJAD;
-
   /**
    * Uses Hebrew Biblical numbering.
    */
@@ -360,11 +328,6 @@ export declare const PageNumberStyle: typeof Enumeration & {
    */
   readonly hebrewBiblical: PageNumberStyle_HEBREW_BIBLICAL;
   /**
-   * Uses Hebrew Biblical numbering.
-   */
-  readonly hebrewbiblical: PageNumberStyle_HEBREW_BIBLICAL;
-
-  /**
    * Uses Hebrew non-standard numbering.
    */
   readonly HEBREW_NON_STANDARD: PageNumberStyle_HEBREW_NON_STANDARD;
@@ -372,11 +335,6 @@ export declare const PageNumberStyle: typeof Enumeration & {
    * Uses Hebrew non-standard numbering.
    */
   readonly hebrewNonStandard: PageNumberStyle_HEBREW_NON_STANDARD;
-  /**
-   * Uses Hebrew non-standard numbering.
-   */
-  readonly hebrewnonstandard: PageNumberStyle_HEBREW_NON_STANDARD;
-
   /**
    * Uses Arabic numerals and formats all page numbers as two digits.
    */
@@ -386,11 +344,6 @@ export declare const PageNumberStyle: typeof Enumeration & {
    */
   readonly singleLeadingZeros: PageNumberStyle_SINGLE_LEADING_ZEROS;
   /**
-   * Uses Arabic numerals and formats all page numbers as two digits.
-   */
-  readonly singleleadingzeros: PageNumberStyle_SINGLE_LEADING_ZEROS;
-
-  /**
    * Uses Arabic numerals and formats all page numbers as three digits.
    */
   readonly DOUBLE_LEADING_ZEROS: PageNumberStyle_DOUBLE_LEADING_ZEROS;
@@ -399,11 +352,6 @@ export declare const PageNumberStyle: typeof Enumeration & {
    */
   readonly doubleLeadingZeros: PageNumberStyle_DOUBLE_LEADING_ZEROS;
   /**
-   * Uses Arabic numerals and formats all page numbers as three digits.
-   */
-  readonly doubleleadingzeros: PageNumberStyle_DOUBLE_LEADING_ZEROS;
-
-  /**
    * Uses Arabic numerals and formats all page numbers as four digits.
    */
   readonly TRIPLE_LEADING_ZEROS: PageNumberStyle_TRIPLE_LEADING_ZEROS;
@@ -411,9 +359,4 @@ export declare const PageNumberStyle: typeof Enumeration & {
    * Uses Arabic numerals and formats all page numbers as four digits.
    */
   readonly tripleLeadingZeros: PageNumberStyle_TRIPLE_LEADING_ZEROS;
-  /**
-   * Uses Arabic numerals and formats all page numbers as four digits.
-   */
-  readonly tripleleadingzeros: PageNumberStyle_TRIPLE_LEADING_ZEROS;
-
 }

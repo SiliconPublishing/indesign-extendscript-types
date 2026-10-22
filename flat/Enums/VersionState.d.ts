@@ -1,10 +1,11 @@
 /**
  * VersionState.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __VersionState: unique symbol;
 
 
 interface VersionState extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<VersionState>): boolean;
-
   /**
    * @internal **WARNING:** `__VersionState` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -152,11 +150,6 @@ export declare const VersionState: typeof Enumeration & {
    */
   readonly versionUnknown: VersionState_VERSION_UNKNOWN;
   /**
-   * The version is not known.
-   */
-  readonly versionunknown: VersionState_VERSION_UNKNOWN;
-
-  /**
    * The project has a newer file.
    */
   readonly PROJECT_FILE_NEWER: VersionState_PROJECT_FILE_NEWER;
@@ -164,11 +157,6 @@ export declare const VersionState: typeof Enumeration & {
    * The project has a newer file.
    */
   readonly projectFileNewer: VersionState_PROJECT_FILE_NEWER;
-  /**
-   * The project has a newer file.
-   */
-  readonly projectfilenewer: VersionState_PROJECT_FILE_NEWER;
-
   /**
    * The version is identical to the project.
    */
@@ -178,11 +166,6 @@ export declare const VersionState: typeof Enumeration & {
    */
   readonly localProjectMatch: VersionState_LOCAL_PROJECT_MATCH;
   /**
-   * The version is identical to the project.
-   */
-  readonly localprojectmatch: VersionState_LOCAL_PROJECT_MATCH;
-
-  /**
    * The version has modifications that make it newer than the project.
    */
   readonly LOCAL_NEWER: VersionState_LOCAL_NEWER;
@@ -190,11 +173,6 @@ export declare const VersionState: typeof Enumeration & {
    * The version has modifications that make it newer than the project.
    */
   readonly localNewer: VersionState_LOCAL_NEWER;
-  /**
-   * The version has modifications that make it newer than the project.
-   */
-  readonly localnewer: VersionState_LOCAL_NEWER;
-
   /**
    * The version contains local edits but the project file is newer.
    */
@@ -204,11 +182,6 @@ export declare const VersionState: typeof Enumeration & {
    */
   readonly versionConflict: VersionState_VERSION_CONFLICT;
   /**
-   * The version contains local edits but the project file is newer.
-   */
-  readonly versionconflict: VersionState_VERSION_CONFLICT;
-
-  /**
    * No resource and no local file.
    */
   readonly NO_RESOURCE: VersionState_NO_RESOURCE;
@@ -216,9 +189,4 @@ export declare const VersionState: typeof Enumeration & {
    * No resource and no local file.
    */
   readonly noResource: VersionState_NO_RESOURCE;
-  /**
-   * No resource and no local file.
-   */
-  readonly noresource: VersionState_NO_RESOURCE;
-
 }

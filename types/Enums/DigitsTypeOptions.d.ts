@@ -1,10 +1,11 @@
 /**
  * DigitsTypeOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __DigitsTypeOptions: unique symbol;
 
 
 interface DigitsTypeOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<DigitsTypeOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__DigitsTypeOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -376,11 +374,6 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    */
   readonly defaultDigits: DigitsTypeOptions_DEFAULT_DIGITS;
   /**
-   * Uses the default digit style.
-   */
-  readonly defaultdigits: DigitsTypeOptions_DEFAULT_DIGITS;
-
-  /**
    * Arabic digits.
    */
   readonly ARABIC_DIGITS: DigitsTypeOptions_ARABIC_DIGITS;
@@ -388,11 +381,6 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    * Arabic digits.
    */
   readonly arabicDigits: DigitsTypeOptions_ARABIC_DIGITS;
-  /**
-   * Arabic digits.
-   */
-  readonly arabicdigits: DigitsTypeOptions_ARABIC_DIGITS;
-
   /**
    * Hindi digits.
    */
@@ -402,11 +390,6 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    */
   readonly hindiDigits: DigitsTypeOptions_HINDI_DIGITS;
   /**
-   * Hindi digits.
-   */
-  readonly hindidigits: DigitsTypeOptions_HINDI_DIGITS;
-
-  /**
    * Farsi digits.
    */
   readonly FARSI_DIGITS: DigitsTypeOptions_FARSI_DIGITS;
@@ -414,11 +397,6 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    * Farsi digits.
    */
   readonly farsiDigits: DigitsTypeOptions_FARSI_DIGITS;
-  /**
-   * Farsi digits.
-   */
-  readonly farsidigits: DigitsTypeOptions_FARSI_DIGITS;
-
   /**
    * Native digits.
    */
@@ -428,11 +406,6 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    */
   readonly nativeDigits: DigitsTypeOptions_NATIVE_DIGITS;
   /**
-   * Native digits.
-   */
-  readonly nativedigits: DigitsTypeOptions_NATIVE_DIGITS;
-
-  /**
    * Full Farsi digits.
    */
   readonly FULL_FARSI_DIGITS: DigitsTypeOptions_FULL_FARSI_DIGITS;
@@ -440,11 +413,6 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    * Full Farsi digits.
    */
   readonly fullFarsiDigits: DigitsTypeOptions_FULL_FARSI_DIGITS;
-  /**
-   * Full Farsi digits.
-   */
-  readonly fullfarsidigits: DigitsTypeOptions_FULL_FARSI_DIGITS;
-
   /**
    * Thai digits.
    */
@@ -454,11 +422,6 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    */
   readonly thaiDigits: DigitsTypeOptions_THAI_DIGITS;
   /**
-   * Thai digits.
-   */
-  readonly thaidigits: DigitsTypeOptions_THAI_DIGITS;
-
-  /**
    * Lao digits.
    */
   readonly LAO_DIGITS: DigitsTypeOptions_LAO_DIGITS;
@@ -466,11 +429,6 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    * Lao digits.
    */
   readonly laoDigits: DigitsTypeOptions_LAO_DIGITS;
-  /**
-   * Lao digits.
-   */
-  readonly laodigits: DigitsTypeOptions_LAO_DIGITS;
-
   /**
    * Devanagari digits.
    */
@@ -480,11 +438,6 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    */
   readonly devanagariDigits: DigitsTypeOptions_DEVANAGARI_DIGITS;
   /**
-   * Devanagari digits.
-   */
-  readonly devanagaridigits: DigitsTypeOptions_DEVANAGARI_DIGITS;
-
-  /**
    * Bengali digits.
    */
   readonly BENGALI_DIGITS: DigitsTypeOptions_BENGALI_DIGITS;
@@ -492,11 +445,6 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    * Bengali digits.
    */
   readonly bengaliDigits: DigitsTypeOptions_BENGALI_DIGITS;
-  /**
-   * Bengali digits.
-   */
-  readonly bengalidigits: DigitsTypeOptions_BENGALI_DIGITS;
-
   /**
    * Gurmukhi digits.
    */
@@ -506,11 +454,6 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    */
   readonly gurmukhiDigits: DigitsTypeOptions_GURMUKHI_DIGITS;
   /**
-   * Gurmukhi digits.
-   */
-  readonly gurmukhidigits: DigitsTypeOptions_GURMUKHI_DIGITS;
-
-  /**
    * Gujarati digits.
    */
   readonly GUJARATI_DIGITS: DigitsTypeOptions_GUJARATI_DIGITS;
@@ -518,11 +461,6 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    * Gujarati digits.
    */
   readonly gujaratiDigits: DigitsTypeOptions_GUJARATI_DIGITS;
-  /**
-   * Gujarati digits.
-   */
-  readonly gujaratidigits: DigitsTypeOptions_GUJARATI_DIGITS;
-
   /**
    * Oriya digits.
    */
@@ -532,11 +470,6 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    */
   readonly oriyaDigits: DigitsTypeOptions_ORIYA_DIGITS;
   /**
-   * Oriya digits.
-   */
-  readonly oriyadigits: DigitsTypeOptions_ORIYA_DIGITS;
-
-  /**
    * Tamil digits.
    */
   readonly TAMIL_DIGITS: DigitsTypeOptions_TAMIL_DIGITS;
@@ -544,11 +477,6 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    * Tamil digits.
    */
   readonly tamilDigits: DigitsTypeOptions_TAMIL_DIGITS;
-  /**
-   * Tamil digits.
-   */
-  readonly tamildigits: DigitsTypeOptions_TAMIL_DIGITS;
-
   /**
    * Telugu digits.
    */
@@ -558,11 +486,6 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    */
   readonly teluguDigits: DigitsTypeOptions_TELUGU_DIGITS;
   /**
-   * Telugu digits.
-   */
-  readonly telugudigits: DigitsTypeOptions_TELUGU_DIGITS;
-
-  /**
    * Kannada digits.
    */
   readonly KANNADA_DIGITS: DigitsTypeOptions_KANNADA_DIGITS;
@@ -570,11 +493,6 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    * Kannada digits.
    */
   readonly kannadaDigits: DigitsTypeOptions_KANNADA_DIGITS;
-  /**
-   * Kannada digits.
-   */
-  readonly kannadadigits: DigitsTypeOptions_KANNADA_DIGITS;
-
   /**
    * Malayalam digits.
    */
@@ -584,11 +502,6 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    */
   readonly malayalamDigits: DigitsTypeOptions_MALAYALAM_DIGITS;
   /**
-   * Malayalam digits.
-   */
-  readonly malayalamdigits: DigitsTypeOptions_MALAYALAM_DIGITS;
-
-  /**
    * Tibetan digits.
    */
   readonly TIBETAN_DIGITS: DigitsTypeOptions_TIBETAN_DIGITS;
@@ -596,11 +509,6 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    * Tibetan digits.
    */
   readonly tibetanDigits: DigitsTypeOptions_TIBETAN_DIGITS;
-  /**
-   * Tibetan digits.
-   */
-  readonly tibetandigits: DigitsTypeOptions_TIBETAN_DIGITS;
-
   /**
    * Khmer digits.
    */
@@ -610,11 +518,6 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    */
   readonly khmerDigits: DigitsTypeOptions_KHMER_DIGITS;
   /**
-   * Khmer digits.
-   */
-  readonly khmerdigits: DigitsTypeOptions_KHMER_DIGITS;
-
-  /**
    * Burmese digits.
    */
   readonly BURMESE_DIGITS: DigitsTypeOptions_BURMESE_DIGITS;
@@ -622,9 +525,4 @@ export declare const DigitsTypeOptions: typeof Enumeration & {
    * Burmese digits.
    */
   readonly burmeseDigits: DigitsTypeOptions_BURMESE_DIGITS;
-  /**
-   * Burmese digits.
-   */
-  readonly burmesedigits: DigitsTypeOptions_BURMESE_DIGITS;
-
 }

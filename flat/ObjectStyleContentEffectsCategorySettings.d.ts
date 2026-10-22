@@ -1,32 +1,39 @@
 /**
  * ObjectStyleContentEffectsCategorySettings.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
 import type { Mode, Read } from './_base/Types';
 import type { EventTargetDOMObject } from './_base/DomObjects';
 import type { ObjectStyle } from './ObjectStyle';
-import type { Event } from './Event';
-import type { EventHandler } from './_base/Events';
-import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
-import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { FilePath } from './_base/Types';
-import type { InDesignEventMap } from './_base/Events';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
+import type { EventHandler } from './_base/Events';
+import type { EventListener } from './EventListener';
+import type { EventString } from './_base/Events';
+import type { Event } from './Event';
+import type { FilePath } from './_base/Types';
+
 /**
  * Which effect categories an {@link ObjectStyle} enables for an object's placed
  * content, independently of the object itself, its stroke, or its fill.
  */
 export interface ObjectStyleContentEffectsCategorySettings {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -44,15 +51,6 @@ export interface ObjectStyleContentEffectsCategorySettings {
    */
   set properties(value: PropertiesSetter<ObjectStyleContentEffectsCategorySettings, 'single'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -62,10 +60,9 @@ export interface ObjectStyleContentEffectsCategorySettings {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -106,8 +103,6 @@ export interface ObjectStyleContentEffectsCategorySettings {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The object's DOM class name. */
-  readonly constructorName: 'ObjectStyleContentEffectsCategorySettings';
   /** Resolves the proxy into the individual {@link ObjectStyleContentEffectsCategorySettings} objects it stands for. */
   getElements(): ObjectStyleContentEffectsCategorySettings[];
   /** If true, the object style will apply transparency settings. */
@@ -142,21 +137,21 @@ export interface ObjectStyleContentEffectsCategorySettings {
   set enableGradientFeather(value: boolean);
 }
 
-
 /**
- * The broadcast proxy for {@link ObjectStyleContentEffectsCategorySettings} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link ObjectStyleContentEffectsCategorySettings} there.
+ * Which effect categories an {@link ObjectStyle} enables for an object's placed
+ * content, independently of the object itself, its stroke, or its fill.
  */
 export interface ObjectStyleContentEffectsCategorySettingsPlural {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -174,15 +169,6 @@ export interface ObjectStyleContentEffectsCategorySettingsPlural {
    */
   set properties(value: PropertiesSetter<ObjectStyleContentEffectsCategorySettingsPlural, 'plural'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -192,10 +178,9 @@ export interface ObjectStyleContentEffectsCategorySettingsPlural {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -236,8 +221,6 @@ export interface ObjectStyleContentEffectsCategorySettingsPlural {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The object's DOM class name. */
-  readonly constructorName: 'ObjectStyleContentEffectsCategorySettings';
   /** Resolves the proxy into the individual {@link ObjectStyleContentEffectsCategorySettings} objects it stands for. */
   getElements(): ObjectStyleContentEffectsCategorySettings[];
   /** If true, the object style will apply transparency settings. */

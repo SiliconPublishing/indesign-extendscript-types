@@ -1,10 +1,11 @@
 /**
  * BulletCharacterType.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __BulletCharacterType: unique symbol;
 
 
 interface BulletCharacterType extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<BulletCharacterType>): boolean;
-
   /**
    * @internal **WARNING:** `__BulletCharacterType` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -104,11 +102,6 @@ export declare const BulletCharacterType: typeof Enumeration & {
    */
   readonly unicodeOnly: BulletCharacterType_UNICODE_ONLY;
   /**
-   * Unicode only.
-   */
-  readonly unicodeonly: BulletCharacterType_UNICODE_ONLY;
-
-  /**
    * Unicode with font.
    */
   readonly UNICODE_WITH_FONT: BulletCharacterType_UNICODE_WITH_FONT;
@@ -117,11 +110,6 @@ export declare const BulletCharacterType: typeof Enumeration & {
    */
   readonly unicodeWithFont: BulletCharacterType_UNICODE_WITH_FONT;
   /**
-   * Unicode with font.
-   */
-  readonly unicodewithfont: BulletCharacterType_UNICODE_WITH_FONT;
-
-  /**
    * Glyph with font.
    */
   readonly GLYPH_WITH_FONT: BulletCharacterType_GLYPH_WITH_FONT;
@@ -129,9 +117,4 @@ export declare const BulletCharacterType: typeof Enumeration & {
    * Glyph with font.
    */
   readonly glyphWithFont: BulletCharacterType_GLYPH_WITH_FONT;
-  /**
-   * Glyph with font.
-   */
-  readonly glyphwithfont: BulletCharacterType_GLYPH_WITH_FONT;
-
 }

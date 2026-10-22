@@ -1,6 +1,7 @@
 /**
  * LayoutWindow.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -29,9 +30,6 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * {@link StoryWindow}'s text-only story-editor view.
  */
 export interface LayoutWindow<M extends Mode = 'single'> extends Window<M>{
-  /** The object's DOM class name. */
-  readonly constructorName: 'LayoutWindow';
-
   /** Resolves the proxy into the individual {@link LayoutWindow} objects it stands for. */
   getElements(): LayoutWindow<'single'>[];
 
@@ -98,7 +96,11 @@ export interface LayoutWindow<M extends Mode = 'single'> extends Window<M>{
   get activeSpread(): Read<M, Spread | MasterSpread>;
   set activeSpread(value: Spread | MasterSpread);
 
-  /** The front-most page in this window. */
+  /**
+   * The front-most page in this window.
+   *
+   * **Crashes InDesign 21.6**: assigning a name value on a LayoutWindow takes InDesign down (measured).
+   */
   get activePage(): Read<M, Page>;
   set activePage(value: Page);
 

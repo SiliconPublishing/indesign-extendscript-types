@@ -1,6 +1,7 @@
 /**
  * Polygon.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -73,9 +74,6 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * (side count and star inset).
  */
 export interface Polygon<TParent = PageItemParent, M extends Mode = 'single'> extends SplineItem<TParent, Polygon, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'Polygon';
-
   /** Resolves the proxy into the individual {@link Polygon} objects it stands for. */
   getElements(): Polygon<TParent, 'single'>[];
 

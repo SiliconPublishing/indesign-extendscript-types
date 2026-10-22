@@ -1,47 +1,37 @@
 /**
  * Enums.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
 import type { NothingEnum } from '../Enums/NothingEnum';
 /**
- * What an enumerator's `equals()` accepts. Only another enumerator matches, and only the same
- * member — a number never does, so `Leading.AUTO.equals(1635019116)` is `false`.
- *
- * Pass whatever a mixed getter returns: `ParagraphStyle.leading` reads back `number | Leading`,
- * and `Leading.AUTO.equals(style.leading)` is the intended test. Pass
- * {@link NothingEnum.NOTHING} to test whether a sparse style sets the attribute at all. `Also`
- * covers the getters that return two enums.
- */
-export type EnumComparand<E, Also = never> =
-  | E
-  | Also
-  | NothingEnum
-  | number
-  | string
-  | boolean
-  | null
-  | undefined
-  | readonly unknown[];
-
-/**
  * The base of every InDesign enumeration value.
  *
- * Enumerators are objects, not numbers or strings, so `===` between two of them is always
- * false. Compare with `.equals()` instead.
+ * In ExtendScript an enumerator is an `Enumerator` object whose `valueOf()` is its numeric
+ * value, so `===` works both between enumerators (`x === SaveOptions.NO`) and against the number
+ * (`SaveOptions.NO === 1852776480`). `String(e)` gives its name, such as `"NO"`.
+ *
+ * Properties typed as an enumeration also accept the bare number when set, but not the name
+ * string: `viewPreferences.horizontalMeasurementUnits = "POINTS"` throws.
  */
 export declare class Enumerator {
-  equals(otherObject: any): boolean;
+  /** The enumerator's name, such as `"NO"`. */
   toString(): string;
+  /** The enumerator's numeric value. */
+  valueOf(): number;
+  /** Reflection on this object. */
+  readonly reflect: Reflection;
 }
 
 /**
- * The base Enumeration class
+ * The base of every InDesign enumeration (the object holding the enumerators, such as
+ * `SaveOptions`).
  */
 export declare class Enumeration {
-  static readonly constructorName: 'Enumeration';
-  static equals(other:any): boolean;
+  /** Reflection on the enumeration: its enumerators are listed as properties. */
+  static readonly reflect: Reflection;
 }
 
 /**

@@ -1,10 +1,11 @@
 /**
  * AnchorPoint.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __AnchorPoint: unique symbol;
 
 
 interface AnchorPoint extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<AnchorPoint>): boolean;
-
   /**
    * @internal **WARNING:** `__AnchorPoint` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -198,11 +196,6 @@ export declare const AnchorPoint: typeof Enumeration & {
    */
   readonly topLeftAnchor: AnchorPoint_TOP_LEFT_ANCHOR;
   /**
-   * The top left corner.
-   */
-  readonly topleftanchor: AnchorPoint_TOP_LEFT_ANCHOR;
-
-  /**
    * The center point on the top of the bounding box.
    */
   readonly TOP_CENTER_ANCHOR: AnchorPoint_TOP_CENTER_ANCHOR;
@@ -210,11 +203,6 @@ export declare const AnchorPoint: typeof Enumeration & {
    * The center point on the top of the bounding box.
    */
   readonly topCenterAnchor: AnchorPoint_TOP_CENTER_ANCHOR;
-  /**
-   * The center point on the top of the bounding box.
-   */
-  readonly topcenteranchor: AnchorPoint_TOP_CENTER_ANCHOR;
-
   /**
    * The top right corner.
    */
@@ -224,11 +212,6 @@ export declare const AnchorPoint: typeof Enumeration & {
    */
   readonly topRightAnchor: AnchorPoint_TOP_RIGHT_ANCHOR;
   /**
-   * The top right corner.
-   */
-  readonly toprightanchor: AnchorPoint_TOP_RIGHT_ANCHOR;
-
-  /**
    * The center point on the left side of the bounding box.
    */
   readonly LEFT_CENTER_ANCHOR: AnchorPoint_LEFT_CENTER_ANCHOR;
@@ -236,11 +219,6 @@ export declare const AnchorPoint: typeof Enumeration & {
    * The center point on the left side of the bounding box.
    */
   readonly leftCenterAnchor: AnchorPoint_LEFT_CENTER_ANCHOR;
-  /**
-   * The center point on the left side of the bounding box.
-   */
-  readonly leftcenteranchor: AnchorPoint_LEFT_CENTER_ANCHOR;
-
   /**
    * The center point in the bounding box.
    */
@@ -250,11 +228,6 @@ export declare const AnchorPoint: typeof Enumeration & {
    */
   readonly centerAnchor: AnchorPoint_CENTER_ANCHOR;
   /**
-   * The center point in the bounding box.
-   */
-  readonly centeranchor: AnchorPoint_CENTER_ANCHOR;
-
-  /**
    * The center point on the right side of the bounding box.
    */
   readonly RIGHT_CENTER_ANCHOR: AnchorPoint_RIGHT_CENTER_ANCHOR;
@@ -262,11 +235,6 @@ export declare const AnchorPoint: typeof Enumeration & {
    * The center point on the right side of the bounding box.
    */
   readonly rightCenterAnchor: AnchorPoint_RIGHT_CENTER_ANCHOR;
-  /**
-   * The center point on the right side of the bounding box.
-   */
-  readonly rightcenteranchor: AnchorPoint_RIGHT_CENTER_ANCHOR;
-
   /**
    * The bottom left corner.
    */
@@ -276,11 +244,6 @@ export declare const AnchorPoint: typeof Enumeration & {
    */
   readonly bottomLeftAnchor: AnchorPoint_BOTTOM_LEFT_ANCHOR;
   /**
-   * The bottom left corner.
-   */
-  readonly bottomleftanchor: AnchorPoint_BOTTOM_LEFT_ANCHOR;
-
-  /**
    * The center point on the bottom of the bounding box.
    */
   readonly BOTTOM_CENTER_ANCHOR: AnchorPoint_BOTTOM_CENTER_ANCHOR;
@@ -289,11 +252,6 @@ export declare const AnchorPoint: typeof Enumeration & {
    */
   readonly bottomCenterAnchor: AnchorPoint_BOTTOM_CENTER_ANCHOR;
   /**
-   * The center point on the bottom of the bounding box.
-   */
-  readonly bottomcenteranchor: AnchorPoint_BOTTOM_CENTER_ANCHOR;
-
-  /**
    * The bottom right corner.
    */
   readonly BOTTOM_RIGHT_ANCHOR: AnchorPoint_BOTTOM_RIGHT_ANCHOR;
@@ -301,9 +259,4 @@ export declare const AnchorPoint: typeof Enumeration & {
    * The bottom right corner.
    */
   readonly bottomRightAnchor: AnchorPoint_BOTTOM_RIGHT_ANCHOR;
-  /**
-   * The bottom right corner.
-   */
-  readonly bottomrightanchor: AnchorPoint_BOTTOM_RIGHT_ANCHOR;
-
 }

@@ -1,6 +1,7 @@
 /**
  * FindTransliteratePreference.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -59,9 +60,6 @@ import type { ParagraphStyle } from './ParagraphStyle';
  * set via {@link Application.findTransliteratePreferences}.
  */
 export interface FindTransliteratePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'FindTransliteratePreference';
-
   /** Resolves the proxy into the individual {@link FindTransliteratePreference} objects it stands for. */
   getElements(): FindTransliteratePreference<'single'>[];
 
@@ -188,7 +186,7 @@ export interface FindTransliteratePreference<M extends Mode = 'single'> extends 
   set ignoreEdgeAlignment(value: boolean | NothingEnum.NOTHING);
 
   /** The font to match, as a {@link Font} object or a font family name. */
-  get appliedFont(): Read<M, Font | NothingEnum.NOTHING>;
+  get appliedFont(): Read<M, Font | NothingEnum.NOTHING | string>;
   set appliedFont(value: Font | string | NothingEnum.NOTHING | null);
 
   /** The name of the font style. */
@@ -300,11 +298,11 @@ export interface FindTransliteratePreference<M extends Mode = 'single'> extends 
   set otfSwash(value: boolean | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the underline stroke. */
-  get underlineColor(): Read<M, Swatch | NothingEnum.NOTHING>;
+  get underlineColor(): Read<M, Swatch | NothingEnum.NOTHING | string>;
   set underlineColor(value: Swatch | string | NothingEnum.NOTHING | null);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the underline stroke. Note: Valid when underline type is not solid. */
-  get underlineGapColor(): Read<M, Swatch | NothingEnum.NOTHING>;
+  get underlineGapColor(): Read<M, Swatch | NothingEnum.NOTHING | string>;
   set underlineGapColor(value: Swatch | string | NothingEnum.NOTHING | null);
 
   /** The underline stroke tint (as a percentage). (Range: 0 to 100). */
@@ -324,7 +322,7 @@ export interface FindTransliteratePreference<M extends Mode = 'single'> extends 
   set underlineGapOverprint(value: boolean | NothingEnum.NOTHING);
 
   /** The stroke type of the underline stroke. */
-  get underlineType(): Read<M, StrokeStyle | NothingEnum.NOTHING>;
+  get underlineType(): Read<M, StrokeStyle | NothingEnum.NOTHING | null | string>;
   set underlineType(value: StrokeStyle | string | NothingEnum.NOTHING | null);
 
   /** The amount by which to offset the underline from the text baseline. */
@@ -336,11 +334,11 @@ export interface FindTransliteratePreference<M extends Mode = 'single'> extends 
   set underlineWeight(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the strikethrough stroke. */
-  get strikeThroughColor(): Read<M, Swatch | NothingEnum.NOTHING>;
+  get strikeThroughColor(): Read<M, Swatch | NothingEnum.NOTHING | string>;
   set strikeThroughColor(value: Swatch | string | NothingEnum.NOTHING | null);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the strikethrough stroke. */
-  get strikeThroughGapColor(): Read<M, Swatch | NothingEnum.NOTHING>;
+  get strikeThroughGapColor(): Read<M, Swatch | NothingEnum.NOTHING | string>;
   set strikeThroughGapColor(value: Swatch | string | NothingEnum.NOTHING | null);
 
   /** The tint (as a percentage) of the strikethrough stroke. (Range: 0 to 100). */
@@ -360,7 +358,7 @@ export interface FindTransliteratePreference<M extends Mode = 'single'> extends 
   set strikeThroughGapOverprint(value: boolean | NothingEnum.NOTHING);
 
   /** The stroke type of the strikethrough stroke. */
-  get strikeThroughType(): Read<M, StrokeStyle | NothingEnum.NOTHING>;
+  get strikeThroughType(): Read<M, StrokeStyle | NothingEnum.NOTHING | null | string>;
   set strikeThroughType(value: StrokeStyle | string | NothingEnum.NOTHING | null);
 
   /** The amount by which to offset the strikethrough stroke from the text baseline. */
@@ -488,11 +486,11 @@ export interface FindTransliteratePreference<M extends Mode = 'single'> extends 
   set tatechuyokoYOffset(value: number | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of kenten characters. */
-  get kentenFillColor(): Read<M, Swatch | NothingEnum.NOTHING>;
+  get kentenFillColor(): Read<M, Swatch | NothingEnum.NOTHING | string>;
   set kentenFillColor(value: Swatch | string | NothingEnum.NOTHING | null);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of kenten characters. */
-  get kentenStrokeColor(): Read<M, Swatch | NothingEnum.NOTHING>;
+  get kentenStrokeColor(): Read<M, Swatch | NothingEnum.NOTHING | string>;
   set kentenStrokeColor(value: Swatch | string | NothingEnum.NOTHING | null);
 
   /** The fill tint (as a percentage) of kenten characters. (Range: 0 to 100). */
@@ -532,7 +530,7 @@ export interface FindTransliteratePreference<M extends Mode = 'single'> extends 
   set kentenPosition(value: RubyKentenPosition | NothingEnum.NOTHING);
 
   /** The font to use for kenten characters. */
-  get kentenFont(): Read<M, Font | NothingEnum.NOTHING>;
+  get kentenFont(): Read<M, Font | NothingEnum.NOTHING | null | string>;
   set kentenFont(value: Font | string | NothingEnum.NOTHING | null);
 
   /** The font style of kenten characters. */
@@ -560,11 +558,11 @@ export interface FindTransliteratePreference<M extends Mode = 'single'> extends 
   set kentenCharacterSet(value: KentenCharacterSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of ruby characters. */
-  get rubyFill(): Read<M, Swatch | NothingEnum.NOTHING>;
+  get rubyFill(): Read<M, Swatch | NothingEnum.NOTHING | string>;
   set rubyFill(value: Swatch | string | NothingEnum.NOTHING | null);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of ruby characters. */
-  get rubyStroke(): Read<M, Swatch | NothingEnum.NOTHING>;
+  get rubyStroke(): Read<M, Swatch | NothingEnum.NOTHING | string>;
   set rubyStroke(value: Swatch | string | NothingEnum.NOTHING | null);
 
   /** The tint (as a percentage) of the ruby fill color. (Range: 0 to 100). */
@@ -588,7 +586,7 @@ export interface FindTransliteratePreference<M extends Mode = 'single'> extends 
   set rubyStrokeTint(value: number | NothingEnum.NOTHING);
 
   /** The font applied to ruby characters. */
-  get rubyFont(): Read<M, Font | NothingEnum.NOTHING>;
+  get rubyFont(): Read<M, Font | NothingEnum.NOTHING | null | string>;
   set rubyFont(value: Font | string | NothingEnum.NOTHING | null);
 
   /** The font style of ruby characters. */
@@ -784,7 +782,7 @@ export interface FindTransliteratePreference<M extends Mode = 'single'> extends 
   set bulletsTextAfter(value: string | NothingEnum.NOTHING);
 
   /** The character style to be used for the text after string. */
-  get bulletsCharacterStyle(): Read<M, CharacterStyle | NothingEnum.NOTHING>;
+  get bulletsCharacterStyle(): Read<M, CharacterStyle | NothingEnum.NOTHING | string>;
   set bulletsCharacterStyle(value: CharacterStyle | string | NothingEnum.NOTHING);
 
   /** The alignment of the bullet character. */
@@ -792,7 +790,7 @@ export interface FindTransliteratePreference<M extends Mode = 'single'> extends 
   set bulletsAlignment(value: ListAlignment | NothingEnum.NOTHING);
 
   /** The list to be part of. */
-  get appliedNumberingList(): Read<M, NumberingList | NothingEnum.NOTHING>;
+  get appliedNumberingList(): Read<M, NumberingList | NothingEnum.NOTHING | string>;
   set appliedNumberingList(value: NumberingList | string | NothingEnum.NOTHING);
 
   /** The level of the paragraph. */
@@ -814,7 +812,7 @@ export interface FindTransliteratePreference<M extends Mode = 'single'> extends 
   set numberingExpression(value: string | NothingEnum.NOTHING);
 
   /** The character style to be used for the number string. */
-  get numberingCharacterStyle(): Read<M, CharacterStyle | NothingEnum.NOTHING>;
+  get numberingCharacterStyle(): Read<M, CharacterStyle | NothingEnum.NOTHING | string>;
   set numberingCharacterStyle(value: CharacterStyle | string | NothingEnum.NOTHING);
 
   /** Continue the numbering at this level. */

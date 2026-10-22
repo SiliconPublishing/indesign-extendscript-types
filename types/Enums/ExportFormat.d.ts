@@ -1,10 +1,11 @@
 /**
  * ExportFormat.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ExportFormat: unique symbol;
 
 
 interface ExportFormat extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ExportFormat>): boolean;
-
   /**
    * @internal **WARNING:** `__ExportFormat` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -326,11 +324,6 @@ export declare const ExportFormat: typeof Enumeration & {
    */
   readonly taggedText: ExportFormat_TAGGED_TEXT;
   /**
-   * Exports to a tagged text file with a TXT extension. 
-   */
-  readonly taggedtext: ExportFormat_TAGGED_TEXT;
-
-  /**
    * Exports to PDF format.
    */
   readonly PDF_TYPE: ExportFormat_PDF_TYPE;
@@ -339,11 +332,6 @@ export declare const ExportFormat: typeof Enumeration & {
    */
   readonly pdfType: ExportFormat_PDF_TYPE;
   /**
-   * Exports to PDF format.
-   */
-  readonly pdftype: ExportFormat_PDF_TYPE;
-
-  /**
    * Exports to EPS format.
    */
   readonly EPS_TYPE: ExportFormat_EPS_TYPE;
@@ -351,11 +339,6 @@ export declare const ExportFormat: typeof Enumeration & {
    * Exports to EPS format.
    */
   readonly epsType: ExportFormat_EPS_TYPE;
-  /**
-   * Exports to EPS format.
-   */
-  readonly epstype: ExportFormat_EPS_TYPE;
-
   /**
    * Exports to rich text format (RTF). 
    */
@@ -373,11 +356,6 @@ export declare const ExportFormat: typeof Enumeration & {
    * Exports to text (TXT) format.
    */
   readonly textType: ExportFormat_TEXT_TYPE;
-  /**
-   * Exports to text (TXT) format.
-   */
-  readonly texttype: ExportFormat_TEXT_TYPE;
-
   /**
    * Exports the document's tagged content to XML.
    */
@@ -401,27 +379,9 @@ export declare const ExportFormat: typeof Enumeration & {
    */
   readonly INTERACTIVE_PDF: ExportFormat_INTERACTIVE_PDF;
   /**
-   * Exports to Interactive PDF format.
-   */
-  readonly interactivePdf: ExportFormat_INTERACTIVE_PDF;
-  /**
-   * Exports to Interactive PDF format.
-   */
-  readonly interactivepdf: ExportFormat_INTERACTIVE_PDF;
-
-  /**
    * Exports to fixed layout EPub format.
    */
   readonly FIXED_LAYOUT_EPUB: ExportFormat_FIXED_LAYOUT_EPUB;
-  /**
-   * Exports to fixed layout EPub format.
-   */
-  readonly fixedLayoutEpub: ExportFormat_FIXED_LAYOUT_EPUB;
-  /**
-   * Exports to fixed layout EPub format.
-   */
-  readonly fixedlayoutepub: ExportFormat_FIXED_LAYOUT_EPUB;
-
   /**
    * Exports to XHTML FXL format.
    */
@@ -449,11 +409,6 @@ export declare const ExportFormat: typeof Enumeration & {
    */
   readonly indesignSnippet: ExportFormat_INDESIGN_SNIPPET;
   /**
-   * Exports to InDesign snippet (IDMS) format.
-   */
-  readonly indesignsnippet: ExportFormat_INDESIGN_SNIPPET;
-
-  /**
    * Exports to InDesign markup (IDML) format.
    */
   readonly INDESIGN_MARKUP: ExportFormat_INDESIGN_MARKUP;
@@ -461,11 +416,6 @@ export declare const ExportFormat: typeof Enumeration & {
    * Exports to InDesign markup (IDML) format.
    */
   readonly indesignMarkup: ExportFormat_INDESIGN_MARKUP;
-  /**
-   * Exports to InDesign markup (IDML) format.
-   */
-  readonly indesignmarkup: ExportFormat_INDESIGN_MARKUP;
-
   /**
    * Exports to InCopy markup (ICML) format.
    */
@@ -475,11 +425,6 @@ export declare const ExportFormat: typeof Enumeration & {
    */
   readonly incopyMarkup: ExportFormat_INCOPY_MARKUP;
   /**
-   * Exports to InCopy markup (ICML) format.
-   */
-  readonly incopymarkup: ExportFormat_INCOPY_MARKUP;
-
-  /**
    * Exports to PNG format.
    */
   readonly PNG_FORMAT: ExportFormat_PNG_FORMAT;
@@ -487,11 +432,6 @@ export declare const ExportFormat: typeof Enumeration & {
    * Exports to PNG format.
    */
   readonly pngFormat: ExportFormat_PNG_FORMAT;
-  /**
-   * Exports to PNG format.
-   */
-  readonly pngformat: ExportFormat_PNG_FORMAT;
-
   /**
    * Exports to XHTML format.
    */

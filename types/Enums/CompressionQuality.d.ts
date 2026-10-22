@@ -1,10 +1,11 @@
 /**
  * CompressionQuality.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __CompressionQuality: unique symbol;
 
 
 interface CompressionQuality extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<CompressionQuality>): boolean;
-
   /**
    * @internal **WARNING:** `__CompressionQuality` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -211,11 +209,6 @@ export declare const CompressionQuality: typeof Enumeration & {
    */
   readonly fourBit: CompressionQuality_FOUR_BIT;
   /**
-   * Uses 4-bit compression. Valid only when bitmap compression is ZIP. 
-   */
-  readonly fourbit: CompressionQuality_FOUR_BIT;
-
-  /**
    * Uses 8-bit compression. Valid only when bitmap compression is ZIP.
    */
   readonly EIGHT_BIT: CompressionQuality_EIGHT_BIT;
@@ -223,9 +216,4 @@ export declare const CompressionQuality: typeof Enumeration & {
    * Uses 8-bit compression. Valid only when bitmap compression is ZIP.
    */
   readonly eightBit: CompressionQuality_EIGHT_BIT;
-  /**
-   * Uses 8-bit compression. Valid only when bitmap compression is ZIP.
-   */
-  readonly eightbit: CompressionQuality_EIGHT_BIT;
-
 }

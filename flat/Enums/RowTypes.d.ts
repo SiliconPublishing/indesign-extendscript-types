@@ -1,10 +1,11 @@
 /**
  * RowTypes.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __RowTypes: unique symbol;
 
 
 interface RowTypes extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<RowTypes>): boolean;
-
   /**
    * @internal **WARNING:** `__RowTypes` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -120,11 +118,6 @@ export declare const RowTypes: typeof Enumeration & {
    */
   readonly bodyRow: RowTypes_BODY_ROW;
   /**
-   * Makes the row a body row.
-   */
-  readonly bodyrow: RowTypes_BODY_ROW;
-
-  /**
    * Makes the row a header row. Note: When setting row type as header row, the row must be either the top row in the table or adjacent to an existing header row.
    */
   readonly HEADER_ROW: RowTypes_HEADER_ROW;
@@ -132,11 +125,6 @@ export declare const RowTypes: typeof Enumeration & {
    * Makes the row a header row. Note: When setting row type as header row, the row must be either the top row in the table or adjacent to an existing header row.
    */
   readonly headerRow: RowTypes_HEADER_ROW;
-  /**
-   * Makes the row a header row. Note: When setting row type as header row, the row must be either the top row in the table or adjacent to an existing header row.
-   */
-  readonly headerrow: RowTypes_HEADER_ROW;
-
   /**
    * Makes the row a footer row. Note: When setting row type as footer row, the row must be either the bottom row in the table or adjacent to an existing footer row.
    */
@@ -146,11 +134,6 @@ export declare const RowTypes: typeof Enumeration & {
    */
   readonly footerRow: RowTypes_FOOTER_ROW;
   /**
-   * Makes the row a footer row. Note: When setting row type as footer row, the row must be either the bottom row in the table or adjacent to an existing footer row.
-   */
-  readonly footerrow: RowTypes_FOOTER_ROW;
-
-  /**
    * (Read-only) The column's rows are of multiple types. 
    */
   readonly MIXED_STATE: RowTypes_MIXED_STATE;
@@ -158,9 +141,4 @@ export declare const RowTypes: typeof Enumeration & {
    * (Read-only) The column's rows are of multiple types. 
    */
   readonly mixedState: RowTypes_MIXED_STATE;
-  /**
-   * (Read-only) The column's rows are of multiple types. 
-   */
-  readonly mixedstate: RowTypes_MIXED_STATE;
-
 }

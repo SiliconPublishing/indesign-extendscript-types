@@ -1,10 +1,11 @@
 /**
  * TableCaptionPositionOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __TableCaptionPositionOptions: unique symbol;
 
 
 interface TableCaptionPositionOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<TableCaptionPositionOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__TableCaptionPositionOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -84,20 +82,12 @@ export declare const TableCaptionPositionOptions: typeof Enumeration & {
   /**
    * Places the caption above the table.
    */
-  readonly beforetable: TableCaptionPositionOptions_BEFORE_TABLE;
-  /**
-   * Places the caption above the table.
-   */
   readonly BEFORE_TABLE: TableCaptionPositionOptions_BEFORE_TABLE;
 
   /**
    * Places the caption below the table.
    */
   readonly afterTable: TableCaptionPositionOptions_AFTER_TABLE;
-  /**
-   * Places the caption below the table.
-   */
-  readonly aftertable: TableCaptionPositionOptions_AFTER_TABLE;
   /**
    * Places the caption below the table.
    */

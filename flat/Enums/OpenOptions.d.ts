@@ -1,10 +1,11 @@
 /**
  * OpenOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __OpenOptions: unique symbol;
 
 
 interface OpenOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<OpenOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__OpenOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const OpenOptions: typeof Enumeration & {
    */
   readonly defaultValue: OpenOptions_DEFAULT_VALUE;
   /**
-   * Default based on the file type or extension.
-   */
-  readonly defaultvalue: OpenOptions_DEFAULT_VALUE;
-
-  /**
    * Open the document itself.
    */
   readonly OPEN_ORIGINAL: OpenOptions_OPEN_ORIGINAL;
@@ -115,11 +108,6 @@ export declare const OpenOptions: typeof Enumeration & {
    */
   readonly openOriginal: OpenOptions_OPEN_ORIGINAL;
   /**
-   * Open the document itself.
-   */
-  readonly openoriginal: OpenOptions_OPEN_ORIGINAL;
-
-  /**
    * Open a copy of the document.
    */
   readonly OPEN_COPY: OpenOptions_OPEN_COPY;
@@ -127,9 +115,4 @@ export declare const OpenOptions: typeof Enumeration & {
    * Open a copy of the document.
    */
   readonly openCopy: OpenOptions_OPEN_COPY;
-  /**
-   * Open a copy of the document.
-   */
-  readonly opencopy: OpenOptions_OPEN_COPY;
-
 }

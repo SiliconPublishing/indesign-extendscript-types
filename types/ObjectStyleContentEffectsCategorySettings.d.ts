@@ -1,6 +1,7 @@
 /**
  * ObjectStyleContentEffectsCategorySettings.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -13,9 +14,6 @@ import type { ObjectStyle } from './ObjectStyle';
  * content, independently of the object itself, its stroke, or its fill.
  */
 export interface ObjectStyleContentEffectsCategorySettings<M extends Mode = 'single'> extends EventTargetDOMObject<ObjectStyle, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'ObjectStyleContentEffectsCategorySettings';
-
   /** Resolves the proxy into the individual {@link ObjectStyleContentEffectsCategorySettings} objects it stands for. */
   getElements(): ObjectStyleContentEffectsCategorySettings<'single'>[];
 

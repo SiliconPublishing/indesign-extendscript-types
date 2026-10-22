@@ -1,10 +1,11 @@
 /**
  * SpanColumnTypeOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __SpanColumnTypeOptions: unique symbol;
 
 
 interface SpanColumnTypeOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<SpanColumnTypeOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__SpanColumnTypeOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const SpanColumnTypeOptions: typeof Enumeration & {
    */
   readonly singleColumn: SpanColumnTypeOptions_SINGLE_COLUMN;
   /**
-   * Paragraph is a single column.
-   */
-  readonly singlecolumn: SpanColumnTypeOptions_SINGLE_COLUMN;
-
-  /**
    * Paragraph spans the columns.
    */
   readonly SPAN_COLUMNS: SpanColumnTypeOptions_SPAN_COLUMNS;
@@ -115,11 +108,6 @@ export declare const SpanColumnTypeOptions: typeof Enumeration & {
    */
   readonly spanColumns: SpanColumnTypeOptions_SPAN_COLUMNS;
   /**
-   * Paragraph spans the columns.
-   */
-  readonly spancolumns: SpanColumnTypeOptions_SPAN_COLUMNS;
-
-  /**
    * Paragraph splits the columns.
    */
   readonly SPLIT_COLUMNS: SpanColumnTypeOptions_SPLIT_COLUMNS;
@@ -127,9 +115,4 @@ export declare const SpanColumnTypeOptions: typeof Enumeration & {
    * Paragraph splits the columns.
    */
   readonly splitColumns: SpanColumnTypeOptions_SPLIT_COLUMNS;
-  /**
-   * Paragraph splits the columns.
-   */
-  readonly splitcolumns: SpanColumnTypeOptions_SPLIT_COLUMNS;
-
 }

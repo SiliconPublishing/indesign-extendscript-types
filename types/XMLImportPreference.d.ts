@@ -1,6 +1,7 @@
 /**
  * XMLImportPreference.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -17,9 +18,6 @@ import type { XMLTransformFile } from './Enums/XMLTransformFile';
  * transformation.
  */
 export interface XMLImportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'XMLImportPreference';
-
   /** Resolves the proxy into the individual {@link XMLImportPreference} objects it stands for. */
   getElements(): XMLImportPreference<'single'>[];
 
@@ -60,7 +58,7 @@ export interface XMLImportPreference<M extends Mode = 'single'> extends EventTar
   set allowTransform(value: boolean);
 
   /** The name of the XSLT file. Note: Valid when allow transform is true. */
-  get transformFilename(): Read<M, Promise<File> | XMLTransformFile>;
+  get transformFilename(): Read<M, File | XMLTransformFile>;
   set transformFilename(value: FilePath | XMLTransformFile);
 
   /** Stylesheet parameters as a list of name/value pairs in the format [[name, value], [name, value],...]. */

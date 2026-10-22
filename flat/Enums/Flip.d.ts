@@ -1,10 +1,11 @@
 /**
  * Flip.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __Flip: unique symbol;
 
 
 interface Flip extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<Flip>): boolean;
-
   /**
    * @internal **WARNING:** `__Flip` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -66,7 +64,7 @@ interface Flip_VERTICAL extends Flip {
  * Flips both ways at once — the same result as rotating 180°.
  *
  * `BOTH` has the same effect but is a distinct value, so the two are not interchangeable in
- * an `equals()` test.
+ * a `===` test.
  */
 interface Flip_HORIZONTAL_AND_VERTICAL extends Flip {
   /**
@@ -80,7 +78,7 @@ interface Flip_HORIZONTAL_AND_VERTICAL extends Flip {
  * Flips both ways at once — the same result as rotating 180°.
  *
  * Has the same effect as `HORIZONTAL_AND_VERTICAL` but is a distinct value, so the two are
- * not interchangeable in an `equals()` test.
+ * not interchangeable in a `===` test.
  */
 interface Flip_BOTH extends Flip {
   /**
@@ -162,7 +160,7 @@ export declare const Flip: typeof Enumeration & {
    * Flips both ways at once — the same result as rotating 180°.
    *
    * `BOTH` has the same effect but is a distinct value, so the two are not
-   * interchangeable in an `equals()` test.
+   * interchangeable in a `===` test.
    */
   readonly HORIZONTAL_AND_VERTICAL: Flip_HORIZONTAL_AND_VERTICAL;
   /**
@@ -170,15 +168,10 @@ export declare const Flip: typeof Enumeration & {
    */
   readonly horizontalAndVertical: Flip_HORIZONTAL_AND_VERTICAL;
   /**
-   * Flips the printed image horizontally and vertically (same as rotate 180).
-   */
-  readonly horizontalandvertical: Flip_HORIZONTAL_AND_VERTICAL;
-
-  /**
    * Flips both ways at once — the same result as rotating 180°.
    *
    * Has the same effect as `HORIZONTAL_AND_VERTICAL` but is a distinct value, so the two
-   * are not interchangeable in an `equals()` test.
+   * are not interchangeable in a `===` test.
    */
   readonly BOTH: Flip_BOTH;
   /**

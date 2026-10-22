@@ -1,10 +1,11 @@
 /**
  * FootnoteNumberingStyle.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __FootnoteNumberingStyle: unique symbol;
 
 
 interface FootnoteNumberingStyle extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<FootnoteNumberingStyle>): boolean;
-
   /**
    * @internal **WARNING:** `__FootnoteNumberingStyle` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -294,11 +292,6 @@ export declare const FootnoteNumberingStyle: typeof Enumeration & {
    */
   readonly upperRoman: FootnoteNumberingStyle_UPPER_ROMAN;
   /**
-   * Uses uppercase Roman numerals.
-   */
-  readonly upperroman: FootnoteNumberingStyle_UPPER_ROMAN;
-
-  /**
    * Uses lowercase Roman numerals.
    */
   readonly LOWER_ROMAN: FootnoteNumberingStyle_LOWER_ROMAN;
@@ -306,11 +299,6 @@ export declare const FootnoteNumberingStyle: typeof Enumeration & {
    * Uses lowercase Roman numerals.
    */
   readonly lowerRoman: FootnoteNumberingStyle_LOWER_ROMAN;
-  /**
-   * Uses lowercase Roman numerals.
-   */
-  readonly lowerroman: FootnoteNumberingStyle_LOWER_ROMAN;
-
   /**
    * Uses uppercase letters.
    */
@@ -320,11 +308,6 @@ export declare const FootnoteNumberingStyle: typeof Enumeration & {
    */
   readonly upperLetters: FootnoteNumberingStyle_UPPER_LETTERS;
   /**
-   * Uses uppercase letters.
-   */
-  readonly upperletters: FootnoteNumberingStyle_UPPER_LETTERS;
-
-  /**
    * Uses lowercase letters.
    */
   readonly LOWER_LETTERS: FootnoteNumberingStyle_LOWER_LETTERS;
@@ -332,11 +315,6 @@ export declare const FootnoteNumberingStyle: typeof Enumeration & {
    * Uses lowercase letters.
    */
   readonly lowerLetters: FootnoteNumberingStyle_LOWER_LETTERS;
-  /**
-   * Uses lowercase letters.
-   */
-  readonly lowerletters: FootnoteNumberingStyle_LOWER_LETTERS;
-
   /**
    * Uses Arabic numerals.
    */
@@ -373,11 +351,6 @@ export declare const FootnoteNumberingStyle: typeof Enumeration & {
    */
   readonly fullWidthArabic: FootnoteNumberingStyle_FULL_WIDTH_ARABIC;
   /**
-   * Full-width Arabic.
-   */
-  readonly fullwidtharabic: FootnoteNumberingStyle_FULL_WIDTH_ARABIC;
-
-  /**
    * Single leading zeros.
    */
   readonly SINGLE_LEADING_ZEROS: FootnoteNumberingStyle_SINGLE_LEADING_ZEROS;
@@ -386,11 +359,6 @@ export declare const FootnoteNumberingStyle: typeof Enumeration & {
    */
   readonly singleLeadingZeros: FootnoteNumberingStyle_SINGLE_LEADING_ZEROS;
   /**
-   * Single leading zeros.
-   */
-  readonly singleleadingzeros: FootnoteNumberingStyle_SINGLE_LEADING_ZEROS;
-
-  /**
    * Double leading zeros.
    */
   readonly DOUBLE_LEADING_ZEROS: FootnoteNumberingStyle_DOUBLE_LEADING_ZEROS;
@@ -398,11 +366,6 @@ export declare const FootnoteNumberingStyle: typeof Enumeration & {
    * Double leading zeros.
    */
   readonly doubleLeadingZeros: FootnoteNumberingStyle_DOUBLE_LEADING_ZEROS;
-  /**
-   * Double leading zeros.
-   */
-  readonly doubleleadingzeros: FootnoteNumberingStyle_DOUBLE_LEADING_ZEROS;
-
   /**
    * Asterisks.
    */
@@ -421,11 +384,6 @@ export declare const FootnoteNumberingStyle: typeof Enumeration & {
    */
   readonly arabicAlifBaTah: FootnoteNumberingStyle_ARABIC_ALIF_BA_TAH;
   /**
-   * Uses Arabic Alif Ba Tah.
-   */
-  readonly arabicalifbatah: FootnoteNumberingStyle_ARABIC_ALIF_BA_TAH;
-
-  /**
    * Uses Arabic Abjad.
    */
   readonly ARABIC_ABJAD: FootnoteNumberingStyle_ARABIC_ABJAD;
@@ -433,11 +391,6 @@ export declare const FootnoteNumberingStyle: typeof Enumeration & {
    * Uses Arabic Abjad.
    */
   readonly arabicAbjad: FootnoteNumberingStyle_ARABIC_ABJAD;
-  /**
-   * Uses Arabic Abjad.
-   */
-  readonly arabicabjad: FootnoteNumberingStyle_ARABIC_ABJAD;
-
   /**
    * Uses Hebrew Biblical.
    */
@@ -447,11 +400,6 @@ export declare const FootnoteNumberingStyle: typeof Enumeration & {
    */
   readonly hebrewBiblical: FootnoteNumberingStyle_HEBREW_BIBLICAL;
   /**
-   * Uses Hebrew Biblical.
-   */
-  readonly hebrewbiblical: FootnoteNumberingStyle_HEBREW_BIBLICAL;
-
-  /**
    * Uses Hebrew Non Standard.
    */
   readonly HEBREW_NON_STANDARD: FootnoteNumberingStyle_HEBREW_NON_STANDARD;
@@ -459,9 +407,4 @@ export declare const FootnoteNumberingStyle: typeof Enumeration & {
    * Uses Hebrew Non Standard.
    */
   readonly hebrewNonStandard: FootnoteNumberingStyle_HEBREW_NON_STANDARD;
-  /**
-   * Uses Hebrew Non Standard.
-   */
-  readonly hebrewnonstandard: FootnoteNumberingStyle_HEBREW_NON_STANDARD;
-
 }

@@ -1,10 +1,11 @@
 /**
  * RasterResolutionOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __RasterResolutionOptions: unique symbol;
 
 
 interface RasterResolutionOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<RasterResolutionOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__RasterResolutionOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const RasterResolutionOptions: typeof Enumeration & {
    */
   readonly seventyTwoPpi: RasterResolutionOptions_SEVENTY_TWO_PPI;
   /**
-   * 72 pixels per inch.
-   */
-  readonly seventytwoppi: RasterResolutionOptions_SEVENTY_TWO_PPI;
-
-  /**
    * 96 pixels per inch.
    */
   readonly NINETY_SIX_PPI: RasterResolutionOptions_NINETY_SIX_PPI;
@@ -115,11 +108,6 @@ export declare const RasterResolutionOptions: typeof Enumeration & {
    */
   readonly ninetySixPpi: RasterResolutionOptions_NINETY_SIX_PPI;
   /**
-   * 96 pixels per inch.
-   */
-  readonly ninetysixppi: RasterResolutionOptions_NINETY_SIX_PPI;
-
-  /**
    * 144 pixels per inch.
    */
   readonly ONE_HUNDRED_FORTY_FOUR_PPI: RasterResolutionOptions_ONE_HUNDRED_FORTY_FOUR_PPI;
@@ -127,9 +115,4 @@ export declare const RasterResolutionOptions: typeof Enumeration & {
    * 144 pixels per inch.
    */
   readonly oneHundredFortyFourPpi: RasterResolutionOptions_ONE_HUNDRED_FORTY_FOUR_PPI;
-  /**
-   * 144 pixels per inch.
-   */
-  readonly onehundredfortyfourppi: RasterResolutionOptions_ONE_HUNDRED_FORTY_FOUR_PPI;
-
 }

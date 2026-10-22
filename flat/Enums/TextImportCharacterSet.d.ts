@@ -1,10 +1,11 @@
 /**
  * TextImportCharacterSet.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __TextImportCharacterSet: unique symbol;
 
 
 interface TextImportCharacterSet extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<TextImportCharacterSet>): boolean;
-
   /**
    * @internal **WARNING:** `__TextImportCharacterSet` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -723,23 +721,9 @@ export declare const TextImportCharacterSet: typeof Enumeration & {
    */
   readonly chineseBig5: TextImportCharacterSet_CHINESE_BIG_5;
   /**
-   * The Chinese Big 5 character set.
-   */
-  readonly chinesebig5: TextImportCharacterSet_CHINESE_BIG_5;
-
-  /**
    * The Macintosh CE (Central European) character set.
    */
   readonly MACINTOSH_CE: TextImportCharacterSet_MACINTOSH_CE;
-  /**
-   * The Macintosh CE (Central European) character set.
-   */
-  readonly macintoshCe: TextImportCharacterSet_MACINTOSH_CE;
-  /**
-   * The Macintosh CE (Central European) character set.
-   */
-  readonly macintoshce: TextImportCharacterSet_MACINTOSH_CE;
-
   /**
    * The Macintosh Cyrillic character set.
    */
@@ -749,11 +733,6 @@ export declare const TextImportCharacterSet: typeof Enumeration & {
    */
   readonly macintoshCyrillic: TextImportCharacterSet_MACINTOSH_CYRILLIC;
   /**
-   * The Macintosh Cyrillic character set.
-   */
-  readonly macintoshcyrillic: TextImportCharacterSet_MACINTOSH_CYRILLIC;
-
-  /**
    * The Macintosh Greek character set.
    */
   readonly MACINTOSH_GREEK: TextImportCharacterSet_MACINTOSH_GREEK;
@@ -761,11 +740,6 @@ export declare const TextImportCharacterSet: typeof Enumeration & {
    * The Macintosh Greek character set.
    */
   readonly macintoshGreek: TextImportCharacterSet_MACINTOSH_GREEK;
-  /**
-   * The Macintosh Greek character set.
-   */
-  readonly macintoshgreek: TextImportCharacterSet_MACINTOSH_GREEK;
-
   /**
    * The Macintosh Turkish character set.
    */
@@ -775,11 +749,6 @@ export declare const TextImportCharacterSet: typeof Enumeration & {
    */
   readonly macintoshTurkish: TextImportCharacterSet_MACINTOSH_TURKISH;
   /**
-   * The Macintosh Turkish character set.
-   */
-  readonly macintoshturkish: TextImportCharacterSet_MACINTOSH_TURKISH;
-
-  /**
    * The Windows Cyrillic character set.
    */
   readonly WINDOWS_CYRILLIC: TextImportCharacterSet_WINDOWS_CYRILLIC;
@@ -788,23 +757,9 @@ export declare const TextImportCharacterSet: typeof Enumeration & {
    */
   readonly windowsCyrillic: TextImportCharacterSet_WINDOWS_CYRILLIC;
   /**
-   * The Windows Cyrillic character set.
-   */
-  readonly windowscyrillic: TextImportCharacterSet_WINDOWS_CYRILLIC;
-
-  /**
    * The Windows EE (Eastern European) character set.
    */
   readonly WINDOWS_EE: TextImportCharacterSet_WINDOWS_EE;
-  /**
-   * The Windows EE (Eastern European) character set.
-   */
-  readonly windowsEe: TextImportCharacterSet_WINDOWS_EE;
-  /**
-   * The Windows EE (Eastern European) character set.
-   */
-  readonly windowsee: TextImportCharacterSet_WINDOWS_EE;
-
   /**
    * The Windows Greek character set.
    */
@@ -814,11 +769,6 @@ export declare const TextImportCharacterSet: typeof Enumeration & {
    */
   readonly windowsGreek: TextImportCharacterSet_WINDOWS_GREEK;
   /**
-   * The Windows Greek character set.
-   */
-  readonly windowsgreek: TextImportCharacterSet_WINDOWS_GREEK;
-
-  /**
    * The Windows Turkish character set.
    */
   readonly WINDOWS_TURKISH: TextImportCharacterSet_WINDOWS_TURKISH;
@@ -826,11 +776,6 @@ export declare const TextImportCharacterSet: typeof Enumeration & {
    * The Windows Turkish character set.
    */
   readonly windowsTurkish: TextImportCharacterSet_WINDOWS_TURKISH;
-  /**
-   * The Windows Turkish character set.
-   */
-  readonly windowsturkish: TextImportCharacterSet_WINDOWS_TURKISH;
-
   /**
    * The GB18030 character set.
    */
@@ -858,23 +803,9 @@ export declare const TextImportCharacterSet: typeof Enumeration & {
    */
   readonly windowsBaltic: TextImportCharacterSet_WINDOWS_BALTIC;
   /**
-   * The Windows Baltic character set.
-   */
-  readonly windowsbaltic: TextImportCharacterSet_WINDOWS_BALTIC;
-
-  /**
    * The Windows CE (Central European) character set.
    */
   readonly WINDOWS_CE: TextImportCharacterSet_WINDOWS_CE;
-  /**
-   * The Windows CE (Central European) character set.
-   */
-  readonly windowsCe: TextImportCharacterSet_WINDOWS_CE;
-  /**
-   * The Windows CE (Central European) character set.
-   */
-  readonly windowsce: TextImportCharacterSet_WINDOWS_CE;
-
   /**
    * The Macintosh Roman character set.
    */
@@ -884,11 +815,6 @@ export declare const TextImportCharacterSet: typeof Enumeration & {
    */
   readonly macintoshRoman: TextImportCharacterSet_MACINTOSH_ROMAN;
   /**
-   * The Macintosh Roman character set.
-   */
-  readonly macintoshroman: TextImportCharacterSet_MACINTOSH_ROMAN;
-
-  /**
    * The Macintosh Croatian character set.
    */
   readonly MACINTOSH_CROATIAN: TextImportCharacterSet_MACINTOSH_CROATIAN;
@@ -896,11 +822,6 @@ export declare const TextImportCharacterSet: typeof Enumeration & {
    * The Macintosh Croatian character set.
    */
   readonly macintoshCroatian: TextImportCharacterSet_MACINTOSH_CROATIAN;
-  /**
-   * The Macintosh Croatian character set.
-   */
-  readonly macintoshcroatian: TextImportCharacterSet_MACINTOSH_CROATIAN;
-
   /**
    * The Macintosh Icelandic character set.
    */
@@ -910,11 +831,6 @@ export declare const TextImportCharacterSet: typeof Enumeration & {
    */
   readonly macintoshIcelandic: TextImportCharacterSet_MACINTOSH_ICELANDIC;
   /**
-   * The Macintosh Icelandic character set.
-   */
-  readonly macintoshicelandic: TextImportCharacterSet_MACINTOSH_ICELANDIC;
-
-  /**
    * The Macintosh Romanian character set.
    */
   readonly MACINTOSH_ROMANIAN: TextImportCharacterSet_MACINTOSH_ROMANIAN;
@@ -923,49 +839,17 @@ export declare const TextImportCharacterSet: typeof Enumeration & {
    */
   readonly macintoshRomanian: TextImportCharacterSet_MACINTOSH_ROMANIAN;
   /**
-   * The Macintosh Romanian character set.
-   */
-  readonly macintoshromanian: TextImportCharacterSet_MACINTOSH_ROMANIAN;
-
-  /**
    * The Cyrillic (KOI8R) character set.
    */
   readonly CYRILLIC_KOI8R: TextImportCharacterSet_CYRILLIC_KOI8R;
-  /**
-   * The Cyrillic (KOI8R) character set.
-   */
-  readonly cyrillicKoi8r: TextImportCharacterSet_CYRILLIC_KOI8R;
-  /**
-   * The Cyrillic (KOI8R) character set.
-   */
-  readonly cyrillickoi8r: TextImportCharacterSet_CYRILLIC_KOI8R;
-
   /**
    * The Cyrillic (KOI8U) character set.
    */
   readonly CYRILLIC_KOI8U: TextImportCharacterSet_CYRILLIC_KOI8U;
   /**
-   * The Cyrillic (KOI8U) character set.
-   */
-  readonly cyrillicKoi8u: TextImportCharacterSet_CYRILLIC_KOI8U;
-  /**
-   * The Cyrillic (KOI8U) character set.
-   */
-  readonly cyrillickoi8u: TextImportCharacterSet_CYRILLIC_KOI8U;
-
-  /**
    * The Cyrillic (CP855) character set.
    */
   readonly CYRILLIC_CP855: TextImportCharacterSet_CYRILLIC_CP855;
-  /**
-   * The Cyrillic (CP855) character set.
-   */
-  readonly cyrillicCp855: TextImportCharacterSet_CYRILLIC_CP855;
-  /**
-   * The Cyrillic (CP855) character set.
-   */
-  readonly cyrilliccp855: TextImportCharacterSet_CYRILLIC_CP855;
-
   /**
    * The DOS Latin 2 character set.
    */
@@ -975,62 +859,21 @@ export declare const TextImportCharacterSet: typeof Enumeration & {
    */
   readonly dosLatin2: TextImportCharacterSet_DOS_LATIN_2;
   /**
-   * The DOS Latin 2 character set.
-   */
-  readonly doslatin2: TextImportCharacterSet_DOS_LATIN_2;
-
-  /**
    * The Cyrillic (ISO) character set.
    */
   readonly CYRILLIC_ISO: TextImportCharacterSet_CYRILLIC_ISO;
-  /**
-   * The Cyrillic (ISO) character set.
-   */
-  readonly cyrillicIso: TextImportCharacterSet_CYRILLIC_ISO;
-  /**
-   * The Cyrillic (ISO) character set.
-   */
-  readonly cyrilliciso: TextImportCharacterSet_CYRILLIC_ISO;
-
   /**
    * The Greek (ISO) character set.
    */
   readonly GREEK_ISO: TextImportCharacterSet_GREEK_ISO;
   /**
-   * The Greek (ISO) character set.
-   */
-  readonly greekIso: TextImportCharacterSet_GREEK_ISO;
-  /**
-   * The Greek (ISO) character set.
-   */
-  readonly greekiso: TextImportCharacterSet_GREEK_ISO;
-
-  /**
    * The Central European (ISO) character set.
    */
   readonly CENTRALEUROPEAN_ISO: TextImportCharacterSet_CENTRALEUROPEAN_ISO;
   /**
-   * The Central European (ISO) character set.
-   */
-  readonly centraleuropeanIso: TextImportCharacterSet_CENTRALEUROPEAN_ISO;
-  /**
-   * The Central European (ISO) character set.
-   */
-  readonly centraleuropeaniso: TextImportCharacterSet_CENTRALEUROPEAN_ISO;
-
-  /**
    * The Turkish (ISO) character set.
    */
   readonly TURKISH_ISO: TextImportCharacterSet_TURKISH_ISO;
-  /**
-   * The Turkish (ISO) character set.
-   */
-  readonly turkishIso: TextImportCharacterSet_TURKISH_ISO;
-  /**
-   * The Turkish (ISO) character set.
-   */
-  readonly turkishiso: TextImportCharacterSet_TURKISH_ISO;
-
   /**
    * The Macintosh Greek (Shared caps) character set.
    */
@@ -1040,11 +883,6 @@ export declare const TextImportCharacterSet: typeof Enumeration & {
    */
   readonly macintoshGreekSharedCaps: TextImportCharacterSet_MACINTOSH_GREEK_SHARED_CAPS;
   /**
-   * The Macintosh Greek (Shared caps) character set.
-   */
-  readonly macintoshgreeksharedcaps: TextImportCharacterSet_MACINTOSH_GREEK_SHARED_CAPS;
-
-  /**
    * The Macintosh Arabic character set.
    */
   readonly MACINTOSH_ARABIC: TextImportCharacterSet_MACINTOSH_ARABIC;
@@ -1052,11 +890,6 @@ export declare const TextImportCharacterSet: typeof Enumeration & {
    * The Macintosh Arabic character set.
    */
   readonly macintoshArabic: TextImportCharacterSet_MACINTOSH_ARABIC;
-  /**
-   * The Macintosh Arabic character set.
-   */
-  readonly macintosharabic: TextImportCharacterSet_MACINTOSH_ARABIC;
-
   /**
    * The Macintosh Hebrew character set.
    */
@@ -1066,11 +899,6 @@ export declare const TextImportCharacterSet: typeof Enumeration & {
    */
   readonly macintoshHebrew: TextImportCharacterSet_MACINTOSH_HEBREW;
   /**
-   * The Macintosh Hebrew character set.
-   */
-  readonly macintoshhebrew: TextImportCharacterSet_MACINTOSH_HEBREW;
-
-  /**
    * The Windows Arabic character set.
    */
   readonly WINDOWS_ARABIC: TextImportCharacterSet_WINDOWS_ARABIC;
@@ -1078,11 +906,6 @@ export declare const TextImportCharacterSet: typeof Enumeration & {
    * The Windows Arabic character set.
    */
   readonly windowsArabic: TextImportCharacterSet_WINDOWS_ARABIC;
-  /**
-   * The Windows Arabic character set.
-   */
-  readonly windowsarabic: TextImportCharacterSet_WINDOWS_ARABIC;
-
   /**
    * The Windows Hebrew character set.
    */
@@ -1092,36 +915,13 @@ export declare const TextImportCharacterSet: typeof Enumeration & {
    */
   readonly windowsHebrew: TextImportCharacterSet_WINDOWS_HEBREW;
   /**
-   * The Windows Hebrew character set.
-   */
-  readonly windowshebrew: TextImportCharacterSet_WINDOWS_HEBREW;
-
-  /**
    * The Arabic ASMO character set.
    */
   readonly ARABIC_ASMO: TextImportCharacterSet_ARABIC_ASMO;
   /**
-   * The Arabic ASMO character set.
-   */
-  readonly arabicAsmo: TextImportCharacterSet_ARABIC_ASMO;
-  /**
-   * The Arabic ASMO character set.
-   */
-  readonly arabicasmo: TextImportCharacterSet_ARABIC_ASMO;
-
-  /**
    * The Arabic ASMO transparent character set.
    */
   readonly ARABIC_ASMO_TRANSPARENT: TextImportCharacterSet_ARABIC_ASMO_TRANSPARENT;
-  /**
-   * The Arabic ASMO transparent character set.
-   */
-  readonly arabicAsmoTransparent: TextImportCharacterSet_ARABIC_ASMO_TRANSPARENT;
-  /**
-   * The Arabic ASMO transparent character set.
-   */
-  readonly arabicasmotransparent: TextImportCharacterSet_ARABIC_ASMO_TRANSPARENT;
-
   /**
    * The Unicode UTF16 character set.
    */

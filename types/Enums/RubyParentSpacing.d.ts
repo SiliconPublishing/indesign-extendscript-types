@@ -1,10 +1,11 @@
 /**
  * RubyParentSpacing.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __RubyParentSpacing: unique symbol;
 
 
 interface RubyParentSpacing extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<RubyParentSpacing>): boolean;
-
   /**
    * @internal **WARNING:** `__RubyParentSpacing` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -134,11 +132,6 @@ export declare const RubyParentSpacing: typeof Enumeration & {
    */
   readonly rubyParentNoAdjustment: RubyParentSpacing_RUBY_PARENT_NO_ADJUSTMENT;
   /**
-   * Does not base ruby spacing on parent text. 
-   */
-  readonly rubyparentnoadjustment: RubyParentSpacing_RUBY_PARENT_NO_ADJUSTMENT;
-
-  /**
    * Ruby parent both sides.
    */
   readonly RUBY_PARENT_BOTH_SIDES: RubyParentSpacing_RUBY_PARENT_BOTH_SIDES;
@@ -146,11 +139,6 @@ export declare const RubyParentSpacing: typeof Enumeration & {
    * Ruby parent both sides.
    */
   readonly rubyParentBothSides: RubyParentSpacing_RUBY_PARENT_BOTH_SIDES;
-  /**
-   * Ruby parent both sides.
-   */
-  readonly rubyparentbothsides: RubyParentSpacing_RUBY_PARENT_BOTH_SIDES;
-
   /**
    * Ruby parent 121 aki.
    */
@@ -160,11 +148,6 @@ export declare const RubyParentSpacing: typeof Enumeration & {
    */
   readonly rubyParent121Aki: RubyParentSpacing_RUBY_PARENT_121_AKI;
   /**
-   * Ruby parent 121 aki.
-   */
-  readonly rubyparent121aki: RubyParentSpacing_RUBY_PARENT_121_AKI;
-
-  /**
    * Applies the parent text aki to the ruby characters.
    */
   readonly RUBY_PARENT_EQUAL_AKI: RubyParentSpacing_RUBY_PARENT_EQUAL_AKI;
@@ -173,11 +156,6 @@ export declare const RubyParentSpacing: typeof Enumeration & {
    */
   readonly rubyParentEqualAki: RubyParentSpacing_RUBY_PARENT_EQUAL_AKI;
   /**
-   * Applies the parent text aki to the ruby characters.
-   */
-  readonly rubyparentequalaki: RubyParentSpacing_RUBY_PARENT_EQUAL_AKI;
-
-  /**
    * Justifies ruby characters to both edges of the parent text.
    */
   readonly RUBY_PARENT_FULL_JUSTIFY: RubyParentSpacing_RUBY_PARENT_FULL_JUSTIFY;
@@ -185,9 +163,4 @@ export declare const RubyParentSpacing: typeof Enumeration & {
    * Justifies ruby characters to both edges of the parent text.
    */
   readonly rubyParentFullJustify: RubyParentSpacing_RUBY_PARENT_FULL_JUSTIFY;
-  /**
-   * Justifies ruby characters to both edges of the parent text.
-   */
-  readonly rubyparentfulljustify: RubyParentSpacing_RUBY_PARENT_FULL_JUSTIFY;
-
 }

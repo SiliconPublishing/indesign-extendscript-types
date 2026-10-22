@@ -1,10 +1,11 @@
 /**
  * MapType.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __MapType: unique symbol;
 
 
 interface MapType extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<MapType>): boolean;
-
   /**
    * @internal **WARNING:** `__MapType` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const MapType: typeof Enumeration & {
    */
   readonly styleMappingRule: MapType_STYLE_MAPPING_RULE;
   /**
-   * Maps one style to another style.
-   */
-  readonly stylemappingrule: MapType_STYLE_MAPPING_RULE;
-
-  /**
    * Maps one style group to another style group.
    */
   readonly GROUP_MAPPING_RULE: MapType_GROUP_MAPPING_RULE;
@@ -130,11 +123,6 @@ export declare const MapType: typeof Enumeration & {
    * Maps one style group to another style group.
    */
   readonly groupMappingRule: MapType_GROUP_MAPPING_RULE;
-  /**
-   * Maps one style group to another style group.
-   */
-  readonly groupmappingrule: MapType_GROUP_MAPPING_RULE;
-
   /**
    * Maps a style to a style group.
    */
@@ -144,11 +132,6 @@ export declare const MapType: typeof Enumeration & {
    */
   readonly styleToGroupMappingRule: MapType_STYLE_TO_GROUP_MAPPING_RULE;
   /**
-   * Maps a style to a style group.
-   */
-  readonly styletogroupmappingrule: MapType_STYLE_TO_GROUP_MAPPING_RULE;
-
-  /**
    * Maps a style group to a style.
    */
   readonly GROUP_TO_STYLE_MAPPING_RULE: MapType_GROUP_TO_STYLE_MAPPING_RULE;
@@ -156,9 +139,4 @@ export declare const MapType: typeof Enumeration & {
    * Maps a style group to a style.
    */
   readonly groupToStyleMappingRule: MapType_GROUP_TO_STYLE_MAPPING_RULE;
-  /**
-   * Maps a style group to a style.
-   */
-  readonly grouptostylemappingrule: MapType_GROUP_TO_STYLE_MAPPING_RULE;
-
 }

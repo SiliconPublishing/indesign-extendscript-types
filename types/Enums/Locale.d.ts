@@ -1,10 +1,11 @@
 /**
  * Locale.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __Locale: unique symbol;
 
 
 interface Locale extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<Locale>): boolean;
-
   /**
    * @internal **WARNING:** `__Locale` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -438,11 +436,6 @@ export declare const Locale: typeof Enumeration & {
    */
   readonly danishLocale: Locale_DANISH_LOCALE;
   /**
-   * Danish.
-   */
-  readonly danishlocale: Locale_DANISH_LOCALE;
-
-  /**
    * English.
    */
   readonly ENGLISH_LOCALE: Locale_ENGLISH_LOCALE;
@@ -450,11 +443,6 @@ export declare const Locale: typeof Enumeration & {
    * English.
    */
   readonly englishLocale: Locale_ENGLISH_LOCALE;
-  /**
-   * English.
-   */
-  readonly englishlocale: Locale_ENGLISH_LOCALE;
-
   /**
    * International English.
    */
@@ -464,11 +452,6 @@ export declare const Locale: typeof Enumeration & {
    */
   readonly internationalEnglishLocale: Locale_INTERNATIONAL_ENGLISH_LOCALE;
   /**
-   * International English.
-   */
-  readonly internationalenglishlocale: Locale_INTERNATIONAL_ENGLISH_LOCALE;
-
-  /**
    * Finnish.
    */
   readonly FINNISH_LOCALE: Locale_FINNISH_LOCALE;
@@ -476,11 +459,6 @@ export declare const Locale: typeof Enumeration & {
    * Finnish.
    */
   readonly finnishLocale: Locale_FINNISH_LOCALE;
-  /**
-   * Finnish.
-   */
-  readonly finnishlocale: Locale_FINNISH_LOCALE;
-
   /**
    * French.
    */
@@ -490,11 +468,6 @@ export declare const Locale: typeof Enumeration & {
    */
   readonly frenchLocale: Locale_FRENCH_LOCALE;
   /**
-   * French.
-   */
-  readonly frenchlocale: Locale_FRENCH_LOCALE;
-
-  /**
    * German.
    */
   readonly GERMAN_LOCALE: Locale_GERMAN_LOCALE;
@@ -502,11 +475,6 @@ export declare const Locale: typeof Enumeration & {
    * German.
    */
   readonly germanLocale: Locale_GERMAN_LOCALE;
-  /**
-   * German.
-   */
-  readonly germanlocale: Locale_GERMAN_LOCALE;
-
   /**
    * Italian.
    */
@@ -516,11 +484,6 @@ export declare const Locale: typeof Enumeration & {
    */
   readonly italianLocale: Locale_ITALIAN_LOCALE;
   /**
-   * Italian.
-   */
-  readonly italianlocale: Locale_ITALIAN_LOCALE;
-
-  /**
    * Portuguese.
    */
   readonly PORTUGUESE_LOCALE: Locale_PORTUGUESE_LOCALE;
@@ -528,11 +491,6 @@ export declare const Locale: typeof Enumeration & {
    * Portuguese.
    */
   readonly portugueseLocale: Locale_PORTUGUESE_LOCALE;
-  /**
-   * Portuguese.
-   */
-  readonly portugueselocale: Locale_PORTUGUESE_LOCALE;
-
   /**
    * Spanish.
    */
@@ -542,11 +500,6 @@ export declare const Locale: typeof Enumeration & {
    */
   readonly spanishLocale: Locale_SPANISH_LOCALE;
   /**
-   * Spanish.
-   */
-  readonly spanishlocale: Locale_SPANISH_LOCALE;
-
-  /**
    * Swedish.
    */
   readonly SWEDISH_LOCALE: Locale_SWEDISH_LOCALE;
@@ -554,11 +507,6 @@ export declare const Locale: typeof Enumeration & {
    * Swedish.
    */
   readonly swedishLocale: Locale_SWEDISH_LOCALE;
-  /**
-   * Swedish.
-   */
-  readonly swedishlocale: Locale_SWEDISH_LOCALE;
-
   /**
    * Japanese.
    */
@@ -568,11 +516,6 @@ export declare const Locale: typeof Enumeration & {
    */
   readonly japaneseLocale: Locale_JAPANESE_LOCALE;
   /**
-   * Japanese.
-   */
-  readonly japaneselocale: Locale_JAPANESE_LOCALE;
-
-  /**
    * Arabic
    */
   readonly ARABIC_LOCALE: Locale_ARABIC_LOCALE;
@@ -580,11 +523,6 @@ export declare const Locale: typeof Enumeration & {
    * Arabic
    */
   readonly arabicLocale: Locale_ARABIC_LOCALE;
-  /**
-   * Arabic
-   */
-  readonly arabiclocale: Locale_ARABIC_LOCALE;
-
   /**
    * Czech
    */
@@ -594,11 +532,6 @@ export declare const Locale: typeof Enumeration & {
    */
   readonly czechLocale: Locale_CZECH_LOCALE;
   /**
-   * Czech
-   */
-  readonly czechlocale: Locale_CZECH_LOCALE;
-
-  /**
    * Greek
    */
   readonly GREEK_LOCALE: Locale_GREEK_LOCALE;
@@ -606,11 +539,6 @@ export declare const Locale: typeof Enumeration & {
    * Greek
    */
   readonly greekLocale: Locale_GREEK_LOCALE;
-  /**
-   * Greek
-   */
-  readonly greeklocale: Locale_GREEK_LOCALE;
-
   /**
    * Hebrew
    */
@@ -620,11 +548,6 @@ export declare const Locale: typeof Enumeration & {
    */
   readonly hebrewLocale: Locale_HEBREW_LOCALE;
   /**
-   * Hebrew
-   */
-  readonly hebrewlocale: Locale_HEBREW_LOCALE;
-
-  /**
    * Hungarian
    */
   readonly HUNGARIAN_LOCALE: Locale_HUNGARIAN_LOCALE;
@@ -632,11 +555,6 @@ export declare const Locale: typeof Enumeration & {
    * Hungarian
    */
   readonly hungarianLocale: Locale_HUNGARIAN_LOCALE;
-  /**
-   * Hungarian
-   */
-  readonly hungarianlocale: Locale_HUNGARIAN_LOCALE;
-
   /**
    * Polish
    */
@@ -646,11 +564,6 @@ export declare const Locale: typeof Enumeration & {
    */
   readonly polishLocale: Locale_POLISH_LOCALE;
   /**
-   * Polish
-   */
-  readonly polishlocale: Locale_POLISH_LOCALE;
-
-  /**
    * Romanian
    */
   readonly ROMANIAN_LOCALE: Locale_ROMANIAN_LOCALE;
@@ -658,11 +571,6 @@ export declare const Locale: typeof Enumeration & {
    * Romanian
    */
   readonly romanianLocale: Locale_ROMANIAN_LOCALE;
-  /**
-   * Romanian
-   */
-  readonly romanianlocale: Locale_ROMANIAN_LOCALE;
-
   /**
    * Russian
    */
@@ -672,11 +580,6 @@ export declare const Locale: typeof Enumeration & {
    */
   readonly russianLocale: Locale_RUSSIAN_LOCALE;
   /**
-   * Russian
-   */
-  readonly russianlocale: Locale_RUSSIAN_LOCALE;
-
-  /**
    * Turkish
    */
   readonly TURKISH_LOCALE: Locale_TURKISH_LOCALE;
@@ -684,11 +587,6 @@ export declare const Locale: typeof Enumeration & {
    * Turkish
    */
   readonly turkishLocale: Locale_TURKISH_LOCALE;
-  /**
-   * Turkish
-   */
-  readonly turkishlocale: Locale_TURKISH_LOCALE;
-
   /**
    * Ukrainian
    */
@@ -698,11 +596,6 @@ export declare const Locale: typeof Enumeration & {
    */
   readonly ukrainianLocale: Locale_UKRAINIAN_LOCALE;
   /**
-   * Ukrainian
-   */
-  readonly ukrainianlocale: Locale_UKRAINIAN_LOCALE;
-
-  /**
    * Korean.
    */
   readonly KOREAN_LOCALE: Locale_KOREAN_LOCALE;
@@ -710,11 +603,6 @@ export declare const Locale: typeof Enumeration & {
    * Korean.
    */
   readonly koreanLocale: Locale_KOREAN_LOCALE;
-  /**
-   * Korean.
-   */
-  readonly koreanlocale: Locale_KOREAN_LOCALE;
-
   /**
    * Simplified Chinese.
    */
@@ -724,11 +612,6 @@ export declare const Locale: typeof Enumeration & {
    */
   readonly simplifiedChineseLocale: Locale_SIMPLIFIED_CHINESE_LOCALE;
   /**
-   * Simplified Chinese.
-   */
-  readonly simplifiedchineselocale: Locale_SIMPLIFIED_CHINESE_LOCALE;
-
-  /**
    * Traditional Chinese.
    */
   readonly TRADITIONAL_CHINESE_LOCALE: Locale_TRADITIONAL_CHINESE_LOCALE;
@@ -736,9 +619,4 @@ export declare const Locale: typeof Enumeration & {
    * Traditional Chinese.
    */
   readonly traditionalChineseLocale: Locale_TRADITIONAL_CHINESE_LOCALE;
-  /**
-   * Traditional Chinese.
-   */
-  readonly traditionalchineselocale: Locale_TRADITIONAL_CHINESE_LOCALE;
-
 }

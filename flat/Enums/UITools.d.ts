@@ -1,10 +1,11 @@
 /**
  * UITools.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __UITools: unique symbol;
 
 
 interface UITools extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<UITools>): boolean;
-
   /**
    * @internal **WARNING:** `__UITools` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -641,11 +639,6 @@ export declare const UITools: typeof Enumeration & {
    */
   readonly selectionTool: UITools_SELECTION_TOOL;
   /**
-   * The selection tool
-   */
-  readonly selectiontool: UITools_SELECTION_TOOL;
-
-  /**
    * The direct selection tool
    */
   readonly DIRECT_SELECTION_TOOL: UITools_DIRECT_SELECTION_TOOL;
@@ -653,11 +646,6 @@ export declare const UITools: typeof Enumeration & {
    * The direct selection tool
    */
   readonly directSelectionTool: UITools_DIRECT_SELECTION_TOOL;
-  /**
-   * The direct selection tool
-   */
-  readonly directselectiontool: UITools_DIRECT_SELECTION_TOOL;
-
   /**
    * The gap tool
    */
@@ -667,11 +655,6 @@ export declare const UITools: typeof Enumeration & {
    */
   readonly gapTool: UITools_GAP_TOOL;
   /**
-   * The gap tool
-   */
-  readonly gaptool: UITools_GAP_TOOL;
-
-  /**
    * The pen tool
    */
   readonly PEN_TOOL: UITools_PEN_TOOL;
@@ -679,11 +662,6 @@ export declare const UITools: typeof Enumeration & {
    * The pen tool
    */
   readonly penTool: UITools_PEN_TOOL;
-  /**
-   * The pen tool
-   */
-  readonly pentool: UITools_PEN_TOOL;
-
   /**
    * The add anchor point tool
    */
@@ -693,11 +671,6 @@ export declare const UITools: typeof Enumeration & {
    */
   readonly addAnchorPoint: UITools_ADD_ANCHOR_POINT;
   /**
-   * The add anchor point tool
-   */
-  readonly addanchorpoint: UITools_ADD_ANCHOR_POINT;
-
-  /**
    * The delete anchor point tool
    */
   readonly DELETE_ANCHOR_POINT: UITools_DELETE_ANCHOR_POINT;
@@ -705,11 +678,6 @@ export declare const UITools: typeof Enumeration & {
    * The delete anchor point tool
    */
   readonly deleteAnchorPoint: UITools_DELETE_ANCHOR_POINT;
-  /**
-   * The delete anchor point tool
-   */
-  readonly deleteanchorpoint: UITools_DELETE_ANCHOR_POINT;
-
   /**
    * The convert direction point tool
    */
@@ -719,11 +687,6 @@ export declare const UITools: typeof Enumeration & {
    */
   readonly convertDirectionPoint: UITools_CONVERT_DIRECTION_POINT;
   /**
-   * The convert direction point tool
-   */
-  readonly convertdirectionpoint: UITools_CONVERT_DIRECTION_POINT;
-
-  /**
    * The line tool
    */
   readonly LINE_TOOL: UITools_LINE_TOOL;
@@ -731,11 +694,6 @@ export declare const UITools: typeof Enumeration & {
    * The line tool
    */
   readonly lineTool: UITools_LINE_TOOL;
-  /**
-   * The line tool
-   */
-  readonly linetool: UITools_LINE_TOOL;
-
   /**
    * The type tool
    */
@@ -745,11 +703,6 @@ export declare const UITools: typeof Enumeration & {
    */
   readonly typeTool: UITools_TYPE_TOOL;
   /**
-   * The type tool
-   */
-  readonly typetool: UITools_TYPE_TOOL;
-
-  /**
    * The type on a path tool
    */
   readonly TYPE_ON_PATH_TOOL: UITools_TYPE_ON_PATH_TOOL;
@@ -757,11 +710,6 @@ export declare const UITools: typeof Enumeration & {
    * The type on a path tool
    */
   readonly typeOnPathTool: UITools_TYPE_ON_PATH_TOOL;
-  /**
-   * The type on a path tool
-   */
-  readonly typeonpathtool: UITools_TYPE_ON_PATH_TOOL;
-
   /**
    * The pencil tool
    */
@@ -771,11 +719,6 @@ export declare const UITools: typeof Enumeration & {
    */
   readonly pencilTool: UITools_PENCIL_TOOL;
   /**
-   * The pencil tool
-   */
-  readonly penciltool: UITools_PENCIL_TOOL;
-
-  /**
    * The smooth tool
    */
   readonly SMOOTH_TOOL: UITools_SMOOTH_TOOL;
@@ -783,11 +726,6 @@ export declare const UITools: typeof Enumeration & {
    * The smooth tool
    */
   readonly smoothTool: UITools_SMOOTH_TOOL;
-  /**
-   * The smooth tool
-   */
-  readonly smoothtool: UITools_SMOOTH_TOOL;
-
   /**
    * The erase tool
    */
@@ -797,11 +735,6 @@ export declare const UITools: typeof Enumeration & {
    */
   readonly eraseTool: UITools_ERASE_TOOL;
   /**
-   * The erase tool
-   */
-  readonly erasetool: UITools_ERASE_TOOL;
-
-  /**
    * The polygon frame tool
    */
   readonly POLYGON_FRAME_TOOL: UITools_POLYGON_FRAME_TOOL;
@@ -809,11 +742,6 @@ export declare const UITools: typeof Enumeration & {
    * The polygon frame tool
    */
   readonly polygonFrameTool: UITools_POLYGON_FRAME_TOOL;
-  /**
-   * The polygon frame tool
-   */
-  readonly polygonframetool: UITools_POLYGON_FRAME_TOOL;
-
   /**
    * The rectangle frame tool
    */
@@ -823,11 +751,6 @@ export declare const UITools: typeof Enumeration & {
    */
   readonly rectangleFrameTool: UITools_RECTANGLE_FRAME_TOOL;
   /**
-   * The rectangle frame tool
-   */
-  readonly rectangleframetool: UITools_RECTANGLE_FRAME_TOOL;
-
-  /**
    * The ellipse frame tool
    */
   readonly ELLIPSE_FRAME_TOOL: UITools_ELLIPSE_FRAME_TOOL;
@@ -835,11 +758,6 @@ export declare const UITools: typeof Enumeration & {
    * The ellipse frame tool
    */
   readonly ellipseFrameTool: UITools_ELLIPSE_FRAME_TOOL;
-  /**
-   * The ellipse frame tool
-   */
-  readonly ellipseframetool: UITools_ELLIPSE_FRAME_TOOL;
-
   /**
    * The polygon tool
    */
@@ -849,11 +767,6 @@ export declare const UITools: typeof Enumeration & {
    */
   readonly polygonTool: UITools_POLYGON_TOOL;
   /**
-   * The polygon tool
-   */
-  readonly polygontool: UITools_POLYGON_TOOL;
-
-  /**
    * The rectangle tool
    */
   readonly RECTANGLE_TOOL: UITools_RECTANGLE_TOOL;
@@ -861,11 +774,6 @@ export declare const UITools: typeof Enumeration & {
    * The rectangle tool
    */
   readonly rectangleTool: UITools_RECTANGLE_TOOL;
-  /**
-   * The rectangle tool
-   */
-  readonly rectangletool: UITools_RECTANGLE_TOOL;
-
   /**
    * The ellipse tool
    */
@@ -875,11 +783,6 @@ export declare const UITools: typeof Enumeration & {
    */
   readonly ellipseTool: UITools_ELLIPSE_TOOL;
   /**
-   * The ellipse tool
-   */
-  readonly ellipsetool: UITools_ELLIPSE_TOOL;
-
-  /**
    * The rotate tool
    */
   readonly ROTATE_TOOL: UITools_ROTATE_TOOL;
@@ -887,11 +790,6 @@ export declare const UITools: typeof Enumeration & {
    * The rotate tool
    */
   readonly rotateTool: UITools_ROTATE_TOOL;
-  /**
-   * The rotate tool
-   */
-  readonly rotatetool: UITools_ROTATE_TOOL;
-
   /**
    * The scale tool
    */
@@ -901,11 +799,6 @@ export declare const UITools: typeof Enumeration & {
    */
   readonly scaleTool: UITools_SCALE_TOOL;
   /**
-   * The scale tool
-   */
-  readonly scaletool: UITools_SCALE_TOOL;
-
-  /**
    * The shear tool
    */
   readonly SHEAR_TOOL: UITools_SHEAR_TOOL;
@@ -913,11 +806,6 @@ export declare const UITools: typeof Enumeration & {
    * The shear tool
    */
   readonly shearTool: UITools_SHEAR_TOOL;
-  /**
-   * The shear tool
-   */
-  readonly sheartool: UITools_SHEAR_TOOL;
-
   /**
    * The scissors tool
    */
@@ -927,11 +815,6 @@ export declare const UITools: typeof Enumeration & {
    */
   readonly scissorsTool: UITools_SCISSORS_TOOL;
   /**
-   * The scissors tool
-   */
-  readonly scissorstool: UITools_SCISSORS_TOOL;
-
-  /**
    * The free transform tool
    */
   readonly FREE_TRANSFORM_TOOL: UITools_FREE_TRANSFORM_TOOL;
@@ -939,11 +822,6 @@ export declare const UITools: typeof Enumeration & {
    * The free transform tool
    */
   readonly freeTransformTool: UITools_FREE_TRANSFORM_TOOL;
-  /**
-   * The free transform tool
-   */
-  readonly freetransformtool: UITools_FREE_TRANSFORM_TOOL;
-
   /**
    * The gradient swatch tool
    */
@@ -953,11 +831,6 @@ export declare const UITools: typeof Enumeration & {
    */
   readonly gradientSwatchTool: UITools_GRADIENT_SWATCH_TOOL;
   /**
-   * The gradient swatch tool
-   */
-  readonly gradientswatchtool: UITools_GRADIENT_SWATCH_TOOL;
-
-  /**
    * The gradient feather tool
    */
   readonly GRADIENT_FEATHER_TOOL: UITools_GRADIENT_FEATHER_TOOL;
@@ -965,11 +838,6 @@ export declare const UITools: typeof Enumeration & {
    * The gradient feather tool
    */
   readonly gradientFeatherTool: UITools_GRADIENT_FEATHER_TOOL;
-  /**
-   * The gradient feather tool
-   */
-  readonly gradientfeathertool: UITools_GRADIENT_FEATHER_TOOL;
-
   /**
    * The note tool
    */
@@ -979,11 +847,6 @@ export declare const UITools: typeof Enumeration & {
    */
   readonly noteTool: UITools_NOTE_TOOL;
   /**
-   * The note tool
-   */
-  readonly notetool: UITools_NOTE_TOOL;
-
-  /**
    * The eye dropper tool
    */
   readonly EYE_DROPPER_TOOL: UITools_EYE_DROPPER_TOOL;
@@ -991,11 +854,6 @@ export declare const UITools: typeof Enumeration & {
    * The eye dropper tool
    */
   readonly eyeDropperTool: UITools_EYE_DROPPER_TOOL;
-  /**
-   * The eye dropper tool
-   */
-  readonly eyedroppertool: UITools_EYE_DROPPER_TOOL;
-
   /**
    * The measure tool
    */
@@ -1005,11 +863,6 @@ export declare const UITools: typeof Enumeration & {
    */
   readonly measureTool: UITools_MEASURE_TOOL;
   /**
-   * The measure tool
-   */
-  readonly measuretool: UITools_MEASURE_TOOL;
-
-  /**
    * The hand tool
    */
   readonly HAND_TOOL: UITools_HAND_TOOL;
@@ -1017,11 +870,6 @@ export declare const UITools: typeof Enumeration & {
    * The hand tool
    */
   readonly handTool: UITools_HAND_TOOL;
-  /**
-   * The hand tool
-   */
-  readonly handtool: UITools_HAND_TOOL;
-
   /**
    * The zoom tool
    */
@@ -1031,11 +879,6 @@ export declare const UITools: typeof Enumeration & {
    */
   readonly zoomTool: UITools_ZOOM_TOOL;
   /**
-   * The zoom tool
-   */
-  readonly zoomtool: UITools_ZOOM_TOOL;
-
-  /**
    * The table creation tool
    */
   readonly TABLE_TOOL: UITools_TABLE_TOOL;
@@ -1043,11 +886,6 @@ export declare const UITools: typeof Enumeration & {
    * The table creation tool
    */
   readonly tableTool: UITools_TABLE_TOOL;
-  /**
-   * The table creation tool
-   */
-  readonly tabletool: UITools_TABLE_TOOL;
-
   /**
    * The place cursor tool which gets set after an import via the Place command
    */
@@ -1057,11 +895,6 @@ export declare const UITools: typeof Enumeration & {
    */
   readonly placeCursorTool: UITools_PLACE_CURSOR_TOOL;
   /**
-   * The place cursor tool which gets set after an import via the Place command
-   */
-  readonly placecursortool: UITools_PLACE_CURSOR_TOOL;
-
-  /**
    * The motion path tool
    */
   readonly MOTION_PATH_TOOL: UITools_MOTION_PATH_TOOL;
@@ -1070,11 +903,6 @@ export declare const UITools: typeof Enumeration & {
    */
   readonly motionPathTool: UITools_MOTION_PATH_TOOL;
   /**
-   * The motion path tool
-   */
-  readonly motionpathtool: UITools_MOTION_PATH_TOOL;
-
-  /**
    * The page tool
    */
   readonly PAGE_TOOL: UITools_PAGE_TOOL;
@@ -1082,9 +910,4 @@ export declare const UITools: typeof Enumeration & {
    * The page tool
    */
   readonly pageTool: UITools_PAGE_TOOL;
-  /**
-   * The page tool
-   */
-  readonly pagetool: UITools_PAGE_TOOL;
-
 }

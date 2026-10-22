@@ -1,6 +1,7 @@
 /**
  * ParagraphStyle.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -44,69 +45,70 @@ import type { NumberingRestartPolicy } from './NumberingRestartPolicy';
 import type { Swatch } from './Swatch';
 import type { TabStop } from './TabStop';
 import type { Tint } from './Tint';
-import type { AdornmentOverprint } from './Enums/AdornmentOverprint';
-import type { AlternateGlyphForms } from './Enums/AlternateGlyphForms';
-import type { CharacterAlignment } from './Enums/CharacterAlignment';
-import type { CharacterDirectionOptions } from './Enums/CharacterDirectionOptions';
-import type { CharacterStyle } from './CharacterStyle';
-import type { ComposerName } from './_base/Types';
-import type { DiacriticPositionOptions } from './Enums/DiacriticPositionOptions';
-import type { EndCap } from './Enums/EndCap';
-import type { EndJoin } from './Enums/EndJoin';
-import type { Event } from './Event';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { GridAlignment } from './Enums/GridAlignment';
-import type { HyphenationStyleEnum } from './Enums/HyphenationStyleEnum';
-import type { InDesignEventMap } from './_base/Events';
-import type { Justification } from './Enums/Justification';
-import type { KashidasOptions } from './Enums/KashidasOptions';
-import type { KentenAlignment } from './Enums/KentenAlignment';
-import type { KentenCharacter } from './Enums/KentenCharacter';
-import type { KentenCharacterSet } from './Enums/KentenCharacterSet';
-import type { KerningMethodName } from './_base/Types';
-import type { KinsokuHangTypes } from './Enums/KinsokuHangTypes';
-import type { KinsokuSet } from './Enums/KinsokuSet';
-import type { KinsokuTable } from './KinsokuTable';
-import type { KinsokuType } from './Enums/KinsokuType';
-import type { LeadingModel } from './Enums/LeadingModel';
-import type { ListAlignment } from './Enums/ListAlignment';
-import type { ListType } from './Enums/ListType';
-import type { MeasurementValue } from './_base/Types';
-import type { MojikumiTable } from './MojikumiTable';
-import type { MojikumiTableDefaults } from './Enums/MojikumiTableDefaults';
-import type { NestedGrepStyles } from './NestedGrepStyles';
-import type { NestedLineStyles } from './NestedLineStyles';
-import type { NestedStyles } from './NestedStyles';
-import type { NumberingList } from './NumberingList';
-import type { OTFFigureStyle } from './Enums/OTFFigureStyle';
-import type { OutlineJoin } from './Enums/OutlineJoin';
-import type { ParagraphBorderBottomOriginEnum } from './Enums/ParagraphBorderBottomOriginEnum';
-import type { ParagraphBorderEnum } from './Enums/ParagraphBorderEnum';
-import type { ParagraphBorderTopOriginEnum } from './Enums/ParagraphBorderTopOriginEnum';
-import type { ParagraphDirectionOptions } from './Enums/ParagraphDirectionOptions';
-import type { ParagraphShadingBottomOriginEnum } from './Enums/ParagraphShadingBottomOriginEnum';
-import type { ParagraphShadingTopOriginEnum } from './Enums/ParagraphShadingTopOriginEnum';
-import type { ParagraphShadingWidthEnum } from './Enums/ParagraphShadingWidthEnum';
-import type { Position } from './Enums/Position';
-import type { Preferences } from './Preferences';
+import type { Event } from './Event';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
-import type { RubyKentenPosition } from './Enums/RubyKentenPosition';
-import type { RubyOverhang } from './Enums/RubyOverhang';
-import type { RubyParentSpacing } from './Enums/RubyParentSpacing';
-import type { RuleWidth } from './Enums/RuleWidth';
-import type { SingleWordJustification } from './Enums/SingleWordJustification';
+import type { NestedLineStyles } from './NestedLineStyles';
+import type { NestedGrepStyles } from './NestedGrepStyles';
+import type { NestedStyles } from './NestedStyles';
+import type { TabStops } from './TabStops';
+import type { Preferences } from './Preferences';
+import type { MeasurementValue } from './_base/Types';
+import type { ParagraphShadingWidthEnum } from './Enums/ParagraphShadingWidthEnum';
+import type { ParagraphShadingTopOriginEnum } from './Enums/ParagraphShadingTopOriginEnum';
+import type { ParagraphShadingBottomOriginEnum } from './Enums/ParagraphShadingBottomOriginEnum';
+import type { StrokeStyle } from './StrokeStyle';
+import type { EndCap } from './Enums/EndCap';
+import type { EndJoin } from './Enums/EndJoin';
+import type { ParagraphBorderEnum } from './Enums/ParagraphBorderEnum';
+import type { ParagraphBorderTopOriginEnum } from './Enums/ParagraphBorderTopOriginEnum';
+import type { ParagraphBorderBottomOriginEnum } from './Enums/ParagraphBorderBottomOriginEnum';
+import type { HyphenationStyleEnum } from './Enums/HyphenationStyleEnum';
 import type { Spacing } from './Enums/Spacing';
+import type { Justification } from './Enums/Justification';
+import type { SingleWordJustification } from './Enums/SingleWordJustification';
+import type { StartParagraph } from './Enums/StartParagraph';
+import type { ComposerName } from './_base/Types';
+import type { RuleWidth } from './Enums/RuleWidth';
+import type { CharacterStyle } from './CharacterStyle';
 import type { SpanColumnCountOptions } from './Enums/SpanColumnCountOptions';
 import type { SpanColumnTypeOptions } from './Enums/SpanColumnTypeOptions';
-import type { StartParagraph } from './Enums/StartParagraph';
-import type { StrokeStyle } from './StrokeStyle';
-import type { TabStops } from './TabStops';
+import type { ParagraphDirectionOptions } from './Enums/ParagraphDirectionOptions';
+import type { GridAlignment } from './Enums/GridAlignment';
+import type { KinsokuTable } from './KinsokuTable';
+import type { KinsokuSet } from './Enums/KinsokuSet';
+import type { KinsokuType } from './Enums/KinsokuType';
+import type { KinsokuHangTypes } from './Enums/KinsokuHangTypes';
+import type { MojikumiTable } from './MojikumiTable';
+import type { MojikumiTableDefaults } from './Enums/MojikumiTableDefaults';
+import type { LeadingModel } from './Enums/LeadingModel';
+import type { ListType } from './Enums/ListType';
+import type { NumberingList } from './NumberingList';
+import type { ListAlignment } from './Enums/ListAlignment';
+import type { KerningMethodName } from './_base/Types';
+import type { Position } from './Enums/Position';
+import type { OTFFigureStyle } from './Enums/OTFFigureStyle';
+import type { CharacterDirectionOptions } from './Enums/CharacterDirectionOptions';
+import type { KashidasOptions } from './Enums/KashidasOptions';
+import type { DiacriticPositionOptions } from './Enums/DiacriticPositionOptions';
+import type { CharacterAlignment } from './Enums/CharacterAlignment';
+import type { AdornmentOverprint } from './Enums/AdornmentOverprint';
+import type { KentenCharacter } from './Enums/KentenCharacter';
+import type { KentenAlignment } from './Enums/KentenAlignment';
+import type { RubyKentenPosition } from './Enums/RubyKentenPosition';
+import type { KentenCharacterSet } from './Enums/KentenCharacterSet';
+import type { RubyParentSpacing } from './Enums/RubyParentSpacing';
+import type { RubyOverhang } from './Enums/RubyOverhang';
+import type { AlternateGlyphForms } from './Enums/AlternateGlyphForms';
 import type { TextStrokeAlign } from './Enums/TextStrokeAlign';
+import type { OutlineJoin } from './Enums/OutlineJoin';
+
 /**
  * A named paragraph style definition, held in a document's or the application's {@link ParagraphStyles} collection (optionally nested inside a {@link ParagraphStyleGroup}).
  *
@@ -118,50 +120,6 @@ import type { TextStrokeAlign } from './Enums/TextStrokeAlign';
  * concrete value rather than leaving unset ones as {@link NothingEnum.NOTHING}.
  */
 export interface ParagraphStyle {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: Document | Application | ParagraphStyleGroup;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<ParagraphStyle, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<ParagraphStyle, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -217,6 +175,45 @@ export interface ParagraphStyle {
    */
   extractLabel(key: string): string;
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: Document | Application | ParagraphStyleGroup;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<ParagraphStyle, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<ParagraphStyle, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The index of the object within its containing parent.
    */
   readonly index: number;
@@ -271,7 +268,7 @@ export interface ParagraphStyle {
   get paragraphShadingTint(): number;
   set paragraphShadingTint(value: number | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph shading. */
-  get paragraphShadingColor(): Swatch;
+  get paragraphShadingColor(): Swatch | string;
   set paragraphShadingColor(value: Swatch | string | NothingEnum.NOTHING);
   /** If true, the paragraph border is on. */
   get paragraphBorderOn(): boolean;
@@ -283,7 +280,7 @@ export interface ParagraphStyle {
   get paragraphBorderTint(): number;
   set paragraphBorderTint(value: number | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph stroke. */
-  get paragraphBorderColor(): Swatch;
+  get paragraphBorderColor(): Swatch | string;
   set paragraphBorderColor(value: Swatch | string | NothingEnum.NOTHING);
   /** If true, the paragraph border gap will overprint. Note: Valid only when border type is not solid. */
   get paragraphBorderGapOverprint(): boolean;
@@ -292,10 +289,10 @@ export interface ParagraphStyle {
   get paragraphBorderGapTint(): number;
   set paragraphBorderGapTint(value: number | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph border gap. Note: Valid only when the border type is not solid. */
-  get paragraphBorderGapColor(): Swatch;
+  get paragraphBorderGapColor(): Swatch | string;
   set paragraphBorderGapColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The type of the border for the paragraph. */
-  get paragraphBorderType(): StrokeStyle;
+  get paragraphBorderType(): StrokeStyle | string;
   set paragraphBorderType(value: StrokeStyle | string | NothingEnum.NOTHING);
   /** The left line weight of the border of paragraph. */
   get paragraphBorderLeftLineWeight(): number;
@@ -524,10 +521,10 @@ export interface ParagraphStyle {
   get ruleAboveWidth(): RuleWidth;
   set ruleAboveWidth(value: RuleWidth | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule above. */
-  get ruleAboveColor(): Swatch;
+  get ruleAboveColor(): Swatch | string;
   set ruleAboveColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule above. Note: Valid only when the paragraph rule above type is not solid. */
-  get ruleAboveGapColor(): Swatch;
+  get ruleAboveGapColor(): Swatch | string;
   set ruleAboveGapColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule. (Range: 0 to 100) Note: Valid only when the rule above type is not solid. */
   get ruleAboveGapTint(): number;
@@ -536,7 +533,7 @@ export interface ParagraphStyle {
   get ruleAboveGapOverprint(): boolean;
   set ruleAboveGapOverprint(value: boolean | NothingEnum.NOTHING);
   /** The stroke type of the rule above the paragraph. */
-  get ruleAboveType(): StrokeStyle;
+  get ruleAboveType(): StrokeStyle | string;
   set ruleAboveType(value: StrokeStyle | string | NothingEnum.NOTHING);
   /** If true, applies a paragraph rule below. */
   get ruleBelow(): boolean;
@@ -560,16 +557,16 @@ export interface ParagraphStyle {
   get ruleBelowWidth(): RuleWidth;
   set ruleBelowWidth(value: RuleWidth | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule below. */
-  get ruleBelowColor(): Swatch;
+  get ruleBelowColor(): Swatch | string;
   set ruleBelowColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule below. Note: Valid only when the paragraph rule below type is not solid. */
-  get ruleBelowGapColor(): Swatch;
+  get ruleBelowGapColor(): Swatch | string;
   set ruleBelowGapColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule below. (Range: 0 to 100) Note: Valid only when the paragraph rule below type is not solid. */
   get ruleBelowGapTint(): number;
   set ruleBelowGapTint(value: number | NothingEnum.NOTHING);
   /** The stroke type of the rule below the paragraph. */
-  get ruleBelowType(): StrokeStyle;
+  get ruleBelowType(): StrokeStyle | string;
   set ruleBelowType(value: StrokeStyle | string | NothingEnum.NOTHING);
   /** If true, allows hyphenation of capitalized words. */
   get hyphenateCapitalizedWords(): boolean;
@@ -708,10 +705,10 @@ export interface ParagraphStyle {
   get bulletsAndNumberingListType(): ListType;
   set bulletsAndNumberingListType(value: ListType | NothingEnum.NOTHING);
   /** The character style to be used for the text after string. */
-  get bulletsCharacterStyle(): CharacterStyle;
+  get bulletsCharacterStyle(): CharacterStyle | string;
   set bulletsCharacterStyle(value: CharacterStyle | string | NothingEnum.NOTHING);
   /** The character style to be used for the number string. */
-  get numberingCharacterStyle(): CharacterStyle;
+  get numberingCharacterStyle(): CharacterStyle | string;
   set numberingCharacterStyle(value: CharacterStyle | string | NothingEnum.NOTHING);
   /** The number string expression for numbering. */
   get numberingExpression(): string;
@@ -720,7 +717,7 @@ export interface ParagraphStyle {
   get bulletsTextAfter(): string;
   set bulletsTextAfter(value: string | NothingEnum.NOTHING);
   /** The list to be part of. */
-  get appliedNumberingList(): NumberingList;
+  get appliedNumberingList(): NumberingList | string;
   set appliedNumberingList(value: NumberingList | string | NothingEnum.NOTHING);
   /** The level of the paragraph. */
   get numberingLevel(): number;
@@ -753,197 +750,197 @@ export interface ParagraphStyle {
    * The applied font. Accepts a {@link Font} object or a font-family name as a
    * `string`; pair with {@link fontStyle} to pick a specific style.
    */
-  get appliedFont(): Font | never;
-  set appliedFont(value: Font | string | NothingEnum.NOTHING);
+  get appliedFont(): Font | never | string | NothingEnum.NOTHING;
+  set appliedFont(value: Font | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The name of the font style. */
   get fontStyle(): string | never;
-  set fontStyle(value: string | NothingEnum.NOTHING);
+  set fontStyle(value: string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The type size. */
   get pointSize(): number | never;
-  set pointSize(value: MeasurementValue | NothingEnum.NOTHING);
+  set pointSize(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /**
    * The leading. A number is explicit leading; the {@link Leading} enumerator
    * `AUTO` selects automatic leading.
    */
   get leading(): number | Leading | never;
-  set leading(value: MeasurementValue | Leading | NothingEnum.NOTHING);
+  set leading(value: MeasurementValue | Leading | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The type of pair kerning. */
   get kerningMethod(): KerningMethodName | never;
-  set kerningMethod(value: KerningMethodName | NothingEnum.NOTHING);
+  set kerningMethod(value: KerningMethodName | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** Tracking, in thousandths of an em, applied between characters. */
   get tracking(): number | never;
-  set tracking(value: number | NothingEnum.NOTHING);
+  set tracking(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** Whether the text renders normally, as small caps, as all caps, or using the font's OpenType small-caps forms. See {@link Capitalization}. */
   get capitalization(): Capitalization | never;
-  set capitalization(value: Capitalization | NothingEnum.NOTHING);
+  set capitalization(value: Capitalization | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The text position relative to the baseline. */
   get position(): Position | never;
-  set position(value: Position | NothingEnum.NOTHING);
+  set position(value: Position | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, underlines the text. */
   get underline(): boolean | never;
-  set underline(value: boolean | NothingEnum.NOTHING);
+  set underline(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, draws a strikethrough line through the text. */
   get strikeThru(): boolean | never;
-  set strikeThru(value: boolean | NothingEnum.NOTHING);
+  set strikeThru(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If `true`, substitutes ligature glyphs (e.g. `fi`, `fl`) where available. */
   get ligatures(): boolean | never;
-  set ligatures(value: boolean | NothingEnum.NOTHING);
+  set ligatures(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, keeps the text on the same line. */
   get noBreak(): boolean | never;
-  set noBreak(value: boolean | NothingEnum.NOTHING);
+  set noBreak(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The baseline shift applied to the text. */
   get baselineShift(): number | never;
-  set baselineShift(value: MeasurementValue | NothingEnum.NOTHING);
+  set baselineShift(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The figure style in OpenType fonts. */
   get otfFigureStyle(): OTFFigureStyle | never;
-  set otfFigureStyle(value: OTFFigureStyle | NothingEnum.NOTHING);
+  set otfFigureStyle(value: OTFFigureStyle | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, uses ordinals in OpenType fonts. */
   get otfOrdinal(): boolean | never;
-  set otfOrdinal(value: boolean | NothingEnum.NOTHING);
+  set otfOrdinal(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, uses fractions in OpenType fonts. */
   get otfFraction(): boolean | never;
-  set otfFraction(value: boolean | NothingEnum.NOTHING);
+  set otfFraction(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, uses discretionary ligatures in OpenType fonts. */
   get otfDiscretionaryLigature(): boolean | never;
-  set otfDiscretionaryLigature(value: boolean | NothingEnum.NOTHING);
+  set otfDiscretionaryLigature(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, uses titling forms in OpenType fonts. */
   get otfTitling(): boolean | never;
-  set otfTitling(value: boolean | NothingEnum.NOTHING);
+  set otfTitling(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, uses contextual alternate forms in OpenType fonts. */
   get otfContextualAlternate(): boolean | never;
-  set otfContextualAlternate(value: boolean | NothingEnum.NOTHING);
+  set otfContextualAlternate(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, uses swash forms in OpenType fonts. */
   get otfSwash(): boolean | never;
-  set otfSwash(value: boolean | NothingEnum.NOTHING);
+  set otfSwash(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the underline stroke. */
-  get underlineColor(): Swatch | never;
-  set underlineColor(value: Swatch | string | NothingEnum.NOTHING);
+  get underlineColor(): Swatch | never | string | NothingEnum.NOTHING;
+  set underlineColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the underline stroke. Note: Valid when underline type is not solid. */
-  get underlineGapColor(): Swatch | never;
-  set underlineGapColor(value: Swatch | string | NothingEnum.NOTHING);
+  get underlineGapColor(): Swatch | never | string | NothingEnum.NOTHING;
+  set underlineGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The underline stroke tint (as a percentage). (Range: 0 to 100). */
   get underlineTint(): number | never;
-  set underlineTint(value: number | NothingEnum.NOTHING);
+  set underlineTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the gap color of the underline stroke. (Range: 0 to 100) Note: Valid when underline type is not solid. */
   get underlineGapTint(): number | never;
-  set underlineGapTint(value: number | NothingEnum.NOTHING);
+  set underlineGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the underline stroke color will overprint. */
   get underlineOverprint(): boolean | never;
-  set underlineOverprint(value: boolean | NothingEnum.NOTHING);
+  set underlineOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the gap color of the underline stroke will overprint. */
   get underlineGapOverprint(): boolean | never;
-  set underlineGapOverprint(value: boolean | NothingEnum.NOTHING);
+  set underlineGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke type of the underline stroke. */
-  get underlineType(): StrokeStyle | never;
-  set underlineType(value: StrokeStyle | string | NothingEnum.NOTHING);
+  get underlineType(): StrokeStyle | never | string | NothingEnum.NOTHING;
+  set underlineType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The amount by which to offset the underline from the text baseline. */
   get underlineOffset(): number | never;
-  set underlineOffset(value: MeasurementValue | NothingEnum.NOTHING);
+  set underlineOffset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke weight of the underline stroke. */
   get underlineWeight(): number | never;
-  set underlineWeight(value: MeasurementValue | NothingEnum.NOTHING);
+  set underlineWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the strikethrough stroke. */
-  get strikeThroughColor(): Swatch | never;
-  set strikeThroughColor(value: Swatch | string | NothingEnum.NOTHING);
+  get strikeThroughColor(): Swatch | never | string | NothingEnum.NOTHING;
+  set strikeThroughColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the strikethrough stroke. */
-  get strikeThroughGapColor(): Swatch | never;
-  set strikeThroughGapColor(value: Swatch | string | NothingEnum.NOTHING);
+  get strikeThroughGapColor(): Swatch | never | string | NothingEnum.NOTHING;
+  set strikeThroughGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the strikethrough stroke. (Range: 0 to 100). */
   get strikeThroughTint(): number | never;
-  set strikeThroughTint(value: number | NothingEnum.NOTHING);
+  set strikeThroughTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the strikethrough stroke gap color. (Range: 0 to 100) Note: Valid when strike through type is not solid. */
   get strikeThroughGapTint(): number | never;
-  set strikeThroughGapTint(value: number | NothingEnum.NOTHING);
+  set strikeThroughGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the strikethrough stroke will overprint. */
   get strikeThroughOverprint(): boolean | never;
-  set strikeThroughOverprint(value: boolean | NothingEnum.NOTHING);
+  set strikeThroughOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the gap color of the strikethrough stroke will overprint. Note: Valid when strike through type is not solid. */
   get strikeThroughGapOverprint(): boolean | never;
-  set strikeThroughGapOverprint(value: boolean | NothingEnum.NOTHING);
+  set strikeThroughGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke type of the strikethrough stroke. */
-  get strikeThroughType(): StrokeStyle | never;
-  set strikeThroughType(value: StrokeStyle | string | NothingEnum.NOTHING);
+  get strikeThroughType(): StrokeStyle | never | string | NothingEnum.NOTHING;
+  set strikeThroughType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The amount by which to offset the strikethrough stroke from the text baseline. */
   get strikeThroughOffset(): number | never;
-  set strikeThroughOffset(value: MeasurementValue | NothingEnum.NOTHING);
+  set strikeThroughOffset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke weight of the strikethrough stroke. */
   get strikeThroughWeight(): number | never;
-  set strikeThroughWeight(value: MeasurementValue | NothingEnum.NOTHING);
+  set strikeThroughWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /**
    * The applied language / spelling dictionary. Accepts a
    * {@link LanguageWithVendors} or {@link Language} object, or its name.
    */
-  get appliedLanguage(): LanguageWithVendors | Language | never;
-  set appliedLanguage(value: LanguageWithVendors | Language | string | NothingEnum.NOTHING);
+  get appliedLanguage(): LanguageWithVendors | Language | never | null;
+  set appliedLanguage(value: LanguageWithVendors | Language | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** Value of Design Axes. */
   get designAxes(): number[] | never;
-  set designAxes(value: number[] | NothingEnum.NOTHING);
+  set designAxes(value: number[] | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, use a slashed zeroes in OpenType fonts. */
   get otfSlashedZero(): boolean | never;
-  set otfSlashedZero(value: boolean | NothingEnum.NOTHING);
+  set otfSlashedZero(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, use historical forms in OpenType fonts. */
   get otfHistorical(): boolean | never;
-  set otfHistorical(value: boolean | NothingEnum.NOTHING);
+  set otfHistorical(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stylistic sets to use in OpenType fonts. */
   get otfStylisticSets(): number | never;
-  set otfStylisticSets(value: number | NothingEnum.NOTHING);
+  set otfStylisticSets(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, uses mark positioning in OpenType fonts. */
   get otfMark(): boolean | never;
-  set otfMark(value: boolean | NothingEnum.NOTHING);
+  set otfMark(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, uses localized forms in OpenType fonts. */
   get otfLocale(): boolean | never;
-  set otfLocale(value: boolean | NothingEnum.NOTHING);
+  set otfLocale(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** Which contextual glyph form — initial, medial, final, or isolated — to use for connected scripts, or `CALCULATE` to derive it automatically. See {@link PositionalForms}. */
   get positionalForm(): PositionalForms | never;
-  set positionalForm(value: PositionalForms | NothingEnum.NOTHING);
+  set positionalForm(value: PositionalForms | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, use overlapping swash forms in OpenType fonts. */
   get otfOverlapSwash(): boolean | never;
-  set otfOverlapSwash(value: boolean | NothingEnum.NOTHING);
+  set otfOverlapSwash(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, use stylistic alternate forms in OpenType fonts. */
   get otfStylisticAlternate(): boolean | never;
-  set otfStylisticAlternate(value: boolean | NothingEnum.NOTHING);
+  set otfStylisticAlternate(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, use alternate justification forms in OpenType fonts. */
   get otfJustificationAlternate(): boolean | never;
-  set otfJustificationAlternate(value: boolean | NothingEnum.NOTHING);
+  set otfJustificationAlternate(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, use stretched alternate forms in OpenType fonts. */
   get otfStretchedAlternate(): boolean | never;
-  set otfStretchedAlternate(value: boolean | NothingEnum.NOTHING);
+  set otfStretchedAlternate(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The direction of the character. */
   get characterDirection(): CharacterDirectionOptions | never;
-  set characterDirection(value: CharacterDirectionOptions | NothingEnum.NOTHING);
+  set characterDirection(value: CharacterDirectionOptions | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The keyboard direction of the character. */
   get keyboardDirection(): CharacterDirectionOptions | never;
-  set keyboardDirection(value: CharacterDirectionOptions | NothingEnum.NOTHING);
+  set keyboardDirection(value: CharacterDirectionOptions | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** Which digit glyphs — Arabic numerals, Hindi, Farsi, or another script's digits — render numbers in the text. See {@link DigitsTypeOptions}. */
   get digitsType(): DigitsTypeOptions | never;
-  set digitsType(value: DigitsTypeOptions | NothingEnum.NOTHING);
+  set digitsType(value: DigitsTypeOptions | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** Use of Kashidas for justification. */
   get kashidas(): KashidasOptions | never;
-  set kashidas(value: KashidasOptions | NothingEnum.NOTHING);
+  set kashidas(value: KashidasOptions | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** Position of diacritical characters. */
   get diacriticPosition(): DiacriticPositionOptions | never;
-  set diacriticPosition(value: DiacriticPositionOptions | NothingEnum.NOTHING);
+  set diacriticPosition(value: DiacriticPositionOptions | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The x (horizontal) offset for diacritic adjustment. */
   get xOffsetDiacritic(): number | never;
-  set xOffsetDiacritic(value: number | NothingEnum.NOTHING);
+  set xOffsetDiacritic(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The y (vertical) offset for diacritic adjustment. */
   get yOffsetDiacritic(): number | never;
-  set yOffsetDiacritic(value: number | NothingEnum.NOTHING);
+  set yOffsetDiacritic(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The alignment of small characters to the largest character in the line. */
   get characterAlignment(): CharacterAlignment | never;
-  set characterAlignment(value: CharacterAlignment | NothingEnum.NOTHING);
+  set characterAlignment(value: CharacterAlignment | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The amount of horizontal character compression. */
   get tsume(): number | NothingEnum.NOTHING;
   set tsume(value: number | NothingEnum.NOTHING);
   /** The amount of space before each character. */
   get leadingAki(): number | never;
-  set leadingAki(value: number | NothingEnum.NOTHING);
+  set leadingAki(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The amount of space after each character. */
   get trailingAki(): number | never;
-  set trailingAki(value: number | NothingEnum.NOTHING);
+  set trailingAki(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The rotation angle (in degrees) of individual characters. Note: The rotation is counterclockwise. */
   get characterRotation(): number | never;
-  set characterRotation(value: number | NothingEnum.NOTHING);
+  set characterRotation(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The number of grid squares in which to arrange the text. */
   get jidori(): number | NothingEnum.NOTHING;
   set jidori(value: number | NothingEnum.NOTHING);
@@ -969,10 +966,10 @@ export interface ParagraphStyle {
   get tatechuyokoYOffset(): number | NothingEnum.NOTHING;
   set tatechuyokoYOffset(value: number | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of kenten characters. */
-  get kentenFillColor(): Swatch | NothingEnum.NOTHING;
+  get kentenFillColor(): Swatch | NothingEnum.NOTHING | null | string;
   set kentenFillColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of kenten characters. */
-  get kentenStrokeColor(): Swatch | NothingEnum.NOTHING;
+  get kentenStrokeColor(): Swatch | NothingEnum.NOTHING | null | string;
   set kentenStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The fill tint (as a percentage) of kenten characters. (Range: 0 to 100). */
   get kentenTint(): number | NothingEnum.NOTHING;
@@ -1002,7 +999,7 @@ export interface ParagraphStyle {
   get kentenPosition(): RubyKentenPosition | NothingEnum.NOTHING;
   set kentenPosition(value: RubyKentenPosition | NothingEnum.NOTHING);
   /** The font to use for kenten characters. */
-  get kentenFont(): Font | NothingEnum.NOTHING;
+  get kentenFont(): Font | NothingEnum.NOTHING | null | string;
   set kentenFont(value: Font | string | NothingEnum.NOTHING);
   /** The font style of kenten characters. */
   get kentenFontStyle(): string | NothingEnum.NOTHING;
@@ -1023,10 +1020,10 @@ export interface ParagraphStyle {
   get kentenCharacterSet(): KentenCharacterSet | NothingEnum.NOTHING;
   set kentenCharacterSet(value: KentenCharacterSet | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of ruby characters. */
-  get rubyFill(): Swatch | NothingEnum.NOTHING;
+  get rubyFill(): Swatch | NothingEnum.NOTHING | null | string;
   set rubyFill(value: Swatch | string | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of ruby characters. */
-  get rubyStroke(): Swatch | NothingEnum.NOTHING;
+  get rubyStroke(): Swatch | NothingEnum.NOTHING | null | string;
   set rubyStroke(value: Swatch | string | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the ruby fill color. (Range: 0 to 100). */
   get rubyTint(): number | NothingEnum.NOTHING;
@@ -1044,7 +1041,7 @@ export interface ParagraphStyle {
   get rubyStrokeTint(): number | NothingEnum.NOTHING;
   set rubyStrokeTint(value: number | NothingEnum.NOTHING);
   /** The font applied to ruby characters. */
-  get rubyFont(): Font | NothingEnum.NOTHING;
+  get rubyFont(): Font | NothingEnum.NOTHING | null | string;
   set rubyFont(value: Font | string | NothingEnum.NOTHING);
   /** The font style of ruby characters. */
   get rubyFontStyle(): string | NothingEnum.NOTHING;
@@ -1117,22 +1114,22 @@ export interface ParagraphStyle {
   set warichuCharsBeforeBreak(value: number | NothingEnum.NOTHING);
   /** If true, kerns according to proportional CJK metrics in OpenType fonts. */
   get otfProportionalMetrics(): boolean | never;
-  set otfProportionalMetrics(value: boolean | NothingEnum.NOTHING);
+  set otfProportionalMetrics(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, switches hiragana fonts, which have different glyphs for horizontal and vertical. */
   get otfHVKana(): boolean | NothingEnum.NOTHING;
   set otfHVKana(value: boolean | NothingEnum.NOTHING);
   /** If true, applies italics to half-width alphanumerics. */
   get otfRomanItalics(): boolean | never;
-  set otfRomanItalics(value: boolean | NothingEnum.NOTHING);
+  set otfRomanItalics(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the line changes size when characters are scaled. */
   get scaleAffectsLineHeight(): boolean | never;
-  set scaleAffectsLineHeight(value: boolean | NothingEnum.NOTHING);
+  set scaleAffectsLineHeight(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, uses grid tracking to track non-Roman characters in CJK grids. */
   get cjkGridTracking(): boolean | NothingEnum.NOTHING;
   set cjkGridTracking(value: boolean | NothingEnum.NOTHING);
   /** The glyph variant to substitute for standard glyphs. */
   get glyphForm(): AlternateGlyphForms | never;
-  set glyphForm(value: AlternateGlyphForms | NothingEnum.NOTHING);
+  set glyphForm(value: AlternateGlyphForms | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The number of digits included in auto tcy (tate-chuu-yoko) in ruby. */
   get rubyAutoTcyDigits(): number | NothingEnum.NOTHING;
   set rubyAutoTcyDigits(value: number | NothingEnum.NOTHING);
@@ -1143,68 +1140,66 @@ export interface ParagraphStyle {
   get rubyAutoTcyAutoScale(): boolean | NothingEnum.NOTHING;
   set rubyAutoTcyAutoScale(value: boolean | NothingEnum.NOTHING);
   /** Horizontal scaling of the glyphs, as a percentage. */
-  get horizontalScale(): number;
-  set horizontalScale(value: number);
+  get horizontalScale(): number | NothingEnum.NOTHING;
+  set horizontalScale(value: number | NothingEnum.NOTHING);
   /** Vertical scaling of the glyphs, as a percentage. */
-  get verticalScale(): number;
-  set verticalScale(value: number);
+  get verticalScale(): number | NothingEnum.NOTHING;
+  set verticalScale(value: number | NothingEnum.NOTHING);
   /** Skew (false-italic) angle applied to the glyphs, in degrees. */
-  get skew(): number;
-  set skew(value: number);
+  get skew(): number | NothingEnum.NOTHING;
+  set skew(value: number | NothingEnum.NOTHING);
   /** The tint (as a percentage, 0–100) of the fill color. Use `-1` to use the inherited or overridden value instead of a specific tint. */
-  get fillTint(): number;
-  set fillTint(value: number);
+  get fillTint(): number | NothingEnum.NOTHING;
+  set fillTint(value: number | NothingEnum.NOTHING);
   /** The tint (as a percentage, 0–100) of the stroke color. Use `-1` to use the inherited or overridden value instead of a specific tint. */
-  get strokeTint(): number;
-  set strokeTint(value: number);
+  get strokeTint(): number | NothingEnum.NOTHING;
+  set strokeTint(value: number | NothingEnum.NOTHING);
   /** The stroke weight applied to the characters of the text. */
-  get strokeWeight(): number;
-  set strokeWeight(value: MeasurementValue);
+  get strokeWeight(): number | NothingEnum.NOTHING;
+  set strokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
   /** If true, the stroke of the characters will overprint. */
-  get overprintStroke(): boolean;
-  set overprintStroke(value: boolean);
+  get overprintStroke(): boolean | NothingEnum.NOTHING;
+  set overprintStroke(value: boolean | NothingEnum.NOTHING);
   /** If true, the fill color of the characters will overprint. */
-  get overprintFill(): boolean;
-  set overprintFill(value: boolean);
+  get overprintFill(): boolean | NothingEnum.NOTHING;
+  set overprintFill(value: boolean | NothingEnum.NOTHING);
   /**
    * Swatch applied to the fill of the text. Accepts a {@link Swatch}
    * (or a {@link Color}, {@link Tint}, {@link Gradient}, or {@link MixedInk})
    * or its name.
    */
-  get fillColor(): Swatch;
-  set fillColor(value: Swatch | string);
+  get fillColor(): Swatch | null | NothingEnum.NOTHING;
+  set fillColor(value: Swatch | string | NothingEnum.NOTHING);
   /** Swatch applied to the stroke of the text. Accepts a {@link Swatch} or its name. */
-  get strokeColor(): Swatch;
-  set strokeColor(value: Swatch | string);
+  get strokeColor(): Swatch | null | NothingEnum.NOTHING;
+  set strokeColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the fill of the text. */
-  get gradientFillLength(): number;
-  set gradientFillLength(value: number);
+  get gradientFillLength(): number | NothingEnum.NOTHING;
+  set gradientFillLength(value: number | NothingEnum.NOTHING);
   /** The angle of a linear gradient applied to the fill of the text. (Range: -180 to 180). */
-  get gradientFillAngle(): number;
-  set gradientFillAngle(value: number);
+  get gradientFillAngle(): number | NothingEnum.NOTHING;
+  set gradientFillAngle(value: number | NothingEnum.NOTHING);
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the stroke of the text. */
-  get gradientStrokeLength(): number;
-  set gradientStrokeLength(value: number);
+  get gradientStrokeLength(): number | NothingEnum.NOTHING;
+  set gradientStrokeLength(value: number | NothingEnum.NOTHING);
   /** The angle of a linear gradient applied to the stroke of the text. (Range: -180 to 180). */
-  get gradientStrokeAngle(): number;
-  set gradientStrokeAngle(value: number);
+  get gradientStrokeAngle(): number | NothingEnum.NOTHING;
+  set gradientStrokeAngle(value: number | NothingEnum.NOTHING);
   /** The starting point (in page coordinates) of a gradient applied to the fill of the text, in the format [x, y]. */
-  get gradientFillStart(): number[];
-  set gradientFillStart(value: number[]);
+  get gradientFillStart(): number[] | NothingEnum.NOTHING;
+  set gradientFillStart(value: number[] | NothingEnum.NOTHING);
   /** The starting point (in page coordinates) of a gradient applied to the stroke of the text, in the format [x, y]. */
-  get gradientStrokeStart(): number[];
-  set gradientStrokeStart(value: number[]);
+  get gradientStrokeStart(): number[] | NothingEnum.NOTHING;
+  set gradientStrokeStart(value: number[] | NothingEnum.NOTHING);
   /** The limit of the ratio of stroke width to miter length before a miter (pointed) join becomes a bevel (squared-off) join. */
-  get miterLimit(): number;
-  set miterLimit(value: number);
+  get miterLimit(): number | NothingEnum.NOTHING;
+  set miterLimit(value: number | NothingEnum.NOTHING);
   /** The stroke alignment applied to the text. */
-  get strokeAlignment(): TextStrokeAlign;
-  set strokeAlignment(value: TextStrokeAlign);
+  get strokeAlignment(): TextStrokeAlign | NothingEnum.NOTHING;
+  set strokeAlignment(value: TextStrokeAlign | NothingEnum.NOTHING);
   /** The stroke join type applied to the characters of the text. */
-  get endJoin(): OutlineJoin;
-  set endJoin(value: OutlineJoin);
-  /** The object's DOM class name. */
-  readonly constructorName: 'ParagraphStyle';
+  get endJoin(): OutlineJoin | NothingEnum.NOTHING;
+  set endJoin(value: OutlineJoin | NothingEnum.NOTHING);
   /** Resolves the proxy into the individual {@link ParagraphStyle} objects it stands for. */
   getElements(): ParagraphStyle[];
   /** The unique ID of the paragraph style, stable across saves and reopens. */
@@ -1287,60 +1282,17 @@ export interface ParagraphStyle {
   move(to: LocationOptions, reference?: StyleMoveReference): ParagraphStyle;
 }
 
-
 /**
- * The broadcast proxy for {@link ParagraphStyle} — what `everyItem()` returns.
+ * A named paragraph style definition, held in a document's or the application's {@link ParagraphStyles} collection (optionally nested inside a {@link ParagraphStyleGroup}).
  *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
+ * Stores both the paragraph-level formatting — indents, spacing, justification, drop caps,
+ * rules, hyphenation, bullets and numbering — and the character formatting applied along with
+ * it, as a reusable named definition rather than as formatting applied directly to text.
  *
- * Not a class in the InDesign DOM — look up {@link ParagraphStyle} there.
+ * Unlike a character style, a paragraph style always resolves every attribute to a
+ * concrete value rather than leaving unset ones as {@link NothingEnum.NOTHING}.
  */
 export interface ParagraphStylePlural {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (Document | Application | ParagraphStyleGroup)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<ParagraphStylePlural, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<ParagraphStylePlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -1396,6 +1348,45 @@ export interface ParagraphStylePlural {
    */
   extractLabel(key: string): (string)[];
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (Document | Application | ParagraphStyleGroup)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<ParagraphStylePlural, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<ParagraphStylePlural, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The index of the object within its containing parent.
    */
   readonly index: (number)[];
@@ -1450,7 +1441,7 @@ export interface ParagraphStylePlural {
   get paragraphShadingTint(): (number)[];
   set paragraphShadingTint(value: number | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph shading. */
-  get paragraphShadingColor(): (Swatch)[];
+  get paragraphShadingColor(): (Swatch | string)[];
   set paragraphShadingColor(value: Swatch | string | NothingEnum.NOTHING);
   /** If true, the paragraph border is on. */
   get paragraphBorderOn(): (boolean)[];
@@ -1462,7 +1453,7 @@ export interface ParagraphStylePlural {
   get paragraphBorderTint(): (number)[];
   set paragraphBorderTint(value: number | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph stroke. */
-  get paragraphBorderColor(): (Swatch)[];
+  get paragraphBorderColor(): (Swatch | string)[];
   set paragraphBorderColor(value: Swatch | string | NothingEnum.NOTHING);
   /** If true, the paragraph border gap will overprint. Note: Valid only when border type is not solid. */
   get paragraphBorderGapOverprint(): (boolean)[];
@@ -1471,10 +1462,10 @@ export interface ParagraphStylePlural {
   get paragraphBorderGapTint(): (number)[];
   set paragraphBorderGapTint(value: number | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph border gap. Note: Valid only when the border type is not solid. */
-  get paragraphBorderGapColor(): (Swatch)[];
+  get paragraphBorderGapColor(): (Swatch | string)[];
   set paragraphBorderGapColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The type of the border for the paragraph. */
-  get paragraphBorderType(): (StrokeStyle)[];
+  get paragraphBorderType(): (StrokeStyle | string)[];
   set paragraphBorderType(value: StrokeStyle | string | NothingEnum.NOTHING);
   /** The left line weight of the border of paragraph. */
   get paragraphBorderLeftLineWeight(): (number)[];
@@ -1703,10 +1694,10 @@ export interface ParagraphStylePlural {
   get ruleAboveWidth(): (RuleWidth)[];
   set ruleAboveWidth(value: RuleWidth | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule above. */
-  get ruleAboveColor(): (Swatch)[];
+  get ruleAboveColor(): (Swatch | string)[];
   set ruleAboveColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule above. Note: Valid only when the paragraph rule above type is not solid. */
-  get ruleAboveGapColor(): (Swatch)[];
+  get ruleAboveGapColor(): (Swatch | string)[];
   set ruleAboveGapColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule. (Range: 0 to 100) Note: Valid only when the rule above type is not solid. */
   get ruleAboveGapTint(): (number)[];
@@ -1715,7 +1706,7 @@ export interface ParagraphStylePlural {
   get ruleAboveGapOverprint(): (boolean)[];
   set ruleAboveGapOverprint(value: boolean | NothingEnum.NOTHING);
   /** The stroke type of the rule above the paragraph. */
-  get ruleAboveType(): (StrokeStyle)[];
+  get ruleAboveType(): (StrokeStyle | string)[];
   set ruleAboveType(value: StrokeStyle | string | NothingEnum.NOTHING);
   /** If true, applies a paragraph rule below. */
   get ruleBelow(): (boolean)[];
@@ -1739,16 +1730,16 @@ export interface ParagraphStylePlural {
   get ruleBelowWidth(): (RuleWidth)[];
   set ruleBelowWidth(value: RuleWidth | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule below. */
-  get ruleBelowColor(): (Swatch)[];
+  get ruleBelowColor(): (Swatch | string)[];
   set ruleBelowColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule below. Note: Valid only when the paragraph rule below type is not solid. */
-  get ruleBelowGapColor(): (Swatch)[];
+  get ruleBelowGapColor(): (Swatch | string)[];
   set ruleBelowGapColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule below. (Range: 0 to 100) Note: Valid only when the paragraph rule below type is not solid. */
   get ruleBelowGapTint(): (number)[];
   set ruleBelowGapTint(value: number | NothingEnum.NOTHING);
   /** The stroke type of the rule below the paragraph. */
-  get ruleBelowType(): (StrokeStyle)[];
+  get ruleBelowType(): (StrokeStyle | string)[];
   set ruleBelowType(value: StrokeStyle | string | NothingEnum.NOTHING);
   /** If true, allows hyphenation of capitalized words. */
   get hyphenateCapitalizedWords(): (boolean)[];
@@ -1887,10 +1878,10 @@ export interface ParagraphStylePlural {
   get bulletsAndNumberingListType(): (ListType)[];
   set bulletsAndNumberingListType(value: ListType | NothingEnum.NOTHING);
   /** The character style to be used for the text after string. */
-  get bulletsCharacterStyle(): (CharacterStyle)[];
+  get bulletsCharacterStyle(): (CharacterStyle | string)[];
   set bulletsCharacterStyle(value: CharacterStyle | string | NothingEnum.NOTHING);
   /** The character style to be used for the number string. */
-  get numberingCharacterStyle(): (CharacterStyle)[];
+  get numberingCharacterStyle(): (CharacterStyle | string)[];
   set numberingCharacterStyle(value: CharacterStyle | string | NothingEnum.NOTHING);
   /** The number string expression for numbering. */
   get numberingExpression(): (string)[];
@@ -1899,7 +1890,7 @@ export interface ParagraphStylePlural {
   get bulletsTextAfter(): (string)[];
   set bulletsTextAfter(value: string | NothingEnum.NOTHING);
   /** The list to be part of. */
-  get appliedNumberingList(): (NumberingList)[];
+  get appliedNumberingList(): (NumberingList | string)[];
   set appliedNumberingList(value: NumberingList | string | NothingEnum.NOTHING);
   /** The level of the paragraph. */
   get numberingLevel(): (number)[];
@@ -1932,197 +1923,197 @@ export interface ParagraphStylePlural {
    * The applied font. Accepts a {@link Font} object or a font-family name as a
    * `string`; pair with {@link fontStyle} to pick a specific style.
    */
-  get appliedFont(): (Font | never)[];
-  set appliedFont(value: Font | string | NothingEnum.NOTHING);
+  get appliedFont(): (Font | never | string | NothingEnum.NOTHING)[];
+  set appliedFont(value: Font | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The name of the font style. */
   get fontStyle(): (string | never)[];
-  set fontStyle(value: string | NothingEnum.NOTHING);
+  set fontStyle(value: string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The type size. */
   get pointSize(): (number | never)[];
-  set pointSize(value: MeasurementValue | NothingEnum.NOTHING);
+  set pointSize(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /**
    * The leading. A number is explicit leading; the {@link Leading} enumerator
    * `AUTO` selects automatic leading.
    */
   get leading(): (number | Leading | never)[];
-  set leading(value: MeasurementValue | Leading | NothingEnum.NOTHING);
+  set leading(value: MeasurementValue | Leading | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The type of pair kerning. */
   get kerningMethod(): (KerningMethodName | never)[];
-  set kerningMethod(value: KerningMethodName | NothingEnum.NOTHING);
+  set kerningMethod(value: KerningMethodName | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** Tracking, in thousandths of an em, applied between characters. */
   get tracking(): (number | never)[];
-  set tracking(value: number | NothingEnum.NOTHING);
+  set tracking(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** Whether the text renders normally, as small caps, as all caps, or using the font's OpenType small-caps forms. See {@link Capitalization}. */
   get capitalization(): (Capitalization | never)[];
-  set capitalization(value: Capitalization | NothingEnum.NOTHING);
+  set capitalization(value: Capitalization | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The text position relative to the baseline. */
   get position(): (Position | never)[];
-  set position(value: Position | NothingEnum.NOTHING);
+  set position(value: Position | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, underlines the text. */
   get underline(): (boolean | never)[];
-  set underline(value: boolean | NothingEnum.NOTHING);
+  set underline(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, draws a strikethrough line through the text. */
   get strikeThru(): (boolean | never)[];
-  set strikeThru(value: boolean | NothingEnum.NOTHING);
+  set strikeThru(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If `true`, substitutes ligature glyphs (e.g. `fi`, `fl`) where available. */
   get ligatures(): (boolean | never)[];
-  set ligatures(value: boolean | NothingEnum.NOTHING);
+  set ligatures(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, keeps the text on the same line. */
   get noBreak(): (boolean | never)[];
-  set noBreak(value: boolean | NothingEnum.NOTHING);
+  set noBreak(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The baseline shift applied to the text. */
   get baselineShift(): (number | never)[];
-  set baselineShift(value: MeasurementValue | NothingEnum.NOTHING);
+  set baselineShift(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The figure style in OpenType fonts. */
   get otfFigureStyle(): (OTFFigureStyle | never)[];
-  set otfFigureStyle(value: OTFFigureStyle | NothingEnum.NOTHING);
+  set otfFigureStyle(value: OTFFigureStyle | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, uses ordinals in OpenType fonts. */
   get otfOrdinal(): (boolean | never)[];
-  set otfOrdinal(value: boolean | NothingEnum.NOTHING);
+  set otfOrdinal(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, uses fractions in OpenType fonts. */
   get otfFraction(): (boolean | never)[];
-  set otfFraction(value: boolean | NothingEnum.NOTHING);
+  set otfFraction(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, uses discretionary ligatures in OpenType fonts. */
   get otfDiscretionaryLigature(): (boolean | never)[];
-  set otfDiscretionaryLigature(value: boolean | NothingEnum.NOTHING);
+  set otfDiscretionaryLigature(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, uses titling forms in OpenType fonts. */
   get otfTitling(): (boolean | never)[];
-  set otfTitling(value: boolean | NothingEnum.NOTHING);
+  set otfTitling(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, uses contextual alternate forms in OpenType fonts. */
   get otfContextualAlternate(): (boolean | never)[];
-  set otfContextualAlternate(value: boolean | NothingEnum.NOTHING);
+  set otfContextualAlternate(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, uses swash forms in OpenType fonts. */
   get otfSwash(): (boolean | never)[];
-  set otfSwash(value: boolean | NothingEnum.NOTHING);
+  set otfSwash(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the underline stroke. */
-  get underlineColor(): (Swatch | never)[];
-  set underlineColor(value: Swatch | string | NothingEnum.NOTHING);
+  get underlineColor(): (Swatch | never | string | NothingEnum.NOTHING)[];
+  set underlineColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the underline stroke. Note: Valid when underline type is not solid. */
-  get underlineGapColor(): (Swatch | never)[];
-  set underlineGapColor(value: Swatch | string | NothingEnum.NOTHING);
+  get underlineGapColor(): (Swatch | never | string | NothingEnum.NOTHING)[];
+  set underlineGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The underline stroke tint (as a percentage). (Range: 0 to 100). */
   get underlineTint(): (number | never)[];
-  set underlineTint(value: number | NothingEnum.NOTHING);
+  set underlineTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the gap color of the underline stroke. (Range: 0 to 100) Note: Valid when underline type is not solid. */
   get underlineGapTint(): (number | never)[];
-  set underlineGapTint(value: number | NothingEnum.NOTHING);
+  set underlineGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the underline stroke color will overprint. */
   get underlineOverprint(): (boolean | never)[];
-  set underlineOverprint(value: boolean | NothingEnum.NOTHING);
+  set underlineOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the gap color of the underline stroke will overprint. */
   get underlineGapOverprint(): (boolean | never)[];
-  set underlineGapOverprint(value: boolean | NothingEnum.NOTHING);
+  set underlineGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke type of the underline stroke. */
-  get underlineType(): (StrokeStyle | never)[];
-  set underlineType(value: StrokeStyle | string | NothingEnum.NOTHING);
+  get underlineType(): (StrokeStyle | never | string | NothingEnum.NOTHING)[];
+  set underlineType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The amount by which to offset the underline from the text baseline. */
   get underlineOffset(): (number | never)[];
-  set underlineOffset(value: MeasurementValue | NothingEnum.NOTHING);
+  set underlineOffset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke weight of the underline stroke. */
   get underlineWeight(): (number | never)[];
-  set underlineWeight(value: MeasurementValue | NothingEnum.NOTHING);
+  set underlineWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the strikethrough stroke. */
-  get strikeThroughColor(): (Swatch | never)[];
-  set strikeThroughColor(value: Swatch | string | NothingEnum.NOTHING);
+  get strikeThroughColor(): (Swatch | never | string | NothingEnum.NOTHING)[];
+  set strikeThroughColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the strikethrough stroke. */
-  get strikeThroughGapColor(): (Swatch | never)[];
-  set strikeThroughGapColor(value: Swatch | string | NothingEnum.NOTHING);
+  get strikeThroughGapColor(): (Swatch | never | string | NothingEnum.NOTHING)[];
+  set strikeThroughGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the strikethrough stroke. (Range: 0 to 100). */
   get strikeThroughTint(): (number | never)[];
-  set strikeThroughTint(value: number | NothingEnum.NOTHING);
+  set strikeThroughTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the strikethrough stroke gap color. (Range: 0 to 100) Note: Valid when strike through type is not solid. */
   get strikeThroughGapTint(): (number | never)[];
-  set strikeThroughGapTint(value: number | NothingEnum.NOTHING);
+  set strikeThroughGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the strikethrough stroke will overprint. */
   get strikeThroughOverprint(): (boolean | never)[];
-  set strikeThroughOverprint(value: boolean | NothingEnum.NOTHING);
+  set strikeThroughOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the gap color of the strikethrough stroke will overprint. Note: Valid when strike through type is not solid. */
   get strikeThroughGapOverprint(): (boolean | never)[];
-  set strikeThroughGapOverprint(value: boolean | NothingEnum.NOTHING);
+  set strikeThroughGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke type of the strikethrough stroke. */
-  get strikeThroughType(): (StrokeStyle | never)[];
-  set strikeThroughType(value: StrokeStyle | string | NothingEnum.NOTHING);
+  get strikeThroughType(): (StrokeStyle | never | string | NothingEnum.NOTHING)[];
+  set strikeThroughType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The amount by which to offset the strikethrough stroke from the text baseline. */
   get strikeThroughOffset(): (number | never)[];
-  set strikeThroughOffset(value: MeasurementValue | NothingEnum.NOTHING);
+  set strikeThroughOffset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke weight of the strikethrough stroke. */
   get strikeThroughWeight(): (number | never)[];
-  set strikeThroughWeight(value: MeasurementValue | NothingEnum.NOTHING);
+  set strikeThroughWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /**
    * The applied language / spelling dictionary. Accepts a
    * {@link LanguageWithVendors} or {@link Language} object, or its name.
    */
-  get appliedLanguage(): (LanguageWithVendors | Language | never)[];
-  set appliedLanguage(value: LanguageWithVendors | Language | string | NothingEnum.NOTHING);
+  get appliedLanguage(): (LanguageWithVendors | Language | never | null)[];
+  set appliedLanguage(value: LanguageWithVendors | Language | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** Value of Design Axes. */
   get designAxes(): (number[] | never)[];
-  set designAxes(value: number[] | NothingEnum.NOTHING);
+  set designAxes(value: number[] | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, use a slashed zeroes in OpenType fonts. */
   get otfSlashedZero(): (boolean | never)[];
-  set otfSlashedZero(value: boolean | NothingEnum.NOTHING);
+  set otfSlashedZero(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, use historical forms in OpenType fonts. */
   get otfHistorical(): (boolean | never)[];
-  set otfHistorical(value: boolean | NothingEnum.NOTHING);
+  set otfHistorical(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stylistic sets to use in OpenType fonts. */
   get otfStylisticSets(): (number | never)[];
-  set otfStylisticSets(value: number | NothingEnum.NOTHING);
+  set otfStylisticSets(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, uses mark positioning in OpenType fonts. */
   get otfMark(): (boolean | never)[];
-  set otfMark(value: boolean | NothingEnum.NOTHING);
+  set otfMark(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, uses localized forms in OpenType fonts. */
   get otfLocale(): (boolean | never)[];
-  set otfLocale(value: boolean | NothingEnum.NOTHING);
+  set otfLocale(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** Which contextual glyph form — initial, medial, final, or isolated — to use for connected scripts, or `CALCULATE` to derive it automatically. See {@link PositionalForms}. */
   get positionalForm(): (PositionalForms | never)[];
-  set positionalForm(value: PositionalForms | NothingEnum.NOTHING);
+  set positionalForm(value: PositionalForms | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, use overlapping swash forms in OpenType fonts. */
   get otfOverlapSwash(): (boolean | never)[];
-  set otfOverlapSwash(value: boolean | NothingEnum.NOTHING);
+  set otfOverlapSwash(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, use stylistic alternate forms in OpenType fonts. */
   get otfStylisticAlternate(): (boolean | never)[];
-  set otfStylisticAlternate(value: boolean | NothingEnum.NOTHING);
+  set otfStylisticAlternate(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, use alternate justification forms in OpenType fonts. */
   get otfJustificationAlternate(): (boolean | never)[];
-  set otfJustificationAlternate(value: boolean | NothingEnum.NOTHING);
+  set otfJustificationAlternate(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, use stretched alternate forms in OpenType fonts. */
   get otfStretchedAlternate(): (boolean | never)[];
-  set otfStretchedAlternate(value: boolean | NothingEnum.NOTHING);
+  set otfStretchedAlternate(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The direction of the character. */
   get characterDirection(): (CharacterDirectionOptions | never)[];
-  set characterDirection(value: CharacterDirectionOptions | NothingEnum.NOTHING);
+  set characterDirection(value: CharacterDirectionOptions | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The keyboard direction of the character. */
   get keyboardDirection(): (CharacterDirectionOptions | never)[];
-  set keyboardDirection(value: CharacterDirectionOptions | NothingEnum.NOTHING);
+  set keyboardDirection(value: CharacterDirectionOptions | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** Which digit glyphs — Arabic numerals, Hindi, Farsi, or another script's digits — render numbers in the text. See {@link DigitsTypeOptions}. */
   get digitsType(): (DigitsTypeOptions | never)[];
-  set digitsType(value: DigitsTypeOptions | NothingEnum.NOTHING);
+  set digitsType(value: DigitsTypeOptions | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** Use of Kashidas for justification. */
   get kashidas(): (KashidasOptions | never)[];
-  set kashidas(value: KashidasOptions | NothingEnum.NOTHING);
+  set kashidas(value: KashidasOptions | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** Position of diacritical characters. */
   get diacriticPosition(): (DiacriticPositionOptions | never)[];
-  set diacriticPosition(value: DiacriticPositionOptions | NothingEnum.NOTHING);
+  set diacriticPosition(value: DiacriticPositionOptions | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The x (horizontal) offset for diacritic adjustment. */
   get xOffsetDiacritic(): (number | never)[];
-  set xOffsetDiacritic(value: number | NothingEnum.NOTHING);
+  set xOffsetDiacritic(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The y (vertical) offset for diacritic adjustment. */
   get yOffsetDiacritic(): (number | never)[];
-  set yOffsetDiacritic(value: number | NothingEnum.NOTHING);
+  set yOffsetDiacritic(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The alignment of small characters to the largest character in the line. */
   get characterAlignment(): (CharacterAlignment | never)[];
-  set characterAlignment(value: CharacterAlignment | NothingEnum.NOTHING);
+  set characterAlignment(value: CharacterAlignment | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The amount of horizontal character compression. */
   get tsume(): (number | NothingEnum.NOTHING)[];
   set tsume(value: number | NothingEnum.NOTHING);
   /** The amount of space before each character. */
   get leadingAki(): (number | never)[];
-  set leadingAki(value: number | NothingEnum.NOTHING);
+  set leadingAki(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The amount of space after each character. */
   get trailingAki(): (number | never)[];
-  set trailingAki(value: number | NothingEnum.NOTHING);
+  set trailingAki(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The rotation angle (in degrees) of individual characters. Note: The rotation is counterclockwise. */
   get characterRotation(): (number | never)[];
-  set characterRotation(value: number | NothingEnum.NOTHING);
+  set characterRotation(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The number of grid squares in which to arrange the text. */
   get jidori(): (number | NothingEnum.NOTHING)[];
   set jidori(value: number | NothingEnum.NOTHING);
@@ -2148,10 +2139,10 @@ export interface ParagraphStylePlural {
   get tatechuyokoYOffset(): (number | NothingEnum.NOTHING)[];
   set tatechuyokoYOffset(value: number | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of kenten characters. */
-  get kentenFillColor(): (Swatch | NothingEnum.NOTHING)[];
+  get kentenFillColor(): (Swatch | NothingEnum.NOTHING | null | string)[];
   set kentenFillColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of kenten characters. */
-  get kentenStrokeColor(): (Swatch | NothingEnum.NOTHING)[];
+  get kentenStrokeColor(): (Swatch | NothingEnum.NOTHING | null | string)[];
   set kentenStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The fill tint (as a percentage) of kenten characters. (Range: 0 to 100). */
   get kentenTint(): (number | NothingEnum.NOTHING)[];
@@ -2181,7 +2172,7 @@ export interface ParagraphStylePlural {
   get kentenPosition(): (RubyKentenPosition | NothingEnum.NOTHING)[];
   set kentenPosition(value: RubyKentenPosition | NothingEnum.NOTHING);
   /** The font to use for kenten characters. */
-  get kentenFont(): (Font | NothingEnum.NOTHING)[];
+  get kentenFont(): (Font | NothingEnum.NOTHING | null | string)[];
   set kentenFont(value: Font | string | NothingEnum.NOTHING);
   /** The font style of kenten characters. */
   get kentenFontStyle(): (string | NothingEnum.NOTHING)[];
@@ -2202,10 +2193,10 @@ export interface ParagraphStylePlural {
   get kentenCharacterSet(): (KentenCharacterSet | NothingEnum.NOTHING)[];
   set kentenCharacterSet(value: KentenCharacterSet | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of ruby characters. */
-  get rubyFill(): (Swatch | NothingEnum.NOTHING)[];
+  get rubyFill(): (Swatch | NothingEnum.NOTHING | null | string)[];
   set rubyFill(value: Swatch | string | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of ruby characters. */
-  get rubyStroke(): (Swatch | NothingEnum.NOTHING)[];
+  get rubyStroke(): (Swatch | NothingEnum.NOTHING | null | string)[];
   set rubyStroke(value: Swatch | string | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the ruby fill color. (Range: 0 to 100). */
   get rubyTint(): (number | NothingEnum.NOTHING)[];
@@ -2223,7 +2214,7 @@ export interface ParagraphStylePlural {
   get rubyStrokeTint(): (number | NothingEnum.NOTHING)[];
   set rubyStrokeTint(value: number | NothingEnum.NOTHING);
   /** The font applied to ruby characters. */
-  get rubyFont(): (Font | NothingEnum.NOTHING)[];
+  get rubyFont(): (Font | NothingEnum.NOTHING | null | string)[];
   set rubyFont(value: Font | string | NothingEnum.NOTHING);
   /** The font style of ruby characters. */
   get rubyFontStyle(): (string | NothingEnum.NOTHING)[];
@@ -2296,22 +2287,22 @@ export interface ParagraphStylePlural {
   set warichuCharsBeforeBreak(value: number | NothingEnum.NOTHING);
   /** If true, kerns according to proportional CJK metrics in OpenType fonts. */
   get otfProportionalMetrics(): (boolean | never)[];
-  set otfProportionalMetrics(value: boolean | NothingEnum.NOTHING);
+  set otfProportionalMetrics(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, switches hiragana fonts, which have different glyphs for horizontal and vertical. */
   get otfHVKana(): (boolean | NothingEnum.NOTHING)[];
   set otfHVKana(value: boolean | NothingEnum.NOTHING);
   /** If true, applies italics to half-width alphanumerics. */
   get otfRomanItalics(): (boolean | never)[];
-  set otfRomanItalics(value: boolean | NothingEnum.NOTHING);
+  set otfRomanItalics(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the line changes size when characters are scaled. */
   get scaleAffectsLineHeight(): (boolean | never)[];
-  set scaleAffectsLineHeight(value: boolean | NothingEnum.NOTHING);
+  set scaleAffectsLineHeight(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, uses grid tracking to track non-Roman characters in CJK grids. */
   get cjkGridTracking(): (boolean | NothingEnum.NOTHING)[];
   set cjkGridTracking(value: boolean | NothingEnum.NOTHING);
   /** The glyph variant to substitute for standard glyphs. */
   get glyphForm(): (AlternateGlyphForms | never)[];
-  set glyphForm(value: AlternateGlyphForms | NothingEnum.NOTHING);
+  set glyphForm(value: AlternateGlyphForms | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The number of digits included in auto tcy (tate-chuu-yoko) in ruby. */
   get rubyAutoTcyDigits(): (number | NothingEnum.NOTHING)[];
   set rubyAutoTcyDigits(value: number | NothingEnum.NOTHING);
@@ -2322,68 +2313,66 @@ export interface ParagraphStylePlural {
   get rubyAutoTcyAutoScale(): (boolean | NothingEnum.NOTHING)[];
   set rubyAutoTcyAutoScale(value: boolean | NothingEnum.NOTHING);
   /** Horizontal scaling of the glyphs, as a percentage. */
-  get horizontalScale(): (number)[];
-  set horizontalScale(value: number);
+  get horizontalScale(): (number | NothingEnum.NOTHING)[];
+  set horizontalScale(value: number | NothingEnum.NOTHING);
   /** Vertical scaling of the glyphs, as a percentage. */
-  get verticalScale(): (number)[];
-  set verticalScale(value: number);
+  get verticalScale(): (number | NothingEnum.NOTHING)[];
+  set verticalScale(value: number | NothingEnum.NOTHING);
   /** Skew (false-italic) angle applied to the glyphs, in degrees. */
-  get skew(): (number)[];
-  set skew(value: number);
+  get skew(): (number | NothingEnum.NOTHING)[];
+  set skew(value: number | NothingEnum.NOTHING);
   /** The tint (as a percentage, 0–100) of the fill color. Use `-1` to use the inherited or overridden value instead of a specific tint. */
-  get fillTint(): (number)[];
-  set fillTint(value: number);
+  get fillTint(): (number | NothingEnum.NOTHING)[];
+  set fillTint(value: number | NothingEnum.NOTHING);
   /** The tint (as a percentage, 0–100) of the stroke color. Use `-1` to use the inherited or overridden value instead of a specific tint. */
-  get strokeTint(): (number)[];
-  set strokeTint(value: number);
+  get strokeTint(): (number | NothingEnum.NOTHING)[];
+  set strokeTint(value: number | NothingEnum.NOTHING);
   /** The stroke weight applied to the characters of the text. */
-  get strokeWeight(): (number)[];
-  set strokeWeight(value: MeasurementValue);
+  get strokeWeight(): (number | NothingEnum.NOTHING)[];
+  set strokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
   /** If true, the stroke of the characters will overprint. */
-  get overprintStroke(): (boolean)[];
-  set overprintStroke(value: boolean);
+  get overprintStroke(): (boolean | NothingEnum.NOTHING)[];
+  set overprintStroke(value: boolean | NothingEnum.NOTHING);
   /** If true, the fill color of the characters will overprint. */
-  get overprintFill(): (boolean)[];
-  set overprintFill(value: boolean);
+  get overprintFill(): (boolean | NothingEnum.NOTHING)[];
+  set overprintFill(value: boolean | NothingEnum.NOTHING);
   /**
    * Swatch applied to the fill of the text. Accepts a {@link Swatch}
    * (or a {@link Color}, {@link Tint}, {@link Gradient}, or {@link MixedInk})
    * or its name.
    */
-  get fillColor(): (Swatch)[];
-  set fillColor(value: Swatch | string);
+  get fillColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set fillColor(value: Swatch | string | NothingEnum.NOTHING);
   /** Swatch applied to the stroke of the text. Accepts a {@link Swatch} or its name. */
-  get strokeColor(): (Swatch)[];
-  set strokeColor(value: Swatch | string);
+  get strokeColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set strokeColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the fill of the text. */
-  get gradientFillLength(): (number)[];
-  set gradientFillLength(value: number);
+  get gradientFillLength(): (number | NothingEnum.NOTHING)[];
+  set gradientFillLength(value: number | NothingEnum.NOTHING);
   /** The angle of a linear gradient applied to the fill of the text. (Range: -180 to 180). */
-  get gradientFillAngle(): (number)[];
-  set gradientFillAngle(value: number);
+  get gradientFillAngle(): (number | NothingEnum.NOTHING)[];
+  set gradientFillAngle(value: number | NothingEnum.NOTHING);
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the stroke of the text. */
-  get gradientStrokeLength(): (number)[];
-  set gradientStrokeLength(value: number);
+  get gradientStrokeLength(): (number | NothingEnum.NOTHING)[];
+  set gradientStrokeLength(value: number | NothingEnum.NOTHING);
   /** The angle of a linear gradient applied to the stroke of the text. (Range: -180 to 180). */
-  get gradientStrokeAngle(): (number)[];
-  set gradientStrokeAngle(value: number);
+  get gradientStrokeAngle(): (number | NothingEnum.NOTHING)[];
+  set gradientStrokeAngle(value: number | NothingEnum.NOTHING);
   /** The starting point (in page coordinates) of a gradient applied to the fill of the text, in the format [x, y]. */
-  get gradientFillStart(): (number[])[];
-  set gradientFillStart(value: number[]);
+  get gradientFillStart(): (number[] | NothingEnum.NOTHING)[];
+  set gradientFillStart(value: number[] | NothingEnum.NOTHING);
   /** The starting point (in page coordinates) of a gradient applied to the stroke of the text, in the format [x, y]. */
-  get gradientStrokeStart(): (number[])[];
-  set gradientStrokeStart(value: number[]);
+  get gradientStrokeStart(): (number[] | NothingEnum.NOTHING)[];
+  set gradientStrokeStart(value: number[] | NothingEnum.NOTHING);
   /** The limit of the ratio of stroke width to miter length before a miter (pointed) join becomes a bevel (squared-off) join. */
-  get miterLimit(): (number)[];
-  set miterLimit(value: number);
+  get miterLimit(): (number | NothingEnum.NOTHING)[];
+  set miterLimit(value: number | NothingEnum.NOTHING);
   /** The stroke alignment applied to the text. */
-  get strokeAlignment(): (TextStrokeAlign)[];
-  set strokeAlignment(value: TextStrokeAlign);
+  get strokeAlignment(): (TextStrokeAlign | NothingEnum.NOTHING)[];
+  set strokeAlignment(value: TextStrokeAlign | NothingEnum.NOTHING);
   /** The stroke join type applied to the characters of the text. */
-  get endJoin(): (OutlineJoin)[];
-  set endJoin(value: OutlineJoin);
-  /** The object's DOM class name. */
-  readonly constructorName: 'ParagraphStyle';
+  get endJoin(): (OutlineJoin | NothingEnum.NOTHING)[];
+  set endJoin(value: OutlineJoin | NothingEnum.NOTHING);
   /** Resolves the proxy into the individual {@link ParagraphStyle} objects it stands for. */
   getElements(): ParagraphStyle[];
   /** The unique ID of the paragraph style, stable across saves and reopens. */

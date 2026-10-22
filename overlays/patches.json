@@ -1,0 +1,59 @@
+{
+  "$comment": "One-off corrections the rules cannot derive. Each replaces `find` (which must occur exactly once) in `file`, and names the probe that measured it.",
+  "patches": [
+    {
+      "file": "AnimationSetting.d.ts",
+      "probe": "styles-and-params: motionPathPoints reads an array",
+      "find": "  get motionPathPoints(): Read<M, { pathPointArray: AnimationPathPoint[]; pathOpen: boolean }>;\n  set motionPathPoints(value: { pathPointArray: AnimationPathPoint[]; pathOpen: boolean });",
+      "replace": "  get motionPathPoints(): Read<M, AnimationMotionPath>;\n  set motionPathPoints(value: AnimationMotionPath);"
+    },
+    {
+      "file": "AnimationSetting.d.ts",
+      "probe": "styles-and-params: motionPathPoints reads an array",
+      "find": "export interface AnimationPathPoint<M extends Mode = 'single'> {",
+      "replace": "/**\n * A motion path as ExtendScript reads and writes it: `[pathPoints, pathOpen]`, each point being\n * `[anchor, leftDirection, rightDirection]`, each of those `[x, y]`.\n */\nexport type AnimationMotionPath = [\n  pathPointArray: [anchor: [number, number], leftDirection: [number, number], rightDirection: [number, number]][],\n  pathOpen: boolean,\n];\n\nexport interface AnimationPathPoint<M extends Mode = 'single'> {"
+    },
+    {
+      "file": "Page.d.ts",
+      "probe": "styles-and-params: placeXML() without a placePoint",
+      "find": "placeXML(using: XMLElement, placePoint?: MeasurementValue[], autoflowing?: boolean)",
+      "replace": "placeXML(using: XMLElement, placePoint: MeasurementValue[], autoflowing?: boolean)"
+    },
+    {
+      "file": "Spread.d.ts",
+      "probe": "styles-and-params: placeXML() without a placePoint",
+      "find": "placeXML(using: XMLElement, placePoint?: MeasurementValue[], autoflowing?: boolean)",
+      "replace": "placeXML(using: XMLElement, placePoint: MeasurementValue[], autoflowing?: boolean)"
+    },
+    {
+      "file": "Paths.d.ts",
+      "probe": "styles-and-params: paths.add() with layer/at",
+      "find": "  add(withProperties?: PropertiesSetter<Path>): Path;",
+      "replace": "  add(\n    layer?: Layer,\n    at?: LocationOptions,\n    reference?: import('./Document').Document | import('./Spread').Spread | import('./MasterSpread').MasterSpread | import('./Page').Page | Layer | import('./PageItem').PageItem,\n    withProperties?: PropertiesSetter<Path>,\n  ): Path;"
+    },
+    {
+      "file": "MixedInkGroups.d.ts",
+      "probe": "styles-and-params: mixedInkGroups.add() with only inks",
+      "find": "    inkPercentages: number[],\n    repeatValues: number[],\n    incrementValues: number[],",
+      "replace": "    inkPercentages?: number[],\n    repeatValues?: number[],\n    incrementValues?: number[],"
+    },
+    {
+      "file": "GeneralPreference.d.ts",
+      "probe": "styles-and-params: useApplicationFrame is writable",
+      "find": "  readonly useApplicationFrame: Read<M, boolean>;",
+      "replace": "  get useApplicationFrame(): Read<M, boolean>;\n  set useApplicationFrame(value: boolean);"
+    },
+    {
+      "file": "MasterSpread.d.ts",
+      "probe": "allowlist: MasterSpread.primaryTextFrame rejects NothingEnum.NOTHING",
+      "find": "  set primaryTextFrame(value: PageItem | string | NothingEnum);",
+      "replace": "  set primaryTextFrame(value: PageItem | string);"
+    },
+    {
+      "file": "_base/Properties.d.ts",
+      "probe": "allowlist: MasterSpread.primaryTextFrame rejects NothingEnum.NOTHING",
+      "find": "Key extends 'primaryTextFrame' ? PageItem | string | NothingEnum",
+      "replace": "Key extends 'primaryTextFrame' ? PageItem | string"
+    }
+  ]
+}

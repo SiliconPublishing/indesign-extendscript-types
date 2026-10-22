@@ -1,10 +1,11 @@
 /**
  * TagType.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __TagType: unique symbol;
 
 
 interface TagType extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<TagType>): boolean;
-
   /**
    * @internal **WARNING:** `__TagType` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const TagType: typeof Enumeration & {
    */
   readonly tagFromStructure: TagType_TAG_FROM_STRUCTURE;
   /**
-   * Determine the tag from XML structure, or fall back to the standard tag.
-   */
-  readonly tagfromstructure: TagType_TAG_FROM_STRUCTURE;
-
-  /**
    * Tag as an artifact.
    */
   readonly TAG_ARTIFACT: TagType_TAG_ARTIFACT;
@@ -115,11 +108,6 @@ export declare const TagType: typeof Enumeration & {
    */
   readonly tagArtifact: TagType_TAG_ARTIFACT;
   /**
-   * Tag as an artifact.
-   */
-  readonly tagartifact: TagType_TAG_ARTIFACT;
-
-  /**
    * Tag as Story or Figure based on object type.
    */
   readonly TAG_BASED_ON_OBJECT: TagType_TAG_BASED_ON_OBJECT;
@@ -127,9 +115,4 @@ export declare const TagType: typeof Enumeration & {
    * Tag as Story or Figure based on object type.
    */
   readonly tagBasedOnObject: TagType_TAG_BASED_ON_OBJECT;
-  /**
-   * Tag as Story or Figure based on object type.
-   */
-  readonly tagbasedonobject: TagType_TAG_BASED_ON_OBJECT;
-
 }

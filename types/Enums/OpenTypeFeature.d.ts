@@ -1,10 +1,11 @@
 /**
  * OpenTypeFeature.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __OpenTypeFeature: unique symbol;
 
 
 interface OpenTypeFeature extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<OpenTypeFeature>): boolean;
-
   /**
    * @internal **WARNING:** `__OpenTypeFeature` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -407,11 +405,6 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    */
   readonly discretionaryLigaturesFeature: OpenTypeFeature_DISCRETIONARY_LIGATURES_FEATURE;
   /**
-   * Allows the use of optional discretionary ligatures.
-   */
-  readonly discretionaryligaturesfeature: OpenTypeFeature_DISCRETIONARY_LIGATURES_FEATURE;
-
-  /**
    * Reformats numbers separated by a slash, such as 1/2, as fractions.
    *
    * Note: In some fonts, the fractions feature reformats only standard fractions. For
@@ -428,15 +421,6 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    */
   readonly fractionsFeature: OpenTypeFeature_FRACTIONS_FEATURE;
   /**
-   * Reformats numbers separated by a slash, such as 1/2, as fractions.
-   *
-   * Note: In some fonts, the fractions feature reformats only standard fractions. For
-   * information on reformatting non-standard fractions such as 4/13, see denominator feature
-   * and numerator feature.
-   */
-  readonly fractionsfeature: OpenTypeFeature_FRACTIONS_FEATURE;
-
-  /**
    * Superscripts the alpha characters in ordinal numbers.
    */
   readonly ORDINAL_FEATURE: OpenTypeFeature_ORDINAL_FEATURE;
@@ -444,11 +428,6 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    * Superscripts the alpha characters in ordinal numbers.
    */
   readonly ordinalFeature: OpenTypeFeature_ORDINAL_FEATURE;
-  /**
-   * Superscripts the alpha characters in ordinal numbers.
-   */
-  readonly ordinalfeature: OpenTypeFeature_ORDINAL_FEATURE;
-
   /**
    * Provides regular and contextual swashes, which may include alternate caps and end-of-word alternatives.
    */
@@ -458,11 +437,6 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    */
   readonly swashFeature: OpenTypeFeature_SWASH_FEATURE;
   /**
-   * Provides regular and contextual swashes, which may include alternate caps and end-of-word alternatives.
-   */
-  readonly swashfeature: OpenTypeFeature_SWASH_FEATURE;
-
-  /**
    * Activates alternative characters used for uppercase titles.
    */
   readonly TITLING_FEATURE: OpenTypeFeature_TITLING_FEATURE;
@@ -470,11 +444,6 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    * Activates alternative characters used for uppercase titles.
    */
   readonly titlingFeature: OpenTypeFeature_TITLING_FEATURE;
-  /**
-   * Activates alternative characters used for uppercase titles.
-   */
-  readonly titlingfeature: OpenTypeFeature_TITLING_FEATURE;
-
   /**
    * Activates contextual ligatures and connecting alternates.
    */
@@ -484,11 +453,6 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    */
   readonly contextualAlternatesFeature: OpenTypeFeature_CONTEXTUAL_ALTERNATES_FEATURE;
   /**
-   * Activates contextual ligatures and connecting alternates.
-   */
-  readonly contextualalternatesfeature: OpenTypeFeature_CONTEXTUAL_ALTERNATES_FEATURE;
-
-  /**
    * Provides authentic small caps rather than scaled-down versions of the font's regular caps.
    */
   readonly ALL_SMALL_CAPS_FEATURE: OpenTypeFeature_ALL_SMALL_CAPS_FEATURE;
@@ -496,11 +460,6 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    * Provides authentic small caps rather than scaled-down versions of the font's regular caps.
    */
   readonly allSmallCapsFeature: OpenTypeFeature_ALL_SMALL_CAPS_FEATURE;
-  /**
-   * Provides authentic small caps rather than scaled-down versions of the font's regular caps.
-   */
-  readonly allsmallcapsfeature: OpenTypeFeature_ALL_SMALL_CAPS_FEATURE;
-
   /**
    * Sizes raised glyphs correctly relative to the surrounding characters.
    */
@@ -510,11 +469,6 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    */
   readonly superscriptFeature: OpenTypeFeature_SUPERSCRIPT_FEATURE;
   /**
-   * Sizes raised glyphs correctly relative to the surrounding characters.
-   */
-  readonly superscriptfeature: OpenTypeFeature_SUPERSCRIPT_FEATURE;
-
-  /**
    * Sizes lowered glyphs correctly relative to the surrounding characters.
    */
   readonly SUBSCRIPT_FEATURE: OpenTypeFeature_SUBSCRIPT_FEATURE;
@@ -522,11 +476,6 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    * Sizes lowered glyphs correctly relative to the surrounding characters.
    */
   readonly subscriptFeature: OpenTypeFeature_SUBSCRIPT_FEATURE;
-  /**
-   * Sizes lowered glyphs correctly relative to the surrounding characters.
-   */
-  readonly subscriptfeature: OpenTypeFeature_SUBSCRIPT_FEATURE;
-
   /**
    * In a series of two numbers separated by a slash that form a non-standard fraction, such as 4/13, reformats the first number as a numerator.
    */
@@ -536,11 +485,6 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    */
   readonly numeratorFeature: OpenTypeFeature_NUMERATOR_FEATURE;
   /**
-   * In a series of two numbers separated by a slash that form a non-standard fraction, such as 4/13, reformats the first number as a numerator.
-   */
-  readonly numeratorfeature: OpenTypeFeature_NUMERATOR_FEATURE;
-
-  /**
    * In a series of two numbers separated by a slash that form a non-standard fraction, such as 4/13, reformats the second number as a denominator.
    */
   readonly DENOMINATOR_FEATURE: OpenTypeFeature_DENOMINATOR_FEATURE;
@@ -548,11 +492,6 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    * In a series of two numbers separated by a slash that form a non-standard fraction, such as 4/13, reformats the second number as a denominator.
    */
   readonly denominatorFeature: OpenTypeFeature_DENOMINATOR_FEATURE;
-  /**
-   * In a series of two numbers separated by a slash that form a non-standard fraction, such as 4/13, reformats the second number as a denominator.
-   */
-  readonly denominatorfeature: OpenTypeFeature_DENOMINATOR_FEATURE;
-
   /**
    * Gives full-height figures fixed, equal width.
    */
@@ -562,11 +501,6 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    */
   readonly tabularLiningFeature: OpenTypeFeature_TABULAR_LINING_FEATURE;
   /**
-   * Gives full-height figures fixed, equal width.
-   */
-  readonly tabularliningfeature: OpenTypeFeature_TABULAR_LINING_FEATURE;
-
-  /**
    * Gives varying-height figures varying widths.
    */
   readonly PROPORTIONAL_OLDSTYLE_FEATURE: OpenTypeFeature_PROPORTIONAL_OLDSTYLE_FEATURE;
@@ -574,11 +508,6 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    * Gives varying-height figures varying widths.
    */
   readonly proportionalOldstyleFeature: OpenTypeFeature_PROPORTIONAL_OLDSTYLE_FEATURE;
-  /**
-   * Gives varying-height figures varying widths.
-   */
-  readonly proportionaloldstylefeature: OpenTypeFeature_PROPORTIONAL_OLDSTYLE_FEATURE;
-
   /**
    * Gives full-height figures varying widths.
    */
@@ -588,11 +517,6 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    */
   readonly proportionalLiningFeature: OpenTypeFeature_PROPORTIONAL_LINING_FEATURE;
   /**
-   * Gives full-height figures varying widths.
-   */
-  readonly proportionalliningfeature: OpenTypeFeature_PROPORTIONAL_LINING_FEATURE;
-
-  /**
    * Gives varying-height figures fixed, equal widths.
    */
   readonly TABULAR_OLDSTYLE_FEATURE: OpenTypeFeature_TABULAR_OLDSTYLE_FEATURE;
@@ -600,11 +524,6 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    * Gives varying-height figures fixed, equal widths.
    */
   readonly tabularOldstyleFeature: OpenTypeFeature_TABULAR_OLDSTYLE_FEATURE;
-  /**
-   * Gives varying-height figures fixed, equal widths.
-   */
-  readonly tabularoldstylefeature: OpenTypeFeature_TABULAR_OLDSTYLE_FEATURE;
-
   /**
    * Applies the default figure style of the current font to figure glyphs.
    */
@@ -614,11 +533,6 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    */
   readonly defaultFigureStyleFeature: OpenTypeFeature_DEFAULT_FIGURE_STYLE_FEATURE;
   /**
-   * Applies the default figure style of the current font to figure glyphs.
-   */
-  readonly defaultfigurestylefeature: OpenTypeFeature_DEFAULT_FIGURE_STYLE_FEATURE;
-
-  /**
    * Overlap swash.
    */
   readonly OVERLAP_SWASH: OpenTypeFeature_OVERLAP_SWASH;
@@ -626,11 +540,6 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    * Overlap swash.
    */
   readonly overlapSwash: OpenTypeFeature_OVERLAP_SWASH;
-  /**
-   * Overlap swash.
-   */
-  readonly overlapswash: OpenTypeFeature_OVERLAP_SWASH;
-
   /**
    * Stylistic alternate.
    */
@@ -640,11 +549,6 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    */
   readonly stylisticAlternate: OpenTypeFeature_STYLISTIC_ALTERNATE;
   /**
-   * Stylistic alternate.
-   */
-  readonly stylisticalternate: OpenTypeFeature_STYLISTIC_ALTERNATE;
-
-  /**
    * Justification alternate.
    */
   readonly JUSTIFICATION_ALTERNATE: OpenTypeFeature_JUSTIFICATION_ALTERNATE;
@@ -653,11 +557,6 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    */
   readonly justificationAlternate: OpenTypeFeature_JUSTIFICATION_ALTERNATE;
   /**
-   * Justification alternate.
-   */
-  readonly justificationalternate: OpenTypeFeature_JUSTIFICATION_ALTERNATE;
-
-  /**
    * Stretched alternate.
    */
   readonly STRETCHED_ALTERNATE: OpenTypeFeature_STRETCHED_ALTERNATE;
@@ -665,9 +564,4 @@ export declare const OpenTypeFeature: typeof Enumeration & {
    * Stretched alternate.
    */
   readonly stretchedAlternate: OpenTypeFeature_STRETCHED_ALTERNATE;
-  /**
-   * Stretched alternate.
-   */
-  readonly stretchedalternate: OpenTypeFeature_STRETCHED_ALTERNATE;
-
 }

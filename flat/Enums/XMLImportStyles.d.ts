@@ -1,10 +1,11 @@
 /**
  * XMLImportStyles.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __XMLImportStyles: unique symbol;
 
 
 interface XMLImportStyles extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<XMLImportStyles>): boolean;
-
   /**
    * @internal **WARNING:** `__XMLImportStyles` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -86,11 +84,6 @@ export declare const XMLImportStyles: typeof Enumeration & {
    */
   readonly appendImport: XMLImportStyles_APPEND_IMPORT;
   /**
-   * Appends the imported content.
-   */
-  readonly appendimport: XMLImportStyles_APPEND_IMPORT;
-
-  /**
    * Merges the imported content.
    */
   readonly MERGE_IMPORT: XMLImportStyles_MERGE_IMPORT;
@@ -98,9 +91,4 @@ export declare const XMLImportStyles: typeof Enumeration & {
    * Merges the imported content.
    */
   readonly mergeImport: XMLImportStyles_MERGE_IMPORT;
-  /**
-   * Merges the imported content.
-   */
-  readonly mergeimport: XMLImportStyles_MERGE_IMPORT;
-
 }

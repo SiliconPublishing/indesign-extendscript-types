@@ -1,10 +1,11 @@
 /**
  * VersionCueSyncStatus.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __VersionCueSyncStatus: unique symbol;
 
 
 interface VersionCueSyncStatus extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<VersionCueSyncStatus>): boolean;
-
   /**
    * @internal **WARNING:** `__VersionCueSyncStatus` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -134,11 +132,6 @@ export declare const VersionCueSyncStatus: typeof Enumeration & {
    */
   readonly fileDownloaded: VersionCueSyncStatus_FILE_DOWNLOADED;
   /**
-   * The project version of the file was downloaded to the local workspace.
-   */
-  readonly filedownloaded: VersionCueSyncStatus_FILE_DOWNLOADED;
-
-  /**
    * The local version of the file was uploaded to the project.
    */
   readonly FILE_UPLOADED: VersionCueSyncStatus_FILE_UPLOADED;
@@ -146,11 +139,6 @@ export declare const VersionCueSyncStatus: typeof Enumeration & {
    * The local version of the file was uploaded to the project.
    */
   readonly fileUploaded: VersionCueSyncStatus_FILE_UPLOADED;
-  /**
-   * The local version of the file was uploaded to the project.
-   */
-  readonly fileuploaded: VersionCueSyncStatus_FILE_UPLOADED;
-
   /**
    * The file was unlocked locally.
    */
@@ -160,11 +148,6 @@ export declare const VersionCueSyncStatus: typeof Enumeration & {
    */
   readonly fileUnlocked: VersionCueSyncStatus_FILE_UNLOCKED;
   /**
-   * The file was unlocked locally.
-   */
-  readonly fileunlocked: VersionCueSyncStatus_FILE_UNLOCKED;
-
-  /**
    * The file was not synchronized.
    */
   readonly FILE_SKIPPED: VersionCueSyncStatus_FILE_SKIPPED;
@@ -173,11 +156,6 @@ export declare const VersionCueSyncStatus: typeof Enumeration & {
    */
   readonly fileSkipped: VersionCueSyncStatus_FILE_SKIPPED;
   /**
-   * The file was not synchronized.
-   */
-  readonly fileskipped: VersionCueSyncStatus_FILE_SKIPPED;
-
-  /**
    * The synchronization resulted in no change because the local and project versions were identical.
    */
   readonly FILE_NO_CHANGE: VersionCueSyncStatus_FILE_NO_CHANGE;
@@ -185,9 +163,4 @@ export declare const VersionCueSyncStatus: typeof Enumeration & {
    * The synchronization resulted in no change because the local and project versions were identical.
    */
   readonly fileNoChange: VersionCueSyncStatus_FILE_NO_CHANGE;
-  /**
-   * The synchronization resulted in no change because the local and project versions were identical.
-   */
-  readonly filenochange: VersionCueSyncStatus_FILE_NO_CHANGE;
-
 }

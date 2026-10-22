@@ -1,10 +1,11 @@
 /**
  * StyleConflict.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __StyleConflict: unique symbol;
 
 
 interface StyleConflict extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<StyleConflict>): boolean;
-
   /**
    * @internal **WARNING:** `__StyleConflict` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -86,11 +84,6 @@ export declare const StyleConflict: typeof Enumeration & {
    */
   readonly publicationDefinition: StyleConflict_PUBLICATION_DEFINITION;
   /**
-   * Uses the publication style.
-   */
-  readonly publicationdefinition: StyleConflict_PUBLICATION_DEFINITION;
-
-  /**
    * Uses the tag file style.
    */
   readonly TAG_FILE_DEFINITION: StyleConflict_TAG_FILE_DEFINITION;
@@ -98,9 +91,4 @@ export declare const StyleConflict: typeof Enumeration & {
    * Uses the tag file style.
    */
   readonly tagFileDefinition: StyleConflict_TAG_FILE_DEFINITION;
-  /**
-   * Uses the tag file style.
-   */
-  readonly tagfiledefinition: StyleConflict_TAG_FILE_DEFINITION;
-
 }

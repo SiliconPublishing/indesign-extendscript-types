@@ -1,6 +1,7 @@
 /**
  * MultiStateObject.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -60,9 +61,6 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * behaviors.
  */
 export interface MultiStateObject<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, MultiStateObject, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'MultiStateObject';
-
   /** Resolves the proxy into the individual {@link MultiStateObject} objects it stands for. */
   getElements(): MultiStateObject<TParent, 'single'>[];
 

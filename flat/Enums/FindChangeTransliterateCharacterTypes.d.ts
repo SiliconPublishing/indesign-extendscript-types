@@ -1,10 +1,11 @@
 /**
  * FindChangeTransliterateCharacterTypes.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __FindChangeTransliterateCharacterTypes: unique symbol;
 
 
 interface FindChangeTransliterateCharacterTypes extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<FindChangeTransliterateCharacterTypes>): boolean;
-
   /**
    * @internal **WARNING:** `__FindChangeTransliterateCharacterTypes` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -182,11 +180,6 @@ export declare const FindChangeTransliterateCharacterTypes: typeof Enumeration &
    */
   readonly halfWidthKatakana: FindChangeTransliterateCharacterTypes_HALF_WIDTH_KATAKANA;
   /**
-   * Half-width katakana.
-   */
-  readonly halfwidthkatakana: FindChangeTransliterateCharacterTypes_HALF_WIDTH_KATAKANA;
-
-  /**
    * Half-width Roman symbols.
    */
   readonly HALF_WIDTH_ROMAN_SYMBOLS: FindChangeTransliterateCharacterTypes_HALF_WIDTH_ROMAN_SYMBOLS;
@@ -194,11 +187,6 @@ export declare const FindChangeTransliterateCharacterTypes: typeof Enumeration &
    * Half-width Roman symbols.
    */
   readonly halfWidthRomanSymbols: FindChangeTransliterateCharacterTypes_HALF_WIDTH_ROMAN_SYMBOLS;
-  /**
-   * Half-width Roman symbols.
-   */
-  readonly halfwidthromansymbols: FindChangeTransliterateCharacterTypes_HALF_WIDTH_ROMAN_SYMBOLS;
-
   /**
    * Full-width hiragana.
    */
@@ -208,11 +196,6 @@ export declare const FindChangeTransliterateCharacterTypes: typeof Enumeration &
    */
   readonly fullWidthHiragana: FindChangeTransliterateCharacterTypes_FULL_WIDTH_HIRAGANA;
   /**
-   * Full-width hiragana.
-   */
-  readonly fullwidthhiragana: FindChangeTransliterateCharacterTypes_FULL_WIDTH_HIRAGANA;
-
-  /**
    * Full-width katakana.
    */
   readonly FULL_WIDTH_KATAKANA: FindChangeTransliterateCharacterTypes_FULL_WIDTH_KATAKANA;
@@ -220,11 +203,6 @@ export declare const FindChangeTransliterateCharacterTypes: typeof Enumeration &
    * Full-width katakana.
    */
   readonly fullWidthKatakana: FindChangeTransliterateCharacterTypes_FULL_WIDTH_KATAKANA;
-  /**
-   * Full-width katakana.
-   */
-  readonly fullwidthkatakana: FindChangeTransliterateCharacterTypes_FULL_WIDTH_KATAKANA;
-
   /**
    * Full-width Roman symbols.
    */
@@ -234,11 +212,6 @@ export declare const FindChangeTransliterateCharacterTypes: typeof Enumeration &
    */
   readonly fullWidthRomanSymbols: FindChangeTransliterateCharacterTypes_FULL_WIDTH_ROMAN_SYMBOLS;
   /**
-   * Full-width Roman symbols.
-   */
-  readonly fullwidthromansymbols: FindChangeTransliterateCharacterTypes_FULL_WIDTH_ROMAN_SYMBOLS;
-
-  /**
    * Western Arabic digits (0, 1, 2, 3, ...).
    */
   readonly WESTERN_ARABIC_DIGITS: FindChangeTransliterateCharacterTypes_WESTERN_ARABIC_DIGITS;
@@ -246,11 +219,6 @@ export declare const FindChangeTransliterateCharacterTypes: typeof Enumeration &
    * Western Arabic digits (0, 1, 2, 3, ...).
    */
   readonly westernArabicDigits: FindChangeTransliterateCharacterTypes_WESTERN_ARABIC_DIGITS;
-  /**
-   * Western Arabic digits (0, 1, 2, 3, ...).
-   */
-  readonly westernarabicdigits: FindChangeTransliterateCharacterTypes_WESTERN_ARABIC_DIGITS;
-
   /**
    * Arabic Indic(hindi) digits.
    */
@@ -260,11 +228,6 @@ export declare const FindChangeTransliterateCharacterTypes: typeof Enumeration &
    */
   readonly arabicIndicDigits: FindChangeTransliterateCharacterTypes_ARABIC_INDIC_DIGITS;
   /**
-   * Arabic Indic(hindi) digits.
-   */
-  readonly arabicindicdigits: FindChangeTransliterateCharacterTypes_ARABIC_INDIC_DIGITS;
-
-  /**
    * Farsi digits.
    */
   readonly FARSI_DIGITS: FindChangeTransliterateCharacterTypes_FARSI_DIGITS;
@@ -272,9 +235,4 @@ export declare const FindChangeTransliterateCharacterTypes: typeof Enumeration &
    * Farsi digits.
    */
   readonly farsiDigits: FindChangeTransliterateCharacterTypes_FARSI_DIGITS;
-  /**
-   * Farsi digits.
-   */
-  readonly farsidigits: FindChangeTransliterateCharacterTypes_FARSI_DIGITS;
-
 }

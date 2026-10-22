@@ -1,10 +1,11 @@
 /**
  * FlexSpacing.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 import type { FlexPosition } from "./FlexPosition";
 
 
@@ -19,9 +20,6 @@ declare const __FlexSpacing: unique symbol;
 
 
 interface FlexSpacing extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<FlexSpacing, FlexPosition>): boolean;
-
   /**
    * @internal **WARNING:** `__FlexSpacing` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -103,11 +101,6 @@ export declare const FlexSpacing: typeof Enumeration & {
    */
   readonly flexSpaceBetween: FlexSpacing_FLEX_SPACE_BETWEEN;
   /**
-   * Space between items.
-   */
-  readonly flexspacebetween: FlexSpacing_FLEX_SPACE_BETWEEN;
-
-  /**
    * Space around items.
    */
   readonly FLEX_SPACE_AROUND: FlexSpacing_FLEX_SPACE_AROUND;
@@ -116,11 +109,6 @@ export declare const FlexSpacing: typeof Enumeration & {
    */
   readonly flexSpaceAround: FlexSpacing_FLEX_SPACE_AROUND;
   /**
-   * Space around items.
-   */
-  readonly flexspacearound: FlexSpacing_FLEX_SPACE_AROUND;
-
-  /**
    * Space evenly between items.
    */
   readonly FLEX_SPACE_EVENLY: FlexSpacing_FLEX_SPACE_EVENLY;
@@ -128,9 +116,4 @@ export declare const FlexSpacing: typeof Enumeration & {
    * Space evenly between items.
    */
   readonly flexSpaceEvenly: FlexSpacing_FLEX_SPACE_EVENLY;
-  /**
-   * Space evenly between items.
-   */
-  readonly flexspaceevenly: FlexSpacing_FLEX_SPACE_EVENLY;
-
 }

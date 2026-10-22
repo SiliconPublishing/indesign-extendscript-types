@@ -1,10 +1,11 @@
 /**
  * LinkStatus.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __LinkStatus: unique symbol;
 
 
 interface LinkStatus extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<LinkStatus>): boolean;
-
   /**
    * @internal **WARNING:** `__LinkStatus` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -143,11 +141,6 @@ export declare const LinkStatus: typeof Enumeration & {
    */
   readonly linkOutOfDate: LinkStatus_LINK_OUT_OF_DATE;
   /**
-   * A more recent version of the file exists on the disk.
-   */
-  readonly linkoutofdate: LinkStatus_LINK_OUT_OF_DATE;
-
-  /**
    * The linked file has been moved, renamed, or deleted.
    */
   readonly LINK_MISSING: LinkStatus_LINK_MISSING;
@@ -155,11 +148,6 @@ export declare const LinkStatus: typeof Enumeration & {
    * The linked file has been moved, renamed, or deleted.
    */
   readonly linkMissing: LinkStatus_LINK_MISSING;
-  /**
-   * The linked file has been moved, renamed, or deleted.
-   */
-  readonly linkmissing: LinkStatus_LINK_MISSING;
-
   /**
    * The file is embedded in the document.
    */
@@ -169,11 +157,6 @@ export declare const LinkStatus: typeof Enumeration & {
    */
   readonly linkEmbedded: LinkStatus_LINK_EMBEDDED;
   /**
-   * The file is embedded in the document.
-   */
-  readonly linkembedded: LinkStatus_LINK_EMBEDDED;
-
-  /**
    * The url link is inaccessible.
    */
   readonly LINK_INACCESSIBLE: LinkStatus_LINK_INACCESSIBLE;
@@ -181,9 +164,4 @@ export declare const LinkStatus: typeof Enumeration & {
    * The url link is inaccessible.
    */
   readonly linkInaccessible: LinkStatus_LINK_INACCESSIBLE;
-  /**
-   * The url link is inaccessible.
-   */
-  readonly linkinaccessible: LinkStatus_LINK_INACCESSIBLE;
-
 }

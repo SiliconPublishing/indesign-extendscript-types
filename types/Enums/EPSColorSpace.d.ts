@@ -1,10 +1,11 @@
 /**
  * EPSColorSpace.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __EPSColorSpace: unique symbol;
 
 
 interface EPSColorSpace extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<EPSColorSpace>): boolean;
-
   /**
    * @internal **WARNING:** `__EPSColorSpace` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -161,11 +159,6 @@ export declare const EPSColorSpace: typeof Enumeration & {
    */
   readonly unchangedColorSpace: EPSColorSpace_UNCHANGED_COLOR_SPACE;
   /**
-   * Leaves each image in its original color space. 
-   */
-  readonly unchangedcolorspace: EPSColorSpace_UNCHANGED_COLOR_SPACE;
-
-  /**
    * Uses PostScript color management (includes profiles).
    */
   readonly POSTSCRIPT_COLOR_MANAGEMENT: EPSColorSpace_POSTSCRIPT_COLOR_MANAGEMENT;
@@ -173,9 +166,4 @@ export declare const EPSColorSpace: typeof Enumeration & {
    * Uses PostScript color management (includes profiles).
    */
   readonly postscriptColorManagement: EPSColorSpace_POSTSCRIPT_COLOR_MANAGEMENT;
-  /**
-   * Uses PostScript color management (includes profiles).
-   */
-  readonly postscriptcolormanagement: EPSColorSpace_POSTSCRIPT_COLOR_MANAGEMENT;
-
 }

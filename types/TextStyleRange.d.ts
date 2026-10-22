@@ -1,6 +1,7 @@
 /**
  * TextStyleRange.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -71,9 +72,6 @@ import type { XMLItem } from './XMLItem';
  * A run of text sharing identical character formatting.
  */
 export interface TextStyleRange<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'TextStyleRange';
-
   /** Resolves the proxy into the individual {@link TextStyleRange} objects it stands for. */
   getElements(): TextStyleRange<TParent, 'single'>[];
 }

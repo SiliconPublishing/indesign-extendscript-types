@@ -1,6 +1,7 @@
 /**
  * PageReference.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -12,65 +13,22 @@ import type { ParagraphStyle } from './ParagraphStyle';
 import type { CharacterStyle } from './CharacterStyle';
 import type { PageReferenceType } from './Enums/PageReferenceType';
 import type { Index } from './Index';
-import type { Event } from './Event';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
+import type { Event } from './Event';
 import type { FilePath } from './_base/Types';
-import type { InDesignEventMap } from './_base/Events';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+
 /**
  * The page reference for an {@link Index} topic — the location in the
  * document's text that the generated index entry points to.
  */
 export interface PageReference {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: Topic;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<PageReference, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<PageReference, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -130,12 +88,49 @@ export interface PageReference {
    */
   readonly index: number;
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: Topic;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<PageReference, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<PageReference, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */
   get name(): string;
   set name(value: string);
-  /** The object's DOM class name. */
-  readonly constructorName: 'PageReference';
   /** Resolves the proxy into the individual {@link PageReference} objects it stands for. */
   getElements(): PageReference[];
   /** The unique ID of the page reference. */
@@ -154,66 +149,17 @@ export interface PageReference {
   get pageReferenceLimit(): ParagraphStyle | number;
   set pageReferenceLimit(value: ParagraphStyle | number);
   /** The character style applied to the page number in the generated index entry. */
-  get pageNumberStyleOverride(): CharacterStyle;
+  get pageNumberStyleOverride(): CharacterStyle | null;
   set pageNumberStyleOverride(value: CharacterStyle);
   /** Deletes the page reference. */
   remove(): void;
 }
 
-
 /**
- * The broadcast proxy for {@link PageReference} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link PageReference} there.
+ * The page reference for an {@link Index} topic — the location in the
+ * document's text that the generated index entry points to.
  */
 export interface PageReferencePlural {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (Topic)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<PageReferencePlural, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<PageReferencePlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -273,12 +219,49 @@ export interface PageReferencePlural {
    */
   readonly index: (number)[];
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (Topic)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<PageReferencePlural, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<PageReferencePlural, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */
   get name(): (string)[];
   set name(value: string);
-  /** The object's DOM class name. */
-  readonly constructorName: 'PageReference';
   /** Resolves the proxy into the individual {@link PageReference} objects it stands for. */
   getElements(): PageReference[];
   /** The unique ID of the page reference. */
@@ -297,7 +280,7 @@ export interface PageReferencePlural {
   get pageReferenceLimit(): (ParagraphStyle | number)[];
   set pageReferenceLimit(value: ParagraphStyle | number);
   /** The character style applied to the page number in the generated index entry. */
-  get pageNumberStyleOverride(): (CharacterStyle)[];
+  get pageNumberStyleOverride(): (CharacterStyle | null)[];
   set pageNumberStyleOverride(value: CharacterStyle);
   /** Deletes the page reference. */
   remove(): (void)[];

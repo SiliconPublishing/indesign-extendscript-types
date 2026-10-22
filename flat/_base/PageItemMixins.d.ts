@@ -1,6 +1,7 @@
 /**
  * PageItemMixins.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -203,6 +204,7 @@ export interface PathContainer<M extends Mode = 'single'> {
   /** The {@link Paths} that make up this item's outline. A compound shape has more than one. */
   readonly paths: Paths;
 }
+
 /**
  * The full child surface of a general-purpose page-item container — spreads,
  * groups, and the spline-item shapes.
@@ -261,6 +263,63 @@ export interface PageItemContainer<TChildParent = PageItemParent> {
   readonly graphics: Graphics<TChildParent>;
 }
 
+/**
+ * The full child surface of a general-purpose page-item container — spreads,
+ * groups, and the spline-item shapes.
+ *
+ * Which of these a container actually exposes varies: a {@link Page} has no
+ * endnote text frames, and a {@link Button} cannot hold other form fields.
+ */
+export interface PageItemContainerPlural<TChildParent = PageItemParent> {
+  /** All {@link PageItems} in this container regardless of type — the general-purpose iterator for mixed content. */
+  readonly pageItems: PageItems<TChildParent>;
+  /** Every {@link Graphic} anywhere in this container, recursing into nested groups. A snapshot array, not a live collection. */
+  readonly allGraphics: (AnyGraphic[])[];
+  /** Every {@link PageItem} anywhere in this container, recursing into nested groups. A snapshot array, not a live collection. */
+  readonly allPageItems: (AnyPageItem[])[];
+  /** {@link Ovals} (ellipses) directly in this container. */
+  readonly ovals: Ovals<TChildParent>;
+  /** {@link SplineItems} (rectangles, ovals, polygons, graphic lines) directly in this container. */
+  readonly splineItems: SplineItems<TChildParent>;
+  /** {@link Rectangles} directly in this container. */
+  readonly rectangles: Rectangles<TChildParent>;
+  /** {@link GraphicLines} directly in this container. */
+  readonly graphicLines: GraphicLines<TChildParent>;
+  /** {@link TextFrames} directly in this container. */
+  readonly textFrames: TextFrames<TChildParent>;
+  /** {@link Polygons} directly in this container. */
+  readonly polygons: Polygons<TChildParent>;
+  /** {@link Groups} directly in this container. */
+  readonly groups: Groups<TChildParent>;
+  /** {@link EPSTexts} directly in this container. */
+  readonly epstexts: EPSTexts<TChildParent>;
+  /** {@link FormFields} of every kind directly in this container. */
+  readonly formFields: FormFields<TChildParent>;
+  /** {@link Buttons} directly in this container. */
+  readonly buttons: Buttons<TChildParent>;
+  /** {@link MultiStateObjects} directly in this container. */
+  readonly multiStateObjects: MultiStateObjects<TChildParent>;
+  /** {@link CheckBoxes} directly in this container. */
+  readonly checkBoxes: CheckBoxes<TChildParent>;
+  /** {@link ComboBoxes} directly in this container. */
+  readonly comboBoxes: ComboBoxes<TChildParent>;
+  /** {@link ListBoxes} directly in this container. */
+  readonly listBoxes: ListBoxes<TChildParent>;
+  /** {@link RadioButtons} directly in this container. */
+  readonly radioButtons: RadioButtons<TChildParent>;
+  /** {@link TextBoxes} directly in this container. */
+  readonly textBoxes: TextBoxes<TChildParent>;
+  /** {@link SignatureFields} directly in this container. */
+  readonly signatureFields: SignatureFields<TChildParent>;
+  /** {@link EndnoteTextFrames} directly in this container. */
+  readonly endnoteTextFrames: EndnoteTextFrames<TChildParent>;
+  /** {@link FlexObjects} directly in this container. */
+  readonly flexObjects: FlexObjects<TChildParent>;
+  /** {@link SVGs} directly in this container. */
+  readonly svgs: SVGs<TChildParent>;
+  /** Placed {@link Graphics} of any file format (vector, metafile, or bitmap) directly in this container. */
+  readonly graphics: Graphics<TChildParent>;
+}
 
 /**
  * A transform origin or point argument accepted by {@link TransformableItem.transform},
@@ -470,63 +529,4 @@ export interface TransformableItem<M extends Mode = 'single'> {
 
   /** Like {@link transformSequenceAgain}, but applied individually to each targeted item. */
   transformSequenceAgainIndividually(): Read<M, string[]>;
-}
-
-/**
- * The broadcast proxy for {@link PageItemContainer} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link PageItemContainer} there.
- */
-export interface PageItemContainerPlural<TChildParent = PageItemParent> {
-  /** All {@link PageItems} in this container regardless of type — the general-purpose iterator for mixed content. */
-  readonly pageItems: PageItems<TChildParent>;
-  /** Every {@link Graphic} anywhere in this container, recursing into nested groups. A snapshot array, not a live collection. */
-  readonly allGraphics: (AnyGraphic[])[];
-  /** Every {@link PageItem} anywhere in this container, recursing into nested groups. A snapshot array, not a live collection. */
-  readonly allPageItems: (AnyPageItem[])[];
-  /** {@link Ovals} (ellipses) directly in this container. */
-  readonly ovals: Ovals<TChildParent>;
-  /** {@link SplineItems} (rectangles, ovals, polygons, graphic lines) directly in this container. */
-  readonly splineItems: SplineItems<TChildParent>;
-  /** {@link Rectangles} directly in this container. */
-  readonly rectangles: Rectangles<TChildParent>;
-  /** {@link GraphicLines} directly in this container. */
-  readonly graphicLines: GraphicLines<TChildParent>;
-  /** {@link TextFrames} directly in this container. */
-  readonly textFrames: TextFrames<TChildParent>;
-  /** {@link Polygons} directly in this container. */
-  readonly polygons: Polygons<TChildParent>;
-  /** {@link Groups} directly in this container. */
-  readonly groups: Groups<TChildParent>;
-  /** {@link EPSTexts} directly in this container. */
-  readonly epstexts: EPSTexts<TChildParent>;
-  /** {@link FormFields} of every kind directly in this container. */
-  readonly formFields: FormFields<TChildParent>;
-  /** {@link Buttons} directly in this container. */
-  readonly buttons: Buttons<TChildParent>;
-  /** {@link MultiStateObjects} directly in this container. */
-  readonly multiStateObjects: MultiStateObjects<TChildParent>;
-  /** {@link CheckBoxes} directly in this container. */
-  readonly checkBoxes: CheckBoxes<TChildParent>;
-  /** {@link ComboBoxes} directly in this container. */
-  readonly comboBoxes: ComboBoxes<TChildParent>;
-  /** {@link ListBoxes} directly in this container. */
-  readonly listBoxes: ListBoxes<TChildParent>;
-  /** {@link RadioButtons} directly in this container. */
-  readonly radioButtons: RadioButtons<TChildParent>;
-  /** {@link TextBoxes} directly in this container. */
-  readonly textBoxes: TextBoxes<TChildParent>;
-  /** {@link SignatureFields} directly in this container. */
-  readonly signatureFields: SignatureFields<TChildParent>;
-  /** {@link EndnoteTextFrames} directly in this container. */
-  readonly endnoteTextFrames: EndnoteTextFrames<TChildParent>;
-  /** {@link FlexObjects} directly in this container. */
-  readonly flexObjects: FlexObjects<TChildParent>;
-  /** {@link SVGs} directly in this container. */
-  readonly svgs: SVGs<TChildParent>;
-  /** Placed {@link Graphics} of any file format (vector, metafile, or bitmap) directly in this container. */
-  readonly graphics: Graphics<TChildParent>;
 }

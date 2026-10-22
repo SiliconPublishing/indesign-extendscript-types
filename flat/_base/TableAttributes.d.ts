@@ -1,6 +1,7 @@
 /**
  * TableAttributes.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -134,280 +135,281 @@ export interface TableGeometry<M extends Mode = 'single'> {
 export interface TableCellAttributesBase<M extends Mode = 'single', NGet = never, NObj = never, NSet = never> {
   /** The left inset of the graphic cell. */
   get graphicLeftInset(): Read<M, number | NGet>;
-  set graphicLeftInset(value: MeasurementValue | NSet);
+  set graphicLeftInset(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The top inset of the graphic cell. */
   get graphicTopInset(): Read<M, number | NGet>;
-  set graphicTopInset(value: MeasurementValue | NSet);
+  set graphicTopInset(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The right inset of the graphic cell. */
   get graphicRightInset(): Read<M, number | NGet>;
-  set graphicRightInset(value: MeasurementValue | NSet);
+  set graphicRightInset(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The bottom inset of the graphic cell. */
   get graphicBottomInset(): Read<M, number | NGet>;
-  set graphicBottomInset(value: MeasurementValue | NSet);
+  set graphicBottomInset(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** If true, clips the graphic cell's content to width and height of the cell. */
   get clipContentToGraphicCell(): Read<M, boolean | NGet>;
-  set clipContentToGraphicCell(value: boolean | NSet);
+  set clipContentToGraphicCell(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The top inset of the text cell. */
   get textTopInset(): Read<M, number | NGet>;
-  set textTopInset(value: MeasurementValue | NSet);
+  set textTopInset(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The left inset of the text cell. */
   get textLeftInset(): Read<M, number | NGet>;
-  set textLeftInset(value: MeasurementValue | NSet);
+  set textLeftInset(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The bottom inset of the text cell. */
   get textBottomInset(): Read<M, number | NGet>;
-  set textBottomInset(value: MeasurementValue | NSet);
+  set textBottomInset(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The right inset of the text cell. */
   get textRightInset(): Read<M, number | NGet>;
-  set textRightInset(value: MeasurementValue | NSet);
+  set textRightInset(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** If true, clips the text cell's content to width and height of the cell. */
   get clipContentToTextCell(): Read<M, boolean | NGet>;
-  set clipContentToTextCell(value: boolean | NSet);
+  set clipContentToTextCell(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The length (of a linear gradient) or radius (of a radial gradient) applied to the fill of the object. */
   get gradientFillLength(): Read<M, number | NGet>;
-  set gradientFillLength(value: number | NSet);
+  set gradientFillLength(value: number | NSet | NothingEnum.NOTHING);
 
   /** The angle of a linear gradient applied to the fill of the object. (Range: -180 to 180). */
   get gradientFillAngle(): Read<M, number | NGet>;
-  set gradientFillAngle(value: number | NSet);
+  set gradientFillAngle(value: number | NSet | NothingEnum.NOTHING);
 
   /** The starting point (in page coordinates) of a gradient applied to the fill of the CellStyle, in the format [x, y]. */
   get gradientFillStart(): Read<M, number[] | NGet>;
-  set gradientFillStart(value: number[] | NSet);
+  set gradientFillStart(value: number[] | NSet | NothingEnum.NOTHING);
 
   /** The top inset of the cell. The API has been deprecated. Use TextTopInset or GraphicTopInset. */
   get topInset(): Read<M, number | NGet>;
-  set topInset(value: MeasurementValue | NSet);
+  set topInset(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The left inset of the cell.The API has been deprecated. Use TextLeftInset or GraphicLeftInset. */
   get leftInset(): Read<M, number | NGet>;
-  set leftInset(value: MeasurementValue | NSet);
+  set leftInset(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The bottom inset of the cell.The API has been deprecated. Use TextBottomInset or GraphicBottomInset. */
   get bottomInset(): Read<M, number | NGet>;
-  set bottomInset(value: MeasurementValue | NSet);
+  set bottomInset(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The right inset of the cell.The API has been deprecated. Use TextLeftInset or GraphicRightInset. */
   get rightInset(): Read<M, number | NGet>;
-  set rightInset(value: MeasurementValue | NSet);
+  set rightInset(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of the object. */
-  get fillColor(): Read<M, Swatch | NObj>;
-  set fillColor(value: Swatch | string | NSet);
+  get fillColor(): Read<M, Swatch | NObj | NothingEnum.NOTHING>;
+  set fillColor(value: Swatch | string | NSet | NothingEnum.NOTHING);
 
   /** The tint (as a percentage) of the fill of the object. */
   get fillTint(): Read<M, number | NGet>;
-  set fillTint(value: number | NSet);
+  set fillTint(value: number | NSet | NothingEnum.NOTHING);
 
   /** If true, the fill of the object will overprint. */
   get overprintFill(): Read<M, boolean | NGet>;
-  set overprintFill(value: boolean | NSet);
+  set overprintFill(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, draws a diagonal line starting from the top left. */
   get topLeftDiagonalLine(): Read<M, boolean | NGet>;
-  set topLeftDiagonalLine(value: boolean | NSet);
+  set topLeftDiagonalLine(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, draws a diagonal line starting from the top right. */
   get topRightDiagonalLine(): Read<M, boolean | NGet>;
-  set topRightDiagonalLine(value: boolean | NSet);
+  set topRightDiagonalLine(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, draws the diagonal line in front of cell contents. */
   get diagonalLineInFront(): Read<M, boolean | NGet>;
-  set diagonalLineInFront(value: boolean | NSet);
+  set diagonalLineInFront(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The stroke weight of the cell's diagonal line(s) — see {@link topLeftDiagonalLine} and {@link topRightDiagonalLine}. */
   get diagonalLineStrokeWeight(): Read<M, number | NGet>;
-  set diagonalLineStrokeWeight(value: MeasurementValue | NSet);
+  set diagonalLineStrokeWeight(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The stroke type of the diagonal line(s). */
-  get diagonalLineStrokeType(): Read<M, StrokeStyle | NObj>;
-  set diagonalLineStrokeType(value: StrokeStyle | string | NSet);
+  get diagonalLineStrokeType(): Read<M, StrokeStyle | NObj | NothingEnum.NOTHING>;
+  set diagonalLineStrokeType(value: StrokeStyle | string | NSet | NothingEnum.NOTHING);
 
   /** The diagonal line color, specified as a swatch. */
-  get diagonalLineStrokeColor(): Read<M, Swatch | NObj>;
-  set diagonalLineStrokeColor(value: Swatch | string | NSet);
+  get diagonalLineStrokeColor(): Read<M, Swatch | NObj | NothingEnum.NOTHING>;
+  set diagonalLineStrokeColor(value: Swatch | string | NSet | NothingEnum.NOTHING);
 
   /** The diagonal line tint (as a percentage). (Range: 0 to 100). */
   get diagonalLineStrokeTint(): Read<M, number | NGet>;
-  set diagonalLineStrokeTint(value: number | NSet);
+  set diagonalLineStrokeTint(value: number | NSet | NothingEnum.NOTHING);
 
   /** If true, the diagonal line stroke will overprint. */
   get diagonalLineStrokeOverprint(): Read<M, boolean | NGet>;
-  set diagonalLineStrokeOverprint(value: boolean | NSet);
+  set diagonalLineStrokeOverprint(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the diagonal line stroke. Note: Not valid when diagonal line stroke type is solid. */
-  get diagonalLineStrokeGapColor(): Read<M, Swatch | NObj>;
-  set diagonalLineStrokeGapColor(value: Swatch | string | NSet);
+  get diagonalLineStrokeGapColor(): Read<M, Swatch | NObj | NothingEnum.NOTHING>;
+  set diagonalLineStrokeGapColor(value: Swatch | string | NSet | NothingEnum.NOTHING);
 
   /** The tint (as a percentage) of the diagonal line stroke gap color. Note: Not valid when diagonal line stroke type is solid. */
   get diagonalLineStrokeGapTint(): Read<M, number | NGet>;
-  set diagonalLineStrokeGapTint(value: number | NSet);
+  set diagonalLineStrokeGapTint(value: number | NSet | NothingEnum.NOTHING);
 
   /** If true, the stroke gap of the diagonal line will overprint. Note: Not valid when diagonal line stroke type is solid. */
   get diagonalLineStrokeGapOverprint(): Read<M, boolean | NGet>;
-  set diagonalLineStrokeGapOverprint(value: boolean | NSet);
+  set diagonalLineStrokeGapOverprint(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, clips the cell's content to width and height of the cell. The API has been deprecated. Use ClipContentsToTextCell or ClipContentsToPageItemCell. */
   get clipContentToCell(): Read<M, boolean | NGet>;
-  set clipContentToCell(value: boolean | NSet);
+  set clipContentToCell(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** How the distance between the first line's baseline and the cell's top inset is measured. See {@link FirstBaseline}. */
   get firstBaselineOffset(): Read<M, FirstBaseline | NGet>;
-  set firstBaselineOffset(value: FirstBaseline | NSet);
+  set firstBaselineOffset(value: FirstBaseline | NSet | NothingEnum.NOTHING);
 
   /** The vertical alignment of cell. */
   get verticalJustification(): Read<M, VerticalJustification | NGet>;
-  set verticalJustification(value: VerticalJustification | NSet);
+  set verticalJustification(value: VerticalJustification | NSet | NothingEnum.NOTHING);
 
   /** The maximum space that can be added between paragraphs in a cell. Note: Valid only when vertical justification is justified. */
   get paragraphSpacingLimit(): Read<M, number | NGet>;
-  set paragraphSpacingLimit(value: MeasurementValue | NSet);
+  set paragraphSpacingLimit(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The space between the baseline of the text and the top inset of the frame or cell. */
   get minimumFirstBaselineOffset(): Read<M, number | NGet>;
-  set minimumFirstBaselineOffset(value: number | NSet);
+  set minimumFirstBaselineOffset(value: number | NSet | string | NothingEnum.NOTHING);
 
   /** The rotation angle (in degrees) of the cell, specified as one of the following values: 0, 90, 180, or 270. */
   get rotationAngle(): Read<M, number | NGet>;
-  set rotationAngle(value: number | NSet);
+  set rotationAngle(value: number | NSet | NothingEnum.NOTHING);
 
   /** The stroke weight of the left edge border stroke. */
   get leftEdgeStrokeWeight(): Read<M, number | NGet>;
-  set leftEdgeStrokeWeight(value: MeasurementValue | NSet);
+  set leftEdgeStrokeWeight(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The stroke type of the left edge. */
-  get leftEdgeStrokeType(): Read<M, StrokeStyle | NObj>;
-  set leftEdgeStrokeType(value: StrokeStyle | string | NSet);
+  get leftEdgeStrokeType(): Read<M, StrokeStyle | NObj | NothingEnum.NOTHING>;
+  set leftEdgeStrokeType(value: StrokeStyle | string | NSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the left edge border stroke. */
-  get leftEdgeStrokeColor(): Read<M, Swatch | NObj>;
-  set leftEdgeStrokeColor(value: Swatch | string | NSet);
+  get leftEdgeStrokeColor(): Read<M, Swatch | NObj | NothingEnum.NOTHING>;
+  set leftEdgeStrokeColor(value: Swatch | string | NSet | NothingEnum.NOTHING);
 
   /** The tint (as a percentage) of the left edge border stroke. (Range: 0 to 100). */
   get leftEdgeStrokeTint(): Read<M, number | NGet>;
-  set leftEdgeStrokeTint(value: number | NSet);
+  set leftEdgeStrokeTint(value: number | NSet | NothingEnum.NOTHING);
 
   /** If true, the left edge border stroke will overprint. */
   get leftEdgeStrokeOverprint(): Read<M, boolean | NGet>;
-  set leftEdgeStrokeOverprint(value: boolean | NSet);
+  set leftEdgeStrokeOverprint(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the left edge border stroke. Note: Not valid when left edge stroke type is solid. */
-  get leftEdgeStrokeGapColor(): Read<M, Swatch | NObj>;
-  set leftEdgeStrokeGapColor(value: Swatch | string | NSet);
+  get leftEdgeStrokeGapColor(): Read<M, Swatch | NObj | NothingEnum.NOTHING>;
+  set leftEdgeStrokeGapColor(value: Swatch | string | NSet | NothingEnum.NOTHING);
 
   /** The tint (as a percentage) of the left edge border stroke gap color. (Range: 0 to 100) Note: Not valid when left edge stroke type is solid. */
   get leftEdgeStrokeGapTint(): Read<M, number | NGet>;
-  set leftEdgeStrokeGapTint(value: number | NSet);
+  set leftEdgeStrokeGapTint(value: number | NSet | NothingEnum.NOTHING);
 
   /** If true, the gap color of the left edge border stroke will overprint. Note: Not valid when left edge stroke type is solid. */
   get leftEdgeStrokeGapOverprint(): Read<M, boolean | NGet>;
-  set leftEdgeStrokeGapOverprint(value: boolean | NSet);
+  set leftEdgeStrokeGapOverprint(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The stroke weight of the top edge border stroke. */
   get topEdgeStrokeWeight(): Read<M, number | NGet>;
-  set topEdgeStrokeWeight(value: MeasurementValue | NSet);
+  set topEdgeStrokeWeight(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The stroke type of the top edge. */
-  get topEdgeStrokeType(): Read<M, StrokeStyle | NObj>;
-  set topEdgeStrokeType(value: StrokeStyle | string | NSet);
+  get topEdgeStrokeType(): Read<M, StrokeStyle | NObj | NothingEnum.NOTHING>;
+  set topEdgeStrokeType(value: StrokeStyle | string | NSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the top edge border stroke. */
-  get topEdgeStrokeColor(): Read<M, Swatch | NObj>;
-  set topEdgeStrokeColor(value: Swatch | string | NSet);
+  get topEdgeStrokeColor(): Read<M, Swatch | NObj | NothingEnum.NOTHING>;
+  set topEdgeStrokeColor(value: Swatch | string | NSet | NothingEnum.NOTHING);
 
   /** The tint (as a percentage) of the top edge border stroke. (Range: 0 to 100). */
   get topEdgeStrokeTint(): Read<M, number | NGet>;
-  set topEdgeStrokeTint(value: number | NSet);
+  set topEdgeStrokeTint(value: number | NSet | NothingEnum.NOTHING);
 
   /** If true, the top edge border stroke will overprint. */
   get topEdgeStrokeOverprint(): Read<M, boolean | NGet>;
-  set topEdgeStrokeOverprint(value: boolean | NSet);
+  set topEdgeStrokeOverprint(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the top edge border stroke. Note: Not valid when top edge stroke type is solid. */
-  get topEdgeStrokeGapColor(): Read<M, Swatch | NObj>;
-  set topEdgeStrokeGapColor(value: Swatch | string | NSet);
+  get topEdgeStrokeGapColor(): Read<M, Swatch | NObj | NothingEnum.NOTHING>;
+  set topEdgeStrokeGapColor(value: Swatch | string | NSet | NothingEnum.NOTHING);
 
   /** The tint (as a percentage) of the top edge border stroke gap color. (Range: 0 to 100) Note: Not valid when top edge stroke type is solid. */
   get topEdgeStrokeGapTint(): Read<M, number | NGet>;
-  set topEdgeStrokeGapTint(value: number | NSet);
+  set topEdgeStrokeGapTint(value: number | NSet | NothingEnum.NOTHING);
 
   /** If true, the gap color of the top edge border stroke will overprint. Note: Not valid when top edge stroke type is solid. */
   get topEdgeStrokeGapOverprint(): Read<M, boolean | NGet>;
-  set topEdgeStrokeGapOverprint(value: boolean | NSet);
+  set topEdgeStrokeGapOverprint(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The stroke weight of the right edge border stroke. */
   get rightEdgeStrokeWeight(): Read<M, number | NGet>;
-  set rightEdgeStrokeWeight(value: MeasurementValue | NSet);
+  set rightEdgeStrokeWeight(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The stroke type of the right edge. */
-  get rightEdgeStrokeType(): Read<M, StrokeStyle | NObj>;
-  set rightEdgeStrokeType(value: StrokeStyle | string | NSet);
+  get rightEdgeStrokeType(): Read<M, StrokeStyle | NObj | NothingEnum.NOTHING>;
+  set rightEdgeStrokeType(value: StrokeStyle | string | NSet | NothingEnum.NOTHING);
 
   /** The color, specified as a swatch, of the right edge border stroke. */
-  get rightEdgeStrokeColor(): Read<M, Swatch | NObj>;
-  set rightEdgeStrokeColor(value: Swatch | string | NSet);
+  get rightEdgeStrokeColor(): Read<M, Swatch | NObj | NothingEnum.NOTHING>;
+  set rightEdgeStrokeColor(value: Swatch | string | NSet | NothingEnum.NOTHING);
 
   /** The tint (as a percentage) of the right edge border stroke. (Range: 0 to 100). */
   get rightEdgeStrokeTint(): Read<M, number | NGet>;
-  set rightEdgeStrokeTint(value: number | NSet);
+  set rightEdgeStrokeTint(value: number | NSet | NothingEnum.NOTHING);
 
   /** If true, the right edge border stroke will overprint. */
   get rightEdgeStrokeOverprint(): Read<M, boolean | NGet>;
-  set rightEdgeStrokeOverprint(value: boolean | NSet);
+  set rightEdgeStrokeOverprint(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the right edge border stroke. Note: Not valid when right edge stroke type is solid. */
-  get rightEdgeStrokeGapColor(): Read<M, Swatch | NObj>;
-  set rightEdgeStrokeGapColor(value: Swatch | string | NSet);
+  get rightEdgeStrokeGapColor(): Read<M, Swatch | NObj | NothingEnum.NOTHING>;
+  set rightEdgeStrokeGapColor(value: Swatch | string | NSet | NothingEnum.NOTHING);
 
   /** The tint (as a percentage) of the right edge border stroke gap color. (Range: 0 to 100) Note: Not valid when right edge stroke type is solid. */
   get rightEdgeStrokeGapTint(): Read<M, number | NGet>;
-  set rightEdgeStrokeGapTint(value: number | NSet);
+  set rightEdgeStrokeGapTint(value: number | NSet | NothingEnum.NOTHING);
 
   /** If true, the gap color of the right edge border stroke will overprint. Note: Not valid when right edge stroke type is solid. */
   get rightEdgeStrokeGapOverprint(): Read<M, boolean | NGet>;
-  set rightEdgeStrokeGapOverprint(value: boolean | NSet);
+  set rightEdgeStrokeGapOverprint(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The stroke weight of the bottom edge border stroke. */
   get bottomEdgeStrokeWeight(): Read<M, number | NGet>;
-  set bottomEdgeStrokeWeight(value: MeasurementValue | NSet);
+  set bottomEdgeStrokeWeight(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The stroke type of the bottom edge. */
-  get bottomEdgeStrokeType(): Read<M, StrokeStyle | NObj>;
-  set bottomEdgeStrokeType(value: StrokeStyle | string | NSet);
+  get bottomEdgeStrokeType(): Read<M, StrokeStyle | NObj | NothingEnum.NOTHING>;
+  set bottomEdgeStrokeType(value: StrokeStyle | string | NSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the bottom edge border stroke. */
-  get bottomEdgeStrokeColor(): Read<M, Swatch | NObj>;
-  set bottomEdgeStrokeColor(value: Swatch | string | NSet);
+  get bottomEdgeStrokeColor(): Read<M, Swatch | NObj | NothingEnum.NOTHING>;
+  set bottomEdgeStrokeColor(value: Swatch | string | NSet | NothingEnum.NOTHING);
 
   /** The tint (as a percentage) of the bottom edge border stroke. */
   get bottomEdgeStrokeTint(): Read<M, number | NGet>;
-  set bottomEdgeStrokeTint(value: number | NSet);
+  set bottomEdgeStrokeTint(value: number | NSet | NothingEnum.NOTHING);
 
   /** If true, the bottom edge border stroke will overprint. */
   get bottomEdgeStrokeOverprint(): Read<M, boolean | NGet>;
-  set bottomEdgeStrokeOverprint(value: boolean | NSet);
+  set bottomEdgeStrokeOverprint(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the bottom edge border stroke. Note: Not valid when bottom edge stroke type is solid. */
-  get bottomEdgeStrokeGapColor(): Read<M, Swatch | NObj>;
-  set bottomEdgeStrokeGapColor(value: Swatch | string | NSet);
+  get bottomEdgeStrokeGapColor(): Read<M, Swatch | NObj | NothingEnum.NOTHING>;
+  set bottomEdgeStrokeGapColor(value: Swatch | string | NSet | NothingEnum.NOTHING);
 
   /** The tint (as a percentage) of the bottom edge border stroke gap color. (Range: 0 to 100) Note: Not valid when bottom edge stroke type is solid. */
   get bottomEdgeStrokeGapTint(): Read<M, number | NGet>;
-  set bottomEdgeStrokeGapTint(value: number | NSet);
+  set bottomEdgeStrokeGapTint(value: number | NSet | NothingEnum.NOTHING);
 
   /** If true, the gap color of the bottom edge border stroke will overprint. Note: Not valid when bottom edge stroke type is solid. */
   get bottomEdgeStrokeGapOverprint(): Read<M, boolean | NGet>;
-  set bottomEdgeStrokeGapOverprint(value: boolean | NSet);
+  set bottomEdgeStrokeGapOverprint(value: boolean | NSet | NothingEnum.NOTHING);
 }
+
 /**
  * Live cell formatting: edge and inner strokes, diagonal lines, text and
  * graphic insets, vertical justification, and first-baseline offset.
@@ -523,7 +525,7 @@ export interface TableCellAttributes {
   set paragraphSpacingLimit(value: MeasurementValue);
   /** The space between the baseline of the text and the top inset of the frame or cell. */
   get minimumFirstBaselineOffset(): number;
-  set minimumFirstBaselineOffset(value: number);
+  set minimumFirstBaselineOffset(value: number | string);
   /** The rotation angle (in degrees) of the cell, specified as one of the following values: 0, 90, 180, or 270. */
   get rotationAngle(): number;
   set rotationAngle(value: number);
@@ -626,6 +628,223 @@ export interface TableCellAttributes {
 }
 
 /**
+ * Live cell formatting: edge and inner strokes, diagonal lines, text and
+ * graphic insets, vertical justification, and first-baseline offset.
+ *
+ * Available on {@link Cell}, {@link Row}, and {@link Column}. The
+ * style-definition twin is {@link CellStyleAttributes}.
+ */
+export interface TableCellAttributesPlural {
+  /** The left inset of the graphic cell. */
+  get graphicLeftInset(): (number)[];
+  set graphicLeftInset(value: MeasurementValue);
+  /** The top inset of the graphic cell. */
+  get graphicTopInset(): (number)[];
+  set graphicTopInset(value: MeasurementValue);
+  /** The right inset of the graphic cell. */
+  get graphicRightInset(): (number)[];
+  set graphicRightInset(value: MeasurementValue);
+  /** The bottom inset of the graphic cell. */
+  get graphicBottomInset(): (number)[];
+  set graphicBottomInset(value: MeasurementValue);
+  /** If true, clips the graphic cell's content to width and height of the cell. */
+  get clipContentToGraphicCell(): (boolean)[];
+  set clipContentToGraphicCell(value: boolean);
+  /** The top inset of the text cell. */
+  get textTopInset(): (number)[];
+  set textTopInset(value: MeasurementValue);
+  /** The left inset of the text cell. */
+  get textLeftInset(): (number)[];
+  set textLeftInset(value: MeasurementValue);
+  /** The bottom inset of the text cell. */
+  get textBottomInset(): (number)[];
+  set textBottomInset(value: MeasurementValue);
+  /** The right inset of the text cell. */
+  get textRightInset(): (number)[];
+  set textRightInset(value: MeasurementValue);
+  /** If true, clips the text cell's content to width and height of the cell. */
+  get clipContentToTextCell(): (boolean)[];
+  set clipContentToTextCell(value: boolean);
+  /** The length (of a linear gradient) or radius (of a radial gradient) applied to the fill of the object. */
+  get gradientFillLength(): (number)[];
+  set gradientFillLength(value: number);
+  /** The angle of a linear gradient applied to the fill of the object. (Range: -180 to 180). */
+  get gradientFillAngle(): (number)[];
+  set gradientFillAngle(value: number);
+  /** The starting point (in page coordinates) of a gradient applied to the fill of the CellStyle, in the format [x, y]. */
+  get gradientFillStart(): (number[])[];
+  set gradientFillStart(value: number[]);
+  /** The top inset of the cell. The API has been deprecated. Use TextTopInset or GraphicTopInset. */
+  get topInset(): (number)[];
+  set topInset(value: MeasurementValue);
+  /** The left inset of the cell.The API has been deprecated. Use TextLeftInset or GraphicLeftInset. */
+  get leftInset(): (number)[];
+  set leftInset(value: MeasurementValue);
+  /** The bottom inset of the cell.The API has been deprecated. Use TextBottomInset or GraphicBottomInset. */
+  get bottomInset(): (number)[];
+  set bottomInset(value: MeasurementValue);
+  /** The right inset of the cell.The API has been deprecated. Use TextLeftInset or GraphicRightInset. */
+  get rightInset(): (number)[];
+  set rightInset(value: MeasurementValue);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of the object. */
+  get fillColor(): (Swatch)[];
+  set fillColor(value: Swatch | string);
+  /** The tint (as a percentage) of the fill of the object. */
+  get fillTint(): (number)[];
+  set fillTint(value: number);
+  /** If true, the fill of the object will overprint. */
+  get overprintFill(): (boolean)[];
+  set overprintFill(value: boolean);
+  /** If true, draws a diagonal line starting from the top left. */
+  get topLeftDiagonalLine(): (boolean)[];
+  set topLeftDiagonalLine(value: boolean);
+  /** If true, draws a diagonal line starting from the top right. */
+  get topRightDiagonalLine(): (boolean)[];
+  set topRightDiagonalLine(value: boolean);
+  /** If true, draws the diagonal line in front of cell contents. */
+  get diagonalLineInFront(): (boolean)[];
+  set diagonalLineInFront(value: boolean);
+  /** The stroke weight of the cell's diagonal line(s) — see {@link topLeftDiagonalLine} and {@link topRightDiagonalLine}. */
+  get diagonalLineStrokeWeight(): (number)[];
+  set diagonalLineStrokeWeight(value: MeasurementValue);
+  /** The stroke type of the diagonal line(s). */
+  get diagonalLineStrokeType(): (StrokeStyle)[];
+  set diagonalLineStrokeType(value: StrokeStyle | string);
+  /** The diagonal line color, specified as a swatch. */
+  get diagonalLineStrokeColor(): (Swatch)[];
+  set diagonalLineStrokeColor(value: Swatch | string);
+  /** The diagonal line tint (as a percentage). (Range: 0 to 100). */
+  get diagonalLineStrokeTint(): (number)[];
+  set diagonalLineStrokeTint(value: number);
+  /** If true, the diagonal line stroke will overprint. */
+  get diagonalLineStrokeOverprint(): (boolean)[];
+  set diagonalLineStrokeOverprint(value: boolean);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the diagonal line stroke. Note: Not valid when diagonal line stroke type is solid. */
+  get diagonalLineStrokeGapColor(): (Swatch)[];
+  set diagonalLineStrokeGapColor(value: Swatch | string);
+  /** The tint (as a percentage) of the diagonal line stroke gap color. Note: Not valid when diagonal line stroke type is solid. */
+  get diagonalLineStrokeGapTint(): (number)[];
+  set diagonalLineStrokeGapTint(value: number);
+  /** If true, the stroke gap of the diagonal line will overprint. Note: Not valid when diagonal line stroke type is solid. */
+  get diagonalLineStrokeGapOverprint(): (boolean)[];
+  set diagonalLineStrokeGapOverprint(value: boolean);
+  /** If true, clips the cell's content to width and height of the cell. The API has been deprecated. Use ClipContentsToTextCell or ClipContentsToPageItemCell. */
+  get clipContentToCell(): (boolean)[];
+  set clipContentToCell(value: boolean);
+  /** How the distance between the first line's baseline and the cell's top inset is measured. See {@link FirstBaseline}. */
+  get firstBaselineOffset(): (FirstBaseline)[];
+  set firstBaselineOffset(value: FirstBaseline);
+  /** The vertical alignment of cell. */
+  get verticalJustification(): (VerticalJustification)[];
+  set verticalJustification(value: VerticalJustification);
+  /** The maximum space that can be added between paragraphs in a cell. Note: Valid only when vertical justification is justified. */
+  get paragraphSpacingLimit(): (number)[];
+  set paragraphSpacingLimit(value: MeasurementValue);
+  /** The space between the baseline of the text and the top inset of the frame or cell. */
+  get minimumFirstBaselineOffset(): (number)[];
+  set minimumFirstBaselineOffset(value: number | string);
+  /** The rotation angle (in degrees) of the cell, specified as one of the following values: 0, 90, 180, or 270. */
+  get rotationAngle(): (number)[];
+  set rotationAngle(value: number);
+  /** The stroke weight of the left edge border stroke. */
+  get leftEdgeStrokeWeight(): (number)[];
+  set leftEdgeStrokeWeight(value: MeasurementValue);
+  /** The stroke type of the left edge. */
+  get leftEdgeStrokeType(): (StrokeStyle)[];
+  set leftEdgeStrokeType(value: StrokeStyle | string);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the left edge border stroke. */
+  get leftEdgeStrokeColor(): (Swatch)[];
+  set leftEdgeStrokeColor(value: Swatch | string);
+  /** The tint (as a percentage) of the left edge border stroke. (Range: 0 to 100). */
+  get leftEdgeStrokeTint(): (number)[];
+  set leftEdgeStrokeTint(value: number);
+  /** If true, the left edge border stroke will overprint. */
+  get leftEdgeStrokeOverprint(): (boolean)[];
+  set leftEdgeStrokeOverprint(value: boolean);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the left edge border stroke. Note: Not valid when left edge stroke type is solid. */
+  get leftEdgeStrokeGapColor(): (Swatch)[];
+  set leftEdgeStrokeGapColor(value: Swatch | string);
+  /** The tint (as a percentage) of the left edge border stroke gap color. (Range: 0 to 100) Note: Not valid when left edge stroke type is solid. */
+  get leftEdgeStrokeGapTint(): (number)[];
+  set leftEdgeStrokeGapTint(value: number);
+  /** If true, the gap color of the left edge border stroke will overprint. Note: Not valid when left edge stroke type is solid. */
+  get leftEdgeStrokeGapOverprint(): (boolean)[];
+  set leftEdgeStrokeGapOverprint(value: boolean);
+  /** The stroke weight of the top edge border stroke. */
+  get topEdgeStrokeWeight(): (number)[];
+  set topEdgeStrokeWeight(value: MeasurementValue);
+  /** The stroke type of the top edge. */
+  get topEdgeStrokeType(): (StrokeStyle)[];
+  set topEdgeStrokeType(value: StrokeStyle | string);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the top edge border stroke. */
+  get topEdgeStrokeColor(): (Swatch)[];
+  set topEdgeStrokeColor(value: Swatch | string);
+  /** The tint (as a percentage) of the top edge border stroke. (Range: 0 to 100). */
+  get topEdgeStrokeTint(): (number)[];
+  set topEdgeStrokeTint(value: number);
+  /** If true, the top edge border stroke will overprint. */
+  get topEdgeStrokeOverprint(): (boolean)[];
+  set topEdgeStrokeOverprint(value: boolean);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the top edge border stroke. Note: Not valid when top edge stroke type is solid. */
+  get topEdgeStrokeGapColor(): (Swatch)[];
+  set topEdgeStrokeGapColor(value: Swatch | string);
+  /** The tint (as a percentage) of the top edge border stroke gap color. (Range: 0 to 100) Note: Not valid when top edge stroke type is solid. */
+  get topEdgeStrokeGapTint(): (number)[];
+  set topEdgeStrokeGapTint(value: number);
+  /** If true, the gap color of the top edge border stroke will overprint. Note: Not valid when top edge stroke type is solid. */
+  get topEdgeStrokeGapOverprint(): (boolean)[];
+  set topEdgeStrokeGapOverprint(value: boolean);
+  /** The stroke weight of the right edge border stroke. */
+  get rightEdgeStrokeWeight(): (number)[];
+  set rightEdgeStrokeWeight(value: MeasurementValue);
+  /** The stroke type of the right edge. */
+  get rightEdgeStrokeType(): (StrokeStyle)[];
+  set rightEdgeStrokeType(value: StrokeStyle | string);
+  /** The color, specified as a swatch, of the right edge border stroke. */
+  get rightEdgeStrokeColor(): (Swatch)[];
+  set rightEdgeStrokeColor(value: Swatch | string);
+  /** The tint (as a percentage) of the right edge border stroke. (Range: 0 to 100). */
+  get rightEdgeStrokeTint(): (number)[];
+  set rightEdgeStrokeTint(value: number);
+  /** If true, the right edge border stroke will overprint. */
+  get rightEdgeStrokeOverprint(): (boolean)[];
+  set rightEdgeStrokeOverprint(value: boolean);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the right edge border stroke. Note: Not valid when right edge stroke type is solid. */
+  get rightEdgeStrokeGapColor(): (Swatch)[];
+  set rightEdgeStrokeGapColor(value: Swatch | string);
+  /** The tint (as a percentage) of the right edge border stroke gap color. (Range: 0 to 100) Note: Not valid when right edge stroke type is solid. */
+  get rightEdgeStrokeGapTint(): (number)[];
+  set rightEdgeStrokeGapTint(value: number);
+  /** If true, the gap color of the right edge border stroke will overprint. Note: Not valid when right edge stroke type is solid. */
+  get rightEdgeStrokeGapOverprint(): (boolean)[];
+  set rightEdgeStrokeGapOverprint(value: boolean);
+  /** The stroke weight of the bottom edge border stroke. */
+  get bottomEdgeStrokeWeight(): (number)[];
+  set bottomEdgeStrokeWeight(value: MeasurementValue);
+  /** The stroke type of the bottom edge. */
+  get bottomEdgeStrokeType(): (StrokeStyle)[];
+  set bottomEdgeStrokeType(value: StrokeStyle | string);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the bottom edge border stroke. */
+  get bottomEdgeStrokeColor(): (Swatch)[];
+  set bottomEdgeStrokeColor(value: Swatch | string);
+  /** The tint (as a percentage) of the bottom edge border stroke. */
+  get bottomEdgeStrokeTint(): (number)[];
+  set bottomEdgeStrokeTint(value: number);
+  /** If true, the bottom edge border stroke will overprint. */
+  get bottomEdgeStrokeOverprint(): (boolean)[];
+  set bottomEdgeStrokeOverprint(value: boolean);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the bottom edge border stroke. Note: Not valid when bottom edge stroke type is solid. */
+  get bottomEdgeStrokeGapColor(): (Swatch)[];
+  set bottomEdgeStrokeGapColor(value: Swatch | string);
+  /** The tint (as a percentage) of the bottom edge border stroke gap color. (Range: 0 to 100) Note: Not valid when bottom edge stroke type is solid. */
+  get bottomEdgeStrokeGapTint(): (number)[];
+  set bottomEdgeStrokeGapTint(value: number);
+  /** If true, the gap color of the bottom edge border stroke will overprint. Note: Not valid when bottom edge stroke type is solid. */
+  get bottomEdgeStrokeGapOverprint(): (boolean)[];
+  set bottomEdgeStrokeGapOverprint(value: boolean);
+}
+
+/**
  * Cell formatting stored as a named **style definition** ({@link CellStyle}).
  *
  * Same attributes as {@link TableCellAttributes}, but any attribute the style
@@ -635,211 +854,211 @@ export interface TableCellAttributes {
 export interface CellStyleAttributes {
   /** The left inset of the graphic cell. */
   get graphicLeftInset(): number | NothingEnum.NOTHING;
-  set graphicLeftInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set graphicLeftInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The top inset of the graphic cell. */
   get graphicTopInset(): number | NothingEnum.NOTHING;
-  set graphicTopInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set graphicTopInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The right inset of the graphic cell. */
   get graphicRightInset(): number | NothingEnum.NOTHING;
-  set graphicRightInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set graphicRightInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The bottom inset of the graphic cell. */
   get graphicBottomInset(): number | NothingEnum.NOTHING;
-  set graphicBottomInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set graphicBottomInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, clips the graphic cell's content to width and height of the cell. */
   get clipContentToGraphicCell(): boolean | NothingEnum.NOTHING;
-  set clipContentToGraphicCell(value: boolean | NothingEnum.NOTHING);
+  set clipContentToGraphicCell(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The top inset of the text cell. */
   get textTopInset(): number | NothingEnum.NOTHING;
-  set textTopInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set textTopInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The left inset of the text cell. */
   get textLeftInset(): number | NothingEnum.NOTHING;
-  set textLeftInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set textLeftInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The bottom inset of the text cell. */
   get textBottomInset(): number | NothingEnum.NOTHING;
-  set textBottomInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set textBottomInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The right inset of the text cell. */
   get textRightInset(): number | NothingEnum.NOTHING;
-  set textRightInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set textRightInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, clips the text cell's content to width and height of the cell. */
   get clipContentToTextCell(): boolean | NothingEnum.NOTHING;
-  set clipContentToTextCell(value: boolean | NothingEnum.NOTHING);
+  set clipContentToTextCell(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The length (of a linear gradient) or radius (of a radial gradient) applied to the fill of the object. */
   get gradientFillLength(): number | NothingEnum.NOTHING;
-  set gradientFillLength(value: number | NothingEnum.NOTHING);
+  set gradientFillLength(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The angle of a linear gradient applied to the fill of the object. (Range: -180 to 180). */
   get gradientFillAngle(): number | NothingEnum.NOTHING;
-  set gradientFillAngle(value: number | NothingEnum.NOTHING);
+  set gradientFillAngle(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The starting point (in page coordinates) of a gradient applied to the fill of the CellStyle, in the format [x, y]. */
   get gradientFillStart(): number[] | NothingEnum.NOTHING;
-  set gradientFillStart(value: number[] | NothingEnum.NOTHING);
+  set gradientFillStart(value: number[] | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The top inset of the cell. The API has been deprecated. Use TextTopInset or GraphicTopInset. */
   get topInset(): number | NothingEnum.NOTHING;
-  set topInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set topInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The left inset of the cell.The API has been deprecated. Use TextLeftInset or GraphicLeftInset. */
   get leftInset(): number | NothingEnum.NOTHING;
-  set leftInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set leftInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The bottom inset of the cell.The API has been deprecated. Use TextBottomInset or GraphicBottomInset. */
   get bottomInset(): number | NothingEnum.NOTHING;
-  set bottomInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set bottomInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The right inset of the cell.The API has been deprecated. Use TextLeftInset or GraphicRightInset. */
   get rightInset(): number | NothingEnum.NOTHING;
-  set rightInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set rightInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of the object. */
-  get fillColor(): Swatch | null;
-  set fillColor(value: Swatch | string | NothingEnum.NOTHING);
+  get fillColor(): Swatch | null | NothingEnum.NOTHING;
+  set fillColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the fill of the object. */
   get fillTint(): number | NothingEnum.NOTHING;
-  set fillTint(value: number | NothingEnum.NOTHING);
+  set fillTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the fill of the object will overprint. */
   get overprintFill(): boolean | NothingEnum.NOTHING;
-  set overprintFill(value: boolean | NothingEnum.NOTHING);
+  set overprintFill(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, draws a diagonal line starting from the top left. */
   get topLeftDiagonalLine(): boolean | NothingEnum.NOTHING;
-  set topLeftDiagonalLine(value: boolean | NothingEnum.NOTHING);
+  set topLeftDiagonalLine(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, draws a diagonal line starting from the top right. */
   get topRightDiagonalLine(): boolean | NothingEnum.NOTHING;
-  set topRightDiagonalLine(value: boolean | NothingEnum.NOTHING);
+  set topRightDiagonalLine(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, draws the diagonal line in front of cell contents. */
   get diagonalLineInFront(): boolean | NothingEnum.NOTHING;
-  set diagonalLineInFront(value: boolean | NothingEnum.NOTHING);
+  set diagonalLineInFront(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke weight of the cell's diagonal line(s) — see {@link topLeftDiagonalLine} and {@link topRightDiagonalLine}. */
   get diagonalLineStrokeWeight(): number | NothingEnum.NOTHING;
-  set diagonalLineStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
+  set diagonalLineStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke type of the diagonal line(s). */
-  get diagonalLineStrokeType(): StrokeStyle | null;
-  set diagonalLineStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
+  get diagonalLineStrokeType(): StrokeStyle | null | NothingEnum.NOTHING;
+  set diagonalLineStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The diagonal line color, specified as a swatch. */
-  get diagonalLineStrokeColor(): Swatch | null;
-  set diagonalLineStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
+  get diagonalLineStrokeColor(): Swatch | null | NothingEnum.NOTHING;
+  set diagonalLineStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The diagonal line tint (as a percentage). (Range: 0 to 100). */
   get diagonalLineStrokeTint(): number | NothingEnum.NOTHING;
-  set diagonalLineStrokeTint(value: number | NothingEnum.NOTHING);
+  set diagonalLineStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the diagonal line stroke will overprint. */
   get diagonalLineStrokeOverprint(): boolean | NothingEnum.NOTHING;
-  set diagonalLineStrokeOverprint(value: boolean | NothingEnum.NOTHING);
+  set diagonalLineStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the diagonal line stroke. Note: Not valid when diagonal line stroke type is solid. */
-  get diagonalLineStrokeGapColor(): Swatch | null;
-  set diagonalLineStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
+  get diagonalLineStrokeGapColor(): Swatch | null | NothingEnum.NOTHING;
+  set diagonalLineStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the diagonal line stroke gap color. Note: Not valid when diagonal line stroke type is solid. */
   get diagonalLineStrokeGapTint(): number | NothingEnum.NOTHING;
-  set diagonalLineStrokeGapTint(value: number | NothingEnum.NOTHING);
+  set diagonalLineStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the stroke gap of the diagonal line will overprint. Note: Not valid when diagonal line stroke type is solid. */
   get diagonalLineStrokeGapOverprint(): boolean | NothingEnum.NOTHING;
-  set diagonalLineStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
+  set diagonalLineStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, clips the cell's content to width and height of the cell. The API has been deprecated. Use ClipContentsToTextCell or ClipContentsToPageItemCell. */
   get clipContentToCell(): boolean | NothingEnum.NOTHING;
-  set clipContentToCell(value: boolean | NothingEnum.NOTHING);
+  set clipContentToCell(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** How the distance between the first line's baseline and the cell's top inset is measured. See {@link FirstBaseline}. */
   get firstBaselineOffset(): FirstBaseline | NothingEnum.NOTHING;
-  set firstBaselineOffset(value: FirstBaseline | NothingEnum.NOTHING);
+  set firstBaselineOffset(value: FirstBaseline | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The vertical alignment of cell. */
   get verticalJustification(): VerticalJustification | NothingEnum.NOTHING;
-  set verticalJustification(value: VerticalJustification | NothingEnum.NOTHING);
+  set verticalJustification(value: VerticalJustification | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The maximum space that can be added between paragraphs in a cell. Note: Valid only when vertical justification is justified. */
   get paragraphSpacingLimit(): number | NothingEnum.NOTHING;
-  set paragraphSpacingLimit(value: MeasurementValue | NothingEnum.NOTHING);
+  set paragraphSpacingLimit(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The space between the baseline of the text and the top inset of the frame or cell. */
   get minimumFirstBaselineOffset(): number | NothingEnum.NOTHING;
-  set minimumFirstBaselineOffset(value: number | NothingEnum.NOTHING);
+  set minimumFirstBaselineOffset(value: number | NothingEnum.NOTHING | string | NothingEnum.NOTHING);
   /** The rotation angle (in degrees) of the cell, specified as one of the following values: 0, 90, 180, or 270. */
   get rotationAngle(): number | NothingEnum.NOTHING;
-  set rotationAngle(value: number | NothingEnum.NOTHING);
+  set rotationAngle(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke weight of the left edge border stroke. */
   get leftEdgeStrokeWeight(): number | NothingEnum.NOTHING;
-  set leftEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
+  set leftEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke type of the left edge. */
-  get leftEdgeStrokeType(): StrokeStyle | null;
-  set leftEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
+  get leftEdgeStrokeType(): StrokeStyle | null | NothingEnum.NOTHING;
+  set leftEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the left edge border stroke. */
-  get leftEdgeStrokeColor(): Swatch | null;
-  set leftEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
+  get leftEdgeStrokeColor(): Swatch | null | NothingEnum.NOTHING;
+  set leftEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the left edge border stroke. (Range: 0 to 100). */
   get leftEdgeStrokeTint(): number | NothingEnum.NOTHING;
-  set leftEdgeStrokeTint(value: number | NothingEnum.NOTHING);
+  set leftEdgeStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the left edge border stroke will overprint. */
   get leftEdgeStrokeOverprint(): boolean | NothingEnum.NOTHING;
-  set leftEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING);
+  set leftEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the left edge border stroke. Note: Not valid when left edge stroke type is solid. */
-  get leftEdgeStrokeGapColor(): Swatch | null;
-  set leftEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
+  get leftEdgeStrokeGapColor(): Swatch | null | NothingEnum.NOTHING;
+  set leftEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the left edge border stroke gap color. (Range: 0 to 100) Note: Not valid when left edge stroke type is solid. */
   get leftEdgeStrokeGapTint(): number | NothingEnum.NOTHING;
-  set leftEdgeStrokeGapTint(value: number | NothingEnum.NOTHING);
+  set leftEdgeStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the gap color of the left edge border stroke will overprint. Note: Not valid when left edge stroke type is solid. */
   get leftEdgeStrokeGapOverprint(): boolean | NothingEnum.NOTHING;
-  set leftEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
+  set leftEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke weight of the top edge border stroke. */
   get topEdgeStrokeWeight(): number | NothingEnum.NOTHING;
-  set topEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
+  set topEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke type of the top edge. */
-  get topEdgeStrokeType(): StrokeStyle | null;
-  set topEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
+  get topEdgeStrokeType(): StrokeStyle | null | NothingEnum.NOTHING;
+  set topEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the top edge border stroke. */
-  get topEdgeStrokeColor(): Swatch | null;
-  set topEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
+  get topEdgeStrokeColor(): Swatch | null | NothingEnum.NOTHING;
+  set topEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the top edge border stroke. (Range: 0 to 100). */
   get topEdgeStrokeTint(): number | NothingEnum.NOTHING;
-  set topEdgeStrokeTint(value: number | NothingEnum.NOTHING);
+  set topEdgeStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the top edge border stroke will overprint. */
   get topEdgeStrokeOverprint(): boolean | NothingEnum.NOTHING;
-  set topEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING);
+  set topEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the top edge border stroke. Note: Not valid when top edge stroke type is solid. */
-  get topEdgeStrokeGapColor(): Swatch | null;
-  set topEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
+  get topEdgeStrokeGapColor(): Swatch | null | NothingEnum.NOTHING;
+  set topEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the top edge border stroke gap color. (Range: 0 to 100) Note: Not valid when top edge stroke type is solid. */
   get topEdgeStrokeGapTint(): number | NothingEnum.NOTHING;
-  set topEdgeStrokeGapTint(value: number | NothingEnum.NOTHING);
+  set topEdgeStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the gap color of the top edge border stroke will overprint. Note: Not valid when top edge stroke type is solid. */
   get topEdgeStrokeGapOverprint(): boolean | NothingEnum.NOTHING;
-  set topEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
+  set topEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke weight of the right edge border stroke. */
   get rightEdgeStrokeWeight(): number | NothingEnum.NOTHING;
-  set rightEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
+  set rightEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke type of the right edge. */
-  get rightEdgeStrokeType(): StrokeStyle | null;
-  set rightEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
+  get rightEdgeStrokeType(): StrokeStyle | null | NothingEnum.NOTHING;
+  set rightEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The color, specified as a swatch, of the right edge border stroke. */
-  get rightEdgeStrokeColor(): Swatch | null;
-  set rightEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
+  get rightEdgeStrokeColor(): Swatch | null | NothingEnum.NOTHING;
+  set rightEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the right edge border stroke. (Range: 0 to 100). */
   get rightEdgeStrokeTint(): number | NothingEnum.NOTHING;
-  set rightEdgeStrokeTint(value: number | NothingEnum.NOTHING);
+  set rightEdgeStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the right edge border stroke will overprint. */
   get rightEdgeStrokeOverprint(): boolean | NothingEnum.NOTHING;
-  set rightEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING);
+  set rightEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the right edge border stroke. Note: Not valid when right edge stroke type is solid. */
-  get rightEdgeStrokeGapColor(): Swatch | null;
-  set rightEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
+  get rightEdgeStrokeGapColor(): Swatch | null | NothingEnum.NOTHING;
+  set rightEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the right edge border stroke gap color. (Range: 0 to 100) Note: Not valid when right edge stroke type is solid. */
   get rightEdgeStrokeGapTint(): number | NothingEnum.NOTHING;
-  set rightEdgeStrokeGapTint(value: number | NothingEnum.NOTHING);
+  set rightEdgeStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the gap color of the right edge border stroke will overprint. Note: Not valid when right edge stroke type is solid. */
   get rightEdgeStrokeGapOverprint(): boolean | NothingEnum.NOTHING;
-  set rightEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
+  set rightEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke weight of the bottom edge border stroke. */
   get bottomEdgeStrokeWeight(): number | NothingEnum.NOTHING;
-  set bottomEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
+  set bottomEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke type of the bottom edge. */
-  get bottomEdgeStrokeType(): StrokeStyle | null;
-  set bottomEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
+  get bottomEdgeStrokeType(): StrokeStyle | null | NothingEnum.NOTHING;
+  set bottomEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the bottom edge border stroke. */
-  get bottomEdgeStrokeColor(): Swatch | null;
-  set bottomEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
+  get bottomEdgeStrokeColor(): Swatch | null | NothingEnum.NOTHING;
+  set bottomEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the bottom edge border stroke. */
   get bottomEdgeStrokeTint(): number | NothingEnum.NOTHING;
-  set bottomEdgeStrokeTint(value: number | NothingEnum.NOTHING);
+  set bottomEdgeStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the bottom edge border stroke will overprint. */
   get bottomEdgeStrokeOverprint(): boolean | NothingEnum.NOTHING;
-  set bottomEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING);
+  set bottomEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the bottom edge border stroke. Note: Not valid when bottom edge stroke type is solid. */
-  get bottomEdgeStrokeGapColor(): Swatch | null;
-  set bottomEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
+  get bottomEdgeStrokeGapColor(): Swatch | null | NothingEnum.NOTHING;
+  set bottomEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the bottom edge border stroke gap color. (Range: 0 to 100) Note: Not valid when bottom edge stroke type is solid. */
   get bottomEdgeStrokeGapTint(): number | NothingEnum.NOTHING;
-  set bottomEdgeStrokeGapTint(value: number | NothingEnum.NOTHING);
+  set bottomEdgeStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the gap color of the bottom edge border stroke will overprint. Note: Not valid when bottom edge stroke type is solid. */
   get bottomEdgeStrokeGapOverprint(): boolean | NothingEnum.NOTHING;
-  set bottomEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
+  set bottomEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /**
    * The {@link ParagraphStyle} the cell style applies to text in the cell, or
    * {@link NothingEnum.NOTHING} when the style leaves it unset.
@@ -851,6 +1070,231 @@ export interface CellStyleAttributes {
   set appliedParagraphStyle(value: ParagraphStyle | string | NothingEnum.NOTHING);
 }
 
+/**
+ * Cell formatting stored as a named **style definition** ({@link CellStyle}).
+ *
+ * Same attributes as {@link TableCellAttributes}, but any attribute the style
+ * leaves unset reads back and accepts {@link NothingEnum.NOTHING} instead of
+ * a resolved value.
+ */
+export interface CellStyleAttributesPlural {
+  /** The left inset of the graphic cell. */
+  get graphicLeftInset(): (number | NothingEnum.NOTHING)[];
+  set graphicLeftInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The top inset of the graphic cell. */
+  get graphicTopInset(): (number | NothingEnum.NOTHING)[];
+  set graphicTopInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The right inset of the graphic cell. */
+  get graphicRightInset(): (number | NothingEnum.NOTHING)[];
+  set graphicRightInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The bottom inset of the graphic cell. */
+  get graphicBottomInset(): (number | NothingEnum.NOTHING)[];
+  set graphicBottomInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** If true, clips the graphic cell's content to width and height of the cell. */
+  get clipContentToGraphicCell(): (boolean | NothingEnum.NOTHING)[];
+  set clipContentToGraphicCell(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The top inset of the text cell. */
+  get textTopInset(): (number | NothingEnum.NOTHING)[];
+  set textTopInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The left inset of the text cell. */
+  get textLeftInset(): (number | NothingEnum.NOTHING)[];
+  set textLeftInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The bottom inset of the text cell. */
+  get textBottomInset(): (number | NothingEnum.NOTHING)[];
+  set textBottomInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The right inset of the text cell. */
+  get textRightInset(): (number | NothingEnum.NOTHING)[];
+  set textRightInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** If true, clips the text cell's content to width and height of the cell. */
+  get clipContentToTextCell(): (boolean | NothingEnum.NOTHING)[];
+  set clipContentToTextCell(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The length (of a linear gradient) or radius (of a radial gradient) applied to the fill of the object. */
+  get gradientFillLength(): (number | NothingEnum.NOTHING)[];
+  set gradientFillLength(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The angle of a linear gradient applied to the fill of the object. (Range: -180 to 180). */
+  get gradientFillAngle(): (number | NothingEnum.NOTHING)[];
+  set gradientFillAngle(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The starting point (in page coordinates) of a gradient applied to the fill of the CellStyle, in the format [x, y]. */
+  get gradientFillStart(): (number[] | NothingEnum.NOTHING)[];
+  set gradientFillStart(value: number[] | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The top inset of the cell. The API has been deprecated. Use TextTopInset or GraphicTopInset. */
+  get topInset(): (number | NothingEnum.NOTHING)[];
+  set topInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The left inset of the cell.The API has been deprecated. Use TextLeftInset or GraphicLeftInset. */
+  get leftInset(): (number | NothingEnum.NOTHING)[];
+  set leftInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The bottom inset of the cell.The API has been deprecated. Use TextBottomInset or GraphicBottomInset. */
+  get bottomInset(): (number | NothingEnum.NOTHING)[];
+  set bottomInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The right inset of the cell.The API has been deprecated. Use TextLeftInset or GraphicRightInset. */
+  get rightInset(): (number | NothingEnum.NOTHING)[];
+  set rightInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of the object. */
+  get fillColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set fillColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The tint (as a percentage) of the fill of the object. */
+  get fillTint(): (number | NothingEnum.NOTHING)[];
+  set fillTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** If true, the fill of the object will overprint. */
+  get overprintFill(): (boolean | NothingEnum.NOTHING)[];
+  set overprintFill(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** If true, draws a diagonal line starting from the top left. */
+  get topLeftDiagonalLine(): (boolean | NothingEnum.NOTHING)[];
+  set topLeftDiagonalLine(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** If true, draws a diagonal line starting from the top right. */
+  get topRightDiagonalLine(): (boolean | NothingEnum.NOTHING)[];
+  set topRightDiagonalLine(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** If true, draws the diagonal line in front of cell contents. */
+  get diagonalLineInFront(): (boolean | NothingEnum.NOTHING)[];
+  set diagonalLineInFront(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The stroke weight of the cell's diagonal line(s) — see {@link topLeftDiagonalLine} and {@link topRightDiagonalLine}. */
+  get diagonalLineStrokeWeight(): (number | NothingEnum.NOTHING)[];
+  set diagonalLineStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The stroke type of the diagonal line(s). */
+  get diagonalLineStrokeType(): (StrokeStyle | null | NothingEnum.NOTHING)[];
+  set diagonalLineStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The diagonal line color, specified as a swatch. */
+  get diagonalLineStrokeColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set diagonalLineStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The diagonal line tint (as a percentage). (Range: 0 to 100). */
+  get diagonalLineStrokeTint(): (number | NothingEnum.NOTHING)[];
+  set diagonalLineStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** If true, the diagonal line stroke will overprint. */
+  get diagonalLineStrokeOverprint(): (boolean | NothingEnum.NOTHING)[];
+  set diagonalLineStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the diagonal line stroke. Note: Not valid when diagonal line stroke type is solid. */
+  get diagonalLineStrokeGapColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set diagonalLineStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The tint (as a percentage) of the diagonal line stroke gap color. Note: Not valid when diagonal line stroke type is solid. */
+  get diagonalLineStrokeGapTint(): (number | NothingEnum.NOTHING)[];
+  set diagonalLineStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** If true, the stroke gap of the diagonal line will overprint. Note: Not valid when diagonal line stroke type is solid. */
+  get diagonalLineStrokeGapOverprint(): (boolean | NothingEnum.NOTHING)[];
+  set diagonalLineStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** If true, clips the cell's content to width and height of the cell. The API has been deprecated. Use ClipContentsToTextCell or ClipContentsToPageItemCell. */
+  get clipContentToCell(): (boolean | NothingEnum.NOTHING)[];
+  set clipContentToCell(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** How the distance between the first line's baseline and the cell's top inset is measured. See {@link FirstBaseline}. */
+  get firstBaselineOffset(): (FirstBaseline | NothingEnum.NOTHING)[];
+  set firstBaselineOffset(value: FirstBaseline | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The vertical alignment of cell. */
+  get verticalJustification(): (VerticalJustification | NothingEnum.NOTHING)[];
+  set verticalJustification(value: VerticalJustification | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The maximum space that can be added between paragraphs in a cell. Note: Valid only when vertical justification is justified. */
+  get paragraphSpacingLimit(): (number | NothingEnum.NOTHING)[];
+  set paragraphSpacingLimit(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The space between the baseline of the text and the top inset of the frame or cell. */
+  get minimumFirstBaselineOffset(): (number | NothingEnum.NOTHING)[];
+  set minimumFirstBaselineOffset(value: number | NothingEnum.NOTHING | string | NothingEnum.NOTHING);
+  /** The rotation angle (in degrees) of the cell, specified as one of the following values: 0, 90, 180, or 270. */
+  get rotationAngle(): (number | NothingEnum.NOTHING)[];
+  set rotationAngle(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The stroke weight of the left edge border stroke. */
+  get leftEdgeStrokeWeight(): (number | NothingEnum.NOTHING)[];
+  set leftEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The stroke type of the left edge. */
+  get leftEdgeStrokeType(): (StrokeStyle | null | NothingEnum.NOTHING)[];
+  set leftEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the left edge border stroke. */
+  get leftEdgeStrokeColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set leftEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The tint (as a percentage) of the left edge border stroke. (Range: 0 to 100). */
+  get leftEdgeStrokeTint(): (number | NothingEnum.NOTHING)[];
+  set leftEdgeStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** If true, the left edge border stroke will overprint. */
+  get leftEdgeStrokeOverprint(): (boolean | NothingEnum.NOTHING)[];
+  set leftEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the left edge border stroke. Note: Not valid when left edge stroke type is solid. */
+  get leftEdgeStrokeGapColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set leftEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The tint (as a percentage) of the left edge border stroke gap color. (Range: 0 to 100) Note: Not valid when left edge stroke type is solid. */
+  get leftEdgeStrokeGapTint(): (number | NothingEnum.NOTHING)[];
+  set leftEdgeStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** If true, the gap color of the left edge border stroke will overprint. Note: Not valid when left edge stroke type is solid. */
+  get leftEdgeStrokeGapOverprint(): (boolean | NothingEnum.NOTHING)[];
+  set leftEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The stroke weight of the top edge border stroke. */
+  get topEdgeStrokeWeight(): (number | NothingEnum.NOTHING)[];
+  set topEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The stroke type of the top edge. */
+  get topEdgeStrokeType(): (StrokeStyle | null | NothingEnum.NOTHING)[];
+  set topEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the top edge border stroke. */
+  get topEdgeStrokeColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set topEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The tint (as a percentage) of the top edge border stroke. (Range: 0 to 100). */
+  get topEdgeStrokeTint(): (number | NothingEnum.NOTHING)[];
+  set topEdgeStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** If true, the top edge border stroke will overprint. */
+  get topEdgeStrokeOverprint(): (boolean | NothingEnum.NOTHING)[];
+  set topEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the top edge border stroke. Note: Not valid when top edge stroke type is solid. */
+  get topEdgeStrokeGapColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set topEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The tint (as a percentage) of the top edge border stroke gap color. (Range: 0 to 100) Note: Not valid when top edge stroke type is solid. */
+  get topEdgeStrokeGapTint(): (number | NothingEnum.NOTHING)[];
+  set topEdgeStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** If true, the gap color of the top edge border stroke will overprint. Note: Not valid when top edge stroke type is solid. */
+  get topEdgeStrokeGapOverprint(): (boolean | NothingEnum.NOTHING)[];
+  set topEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The stroke weight of the right edge border stroke. */
+  get rightEdgeStrokeWeight(): (number | NothingEnum.NOTHING)[];
+  set rightEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The stroke type of the right edge. */
+  get rightEdgeStrokeType(): (StrokeStyle | null | NothingEnum.NOTHING)[];
+  set rightEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The color, specified as a swatch, of the right edge border stroke. */
+  get rightEdgeStrokeColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set rightEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The tint (as a percentage) of the right edge border stroke. (Range: 0 to 100). */
+  get rightEdgeStrokeTint(): (number | NothingEnum.NOTHING)[];
+  set rightEdgeStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** If true, the right edge border stroke will overprint. */
+  get rightEdgeStrokeOverprint(): (boolean | NothingEnum.NOTHING)[];
+  set rightEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the right edge border stroke. Note: Not valid when right edge stroke type is solid. */
+  get rightEdgeStrokeGapColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set rightEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The tint (as a percentage) of the right edge border stroke gap color. (Range: 0 to 100) Note: Not valid when right edge stroke type is solid. */
+  get rightEdgeStrokeGapTint(): (number | NothingEnum.NOTHING)[];
+  set rightEdgeStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** If true, the gap color of the right edge border stroke will overprint. Note: Not valid when right edge stroke type is solid. */
+  get rightEdgeStrokeGapOverprint(): (boolean | NothingEnum.NOTHING)[];
+  set rightEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The stroke weight of the bottom edge border stroke. */
+  get bottomEdgeStrokeWeight(): (number | NothingEnum.NOTHING)[];
+  set bottomEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The stroke type of the bottom edge. */
+  get bottomEdgeStrokeType(): (StrokeStyle | null | NothingEnum.NOTHING)[];
+  set bottomEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the bottom edge border stroke. */
+  get bottomEdgeStrokeColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set bottomEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The tint (as a percentage) of the bottom edge border stroke. */
+  get bottomEdgeStrokeTint(): (number | NothingEnum.NOTHING)[];
+  set bottomEdgeStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** If true, the bottom edge border stroke will overprint. */
+  get bottomEdgeStrokeOverprint(): (boolean | NothingEnum.NOTHING)[];
+  set bottomEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the bottom edge border stroke. Note: Not valid when bottom edge stroke type is solid. */
+  get bottomEdgeStrokeGapColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set bottomEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** The tint (as a percentage) of the bottom edge border stroke gap color. (Range: 0 to 100) Note: Not valid when bottom edge stroke type is solid. */
+  get bottomEdgeStrokeGapTint(): (number | NothingEnum.NOTHING)[];
+  set bottomEdgeStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /** If true, the gap color of the bottom edge border stroke will overprint. Note: Not valid when bottom edge stroke type is solid. */
+  get bottomEdgeStrokeGapOverprint(): (boolean | NothingEnum.NOTHING)[];
+  set bottomEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
+  /**
+   * The {@link ParagraphStyle} the cell style applies to text in the cell, or
+   * {@link NothingEnum.NOTHING} when the style leaves it unset.
+   *
+   * A style-definition member only: a live {@link Cell} carries no paragraph
+   * style of its own, its text ranges do.
+   */
+  get appliedParagraphStyle(): (ParagraphStyle | NothingEnum.NOTHING)[];
+  set appliedParagraphStyle(value: ParagraphStyle | string | NothingEnum.NOTHING);
+}
 
 /** Table-level formatting members shared by the live {@link TableFormatAttributes} and style-definition {@link TableStyleAttributes}. */
 export interface TableAttributesBase<M extends Mode = 'single'> {
@@ -1052,7 +1496,7 @@ export interface TableAttributesBase<M extends Mode = 'single'> {
 
   /** The color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the first alternating row strokes group. Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeColor(): Read<M, Swatch>;
-  set startRowStrokeColor(value: Swatch);
+  set startRowStrokeColor(value: Swatch | string);
 
   /** The stroke weight of row borders in the first alternating row strokes group. Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeWeight(): Read<M, number>;
@@ -1072,7 +1516,7 @@ export interface TableAttributesBase<M extends Mode = 'single'> {
 
   /** The stroke gap color of row borders in the first alternating row strokes group, specified as a swatch (color, gradient, tint, or mixed ink). Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeGapColor(): Read<M, Swatch>;
-  set startRowStrokeGapColor(value: Swatch);
+  set startRowStrokeGapColor(value: Swatch | string);
 
   /** The tint (as a percentage) of the gap color of row borders in the first alternating rows group. (Range: 0 to 100) Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeGapTint(): Read<M, number>;
@@ -1088,7 +1532,7 @@ export interface TableAttributesBase<M extends Mode = 'single'> {
 
   /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the second alternating row strokes group. Note: Valid when end row stroke count is 1 or greater. */
   get endRowStrokeColor(): Read<M, Swatch>;
-  set endRowStrokeColor(value: Swatch);
+  set endRowStrokeColor(value: Swatch | string);
 
   /** The stroke weight of row borders in the second alternating row strokes group. Note: Valid when end row stroke count is 1 or greater. */
   get endRowStrokeWeight(): Read<M, number>;
@@ -1108,7 +1552,7 @@ export interface TableAttributesBase<M extends Mode = 'single'> {
 
   /** The gap color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the second alternating rows group. Note: Valid when end row stroke count is 1 or greater. */
   get endRowStrokeGapColor(): Read<M, Swatch>;
-  set endRowStrokeGapColor(value: Swatch);
+  set endRowStrokeGapColor(value: Swatch | string);
 
   /** The tint (as a percentage) of the gap color of rows in the second alternating strokes group. (Range: 0 to 100) Note: Valid when end row stroke count is 1 or greater and end row stroke type is not solid. */
   get endRowStrokeGapTint(): Read<M, number>;
@@ -1132,7 +1576,7 @@ export interface TableAttributesBase<M extends Mode = 'single'> {
 
   /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the first alternating column strokes group. */
   get startColumnStrokeColor(): Read<M, Swatch>;
-  set startColumnStrokeColor(value: Swatch);
+  set startColumnStrokeColor(value: Swatch | string);
 
   /** The stroke weight of column borders in the first alternating column strokes group. Note: Valid when start column stroke count is 1 or greater. */
   get startColumnStrokeWeight(): Read<M, number>;
@@ -1152,7 +1596,7 @@ export interface TableAttributesBase<M extends Mode = 'single'> {
 
   /** The stroke gap color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the first alternating column strokes group. Note: Valid when start column stroke count is 1 or greater. */
   get startColumnStrokeGapColor(): Read<M, Swatch>;
-  set startColumnStrokeGapColor(value: Swatch);
+  set startColumnStrokeGapColor(value: Swatch | string);
 
   /** The tint (as a percentage) of the gap color of column borders in the first alternating column strokes group. (Range: 0 to 100) Note: Valid when start column stroke count is 1 or greater. */
   get startColumnStrokeGapTint(): Read<M, number>;
@@ -1168,7 +1612,7 @@ export interface TableAttributesBase<M extends Mode = 'single'> {
 
   /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeColor(): Read<M, Swatch>;
-  set endColumnStrokeColor(value: Swatch);
+  set endColumnStrokeColor(value: Swatch | string);
 
   /** The stroke weight of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeWeight(): Read<M, number>;
@@ -1188,7 +1632,7 @@ export interface TableAttributesBase<M extends Mode = 'single'> {
 
   /** The stroke gap color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeGapColor(): Read<M, Swatch>;
-  set endColumnStrokeGapColor(value: Swatch);
+  set endColumnStrokeGapColor(value: Swatch | string);
 
   /** The tint (as a percentage) of the gap color of column borders in the second alternating column strokes group. (Range: 0 to 100) Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeGapTint(): Read<M, number>;
@@ -1212,7 +1656,7 @@ export interface TableAttributesBase<M extends Mode = 'single'> {
 
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of rows in the first alternating fills group. Note: Valid when alternating fills are defined for table rows. */
   get startRowFillColor(): Read<M, Swatch>;
-  set startRowFillColor(value: Swatch);
+  set startRowFillColor(value: Swatch | string);
 
   /** The number of rows in the first alternating fills group. Note: Valid when alternating fills are defined for table rows. */
   get startRowFillCount(): Read<M, number>;
@@ -1232,7 +1676,7 @@ export interface TableAttributesBase<M extends Mode = 'single'> {
 
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of rows in the second alternating fills group. Note: Valid when alternating fills are defined for table rows. */
   get endRowFillColor(): Read<M, Swatch>;
-  set endRowFillColor(value: Swatch);
+  set endRowFillColor(value: Swatch | string);
 
   /** The tint (as a percentage) of the rows in the second alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table rows. */
   get endRowFillTint(): Read<M, number>;
@@ -1256,7 +1700,7 @@ export interface TableAttributesBase<M extends Mode = 'single'> {
 
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of columns in the first alternating fills group. Note: Valid when alternating fills are defined for table columns. */
   get startColumnFillColor(): Read<M, Swatch>;
-  set startColumnFillColor(value: Swatch);
+  set startColumnFillColor(value: Swatch | string);
 
   /** The tint (as a percentage) of the columns in the first alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table columns. */
   get startColumnFillTint(): Read<M, number>;
@@ -1272,7 +1716,7 @@ export interface TableAttributesBase<M extends Mode = 'single'> {
 
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of columns in the second alternating fill group. Note: Valid when alternating fills are defined for table columns. */
   get endColumnFillColor(): Read<M, Swatch>;
-  set endColumnFillColor(value: Swatch);
+  set endColumnFillColor(value: Swatch | string);
 
   /** The tint (as a percentage) of the columns in the second alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table columns. */
   get endColumnFillTint(): Read<M, number>;
@@ -1283,6 +1727,7 @@ export interface TableAttributesBase<M extends Mode = 'single'> {
   set endColumnFillOverprint(value: boolean);
 
 }
+
 /**
  * Live table-level formatting: border strokes, alternating fill and stroke
  * patterns, table insets, and stroke order/direction.
@@ -1440,7 +1885,7 @@ export interface TableFormatAttributes {
   set startRowStrokeCount(value: number);
   /** The color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the first alternating row strokes group. Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeColor(): Swatch;
-  set startRowStrokeColor(value: Swatch);
+  set startRowStrokeColor(value: Swatch | string);
   /** The stroke weight of row borders in the first alternating row strokes group. Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeWeight(): number;
   set startRowStrokeWeight(value: MeasurementValue);
@@ -1455,7 +1900,7 @@ export interface TableFormatAttributes {
   set startRowStrokeGapOverprint(value: boolean);
   /** The stroke gap color of row borders in the first alternating row strokes group, specified as a swatch (color, gradient, tint, or mixed ink). Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeGapColor(): Swatch;
-  set startRowStrokeGapColor(value: Swatch);
+  set startRowStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of row borders in the first alternating rows group. (Range: 0 to 100) Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeGapTint(): number;
   set startRowStrokeGapTint(value: number);
@@ -1467,7 +1912,7 @@ export interface TableFormatAttributes {
   set endRowStrokeCount(value: number);
   /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the second alternating row strokes group. Note: Valid when end row stroke count is 1 or greater. */
   get endRowStrokeColor(): Swatch;
-  set endRowStrokeColor(value: Swatch);
+  set endRowStrokeColor(value: Swatch | string);
   /** The stroke weight of row borders in the second alternating row strokes group. Note: Valid when end row stroke count is 1 or greater. */
   get endRowStrokeWeight(): number;
   set endRowStrokeWeight(value: MeasurementValue);
@@ -1482,7 +1927,7 @@ export interface TableFormatAttributes {
   set endRowStrokeOverprint(value: boolean);
   /** The gap color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the second alternating rows group. Note: Valid when end row stroke count is 1 or greater. */
   get endRowStrokeGapColor(): Swatch;
-  set endRowStrokeGapColor(value: Swatch);
+  set endRowStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of rows in the second alternating strokes group. (Range: 0 to 100) Note: Valid when end row stroke count is 1 or greater and end row stroke type is not solid. */
   get endRowStrokeGapTint(): number;
   set endRowStrokeGapTint(value: number);
@@ -1500,7 +1945,7 @@ export interface TableFormatAttributes {
   set startColumnStrokeCount(value: number);
   /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the first alternating column strokes group. */
   get startColumnStrokeColor(): Swatch;
-  set startColumnStrokeColor(value: Swatch);
+  set startColumnStrokeColor(value: Swatch | string);
   /** The stroke weight of column borders in the first alternating column strokes group. Note: Valid when start column stroke count is 1 or greater. */
   get startColumnStrokeWeight(): number;
   set startColumnStrokeWeight(value: MeasurementValue);
@@ -1515,7 +1960,7 @@ export interface TableFormatAttributes {
   set startColumnStrokeOverprint(value: boolean);
   /** The stroke gap color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the first alternating column strokes group. Note: Valid when start column stroke count is 1 or greater. */
   get startColumnStrokeGapColor(): Swatch;
-  set startColumnStrokeGapColor(value: Swatch);
+  set startColumnStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of column borders in the first alternating column strokes group. (Range: 0 to 100) Note: Valid when start column stroke count is 1 or greater. */
   get startColumnStrokeGapTint(): number;
   set startColumnStrokeGapTint(value: number);
@@ -1527,7 +1972,7 @@ export interface TableFormatAttributes {
   set endColumnStrokeCount(value: number);
   /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeColor(): Swatch;
-  set endColumnStrokeColor(value: Swatch);
+  set endColumnStrokeColor(value: Swatch | string);
   /** The stroke weight of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeWeight(): number;
   set endColumnStrokeWeight(value: MeasurementValue);
@@ -1542,7 +1987,7 @@ export interface TableFormatAttributes {
   set endColumnStrokeOverprint(value: boolean);
   /** The stroke gap color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeGapColor(): Swatch;
-  set endColumnStrokeGapColor(value: Swatch);
+  set endColumnStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of column borders in the second alternating column strokes group. (Range: 0 to 100) Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeGapTint(): number;
   set endColumnStrokeGapTint(value: number);
@@ -1560,7 +2005,7 @@ export interface TableFormatAttributes {
   set skipLastAlternatingFillRows(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of rows in the first alternating fills group. Note: Valid when alternating fills are defined for table rows. */
   get startRowFillColor(): Swatch;
-  set startRowFillColor(value: Swatch);
+  set startRowFillColor(value: Swatch | string);
   /** The number of rows in the first alternating fills group. Note: Valid when alternating fills are defined for table rows. */
   get startRowFillCount(): number;
   set startRowFillCount(value: number);
@@ -1575,7 +2020,7 @@ export interface TableFormatAttributes {
   set endRowFillCount(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of rows in the second alternating fills group. Note: Valid when alternating fills are defined for table rows. */
   get endRowFillColor(): Swatch;
-  set endRowFillColor(value: Swatch);
+  set endRowFillColor(value: Swatch | string);
   /** The tint (as a percentage) of the rows in the second alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table rows. */
   get endRowFillTint(): number;
   set endRowFillTint(value: number);
@@ -1593,7 +2038,7 @@ export interface TableFormatAttributes {
   set startColumnFillCount(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of columns in the first alternating fills group. Note: Valid when alternating fills are defined for table columns. */
   get startColumnFillColor(): Swatch;
-  set startColumnFillColor(value: Swatch);
+  set startColumnFillColor(value: Swatch | string);
   /** The tint (as a percentage) of the columns in the first alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table columns. */
   get startColumnFillTint(): number;
   set startColumnFillTint(value: number);
@@ -1605,12 +2050,343 @@ export interface TableFormatAttributes {
   set endColumnFillCount(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of columns in the second alternating fill group. Note: Valid when alternating fills are defined for table columns. */
   get endColumnFillColor(): Swatch;
-  set endColumnFillColor(value: Swatch);
+  set endColumnFillColor(value: Swatch | string);
   /** The tint (as a percentage) of the columns in the second alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table columns. */
   get endColumnFillTint(): number;
   set endColumnFillTint(value: number);
   /** If true, the columns in the second alternating fills group will overprint. Note: Valid when alternating fills are defined for table columns. */
   get endColumnFillOverprint(): boolean;
+  set endColumnFillOverprint(value: boolean);
+}
+
+/**
+ * Live table-level formatting: border strokes, alternating fill and stroke
+ * patterns, table insets, and stroke order/direction.
+ *
+ * Available on {@link Table}. The style-definition twin is
+ * {@link TableStyleAttributes}.
+ */
+export interface TableFormatAttributesPlural {
+  /** Where the table's caption sits relative to the table. See {@link TableCaptionPositionOptions}. */
+  get captionPosition(): (TableCaptionPositionOptions)[];
+  set captionPosition(value: TableCaptionPositionOptions);
+  /** The left inset of the graphic cell. */
+  get graphicLeftInset(): (number)[];
+  set graphicLeftInset(value: MeasurementValue);
+  /** The top inset of the graphic cell. */
+  get graphicTopInset(): (number)[];
+  set graphicTopInset(value: MeasurementValue);
+  /** The right inset of the graphic cell. */
+  get graphicRightInset(): (number)[];
+  set graphicRightInset(value: MeasurementValue);
+  /** The bottom inset of the graphic cell. */
+  get graphicBottomInset(): (number)[];
+  set graphicBottomInset(value: MeasurementValue);
+  /** If true, clips the graphic cell's content to width and height of the cell. */
+  get clipContentToGraphicCell(): (boolean)[];
+  set clipContentToGraphicCell(value: boolean);
+  /** The top inset of the text cell. */
+  get textTopInset(): (number)[];
+  set textTopInset(value: MeasurementValue);
+  /** The left inset of the text cell. */
+  get textLeftInset(): (number)[];
+  set textLeftInset(value: MeasurementValue);
+  /** The bottom inset of the text cell. */
+  get textBottomInset(): (number)[];
+  set textBottomInset(value: MeasurementValue);
+  /** The right inset of the text cell. */
+  get textRightInset(): (number)[];
+  set textRightInset(value: MeasurementValue);
+  /** If true, clips the text cell's content to width and height of the cell. */
+  get clipContentToTextCell(): (boolean)[];
+  set clipContentToTextCell(value: boolean);
+  /** The order in which to display row and column strokes at corners. */
+  get strokeOrder(): (StrokeOrderTypes)[];
+  set strokeOrder(value: StrokeOrderTypes);
+  /** The stroke weight of the table's top border stroke. */
+  get topBorderStrokeWeight(): (number)[];
+  set topBorderStrokeWeight(value: MeasurementValue);
+  /** The stroke type of the top border. */
+  get topBorderStrokeType(): (StrokeStyle)[];
+  set topBorderStrokeType(value: StrokeStyle | string);
+  /** The color, specified as a swatch (color, gradient, tint, or mixed ink), of the table's top border stroke. */
+  get topBorderStrokeColor(): (Swatch)[];
+  set topBorderStrokeColor(value: Swatch | string);
+  /** The tint (as a percentage) of the table's top border stroke. (Range: 0 to 100) */
+  get topBorderStrokeTint(): (number)[];
+  set topBorderStrokeTint(value: number);
+  /** If true, the top border strokes will overprint. */
+  get topBorderStrokeOverprint(): (boolean)[];
+  set topBorderStrokeOverprint(value: boolean);
+  /** The gap color, specified as a swatch (color, gradient, tint, or mixed ink), of the table's top border stroke. Note: Valid only when top border stroke type is not solid. */
+  get topBorderStrokeGapColor(): (Swatch)[];
+  set topBorderStrokeGapColor(value: Swatch | string);
+  /** The tint (as a percentage) of the gap color of the table's top border stroke. (Range: 0 to 100) Note: Valid only when top border stroke type is not solid. */
+  get topBorderStrokeGapTint(): (number)[];
+  set topBorderStrokeGapTint(value: number);
+  /** If true, the gap of the top border stroke will overprint. Note: Valid only when top border stroke type is not solid. */
+  get topBorderStrokeGapOverprint(): (boolean)[];
+  set topBorderStrokeGapOverprint(value: boolean);
+  /** The stroke weight of the left border stroke. */
+  get leftBorderStrokeWeight(): (number)[];
+  set leftBorderStrokeWeight(value: MeasurementValue);
+  /** The stroke type of the left border. */
+  get leftBorderStrokeType(): (StrokeStyle)[];
+  set leftBorderStrokeType(value: StrokeStyle | string);
+  /** The color, specified as a swatch (color, gradient, tint, or mixed ink), of the left border stroke. */
+  get leftBorderStrokeColor(): (Swatch)[];
+  set leftBorderStrokeColor(value: Swatch | string);
+  /** The tint (as a percentage) of the left border stroke. (Range: 0 to 100) */
+  get leftBorderStrokeTint(): (number)[];
+  set leftBorderStrokeTint(value: number);
+  /** If true, the left border stroke will overprint. */
+  get leftBorderStrokeOverprint(): (boolean)[];
+  set leftBorderStrokeOverprint(value: boolean);
+  /** The gap color, specified as a swatch (color, gradient, tint, or mixed ink), of the left border stroke. Note: Valid only when left border stroke type is not solid. */
+  get leftBorderStrokeGapColor(): (Swatch)[];
+  set leftBorderStrokeGapColor(value: Swatch | string);
+  /** The tint (as a percentage) of the gap color of the left border stroke. (Range: 0 to 100) Note: Valid only when left border stroke type is not solid. */
+  get leftBorderStrokeGapTint(): (number)[];
+  set leftBorderStrokeGapTint(value: number);
+  /** If true, the gap of the left border stroke will overprint. Note: Valid only when left border stroke type is not solid. */
+  get leftBorderStrokeGapOverprint(): (boolean)[];
+  set leftBorderStrokeGapOverprint(value: boolean);
+  /** The stroke weight of the bottom border stroke. */
+  get bottomBorderStrokeWeight(): (number)[];
+  set bottomBorderStrokeWeight(value: MeasurementValue);
+  /** The stroke type of the bottom border. */
+  get bottomBorderStrokeType(): (StrokeStyle)[];
+  set bottomBorderStrokeType(value: StrokeStyle | string);
+  /** The color, specified as a swatch (color, gradient, tint, or mixed ink), of the bottom border stroke. */
+  get bottomBorderStrokeColor(): (Swatch)[];
+  set bottomBorderStrokeColor(value: Swatch | string);
+  /** The tint (as a percentage) of the bottom border stroke. (Range: 0 to 100) */
+  get bottomBorderStrokeTint(): (number)[];
+  set bottomBorderStrokeTint(value: number);
+  /** If true, the bottom border stroke will overprint. */
+  get bottomBorderStrokeOverprint(): (boolean)[];
+  set bottomBorderStrokeOverprint(value: boolean);
+  /** The gap color, specified as a swatch (color, gradient, tint, or mixed ink), of the bottom border stroke. Note: Valid only when bottom border stroke type is not solid. */
+  get bottomBorderStrokeGapColor(): (Swatch)[];
+  set bottomBorderStrokeGapColor(value: Swatch | string);
+  /** The tint (as a percentage) of the gap color of the bottom border stroke. (Range: 0 to 100) Note: Valid only when bottom border stroke type is not solid. */
+  get bottomBorderStrokeGapTint(): (number)[];
+  set bottomBorderStrokeGapTint(value: number);
+  /** If true, the gap of the bottom border stroke will overprint. Note: Valid only when bottom border stroke type is not solid. */
+  get bottomBorderStrokeGapOverprint(): (boolean)[];
+  set bottomBorderStrokeGapOverprint(value: boolean);
+  /** The stroke weight of the right border stroke. */
+  get rightBorderStrokeWeight(): (number)[];
+  set rightBorderStrokeWeight(value: MeasurementValue);
+  /** The stroke type of the right border. */
+  get rightBorderStrokeType(): (StrokeStyle)[];
+  set rightBorderStrokeType(value: StrokeStyle | string);
+  /** The color, specified as a swatch (color, gradient, tint, or mixed ink), of the right border stroke. */
+  get rightBorderStrokeColor(): (Swatch)[];
+  set rightBorderStrokeColor(value: Swatch | string);
+  /** The tint (as a percentage) of the right border stroke. (Range: 0 to 100) */
+  get rightBorderStrokeTint(): (number)[];
+  set rightBorderStrokeTint(value: number);
+  /** If true, the right border stroke will overprint. */
+  get rightBorderStrokeOverprint(): (boolean)[];
+  set rightBorderStrokeOverprint(value: boolean);
+  /** The gap color, specified as a swatch (color, gradient, tint, or mixed ink), of the right border stroke. Note: Valid only when right border stroke type is not solid. */
+  get rightBorderStrokeGapColor(): (Swatch)[];
+  set rightBorderStrokeGapColor(value: Swatch | string);
+  /** The tint (as a percentage) of the gap color of the right border stroke. (Range: 0 to 100) Note: Valid only when right border stroke type is not solid. */
+  get rightBorderStrokeGapTint(): (number)[];
+  set rightBorderStrokeGapTint(value: number);
+  /** If true, the gap color of the right border stroke will overprint. Note: Valid only when right border stroke type is not solid. */
+  get rightBorderStrokeGapOverprint(): (boolean)[];
+  set rightBorderStrokeGapOverprint(value: boolean);
+  /** The space above the table. */
+  get spaceBefore(): (number)[];
+  set spaceBefore(value: MeasurementValue);
+  /** The space below the table. */
+  get spaceAfter(): (number)[];
+  set spaceAfter(value: MeasurementValue);
+  /** The number of body rows at the beginning of the table in which to skip border stroke formatting. Note: Valid when start row stroke count is 1 or greater and/or end row stroke count is 1 or greater. */
+  get skipFirstAlternatingStrokeRows(): (number)[];
+  set skipFirstAlternatingStrokeRows(value: number);
+  /** The number of body rows at the end of the table in which to skip border stroke formatting. Note: Valid when start row stroke count is 1 or greater and/or end row stroke count is 1 or greater. */
+  get skipLastAlternatingStrokeRows(): (number)[];
+  set skipLastAlternatingStrokeRows(value: number);
+  /** The number of rows in the first alternating row strokes group. */
+  get startRowStrokeCount(): (number)[];
+  set startRowStrokeCount(value: number);
+  /** The color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the first alternating row strokes group. Note: Valid when start row stroke count is 1 or greater. */
+  get startRowStrokeColor(): (Swatch)[];
+  set startRowStrokeColor(value: Swatch | string);
+  /** The stroke weight of row borders in the first alternating row strokes group. Note: Valid when start row stroke count is 1 or greater. */
+  get startRowStrokeWeight(): (number)[];
+  set startRowStrokeWeight(value: MeasurementValue);
+  /** The stroke type of rows in the first alternating strokes group. */
+  get startRowStrokeType(): (StrokeStyle)[];
+  set startRowStrokeType(value: StrokeStyle | string);
+  /** The tint (as a percentage) of the borders in the first alternating row strokes group. (Range: 0 to 100) Note: Valid when start row stroke count is 1 or greater. */
+  get startRowStrokeTint(): (number)[];
+  set startRowStrokeTint(value: number);
+  /** If true, the gap color of the row border stroke in the first alternating row strokes group will overprint. Note: Valid when start row stroke count is 1 or greater. */
+  get startRowStrokeGapOverprint(): (boolean)[];
+  set startRowStrokeGapOverprint(value: boolean);
+  /** The stroke gap color of row borders in the first alternating row strokes group, specified as a swatch (color, gradient, tint, or mixed ink). Note: Valid when start row stroke count is 1 or greater. */
+  get startRowStrokeGapColor(): (Swatch)[];
+  set startRowStrokeGapColor(value: Swatch | string);
+  /** The tint (as a percentage) of the gap color of row borders in the first alternating rows group. (Range: 0 to 100) Note: Valid when start row stroke count is 1 or greater. */
+  get startRowStrokeGapTint(): (number)[];
+  set startRowStrokeGapTint(value: number);
+  /** If true, the row borders in the first alternating row strokes group will overprint. Note: Valid when start row stroke count is 1 or greater. */
+  get startRowStrokeOverprint(): (boolean)[];
+  set startRowStrokeOverprint(value: boolean);
+  /** The number of rows in the second alternating row strokes group. */
+  get endRowStrokeCount(): (number)[];
+  set endRowStrokeCount(value: number);
+  /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the second alternating row strokes group. Note: Valid when end row stroke count is 1 or greater. */
+  get endRowStrokeColor(): (Swatch)[];
+  set endRowStrokeColor(value: Swatch | string);
+  /** The stroke weight of row borders in the second alternating row strokes group. Note: Valid when end row stroke count is 1 or greater. */
+  get endRowStrokeWeight(): (number)[];
+  set endRowStrokeWeight(value: MeasurementValue);
+  /** The stroke type of rows in the second alternating strokes group. */
+  get endRowStrokeType(): (StrokeStyle)[];
+  set endRowStrokeType(value: StrokeStyle | string);
+  /** The tint (as a percentage) of the row borders in the second alternating strokes group. (Range: 0 to 100) Note: Valid when end row stroke count is 1 or greater. */
+  get endRowStrokeTint(): (number)[];
+  set endRowStrokeTint(value: number);
+  /** If true, the rows in the second alternating rows group will overprint. Note: Valid when end row stroke count is 1 or greater. */
+  get endRowStrokeOverprint(): (boolean)[];
+  set endRowStrokeOverprint(value: boolean);
+  /** The gap color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the second alternating rows group. Note: Valid when end row stroke count is 1 or greater. */
+  get endRowStrokeGapColor(): (Swatch)[];
+  set endRowStrokeGapColor(value: Swatch | string);
+  /** The tint (as a percentage) of the gap color of rows in the second alternating strokes group. (Range: 0 to 100) Note: Valid when end row stroke count is 1 or greater and end row stroke type is not solid. */
+  get endRowStrokeGapTint(): (number)[];
+  set endRowStrokeGapTint(value: number);
+  /** If true, the gap of the row borders in the second alternating rows group will overprint. Note: Valid when end row stroke count is 1 or greater. */
+  get endRowStrokeGapOverprint(): (boolean)[];
+  set endRowStrokeGapOverprint(value: boolean);
+  /** The number of columns on the left of the table in which to skip border stroke formatting. Note: Valid when start column stroke count is 1 or greater and/or end column stroke count is 1 or greater. */
+  get skipFirstAlternatingStrokeColumns(): (number)[];
+  set skipFirstAlternatingStrokeColumns(value: number);
+  /** The number of columns on the right side of the table in which to skip border stroke formatting. Note: Valid when start column stroke count is 1 or greater and/or end column stroke count is 1 or greater. */
+  get skipLastAlternatingStrokeColumns(): (number)[];
+  set skipLastAlternatingStrokeColumns(value: number);
+  /** The number of columns in the first alternating column strokes group. */
+  get startColumnStrokeCount(): (number)[];
+  set startColumnStrokeCount(value: number);
+  /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the first alternating column strokes group. */
+  get startColumnStrokeColor(): (Swatch)[];
+  set startColumnStrokeColor(value: Swatch | string);
+  /** The stroke weight of column borders in the first alternating column strokes group. Note: Valid when start column stroke count is 1 or greater. */
+  get startColumnStrokeWeight(): (number)[];
+  set startColumnStrokeWeight(value: MeasurementValue);
+  /** The stroke type of columns in the first alternating strokes group. */
+  get startColumnStrokeType(): (StrokeStyle)[];
+  set startColumnStrokeType(value: StrokeStyle | string);
+  /** The tint (as a percentage) of column borders in the first alternating column strokes group. (Range: 0 to 100) Note: Valid when start column stroke count is 1 or greater. */
+  get startColumnStrokeTint(): (number)[];
+  set startColumnStrokeTint(value: number);
+  /** If true, the column borders in the first alternating column strokes group will overprint. Note: Valid when start column stroke count is 1 or greater. */
+  get startColumnStrokeOverprint(): (boolean)[];
+  set startColumnStrokeOverprint(value: boolean);
+  /** The stroke gap color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the first alternating column strokes group. Note: Valid when start column stroke count is 1 or greater. */
+  get startColumnStrokeGapColor(): (Swatch)[];
+  set startColumnStrokeGapColor(value: Swatch | string);
+  /** The tint (as a percentage) of the gap color of column borders in the first alternating column strokes group. (Range: 0 to 100) Note: Valid when start column stroke count is 1 or greater. */
+  get startColumnStrokeGapTint(): (number)[];
+  set startColumnStrokeGapTint(value: number);
+  /** If true, the gap of the column borders in the first alternating column strokes group will overprint. Note: Valid when start column stroke count is 1 or greater. */
+  get startColumnStrokeGapOverprint(): (boolean)[];
+  set startColumnStrokeGapOverprint(value: boolean);
+  /** The number of columns in the second alternating column strokes group. */
+  get endColumnStrokeCount(): (number)[];
+  set endColumnStrokeCount(value: number);
+  /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
+  get endColumnStrokeColor(): (Swatch)[];
+  set endColumnStrokeColor(value: Swatch | string);
+  /** The stroke weight of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
+  get endColumnStrokeWeight(): (number)[];
+  set endColumnStrokeWeight(value: MeasurementValue);
+  /** The stroke type of columns in the second alternating strokes group. */
+  get endColumnLineStyle(): (StrokeStyle)[];
+  set endColumnLineStyle(value: StrokeStyle | string);
+  /** The tint (as a percentage) of column borders in the second alternating column strokes group. (Range: 0 to 100) Note: Valid when end column stroke count is 1 or greater. */
+  get endColumnStrokeTint(): (number)[];
+  set endColumnStrokeTint(value: number);
+  /** If true, the column borders in the second alternating column strokes group will overprint. Note: Valid when end column stroke count is 1 or greater. */
+  get endColumnStrokeOverprint(): (boolean)[];
+  set endColumnStrokeOverprint(value: boolean);
+  /** The stroke gap color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
+  get endColumnStrokeGapColor(): (Swatch)[];
+  set endColumnStrokeGapColor(value: Swatch | string);
+  /** The tint (as a percentage) of the gap color of column borders in the second alternating column strokes group. (Range: 0 to 100) Note: Valid when end column stroke count is 1 or greater. */
+  get endColumnStrokeGapTint(): (number)[];
+  set endColumnStrokeGapTint(value: number);
+  /** If true, the gap of the column border stroke in the second alternating column strokes group will overprint. Note: Valid when end column stroke count is 1 or greater. */
+  get endColumnStrokeGapOverprint(): (boolean)[];
+  set endColumnStrokeGapOverprint(value: boolean);
+  /** If true, hides alternating row fills. If false, hides alternating column fills. */
+  get columnFillsPriority(): (boolean)[];
+  set columnFillsPriority(value: boolean);
+  /** The number of body rows at the beginning of the table to skip before applying the row fill color. Note: Valid when alternating fills are defined for table rows. */
+  get skipFirstAlternatingFillRows(): (number)[];
+  set skipFirstAlternatingFillRows(value: number);
+  /** The number of body rows at the end of the table in which to not apply the row fill color. Note: Valid when alternating fills are defined for table rows. */
+  get skipLastAlternatingFillRows(): (number)[];
+  set skipLastAlternatingFillRows(value: number);
+  /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of rows in the first alternating fills group. Note: Valid when alternating fills are defined for table rows. */
+  get startRowFillColor(): (Swatch)[];
+  set startRowFillColor(value: Swatch | string);
+  /** The number of rows in the first alternating fills group. Note: Valid when alternating fills are defined for table rows. */
+  get startRowFillCount(): (number)[];
+  set startRowFillCount(value: number);
+  /** The tint (as a percentage) of the rows in the first alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table rows. */
+  get startRowFillTint(): (number)[];
+  set startRowFillTint(value: number);
+  /** If true, the rows in the first alternating fills group will overprint. Note: Valid when alternating fills are defined for table rows. */
+  get startRowFillOverprint(): (boolean)[];
+  set startRowFillOverprint(value: boolean);
+  /** The number of rows in the second alternating fills group. Note: Valid when alternating fills are defined for table rows. */
+  get endRowFillCount(): (number)[];
+  set endRowFillCount(value: number);
+  /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of rows in the second alternating fills group. Note: Valid when alternating fills are defined for table rows. */
+  get endRowFillColor(): (Swatch)[];
+  set endRowFillColor(value: Swatch | string);
+  /** The tint (as a percentage) of the rows in the second alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table rows. */
+  get endRowFillTint(): (number)[];
+  set endRowFillTint(value: number);
+  /** If true, the rows in the second alternating fills group will overprint. Note: Valid when alternating fills are defined for table rows. */
+  get endRowFillOverprint(): (boolean)[];
+  set endRowFillOverprint(value: boolean);
+  /** The number of columns on the left side of the table to skip before applying the column fill color. Note: Valid when alternating fills are defined for table columns. */
+  get skipFirstAlternatingFillColumns(): (number)[];
+  set skipFirstAlternatingFillColumns(value: number);
+  /** The number columns on the right side of the table in which to not apply the column fill color. Note: Valid when alternating fills are defined for table columns. */
+  get skipLastAlternatingFillColumns(): (number)[];
+  set skipLastAlternatingFillColumns(value: number);
+  /** The number of columns in the first alternating fills group. Note: Valid when alternating fills are defined for table columns. */
+  get startColumnFillCount(): (number)[];
+  set startColumnFillCount(value: number);
+  /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of columns in the first alternating fills group. Note: Valid when alternating fills are defined for table columns. */
+  get startColumnFillColor(): (Swatch)[];
+  set startColumnFillColor(value: Swatch | string);
+  /** The tint (as a percentage) of the columns in the first alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table columns. */
+  get startColumnFillTint(): (number)[];
+  set startColumnFillTint(value: number);
+  /** If true, the columns in the first alternating fills group will overprint. Note: Valid when alternating fills are defined for table columns. */
+  get startColumnFillOverprint(): (boolean)[];
+  set startColumnFillOverprint(value: boolean);
+  /** The number of columns in the second alternating fills group. Note: Valid when alternating fills are defined for table columns. */
+  get endColumnFillCount(): (number)[];
+  set endColumnFillCount(value: number);
+  /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of columns in the second alternating fill group. Note: Valid when alternating fills are defined for table columns. */
+  get endColumnFillColor(): (Swatch)[];
+  set endColumnFillColor(value: Swatch | string);
+  /** The tint (as a percentage) of the columns in the second alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table columns. */
+  get endColumnFillTint(): (number)[];
+  set endColumnFillTint(value: number);
+  /** If true, the columns in the second alternating fills group will overprint. Note: Valid when alternating fills are defined for table columns. */
+  get endColumnFillOverprint(): (boolean)[];
   set endColumnFillOverprint(value: boolean);
 }
 
@@ -1767,7 +2543,7 @@ export interface TableStyleAttributes {
   set startRowStrokeCount(value: number);
   /** The color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the first alternating row strokes group. Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeColor(): Swatch;
-  set startRowStrokeColor(value: Swatch);
+  set startRowStrokeColor(value: Swatch | string);
   /** The stroke weight of row borders in the first alternating row strokes group. Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeWeight(): number;
   set startRowStrokeWeight(value: MeasurementValue);
@@ -1782,7 +2558,7 @@ export interface TableStyleAttributes {
   set startRowStrokeGapOverprint(value: boolean);
   /** The stroke gap color of row borders in the first alternating row strokes group, specified as a swatch (color, gradient, tint, or mixed ink). Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeGapColor(): Swatch;
-  set startRowStrokeGapColor(value: Swatch);
+  set startRowStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of row borders in the first alternating rows group. (Range: 0 to 100) Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeGapTint(): number;
   set startRowStrokeGapTint(value: number);
@@ -1794,7 +2570,7 @@ export interface TableStyleAttributes {
   set endRowStrokeCount(value: number);
   /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the second alternating row strokes group. Note: Valid when end row stroke count is 1 or greater. */
   get endRowStrokeColor(): Swatch;
-  set endRowStrokeColor(value: Swatch);
+  set endRowStrokeColor(value: Swatch | string);
   /** The stroke weight of row borders in the second alternating row strokes group. Note: Valid when end row stroke count is 1 or greater. */
   get endRowStrokeWeight(): number;
   set endRowStrokeWeight(value: MeasurementValue);
@@ -1809,7 +2585,7 @@ export interface TableStyleAttributes {
   set endRowStrokeOverprint(value: boolean);
   /** The gap color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the second alternating rows group. Note: Valid when end row stroke count is 1 or greater. */
   get endRowStrokeGapColor(): Swatch;
-  set endRowStrokeGapColor(value: Swatch);
+  set endRowStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of rows in the second alternating strokes group. (Range: 0 to 100) Note: Valid when end row stroke count is 1 or greater and end row stroke type is not solid. */
   get endRowStrokeGapTint(): number;
   set endRowStrokeGapTint(value: number);
@@ -1827,7 +2603,7 @@ export interface TableStyleAttributes {
   set startColumnStrokeCount(value: number);
   /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the first alternating column strokes group. */
   get startColumnStrokeColor(): Swatch;
-  set startColumnStrokeColor(value: Swatch);
+  set startColumnStrokeColor(value: Swatch | string);
   /** The stroke weight of column borders in the first alternating column strokes group. Note: Valid when start column stroke count is 1 or greater. */
   get startColumnStrokeWeight(): number;
   set startColumnStrokeWeight(value: MeasurementValue);
@@ -1842,7 +2618,7 @@ export interface TableStyleAttributes {
   set startColumnStrokeOverprint(value: boolean);
   /** The stroke gap color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the first alternating column strokes group. Note: Valid when start column stroke count is 1 or greater. */
   get startColumnStrokeGapColor(): Swatch;
-  set startColumnStrokeGapColor(value: Swatch);
+  set startColumnStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of column borders in the first alternating column strokes group. (Range: 0 to 100) Note: Valid when start column stroke count is 1 or greater. */
   get startColumnStrokeGapTint(): number;
   set startColumnStrokeGapTint(value: number);
@@ -1854,7 +2630,7 @@ export interface TableStyleAttributes {
   set endColumnStrokeCount(value: number);
   /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeColor(): Swatch;
-  set endColumnStrokeColor(value: Swatch);
+  set endColumnStrokeColor(value: Swatch | string);
   /** The stroke weight of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeWeight(): number;
   set endColumnStrokeWeight(value: MeasurementValue);
@@ -1869,7 +2645,7 @@ export interface TableStyleAttributes {
   set endColumnStrokeOverprint(value: boolean);
   /** The stroke gap color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeGapColor(): Swatch;
-  set endColumnStrokeGapColor(value: Swatch);
+  set endColumnStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of column borders in the second alternating column strokes group. (Range: 0 to 100) Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeGapTint(): number;
   set endColumnStrokeGapTint(value: number);
@@ -1887,7 +2663,7 @@ export interface TableStyleAttributes {
   set skipLastAlternatingFillRows(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of rows in the first alternating fills group. Note: Valid when alternating fills are defined for table rows. */
   get startRowFillColor(): Swatch;
-  set startRowFillColor(value: Swatch);
+  set startRowFillColor(value: Swatch | string);
   /** The number of rows in the first alternating fills group. Note: Valid when alternating fills are defined for table rows. */
   get startRowFillCount(): number;
   set startRowFillCount(value: number);
@@ -1902,7 +2678,7 @@ export interface TableStyleAttributes {
   set endRowFillCount(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of rows in the second alternating fills group. Note: Valid when alternating fills are defined for table rows. */
   get endRowFillColor(): Swatch;
-  set endRowFillColor(value: Swatch);
+  set endRowFillColor(value: Swatch | string);
   /** The tint (as a percentage) of the rows in the second alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table rows. */
   get endRowFillTint(): number;
   set endRowFillTint(value: number);
@@ -1920,7 +2696,7 @@ export interface TableStyleAttributes {
   set startColumnFillCount(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of columns in the first alternating fills group. Note: Valid when alternating fills are defined for table columns. */
   get startColumnFillColor(): Swatch;
-  set startColumnFillColor(value: Swatch);
+  set startColumnFillColor(value: Swatch | string);
   /** The tint (as a percentage) of the columns in the first alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table columns. */
   get startColumnFillTint(): number;
   set startColumnFillTint(value: number);
@@ -1932,7 +2708,7 @@ export interface TableStyleAttributes {
   set endColumnFillCount(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of columns in the second alternating fill group. Note: Valid when alternating fills are defined for table columns. */
   get endColumnFillColor(): Swatch;
-  set endColumnFillColor(value: Swatch);
+  set endColumnFillColor(value: Swatch | string);
   /** The tint (as a percentage) of the columns in the second alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table columns. */
   get endColumnFillTint(): number;
   set endColumnFillTint(value: number);
@@ -1952,807 +2728,24 @@ export interface TableStyleAttributes {
   get rightColumnRegionSameAsBodyRegion(): boolean;
   set rightColumnRegionSameAsBodyRegion(value: boolean);
   /** The {@link CellStyle} applied to cells in the header region. */
-  get headerRegionCellStyle(): CellStyle;
+  get headerRegionCellStyle(): CellStyle | null;
   set headerRegionCellStyle(value: CellStyle | string);
   /** The {@link CellStyle} applied to cells in the footer region. */
-  get footerRegionCellStyle(): CellStyle;
+  get footerRegionCellStyle(): CellStyle | null;
   set footerRegionCellStyle(value: CellStyle | string);
   /** The {@link CellStyle} applied to cells in the left column region. */
-  get leftColumnRegionCellStyle(): CellStyle;
+  get leftColumnRegionCellStyle(): CellStyle | null;
   set leftColumnRegionCellStyle(value: CellStyle | string);
   /** The {@link CellStyle} applied to cells in the right column region. */
-  get rightColumnRegionCellStyle(): CellStyle;
+  get rightColumnRegionCellStyle(): CellStyle | null;
   set rightColumnRegionCellStyle(value: CellStyle | string);
   /** The {@link CellStyle} applied to cells in the body region. */
   get bodyRegionCellStyle(): CellStyle;
   set bodyRegionCellStyle(value: CellStyle | string);
 }
 
-
 /**
- * The broadcast proxy for {@link TableCellAttributes} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link TableCellAttributes} there.
- */
-export interface TableCellAttributesPlural {
-  /** The left inset of the graphic cell. */
-  get graphicLeftInset(): (number)[];
-  set graphicLeftInset(value: MeasurementValue);
-  /** The top inset of the graphic cell. */
-  get graphicTopInset(): (number)[];
-  set graphicTopInset(value: MeasurementValue);
-  /** The right inset of the graphic cell. */
-  get graphicRightInset(): (number)[];
-  set graphicRightInset(value: MeasurementValue);
-  /** The bottom inset of the graphic cell. */
-  get graphicBottomInset(): (number)[];
-  set graphicBottomInset(value: MeasurementValue);
-  /** If true, clips the graphic cell's content to width and height of the cell. */
-  get clipContentToGraphicCell(): (boolean)[];
-  set clipContentToGraphicCell(value: boolean);
-  /** The top inset of the text cell. */
-  get textTopInset(): (number)[];
-  set textTopInset(value: MeasurementValue);
-  /** The left inset of the text cell. */
-  get textLeftInset(): (number)[];
-  set textLeftInset(value: MeasurementValue);
-  /** The bottom inset of the text cell. */
-  get textBottomInset(): (number)[];
-  set textBottomInset(value: MeasurementValue);
-  /** The right inset of the text cell. */
-  get textRightInset(): (number)[];
-  set textRightInset(value: MeasurementValue);
-  /** If true, clips the text cell's content to width and height of the cell. */
-  get clipContentToTextCell(): (boolean)[];
-  set clipContentToTextCell(value: boolean);
-  /** The length (of a linear gradient) or radius (of a radial gradient) applied to the fill of the object. */
-  get gradientFillLength(): (number)[];
-  set gradientFillLength(value: number);
-  /** The angle of a linear gradient applied to the fill of the object. (Range: -180 to 180). */
-  get gradientFillAngle(): (number)[];
-  set gradientFillAngle(value: number);
-  /** The starting point (in page coordinates) of a gradient applied to the fill of the CellStyle, in the format [x, y]. */
-  get gradientFillStart(): (number[])[];
-  set gradientFillStart(value: number[]);
-  /** The top inset of the cell. The API has been deprecated. Use TextTopInset or GraphicTopInset. */
-  get topInset(): (number)[];
-  set topInset(value: MeasurementValue);
-  /** The left inset of the cell.The API has been deprecated. Use TextLeftInset or GraphicLeftInset. */
-  get leftInset(): (number)[];
-  set leftInset(value: MeasurementValue);
-  /** The bottom inset of the cell.The API has been deprecated. Use TextBottomInset or GraphicBottomInset. */
-  get bottomInset(): (number)[];
-  set bottomInset(value: MeasurementValue);
-  /** The right inset of the cell.The API has been deprecated. Use TextLeftInset or GraphicRightInset. */
-  get rightInset(): (number)[];
-  set rightInset(value: MeasurementValue);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of the object. */
-  get fillColor(): (Swatch)[];
-  set fillColor(value: Swatch | string);
-  /** The tint (as a percentage) of the fill of the object. */
-  get fillTint(): (number)[];
-  set fillTint(value: number);
-  /** If true, the fill of the object will overprint. */
-  get overprintFill(): (boolean)[];
-  set overprintFill(value: boolean);
-  /** If true, draws a diagonal line starting from the top left. */
-  get topLeftDiagonalLine(): (boolean)[];
-  set topLeftDiagonalLine(value: boolean);
-  /** If true, draws a diagonal line starting from the top right. */
-  get topRightDiagonalLine(): (boolean)[];
-  set topRightDiagonalLine(value: boolean);
-  /** If true, draws the diagonal line in front of cell contents. */
-  get diagonalLineInFront(): (boolean)[];
-  set diagonalLineInFront(value: boolean);
-  /** The stroke weight of the cell's diagonal line(s) — see {@link topLeftDiagonalLine} and {@link topRightDiagonalLine}. */
-  get diagonalLineStrokeWeight(): (number)[];
-  set diagonalLineStrokeWeight(value: MeasurementValue);
-  /** The stroke type of the diagonal line(s). */
-  get diagonalLineStrokeType(): (StrokeStyle)[];
-  set diagonalLineStrokeType(value: StrokeStyle | string);
-  /** The diagonal line color, specified as a swatch. */
-  get diagonalLineStrokeColor(): (Swatch)[];
-  set diagonalLineStrokeColor(value: Swatch | string);
-  /** The diagonal line tint (as a percentage). (Range: 0 to 100). */
-  get diagonalLineStrokeTint(): (number)[];
-  set diagonalLineStrokeTint(value: number);
-  /** If true, the diagonal line stroke will overprint. */
-  get diagonalLineStrokeOverprint(): (boolean)[];
-  set diagonalLineStrokeOverprint(value: boolean);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the diagonal line stroke. Note: Not valid when diagonal line stroke type is solid. */
-  get diagonalLineStrokeGapColor(): (Swatch)[];
-  set diagonalLineStrokeGapColor(value: Swatch | string);
-  /** The tint (as a percentage) of the diagonal line stroke gap color. Note: Not valid when diagonal line stroke type is solid. */
-  get diagonalLineStrokeGapTint(): (number)[];
-  set diagonalLineStrokeGapTint(value: number);
-  /** If true, the stroke gap of the diagonal line will overprint. Note: Not valid when diagonal line stroke type is solid. */
-  get diagonalLineStrokeGapOverprint(): (boolean)[];
-  set diagonalLineStrokeGapOverprint(value: boolean);
-  /** If true, clips the cell's content to width and height of the cell. The API has been deprecated. Use ClipContentsToTextCell or ClipContentsToPageItemCell. */
-  get clipContentToCell(): (boolean)[];
-  set clipContentToCell(value: boolean);
-  /** How the distance between the first line's baseline and the cell's top inset is measured. See {@link FirstBaseline}. */
-  get firstBaselineOffset(): (FirstBaseline)[];
-  set firstBaselineOffset(value: FirstBaseline);
-  /** The vertical alignment of cell. */
-  get verticalJustification(): (VerticalJustification)[];
-  set verticalJustification(value: VerticalJustification);
-  /** The maximum space that can be added between paragraphs in a cell. Note: Valid only when vertical justification is justified. */
-  get paragraphSpacingLimit(): (number)[];
-  set paragraphSpacingLimit(value: MeasurementValue);
-  /** The space between the baseline of the text and the top inset of the frame or cell. */
-  get minimumFirstBaselineOffset(): (number)[];
-  set minimumFirstBaselineOffset(value: number);
-  /** The rotation angle (in degrees) of the cell, specified as one of the following values: 0, 90, 180, or 270. */
-  get rotationAngle(): (number)[];
-  set rotationAngle(value: number);
-  /** The stroke weight of the left edge border stroke. */
-  get leftEdgeStrokeWeight(): (number)[];
-  set leftEdgeStrokeWeight(value: MeasurementValue);
-  /** The stroke type of the left edge. */
-  get leftEdgeStrokeType(): (StrokeStyle)[];
-  set leftEdgeStrokeType(value: StrokeStyle | string);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the left edge border stroke. */
-  get leftEdgeStrokeColor(): (Swatch)[];
-  set leftEdgeStrokeColor(value: Swatch | string);
-  /** The tint (as a percentage) of the left edge border stroke. (Range: 0 to 100). */
-  get leftEdgeStrokeTint(): (number)[];
-  set leftEdgeStrokeTint(value: number);
-  /** If true, the left edge border stroke will overprint. */
-  get leftEdgeStrokeOverprint(): (boolean)[];
-  set leftEdgeStrokeOverprint(value: boolean);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the left edge border stroke. Note: Not valid when left edge stroke type is solid. */
-  get leftEdgeStrokeGapColor(): (Swatch)[];
-  set leftEdgeStrokeGapColor(value: Swatch | string);
-  /** The tint (as a percentage) of the left edge border stroke gap color. (Range: 0 to 100) Note: Not valid when left edge stroke type is solid. */
-  get leftEdgeStrokeGapTint(): (number)[];
-  set leftEdgeStrokeGapTint(value: number);
-  /** If true, the gap color of the left edge border stroke will overprint. Note: Not valid when left edge stroke type is solid. */
-  get leftEdgeStrokeGapOverprint(): (boolean)[];
-  set leftEdgeStrokeGapOverprint(value: boolean);
-  /** The stroke weight of the top edge border stroke. */
-  get topEdgeStrokeWeight(): (number)[];
-  set topEdgeStrokeWeight(value: MeasurementValue);
-  /** The stroke type of the top edge. */
-  get topEdgeStrokeType(): (StrokeStyle)[];
-  set topEdgeStrokeType(value: StrokeStyle | string);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the top edge border stroke. */
-  get topEdgeStrokeColor(): (Swatch)[];
-  set topEdgeStrokeColor(value: Swatch | string);
-  /** The tint (as a percentage) of the top edge border stroke. (Range: 0 to 100). */
-  get topEdgeStrokeTint(): (number)[];
-  set topEdgeStrokeTint(value: number);
-  /** If true, the top edge border stroke will overprint. */
-  get topEdgeStrokeOverprint(): (boolean)[];
-  set topEdgeStrokeOverprint(value: boolean);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the top edge border stroke. Note: Not valid when top edge stroke type is solid. */
-  get topEdgeStrokeGapColor(): (Swatch)[];
-  set topEdgeStrokeGapColor(value: Swatch | string);
-  /** The tint (as a percentage) of the top edge border stroke gap color. (Range: 0 to 100) Note: Not valid when top edge stroke type is solid. */
-  get topEdgeStrokeGapTint(): (number)[];
-  set topEdgeStrokeGapTint(value: number);
-  /** If true, the gap color of the top edge border stroke will overprint. Note: Not valid when top edge stroke type is solid. */
-  get topEdgeStrokeGapOverprint(): (boolean)[];
-  set topEdgeStrokeGapOverprint(value: boolean);
-  /** The stroke weight of the right edge border stroke. */
-  get rightEdgeStrokeWeight(): (number)[];
-  set rightEdgeStrokeWeight(value: MeasurementValue);
-  /** The stroke type of the right edge. */
-  get rightEdgeStrokeType(): (StrokeStyle)[];
-  set rightEdgeStrokeType(value: StrokeStyle | string);
-  /** The color, specified as a swatch, of the right edge border stroke. */
-  get rightEdgeStrokeColor(): (Swatch)[];
-  set rightEdgeStrokeColor(value: Swatch | string);
-  /** The tint (as a percentage) of the right edge border stroke. (Range: 0 to 100). */
-  get rightEdgeStrokeTint(): (number)[];
-  set rightEdgeStrokeTint(value: number);
-  /** If true, the right edge border stroke will overprint. */
-  get rightEdgeStrokeOverprint(): (boolean)[];
-  set rightEdgeStrokeOverprint(value: boolean);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the right edge border stroke. Note: Not valid when right edge stroke type is solid. */
-  get rightEdgeStrokeGapColor(): (Swatch)[];
-  set rightEdgeStrokeGapColor(value: Swatch | string);
-  /** The tint (as a percentage) of the right edge border stroke gap color. (Range: 0 to 100) Note: Not valid when right edge stroke type is solid. */
-  get rightEdgeStrokeGapTint(): (number)[];
-  set rightEdgeStrokeGapTint(value: number);
-  /** If true, the gap color of the right edge border stroke will overprint. Note: Not valid when right edge stroke type is solid. */
-  get rightEdgeStrokeGapOverprint(): (boolean)[];
-  set rightEdgeStrokeGapOverprint(value: boolean);
-  /** The stroke weight of the bottom edge border stroke. */
-  get bottomEdgeStrokeWeight(): (number)[];
-  set bottomEdgeStrokeWeight(value: MeasurementValue);
-  /** The stroke type of the bottom edge. */
-  get bottomEdgeStrokeType(): (StrokeStyle)[];
-  set bottomEdgeStrokeType(value: StrokeStyle | string);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the bottom edge border stroke. */
-  get bottomEdgeStrokeColor(): (Swatch)[];
-  set bottomEdgeStrokeColor(value: Swatch | string);
-  /** The tint (as a percentage) of the bottom edge border stroke. */
-  get bottomEdgeStrokeTint(): (number)[];
-  set bottomEdgeStrokeTint(value: number);
-  /** If true, the bottom edge border stroke will overprint. */
-  get bottomEdgeStrokeOverprint(): (boolean)[];
-  set bottomEdgeStrokeOverprint(value: boolean);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the bottom edge border stroke. Note: Not valid when bottom edge stroke type is solid. */
-  get bottomEdgeStrokeGapColor(): (Swatch)[];
-  set bottomEdgeStrokeGapColor(value: Swatch | string);
-  /** The tint (as a percentage) of the bottom edge border stroke gap color. (Range: 0 to 100) Note: Not valid when bottom edge stroke type is solid. */
-  get bottomEdgeStrokeGapTint(): (number)[];
-  set bottomEdgeStrokeGapTint(value: number);
-  /** If true, the gap color of the bottom edge border stroke will overprint. Note: Not valid when bottom edge stroke type is solid. */
-  get bottomEdgeStrokeGapOverprint(): (boolean)[];
-  set bottomEdgeStrokeGapOverprint(value: boolean);
-}
-
-/**
- * The broadcast proxy for {@link CellStyleAttributes} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link CellStyleAttributes} there.
- */
-export interface CellStyleAttributesPlural {
-  /** The left inset of the graphic cell. */
-  get graphicLeftInset(): (number | NothingEnum.NOTHING)[];
-  set graphicLeftInset(value: MeasurementValue | NothingEnum.NOTHING);
-  /** The top inset of the graphic cell. */
-  get graphicTopInset(): (number | NothingEnum.NOTHING)[];
-  set graphicTopInset(value: MeasurementValue | NothingEnum.NOTHING);
-  /** The right inset of the graphic cell. */
-  get graphicRightInset(): (number | NothingEnum.NOTHING)[];
-  set graphicRightInset(value: MeasurementValue | NothingEnum.NOTHING);
-  /** The bottom inset of the graphic cell. */
-  get graphicBottomInset(): (number | NothingEnum.NOTHING)[];
-  set graphicBottomInset(value: MeasurementValue | NothingEnum.NOTHING);
-  /** If true, clips the graphic cell's content to width and height of the cell. */
-  get clipContentToGraphicCell(): (boolean | NothingEnum.NOTHING)[];
-  set clipContentToGraphicCell(value: boolean | NothingEnum.NOTHING);
-  /** The top inset of the text cell. */
-  get textTopInset(): (number | NothingEnum.NOTHING)[];
-  set textTopInset(value: MeasurementValue | NothingEnum.NOTHING);
-  /** The left inset of the text cell. */
-  get textLeftInset(): (number | NothingEnum.NOTHING)[];
-  set textLeftInset(value: MeasurementValue | NothingEnum.NOTHING);
-  /** The bottom inset of the text cell. */
-  get textBottomInset(): (number | NothingEnum.NOTHING)[];
-  set textBottomInset(value: MeasurementValue | NothingEnum.NOTHING);
-  /** The right inset of the text cell. */
-  get textRightInset(): (number | NothingEnum.NOTHING)[];
-  set textRightInset(value: MeasurementValue | NothingEnum.NOTHING);
-  /** If true, clips the text cell's content to width and height of the cell. */
-  get clipContentToTextCell(): (boolean | NothingEnum.NOTHING)[];
-  set clipContentToTextCell(value: boolean | NothingEnum.NOTHING);
-  /** The length (of a linear gradient) or radius (of a radial gradient) applied to the fill of the object. */
-  get gradientFillLength(): (number | NothingEnum.NOTHING)[];
-  set gradientFillLength(value: number | NothingEnum.NOTHING);
-  /** The angle of a linear gradient applied to the fill of the object. (Range: -180 to 180). */
-  get gradientFillAngle(): (number | NothingEnum.NOTHING)[];
-  set gradientFillAngle(value: number | NothingEnum.NOTHING);
-  /** The starting point (in page coordinates) of a gradient applied to the fill of the CellStyle, in the format [x, y]. */
-  get gradientFillStart(): (number[] | NothingEnum.NOTHING)[];
-  set gradientFillStart(value: number[] | NothingEnum.NOTHING);
-  /** The top inset of the cell. The API has been deprecated. Use TextTopInset or GraphicTopInset. */
-  get topInset(): (number | NothingEnum.NOTHING)[];
-  set topInset(value: MeasurementValue | NothingEnum.NOTHING);
-  /** The left inset of the cell.The API has been deprecated. Use TextLeftInset or GraphicLeftInset. */
-  get leftInset(): (number | NothingEnum.NOTHING)[];
-  set leftInset(value: MeasurementValue | NothingEnum.NOTHING);
-  /** The bottom inset of the cell.The API has been deprecated. Use TextBottomInset or GraphicBottomInset. */
-  get bottomInset(): (number | NothingEnum.NOTHING)[];
-  set bottomInset(value: MeasurementValue | NothingEnum.NOTHING);
-  /** The right inset of the cell.The API has been deprecated. Use TextLeftInset or GraphicRightInset. */
-  get rightInset(): (number | NothingEnum.NOTHING)[];
-  set rightInset(value: MeasurementValue | NothingEnum.NOTHING);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of the object. */
-  get fillColor(): (Swatch | null)[];
-  set fillColor(value: Swatch | string | NothingEnum.NOTHING);
-  /** The tint (as a percentage) of the fill of the object. */
-  get fillTint(): (number | NothingEnum.NOTHING)[];
-  set fillTint(value: number | NothingEnum.NOTHING);
-  /** If true, the fill of the object will overprint. */
-  get overprintFill(): (boolean | NothingEnum.NOTHING)[];
-  set overprintFill(value: boolean | NothingEnum.NOTHING);
-  /** If true, draws a diagonal line starting from the top left. */
-  get topLeftDiagonalLine(): (boolean | NothingEnum.NOTHING)[];
-  set topLeftDiagonalLine(value: boolean | NothingEnum.NOTHING);
-  /** If true, draws a diagonal line starting from the top right. */
-  get topRightDiagonalLine(): (boolean | NothingEnum.NOTHING)[];
-  set topRightDiagonalLine(value: boolean | NothingEnum.NOTHING);
-  /** If true, draws the diagonal line in front of cell contents. */
-  get diagonalLineInFront(): (boolean | NothingEnum.NOTHING)[];
-  set diagonalLineInFront(value: boolean | NothingEnum.NOTHING);
-  /** The stroke weight of the cell's diagonal line(s) — see {@link topLeftDiagonalLine} and {@link topRightDiagonalLine}. */
-  get diagonalLineStrokeWeight(): (number | NothingEnum.NOTHING)[];
-  set diagonalLineStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
-  /** The stroke type of the diagonal line(s). */
-  get diagonalLineStrokeType(): (StrokeStyle | null)[];
-  set diagonalLineStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
-  /** The diagonal line color, specified as a swatch. */
-  get diagonalLineStrokeColor(): (Swatch | null)[];
-  set diagonalLineStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
-  /** The diagonal line tint (as a percentage). (Range: 0 to 100). */
-  get diagonalLineStrokeTint(): (number | NothingEnum.NOTHING)[];
-  set diagonalLineStrokeTint(value: number | NothingEnum.NOTHING);
-  /** If true, the diagonal line stroke will overprint. */
-  get diagonalLineStrokeOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set diagonalLineStrokeOverprint(value: boolean | NothingEnum.NOTHING);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the diagonal line stroke. Note: Not valid when diagonal line stroke type is solid. */
-  get diagonalLineStrokeGapColor(): (Swatch | null)[];
-  set diagonalLineStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
-  /** The tint (as a percentage) of the diagonal line stroke gap color. Note: Not valid when diagonal line stroke type is solid. */
-  get diagonalLineStrokeGapTint(): (number | NothingEnum.NOTHING)[];
-  set diagonalLineStrokeGapTint(value: number | NothingEnum.NOTHING);
-  /** If true, the stroke gap of the diagonal line will overprint. Note: Not valid when diagonal line stroke type is solid. */
-  get diagonalLineStrokeGapOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set diagonalLineStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
-  /** If true, clips the cell's content to width and height of the cell. The API has been deprecated. Use ClipContentsToTextCell or ClipContentsToPageItemCell. */
-  get clipContentToCell(): (boolean | NothingEnum.NOTHING)[];
-  set clipContentToCell(value: boolean | NothingEnum.NOTHING);
-  /** How the distance between the first line's baseline and the cell's top inset is measured. See {@link FirstBaseline}. */
-  get firstBaselineOffset(): (FirstBaseline | NothingEnum.NOTHING)[];
-  set firstBaselineOffset(value: FirstBaseline | NothingEnum.NOTHING);
-  /** The vertical alignment of cell. */
-  get verticalJustification(): (VerticalJustification | NothingEnum.NOTHING)[];
-  set verticalJustification(value: VerticalJustification | NothingEnum.NOTHING);
-  /** The maximum space that can be added between paragraphs in a cell. Note: Valid only when vertical justification is justified. */
-  get paragraphSpacingLimit(): (number | NothingEnum.NOTHING)[];
-  set paragraphSpacingLimit(value: MeasurementValue | NothingEnum.NOTHING);
-  /** The space between the baseline of the text and the top inset of the frame or cell. */
-  get minimumFirstBaselineOffset(): (number | NothingEnum.NOTHING)[];
-  set minimumFirstBaselineOffset(value: number | NothingEnum.NOTHING);
-  /** The rotation angle (in degrees) of the cell, specified as one of the following values: 0, 90, 180, or 270. */
-  get rotationAngle(): (number | NothingEnum.NOTHING)[];
-  set rotationAngle(value: number | NothingEnum.NOTHING);
-  /** The stroke weight of the left edge border stroke. */
-  get leftEdgeStrokeWeight(): (number | NothingEnum.NOTHING)[];
-  set leftEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
-  /** The stroke type of the left edge. */
-  get leftEdgeStrokeType(): (StrokeStyle | null)[];
-  set leftEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the left edge border stroke. */
-  get leftEdgeStrokeColor(): (Swatch | null)[];
-  set leftEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
-  /** The tint (as a percentage) of the left edge border stroke. (Range: 0 to 100). */
-  get leftEdgeStrokeTint(): (number | NothingEnum.NOTHING)[];
-  set leftEdgeStrokeTint(value: number | NothingEnum.NOTHING);
-  /** If true, the left edge border stroke will overprint. */
-  get leftEdgeStrokeOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set leftEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the left edge border stroke. Note: Not valid when left edge stroke type is solid. */
-  get leftEdgeStrokeGapColor(): (Swatch | null)[];
-  set leftEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
-  /** The tint (as a percentage) of the left edge border stroke gap color. (Range: 0 to 100) Note: Not valid when left edge stroke type is solid. */
-  get leftEdgeStrokeGapTint(): (number | NothingEnum.NOTHING)[];
-  set leftEdgeStrokeGapTint(value: number | NothingEnum.NOTHING);
-  /** If true, the gap color of the left edge border stroke will overprint. Note: Not valid when left edge stroke type is solid. */
-  get leftEdgeStrokeGapOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set leftEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
-  /** The stroke weight of the top edge border stroke. */
-  get topEdgeStrokeWeight(): (number | NothingEnum.NOTHING)[];
-  set topEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
-  /** The stroke type of the top edge. */
-  get topEdgeStrokeType(): (StrokeStyle | null)[];
-  set topEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the top edge border stroke. */
-  get topEdgeStrokeColor(): (Swatch | null)[];
-  set topEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
-  /** The tint (as a percentage) of the top edge border stroke. (Range: 0 to 100). */
-  get topEdgeStrokeTint(): (number | NothingEnum.NOTHING)[];
-  set topEdgeStrokeTint(value: number | NothingEnum.NOTHING);
-  /** If true, the top edge border stroke will overprint. */
-  get topEdgeStrokeOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set topEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the top edge border stroke. Note: Not valid when top edge stroke type is solid. */
-  get topEdgeStrokeGapColor(): (Swatch | null)[];
-  set topEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
-  /** The tint (as a percentage) of the top edge border stroke gap color. (Range: 0 to 100) Note: Not valid when top edge stroke type is solid. */
-  get topEdgeStrokeGapTint(): (number | NothingEnum.NOTHING)[];
-  set topEdgeStrokeGapTint(value: number | NothingEnum.NOTHING);
-  /** If true, the gap color of the top edge border stroke will overprint. Note: Not valid when top edge stroke type is solid. */
-  get topEdgeStrokeGapOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set topEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
-  /** The stroke weight of the right edge border stroke. */
-  get rightEdgeStrokeWeight(): (number | NothingEnum.NOTHING)[];
-  set rightEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
-  /** The stroke type of the right edge. */
-  get rightEdgeStrokeType(): (StrokeStyle | null)[];
-  set rightEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
-  /** The color, specified as a swatch, of the right edge border stroke. */
-  get rightEdgeStrokeColor(): (Swatch | null)[];
-  set rightEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
-  /** The tint (as a percentage) of the right edge border stroke. (Range: 0 to 100). */
-  get rightEdgeStrokeTint(): (number | NothingEnum.NOTHING)[];
-  set rightEdgeStrokeTint(value: number | NothingEnum.NOTHING);
-  /** If true, the right edge border stroke will overprint. */
-  get rightEdgeStrokeOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set rightEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the right edge border stroke. Note: Not valid when right edge stroke type is solid. */
-  get rightEdgeStrokeGapColor(): (Swatch | null)[];
-  set rightEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
-  /** The tint (as a percentage) of the right edge border stroke gap color. (Range: 0 to 100) Note: Not valid when right edge stroke type is solid. */
-  get rightEdgeStrokeGapTint(): (number | NothingEnum.NOTHING)[];
-  set rightEdgeStrokeGapTint(value: number | NothingEnum.NOTHING);
-  /** If true, the gap color of the right edge border stroke will overprint. Note: Not valid when right edge stroke type is solid. */
-  get rightEdgeStrokeGapOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set rightEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
-  /** The stroke weight of the bottom edge border stroke. */
-  get bottomEdgeStrokeWeight(): (number | NothingEnum.NOTHING)[];
-  set bottomEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
-  /** The stroke type of the bottom edge. */
-  get bottomEdgeStrokeType(): (StrokeStyle | null)[];
-  set bottomEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the bottom edge border stroke. */
-  get bottomEdgeStrokeColor(): (Swatch | null)[];
-  set bottomEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
-  /** The tint (as a percentage) of the bottom edge border stroke. */
-  get bottomEdgeStrokeTint(): (number | NothingEnum.NOTHING)[];
-  set bottomEdgeStrokeTint(value: number | NothingEnum.NOTHING);
-  /** If true, the bottom edge border stroke will overprint. */
-  get bottomEdgeStrokeOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set bottomEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the bottom edge border stroke. Note: Not valid when bottom edge stroke type is solid. */
-  get bottomEdgeStrokeGapColor(): (Swatch | null)[];
-  set bottomEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
-  /** The tint (as a percentage) of the bottom edge border stroke gap color. (Range: 0 to 100) Note: Not valid when bottom edge stroke type is solid. */
-  get bottomEdgeStrokeGapTint(): (number | NothingEnum.NOTHING)[];
-  set bottomEdgeStrokeGapTint(value: number | NothingEnum.NOTHING);
-  /** If true, the gap color of the bottom edge border stroke will overprint. Note: Not valid when bottom edge stroke type is solid. */
-  get bottomEdgeStrokeGapOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set bottomEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
-  /**
-   * The {@link ParagraphStyle} the cell style applies to text in the cell, or
-   * {@link NothingEnum.NOTHING} when the style leaves it unset.
-   *
-   * A style-definition member only: a live {@link Cell} carries no paragraph
-   * style of its own, its text ranges do.
-   */
-  get appliedParagraphStyle(): (ParagraphStyle | NothingEnum.NOTHING)[];
-  set appliedParagraphStyle(value: ParagraphStyle | string | NothingEnum.NOTHING);
-}
-
-/**
- * The broadcast proxy for {@link TableFormatAttributes} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link TableFormatAttributes} there.
- */
-export interface TableFormatAttributesPlural {
-  /** Where the table's caption sits relative to the table. See {@link TableCaptionPositionOptions}. */
-  get captionPosition(): (TableCaptionPositionOptions)[];
-  set captionPosition(value: TableCaptionPositionOptions);
-  /** The left inset of the graphic cell. */
-  get graphicLeftInset(): (number)[];
-  set graphicLeftInset(value: MeasurementValue);
-  /** The top inset of the graphic cell. */
-  get graphicTopInset(): (number)[];
-  set graphicTopInset(value: MeasurementValue);
-  /** The right inset of the graphic cell. */
-  get graphicRightInset(): (number)[];
-  set graphicRightInset(value: MeasurementValue);
-  /** The bottom inset of the graphic cell. */
-  get graphicBottomInset(): (number)[];
-  set graphicBottomInset(value: MeasurementValue);
-  /** If true, clips the graphic cell's content to width and height of the cell. */
-  get clipContentToGraphicCell(): (boolean)[];
-  set clipContentToGraphicCell(value: boolean);
-  /** The top inset of the text cell. */
-  get textTopInset(): (number)[];
-  set textTopInset(value: MeasurementValue);
-  /** The left inset of the text cell. */
-  get textLeftInset(): (number)[];
-  set textLeftInset(value: MeasurementValue);
-  /** The bottom inset of the text cell. */
-  get textBottomInset(): (number)[];
-  set textBottomInset(value: MeasurementValue);
-  /** The right inset of the text cell. */
-  get textRightInset(): (number)[];
-  set textRightInset(value: MeasurementValue);
-  /** If true, clips the text cell's content to width and height of the cell. */
-  get clipContentToTextCell(): (boolean)[];
-  set clipContentToTextCell(value: boolean);
-  /** The order in which to display row and column strokes at corners. */
-  get strokeOrder(): (StrokeOrderTypes)[];
-  set strokeOrder(value: StrokeOrderTypes);
-  /** The stroke weight of the table's top border stroke. */
-  get topBorderStrokeWeight(): (number)[];
-  set topBorderStrokeWeight(value: MeasurementValue);
-  /** The stroke type of the top border. */
-  get topBorderStrokeType(): (StrokeStyle)[];
-  set topBorderStrokeType(value: StrokeStyle | string);
-  /** The color, specified as a swatch (color, gradient, tint, or mixed ink), of the table's top border stroke. */
-  get topBorderStrokeColor(): (Swatch)[];
-  set topBorderStrokeColor(value: Swatch | string);
-  /** The tint (as a percentage) of the table's top border stroke. (Range: 0 to 100) */
-  get topBorderStrokeTint(): (number)[];
-  set topBorderStrokeTint(value: number);
-  /** If true, the top border strokes will overprint. */
-  get topBorderStrokeOverprint(): (boolean)[];
-  set topBorderStrokeOverprint(value: boolean);
-  /** The gap color, specified as a swatch (color, gradient, tint, or mixed ink), of the table's top border stroke. Note: Valid only when top border stroke type is not solid. */
-  get topBorderStrokeGapColor(): (Swatch)[];
-  set topBorderStrokeGapColor(value: Swatch | string);
-  /** The tint (as a percentage) of the gap color of the table's top border stroke. (Range: 0 to 100) Note: Valid only when top border stroke type is not solid. */
-  get topBorderStrokeGapTint(): (number)[];
-  set topBorderStrokeGapTint(value: number);
-  /** If true, the gap of the top border stroke will overprint. Note: Valid only when top border stroke type is not solid. */
-  get topBorderStrokeGapOverprint(): (boolean)[];
-  set topBorderStrokeGapOverprint(value: boolean);
-  /** The stroke weight of the left border stroke. */
-  get leftBorderStrokeWeight(): (number)[];
-  set leftBorderStrokeWeight(value: MeasurementValue);
-  /** The stroke type of the left border. */
-  get leftBorderStrokeType(): (StrokeStyle)[];
-  set leftBorderStrokeType(value: StrokeStyle | string);
-  /** The color, specified as a swatch (color, gradient, tint, or mixed ink), of the left border stroke. */
-  get leftBorderStrokeColor(): (Swatch)[];
-  set leftBorderStrokeColor(value: Swatch | string);
-  /** The tint (as a percentage) of the left border stroke. (Range: 0 to 100) */
-  get leftBorderStrokeTint(): (number)[];
-  set leftBorderStrokeTint(value: number);
-  /** If true, the left border stroke will overprint. */
-  get leftBorderStrokeOverprint(): (boolean)[];
-  set leftBorderStrokeOverprint(value: boolean);
-  /** The gap color, specified as a swatch (color, gradient, tint, or mixed ink), of the left border stroke. Note: Valid only when left border stroke type is not solid. */
-  get leftBorderStrokeGapColor(): (Swatch)[];
-  set leftBorderStrokeGapColor(value: Swatch | string);
-  /** The tint (as a percentage) of the gap color of the left border stroke. (Range: 0 to 100) Note: Valid only when left border stroke type is not solid. */
-  get leftBorderStrokeGapTint(): (number)[];
-  set leftBorderStrokeGapTint(value: number);
-  /** If true, the gap of the left border stroke will overprint. Note: Valid only when left border stroke type is not solid. */
-  get leftBorderStrokeGapOverprint(): (boolean)[];
-  set leftBorderStrokeGapOverprint(value: boolean);
-  /** The stroke weight of the bottom border stroke. */
-  get bottomBorderStrokeWeight(): (number)[];
-  set bottomBorderStrokeWeight(value: MeasurementValue);
-  /** The stroke type of the bottom border. */
-  get bottomBorderStrokeType(): (StrokeStyle)[];
-  set bottomBorderStrokeType(value: StrokeStyle | string);
-  /** The color, specified as a swatch (color, gradient, tint, or mixed ink), of the bottom border stroke. */
-  get bottomBorderStrokeColor(): (Swatch)[];
-  set bottomBorderStrokeColor(value: Swatch | string);
-  /** The tint (as a percentage) of the bottom border stroke. (Range: 0 to 100) */
-  get bottomBorderStrokeTint(): (number)[];
-  set bottomBorderStrokeTint(value: number);
-  /** If true, the bottom border stroke will overprint. */
-  get bottomBorderStrokeOverprint(): (boolean)[];
-  set bottomBorderStrokeOverprint(value: boolean);
-  /** The gap color, specified as a swatch (color, gradient, tint, or mixed ink), of the bottom border stroke. Note: Valid only when bottom border stroke type is not solid. */
-  get bottomBorderStrokeGapColor(): (Swatch)[];
-  set bottomBorderStrokeGapColor(value: Swatch | string);
-  /** The tint (as a percentage) of the gap color of the bottom border stroke. (Range: 0 to 100) Note: Valid only when bottom border stroke type is not solid. */
-  get bottomBorderStrokeGapTint(): (number)[];
-  set bottomBorderStrokeGapTint(value: number);
-  /** If true, the gap of the bottom border stroke will overprint. Note: Valid only when bottom border stroke type is not solid. */
-  get bottomBorderStrokeGapOverprint(): (boolean)[];
-  set bottomBorderStrokeGapOverprint(value: boolean);
-  /** The stroke weight of the right border stroke. */
-  get rightBorderStrokeWeight(): (number)[];
-  set rightBorderStrokeWeight(value: MeasurementValue);
-  /** The stroke type of the right border. */
-  get rightBorderStrokeType(): (StrokeStyle)[];
-  set rightBorderStrokeType(value: StrokeStyle | string);
-  /** The color, specified as a swatch (color, gradient, tint, or mixed ink), of the right border stroke. */
-  get rightBorderStrokeColor(): (Swatch)[];
-  set rightBorderStrokeColor(value: Swatch | string);
-  /** The tint (as a percentage) of the right border stroke. (Range: 0 to 100) */
-  get rightBorderStrokeTint(): (number)[];
-  set rightBorderStrokeTint(value: number);
-  /** If true, the right border stroke will overprint. */
-  get rightBorderStrokeOverprint(): (boolean)[];
-  set rightBorderStrokeOverprint(value: boolean);
-  /** The gap color, specified as a swatch (color, gradient, tint, or mixed ink), of the right border stroke. Note: Valid only when right border stroke type is not solid. */
-  get rightBorderStrokeGapColor(): (Swatch)[];
-  set rightBorderStrokeGapColor(value: Swatch | string);
-  /** The tint (as a percentage) of the gap color of the right border stroke. (Range: 0 to 100) Note: Valid only when right border stroke type is not solid. */
-  get rightBorderStrokeGapTint(): (number)[];
-  set rightBorderStrokeGapTint(value: number);
-  /** If true, the gap color of the right border stroke will overprint. Note: Valid only when right border stroke type is not solid. */
-  get rightBorderStrokeGapOverprint(): (boolean)[];
-  set rightBorderStrokeGapOverprint(value: boolean);
-  /** The space above the table. */
-  get spaceBefore(): (number)[];
-  set spaceBefore(value: MeasurementValue);
-  /** The space below the table. */
-  get spaceAfter(): (number)[];
-  set spaceAfter(value: MeasurementValue);
-  /** The number of body rows at the beginning of the table in which to skip border stroke formatting. Note: Valid when start row stroke count is 1 or greater and/or end row stroke count is 1 or greater. */
-  get skipFirstAlternatingStrokeRows(): (number)[];
-  set skipFirstAlternatingStrokeRows(value: number);
-  /** The number of body rows at the end of the table in which to skip border stroke formatting. Note: Valid when start row stroke count is 1 or greater and/or end row stroke count is 1 or greater. */
-  get skipLastAlternatingStrokeRows(): (number)[];
-  set skipLastAlternatingStrokeRows(value: number);
-  /** The number of rows in the first alternating row strokes group. */
-  get startRowStrokeCount(): (number)[];
-  set startRowStrokeCount(value: number);
-  /** The color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the first alternating row strokes group. Note: Valid when start row stroke count is 1 or greater. */
-  get startRowStrokeColor(): (Swatch)[];
-  set startRowStrokeColor(value: Swatch);
-  /** The stroke weight of row borders in the first alternating row strokes group. Note: Valid when start row stroke count is 1 or greater. */
-  get startRowStrokeWeight(): (number)[];
-  set startRowStrokeWeight(value: MeasurementValue);
-  /** The stroke type of rows in the first alternating strokes group. */
-  get startRowStrokeType(): (StrokeStyle)[];
-  set startRowStrokeType(value: StrokeStyle | string);
-  /** The tint (as a percentage) of the borders in the first alternating row strokes group. (Range: 0 to 100) Note: Valid when start row stroke count is 1 or greater. */
-  get startRowStrokeTint(): (number)[];
-  set startRowStrokeTint(value: number);
-  /** If true, the gap color of the row border stroke in the first alternating row strokes group will overprint. Note: Valid when start row stroke count is 1 or greater. */
-  get startRowStrokeGapOverprint(): (boolean)[];
-  set startRowStrokeGapOverprint(value: boolean);
-  /** The stroke gap color of row borders in the first alternating row strokes group, specified as a swatch (color, gradient, tint, or mixed ink). Note: Valid when start row stroke count is 1 or greater. */
-  get startRowStrokeGapColor(): (Swatch)[];
-  set startRowStrokeGapColor(value: Swatch);
-  /** The tint (as a percentage) of the gap color of row borders in the first alternating rows group. (Range: 0 to 100) Note: Valid when start row stroke count is 1 or greater. */
-  get startRowStrokeGapTint(): (number)[];
-  set startRowStrokeGapTint(value: number);
-  /** If true, the row borders in the first alternating row strokes group will overprint. Note: Valid when start row stroke count is 1 or greater. */
-  get startRowStrokeOverprint(): (boolean)[];
-  set startRowStrokeOverprint(value: boolean);
-  /** The number of rows in the second alternating row strokes group. */
-  get endRowStrokeCount(): (number)[];
-  set endRowStrokeCount(value: number);
-  /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the second alternating row strokes group. Note: Valid when end row stroke count is 1 or greater. */
-  get endRowStrokeColor(): (Swatch)[];
-  set endRowStrokeColor(value: Swatch);
-  /** The stroke weight of row borders in the second alternating row strokes group. Note: Valid when end row stroke count is 1 or greater. */
-  get endRowStrokeWeight(): (number)[];
-  set endRowStrokeWeight(value: MeasurementValue);
-  /** The stroke type of rows in the second alternating strokes group. */
-  get endRowStrokeType(): (StrokeStyle)[];
-  set endRowStrokeType(value: StrokeStyle | string);
-  /** The tint (as a percentage) of the row borders in the second alternating strokes group. (Range: 0 to 100) Note: Valid when end row stroke count is 1 or greater. */
-  get endRowStrokeTint(): (number)[];
-  set endRowStrokeTint(value: number);
-  /** If true, the rows in the second alternating rows group will overprint. Note: Valid when end row stroke count is 1 or greater. */
-  get endRowStrokeOverprint(): (boolean)[];
-  set endRowStrokeOverprint(value: boolean);
-  /** The gap color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the second alternating rows group. Note: Valid when end row stroke count is 1 or greater. */
-  get endRowStrokeGapColor(): (Swatch)[];
-  set endRowStrokeGapColor(value: Swatch);
-  /** The tint (as a percentage) of the gap color of rows in the second alternating strokes group. (Range: 0 to 100) Note: Valid when end row stroke count is 1 or greater and end row stroke type is not solid. */
-  get endRowStrokeGapTint(): (number)[];
-  set endRowStrokeGapTint(value: number);
-  /** If true, the gap of the row borders in the second alternating rows group will overprint. Note: Valid when end row stroke count is 1 or greater. */
-  get endRowStrokeGapOverprint(): (boolean)[];
-  set endRowStrokeGapOverprint(value: boolean);
-  /** The number of columns on the left of the table in which to skip border stroke formatting. Note: Valid when start column stroke count is 1 or greater and/or end column stroke count is 1 or greater. */
-  get skipFirstAlternatingStrokeColumns(): (number)[];
-  set skipFirstAlternatingStrokeColumns(value: number);
-  /** The number of columns on the right side of the table in which to skip border stroke formatting. Note: Valid when start column stroke count is 1 or greater and/or end column stroke count is 1 or greater. */
-  get skipLastAlternatingStrokeColumns(): (number)[];
-  set skipLastAlternatingStrokeColumns(value: number);
-  /** The number of columns in the first alternating column strokes group. */
-  get startColumnStrokeCount(): (number)[];
-  set startColumnStrokeCount(value: number);
-  /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the first alternating column strokes group. */
-  get startColumnStrokeColor(): (Swatch)[];
-  set startColumnStrokeColor(value: Swatch);
-  /** The stroke weight of column borders in the first alternating column strokes group. Note: Valid when start column stroke count is 1 or greater. */
-  get startColumnStrokeWeight(): (number)[];
-  set startColumnStrokeWeight(value: MeasurementValue);
-  /** The stroke type of columns in the first alternating strokes group. */
-  get startColumnStrokeType(): (StrokeStyle)[];
-  set startColumnStrokeType(value: StrokeStyle | string);
-  /** The tint (as a percentage) of column borders in the first alternating column strokes group. (Range: 0 to 100) Note: Valid when start column stroke count is 1 or greater. */
-  get startColumnStrokeTint(): (number)[];
-  set startColumnStrokeTint(value: number);
-  /** If true, the column borders in the first alternating column strokes group will overprint. Note: Valid when start column stroke count is 1 or greater. */
-  get startColumnStrokeOverprint(): (boolean)[];
-  set startColumnStrokeOverprint(value: boolean);
-  /** The stroke gap color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the first alternating column strokes group. Note: Valid when start column stroke count is 1 or greater. */
-  get startColumnStrokeGapColor(): (Swatch)[];
-  set startColumnStrokeGapColor(value: Swatch);
-  /** The tint (as a percentage) of the gap color of column borders in the first alternating column strokes group. (Range: 0 to 100) Note: Valid when start column stroke count is 1 or greater. */
-  get startColumnStrokeGapTint(): (number)[];
-  set startColumnStrokeGapTint(value: number);
-  /** If true, the gap of the column borders in the first alternating column strokes group will overprint. Note: Valid when start column stroke count is 1 or greater. */
-  get startColumnStrokeGapOverprint(): (boolean)[];
-  set startColumnStrokeGapOverprint(value: boolean);
-  /** The number of columns in the second alternating column strokes group. */
-  get endColumnStrokeCount(): (number)[];
-  set endColumnStrokeCount(value: number);
-  /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
-  get endColumnStrokeColor(): (Swatch)[];
-  set endColumnStrokeColor(value: Swatch);
-  /** The stroke weight of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
-  get endColumnStrokeWeight(): (number)[];
-  set endColumnStrokeWeight(value: MeasurementValue);
-  /** The stroke type of columns in the second alternating strokes group. */
-  get endColumnLineStyle(): (StrokeStyle)[];
-  set endColumnLineStyle(value: StrokeStyle | string);
-  /** The tint (as a percentage) of column borders in the second alternating column strokes group. (Range: 0 to 100) Note: Valid when end column stroke count is 1 or greater. */
-  get endColumnStrokeTint(): (number)[];
-  set endColumnStrokeTint(value: number);
-  /** If true, the column borders in the second alternating column strokes group will overprint. Note: Valid when end column stroke count is 1 or greater. */
-  get endColumnStrokeOverprint(): (boolean)[];
-  set endColumnStrokeOverprint(value: boolean);
-  /** The stroke gap color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
-  get endColumnStrokeGapColor(): (Swatch)[];
-  set endColumnStrokeGapColor(value: Swatch);
-  /** The tint (as a percentage) of the gap color of column borders in the second alternating column strokes group. (Range: 0 to 100) Note: Valid when end column stroke count is 1 or greater. */
-  get endColumnStrokeGapTint(): (number)[];
-  set endColumnStrokeGapTint(value: number);
-  /** If true, the gap of the column border stroke in the second alternating column strokes group will overprint. Note: Valid when end column stroke count is 1 or greater. */
-  get endColumnStrokeGapOverprint(): (boolean)[];
-  set endColumnStrokeGapOverprint(value: boolean);
-  /** If true, hides alternating row fills. If false, hides alternating column fills. */
-  get columnFillsPriority(): (boolean)[];
-  set columnFillsPriority(value: boolean);
-  /** The number of body rows at the beginning of the table to skip before applying the row fill color. Note: Valid when alternating fills are defined for table rows. */
-  get skipFirstAlternatingFillRows(): (number)[];
-  set skipFirstAlternatingFillRows(value: number);
-  /** The number of body rows at the end of the table in which to not apply the row fill color. Note: Valid when alternating fills are defined for table rows. */
-  get skipLastAlternatingFillRows(): (number)[];
-  set skipLastAlternatingFillRows(value: number);
-  /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of rows in the first alternating fills group. Note: Valid when alternating fills are defined for table rows. */
-  get startRowFillColor(): (Swatch)[];
-  set startRowFillColor(value: Swatch);
-  /** The number of rows in the first alternating fills group. Note: Valid when alternating fills are defined for table rows. */
-  get startRowFillCount(): (number)[];
-  set startRowFillCount(value: number);
-  /** The tint (as a percentage) of the rows in the first alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table rows. */
-  get startRowFillTint(): (number)[];
-  set startRowFillTint(value: number);
-  /** If true, the rows in the first alternating fills group will overprint. Note: Valid when alternating fills are defined for table rows. */
-  get startRowFillOverprint(): (boolean)[];
-  set startRowFillOverprint(value: boolean);
-  /** The number of rows in the second alternating fills group. Note: Valid when alternating fills are defined for table rows. */
-  get endRowFillCount(): (number)[];
-  set endRowFillCount(value: number);
-  /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of rows in the second alternating fills group. Note: Valid when alternating fills are defined for table rows. */
-  get endRowFillColor(): (Swatch)[];
-  set endRowFillColor(value: Swatch);
-  /** The tint (as a percentage) of the rows in the second alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table rows. */
-  get endRowFillTint(): (number)[];
-  set endRowFillTint(value: number);
-  /** If true, the rows in the second alternating fills group will overprint. Note: Valid when alternating fills are defined for table rows. */
-  get endRowFillOverprint(): (boolean)[];
-  set endRowFillOverprint(value: boolean);
-  /** The number of columns on the left side of the table to skip before applying the column fill color. Note: Valid when alternating fills are defined for table columns. */
-  get skipFirstAlternatingFillColumns(): (number)[];
-  set skipFirstAlternatingFillColumns(value: number);
-  /** The number columns on the right side of the table in which to not apply the column fill color. Note: Valid when alternating fills are defined for table columns. */
-  get skipLastAlternatingFillColumns(): (number)[];
-  set skipLastAlternatingFillColumns(value: number);
-  /** The number of columns in the first alternating fills group. Note: Valid when alternating fills are defined for table columns. */
-  get startColumnFillCount(): (number)[];
-  set startColumnFillCount(value: number);
-  /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of columns in the first alternating fills group. Note: Valid when alternating fills are defined for table columns. */
-  get startColumnFillColor(): (Swatch)[];
-  set startColumnFillColor(value: Swatch);
-  /** The tint (as a percentage) of the columns in the first alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table columns. */
-  get startColumnFillTint(): (number)[];
-  set startColumnFillTint(value: number);
-  /** If true, the columns in the first alternating fills group will overprint. Note: Valid when alternating fills are defined for table columns. */
-  get startColumnFillOverprint(): (boolean)[];
-  set startColumnFillOverprint(value: boolean);
-  /** The number of columns in the second alternating fills group. Note: Valid when alternating fills are defined for table columns. */
-  get endColumnFillCount(): (number)[];
-  set endColumnFillCount(value: number);
-  /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of columns in the second alternating fill group. Note: Valid when alternating fills are defined for table columns. */
-  get endColumnFillColor(): (Swatch)[];
-  set endColumnFillColor(value: Swatch);
-  /** The tint (as a percentage) of the columns in the second alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table columns. */
-  get endColumnFillTint(): (number)[];
-  set endColumnFillTint(value: number);
-  /** If true, the columns in the second alternating fills group will overprint. Note: Valid when alternating fills are defined for table columns. */
-  get endColumnFillOverprint(): (boolean)[];
-  set endColumnFillOverprint(value: boolean);
-}
-
-/**
- * The broadcast proxy for {@link TableStyleAttributes} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link TableStyleAttributes} there.
+ * Table formatting stored as a named **style definition** ({@link TableStyle}).
  */
 export interface TableStyleAttributesPlural {
   /** Where the table's caption sits relative to the table. See {@link TableCaptionPositionOptions}. */
@@ -2904,7 +2897,7 @@ export interface TableStyleAttributesPlural {
   set startRowStrokeCount(value: number);
   /** The color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the first alternating row strokes group. Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeColor(): (Swatch)[];
-  set startRowStrokeColor(value: Swatch);
+  set startRowStrokeColor(value: Swatch | string);
   /** The stroke weight of row borders in the first alternating row strokes group. Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeWeight(): (number)[];
   set startRowStrokeWeight(value: MeasurementValue);
@@ -2919,7 +2912,7 @@ export interface TableStyleAttributesPlural {
   set startRowStrokeGapOverprint(value: boolean);
   /** The stroke gap color of row borders in the first alternating row strokes group, specified as a swatch (color, gradient, tint, or mixed ink). Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeGapColor(): (Swatch)[];
-  set startRowStrokeGapColor(value: Swatch);
+  set startRowStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of row borders in the first alternating rows group. (Range: 0 to 100) Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeGapTint(): (number)[];
   set startRowStrokeGapTint(value: number);
@@ -2931,7 +2924,7 @@ export interface TableStyleAttributesPlural {
   set endRowStrokeCount(value: number);
   /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the second alternating row strokes group. Note: Valid when end row stroke count is 1 or greater. */
   get endRowStrokeColor(): (Swatch)[];
-  set endRowStrokeColor(value: Swatch);
+  set endRowStrokeColor(value: Swatch | string);
   /** The stroke weight of row borders in the second alternating row strokes group. Note: Valid when end row stroke count is 1 or greater. */
   get endRowStrokeWeight(): (number)[];
   set endRowStrokeWeight(value: MeasurementValue);
@@ -2946,7 +2939,7 @@ export interface TableStyleAttributesPlural {
   set endRowStrokeOverprint(value: boolean);
   /** The gap color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the second alternating rows group. Note: Valid when end row stroke count is 1 or greater. */
   get endRowStrokeGapColor(): (Swatch)[];
-  set endRowStrokeGapColor(value: Swatch);
+  set endRowStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of rows in the second alternating strokes group. (Range: 0 to 100) Note: Valid when end row stroke count is 1 or greater and end row stroke type is not solid. */
   get endRowStrokeGapTint(): (number)[];
   set endRowStrokeGapTint(value: number);
@@ -2964,7 +2957,7 @@ export interface TableStyleAttributesPlural {
   set startColumnStrokeCount(value: number);
   /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the first alternating column strokes group. */
   get startColumnStrokeColor(): (Swatch)[];
-  set startColumnStrokeColor(value: Swatch);
+  set startColumnStrokeColor(value: Swatch | string);
   /** The stroke weight of column borders in the first alternating column strokes group. Note: Valid when start column stroke count is 1 or greater. */
   get startColumnStrokeWeight(): (number)[];
   set startColumnStrokeWeight(value: MeasurementValue);
@@ -2979,7 +2972,7 @@ export interface TableStyleAttributesPlural {
   set startColumnStrokeOverprint(value: boolean);
   /** The stroke gap color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the first alternating column strokes group. Note: Valid when start column stroke count is 1 or greater. */
   get startColumnStrokeGapColor(): (Swatch)[];
-  set startColumnStrokeGapColor(value: Swatch);
+  set startColumnStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of column borders in the first alternating column strokes group. (Range: 0 to 100) Note: Valid when start column stroke count is 1 or greater. */
   get startColumnStrokeGapTint(): (number)[];
   set startColumnStrokeGapTint(value: number);
@@ -2991,7 +2984,7 @@ export interface TableStyleAttributesPlural {
   set endColumnStrokeCount(value: number);
   /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeColor(): (Swatch)[];
-  set endColumnStrokeColor(value: Swatch);
+  set endColumnStrokeColor(value: Swatch | string);
   /** The stroke weight of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeWeight(): (number)[];
   set endColumnStrokeWeight(value: MeasurementValue);
@@ -3006,7 +2999,7 @@ export interface TableStyleAttributesPlural {
   set endColumnStrokeOverprint(value: boolean);
   /** The stroke gap color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeGapColor(): (Swatch)[];
-  set endColumnStrokeGapColor(value: Swatch);
+  set endColumnStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of column borders in the second alternating column strokes group. (Range: 0 to 100) Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeGapTint(): (number)[];
   set endColumnStrokeGapTint(value: number);
@@ -3024,7 +3017,7 @@ export interface TableStyleAttributesPlural {
   set skipLastAlternatingFillRows(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of rows in the first alternating fills group. Note: Valid when alternating fills are defined for table rows. */
   get startRowFillColor(): (Swatch)[];
-  set startRowFillColor(value: Swatch);
+  set startRowFillColor(value: Swatch | string);
   /** The number of rows in the first alternating fills group. Note: Valid when alternating fills are defined for table rows. */
   get startRowFillCount(): (number)[];
   set startRowFillCount(value: number);
@@ -3039,7 +3032,7 @@ export interface TableStyleAttributesPlural {
   set endRowFillCount(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of rows in the second alternating fills group. Note: Valid when alternating fills are defined for table rows. */
   get endRowFillColor(): (Swatch)[];
-  set endRowFillColor(value: Swatch);
+  set endRowFillColor(value: Swatch | string);
   /** The tint (as a percentage) of the rows in the second alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table rows. */
   get endRowFillTint(): (number)[];
   set endRowFillTint(value: number);
@@ -3057,7 +3050,7 @@ export interface TableStyleAttributesPlural {
   set startColumnFillCount(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of columns in the first alternating fills group. Note: Valid when alternating fills are defined for table columns. */
   get startColumnFillColor(): (Swatch)[];
-  set startColumnFillColor(value: Swatch);
+  set startColumnFillColor(value: Swatch | string);
   /** The tint (as a percentage) of the columns in the first alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table columns. */
   get startColumnFillTint(): (number)[];
   set startColumnFillTint(value: number);
@@ -3069,7 +3062,7 @@ export interface TableStyleAttributesPlural {
   set endColumnFillCount(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of columns in the second alternating fill group. Note: Valid when alternating fills are defined for table columns. */
   get endColumnFillColor(): (Swatch)[];
-  set endColumnFillColor(value: Swatch);
+  set endColumnFillColor(value: Swatch | string);
   /** The tint (as a percentage) of the columns in the second alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table columns. */
   get endColumnFillTint(): (number)[];
   set endColumnFillTint(value: number);
@@ -3089,16 +3082,16 @@ export interface TableStyleAttributesPlural {
   get rightColumnRegionSameAsBodyRegion(): (boolean)[];
   set rightColumnRegionSameAsBodyRegion(value: boolean);
   /** The {@link CellStyle} applied to cells in the header region. */
-  get headerRegionCellStyle(): (CellStyle)[];
+  get headerRegionCellStyle(): (CellStyle | null)[];
   set headerRegionCellStyle(value: CellStyle | string);
   /** The {@link CellStyle} applied to cells in the footer region. */
-  get footerRegionCellStyle(): (CellStyle)[];
+  get footerRegionCellStyle(): (CellStyle | null)[];
   set footerRegionCellStyle(value: CellStyle | string);
   /** The {@link CellStyle} applied to cells in the left column region. */
-  get leftColumnRegionCellStyle(): (CellStyle)[];
+  get leftColumnRegionCellStyle(): (CellStyle | null)[];
   set leftColumnRegionCellStyle(value: CellStyle | string);
   /** The {@link CellStyle} applied to cells in the right column region. */
-  get rightColumnRegionCellStyle(): (CellStyle)[];
+  get rightColumnRegionCellStyle(): (CellStyle | null)[];
   set rightColumnRegionCellStyle(value: CellStyle | string);
   /** The {@link CellStyle} applied to cells in the body region. */
   get bodyRegionCellStyle(): (CellStyle)[];

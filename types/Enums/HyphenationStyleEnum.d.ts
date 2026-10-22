@@ -1,10 +1,11 @@
 /**
  * HyphenationStyleEnum.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __HyphenationStyleEnum: unique symbol;
 
 
 interface HyphenationStyleEnum extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<HyphenationStyleEnum>): boolean;
-
   /**
    * @internal **WARNING:** `__HyphenationStyleEnum` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const HyphenationStyleEnum: typeof Enumeration & {
    */
   readonly hyphAll: HyphenationStyleEnum_HYPH_ALL;
   /**
-   * Hyphenates at all possible hyphenation points.
-   */
-  readonly hyphall: HyphenationStyleEnum_HYPH_ALL;
-
-  /**
    * Hyphenates at all but unaesthetic hyphenation points.
    */
   readonly HYPH_ALL_BUT_UNAESTHETIC: HyphenationStyleEnum_HYPH_ALL_BUT_UNAESTHETIC;
@@ -130,11 +123,6 @@ export declare const HyphenationStyleEnum: typeof Enumeration & {
    * Hyphenates at all but unaesthetic hyphenation points.
    */
   readonly hyphAllButUnaesthetic: HyphenationStyleEnum_HYPH_ALL_BUT_UNAESTHETIC;
-  /**
-   * Hyphenates at all but unaesthetic hyphenation points.
-   */
-  readonly hyphallbutunaesthetic: HyphenationStyleEnum_HYPH_ALL_BUT_UNAESTHETIC;
-
   /**
    * Hyphenates at aesthetic hyphenation points.
    */
@@ -144,11 +132,6 @@ export declare const HyphenationStyleEnum: typeof Enumeration & {
    */
   readonly hyphAesthetic: HyphenationStyleEnum_HYPH_AESTHETIC;
   /**
-   * Hyphenates at aesthetic hyphenation points.
-   */
-  readonly hyphaesthetic: HyphenationStyleEnum_HYPH_AESTHETIC;
-
-  /**
    * Hyphenates at preferred aesthetic hyphenation points.
    */
   readonly HYPH_PREFERRED_AESTHETIC: HyphenationStyleEnum_HYPH_PREFERRED_AESTHETIC;
@@ -156,9 +139,4 @@ export declare const HyphenationStyleEnum: typeof Enumeration & {
    * Hyphenates at preferred aesthetic hyphenation points.
    */
   readonly hyphPreferredAesthetic: HyphenationStyleEnum_HYPH_PREFERRED_AESTHETIC;
-  /**
-   * Hyphenates at preferred aesthetic hyphenation points.
-   */
-  readonly hyphpreferredaesthetic: HyphenationStyleEnum_HYPH_PREFERRED_AESTHETIC;
-
 }

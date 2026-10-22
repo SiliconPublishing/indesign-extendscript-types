@@ -1,6 +1,7 @@
 /**
  * PagesPanel.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -10,17 +11,18 @@ import type { IconSizes } from './Enums/IconSizes';
 import type { PageViewOptions } from './Enums/PageViewOptions';
 import type { PanelLayoutResize } from './Enums/PanelLayoutResize';
 import type { Document } from './Document';
-import type { Application } from './Application';
-import type { Event } from './Event';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
+import type { Event } from './Event';
 import type { FilePath } from './_base/Types';
-import type { InDesignEventMap } from './_base/Events';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+import type { Application } from './Application';
+
 /**
  * The Pages panel — display settings only.
  *
@@ -29,50 +31,6 @@ import type { PropertiesSetter } from './_base/Properties';
  * {@link Document.pages} and {@link Document.masterSpreads}.
  */
 export interface PagesPanel {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: Application;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<PagesPanel, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<PagesPanel, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -114,6 +72,45 @@ export interface PagesPanel {
     captures?: boolean,
   ): boolean;
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: Application;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<PagesPanel, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<PagesPanel, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The index of the object within its containing parent.
    */
   readonly index: number;
@@ -122,8 +119,6 @@ export interface PagesPanel {
   /** Whether the panel is visible. */
   get visible(): boolean;
   set visible(value: boolean);
-  /** The object's DOM class name. */
-  readonly constructorName: 'PagesPanel';
   /** Resolves the proxy into the individual {@link PagesPanel} objects it stands for. */
   getElements(): PagesPanel[];
   /** How page icons are arranged in the pages area. */
@@ -161,60 +156,14 @@ export interface PagesPanel {
   set rotationIcons(value: boolean);
 }
 
-
 /**
- * The broadcast proxy for {@link PagesPanel} — what `everyItem()` returns.
+ * The Pages panel — display settings only.
  *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link PagesPanel} there.
+ * Everything here controls how pages and masters are drawn in the panel; none of
+ * it affects the document. Add, move, or delete pages through
+ * {@link Document.pages} and {@link Document.masterSpreads}.
  */
 export interface PagesPanelPlural {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (Application)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<PagesPanelPlural, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<PagesPanelPlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -256,6 +205,45 @@ export interface PagesPanelPlural {
     captures?: boolean,
   ): boolean;
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (Application)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<PagesPanelPlural, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<PagesPanelPlural, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The index of the object within its containing parent.
    */
   readonly index: (number)[];
@@ -264,8 +252,6 @@ export interface PagesPanelPlural {
   /** Whether the panel is visible. */
   get visible(): (boolean)[];
   set visible(value: boolean);
-  /** The object's DOM class name. */
-  readonly constructorName: 'PagesPanel';
   /** Resolves the proxy into the individual {@link PagesPanel} objects it stands for. */
   getElements(): PagesPanel[];
   /** How page icons are arranged in the pages area. */

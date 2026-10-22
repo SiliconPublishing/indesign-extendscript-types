@@ -1,10 +1,11 @@
 /**
  * StaticAlignmentOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __StaticAlignmentOptions: unique symbol;
 
 
 interface StaticAlignmentOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<StaticAlignmentOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__StaticAlignmentOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const StaticAlignmentOptions: typeof Enumeration & {
    */
   readonly leftAlign: StaticAlignmentOptions_LEFT_ALIGN;
   /**
-   * Left align the text.
-   */
-  readonly leftalign: StaticAlignmentOptions_LEFT_ALIGN;
-
-  /**
    * Center align the text.
    */
   readonly CENTER_ALIGN: StaticAlignmentOptions_CENTER_ALIGN;
@@ -115,11 +108,6 @@ export declare const StaticAlignmentOptions: typeof Enumeration & {
    */
   readonly centerAlign: StaticAlignmentOptions_CENTER_ALIGN;
   /**
-   * Center align the text.
-   */
-  readonly centeralign: StaticAlignmentOptions_CENTER_ALIGN;
-
-  /**
    * Right align the text.
    */
   readonly RIGHT_ALIGN: StaticAlignmentOptions_RIGHT_ALIGN;
@@ -127,9 +115,4 @@ export declare const StaticAlignmentOptions: typeof Enumeration & {
    * Right align the text.
    */
   readonly rightAlign: StaticAlignmentOptions_RIGHT_ALIGN;
-  /**
-   * Right align the text.
-   */
-  readonly rightalign: StaticAlignmentOptions_RIGHT_ALIGN;
-
 }

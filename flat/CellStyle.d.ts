@@ -1,6 +1,7 @@
 /**
  * CellStyle.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -17,20 +18,21 @@ import type { CellStyles } from './CellStyles';
 import type { FirstBaseline } from './Enums/FirstBaseline';
 import type { NothingEnum } from './Enums/NothingEnum';
 import type { ParagraphStyle } from './ParagraphStyle';
-import type { Event } from './Event';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
+import type { Event } from './Event';
 import type { FilePath } from './_base/Types';
-import type { InDesignEventMap } from './_base/Events';
-import type { MeasurementValue } from './_base/Types';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
-import type { StrokeStyle } from './StrokeStyle';
+import type { MeasurementValue } from './_base/Types';
 import type { Swatch } from './Swatch';
+import type { StrokeStyle } from './StrokeStyle';
 import type { VerticalJustification } from './Enums/VerticalJustification';
+
 /**
  * A named cell style definition, held in a document's or the application's {@link CellStyles} collection (optionally nested inside a {@link CellStyleGroup}).
  *
@@ -39,50 +41,6 @@ import type { VerticalJustification } from './Enums/VerticalJustification';
  * returns `NothingEnum.NOTHING` rather than a live default.
  */
 export interface CellStyle {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: Document | Application | CellStyleGroup;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<CellStyle, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<CellStyle, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -138,216 +96,255 @@ export interface CellStyle {
    */
   extractLabel(key: string): string;
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: Document | Application | CellStyleGroup;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<CellStyle, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<CellStyle, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The index of the object within its containing parent.
    */
   readonly index: number;
   /** The left inset of the graphic cell. */
   get graphicLeftInset(): number | NothingEnum.NOTHING;
-  set graphicLeftInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set graphicLeftInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The top inset of the graphic cell. */
   get graphicTopInset(): number | NothingEnum.NOTHING;
-  set graphicTopInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set graphicTopInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The right inset of the graphic cell. */
   get graphicRightInset(): number | NothingEnum.NOTHING;
-  set graphicRightInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set graphicRightInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The bottom inset of the graphic cell. */
   get graphicBottomInset(): number | NothingEnum.NOTHING;
-  set graphicBottomInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set graphicBottomInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, clips the graphic cell's content to width and height of the cell. */
   get clipContentToGraphicCell(): boolean | NothingEnum.NOTHING;
-  set clipContentToGraphicCell(value: boolean | NothingEnum.NOTHING);
+  set clipContentToGraphicCell(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The top inset of the text cell. */
   get textTopInset(): number | NothingEnum.NOTHING;
-  set textTopInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set textTopInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The left inset of the text cell. */
   get textLeftInset(): number | NothingEnum.NOTHING;
-  set textLeftInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set textLeftInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The bottom inset of the text cell. */
   get textBottomInset(): number | NothingEnum.NOTHING;
-  set textBottomInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set textBottomInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The right inset of the text cell. */
   get textRightInset(): number | NothingEnum.NOTHING;
-  set textRightInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set textRightInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, clips the text cell's content to width and height of the cell. */
   get clipContentToTextCell(): boolean | NothingEnum.NOTHING;
-  set clipContentToTextCell(value: boolean | NothingEnum.NOTHING);
+  set clipContentToTextCell(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The length (of a linear gradient) or radius (of a radial gradient) applied to the fill of the object. */
   get gradientFillLength(): number | NothingEnum.NOTHING;
-  set gradientFillLength(value: number | NothingEnum.NOTHING);
+  set gradientFillLength(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The angle of a linear gradient applied to the fill of the object. (Range: -180 to 180). */
   get gradientFillAngle(): number | NothingEnum.NOTHING;
-  set gradientFillAngle(value: number | NothingEnum.NOTHING);
+  set gradientFillAngle(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The starting point (in page coordinates) of a gradient applied to the fill of the CellStyle, in the format [x, y]. */
   get gradientFillStart(): number[] | NothingEnum.NOTHING;
-  set gradientFillStart(value: number[] | NothingEnum.NOTHING);
+  set gradientFillStart(value: number[] | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The top inset of the cell. The API has been deprecated. Use TextTopInset or GraphicTopInset. */
   get topInset(): number | NothingEnum.NOTHING;
-  set topInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set topInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The left inset of the cell.The API has been deprecated. Use TextLeftInset or GraphicLeftInset. */
   get leftInset(): number | NothingEnum.NOTHING;
-  set leftInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set leftInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The bottom inset of the cell.The API has been deprecated. Use TextBottomInset or GraphicBottomInset. */
   get bottomInset(): number | NothingEnum.NOTHING;
-  set bottomInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set bottomInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The right inset of the cell.The API has been deprecated. Use TextLeftInset or GraphicRightInset. */
   get rightInset(): number | NothingEnum.NOTHING;
-  set rightInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set rightInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of the object. */
-  get fillColor(): Swatch | null;
-  set fillColor(value: Swatch | string | NothingEnum.NOTHING);
+  get fillColor(): Swatch | null | NothingEnum.NOTHING;
+  set fillColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the fill of the object. */
   get fillTint(): number | NothingEnum.NOTHING;
-  set fillTint(value: number | NothingEnum.NOTHING);
+  set fillTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the fill of the object will overprint. */
   get overprintFill(): boolean | NothingEnum.NOTHING;
-  set overprintFill(value: boolean | NothingEnum.NOTHING);
+  set overprintFill(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, draws a diagonal line starting from the top left. */
   get topLeftDiagonalLine(): boolean | NothingEnum.NOTHING;
-  set topLeftDiagonalLine(value: boolean | NothingEnum.NOTHING);
+  set topLeftDiagonalLine(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, draws a diagonal line starting from the top right. */
   get topRightDiagonalLine(): boolean | NothingEnum.NOTHING;
-  set topRightDiagonalLine(value: boolean | NothingEnum.NOTHING);
+  set topRightDiagonalLine(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, draws the diagonal line in front of cell contents. */
   get diagonalLineInFront(): boolean | NothingEnum.NOTHING;
-  set diagonalLineInFront(value: boolean | NothingEnum.NOTHING);
+  set diagonalLineInFront(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke weight of the cell's diagonal line(s) — see {@link topLeftDiagonalLine} and {@link topRightDiagonalLine}. */
   get diagonalLineStrokeWeight(): number | NothingEnum.NOTHING;
-  set diagonalLineStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
+  set diagonalLineStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke type of the diagonal line(s). */
-  get diagonalLineStrokeType(): StrokeStyle | null;
-  set diagonalLineStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
+  get diagonalLineStrokeType(): StrokeStyle | null | NothingEnum.NOTHING;
+  set diagonalLineStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The diagonal line color, specified as a swatch. */
-  get diagonalLineStrokeColor(): Swatch | null;
-  set diagonalLineStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
+  get diagonalLineStrokeColor(): Swatch | null | NothingEnum.NOTHING;
+  set diagonalLineStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The diagonal line tint (as a percentage). (Range: 0 to 100). */
   get diagonalLineStrokeTint(): number | NothingEnum.NOTHING;
-  set diagonalLineStrokeTint(value: number | NothingEnum.NOTHING);
+  set diagonalLineStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the diagonal line stroke will overprint. */
   get diagonalLineStrokeOverprint(): boolean | NothingEnum.NOTHING;
-  set diagonalLineStrokeOverprint(value: boolean | NothingEnum.NOTHING);
+  set diagonalLineStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the diagonal line stroke. Note: Not valid when diagonal line stroke type is solid. */
-  get diagonalLineStrokeGapColor(): Swatch | null;
-  set diagonalLineStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
+  get diagonalLineStrokeGapColor(): Swatch | null | NothingEnum.NOTHING;
+  set diagonalLineStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the diagonal line stroke gap color. Note: Not valid when diagonal line stroke type is solid. */
   get diagonalLineStrokeGapTint(): number | NothingEnum.NOTHING;
-  set diagonalLineStrokeGapTint(value: number | NothingEnum.NOTHING);
+  set diagonalLineStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the stroke gap of the diagonal line will overprint. Note: Not valid when diagonal line stroke type is solid. */
   get diagonalLineStrokeGapOverprint(): boolean | NothingEnum.NOTHING;
-  set diagonalLineStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
+  set diagonalLineStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, clips the cell's content to width and height of the cell. The API has been deprecated. Use ClipContentsToTextCell or ClipContentsToPageItemCell. */
   get clipContentToCell(): boolean | NothingEnum.NOTHING;
-  set clipContentToCell(value: boolean | NothingEnum.NOTHING);
+  set clipContentToCell(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** How the distance between the first line's baseline and the cell's top inset is measured. See {@link FirstBaseline}. */
   get firstBaselineOffset(): FirstBaseline | NothingEnum.NOTHING;
-  set firstBaselineOffset(value: FirstBaseline | NothingEnum.NOTHING);
+  set firstBaselineOffset(value: FirstBaseline | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The vertical alignment of cell. */
   get verticalJustification(): VerticalJustification | NothingEnum.NOTHING;
-  set verticalJustification(value: VerticalJustification | NothingEnum.NOTHING);
+  set verticalJustification(value: VerticalJustification | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The maximum space that can be added between paragraphs in a cell. Note: Valid only when vertical justification is justified. */
   get paragraphSpacingLimit(): number | NothingEnum.NOTHING;
-  set paragraphSpacingLimit(value: MeasurementValue | NothingEnum.NOTHING);
+  set paragraphSpacingLimit(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The space between the baseline of the text and the top inset of the frame or cell. */
   get minimumFirstBaselineOffset(): number | NothingEnum.NOTHING;
-  set minimumFirstBaselineOffset(value: number | NothingEnum.NOTHING);
+  set minimumFirstBaselineOffset(value: number | NothingEnum.NOTHING | string | NothingEnum.NOTHING);
   /** The rotation angle (in degrees) of the cell, specified as one of the following values: 0, 90, 180, or 270. */
   get rotationAngle(): number | NothingEnum.NOTHING;
-  set rotationAngle(value: number | NothingEnum.NOTHING);
+  set rotationAngle(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke weight of the left edge border stroke. */
   get leftEdgeStrokeWeight(): number | NothingEnum.NOTHING;
-  set leftEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
+  set leftEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke type of the left edge. */
-  get leftEdgeStrokeType(): StrokeStyle | null;
-  set leftEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
+  get leftEdgeStrokeType(): StrokeStyle | null | NothingEnum.NOTHING;
+  set leftEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the left edge border stroke. */
-  get leftEdgeStrokeColor(): Swatch | null;
-  set leftEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
+  get leftEdgeStrokeColor(): Swatch | null | NothingEnum.NOTHING;
+  set leftEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the left edge border stroke. (Range: 0 to 100). */
   get leftEdgeStrokeTint(): number | NothingEnum.NOTHING;
-  set leftEdgeStrokeTint(value: number | NothingEnum.NOTHING);
+  set leftEdgeStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the left edge border stroke will overprint. */
   get leftEdgeStrokeOverprint(): boolean | NothingEnum.NOTHING;
-  set leftEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING);
+  set leftEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the left edge border stroke. Note: Not valid when left edge stroke type is solid. */
-  get leftEdgeStrokeGapColor(): Swatch | null;
-  set leftEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
+  get leftEdgeStrokeGapColor(): Swatch | null | NothingEnum.NOTHING;
+  set leftEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the left edge border stroke gap color. (Range: 0 to 100) Note: Not valid when left edge stroke type is solid. */
   get leftEdgeStrokeGapTint(): number | NothingEnum.NOTHING;
-  set leftEdgeStrokeGapTint(value: number | NothingEnum.NOTHING);
+  set leftEdgeStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the gap color of the left edge border stroke will overprint. Note: Not valid when left edge stroke type is solid. */
   get leftEdgeStrokeGapOverprint(): boolean | NothingEnum.NOTHING;
-  set leftEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
+  set leftEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke weight of the top edge border stroke. */
   get topEdgeStrokeWeight(): number | NothingEnum.NOTHING;
-  set topEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
+  set topEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke type of the top edge. */
-  get topEdgeStrokeType(): StrokeStyle | null;
-  set topEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
+  get topEdgeStrokeType(): StrokeStyle | null | NothingEnum.NOTHING;
+  set topEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the top edge border stroke. */
-  get topEdgeStrokeColor(): Swatch | null;
-  set topEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
+  get topEdgeStrokeColor(): Swatch | null | NothingEnum.NOTHING;
+  set topEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the top edge border stroke. (Range: 0 to 100). */
   get topEdgeStrokeTint(): number | NothingEnum.NOTHING;
-  set topEdgeStrokeTint(value: number | NothingEnum.NOTHING);
+  set topEdgeStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the top edge border stroke will overprint. */
   get topEdgeStrokeOverprint(): boolean | NothingEnum.NOTHING;
-  set topEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING);
+  set topEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the top edge border stroke. Note: Not valid when top edge stroke type is solid. */
-  get topEdgeStrokeGapColor(): Swatch | null;
-  set topEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
+  get topEdgeStrokeGapColor(): Swatch | null | NothingEnum.NOTHING;
+  set topEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the top edge border stroke gap color. (Range: 0 to 100) Note: Not valid when top edge stroke type is solid. */
   get topEdgeStrokeGapTint(): number | NothingEnum.NOTHING;
-  set topEdgeStrokeGapTint(value: number | NothingEnum.NOTHING);
+  set topEdgeStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the gap color of the top edge border stroke will overprint. Note: Not valid when top edge stroke type is solid. */
   get topEdgeStrokeGapOverprint(): boolean | NothingEnum.NOTHING;
-  set topEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
+  set topEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke weight of the right edge border stroke. */
   get rightEdgeStrokeWeight(): number | NothingEnum.NOTHING;
-  set rightEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
+  set rightEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke type of the right edge. */
-  get rightEdgeStrokeType(): StrokeStyle | null;
-  set rightEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
+  get rightEdgeStrokeType(): StrokeStyle | null | NothingEnum.NOTHING;
+  set rightEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The color, specified as a swatch, of the right edge border stroke. */
-  get rightEdgeStrokeColor(): Swatch | null;
-  set rightEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
+  get rightEdgeStrokeColor(): Swatch | null | NothingEnum.NOTHING;
+  set rightEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the right edge border stroke. (Range: 0 to 100). */
   get rightEdgeStrokeTint(): number | NothingEnum.NOTHING;
-  set rightEdgeStrokeTint(value: number | NothingEnum.NOTHING);
+  set rightEdgeStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the right edge border stroke will overprint. */
   get rightEdgeStrokeOverprint(): boolean | NothingEnum.NOTHING;
-  set rightEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING);
+  set rightEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the right edge border stroke. Note: Not valid when right edge stroke type is solid. */
-  get rightEdgeStrokeGapColor(): Swatch | null;
-  set rightEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
+  get rightEdgeStrokeGapColor(): Swatch | null | NothingEnum.NOTHING;
+  set rightEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the right edge border stroke gap color. (Range: 0 to 100) Note: Not valid when right edge stroke type is solid. */
   get rightEdgeStrokeGapTint(): number | NothingEnum.NOTHING;
-  set rightEdgeStrokeGapTint(value: number | NothingEnum.NOTHING);
+  set rightEdgeStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the gap color of the right edge border stroke will overprint. Note: Not valid when right edge stroke type is solid. */
   get rightEdgeStrokeGapOverprint(): boolean | NothingEnum.NOTHING;
-  set rightEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
+  set rightEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke weight of the bottom edge border stroke. */
   get bottomEdgeStrokeWeight(): number | NothingEnum.NOTHING;
-  set bottomEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
+  set bottomEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke type of the bottom edge. */
-  get bottomEdgeStrokeType(): StrokeStyle | null;
-  set bottomEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
+  get bottomEdgeStrokeType(): StrokeStyle | null | NothingEnum.NOTHING;
+  set bottomEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the bottom edge border stroke. */
-  get bottomEdgeStrokeColor(): Swatch | null;
-  set bottomEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
+  get bottomEdgeStrokeColor(): Swatch | null | NothingEnum.NOTHING;
+  set bottomEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the bottom edge border stroke. */
   get bottomEdgeStrokeTint(): number | NothingEnum.NOTHING;
-  set bottomEdgeStrokeTint(value: number | NothingEnum.NOTHING);
+  set bottomEdgeStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the bottom edge border stroke will overprint. */
   get bottomEdgeStrokeOverprint(): boolean | NothingEnum.NOTHING;
-  set bottomEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING);
+  set bottomEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the bottom edge border stroke. Note: Not valid when bottom edge stroke type is solid. */
-  get bottomEdgeStrokeGapColor(): Swatch | null;
-  set bottomEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
+  get bottomEdgeStrokeGapColor(): Swatch | null | NothingEnum.NOTHING;
+  set bottomEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the bottom edge border stroke gap color. (Range: 0 to 100) Note: Not valid when bottom edge stroke type is solid. */
   get bottomEdgeStrokeGapTint(): number | NothingEnum.NOTHING;
-  set bottomEdgeStrokeGapTint(value: number | NothingEnum.NOTHING);
+  set bottomEdgeStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the gap color of the bottom edge border stroke will overprint. Note: Not valid when bottom edge stroke type is solid. */
   get bottomEdgeStrokeGapOverprint(): boolean | NothingEnum.NOTHING;
-  set bottomEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
+  set bottomEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /**
    * The {@link ParagraphStyle} the cell style applies to text in the cell, or
    * {@link NothingEnum.NOTHING} when the style leaves it unset.
@@ -357,8 +354,6 @@ export interface CellStyle {
    */
   get appliedParagraphStyle(): ParagraphStyle | NothingEnum.NOTHING;
   set appliedParagraphStyle(value: ParagraphStyle | string | NothingEnum.NOTHING);
-  /** The object's DOM class name. */
-  readonly constructorName: 'CellStyle';
   /** Resolves the proxy into the individual {@link CellStyle} objects it stands for. */
   getElements(): CellStyle[];
   /** The unique ID of the cell style, stable across saves and reopens. */
@@ -383,60 +378,14 @@ export interface CellStyle {
   move(to: LocationOptions, reference?: StyleMoveReference): CellStyle;
 }
 
-
 /**
- * The broadcast proxy for {@link CellStyle} — what `everyItem()` returns.
+ * A named cell style definition, held in a document's or the application's {@link CellStyles} collection (optionally nested inside a {@link CellStyleGroup}).
  *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link CellStyle} there.
+ * Holds only the edge, inset, and fill attributes explicitly set on it, rather than
+ * every attribute a live {@link Cell} carries. Reading an attribute that was never set
+ * returns `NothingEnum.NOTHING` rather than a live default.
  */
 export interface CellStylePlural {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (Document | Application | CellStyleGroup)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<CellStylePlural, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<CellStylePlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -492,216 +441,255 @@ export interface CellStylePlural {
    */
   extractLabel(key: string): (string)[];
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (Document | Application | CellStyleGroup)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<CellStylePlural, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<CellStylePlural, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The index of the object within its containing parent.
    */
   readonly index: (number)[];
   /** The left inset of the graphic cell. */
   get graphicLeftInset(): (number | NothingEnum.NOTHING)[];
-  set graphicLeftInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set graphicLeftInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The top inset of the graphic cell. */
   get graphicTopInset(): (number | NothingEnum.NOTHING)[];
-  set graphicTopInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set graphicTopInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The right inset of the graphic cell. */
   get graphicRightInset(): (number | NothingEnum.NOTHING)[];
-  set graphicRightInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set graphicRightInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The bottom inset of the graphic cell. */
   get graphicBottomInset(): (number | NothingEnum.NOTHING)[];
-  set graphicBottomInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set graphicBottomInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, clips the graphic cell's content to width and height of the cell. */
   get clipContentToGraphicCell(): (boolean | NothingEnum.NOTHING)[];
-  set clipContentToGraphicCell(value: boolean | NothingEnum.NOTHING);
+  set clipContentToGraphicCell(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The top inset of the text cell. */
   get textTopInset(): (number | NothingEnum.NOTHING)[];
-  set textTopInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set textTopInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The left inset of the text cell. */
   get textLeftInset(): (number | NothingEnum.NOTHING)[];
-  set textLeftInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set textLeftInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The bottom inset of the text cell. */
   get textBottomInset(): (number | NothingEnum.NOTHING)[];
-  set textBottomInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set textBottomInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The right inset of the text cell. */
   get textRightInset(): (number | NothingEnum.NOTHING)[];
-  set textRightInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set textRightInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, clips the text cell's content to width and height of the cell. */
   get clipContentToTextCell(): (boolean | NothingEnum.NOTHING)[];
-  set clipContentToTextCell(value: boolean | NothingEnum.NOTHING);
+  set clipContentToTextCell(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The length (of a linear gradient) or radius (of a radial gradient) applied to the fill of the object. */
   get gradientFillLength(): (number | NothingEnum.NOTHING)[];
-  set gradientFillLength(value: number | NothingEnum.NOTHING);
+  set gradientFillLength(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The angle of a linear gradient applied to the fill of the object. (Range: -180 to 180). */
   get gradientFillAngle(): (number | NothingEnum.NOTHING)[];
-  set gradientFillAngle(value: number | NothingEnum.NOTHING);
+  set gradientFillAngle(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The starting point (in page coordinates) of a gradient applied to the fill of the CellStyle, in the format [x, y]. */
   get gradientFillStart(): (number[] | NothingEnum.NOTHING)[];
-  set gradientFillStart(value: number[] | NothingEnum.NOTHING);
+  set gradientFillStart(value: number[] | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The top inset of the cell. The API has been deprecated. Use TextTopInset or GraphicTopInset. */
   get topInset(): (number | NothingEnum.NOTHING)[];
-  set topInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set topInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The left inset of the cell.The API has been deprecated. Use TextLeftInset or GraphicLeftInset. */
   get leftInset(): (number | NothingEnum.NOTHING)[];
-  set leftInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set leftInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The bottom inset of the cell.The API has been deprecated. Use TextBottomInset or GraphicBottomInset. */
   get bottomInset(): (number | NothingEnum.NOTHING)[];
-  set bottomInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set bottomInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The right inset of the cell.The API has been deprecated. Use TextLeftInset or GraphicRightInset. */
   get rightInset(): (number | NothingEnum.NOTHING)[];
-  set rightInset(value: MeasurementValue | NothingEnum.NOTHING);
+  set rightInset(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of the object. */
-  get fillColor(): (Swatch | null)[];
-  set fillColor(value: Swatch | string | NothingEnum.NOTHING);
+  get fillColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set fillColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the fill of the object. */
   get fillTint(): (number | NothingEnum.NOTHING)[];
-  set fillTint(value: number | NothingEnum.NOTHING);
+  set fillTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the fill of the object will overprint. */
   get overprintFill(): (boolean | NothingEnum.NOTHING)[];
-  set overprintFill(value: boolean | NothingEnum.NOTHING);
+  set overprintFill(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, draws a diagonal line starting from the top left. */
   get topLeftDiagonalLine(): (boolean | NothingEnum.NOTHING)[];
-  set topLeftDiagonalLine(value: boolean | NothingEnum.NOTHING);
+  set topLeftDiagonalLine(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, draws a diagonal line starting from the top right. */
   get topRightDiagonalLine(): (boolean | NothingEnum.NOTHING)[];
-  set topRightDiagonalLine(value: boolean | NothingEnum.NOTHING);
+  set topRightDiagonalLine(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, draws the diagonal line in front of cell contents. */
   get diagonalLineInFront(): (boolean | NothingEnum.NOTHING)[];
-  set diagonalLineInFront(value: boolean | NothingEnum.NOTHING);
+  set diagonalLineInFront(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke weight of the cell's diagonal line(s) — see {@link topLeftDiagonalLine} and {@link topRightDiagonalLine}. */
   get diagonalLineStrokeWeight(): (number | NothingEnum.NOTHING)[];
-  set diagonalLineStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
+  set diagonalLineStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke type of the diagonal line(s). */
-  get diagonalLineStrokeType(): (StrokeStyle | null)[];
-  set diagonalLineStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
+  get diagonalLineStrokeType(): (StrokeStyle | null | NothingEnum.NOTHING)[];
+  set diagonalLineStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The diagonal line color, specified as a swatch. */
-  get diagonalLineStrokeColor(): (Swatch | null)[];
-  set diagonalLineStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
+  get diagonalLineStrokeColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set diagonalLineStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The diagonal line tint (as a percentage). (Range: 0 to 100). */
   get diagonalLineStrokeTint(): (number | NothingEnum.NOTHING)[];
-  set diagonalLineStrokeTint(value: number | NothingEnum.NOTHING);
+  set diagonalLineStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the diagonal line stroke will overprint. */
   get diagonalLineStrokeOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set diagonalLineStrokeOverprint(value: boolean | NothingEnum.NOTHING);
+  set diagonalLineStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the diagonal line stroke. Note: Not valid when diagonal line stroke type is solid. */
-  get diagonalLineStrokeGapColor(): (Swatch | null)[];
-  set diagonalLineStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
+  get diagonalLineStrokeGapColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set diagonalLineStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the diagonal line stroke gap color. Note: Not valid when diagonal line stroke type is solid. */
   get diagonalLineStrokeGapTint(): (number | NothingEnum.NOTHING)[];
-  set diagonalLineStrokeGapTint(value: number | NothingEnum.NOTHING);
+  set diagonalLineStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the stroke gap of the diagonal line will overprint. Note: Not valid when diagonal line stroke type is solid. */
   get diagonalLineStrokeGapOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set diagonalLineStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
+  set diagonalLineStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, clips the cell's content to width and height of the cell. The API has been deprecated. Use ClipContentsToTextCell or ClipContentsToPageItemCell. */
   get clipContentToCell(): (boolean | NothingEnum.NOTHING)[];
-  set clipContentToCell(value: boolean | NothingEnum.NOTHING);
+  set clipContentToCell(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** How the distance between the first line's baseline and the cell's top inset is measured. See {@link FirstBaseline}. */
   get firstBaselineOffset(): (FirstBaseline | NothingEnum.NOTHING)[];
-  set firstBaselineOffset(value: FirstBaseline | NothingEnum.NOTHING);
+  set firstBaselineOffset(value: FirstBaseline | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The vertical alignment of cell. */
   get verticalJustification(): (VerticalJustification | NothingEnum.NOTHING)[];
-  set verticalJustification(value: VerticalJustification | NothingEnum.NOTHING);
+  set verticalJustification(value: VerticalJustification | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The maximum space that can be added between paragraphs in a cell. Note: Valid only when vertical justification is justified. */
   get paragraphSpacingLimit(): (number | NothingEnum.NOTHING)[];
-  set paragraphSpacingLimit(value: MeasurementValue | NothingEnum.NOTHING);
+  set paragraphSpacingLimit(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The space between the baseline of the text and the top inset of the frame or cell. */
   get minimumFirstBaselineOffset(): (number | NothingEnum.NOTHING)[];
-  set minimumFirstBaselineOffset(value: number | NothingEnum.NOTHING);
+  set minimumFirstBaselineOffset(value: number | NothingEnum.NOTHING | string | NothingEnum.NOTHING);
   /** The rotation angle (in degrees) of the cell, specified as one of the following values: 0, 90, 180, or 270. */
   get rotationAngle(): (number | NothingEnum.NOTHING)[];
-  set rotationAngle(value: number | NothingEnum.NOTHING);
+  set rotationAngle(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke weight of the left edge border stroke. */
   get leftEdgeStrokeWeight(): (number | NothingEnum.NOTHING)[];
-  set leftEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
+  set leftEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke type of the left edge. */
-  get leftEdgeStrokeType(): (StrokeStyle | null)[];
-  set leftEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
+  get leftEdgeStrokeType(): (StrokeStyle | null | NothingEnum.NOTHING)[];
+  set leftEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the left edge border stroke. */
-  get leftEdgeStrokeColor(): (Swatch | null)[];
-  set leftEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
+  get leftEdgeStrokeColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set leftEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the left edge border stroke. (Range: 0 to 100). */
   get leftEdgeStrokeTint(): (number | NothingEnum.NOTHING)[];
-  set leftEdgeStrokeTint(value: number | NothingEnum.NOTHING);
+  set leftEdgeStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the left edge border stroke will overprint. */
   get leftEdgeStrokeOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set leftEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING);
+  set leftEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the left edge border stroke. Note: Not valid when left edge stroke type is solid. */
-  get leftEdgeStrokeGapColor(): (Swatch | null)[];
-  set leftEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
+  get leftEdgeStrokeGapColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set leftEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the left edge border stroke gap color. (Range: 0 to 100) Note: Not valid when left edge stroke type is solid. */
   get leftEdgeStrokeGapTint(): (number | NothingEnum.NOTHING)[];
-  set leftEdgeStrokeGapTint(value: number | NothingEnum.NOTHING);
+  set leftEdgeStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the gap color of the left edge border stroke will overprint. Note: Not valid when left edge stroke type is solid. */
   get leftEdgeStrokeGapOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set leftEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
+  set leftEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke weight of the top edge border stroke. */
   get topEdgeStrokeWeight(): (number | NothingEnum.NOTHING)[];
-  set topEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
+  set topEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke type of the top edge. */
-  get topEdgeStrokeType(): (StrokeStyle | null)[];
-  set topEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
+  get topEdgeStrokeType(): (StrokeStyle | null | NothingEnum.NOTHING)[];
+  set topEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the top edge border stroke. */
-  get topEdgeStrokeColor(): (Swatch | null)[];
-  set topEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
+  get topEdgeStrokeColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set topEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the top edge border stroke. (Range: 0 to 100). */
   get topEdgeStrokeTint(): (number | NothingEnum.NOTHING)[];
-  set topEdgeStrokeTint(value: number | NothingEnum.NOTHING);
+  set topEdgeStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the top edge border stroke will overprint. */
   get topEdgeStrokeOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set topEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING);
+  set topEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the top edge border stroke. Note: Not valid when top edge stroke type is solid. */
-  get topEdgeStrokeGapColor(): (Swatch | null)[];
-  set topEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
+  get topEdgeStrokeGapColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set topEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the top edge border stroke gap color. (Range: 0 to 100) Note: Not valid when top edge stroke type is solid. */
   get topEdgeStrokeGapTint(): (number | NothingEnum.NOTHING)[];
-  set topEdgeStrokeGapTint(value: number | NothingEnum.NOTHING);
+  set topEdgeStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the gap color of the top edge border stroke will overprint. Note: Not valid when top edge stroke type is solid. */
   get topEdgeStrokeGapOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set topEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
+  set topEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke weight of the right edge border stroke. */
   get rightEdgeStrokeWeight(): (number | NothingEnum.NOTHING)[];
-  set rightEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
+  set rightEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke type of the right edge. */
-  get rightEdgeStrokeType(): (StrokeStyle | null)[];
-  set rightEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
+  get rightEdgeStrokeType(): (StrokeStyle | null | NothingEnum.NOTHING)[];
+  set rightEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The color, specified as a swatch, of the right edge border stroke. */
-  get rightEdgeStrokeColor(): (Swatch | null)[];
-  set rightEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
+  get rightEdgeStrokeColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set rightEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the right edge border stroke. (Range: 0 to 100). */
   get rightEdgeStrokeTint(): (number | NothingEnum.NOTHING)[];
-  set rightEdgeStrokeTint(value: number | NothingEnum.NOTHING);
+  set rightEdgeStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the right edge border stroke will overprint. */
   get rightEdgeStrokeOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set rightEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING);
+  set rightEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the right edge border stroke. Note: Not valid when right edge stroke type is solid. */
-  get rightEdgeStrokeGapColor(): (Swatch | null)[];
-  set rightEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
+  get rightEdgeStrokeGapColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set rightEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the right edge border stroke gap color. (Range: 0 to 100) Note: Not valid when right edge stroke type is solid. */
   get rightEdgeStrokeGapTint(): (number | NothingEnum.NOTHING)[];
-  set rightEdgeStrokeGapTint(value: number | NothingEnum.NOTHING);
+  set rightEdgeStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the gap color of the right edge border stroke will overprint. Note: Not valid when right edge stroke type is solid. */
   get rightEdgeStrokeGapOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set rightEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
+  set rightEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke weight of the bottom edge border stroke. */
   get bottomEdgeStrokeWeight(): (number | NothingEnum.NOTHING)[];
-  set bottomEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
+  set bottomEdgeStrokeWeight(value: MeasurementValue | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The stroke type of the bottom edge. */
-  get bottomEdgeStrokeType(): (StrokeStyle | null)[];
-  set bottomEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING);
+  get bottomEdgeStrokeType(): (StrokeStyle | null | NothingEnum.NOTHING)[];
+  set bottomEdgeStrokeType(value: StrokeStyle | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the bottom edge border stroke. */
-  get bottomEdgeStrokeColor(): (Swatch | null)[];
-  set bottomEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
+  get bottomEdgeStrokeColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set bottomEdgeStrokeColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the bottom edge border stroke. */
   get bottomEdgeStrokeTint(): (number | NothingEnum.NOTHING)[];
-  set bottomEdgeStrokeTint(value: number | NothingEnum.NOTHING);
+  set bottomEdgeStrokeTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the bottom edge border stroke will overprint. */
   get bottomEdgeStrokeOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set bottomEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING);
+  set bottomEdgeStrokeOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the bottom edge border stroke. Note: Not valid when bottom edge stroke type is solid. */
-  get bottomEdgeStrokeGapColor(): (Swatch | null)[];
-  set bottomEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING);
+  get bottomEdgeStrokeGapColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set bottomEdgeStrokeGapColor(value: Swatch | string | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the bottom edge border stroke gap color. (Range: 0 to 100) Note: Not valid when bottom edge stroke type is solid. */
   get bottomEdgeStrokeGapTint(): (number | NothingEnum.NOTHING)[];
-  set bottomEdgeStrokeGapTint(value: number | NothingEnum.NOTHING);
+  set bottomEdgeStrokeGapTint(value: number | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /** If true, the gap color of the bottom edge border stroke will overprint. Note: Not valid when bottom edge stroke type is solid. */
   get bottomEdgeStrokeGapOverprint(): (boolean | NothingEnum.NOTHING)[];
-  set bottomEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING);
+  set bottomEdgeStrokeGapOverprint(value: boolean | NothingEnum.NOTHING | NothingEnum.NOTHING);
   /**
    * The {@link ParagraphStyle} the cell style applies to text in the cell, or
    * {@link NothingEnum.NOTHING} when the style leaves it unset.
@@ -711,8 +699,6 @@ export interface CellStylePlural {
    */
   get appliedParagraphStyle(): (ParagraphStyle | NothingEnum.NOTHING)[];
   set appliedParagraphStyle(value: ParagraphStyle | string | NothingEnum.NOTHING);
-  /** The object's DOM class name. */
-  readonly constructorName: 'CellStyle';
   /** Resolves the proxy into the individual {@link CellStyle} objects it stands for. */
   getElements(): CellStyle[];
   /** The unique ID of the cell style, stable across saves and reopens. */

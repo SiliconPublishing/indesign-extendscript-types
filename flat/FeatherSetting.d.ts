@@ -1,6 +1,7 @@
 /**
  * FeatherSetting.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -14,50 +15,48 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { FeatherCornerType } from './Enums/FeatherCornerType';
 import type { FeatherMode } from './Enums/FeatherMode';
 import type { FindChangeFeatherSetting } from './FindChangeFeatherSetting';
-import type { Event } from './Event';
-import type { EventHandler } from './_base/Events';
-import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
-import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { FilePath } from './_base/Types';
-import type { InDesignEventMap } from './_base/Events';
+import type { NothingEnum } from "./Enums/NothingEnum";
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
+import type { EventHandler } from './_base/Events';
+import type { EventListener } from './EventListener';
+import type { EventString } from './_base/Events';
+import type { Event } from './Event';
+import type { FilePath } from './_base/Types';
+
 /**
  * Feather effect settings.
  */
-export interface FeatherSetting {
+export interface FeatherSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
-  readonly parent: TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting;
+  readonly parent: TParent;
   /**
    * A snapshot of every editable property on this object.
    *
    * Reads its full state in one call rather than property-by-property.
    */
-  get properties(): PropertiesGetter<FeatherSetting, 'single'>;
+  get properties(): PropertiesGetter<FeatherSetting<TParent>, 'single'>;
   /**
    * Sets multiple properties at once from an object literal, in a single call
    * to the native InDesign engine — much faster than assigning each property
    * individually.
    */
-  set properties(value: PropertiesSetter<FeatherSetting, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
+  set properties(value: PropertiesSetter<FeatherSetting<TParent>, 'single'>);
   /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
@@ -68,10 +67,9 @@ export interface FeatherSetting {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -112,67 +110,55 @@ export interface FeatherSetting {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The object's DOM class name — reports the specific kind, such as `'FindChangeFeatherSetting'` when the object is a {@link FindChangeFeatherSetting}. */
-  readonly constructorName: 'FeatherSetting' | 'FindChangeFeatherSetting';
   /** Resolves the proxy into the individual {@link FeatherSetting} objects it stands for. */
-  getElements(): FeatherSetting[];
+  getElements(): FeatherSetting<TParent>[];
   /** Whether feathering is applied to the object's edges. See {@link FeatherMode}. */
-  get mode(): FeatherMode;
-  set mode(value: FeatherMode);
+  get mode(): FeatherMode | NothingEnum.NOTHING;
+  set mode(value: FeatherMode | never);
   /** The feather width. (Range depends on the unit type. For points: 0 to 1000; for picas: 0 to 83p4; for inches: 0 to 13.8889; for mm: 0 to 352.778; for cm: 0 to 35.277; for ciceros: 0 to 78c2.389.). */
-  get width(): number;
-  set width(value: MeasurementValue);
+  get width(): number | NothingEnum.NOTHING;
+  set width(value: MeasurementValue | never);
   /** How the feather's corners render: sharp, rounded, or a soft diffusion. See {@link FeatherCornerType}. */
-  get cornerType(): FeatherCornerType;
-  set cornerType(value: FeatherCornerType);
+  get cornerType(): FeatherCornerType | NothingEnum.NOTHING;
+  set cornerType(value: FeatherCornerType | never);
   /** The amount (as a percentage) of noise applied to the feather. (Range: 0 to 100). */
-  get noise(): number;
-  set noise(value: number);
+  get noise(): number | NothingEnum.NOTHING;
+  set noise(value: number | never);
   /** The amount to choke the feather (as a percentage of the feather width). (Range: 0 to 100). */
-  get chokeAmount(): number;
-  set chokeAmount(value: number);
+  get chokeAmount(): number | NothingEnum.NOTHING;
+  set chokeAmount(value: number | never);
 }
 
-
 /**
- * The broadcast proxy for {@link FeatherSetting} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link FeatherSetting} there.
+ * Feather effect settings.
  */
-export interface FeatherSettingPlural {
+export interface FeatherSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
-  readonly parent: (TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting)[];
+  readonly parent: (TParent)[];
   /**
    * A snapshot of every editable property on this object.
    *
    * Reads its full state in one call rather than property-by-property.
    */
-  get properties(): (PropertiesGetter<FeatherSettingPlural, 'plural'>)[];
+  get properties(): (PropertiesGetter<FeatherSettingPlural<TParent>, 'plural'>)[];
   /**
    * Sets multiple properties at once from an object literal, in a single call
    * to the native InDesign engine — much faster than assigning each property
    * individually.
    */
-  set properties(value: PropertiesSetter<FeatherSettingPlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
+  set properties(value: PropertiesSetter<FeatherSettingPlural<TParent>, 'plural'>);
   /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
@@ -183,10 +169,9 @@ export interface FeatherSettingPlural {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -227,23 +212,21 @@ export interface FeatherSettingPlural {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The object's DOM class name — reports the specific kind, such as `'FindChangeFeatherSetting'` when the object is a {@link FindChangeFeatherSetting}. */
-  readonly constructorName: 'FeatherSetting' | 'FindChangeFeatherSetting';
   /** Resolves the proxy into the individual {@link FeatherSetting} objects it stands for. */
-  getElements(): FeatherSetting[];
+  getElements(): FeatherSetting<TParent>[];
   /** Whether feathering is applied to the object's edges. See {@link FeatherMode}. */
-  get mode(): (FeatherMode)[];
-  set mode(value: FeatherMode);
+  get mode(): (FeatherMode | NothingEnum.NOTHING)[];
+  set mode(value: FeatherMode | never);
   /** The feather width. (Range depends on the unit type. For points: 0 to 1000; for picas: 0 to 83p4; for inches: 0 to 13.8889; for mm: 0 to 352.778; for cm: 0 to 35.277; for ciceros: 0 to 78c2.389.). */
-  get width(): (number)[];
-  set width(value: MeasurementValue);
+  get width(): (number | NothingEnum.NOTHING)[];
+  set width(value: MeasurementValue | never);
   /** How the feather's corners render: sharp, rounded, or a soft diffusion. See {@link FeatherCornerType}. */
-  get cornerType(): (FeatherCornerType)[];
-  set cornerType(value: FeatherCornerType);
+  get cornerType(): (FeatherCornerType | NothingEnum.NOTHING)[];
+  set cornerType(value: FeatherCornerType | never);
   /** The amount (as a percentage) of noise applied to the feather. (Range: 0 to 100). */
-  get noise(): (number)[];
-  set noise(value: number);
+  get noise(): (number | NothingEnum.NOTHING)[];
+  set noise(value: number | never);
   /** The amount to choke the feather (as a percentage of the feather width). (Range: 0 to 100). */
-  get chokeAmount(): (number)[];
-  set chokeAmount(value: number);
+  get chokeAmount(): (number | NothingEnum.NOTHING)[];
+  set chokeAmount(value: number | never);
 }

@@ -1,10 +1,11 @@
 /**
  * LibraryPanelViews.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __LibraryPanelViews: unique symbol;
 
 
 interface LibraryPanelViews extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<LibraryPanelViews>): boolean;
-
   /**
    * @internal **WARNING:** `__LibraryPanelViews` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const LibraryPanelViews: typeof Enumeration & {
    */
   readonly listView: LibraryPanelViews_LIST_VIEW;
   /**
-   * List view.
-   */
-  readonly listview: LibraryPanelViews_LIST_VIEW;
-
-  /**
    * Thumbnail view.
    */
   readonly THUMBNAIL_VIEW: LibraryPanelViews_THUMBNAIL_VIEW;
@@ -115,11 +108,6 @@ export declare const LibraryPanelViews: typeof Enumeration & {
    */
   readonly thumbnailView: LibraryPanelViews_THUMBNAIL_VIEW;
   /**
-   * Thumbnail view.
-   */
-  readonly thumbnailview: LibraryPanelViews_THUMBNAIL_VIEW;
-
-  /**
    * Large thumbnail view.
    */
   readonly LARGE_THUMBNAIL_VIEW: LibraryPanelViews_LARGE_THUMBNAIL_VIEW;
@@ -127,9 +115,4 @@ export declare const LibraryPanelViews: typeof Enumeration & {
    * Large thumbnail view.
    */
   readonly largeThumbnailView: LibraryPanelViews_LARGE_THUMBNAIL_VIEW;
-  /**
-   * Large thumbnail view.
-   */
-  readonly largethumbnailview: LibraryPanelViews_LARGE_THUMBNAIL_VIEW;
-
 }

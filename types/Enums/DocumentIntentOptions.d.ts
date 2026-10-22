@@ -1,10 +1,11 @@
 /**
  * DocumentIntentOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __DocumentIntentOptions: unique symbol;
 
 
 interface DocumentIntentOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<DocumentIntentOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__DocumentIntentOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const DocumentIntentOptions: typeof Enumeration & {
    */
   readonly printIntent: DocumentIntentOptions_PRINT_INTENT;
   /**
-   * Intended purpose of document is for print output.
-   */
-  readonly printintent: DocumentIntentOptions_PRINT_INTENT;
-
-  /**
    * Intended purpose of document is for web output.
    */
   readonly WEB_INTENT: DocumentIntentOptions_WEB_INTENT;
@@ -115,11 +108,6 @@ export declare const DocumentIntentOptions: typeof Enumeration & {
    */
   readonly webIntent: DocumentIntentOptions_WEB_INTENT;
   /**
-   * Intended purpose of document is for web output.
-   */
-  readonly webintent: DocumentIntentOptions_WEB_INTENT;
-
-  /**
    * Intended purpose of document is for publishing to mobiles.
    */
   readonly MOBILE_INTENT: DocumentIntentOptions_MOBILE_INTENT;
@@ -127,9 +115,4 @@ export declare const DocumentIntentOptions: typeof Enumeration & {
    * Intended purpose of document is for publishing to mobiles.
    */
   readonly mobileIntent: DocumentIntentOptions_MOBILE_INTENT;
-  /**
-   * Intended purpose of document is for publishing to mobiles.
-   */
-  readonly mobileintent: DocumentIntentOptions_MOBILE_INTENT;
-
 }

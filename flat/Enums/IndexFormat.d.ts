@@ -1,10 +1,11 @@
 /**
  * IndexFormat.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __IndexFormat: unique symbol;
 
 
 interface IndexFormat extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<IndexFormat>): boolean;
-
   /**
    * @internal **WARNING:** `__IndexFormat` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -86,11 +84,6 @@ export declare const IndexFormat: typeof Enumeration & {
    */
   readonly runinFormat: IndexFormat_RUNIN_FORMAT;
   /**
-   * Places nested topics on the same line as their parent topic, separated by the specified separator.
-   */
-  readonly runinformat: IndexFormat_RUNIN_FORMAT;
-
-  /**
    * Places nested topics on the line below and indented from the parent topic.
    */
   readonly NESTED_FORMAT: IndexFormat_NESTED_FORMAT;
@@ -98,9 +91,4 @@ export declare const IndexFormat: typeof Enumeration & {
    * Places nested topics on the line below and indented from the parent topic.
    */
   readonly nestedFormat: IndexFormat_NESTED_FORMAT;
-  /**
-   * Places nested topics on the line below and indented from the parent topic.
-   */
-  readonly nestedformat: IndexFormat_NESTED_FORMAT;
-
 }

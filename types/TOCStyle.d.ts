@@ -1,6 +1,7 @@
 /**
  * TOCStyle.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -22,9 +23,6 @@ export interface TOCStyle<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document, M>,
     IndexedDOMObject<Document, M>,
     NamableDOMObject<Document, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'TOCStyle';
-
   /** Resolves the proxy into the individual {@link TOCStyle} objects it stands for. */
   getElements(): TOCStyle<'single'>[];
 
@@ -36,7 +34,7 @@ export interface TOCStyle<M extends Mode = 'single'>
 
   /** The paragraph style applied to the TOC title. */
   get titleStyle(): Read<M, ParagraphStyle>;
-  set titleStyle(value: ParagraphStyle);
+  set titleStyle(value: ParagraphStyle | string);
 
   /** The TOC title text. */
   get title(): Read<M, string>;

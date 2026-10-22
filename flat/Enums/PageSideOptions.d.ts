@@ -1,10 +1,11 @@
 /**
  * PageSideOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __PageSideOptions: unique symbol;
 
 
 interface PageSideOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<PageSideOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__PageSideOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const PageSideOptions: typeof Enumeration & {
    */
   readonly rightHand: PageSideOptions_RIGHT_HAND;
   /**
-   * The page is on the right side of the binding spine in the spread.
-   */
-  readonly righthand: PageSideOptions_RIGHT_HAND;
-
-  /**
    * The page is on the left side of the binding spine in the spread.
    */
   readonly LEFT_HAND: PageSideOptions_LEFT_HAND;
@@ -115,11 +108,6 @@ export declare const PageSideOptions: typeof Enumeration & {
    */
   readonly leftHand: PageSideOptions_LEFT_HAND;
   /**
-   * The page is on the left side of the binding spine in the spread.
-   */
-  readonly lefthand: PageSideOptions_LEFT_HAND;
-
-  /**
    * The page is a single-sided page.
    */
   readonly SINGLE_SIDED: PageSideOptions_SINGLE_SIDED;
@@ -127,9 +115,4 @@ export declare const PageSideOptions: typeof Enumeration & {
    * The page is a single-sided page.
    */
   readonly singleSided: PageSideOptions_SINGLE_SIDED;
-  /**
-   * The page is a single-sided page.
-   */
-  readonly singlesided: PageSideOptions_SINGLE_SIDED;
-
 }

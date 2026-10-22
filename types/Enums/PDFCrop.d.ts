@@ -1,10 +1,11 @@
 /**
  * PDFCrop.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __PDFCrop: unique symbol;
 
 
 interface PDFCrop extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<PDFCrop>): boolean;
-
   /**
    * @internal **WARNING:** `__PDFCrop` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -166,23 +164,9 @@ export declare const PDFCrop: typeof Enumeration & {
    */
   readonly cropArt: PDFCrop_CROP_ART;
   /**
-   * Places only the area defined by the PDF author as placeable artwork.
-   */
-  readonly cropart: PDFCrop_CROP_ART;
-
-  /**
    * Places only the area displayed by Acrobat.
    */
   readonly CROP_PDF: PDFCrop_CROP_PDF;
-  /**
-   * Places only the area displayed by Acrobat.
-   */
-  readonly cropPdf: PDFCrop_CROP_PDF;
-  /**
-   * Places only the area displayed by Acrobat.
-   */
-  readonly croppdf: PDFCrop_CROP_PDF;
-
   /**
    * Places only the area that represents the final trim size of the document.
    */
@@ -192,11 +176,6 @@ export declare const PDFCrop: typeof Enumeration & {
    */
   readonly cropTrim: PDFCrop_CROP_TRIM;
   /**
-   * Places only the area that represents the final trim size of the document.
-   */
-  readonly croptrim: PDFCrop_CROP_TRIM;
-
-  /**
    * Places only the area that represents clipped content.
    */
   readonly CROP_BLEED: PDFCrop_CROP_BLEED;
@@ -204,11 +183,6 @@ export declare const PDFCrop: typeof Enumeration & {
    * Places only the area that represents clipped content.
    */
   readonly cropBleed: PDFCrop_CROP_BLEED;
-  /**
-   * Places only the area that represents clipped content.
-   */
-  readonly cropbleed: PDFCrop_CROP_BLEED;
-
   /**
    * Places the area that represents the physical paper size of the original PDF document.
    */
@@ -218,11 +192,6 @@ export declare const PDFCrop: typeof Enumeration & {
    */
   readonly cropMedia: PDFCrop_CROP_MEDIA;
   /**
-   * Places the area that represents the physical paper size of the original PDF document.
-   */
-  readonly cropmedia: PDFCrop_CROP_MEDIA;
-
-  /**
    * Places the page's bounding box using visible layers only.
    */
   readonly CROP_CONTENT_VISIBLE_LAYERS: PDFCrop_CROP_CONTENT_VISIBLE_LAYERS;
@@ -231,11 +200,6 @@ export declare const PDFCrop: typeof Enumeration & {
    */
   readonly cropContentVisibleLayers: PDFCrop_CROP_CONTENT_VISIBLE_LAYERS;
   /**
-   * Places the page's bounding box using visible layers only.
-   */
-  readonly cropcontentvisiblelayers: PDFCrop_CROP_CONTENT_VISIBLE_LAYERS;
-
-  /**
    * Places the page's bounding box using all layers.
    */
   readonly CROP_CONTENT_ALL_LAYERS: PDFCrop_CROP_CONTENT_ALL_LAYERS;
@@ -243,9 +207,4 @@ export declare const PDFCrop: typeof Enumeration & {
    * Places the page's bounding box using all layers.
    */
   readonly cropContentAllLayers: PDFCrop_CROP_CONTENT_ALL_LAYERS;
-  /**
-   * Places the page's bounding box using all layers.
-   */
-  readonly cropcontentalllayers: PDFCrop_CROP_CONTENT_ALL_LAYERS;
-
 }

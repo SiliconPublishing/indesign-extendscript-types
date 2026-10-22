@@ -1,6 +1,7 @@
 /**
  * PageReference.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -21,9 +22,6 @@ export interface PageReference<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Topic, M>,
     IndexedDOMObject<Topic, M>,
     NamableDOMObject<Topic, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'PageReference';
-
   /** Resolves the proxy into the individual {@link PageReference} objects it stands for. */
   getElements(): PageReference<'single'>[];
 
@@ -47,7 +45,7 @@ export interface PageReference<M extends Mode = 'single'>
   set pageReferenceLimit(value: ParagraphStyle | number);
 
   /** The character style applied to the page number in the generated index entry. */
-  get pageNumberStyleOverride(): Read<M, CharacterStyle>;
+  get pageNumberStyleOverride(): Read<M, CharacterStyle | null>;
   set pageNumberStyleOverride(value: CharacterStyle);
 
   /** Deletes the page reference. */

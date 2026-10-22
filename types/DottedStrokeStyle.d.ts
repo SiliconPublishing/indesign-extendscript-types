@@ -1,6 +1,7 @@
 /**
  * DottedStrokeStyle.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -13,9 +14,6 @@ import type { StrokeCornerAdjustment } from './Enums/StrokeCornerAdjustment';
  * A stroke style of evenly spaced dots.
  */
 export interface DottedStrokeStyle<M extends Mode = 'single'> extends StrokeStyle<M>{
-  /** The object's DOM class name. */
-  readonly constructorName: 'DottedStrokeStyle';
-
   /** Resolves the proxy into the individual {@link DottedStrokeStyle} objects it stands for. */
   getElements(): DottedStrokeStyle<'single'>[];
 

@@ -1,6 +1,7 @@
 /**
  * TextFramePreference.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -18,25 +19,31 @@ import type { AutoSizingReferenceEnum } from './Enums/AutoSizingReferenceEnum';
 import type { AutoSizingTypeEnum } from './Enums/AutoSizingTypeEnum';
 import type { FirstBaseline } from './Enums/FirstBaseline';
 import type { VerticalJustification } from './Enums/VerticalJustification';
-import type { Event } from './Event';
-import type { EventHandler } from './_base/Events';
-import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
-import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { FilePath } from './_base/Types';
-import type { InDesignEventMap } from './_base/Events';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
+import type { EventHandler } from './_base/Events';
+import type { EventListener } from './EventListener';
+import type { EventString } from './_base/Events';
+import type { Event } from './Event';
+import type { FilePath } from './_base/Types';
+
 /**
  * Text-frame column layout, inset, vertical-justification, and baseline-grid defaults, applicable at the application/document default level, on a live frame, or on an object style.
  */
 export interface TextFramePreference {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -54,15 +61,6 @@ export interface TextFramePreference {
    */
   set properties(value: PropertiesSetter<TextFramePreference, 'single'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -72,10 +70,9 @@ export interface TextFramePreference {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -116,8 +113,6 @@ export interface TextFramePreference {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The object's DOM class name. */
-  readonly constructorName: 'TextFramePreference';
   /** Resolves the proxy into the individual {@link TextFramePreference} objects it stands for. */
   getElements(): TextFramePreference[];
   /** The number of columns in the text frame. Note: Depending on the value of use fixed column width, the number of columns can change automatically when the text frame size changes. */
@@ -212,7 +207,7 @@ export interface TextFramePreference {
   set columnRuleStrokeColor(value: Swatch);
   /** The name of the stroke style applied to the column rule. */
   get columnRuleStrokeType(): StrokeStyle;
-  set columnRuleStrokeType(value: StrokeStyle);
+  set columnRuleStrokeType(value: StrokeStyle | string);
   /** The tint (as a percentage) of the column rule's stroke color. */
   get columnRuleStrokeTint(): number;
   set columnRuleStrokeTint(value: number);
@@ -236,21 +231,20 @@ export interface TextFramePreference {
   set verticalBalanceColumns(value: boolean);
 }
 
-
 /**
- * The broadcast proxy for {@link TextFramePreference} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link TextFramePreference} there.
+ * Text-frame column layout, inset, vertical-justification, and baseline-grid defaults, applicable at the application/document default level, on a live frame, or on an object style.
  */
 export interface TextFramePreferencePlural {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -268,15 +262,6 @@ export interface TextFramePreferencePlural {
    */
   set properties(value: PropertiesSetter<TextFramePreferencePlural, 'plural'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -286,10 +271,9 @@ export interface TextFramePreferencePlural {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -330,8 +314,6 @@ export interface TextFramePreferencePlural {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The object's DOM class name. */
-  readonly constructorName: 'TextFramePreference';
   /** Resolves the proxy into the individual {@link TextFramePreference} objects it stands for. */
   getElements(): TextFramePreference[];
   /** The number of columns in the text frame. Note: Depending on the value of use fixed column width, the number of columns can change automatically when the text frame size changes. */
@@ -426,7 +408,7 @@ export interface TextFramePreferencePlural {
   set columnRuleStrokeColor(value: Swatch);
   /** The name of the stroke style applied to the column rule. */
   get columnRuleStrokeType(): (StrokeStyle)[];
-  set columnRuleStrokeType(value: StrokeStyle);
+  set columnRuleStrokeType(value: StrokeStyle | string);
   /** The tint (as a percentage) of the column rule's stroke color. */
   get columnRuleStrokeTint(): (number)[];
   set columnRuleStrokeTint(value: number);

@@ -1,6 +1,7 @@
 /**
  * Properties.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -144,7 +145,7 @@ type FlexSetter<Key, Value> =
   : Key extends 'contents' ? string | TextFrameContents | SpecialCharacters | PageItem | NothingEnum | (string | SpecialCharacters | PageItem | NothingEnum)[]
   : Key extends 'previousTextFrame' | 'nextTextFrame' ? TextFrame | TextPath | NothingEnum
   : Key extends 'appliedMaster' ? MasterSpread | string | NothingEnum
-  : Key extends 'primaryTextFrame' ? PageItem | string | NothingEnum
+  : Key extends 'primaryTextFrame' ? PageItem | string
   : Key extends 'destinationText' ? InsertionPoint | Text
   : Key extends 'selection' ? Value extends readonly (infer E)[] ? E | NothingEnum : never
   : Key extends 'includeICCProfiles' ? boolean
@@ -170,13 +171,13 @@ type MeasurementWiden<V> =
 type SparseStyleWiden<V> = [null] extends [V] ? NothingEnum : never;
 
 /**
- * Any property you read back as a {@link File} or {@link Folder} — which arrives as a promise
- * you `await` — is *set* with a plain path string instead. Applies to every path property in
+ * Any property you read back as a {@link File} or {@link Folder} — is *set* with either a File/Folder or a plain
+ * path string. Applies to every path property in
  * the DOM.
  */
 type PathWiden<V> =
-  V extends Promise<File> ? FilePath
-  : V extends Promise<Folder> ? FolderPath
+  V extends File ? FilePath
+  : V extends Folder ? FolderPath
   : never;
 
 /**

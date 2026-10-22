@@ -1,10 +1,11 @@
 /**
  * TextWrapModes.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __TextWrapModes: unique symbol;
 
 
 interface TextWrapModes extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<TextWrapModes>): boolean;
-
   /**
    * @internal **WARNING:** `__TextWrapModes` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -143,11 +141,6 @@ export declare const TextWrapModes: typeof Enumeration & {
    */
   readonly jumpObjectTextWrap: TextWrapModes_JUMP_OBJECT_TEXT_WRAP;
   /**
-   * Forces text to jump above or below the object, so that no text appears on the object's right or left.
-   */
-  readonly jumpobjecttextwrap: TextWrapModes_JUMP_OBJECT_TEXT_WRAP;
-
-  /**
    * Forces text to jump to the next available column.
    */
   readonly NEXT_COLUMN_TEXT_WRAP: TextWrapModes_NEXT_COLUMN_TEXT_WRAP;
@@ -156,11 +149,6 @@ export declare const TextWrapModes: typeof Enumeration & {
    */
   readonly nextColumnTextWrap: TextWrapModes_NEXT_COLUMN_TEXT_WRAP;
   /**
-   * Forces text to jump to the next available column.
-   */
-  readonly nextcolumntextwrap: TextWrapModes_NEXT_COLUMN_TEXT_WRAP;
-
-  /**
    * Wraps text around the object's bounding box. 
    */
   readonly BOUNDING_BOX_TEXT_WRAP: TextWrapModes_BOUNDING_BOX_TEXT_WRAP;
@@ -168,11 +156,6 @@ export declare const TextWrapModes: typeof Enumeration & {
    * Wraps text around the object's bounding box. 
    */
   readonly boundingBoxTextWrap: TextWrapModes_BOUNDING_BOX_TEXT_WRAP;
-  /**
-   * Wraps text around the object's bounding box. 
-   */
-  readonly boundingboxtextwrap: TextWrapModes_BOUNDING_BOX_TEXT_WRAP;
-
   /**
    * Wraps text around the object following the specified contour options.
    */

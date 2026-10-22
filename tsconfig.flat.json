@@ -1,0 +1,4 @@
+{
+  "extends": "./tsconfig.json",
+  "files": ["lib/global.d.ts", "lib/ScriptUI.d.ts", "flat/globals.d.ts"]
+}

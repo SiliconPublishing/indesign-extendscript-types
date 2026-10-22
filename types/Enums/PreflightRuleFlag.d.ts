@@ -1,10 +1,11 @@
 /**
  * PreflightRuleFlag.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __PreflightRuleFlag: unique symbol;
 
 
 interface PreflightRuleFlag extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<PreflightRuleFlag>): boolean;
-
   /**
    * @internal **WARNING:** `__PreflightRuleFlag` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const PreflightRuleFlag: typeof Enumeration & {
    */
   readonly ruleIsDisabled: PreflightRuleFlag_RULE_IS_DISABLED;
   /**
-   * Rule is currently disabled.
-   */
-  readonly ruleisdisabled: PreflightRuleFlag_RULE_IS_DISABLED;
-
-  /**
    * Treat as error if rule check failed.
    */
   readonly RETURN_AS_ERROR: PreflightRuleFlag_RETURN_AS_ERROR;
@@ -130,11 +123,6 @@ export declare const PreflightRuleFlag: typeof Enumeration & {
    * Treat as error if rule check failed.
    */
   readonly returnAsError: PreflightRuleFlag_RETURN_AS_ERROR;
-  /**
-   * Treat as error if rule check failed.
-   */
-  readonly returnaserror: PreflightRuleFlag_RETURN_AS_ERROR;
-
   /**
    * Treat as warning if rule check failed.
    */
@@ -144,11 +132,6 @@ export declare const PreflightRuleFlag: typeof Enumeration & {
    */
   readonly returnAsWarning: PreflightRuleFlag_RETURN_AS_WARNING;
   /**
-   * Treat as warning if rule check failed.
-   */
-  readonly returnaswarning: PreflightRuleFlag_RETURN_AS_WARNING;
-
-  /**
    * Treat as information only if rule check failed.
    */
   readonly RETURN_AS_INFORMATIONAL: PreflightRuleFlag_RETURN_AS_INFORMATIONAL;
@@ -156,9 +139,4 @@ export declare const PreflightRuleFlag: typeof Enumeration & {
    * Treat as information only if rule check failed.
    */
   readonly returnAsInformational: PreflightRuleFlag_RETURN_AS_INFORMATIONAL;
-  /**
-   * Treat as information only if rule check failed.
-   */
-  readonly returnasinformational: PreflightRuleFlag_RETURN_AS_INFORMATIONAL;
-
 }

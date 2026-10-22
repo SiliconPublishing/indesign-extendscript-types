@@ -1,6 +1,7 @@
 /**
  * EndnoteOption.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -20,9 +21,6 @@ import type { FootnotePrefixSuffix } from './Enums/FootnotePrefixSuffix';
  * Options for specifying default endnote formatting.
  */
 export interface EndnoteOption<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'EndnoteOption';
-
   /** Resolves the proxy into the individual {@link EndnoteOption} objects it stands for. */
   getElements(): EndnoteOption<'single'>[];
 
@@ -52,7 +50,7 @@ export interface EndnoteOption<M extends Mode = 'single'> extends EventTargetDOM
 
   /** The character style to apply to endnote reference numbers in the main text. */
   get endnoteMarkerStyle(): Read<M, CharacterStyle>;
-  set endnoteMarkerStyle(value: CharacterStyle);
+  set endnoteMarkerStyle(value: CharacterStyle | string);
 
   /** The paragraph style to apply to endnote text. */
   get endnoteTextStyle(): Read<M, ParagraphStyle>;

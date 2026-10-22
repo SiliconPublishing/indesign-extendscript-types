@@ -1,6 +1,7 @@
 /**
  * XMLExportPreference.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -21,9 +22,6 @@ import type { XMLTransformFile } from './Enums/XMLTransformFile';
  * XML export preferences.
  */
 export interface XMLExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'XMLExportPreference';
-
   /** Resolves the proxy into the individual {@link XMLExportPreference} objects it stands for. */
   getElements(): XMLExportPreference<'single'>[];
 
@@ -32,7 +30,7 @@ export interface XMLExportPreference<M extends Mode = 'single'> extends EventTar
   set viewAfterExport(value: boolean);
 
   /** The preferred browser for viewing XML. */
-  get preferredBrowser(): Read<M, Promise<File> | NothingEnum.NOTHING>;
+  get preferredBrowser(): Read<M, File | NothingEnum.NOTHING>;
   set preferredBrowser(value: FilePath | NothingEnum.NOTHING);
 
   /** If true, exports XML content from the selected XML element. If false, exports the entire document. */
@@ -88,7 +86,7 @@ export interface XMLExportPreference<M extends Mode = 'single'> extends EventTar
   set allowTransform(value: boolean);
 
   /** The name of the XSLT file. Applies only when {@link allowTransform} is `true`. */
-  get transformFilename(): Read<M, Promise<File> | XMLTransformFile>;
+  get transformFilename(): Read<M, File | XMLTransformFile>;
   set transformFilename(value: FilePath | XMLTransformFile);
 
   /** If true, replaces special characters with character references. */

@@ -1,10 +1,11 @@
 /**
  * FlattenerLevel.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __FlattenerLevel: unique symbol;
 
 
 interface FlattenerLevel extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<FlattenerLevel>): boolean;
-
   /**
    * @internal **WARNING:** `__FlattenerLevel` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -143,11 +141,6 @@ export declare const FlattenerLevel: typeof Enumeration & {
    */
   readonly mediumLow: FlattenerLevel_MEDIUM_LOW;
   /**
-   * Rasterizes almost all artwork.
-   */
-  readonly mediumlow: FlattenerLevel_MEDIUM_LOW;
-
-  /**
    * Rasterizes a medium amount of artwork.
    */
   readonly MEDIUM: FlattenerLevel_MEDIUM;
@@ -164,11 +157,6 @@ export declare const FlattenerLevel: typeof Enumeration & {
    * Rasterizes more than a medium amount of artwork.
    */
   readonly mediumHigh: FlattenerLevel_MEDIUM_HIGH;
-  /**
-   * Rasterizes more than a medium amount of artwork.
-   */
-  readonly mediumhigh: FlattenerLevel_MEDIUM_HIGH;
-
   /**
    * Keeps as much artwork as possible as vector data.
    */

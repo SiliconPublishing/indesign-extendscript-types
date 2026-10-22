@@ -1,6 +1,7 @@
 /**
  * GalleyPreference.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -12,14 +13,12 @@ import type { AntiAliasType } from './Enums/AntiAliasType';
 import type { CursorTypes } from './Enums/CursorTypes';
 import type { InCopyUIColors } from './Enums/InCopyUIColors';
 import type { LineSpacingType } from './Enums/LineSpacingType';
+import type { NothingEnum } from "./Enums/NothingEnum";
 
 /**
  * Galley preferences.
  */
 export interface GalleyPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'GalleyPreference';
-
   /** Resolves the proxy into the individual {@link GalleyPreference} objects it stands for. */
   getElements(): GalleyPreference<'single'>[];
 
@@ -65,11 +64,11 @@ export interface GalleyPreference<M extends Mode = 'single'> extends EventTarget
 
   /** Size to use for text display. */
   get displayFontSize(): Read<M, number>;
-  set displayFontSize(value: MeasurementValue);
+  set displayFontSize(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** Width of the galley's info column, in points. */
   get infoColumnWidth(): Read<M, number>;
-  set infoColumnWidth(value: MeasurementValue);
+  set infoColumnWidth(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** If true, display the Info column. */
   get showInfoColumn(): Read<M, boolean>;

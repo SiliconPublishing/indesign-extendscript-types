@@ -1,10 +1,11 @@
 /**
  * ToolsPanelOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ToolsPanelOptions: unique symbol;
 
 
 interface ToolsPanelOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ToolsPanelOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__ToolsPanelOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const ToolsPanelOptions: typeof Enumeration & {
    */
   readonly singleColumn: ToolsPanelOptions_SINGLE_COLUMN;
   /**
-   * Single column.
-   */
-  readonly singlecolumn: ToolsPanelOptions_SINGLE_COLUMN;
-
-  /**
    * Double column.
    */
   readonly DOUBLE_COLUMN: ToolsPanelOptions_DOUBLE_COLUMN;
@@ -115,11 +108,6 @@ export declare const ToolsPanelOptions: typeof Enumeration & {
    */
   readonly doubleColumn: ToolsPanelOptions_DOUBLE_COLUMN;
   /**
-   * Double column.
-   */
-  readonly doublecolumn: ToolsPanelOptions_DOUBLE_COLUMN;
-
-  /**
    * Single row.
    */
   readonly SINGLE_ROW: ToolsPanelOptions_SINGLE_ROW;
@@ -127,9 +115,4 @@ export declare const ToolsPanelOptions: typeof Enumeration & {
    * Single row.
    */
   readonly singleRow: ToolsPanelOptions_SINGLE_ROW;
-  /**
-   * Single row.
-   */
-  readonly singlerow: ToolsPanelOptions_SINGLE_ROW;
-
 }

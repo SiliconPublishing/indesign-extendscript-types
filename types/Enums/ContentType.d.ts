@@ -1,10 +1,11 @@
 /**
  * ContentType.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ContentType: unique symbol;
 
 
 interface ContentType extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ContentType>): boolean;
-
   /**
    * @internal **WARNING:** `__ContentType` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -111,11 +109,6 @@ export declare const ContentType: typeof Enumeration & {
    */
   readonly graphicType: ContentType_GRAPHIC_TYPE;
   /**
-   * The frame is a graphics frame.
-   */
-  readonly graphictype: ContentType_GRAPHIC_TYPE;
-
-  /**
    * The frame is a text frame.
    */
   readonly TEXT_TYPE: ContentType_TEXT_TYPE;
@@ -123,9 +116,4 @@ export declare const ContentType: typeof Enumeration & {
    * The frame is a text frame.
    */
   readonly textType: ContentType_TEXT_TYPE;
-  /**
-   * The frame is a text frame.
-   */
-  readonly texttype: ContentType_TEXT_TYPE;
-
 }

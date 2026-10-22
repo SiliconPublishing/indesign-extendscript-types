@@ -1,10 +1,11 @@
 /**
  * SpecialCharacters.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 import type { TextFrameContents } from "./TextFrameContents";
 
 
@@ -19,9 +20,6 @@ declare const __SpecialCharacters: unique symbol;
 
 
 interface SpecialCharacters extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<SpecialCharacters, TextFrameContents>): boolean;
-
   /**
    * @internal **WARNING:** `__SpecialCharacters` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -1081,11 +1079,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly autoPageNumber: SpecialCharacters_AUTO_PAGE_NUMBER;
   /**
-   * Inserts an automatic page number.
-   */
-  readonly autopagenumber: SpecialCharacters_AUTO_PAGE_NUMBER;
-
-  /**
    * Inserts the next page number.
    */
   readonly NEXT_PAGE_NUMBER: SpecialCharacters_NEXT_PAGE_NUMBER;
@@ -1093,11 +1086,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts the next page number.
    */
   readonly nextPageNumber: SpecialCharacters_NEXT_PAGE_NUMBER;
-  /**
-   * Inserts the next page number.
-   */
-  readonly nextpagenumber: SpecialCharacters_NEXT_PAGE_NUMBER;
-
   /**
    * Inserts the previous page number.
    */
@@ -1107,11 +1095,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly previousPageNumber: SpecialCharacters_PREVIOUS_PAGE_NUMBER;
   /**
-   * Inserts the previous page number.
-   */
-  readonly previouspagenumber: SpecialCharacters_PREVIOUS_PAGE_NUMBER;
-
-  /**
    * Inserts a section marker.
    */
   readonly SECTION_MARKER: SpecialCharacters_SECTION_MARKER;
@@ -1119,11 +1102,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a section marker.
    */
   readonly sectionMarker: SpecialCharacters_SECTION_MARKER;
-  /**
-   * Inserts a section marker.
-   */
-  readonly sectionmarker: SpecialCharacters_SECTION_MARKER;
-
   /**
    * Inserts a bullet character.
    */
@@ -1133,11 +1111,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly bulletCharacter: SpecialCharacters_BULLET_CHARACTER;
   /**
-   * Inserts a bullet character.
-   */
-  readonly bulletcharacter: SpecialCharacters_BULLET_CHARACTER;
-
-  /**
    * Inserts a copyright symbol.
    */
   readonly COPYRIGHT_SYMBOL: SpecialCharacters_COPYRIGHT_SYMBOL;
@@ -1145,11 +1118,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a copyright symbol.
    */
   readonly copyrightSymbol: SpecialCharacters_COPYRIGHT_SYMBOL;
-  /**
-   * Inserts a copyright symbol.
-   */
-  readonly copyrightsymbol: SpecialCharacters_COPYRIGHT_SYMBOL;
-
   /**
    * Inserts a degree symbol.
    */
@@ -1159,11 +1127,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly degreeSymbol: SpecialCharacters_DEGREE_SYMBOL;
   /**
-   * Inserts a degree symbol.
-   */
-  readonly degreesymbol: SpecialCharacters_DEGREE_SYMBOL;
-
-  /**
    * Inserts an ellipsis character.
    */
   readonly ELLIPSIS_CHARACTER: SpecialCharacters_ELLIPSIS_CHARACTER;
@@ -1171,11 +1134,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts an ellipsis character.
    */
   readonly ellipsisCharacter: SpecialCharacters_ELLIPSIS_CHARACTER;
-  /**
-   * Inserts an ellipsis character.
-   */
-  readonly ellipsischaracter: SpecialCharacters_ELLIPSIS_CHARACTER;
-
   /**
    * Inserts a forced line break.
    */
@@ -1185,11 +1143,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly forcedLineBreak: SpecialCharacters_FORCED_LINE_BREAK;
   /**
-   * Inserts a forced line break.
-   */
-  readonly forcedlinebreak: SpecialCharacters_FORCED_LINE_BREAK;
-
-  /**
    * Inserts a paragraph symbol.
    */
   readonly PARAGRAPH_SYMBOL: SpecialCharacters_PARAGRAPH_SYMBOL;
@@ -1197,11 +1150,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a paragraph symbol.
    */
   readonly paragraphSymbol: SpecialCharacters_PARAGRAPH_SYMBOL;
-  /**
-   * Inserts a paragraph symbol.
-   */
-  readonly paragraphsymbol: SpecialCharacters_PARAGRAPH_SYMBOL;
-
   /**
    * Inserts a registered trademark.
    */
@@ -1211,11 +1159,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly registeredTrademark: SpecialCharacters_REGISTERED_TRADEMARK;
   /**
-   * Inserts a registered trademark.
-   */
-  readonly registeredtrademark: SpecialCharacters_REGISTERED_TRADEMARK;
-
-  /**
    * Inserts a section symbol.
    */
   readonly SECTION_SYMBOL: SpecialCharacters_SECTION_SYMBOL;
@@ -1223,11 +1166,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a section symbol.
    */
   readonly sectionSymbol: SpecialCharacters_SECTION_SYMBOL;
-  /**
-   * Inserts a section symbol.
-   */
-  readonly sectionsymbol: SpecialCharacters_SECTION_SYMBOL;
-
   /**
    * Inserts a trademark symbol.
    */
@@ -1237,11 +1175,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly trademarkSymbol: SpecialCharacters_TRADEMARK_SYMBOL;
   /**
-   * Inserts a trademark symbol.
-   */
-  readonly trademarksymbol: SpecialCharacters_TRADEMARK_SYMBOL;
-
-  /**
    * Inserts a right indent tab.
    */
   readonly RIGHT_INDENT_TAB: SpecialCharacters_RIGHT_INDENT_TAB;
@@ -1249,11 +1182,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a right indent tab.
    */
   readonly rightIndentTab: SpecialCharacters_RIGHT_INDENT_TAB;
-  /**
-   * Inserts a right indent tab.
-   */
-  readonly rightindenttab: SpecialCharacters_RIGHT_INDENT_TAB;
-
   /**
    * Inserts an indent to here character.
    */
@@ -1263,11 +1191,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly indentHereTab: SpecialCharacters_INDENT_HERE_TAB;
   /**
-   * Inserts an indent to here character.
-   */
-  readonly indentheretab: SpecialCharacters_INDENT_HERE_TAB;
-
-  /**
    * Inserts an em dash.
    */
   readonly EM_DASH: SpecialCharacters_EM_DASH;
@@ -1275,11 +1198,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts an em dash.
    */
   readonly emDash: SpecialCharacters_EM_DASH;
-  /**
-   * Inserts an em dash.
-   */
-  readonly emdash: SpecialCharacters_EM_DASH;
-
   /**
    * Inserts an en dash.
    */
@@ -1289,11 +1207,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly enDash: SpecialCharacters_EN_DASH;
   /**
-   * Inserts an en dash.
-   */
-  readonly endash: SpecialCharacters_EN_DASH;
-
-  /**
    * Inserts a discretionary hyphen.
    */
   readonly DISCRETIONARY_HYPHEN: SpecialCharacters_DISCRETIONARY_HYPHEN;
@@ -1301,11 +1214,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a discretionary hyphen.
    */
   readonly discretionaryHyphen: SpecialCharacters_DISCRETIONARY_HYPHEN;
-  /**
-   * Inserts a discretionary hyphen.
-   */
-  readonly discretionaryhyphen: SpecialCharacters_DISCRETIONARY_HYPHEN;
-
   /**
    * Inserts a nonbreaking hyphen.
    */
@@ -1315,11 +1223,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly nonbreakingHyphen: SpecialCharacters_NONBREAKING_HYPHEN;
   /**
-   * Inserts a nonbreaking hyphen.
-   */
-  readonly nonbreakinghyphen: SpecialCharacters_NONBREAKING_HYPHEN;
-
-  /**
    * Inserts an end nested style here character.
    */
   readonly END_NESTED_STYLE: SpecialCharacters_END_NESTED_STYLE;
@@ -1327,11 +1230,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts an end nested style here character.
    */
   readonly endNestedStyle: SpecialCharacters_END_NESTED_STYLE;
-  /**
-   * Inserts an end nested style here character.
-   */
-  readonly endnestedstyle: SpecialCharacters_END_NESTED_STYLE;
-
   /**
    * Inserts a double left quote.
    */
@@ -1341,11 +1239,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly doubleLeftQuote: SpecialCharacters_DOUBLE_LEFT_QUOTE;
   /**
-   * Inserts a double left quote.
-   */
-  readonly doubleleftquote: SpecialCharacters_DOUBLE_LEFT_QUOTE;
-
-  /**
    * Inserts a double right quote.
    */
   readonly DOUBLE_RIGHT_QUOTE: SpecialCharacters_DOUBLE_RIGHT_QUOTE;
@@ -1353,11 +1246,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a double right quote.
    */
   readonly doubleRightQuote: SpecialCharacters_DOUBLE_RIGHT_QUOTE;
-  /**
-   * Inserts a double right quote.
-   */
-  readonly doublerightquote: SpecialCharacters_DOUBLE_RIGHT_QUOTE;
-
   /**
    * Inserts a single left quote.
    */
@@ -1367,11 +1255,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly singleLeftQuote: SpecialCharacters_SINGLE_LEFT_QUOTE;
   /**
-   * Inserts a single left quote.
-   */
-  readonly singleleftquote: SpecialCharacters_SINGLE_LEFT_QUOTE;
-
-  /**
    * Inserts a single right quote.
    */
   readonly SINGLE_RIGHT_QUOTE: SpecialCharacters_SINGLE_RIGHT_QUOTE;
@@ -1379,11 +1262,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a single right quote.
    */
   readonly singleRightQuote: SpecialCharacters_SINGLE_RIGHT_QUOTE;
-  /**
-   * Inserts a single right quote.
-   */
-  readonly singlerightquote: SpecialCharacters_SINGLE_RIGHT_QUOTE;
-
   /**
    * Inserts an em space.
    */
@@ -1393,11 +1271,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly emSpace: SpecialCharacters_EM_SPACE;
   /**
-   * Inserts an em space.
-   */
-  readonly emspace: SpecialCharacters_EM_SPACE;
-
-  /**
    * Inserts an en space.
    */
   readonly EN_SPACE: SpecialCharacters_EN_SPACE;
@@ -1405,11 +1278,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts an en space.
    */
   readonly enSpace: SpecialCharacters_EN_SPACE;
-  /**
-   * Inserts an en space.
-   */
-  readonly enspace: SpecialCharacters_EN_SPACE;
-
   /**
    * Inserts a flush space.
    */
@@ -1419,11 +1287,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly flushSpace: SpecialCharacters_FLUSH_SPACE;
   /**
-   * Inserts a flush space.
-   */
-  readonly flushspace: SpecialCharacters_FLUSH_SPACE;
-
-  /**
    * Inserts a hair space.
    */
   readonly HAIR_SPACE: SpecialCharacters_HAIR_SPACE;
@@ -1431,11 +1294,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a hair space.
    */
   readonly hairSpace: SpecialCharacters_HAIR_SPACE;
-  /**
-   * Inserts a hair space.
-   */
-  readonly hairspace: SpecialCharacters_HAIR_SPACE;
-
   /**
    * Inserts a nonbreaking space.
    */
@@ -1445,11 +1303,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly nonbreakingSpace: SpecialCharacters_NONBREAKING_SPACE;
   /**
-   * Inserts a nonbreaking space.
-   */
-  readonly nonbreakingspace: SpecialCharacters_NONBREAKING_SPACE;
-
-  /**
    * Inserts a thin space.
    */
   readonly THIN_SPACE: SpecialCharacters_THIN_SPACE;
@@ -1457,11 +1310,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a thin space.
    */
   readonly thinSpace: SpecialCharacters_THIN_SPACE;
-  /**
-   * Inserts a thin space.
-   */
-  readonly thinspace: SpecialCharacters_THIN_SPACE;
-
   /**
    * Inserts a figure space.
    */
@@ -1471,11 +1319,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly figureSpace: SpecialCharacters_FIGURE_SPACE;
   /**
-   * Inserts a figure space.
-   */
-  readonly figurespace: SpecialCharacters_FIGURE_SPACE;
-
-  /**
    * Inserts a punctuation space.
    */
   readonly PUNCTUATION_SPACE: SpecialCharacters_PUNCTUATION_SPACE;
@@ -1483,11 +1326,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a punctuation space.
    */
   readonly punctuationSpace: SpecialCharacters_PUNCTUATION_SPACE;
-  /**
-   * Inserts a punctuation space.
-   */
-  readonly punctuationspace: SpecialCharacters_PUNCTUATION_SPACE;
-
   /**
    * Inserts a column break.
    */
@@ -1497,11 +1335,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly columnBreak: SpecialCharacters_COLUMN_BREAK;
   /**
-   * Inserts a column break.
-   */
-  readonly columnbreak: SpecialCharacters_COLUMN_BREAK;
-
-  /**
    * Inserts a frame break.
    */
   readonly FRAME_BREAK: SpecialCharacters_FRAME_BREAK;
@@ -1509,11 +1342,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a frame break.
    */
   readonly frameBreak: SpecialCharacters_FRAME_BREAK;
-  /**
-   * Inserts a frame break.
-   */
-  readonly framebreak: SpecialCharacters_FRAME_BREAK;
-
   /**
    * Inserts a page break.
    */
@@ -1523,11 +1351,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly pageBreak: SpecialCharacters_PAGE_BREAK;
   /**
-   * Inserts a page break.
-   */
-  readonly pagebreak: SpecialCharacters_PAGE_BREAK;
-
-  /**
    * Inserts a break to the next odd page.
    */
   readonly ODD_PAGE_BREAK: SpecialCharacters_ODD_PAGE_BREAK;
@@ -1535,11 +1358,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a break to the next odd page.
    */
   readonly oddPageBreak: SpecialCharacters_ODD_PAGE_BREAK;
-  /**
-   * Inserts a break to the next odd page.
-   */
-  readonly oddpagebreak: SpecialCharacters_ODD_PAGE_BREAK;
-
   /**
    * Inserts a break to the next even page.
    */
@@ -1549,11 +1367,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly evenPageBreak: SpecialCharacters_EVEN_PAGE_BREAK;
   /**
-   * Inserts a break to the next even page.
-   */
-  readonly evenpagebreak: SpecialCharacters_EVEN_PAGE_BREAK;
-
-  /**
    * Inserts a footnote symbol.
    */
   readonly FOOTNOTE_SYMBOL: SpecialCharacters_FOOTNOTE_SYMBOL;
@@ -1561,11 +1374,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a footnote symbol.
    */
   readonly footnoteSymbol: SpecialCharacters_FOOTNOTE_SYMBOL;
-  /**
-   * Inserts a footnote symbol.
-   */
-  readonly footnotesymbol: SpecialCharacters_FOOTNOTE_SYMBOL;
-
   /**
    * Inserts a left to right embedding mark.
    */
@@ -1575,11 +1383,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly leftToRightEmbedding: SpecialCharacters_LEFT_TO_RIGHT_EMBEDDING;
   /**
-   * Inserts a left to right embedding mark.
-   */
-  readonly lefttorightembedding: SpecialCharacters_LEFT_TO_RIGHT_EMBEDDING;
-
-  /**
    * Inserts a right to left embedding mark.
    */
   readonly RIGHT_TO_LEFT_EMBEDDING: SpecialCharacters_RIGHT_TO_LEFT_EMBEDDING;
@@ -1587,11 +1390,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a right to left embedding mark.
    */
   readonly rightToLeftEmbedding: SpecialCharacters_RIGHT_TO_LEFT_EMBEDDING;
-  /**
-   * Inserts a right to left embedding mark.
-   */
-  readonly righttoleftembedding: SpecialCharacters_RIGHT_TO_LEFT_EMBEDDING;
-
   /**
    * Inserts a pop directional formatting mark.
    */
@@ -1601,11 +1399,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly popDirectionalFormatting: SpecialCharacters_POP_DIRECTIONAL_FORMATTING;
   /**
-   * Inserts a pop directional formatting mark.
-   */
-  readonly popdirectionalformatting: SpecialCharacters_POP_DIRECTIONAL_FORMATTING;
-
-  /**
    * Inserts a left to right override mark.
    */
   readonly LEFT_TO_RIGHT_OVERRIDE: SpecialCharacters_LEFT_TO_RIGHT_OVERRIDE;
@@ -1613,11 +1406,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a left to right override mark.
    */
   readonly leftToRightOverride: SpecialCharacters_LEFT_TO_RIGHT_OVERRIDE;
-  /**
-   * Inserts a left to right override mark.
-   */
-  readonly lefttorightoverride: SpecialCharacters_LEFT_TO_RIGHT_OVERRIDE;
-
   /**
    * Inserts a right to left override mark.
    */
@@ -1627,11 +1415,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly rightToLeftOverride: SpecialCharacters_RIGHT_TO_LEFT_OVERRIDE;
   /**
-   * Inserts a right to left override mark.
-   */
-  readonly righttoleftoverride: SpecialCharacters_RIGHT_TO_LEFT_OVERRIDE;
-
-  /**
    * Inserts a dotted circle.
    */
   readonly DOTTED_CIRCLE: SpecialCharacters_DOTTED_CIRCLE;
@@ -1639,11 +1422,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a dotted circle.
    */
   readonly dottedCircle: SpecialCharacters_DOTTED_CIRCLE;
-  /**
-   * Inserts a dotted circle.
-   */
-  readonly dottedcircle: SpecialCharacters_DOTTED_CIRCLE;
-
   /**
    * Inserts a zero width joiner.
    */
@@ -1653,11 +1431,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly zeroWidthJoiner: SpecialCharacters_ZERO_WIDTH_JOINER;
   /**
-   * Inserts a zero width joiner.
-   */
-  readonly zerowidthjoiner: SpecialCharacters_ZERO_WIDTH_JOINER;
-
-  /**
    * Inserts the specified text variable.
    */
   readonly TEXT_VARIABLE: SpecialCharacters_TEXT_VARIABLE;
@@ -1665,11 +1438,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts the specified text variable.
    */
   readonly textVariable: SpecialCharacters_TEXT_VARIABLE;
-  /**
-   * Inserts the specified text variable.
-   */
-  readonly textvariable: SpecialCharacters_TEXT_VARIABLE;
-
   /**
    * Inserts a single straight quote.
    */
@@ -1679,11 +1447,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly singleStraightQuote: SpecialCharacters_SINGLE_STRAIGHT_QUOTE;
   /**
-   * Inserts a single straight quote.
-   */
-  readonly singlestraightquote: SpecialCharacters_SINGLE_STRAIGHT_QUOTE;
-
-  /**
    * Inserts a double straight quote.
    */
   readonly DOUBLE_STRAIGHT_QUOTE: SpecialCharacters_DOUBLE_STRAIGHT_QUOTE;
@@ -1691,11 +1454,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a double straight quote.
    */
   readonly doubleStraightQuote: SpecialCharacters_DOUBLE_STRAIGHT_QUOTE;
-  /**
-   * Inserts a double straight quote.
-   */
-  readonly doublestraightquote: SpecialCharacters_DOUBLE_STRAIGHT_QUOTE;
-
   /**
    * Inserts a discretionary line break.
    */
@@ -1705,11 +1463,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly discretionaryLineBreak: SpecialCharacters_DISCRETIONARY_LINE_BREAK;
   /**
-   * Inserts a discretionary line break.
-   */
-  readonly discretionarylinebreak: SpecialCharacters_DISCRETIONARY_LINE_BREAK;
-
-  /**
    * Inserts a zero-width non-joiner.
    */
   readonly ZERO_WIDTH_NONJOINER: SpecialCharacters_ZERO_WIDTH_NONJOINER;
@@ -1717,11 +1470,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a zero-width non-joiner.
    */
   readonly zeroWidthNonjoiner: SpecialCharacters_ZERO_WIDTH_NONJOINER;
-  /**
-   * Inserts a zero-width non-joiner.
-   */
-  readonly zerowidthnonjoiner: SpecialCharacters_ZERO_WIDTH_NONJOINER;
-
   /**
    * Inserts a third-width space.
    */
@@ -1731,11 +1479,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly thirdSpace: SpecialCharacters_THIRD_SPACE;
   /**
-   * Inserts a third-width space.
-   */
-  readonly thirdspace: SpecialCharacters_THIRD_SPACE;
-
-  /**
    * Inserts a quarter-width space.
    */
   readonly QUARTER_SPACE: SpecialCharacters_QUARTER_SPACE;
@@ -1743,11 +1486,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a quarter-width space.
    */
   readonly quarterSpace: SpecialCharacters_QUARTER_SPACE;
-  /**
-   * Inserts a quarter-width space.
-   */
-  readonly quarterspace: SpecialCharacters_QUARTER_SPACE;
-
   /**
    * Inserts a sixth-width space.
    */
@@ -1757,11 +1495,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly sixthSpace: SpecialCharacters_SIXTH_SPACE;
   /**
-   * Inserts a sixth-width space.
-   */
-  readonly sixthspace: SpecialCharacters_SIXTH_SPACE;
-
-  /**
    * Inserts a fixed-width nonbreaking space.
    */
   readonly FIXED_WIDTH_NONBREAKING_SPACE: SpecialCharacters_FIXED_WIDTH_NONBREAKING_SPACE;
@@ -1769,11 +1502,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a fixed-width nonbreaking space.
    */
   readonly fixedWidthNonbreakingSpace: SpecialCharacters_FIXED_WIDTH_NONBREAKING_SPACE;
-  /**
-   * Inserts a fixed-width nonbreaking space.
-   */
-  readonly fixedwidthnonbreakingspace: SpecialCharacters_FIXED_WIDTH_NONBREAKING_SPACE;
-
   /**
    * Inserts a hebrew maqaf.
    */
@@ -1783,11 +1511,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly hebrewMaqaf: SpecialCharacters_HEBREW_MAQAF;
   /**
-   * Inserts a hebrew maqaf.
-   */
-  readonly hebrewmaqaf: SpecialCharacters_HEBREW_MAQAF;
-
-  /**
    * Inserts a hebrew geresh.
    */
   readonly HEBREW_GERESH: SpecialCharacters_HEBREW_GERESH;
@@ -1795,11 +1518,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a hebrew geresh.
    */
   readonly hebrewGeresh: SpecialCharacters_HEBREW_GERESH;
-  /**
-   * Inserts a hebrew geresh.
-   */
-  readonly hebrewgeresh: SpecialCharacters_HEBREW_GERESH;
-
   /**
    * Inserts a hebrew gershayim.
    */
@@ -1809,11 +1527,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly hebrewGershayim: SpecialCharacters_HEBREW_GERSHAYIM;
   /**
-   * Inserts a hebrew gershayim.
-   */
-  readonly hebrewgershayim: SpecialCharacters_HEBREW_GERSHAYIM;
-
-  /**
    * Inserts an arabic kashida.
    */
   readonly ARABIC_KASHIDA: SpecialCharacters_ARABIC_KASHIDA;
@@ -1821,11 +1534,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts an arabic kashida.
    */
   readonly arabicKashida: SpecialCharacters_ARABIC_KASHIDA;
-  /**
-   * Inserts an arabic kashida.
-   */
-  readonly arabickashida: SpecialCharacters_ARABIC_KASHIDA;
-
   /**
    * Inserts an arabic comma.
    */
@@ -1835,11 +1543,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly arabicComma: SpecialCharacters_ARABIC_COMMA;
   /**
-   * Inserts an arabic comma.
-   */
-  readonly arabiccomma: SpecialCharacters_ARABIC_COMMA;
-
-  /**
    * Inserts an arabic semicolon.
    */
   readonly ARABIC_SEMICOLON: SpecialCharacters_ARABIC_SEMICOLON;
@@ -1847,11 +1550,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts an arabic semicolon.
    */
   readonly arabicSemicolon: SpecialCharacters_ARABIC_SEMICOLON;
-  /**
-   * Inserts an arabic semicolon.
-   */
-  readonly arabicsemicolon: SpecialCharacters_ARABIC_SEMICOLON;
-
   /**
    * Inserts an arabic question mark.
    */
@@ -1861,11 +1559,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly arabicQuestionMark: SpecialCharacters_ARABIC_QUESTION_MARK;
   /**
-   * Inserts an arabic question mark.
-   */
-  readonly arabicquestionmark: SpecialCharacters_ARABIC_QUESTION_MARK;
-
-  /**
    * Inserts a left to right mark.
    */
   readonly LEFT_TO_RIGHT_MARK: SpecialCharacters_LEFT_TO_RIGHT_MARK;
@@ -1873,11 +1566,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a left to right mark.
    */
   readonly leftToRightMark: SpecialCharacters_LEFT_TO_RIGHT_MARK;
-  /**
-   * Inserts a left to right mark.
-   */
-  readonly lefttorightmark: SpecialCharacters_LEFT_TO_RIGHT_MARK;
-
   /**
    * Inserts a right to left mark.
    */
@@ -1887,11 +1575,6 @@ export declare const SpecialCharacters: typeof Enumeration & {
    */
   readonly rightToLeftMark: SpecialCharacters_RIGHT_TO_LEFT_MARK;
   /**
-   * Inserts a right to left mark.
-   */
-  readonly righttoleftmark: SpecialCharacters_RIGHT_TO_LEFT_MARK;
-
-  /**
    * Inserts a hebrew sof pasuk.
    */
   readonly HEBREW_SOF_PASUK: SpecialCharacters_HEBREW_SOF_PASUK;
@@ -1899,9 +1582,4 @@ export declare const SpecialCharacters: typeof Enumeration & {
    * Inserts a hebrew sof pasuk.
    */
   readonly hebrewSofPasuk: SpecialCharacters_HEBREW_SOF_PASUK;
-  /**
-   * Inserts a hebrew sof pasuk.
-   */
-  readonly hebrewsofpasuk: SpecialCharacters_HEBREW_SOF_PASUK;
-
 }

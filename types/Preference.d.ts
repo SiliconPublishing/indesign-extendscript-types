@@ -1,6 +1,7 @@
 /**
  * Preference.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -56,9 +57,6 @@ import type { Preferences } from './Preferences';
  * kind it is — transparency, text wrap, find/change, and so on.
  */
 export interface Preference<M extends Mode = 'single'> extends EventTargetDOMObject<PageItemUnion | Application | Document | Book | DataMerge | XmlStory | Spread | FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting | FindChangeContentTransparencySetting | FormField | PageItemDefault | TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting | FindObjectPreference | ChangeObjectPreference | Story | TextVariable | TextWrapPreference | Page | Link | ObjectStyle | MasterSpread | NamedGrid | TextDefault | ParagraphStyle | InsertionPoint | TextStyleRange | Paragraph | TextColumn | Line | Word | Character | Text | FindTextPreference | ChangeTextPreference | FindGrepPreference | ChangeGrepPreference | FindTransliteratePreference | ChangeTransliteratePreference, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'Preference';
-
   /** Resolves the proxy into the individual {@link Preference} objects it stands for. */
   getElements(): Preference<'single'>[];
 

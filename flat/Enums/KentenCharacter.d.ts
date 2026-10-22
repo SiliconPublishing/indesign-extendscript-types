@@ -1,10 +1,11 @@
 /**
  * KentenCharacter.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __KentenCharacter: unique symbol;
 
 
 interface KentenCharacter extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<KentenCharacter>): boolean;
-
   /**
    * @internal **WARNING:** `__KentenCharacter` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -255,11 +253,6 @@ export declare const KentenCharacter: typeof Enumeration & {
    */
   readonly kentenSesameDot: KentenCharacter_KENTEN_SESAME_DOT;
   /**
-   * Uses the kenten sesame dot.
-   */
-  readonly kentensesamedot: KentenCharacter_KENTEN_SESAME_DOT;
-
-  /**
    * Uses the kenten white sesame dot.
    */
   readonly KENTEN_WHITE_SESAME_DOT: KentenCharacter_KENTEN_WHITE_SESAME_DOT;
@@ -267,11 +260,6 @@ export declare const KentenCharacter: typeof Enumeration & {
    * Uses the kenten white sesame dot.
    */
   readonly kentenWhiteSesameDot: KentenCharacter_KENTEN_WHITE_SESAME_DOT;
-  /**
-   * Uses the kenten white sesame dot.
-   */
-  readonly kentenwhitesesamedot: KentenCharacter_KENTEN_WHITE_SESAME_DOT;
-
   /**
    * Uses the kenten black circle.
    */
@@ -281,11 +269,6 @@ export declare const KentenCharacter: typeof Enumeration & {
    */
   readonly kentenBlackCircle: KentenCharacter_KENTEN_BLACK_CIRCLE;
   /**
-   * Uses the kenten black circle.
-   */
-  readonly kentenblackcircle: KentenCharacter_KENTEN_BLACK_CIRCLE;
-
-  /**
    * Uses the kenten white circle.
    */
   readonly KENTEN_WHITE_CIRCLE: KentenCharacter_KENTEN_WHITE_CIRCLE;
@@ -293,11 +276,6 @@ export declare const KentenCharacter: typeof Enumeration & {
    * Uses the kenten white circle.
    */
   readonly kentenWhiteCircle: KentenCharacter_KENTEN_WHITE_CIRCLE;
-  /**
-   * Uses the kenten white circle.
-   */
-  readonly kentenwhitecircle: KentenCharacter_KENTEN_WHITE_CIRCLE;
-
   /**
    * Uses the kenten black triangle.
    */
@@ -307,11 +285,6 @@ export declare const KentenCharacter: typeof Enumeration & {
    */
   readonly kentenBlackTriangle: KentenCharacter_KENTEN_BLACK_TRIANGLE;
   /**
-   * Uses the kenten black triangle.
-   */
-  readonly kentenblacktriangle: KentenCharacter_KENTEN_BLACK_TRIANGLE;
-
-  /**
    * Uses the kenten white triangle.
    */
   readonly KENTEN_WHITE_TRIANGLE: KentenCharacter_KENTEN_WHITE_TRIANGLE;
@@ -319,11 +292,6 @@ export declare const KentenCharacter: typeof Enumeration & {
    * Uses the kenten white triangle.
    */
   readonly kentenWhiteTriangle: KentenCharacter_KENTEN_WHITE_TRIANGLE;
-  /**
-   * Uses the kenten white triangle.
-   */
-  readonly kentenwhitetriangle: KentenCharacter_KENTEN_WHITE_TRIANGLE;
-
   /**
    * Uses the kenten bullseye.
    */
@@ -333,11 +301,6 @@ export declare const KentenCharacter: typeof Enumeration & {
    */
   readonly kentenBullseye: KentenCharacter_KENTEN_BULLSEYE;
   /**
-   * Uses the kenten bullseye.
-   */
-  readonly kentenbullseye: KentenCharacter_KENTEN_BULLSEYE;
-
-  /**
    * Uses the kenten fisheye.
    */
   readonly KENTEN_FISHEYE: KentenCharacter_KENTEN_FISHEYE;
@@ -345,11 +308,6 @@ export declare const KentenCharacter: typeof Enumeration & {
    * Uses the kenten fisheye.
    */
   readonly kentenFisheye: KentenCharacter_KENTEN_FISHEYE;
-  /**
-   * Uses the kenten fisheye.
-   */
-  readonly kentenfisheye: KentenCharacter_KENTEN_FISHEYE;
-
   /**
    * Uses the kenten small black circle.
    */
@@ -359,11 +317,6 @@ export declare const KentenCharacter: typeof Enumeration & {
    */
   readonly kentenSmallBlackCircle: KentenCharacter_KENTEN_SMALL_BLACK_CIRCLE;
   /**
-   * Uses the kenten small black circle.
-   */
-  readonly kentensmallblackcircle: KentenCharacter_KENTEN_SMALL_BLACK_CIRCLE;
-
-  /**
    * Uses the kenten small white circle.
    */
   readonly KENTEN_SMALL_WHITE_CIRCLE: KentenCharacter_KENTEN_SMALL_WHITE_CIRCLE;
@@ -371,11 +324,6 @@ export declare const KentenCharacter: typeof Enumeration & {
    * Uses the kenten small white circle.
    */
   readonly kentenSmallWhiteCircle: KentenCharacter_KENTEN_SMALL_WHITE_CIRCLE;
-  /**
-   * Uses the kenten small white circle.
-   */
-  readonly kentensmallwhitecircle: KentenCharacter_KENTEN_SMALL_WHITE_CIRCLE;
-
   /**
    * Uses a custom kenten style.
    */

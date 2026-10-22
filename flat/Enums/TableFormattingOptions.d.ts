@@ -1,10 +1,11 @@
 /**
  * TableFormattingOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __TableFormattingOptions: unique symbol;
 
 
 interface TableFormattingOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<TableFormattingOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__TableFormattingOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const TableFormattingOptions: typeof Enumeration & {
    */
   readonly excelFormattedTable: TableFormattingOptions_EXCEL_FORMATTED_TABLE;
   /**
-   * Use formatting from the original spreadsheet.
-   */
-  readonly excelformattedtable: TableFormattingOptions_EXCEL_FORMATTED_TABLE;
-
-  /**
    * Convert the spreadsheet to an unformatted table.
    */
   readonly EXCEL_UNFORMATTED_TABLE: TableFormattingOptions_EXCEL_UNFORMATTED_TABLE;
@@ -130,11 +123,6 @@ export declare const TableFormattingOptions: typeof Enumeration & {
    * Convert the spreadsheet to an unformatted table.
    */
   readonly excelUnformattedTable: TableFormattingOptions_EXCEL_UNFORMATTED_TABLE;
-  /**
-   * Convert the spreadsheet to an unformatted table.
-   */
-  readonly excelunformattedtable: TableFormattingOptions_EXCEL_UNFORMATTED_TABLE;
-
   /**
    * Convert the spreadsheet to unformatted, tab-delimited text.
    */
@@ -144,11 +132,6 @@ export declare const TableFormattingOptions: typeof Enumeration & {
    */
   readonly excelUnformattedTabbedText: TableFormattingOptions_EXCEL_UNFORMATTED_TABBED_TEXT;
   /**
-   * Convert the spreadsheet to unformatted, tab-delimited text.
-   */
-  readonly excelunformattedtabbedtext: TableFormattingOptions_EXCEL_UNFORMATTED_TABBED_TEXT;
-
-  /**
    * Converts the spreadsheet to a table that is formatted only on initial import but not on update.
    */
   readonly EXCEL_FORMAT_ONLY_ONCE: TableFormattingOptions_EXCEL_FORMAT_ONLY_ONCE;
@@ -156,9 +139,4 @@ export declare const TableFormattingOptions: typeof Enumeration & {
    * Converts the spreadsheet to a table that is formatted only on initial import but not on update.
    */
   readonly excelFormatOnlyOnce: TableFormattingOptions_EXCEL_FORMAT_ONLY_ONCE;
-  /**
-   * Converts the spreadsheet to a table that is formatted only on initial import but not on update.
-   */
-  readonly excelformatonlyonce: TableFormattingOptions_EXCEL_FORMAT_ONLY_ONCE;
-
 }

@@ -1,10 +1,11 @@
 /**
  * DynamicTriggerEvents.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __DynamicTriggerEvents: unique symbol;
 
 
 interface DynamicTriggerEvents extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<DynamicTriggerEvents>): boolean;
-
   /**
    * @internal **WARNING:** `__DynamicTriggerEvents` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -198,11 +196,6 @@ export declare const DynamicTriggerEvents: typeof Enumeration & {
    */
   readonly onPageLoad: DynamicTriggerEvents_ON_PAGE_LOAD;
   /**
-   * target is triggered on loading of the page.
-   */
-  readonly onpageload: DynamicTriggerEvents_ON_PAGE_LOAD;
-
-  /**
    * target is triggered on clicking on the page.
    */
   readonly ON_PAGE_CLICK: DynamicTriggerEvents_ON_PAGE_CLICK;
@@ -210,11 +203,6 @@ export declare const DynamicTriggerEvents: typeof Enumeration & {
    * target is triggered on clicking on the page.
    */
   readonly onPageClick: DynamicTriggerEvents_ON_PAGE_CLICK;
-  /**
-   * target is triggered on clicking on the page.
-   */
-  readonly onpageclick: DynamicTriggerEvents_ON_PAGE_CLICK;
-
   /**
    * target is triggered on loading of the state in a multi-state object.
    */
@@ -224,11 +212,6 @@ export declare const DynamicTriggerEvents: typeof Enumeration & {
    */
   readonly onStateLoad: DynamicTriggerEvents_ON_STATE_LOAD;
   /**
-   * target is triggered on loading of the state in a multi-state object.
-   */
-  readonly onstateload: DynamicTriggerEvents_ON_STATE_LOAD;
-
-  /**
    * target is triggered on a button or self click.
    */
   readonly ON_CLICK: DynamicTriggerEvents_ON_CLICK;
@@ -236,11 +219,6 @@ export declare const DynamicTriggerEvents: typeof Enumeration & {
    * target is triggered on a button or self click.
    */
   readonly onClick: DynamicTriggerEvents_ON_CLICK;
-  /**
-   * target is triggered on a button or self click.
-   */
-  readonly onclick: DynamicTriggerEvents_ON_CLICK;
-
   /**
    * target is triggered on a button or self rollover.
    */
@@ -250,11 +228,6 @@ export declare const DynamicTriggerEvents: typeof Enumeration & {
    */
   readonly onRollover: DynamicTriggerEvents_ON_ROLLOVER;
   /**
-   * target is triggered on a button or self rollover.
-   */
-  readonly onrollover: DynamicTriggerEvents_ON_ROLLOVER;
-
-  /**
    * target is triggered on a button release.
    */
   readonly ON_RELEASE: DynamicTriggerEvents_ON_RELEASE;
@@ -262,11 +235,6 @@ export declare const DynamicTriggerEvents: typeof Enumeration & {
    * target is triggered on a button release.
    */
   readonly onRelease: DynamicTriggerEvents_ON_RELEASE;
-  /**
-   * target is triggered on a button release.
-   */
-  readonly onrelease: DynamicTriggerEvents_ON_RELEASE;
-
   /**
    * target is triggered on a button rolloff.
    */
@@ -276,11 +244,6 @@ export declare const DynamicTriggerEvents: typeof Enumeration & {
    */
   readonly onRolloff: DynamicTriggerEvents_ON_ROLLOFF;
   /**
-   * target is triggered on a button rolloff.
-   */
-  readonly onrolloff: DynamicTriggerEvents_ON_ROLLOFF;
-
-  /**
    * target is triggered on self click.
    */
   readonly ON_SELF_CLICK: DynamicTriggerEvents_ON_SELF_CLICK;
@@ -289,11 +252,6 @@ export declare const DynamicTriggerEvents: typeof Enumeration & {
    */
   readonly onSelfClick: DynamicTriggerEvents_ON_SELF_CLICK;
   /**
-   * target is triggered on self click.
-   */
-  readonly onselfclick: DynamicTriggerEvents_ON_SELF_CLICK;
-
-  /**
    * target is triggered on self rollover.
    */
   readonly ON_SELF_ROLLOVER: DynamicTriggerEvents_ON_SELF_ROLLOVER;
@@ -301,9 +259,4 @@ export declare const DynamicTriggerEvents: typeof Enumeration & {
    * target is triggered on self rollover.
    */
   readonly onSelfRollover: DynamicTriggerEvents_ON_SELF_ROLLOVER;
-  /**
-   * target is triggered on self rollover.
-   */
-  readonly onselfrollover: DynamicTriggerEvents_ON_SELF_ROLLOVER;
-
 }

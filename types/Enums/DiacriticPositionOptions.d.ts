@@ -1,10 +1,11 @@
 /**
  * DiacriticPositionOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __DiacriticPositionOptions: unique symbol;
 
 
 interface DiacriticPositionOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<DiacriticPositionOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__DiacriticPositionOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -150,11 +148,6 @@ export declare const DiacriticPositionOptions: typeof Enumeration & {
    */
   readonly defaultPosition: DiacriticPositionOptions_DEFAULT_POSITION;
   /**
-   * Uses the default diacritic position.
-   */
-  readonly defaultposition: DiacriticPositionOptions_DEFAULT_POSITION;
-
-  /**
    * Loose diacritic position.
    */
   readonly LOOSE_POSITION: DiacriticPositionOptions_LOOSE_POSITION;
@@ -162,11 +155,6 @@ export declare const DiacriticPositionOptions: typeof Enumeration & {
    * Loose diacritic position.
    */
   readonly loosePosition: DiacriticPositionOptions_LOOSE_POSITION;
-  /**
-   * Loose diacritic position.
-   */
-  readonly looseposition: DiacriticPositionOptions_LOOSE_POSITION;
-
   /**
    * Medium diacritic position.
    */
@@ -176,11 +164,6 @@ export declare const DiacriticPositionOptions: typeof Enumeration & {
    */
   readonly mediumPosition: DiacriticPositionOptions_MEDIUM_POSITION;
   /**
-   * Medium diacritic position.
-   */
-  readonly mediumposition: DiacriticPositionOptions_MEDIUM_POSITION;
-
-  /**
    * Tight diacritic position.
    */
   readonly TIGHT_POSITION: DiacriticPositionOptions_TIGHT_POSITION;
@@ -188,11 +171,6 @@ export declare const DiacriticPositionOptions: typeof Enumeration & {
    * Tight diacritic position.
    */
   readonly tightPosition: DiacriticPositionOptions_TIGHT_POSITION;
-  /**
-   * Tight diacritic position.
-   */
-  readonly tightposition: DiacriticPositionOptions_TIGHT_POSITION;
-
   /**
    * Uses the position defined by the OpenType font.
    */
@@ -202,11 +180,6 @@ export declare const DiacriticPositionOptions: typeof Enumeration & {
    */
   readonly opentypePosition: DiacriticPositionOptions_OPENTYPE_POSITION;
   /**
-   * Uses the position defined by the OpenType font.
-   */
-  readonly opentypeposition: DiacriticPositionOptions_OPENTYPE_POSITION;
-
-  /**
    * Uses the OpenType font's position, measured from the baseline.
    */
   readonly OPENTYPE_POSITION_FROM_BASELINE: DiacriticPositionOptions_OPENTYPE_POSITION_FROM_BASELINE;
@@ -214,9 +187,4 @@ export declare const DiacriticPositionOptions: typeof Enumeration & {
    * Uses the OpenType font's position, measured from the baseline.
    */
   readonly opentypePositionFromBaseline: DiacriticPositionOptions_OPENTYPE_POSITION_FROM_BASELINE;
-  /**
-   * Uses the OpenType font's position, measured from the baseline.
-   */
-  readonly opentypepositionfrombaseline: DiacriticPositionOptions_OPENTYPE_POSITION_FROM_BASELINE;
-
 }

@@ -1,6 +1,7 @@
 /**
  * ColorSetting.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -10,24 +11,30 @@ import type { FilePath, File } from './_base/Types';
 import type { Application } from './Application';
 import type { ColorSettingsPolicy } from './Enums/ColorSettingsPolicy';
 import type { DefaultRenderingIntent } from './Enums/DefaultRenderingIntent';
-import type { Event } from './Event';
-import type { EventHandler } from './_base/Events';
-import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
-import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { InDesignEventMap } from './_base/Events';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
+import type { EventHandler } from './_base/Events';
+import type { EventListener } from './EventListener';
+import type { EventString } from './_base/Events';
+import type { Event } from './Event';
+
 /**
  * Color management settings.
  */
 export interface ColorSetting {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -45,15 +52,6 @@ export interface ColorSetting {
    */
   set properties(value: PropertiesSetter<ColorSetting, 'single'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -63,10 +61,9 @@ export interface ColorSetting {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -107,8 +104,6 @@ export interface ColorSetting {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The object's DOM class name. */
-  readonly constructorName: 'ColorSetting';
   /** Resolves the proxy into the individual {@link ColorSetting} objects it stands for. */
   getElements(): ColorSetting[];
   /** The available color engines. */
@@ -144,7 +139,7 @@ export interface ColorSetting {
   get cmsSettings(): string;
   set cmsSettings(value: string);
   /** The file path of the CSF file to use. */
-  get cmsSettingsPath(): Promise<File>;
+  get cmsSettingsPath(): File;
   set cmsSettingsPath(value: FilePath);
   /** If true, uses black point compensation to ensure that shadow detail is preserved by simulating the full dynamic range of the output device. */
   get useBPC(): boolean;
@@ -169,21 +164,20 @@ export interface ColorSetting {
   set idealizedBlackToExport(value: boolean);
 }
 
-
 /**
- * The broadcast proxy for {@link ColorSetting} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link ColorSetting} there.
+ * Color management settings.
  */
 export interface ColorSettingPlural {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -201,15 +195,6 @@ export interface ColorSettingPlural {
    */
   set properties(value: PropertiesSetter<ColorSettingPlural, 'plural'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -219,10 +204,9 @@ export interface ColorSettingPlural {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -263,8 +247,6 @@ export interface ColorSettingPlural {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The object's DOM class name. */
-  readonly constructorName: 'ColorSetting';
   /** Resolves the proxy into the individual {@link ColorSetting} objects it stands for. */
   getElements(): ColorSetting[];
   /** The available color engines. */
@@ -300,7 +282,7 @@ export interface ColorSettingPlural {
   get cmsSettings(): (string)[];
   set cmsSettings(value: string);
   /** The file path of the CSF file to use. */
-  get cmsSettingsPath(): (Promise<File>)[];
+  get cmsSettingsPath(): (File)[];
   set cmsSettingsPath(value: FilePath);
   /** If true, uses black point compensation to ensure that shadow detail is preserved by simulating the full dynamic range of the output device. */
   get useBPC(): (boolean)[];

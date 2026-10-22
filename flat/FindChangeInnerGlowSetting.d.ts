@@ -1,6 +1,7 @@
 /**
  * FindChangeInnerGlowSetting.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -12,36 +13,39 @@ import type { FindChangeFillTransparencySetting } from './FindChangeFillTranspar
 import type { FindChangeContentTransparencySetting } from './FindChangeContentTransparencySetting';
 import type { GlowTechnique } from './Enums/GlowTechnique';
 import type { InnerGlowSource } from './Enums/InnerGlowSource';
-import type { BlendMode } from './Enums/BlendMode';
-import type { ContentTransparencySetting } from './ContentTransparencySetting';
-import type { Event } from './Event';
-import type { EventHandler } from './_base/Events';
-import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
-import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { FilePath } from './_base/Types';
-import type { FillTransparencySetting } from './FillTransparencySetting';
-import type { InDesignEventMap } from './_base/Events';
-import type { MeasurementValue } from './_base/Types';
+import type { NothingEnum } from "./Enums/NothingEnum";
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
-import type { StrokeTransparencySetting } from './StrokeTransparencySetting';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
+import type { EventHandler } from './_base/Events';
+import type { EventListener } from './EventListener';
+import type { EventString } from './_base/Events';
+import type { Event } from './Event';
+import type { FilePath } from './_base/Types';
+import type { BlendMode } from './Enums/BlendMode';
 import type { Swatch } from './Swatch';
-import type { TransparencySetting } from './TransparencySetting';
+import type { MeasurementValue } from './_base/Types';
+
 /**
  * The same {@link InnerGlowSetting} settings, applied as find/change criteria.
  */
 export interface FindChangeInnerGlowSetting {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
-  readonly parent: TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting;
+  readonly parent: FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting;
   /**
    * A snapshot of every editable property on this object.
    *
@@ -55,15 +59,6 @@ export interface FindChangeInnerGlowSetting {
    */
   set properties(value: PropertiesSetter<FindChangeInnerGlowSetting, 'single'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -73,10 +68,9 @@ export interface FindChangeInnerGlowSetting {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -118,66 +112,63 @@ export interface FindChangeInnerGlowSetting {
     captures?: boolean,
   ): boolean;
   /** If true, the inner glow effect is applied. */
-  get applied(): boolean;
-  set applied(value: boolean);
+  get applied(): boolean | NothingEnum.NOTHING;
+  set applied(value: boolean | NothingEnum.NOTHING);
   /** The blending mode for the inner glow effect. */
-  get blendMode(): BlendMode;
-  set blendMode(value: BlendMode);
+  get blendMode(): BlendMode | NothingEnum.NOTHING;
+  set blendMode(value: BlendMode | NothingEnum.NOTHING);
   /** The opacity of the inner glow (as a percentage). (Range: 0 to 100). */
-  get opacity(): number;
-  set opacity(value: number);
+  get opacity(): number | NothingEnum.NOTHING;
+  set opacity(value: number | NothingEnum.NOTHING);
   /** The amount (as a percentage) of noise applied to the inner glow. (Range: 0 to 100). */
-  get noise(): number;
-  set noise(value: number);
+  get noise(): number | NothingEnum.NOTHING;
+  set noise(value: number | NothingEnum.NOTHING);
   /**
    * The color applied to the inner glow, specified as a swatch (color, gradient, tint, or
    * mixed ink), or as an array of color values.
    *
    * The color mode dictates the array values: for RGB, specify three values, each in the
    * range 0 to 255, in the format [R,G,B]; for CMYK, specify four values, each as a
-   * percentage and each in the range 0 to 100, in the format [C,'single',Y,K]; for LAB, specify
+   * percentage and each in the range 0 to 100, in the format [C,M,Y,K]; for LAB, specify
    * three values in the format [L,A,B], with L in the range 0 to 100 and A and B in the range
    * -128 to 127.
    */
-  get effectColor(): Swatch;
-  set effectColor(value: Swatch);
+  get effectColor(): Swatch | NothingEnum.NOTHING;
+  set effectColor(value: Swatch | string | NothingEnum.NOTHING);
   /** Whether the glow's edge is soft or precise. See {@link GlowTechnique}. */
-  get technique(): GlowTechnique;
-  set technique(value: GlowTechnique);
+  get technique(): GlowTechnique | NothingEnum.NOTHING;
+  set technique(value: GlowTechnique | NothingEnum.NOTHING);
   /** The amount of spread (as a percentage of the inner glow size). (Range: 0 to 100). */
-  get spread(): number;
-  set spread(value: number);
+  get spread(): number | NothingEnum.NOTHING;
+  set spread(value: number | NothingEnum.NOTHING);
   /** The size of the inner glow. */
-  get size(): number;
-  set size(value: MeasurementValue);
+  get size(): number | NothingEnum.NOTHING;
+  set size(value: MeasurementValue | NothingEnum.NOTHING);
   /** Whether the glow radiates from the object's center or from its edge. See {@link InnerGlowSource}. */
-  get source(): InnerGlowSource;
-  set source(value: InnerGlowSource);
-  /** The object's DOM class name. */
-  readonly constructorName: 'FindChangeInnerGlowSetting';
+  get source(): InnerGlowSource | NothingEnum.NOTHING;
+  set source(value: InnerGlowSource | NothingEnum.NOTHING);
   /** Resolves the proxy into the individual {@link FindChangeInnerGlowSetting} objects it stands for. */
   getElements(): FindChangeInnerGlowSetting[];
 }
 
-
 /**
- * The broadcast proxy for {@link FindChangeInnerGlowSetting} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link FindChangeInnerGlowSetting} there.
+ * The same {@link InnerGlowSetting} settings, applied as find/change criteria.
  */
 export interface FindChangeInnerGlowSettingPlural {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
-  readonly parent: (TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting)[];
+  readonly parent: (FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting)[];
   /**
    * A snapshot of every editable property on this object.
    *
@@ -191,15 +182,6 @@ export interface FindChangeInnerGlowSettingPlural {
    */
   set properties(value: PropertiesSetter<FindChangeInnerGlowSettingPlural, 'plural'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -209,10 +191,9 @@ export interface FindChangeInnerGlowSettingPlural {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -254,43 +235,41 @@ export interface FindChangeInnerGlowSettingPlural {
     captures?: boolean,
   ): boolean;
   /** If true, the inner glow effect is applied. */
-  get applied(): (boolean)[];
-  set applied(value: boolean);
+  get applied(): (boolean | NothingEnum.NOTHING)[];
+  set applied(value: boolean | NothingEnum.NOTHING);
   /** The blending mode for the inner glow effect. */
-  get blendMode(): (BlendMode)[];
-  set blendMode(value: BlendMode);
+  get blendMode(): (BlendMode | NothingEnum.NOTHING)[];
+  set blendMode(value: BlendMode | NothingEnum.NOTHING);
   /** The opacity of the inner glow (as a percentage). (Range: 0 to 100). */
-  get opacity(): (number)[];
-  set opacity(value: number);
+  get opacity(): (number | NothingEnum.NOTHING)[];
+  set opacity(value: number | NothingEnum.NOTHING);
   /** The amount (as a percentage) of noise applied to the inner glow. (Range: 0 to 100). */
-  get noise(): (number)[];
-  set noise(value: number);
+  get noise(): (number | NothingEnum.NOTHING)[];
+  set noise(value: number | NothingEnum.NOTHING);
   /**
    * The color applied to the inner glow, specified as a swatch (color, gradient, tint, or
    * mixed ink), or as an array of color values.
    *
    * The color mode dictates the array values: for RGB, specify three values, each in the
    * range 0 to 255, in the format [R,G,B]; for CMYK, specify four values, each as a
-   * percentage and each in the range 0 to 100, in the format [C,'plural',Y,K]; for LAB, specify
+   * percentage and each in the range 0 to 100, in the format [C,M,Y,K]; for LAB, specify
    * three values in the format [L,A,B], with L in the range 0 to 100 and A and B in the range
    * -128 to 127.
    */
-  get effectColor(): (Swatch)[];
-  set effectColor(value: Swatch);
+  get effectColor(): (Swatch | NothingEnum.NOTHING)[];
+  set effectColor(value: Swatch | string | NothingEnum.NOTHING);
   /** Whether the glow's edge is soft or precise. See {@link GlowTechnique}. */
-  get technique(): (GlowTechnique)[];
-  set technique(value: GlowTechnique);
+  get technique(): (GlowTechnique | NothingEnum.NOTHING)[];
+  set technique(value: GlowTechnique | NothingEnum.NOTHING);
   /** The amount of spread (as a percentage of the inner glow size). (Range: 0 to 100). */
-  get spread(): (number)[];
-  set spread(value: number);
+  get spread(): (number | NothingEnum.NOTHING)[];
+  set spread(value: number | NothingEnum.NOTHING);
   /** The size of the inner glow. */
-  get size(): (number)[];
-  set size(value: MeasurementValue);
+  get size(): (number | NothingEnum.NOTHING)[];
+  set size(value: MeasurementValue | NothingEnum.NOTHING);
   /** Whether the glow radiates from the object's center or from its edge. See {@link InnerGlowSource}. */
-  get source(): (InnerGlowSource)[];
-  set source(value: InnerGlowSource);
-  /** The object's DOM class name. */
-  readonly constructorName: 'FindChangeInnerGlowSetting';
+  get source(): (InnerGlowSource | NothingEnum.NOTHING)[];
+  set source(value: InnerGlowSource | NothingEnum.NOTHING);
   /** Resolves the proxy into the individual {@link FindChangeInnerGlowSetting} objects it stands for. */
   getElements(): FindChangeInnerGlowSetting[];
 }

@@ -1,6 +1,7 @@
 /**
  * AssignedStories.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -12,6 +13,8 @@ import type {
 import type { AssignedStory } from './AssignedStory';
 import type { Assignment } from './Assignment';
 import type { AssignedStoryPlural } from './AssignedStory';
+import type { NothingEnum } from './Enums/NothingEnum';
+
 /**
  * A collection of {@link AssignedStory} objects within an {@link Assignment}.
  * These represent the specific stories and text content that have been explicitly
@@ -21,7 +24,14 @@ import type { AssignedStoryPlural } from './AssignedStory';
  */
 export interface AssignedStories {
   /** The number of objects in the collection. */
-  readonly length: number;
+      readonly length: number | NothingEnum.NOTHING;
+      /**
+       * The object at the given position: `doc.pages[0]`. Out of range gives an invalid object, not
+       * `undefined` (check `isValid`).
+       */
+      readonly [index: number]: AssignedStory;
+      /** Reflection on the collection. */
+      readonly reflect: Reflection;
   /** Displays the number of elements in the Collection. */
   count(): number;
   /**
@@ -41,15 +51,14 @@ export interface AssignedStories {
    *
    * * The two bounds are resolved independently, so they can be of different kinds — an index
    * for one end and an object for the other, as in `itemByRange(0, lastRect)`.
-   * * **Names are not accepted**, unlike {@link item}. A string bound throws, even though the
-   * dictionary lists one.
-   * * Like `everyItem()`, this returns a plural proxy. Operations applied to this proxy are broadcast directly within the native C++ engine for maximum performance.
+   * * Names are accepted, as with {@link item}: `layers.itemByRange('Top', 'Bottom')`.
+   * * Like `everyItem()`, this returns a plural proxy. Operations applied to this proxy are broadcast directly within the native engine for maximum performance.
    * * To convert this proxy into a standard JavaScript array of individual objects, call `.getElements()` on the result.
    * @param from The object or index at the beginning of the range.
    * @param to The object or index at the end of the range.
    * @returns A plural proxy representing the items in the resolved range.
    */
-  itemByRange(from: number | AssignedStory, to: number | AssignedStory): AssignedStoryPlural;
+  itemByRange(from: number | string | AssignedStory, to: number | string | AssignedStory): AssignedStoryPlural;
   /**
    * Returns the first object in the collection.
    * * This method tends to be slower than accessing the first item directly via `.item(0)`.
@@ -98,8 +107,8 @@ export interface AssignedStories {
   everyItem(): AssignedStoryPlural;
   /** Generates a string which, if executed, will return the Collection. */
   toSource(): string;
-  /** The collection's specifier string — the same value as `toSpecifier()`, not a human-readable description. */
-  toString(): string;
+  /** `"[object CollectionName]"`, such as `"[object Pages]"`. */
+      toString(): string;
   /** * Returns the object with the specified ID.
    * * If the item does not exist, it returns an unresolved proxy (check `.isValid`).
    * @param id The unique ID.
@@ -110,7 +119,4 @@ export interface AssignedStories {
    * @param name The name of the item.
    */
   itemByName(name: string): AssignedStory;
-  /** The object's DOM class name. */
-  readonly constructorName: 'AssignedStories';
 }
-

@@ -1,10 +1,11 @@
 /**
  * UpdateLinkOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __UpdateLinkOptions: unique symbol;
 
 
 interface UpdateLinkOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<UpdateLinkOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__UpdateLinkOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -113,11 +111,6 @@ export declare const UpdateLinkOptions: typeof Enumeration & {
    */
   readonly applicationSettings: UpdateLinkOptions_APPLICATION_SETTINGS;
   /**
-   * Changes the visibility settings to match the modified file.
-   */
-  readonly applicationsettings: UpdateLinkOptions_APPLICATION_SETTINGS;
-
-  /**
    * Ignores the modified settings and maintains those specified in the current document.
    */
   readonly KEEP_OVERRIDES: UpdateLinkOptions_KEEP_OVERRIDES;
@@ -125,9 +118,4 @@ export declare const UpdateLinkOptions: typeof Enumeration & {
    * Ignores the modified settings and maintains those specified in the current document.
    */
   readonly keepOverrides: UpdateLinkOptions_KEEP_OVERRIDES;
-  /**
-   * Ignores the modified settings and maintains those specified in the current document.
-   */
-  readonly keepoverrides: UpdateLinkOptions_KEEP_OVERRIDES;
-
 }

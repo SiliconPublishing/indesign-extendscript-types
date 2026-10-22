@@ -1,6 +1,7 @@
 /**
  * FootnoteOption.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -22,9 +23,6 @@ import type { FootnoteRestarting } from './Enums/FootnoteRestarting';
  * Options for specifying default footnote formatting.
  */
 export interface FootnoteOption<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'FootnoteOption';
-
   /** Resolves the proxy into the individual {@link FootnoteOption} objects it stands for. */
   getElements(): FootnoteOption<'single'>[];
 
@@ -58,7 +56,7 @@ export interface FootnoteOption<M extends Mode = 'single'> extends EventTargetDO
 
   /** The character style to apply to footnote reference numbers in the main text. */
   get footnoteMarkerStyle(): Read<M, CharacterStyle>;
-  set footnoteMarkerStyle(value: CharacterStyle);
+  set footnoteMarkerStyle(value: CharacterStyle | string);
 
   /** The position of footnote reference numbers in the main text. */
   get markerPositioning(): Read<M, FootnoteMarkerPositioning | string>;
@@ -97,7 +95,7 @@ export interface FootnoteOption<M extends Mode = 'single'> extends EventTargetDO
   set ruleOn(value: boolean);
 
   /** The stroke type of the rule above the first footnote in a column. Note: Valid when rule on is true. */
-  get ruleType(): Read<M, StrokeStyle>;
+  get ruleType(): Read<M, StrokeStyle | string>;
   set ruleType(value: StrokeStyle | string);
 
   /** The stroke weight of the rule above the first footnote in the column. (Range: 0 to 1000) Note: Valid when rule on is true. */
@@ -105,11 +103,11 @@ export interface FootnoteOption<M extends Mode = 'single'> extends EventTargetDO
   set ruleLineWeight(value: MeasurementValue);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of the rule above the first footnote in the column. Note: Valid when rule on is true. */
-  get ruleColor(): Read<M, Swatch>;
+  get ruleColor(): Read<M, Swatch | string>;
   set ruleColor(value: Swatch | string);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the rule above the first footnote in the column. Note: Valid when rule type is not solid. */
-  get ruleGapColor(): Read<M, Swatch>;
+  get ruleGapColor(): Read<M, Swatch | string>;
   set ruleGapColor(value: Swatch | string);
 
   /** The tint (as a percentage) of the rule above the first footnote in the column. (Range: 0 to 100) Note: Valid when rule on is true. */
@@ -145,7 +143,7 @@ export interface FootnoteOption<M extends Mode = 'single'> extends EventTargetDO
   set continuingRuleOn(value: boolean);
 
   /** The stroke type of the rule above continued footnote text. Note: Valid when continuing rule on is true. */
-  get continuingRuleType(): Read<M, StrokeStyle>;
+  get continuingRuleType(): Read<M, StrokeStyle | string>;
   set continuingRuleType(value: StrokeStyle | string);
 
   /** The stroke weight of the rule above continued footnote text. (Range: 0 to 1000) Note: Valid when continuing rule on is true. */
@@ -153,11 +151,11 @@ export interface FootnoteOption<M extends Mode = 'single'> extends EventTargetDO
   set continuingRuleLineWeight(value: MeasurementValue);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the rule above continued footnote text. Note: Valid when continuing rule on is true. */
-  get continuingRuleColor(): Read<M, Swatch>;
+  get continuingRuleColor(): Read<M, Swatch | string>;
   set continuingRuleColor(value: Swatch | string);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the rule above continued footnote text. Note: Valid when continuing rule type is not solid. */
-  get continuingRuleGapColor(): Read<M, Swatch>;
+  get continuingRuleGapColor(): Read<M, Swatch | string>;
   set continuingRuleGapColor(value: Swatch | string);
 
   /** The tint (as a percentage) of the rule above continued footnote text. (Range: 0 to 100) Note: Valid when continuing rule type is not solid. */

@@ -1,6 +1,7 @@
 /**
  * Page.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -68,9 +69,6 @@ export interface Page<TParent = Spread | MasterSpread, M extends Mode = 'single'
   extends LabelableEventDOMObject<TParent, M>,
     IndexedDOMObject<TParent, M>,
     ReadonlyNamedDOMObject<TParent, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'Page';
-
   /** Resolves the proxy into the individual {@link Page} objects it stands for. */
   getElements(): Page<TParent, 'single'>[];
 
@@ -200,7 +198,7 @@ export interface Page<TParent = Spread | MasterSpread, M extends Mode = 'single'
    * named {@link UIColors} value, or a {@link PageColorOptions} value.
    */
   get pageColor(): Read<M, [number, number, number] | UIColors | PageColorOptions>;
-  set pageColor(value: [number, number, number] | UIColors | PageColorOptions);
+  set pageColor(value: [number, number, number] | UIColors | PageColorOptions | NothingEnum.NOTHING);
 
   /** The {@link MasterSpread} applied to this page. Assign a master spread or its name; assign {@link NothingEnum.NOTHING} to remove it. */
   get appliedMaster(): Read<M, MasterSpread>;
@@ -208,7 +206,7 @@ export interface Page<TParent = Spread | MasterSpread, M extends Mode = 'single'
 
   /** The transform applied to the master page's content before it lands on this page. */
   get masterPageTransform(): Read<M, TransformationMatrix>;
-  set masterPageTransform(value: TransformationMatrix);
+  set masterPageTransform(value: TransformationMatrix | string);
 
   /** Tab order of interactive form fields on this page in the exported PDF. */
   get tabOrder(): Read<M, Array<Buttons | CheckBoxes | ComboBoxes | ListBoxes | RadioButtons | TextBoxes | SignatureFields>>;
@@ -230,7 +228,7 @@ export interface Page<TParent = Spread | MasterSpread, M extends Mode = 'single'
    * @param placePoint Point to place at, in the format `[x, y]`.
    * @param autoflowing If `true`, autoflows placed text. Defaults to `false`.
    */
-  placeXML(using: XMLElement, placePoint?: MeasurementValue[], autoflowing?: boolean): Read<M, PageItem>;
+  placeXML(using: XMLElement, placePoint: MeasurementValue[], autoflowing?: boolean): Read<M, PageItem>;
 
   /**
    * Replaces the content of an XML element with content imported from a file.
@@ -288,7 +286,7 @@ export interface Page<TParent = Spread | MasterSpread, M extends Mode = 'single'
    *
    * ```ts
    * const img = page.place(file)[0];
-   * if (img && img.parent.constructorName === 'Rectangle') {
+   * if (img && img.parent instanceof Rectangle) {
    *   img.parent.fit(FitOptions.PROPORTIONALLY);
    * }
    * ```

@@ -1,10 +1,11 @@
 /**
  * ChangeTextColorChoices.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ChangeTextColorChoices: unique symbol;
 
 
 interface ChangeTextColorChoices extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ChangeTextColorChoices>): boolean;
-
   /**
    * @internal **WARNING:** `__ChangeTextColorChoices` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -86,11 +84,6 @@ export declare const ChangeTextColorChoices: typeof Enumeration & {
    */
   readonly changeUsesGalleyTextColor: ChangeTextColorChoices_CHANGE_USES_GALLEY_TEXT_COLOR;
   /**
-   * The text color for changed text is the same as the galley text color.
-   */
-  readonly changeusesgalleytextcolor: ChangeTextColorChoices_CHANGE_USES_GALLEY_TEXT_COLOR;
-
-  /**
    * The text color for changed text is the same as the text color defined in track changes preferences. For information, see text color for added text, text color for deleted text, or text color for moved text. 
    */
   readonly CHANGE_USES_CHANGE_PREF_COLOR: ChangeTextColorChoices_CHANGE_USES_CHANGE_PREF_COLOR;
@@ -98,9 +91,4 @@ export declare const ChangeTextColorChoices: typeof Enumeration & {
    * The text color for changed text is the same as the text color defined in track changes preferences. For information, see text color for added text, text color for deleted text, or text color for moved text. 
    */
   readonly changeUsesChangePrefColor: ChangeTextColorChoices_CHANGE_USES_CHANGE_PREF_COLOR;
-  /**
-   * The text color for changed text is the same as the text color defined in track changes preferences. For information, see text color for added text, text color for deleted text, or text color for moved text. 
-   */
-  readonly changeuseschangeprefcolor: ChangeTextColorChoices_CHANGE_USES_CHANGE_PREF_COLOR;
-
 }

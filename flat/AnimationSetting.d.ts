@@ -1,6 +1,7 @@
 /**
  * AnimationSetting.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -13,17 +14,26 @@ import type { MotionPreset } from './MotionPreset';
 import type { AnimationEaseOptions } from './Enums/AnimationEaseOptions';
 import type { DesignOptions } from './Enums/DesignOptions';
 import type { NothingEnum } from './Enums/NothingEnum';
-import type { Event } from './Event';
-import type { EventHandler } from './_base/Events';
-import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
-import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { InDesignEventMap } from './_base/Events';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
+import type { EventHandler } from './_base/Events';
+import type { EventListener } from './EventListener';
+import type { EventString } from './_base/Events';
+import type { Event } from './Event';
 
 /** A single point on an {@link AnimationSetting} motion path: a 2D anchor with its Bezier direction handles. */
+/**
+ * A motion path as ExtendScript reads and writes it: `[pathPoints, pathOpen]`, each point being
+ * `[anchor, leftDirection, rightDirection]`, each of those `[x, y]`.
+ */
+export type AnimationMotionPath = [
+  pathPointArray: [anchor: [number, number], leftDirection: [number, number], rightDirection: [number, number]][],
+  pathOpen: boolean,
+];
+
 export interface AnimationPathPoint<M extends Mode = 'single'> {
   /** Resolves the proxy into the individual {@link AnimationPathPoint} objects it stands for. */
   getElements(): AnimationPathPoint<'single'>[];
@@ -51,6 +61,7 @@ export interface AnimationKeyFrame<M extends Mode = 'single'> {
   get value(): Read<M, number>;
   set value(value: number);
 }
+
 /**
  * The motion-path and property animation applied to a page item or form field for
  * SWF/interactive export: timing, easing, and per-property keyframes for opacity,
@@ -58,10 +69,15 @@ export interface AnimationKeyFrame<M extends Mode = 'single'> {
  */
 export interface AnimationSetting {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -79,15 +95,6 @@ export interface AnimationSetting {
    */
   set properties(value: PropertiesSetter<AnimationSetting, 'single'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -97,10 +104,9 @@ export interface AnimationSetting {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -141,8 +147,6 @@ export interface AnimationSetting {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The object's DOM class name. */
-  readonly constructorName: 'AnimationSetting';
   /** Resolves the proxy into the individual {@link AnimationSetting}s it stands for. */
   getElements(): AnimationSetting[];
   /** Determines if this animated object has custom settings. */
@@ -157,8 +161,8 @@ export interface AnimationSetting {
   get duration(): number;
   set duration(value: number);
   /** The list of motion path points for this animation. */
-  get motionPathPoints(): { pathPointArray: AnimationPathPoint[]; pathOpen: boolean };
-  set motionPathPoints(value: { pathPointArray: AnimationPathPoint[]; pathOpen: boolean });
+  get motionPathPoints(): AnimationMotionPath;
+  set motionPathPoints(value: AnimationMotionPath);
   /** The list of motion path points and key frames for this animation. */
   get motionPath(): { keyFrame: number; pathPoint: AnimationPathPoint }[];
   set motionPath(value: { keyFrame: number; pathPoint: AnimationPathPoint }[]);
@@ -204,21 +208,22 @@ export interface AnimationSetting {
   save(name: string): MotionPreset;
 }
 
-
 /**
- * The broadcast proxy for {@link AnimationSetting} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link AnimationSetting} there.
+ * The motion-path and property animation applied to a page item or form field for
+ * SWF/interactive export: timing, easing, and per-property keyframes for opacity,
+ * rotation, and scale.
  */
 export interface AnimationSettingPlural {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -236,15 +241,6 @@ export interface AnimationSettingPlural {
    */
   set properties(value: PropertiesSetter<AnimationSettingPlural, 'plural'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -254,10 +250,9 @@ export interface AnimationSettingPlural {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -298,8 +293,6 @@ export interface AnimationSettingPlural {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The object's DOM class name. */
-  readonly constructorName: 'AnimationSetting';
   /** Resolves the proxy into the individual {@link AnimationSetting}s it stands for. */
   getElements(): AnimationSetting[];
   /** Determines if this animated object has custom settings. */
@@ -314,8 +307,8 @@ export interface AnimationSettingPlural {
   get duration(): (number)[];
   set duration(value: number);
   /** The list of motion path points for this animation. */
-  get motionPathPoints(): ({ pathPointArray: AnimationPathPoint[]; pathOpen: boolean })[];
-  set motionPathPoints(value: { pathPointArray: AnimationPathPoint[]; pathOpen: boolean });
+  get motionPathPoints(): (AnimationMotionPath)[];
+  set motionPathPoints(value: AnimationMotionPath);
   /** The list of motion path points and key frames for this animation. */
   get motionPath(): ({ keyFrame: number; pathPoint: AnimationPathPoint }[])[];
   set motionPath(value: { keyFrame: number; pathPoint: AnimationPathPoint }[]);

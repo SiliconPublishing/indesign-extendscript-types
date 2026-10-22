@@ -1,6 +1,7 @@
 /**
  * TextDefault.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -86,9 +87,6 @@ import type { WarichuAlignment } from './Enums/WarichuAlignment';
  * Application- or document-level default character and paragraph formatting applied to new text.
  */
 export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'TextDefault';
-
   /** Resolves the proxy into the individual {@link TextDefault} objects it stands for. */
   getElements(): TextDefault<'single'>[];
 
@@ -162,11 +160,11 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
   set paragraphShadingTint(value: number);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph shading. */
-  get paragraphShadingColor(): Read<M, Swatch>;
+  get paragraphShadingColor(): Read<M, Swatch | string>;
   set paragraphShadingColor(value: Swatch | string);
 
   /** The font applied to the TextDefault, specified as either a font object or the name of font family. */
-  get appliedFont(): Read<M, Font>;
+  get appliedFont(): Read<M, Font | string>;
   set appliedFont(value: Font | string);
 
   /** The name of the font style. */
@@ -278,11 +276,11 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
   set otfSwash(value: boolean);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the underline stroke. */
-  get underlineColor(): Read<M, Swatch>;
+  get underlineColor(): Read<M, Swatch | string>;
   set underlineColor(value: Swatch | string);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the underline stroke. Note: Valid when underline type is not solid. */
-  get underlineGapColor(): Read<M, Swatch>;
+  get underlineGapColor(): Read<M, Swatch | string>;
   set underlineGapColor(value: Swatch | string);
 
   /** The underline stroke tint (as a percentage). (Range: 0 to 100) */
@@ -302,7 +300,7 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
   set underlineGapOverprint(value: boolean);
 
   /** The stroke type of the underline stroke. */
-  get underlineType(): Read<M, StrokeStyle>;
+  get underlineType(): Read<M, StrokeStyle | string>;
   set underlineType(value: StrokeStyle | string);
 
   /** The amount by which to offset the underline from the text baseline. */
@@ -314,11 +312,11 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
   set underlineWeight(value: MeasurementValue);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the strikethrough stroke. */
-  get strikeThroughColor(): Read<M, Swatch>;
+  get strikeThroughColor(): Read<M, Swatch | string>;
   set strikeThroughColor(value: Swatch | string);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the strikethrough stroke. */
-  get strikeThroughGapColor(): Read<M, Swatch>;
+  get strikeThroughGapColor(): Read<M, Swatch | string>;
   set strikeThroughGapColor(value: Swatch | string);
 
   /** The tint (as a percentage) of the strikethrough stroke. (Range: 0 to 100) */
@@ -338,7 +336,7 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
   set strikeThroughGapOverprint(value: boolean);
 
   /** The stroke type of the strikethrough stroke. */
-  get strikeThroughType(): Read<M, StrokeStyle>;
+  get strikeThroughType(): Read<M, StrokeStyle | string>;
   set strikeThroughType(value: StrokeStyle | string);
 
   /** The amount by which to offset the strikethrough stroke from the text baseline. */
@@ -374,7 +372,7 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
   set paragraphBorderTint(value: number);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph stroke. */
-  get paragraphBorderColor(): Read<M, Swatch>;
+  get paragraphBorderColor(): Read<M, Swatch | string>;
   set paragraphBorderColor(value: Swatch | string);
 
   /** If true, the paragraph border gap will overprint. Note: Valid only when border type is not solid. */
@@ -386,11 +384,11 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
   set paragraphBorderGapTint(value: number);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph border gap. Note: Valid only when the border type is not solid. */
-  get paragraphBorderGapColor(): Read<M, Swatch>;
+  get paragraphBorderGapColor(): Read<M, Swatch | string>;
   set paragraphBorderGapColor(value: Swatch | string);
 
   /** The type of the border for the paragraph. */
-  get paragraphBorderType(): Read<M, StrokeStyle>;
+  get paragraphBorderType(): Read<M, StrokeStyle | string>;
   set paragraphBorderType(value: StrokeStyle | string);
 
   /** The left line weight of the border of paragraph. */
@@ -686,11 +684,11 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
   set ruleAboveWidth(value: RuleWidth);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule above. */
-  get ruleAboveColor(): Read<M, Swatch>;
+  get ruleAboveColor(): Read<M, Swatch | string>;
   set ruleAboveColor(value: Swatch | string);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule above. Note: Valid only when the paragraph rule above type is not solid. */
-  get ruleAboveGapColor(): Read<M, Swatch>;
+  get ruleAboveGapColor(): Read<M, Swatch | string>;
   set ruleAboveGapColor(value: Swatch | string);
 
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule. (Range: 0 to 100) Note: Valid only when the rule above type is not solid. */
@@ -702,7 +700,7 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
   set ruleAboveGapOverprint(value: boolean);
 
   /** The stroke type of the rule above the paragraph. */
-  get ruleAboveType(): Read<M, StrokeStyle>;
+  get ruleAboveType(): Read<M, StrokeStyle | string>;
   set ruleAboveType(value: StrokeStyle | string);
 
   /** If true, applies a paragraph rule below. */
@@ -734,11 +732,11 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
   set ruleBelowWidth(value: RuleWidth);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule below. */
-  get ruleBelowColor(): Read<M, Swatch>;
+  get ruleBelowColor(): Read<M, Swatch | string>;
   set ruleBelowColor(value: Swatch | string);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule below. Note: Valid only when the paragraph rule below type is not solid. */
-  get ruleBelowGapColor(): Read<M, Swatch>;
+  get ruleBelowGapColor(): Read<M, Swatch | string>;
   set ruleBelowGapColor(value: Swatch | string);
 
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule below. (Range: 0 to 100) Note: Valid only when the paragraph rule below type is not solid. */
@@ -746,7 +744,7 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
   set ruleBelowGapTint(value: number);
 
   /** The stroke type of the rule below the paragraph. */
-  get ruleBelowType(): Read<M, StrokeStyle>;
+  get ruleBelowType(): Read<M, StrokeStyle | string>;
   set ruleBelowType(value: StrokeStyle | string);
 
   /** If true, allows hyphenation of capitalized words. */
@@ -976,7 +974,7 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
   set tabList(value: PropertiesSetter<TabStop>[]);
 
   /** The named grid in use. */
-  get appliedNamedGrid(): Read<M, NamedGrid>;
+  get appliedNamedGrid(): Read<M, NamedGrid | null>;
   set appliedNamedGrid(value: NamedGrid);
 
   /** If true, aligns only the first line to the frame grid or baseline grid. If false, aligns all lines to the grid. */
@@ -1084,11 +1082,11 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
   set tatechuyokoYOffset(value: number);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of kenten characters. */
-  get kentenFillColor(): Read<M, Swatch>;
+  get kentenFillColor(): Read<M, Swatch | string>;
   set kentenFillColor(value: Swatch | string);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of kenten characters. */
-  get kentenStrokeColor(): Read<M, Swatch>;
+  get kentenStrokeColor(): Read<M, Swatch | string>;
   set kentenStrokeColor(value: Swatch | string);
 
   /** The fill tint (as a percentage) of kenten characters. (Range: 0 to 100) */
@@ -1128,7 +1126,7 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
   set kentenPosition(value: RubyKentenPosition);
 
   /** The font to use for kenten characters. */
-  get kentenFont(): Read<M, Font>;
+  get kentenFont(): Read<M, Font | null | string>;
   set kentenFont(value: Font | string);
 
   /** The font style of kenten characters. */
@@ -1156,11 +1154,11 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
   set kentenCharacterSet(value: KentenCharacterSet);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of ruby characters. */
-  get rubyFill(): Read<M, Swatch>;
+  get rubyFill(): Read<M, Swatch | string>;
   set rubyFill(value: Swatch | string);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of ruby characters. */
-  get rubyStroke(): Read<M, Swatch>;
+  get rubyStroke(): Read<M, Swatch | string>;
   set rubyStroke(value: Swatch | string);
 
   /** The tint (as a percentage) of the ruby fill color. (Range: 0 to 100) */
@@ -1184,7 +1182,7 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
   set rubyStrokeTint(value: number);
 
   /** The font applied to ruby characters. */
-  get rubyFont(): Read<M, Font>;
+  get rubyFont(): Read<M, Font | null | string>;
   set rubyFont(value: Font | string);
 
   /** The font style of ruby characters. */
@@ -1332,11 +1330,11 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
   set bulletsAndNumberingListType(value: ListType);
 
   /** The character style to be used for the text after string. */
-  get bulletsCharacterStyle(): Read<M, CharacterStyle>;
+  get bulletsCharacterStyle(): Read<M, CharacterStyle | string>;
   set bulletsCharacterStyle(value: CharacterStyle | string);
 
   /** The character style to be used for the number string. */
-  get numberingCharacterStyle(): Read<M, CharacterStyle>;
+  get numberingCharacterStyle(): Read<M, CharacterStyle | string>;
   set numberingCharacterStyle(value: CharacterStyle | string);
 
   /** The number string expression for numbering. */
@@ -1348,7 +1346,7 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
   set bulletsTextAfter(value: string);
 
   /** The list to be part of. */
-  get appliedNumberingList(): Read<M, NumberingList>;
+  get appliedNumberingList(): Read<M, NumberingList | string>;
   set appliedNumberingList(value: NumberingList | string);
 
   /** The level of the paragraph. */

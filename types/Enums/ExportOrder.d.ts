@@ -1,10 +1,11 @@
 /**
  * ExportOrder.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ExportOrder: unique symbol;
 
 
 interface ExportOrder extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ExportOrder>): boolean;
-
   /**
    * @internal **WARNING:** `__ExportOrder` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const ExportOrder: typeof Enumeration & {
    */
   readonly layoutOrder: ExportOrder_LAYOUT_ORDER;
   /**
-   * Based on the document layout.
-   */
-  readonly layoutorder: ExportOrder_LAYOUT_ORDER;
-
-  /**
    * Based on the article order defined in the Articles panel.
    */
   readonly ARTICLE_PANEL_ORDER: ExportOrder_ARTICLE_PANEL_ORDER;
@@ -115,11 +108,6 @@ export declare const ExportOrder: typeof Enumeration & {
    */
   readonly articlePanelOrder: ExportOrder_ARTICLE_PANEL_ORDER;
   /**
-   * Based on the article order defined in the Articles panel.
-   */
-  readonly articlepanelorder: ExportOrder_ARTICLE_PANEL_ORDER;
-
-  /**
    * Based on the XML structure.
    */
   readonly XML_STRUCTURE_ORDER: ExportOrder_XML_STRUCTURE_ORDER;
@@ -127,9 +115,4 @@ export declare const ExportOrder: typeof Enumeration & {
    * Based on the XML structure.
    */
   readonly xmlStructureOrder: ExportOrder_XML_STRUCTURE_ORDER;
-  /**
-   * Based on the XML structure.
-   */
-  readonly xmlstructureorder: ExportOrder_XML_STRUCTURE_ORDER;
-
 }

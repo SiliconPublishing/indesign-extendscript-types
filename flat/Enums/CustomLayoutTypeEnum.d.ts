@@ -1,10 +1,11 @@
 /**
  * CustomLayoutTypeEnum.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __CustomLayoutTypeEnum: unique symbol;
 
 
 interface CustomLayoutTypeEnum extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<CustomLayoutTypeEnum>): boolean;
-
   /**
    * @internal **WARNING:** `__CustomLayoutTypeEnum` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -104,11 +102,6 @@ export declare const CustomLayoutTypeEnum: typeof Enumeration & {
    */
   readonly floatLeft: CustomLayoutTypeEnum_FLOAT_LEFT;
   /**
-   * Floats the object to the left.
-   */
-  readonly floatleft: CustomLayoutTypeEnum_FLOAT_LEFT;
-
-  /**
    * Floats the object to the right.
    */
   readonly FLOAT_RIGHT: CustomLayoutTypeEnum_FLOAT_RIGHT;
@@ -117,11 +110,6 @@ export declare const CustomLayoutTypeEnum: typeof Enumeration & {
    */
   readonly floatRight: CustomLayoutTypeEnum_FLOAT_RIGHT;
   /**
-   * Floats the object to the right.
-   */
-  readonly floatright: CustomLayoutTypeEnum_FLOAT_RIGHT;
-
-  /**
    * Positions the object using alignment and spacing rules.
    */
   readonly ALIGNMENT_AND_SPACING: CustomLayoutTypeEnum_ALIGNMENT_AND_SPACING;
@@ -129,9 +117,4 @@ export declare const CustomLayoutTypeEnum: typeof Enumeration & {
    * Positions the object using alignment and spacing rules.
    */
   readonly alignmentAndSpacing: CustomLayoutTypeEnum_ALIGNMENT_AND_SPACING;
-  /**
-   * Positions the object using alignment and spacing rules.
-   */
-  readonly alignmentandspacing: CustomLayoutTypeEnum_ALIGNMENT_AND_SPACING;
-
 }

@@ -1,10 +1,11 @@
 /**
  * DisplaySettingOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __DisplaySettingOptions: unique symbol;
 
 
 interface DisplaySettingOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<DisplaySettingOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__DisplaySettingOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const DisplaySettingOptions: typeof Enumeration & {
    */
   readonly highQuality: DisplaySettingOptions_HIGH_QUALITY;
   /**
-   * Slower performance; displays high-resolution graphics and high-quality transparencies and turns on anti-aliasing.
-   */
-  readonly highquality: DisplaySettingOptions_HIGH_QUALITY;
-
-  /**
    * Moderate performance speed; displays proxy graphics and low-quality transparencies and turns on anti-aliasing.
    */
   readonly TYPICAL: DisplaySettingOptions_TYPICAL;
@@ -148,9 +141,4 @@ export declare const DisplaySettingOptions: typeof Enumeration & {
    * Uses the container object's default display performance preferences setting. For information, see default display settings.
    */
   readonly defaultValue: DisplaySettingOptions_DEFAULT_VALUE;
-  /**
-   * Uses the container object's default display performance preferences setting. For information, see default display settings.
-   */
-  readonly defaultvalue: DisplaySettingOptions_DEFAULT_VALUE;
-
 }

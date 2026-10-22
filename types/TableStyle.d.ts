@@ -1,6 +1,7 @@
 /**
  * TableStyle.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -27,15 +28,12 @@ export interface TableStyle<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document | Application | TableStyleGroup, M>,
     IndexedDOMObject<Document | Application | TableStyleGroup, M>,
     TableStyleAttributes<M>{
-  /** The object's DOM class name. */
-  readonly constructorName: 'TableStyle';
-
   /** Resolves the proxy into the individual {@link TableStyle} objects it stands for. */
   getElements(): TableStyle<'single'>[];
 
   // ---- Caption and header columns --------------------------------------------
   // Absent from the InDesign 2026 object-model dictionary; modelled from the
-  // live UXP runtime. Reading either on a style that does not define it throws
+  // live UXP runtime (not yet re-measured in ExtendScript). Reading either on a style that does not define it throws
   // `This attribute is not defined for table styles`.
 
   /** How many paragraphs of the caption story the style formats. */

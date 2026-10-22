@@ -1,10 +1,11 @@
 /**
  * LanguageAndRegion.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __LanguageAndRegion: unique symbol;
 
 
 interface LanguageAndRegion extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<LanguageAndRegion>): boolean;
-
   /**
    * @internal **WARNING:** `__LanguageAndRegion` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -678,11 +676,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    */
   readonly standardArabic: LanguageAndRegion_STANDARD_ARABIC;
   /**
-   * Standard Arabic
-   */
-  readonly standardarabic: LanguageAndRegion_STANDARD_ARABIC;
-
-  /**
    * Czech Republic: Czech
    */
   readonly CZECH_REPUBLIC_CZECH: LanguageAndRegion_CZECH_REPUBLIC_CZECH;
@@ -690,11 +683,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    * Czech Republic: Czech
    */
   readonly czechRepublicCzech: LanguageAndRegion_CZECH_REPUBLIC_CZECH;
-  /**
-   * Czech Republic: Czech
-   */
-  readonly czechrepublicczech: LanguageAndRegion_CZECH_REPUBLIC_CZECH;
-
   /**
    * Denmark: Danish
    */
@@ -704,11 +692,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    */
   readonly denmarkDanish: LanguageAndRegion_DENMARK_DANISH;
   /**
-   * Denmark: Danish
-   */
-  readonly denmarkdanish: LanguageAndRegion_DENMARK_DANISH;
-
-  /**
    * Germany: German
    */
   readonly GERMANY_GERMAN: LanguageAndRegion_GERMANY_GERMAN;
@@ -716,11 +699,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    * Germany: German
    */
   readonly germanyGerman: LanguageAndRegion_GERMANY_GERMAN;
-  /**
-   * Germany: German
-   */
-  readonly germanygerman: LanguageAndRegion_GERMANY_GERMAN;
-
   /**
    * Greece: Greek
    */
@@ -730,11 +708,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    */
   readonly greeceGreek: LanguageAndRegion_GREECE_GREEK;
   /**
-   * Greece: Greek
-   */
-  readonly greecegreek: LanguageAndRegion_GREECE_GREEK;
-
-  /**
    * United Kingdom: English
    */
   readonly UNITED_KINGDOM_ENGLISH: LanguageAndRegion_UNITED_KINGDOM_ENGLISH;
@@ -742,11 +715,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    * United Kingdom: English
    */
   readonly unitedKingdomEnglish: LanguageAndRegion_UNITED_KINGDOM_ENGLISH;
-  /**
-   * United Kingdom: English
-   */
-  readonly unitedkingdomenglish: LanguageAndRegion_UNITED_KINGDOM_ENGLISH;
-
   /**
    * United States: English
    */
@@ -756,11 +724,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    */
   readonly unitedStatesEnglish: LanguageAndRegion_UNITED_STATES_ENGLISH;
   /**
-   * United States: English
-   */
-  readonly unitedstatesenglish: LanguageAndRegion_UNITED_STATES_ENGLISH;
-
-  /**
    * Spain: Spanish
    */
   readonly SPAIN_SPANISH: LanguageAndRegion_SPAIN_SPANISH;
@@ -768,11 +731,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    * Spain: Spanish
    */
   readonly spainSpanish: LanguageAndRegion_SPAIN_SPANISH;
-  /**
-   * Spain: Spanish
-   */
-  readonly spainspanish: LanguageAndRegion_SPAIN_SPANISH;
-
   /**
    * Finland: Finnish
    */
@@ -782,11 +740,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    */
   readonly finlandFinnish: LanguageAndRegion_FINLAND_FINNISH;
   /**
-   * Finland: Finnish
-   */
-  readonly finlandfinnish: LanguageAndRegion_FINLAND_FINNISH;
-
-  /**
    * France: French
    */
   readonly FRANCE_FRENCH: LanguageAndRegion_FRANCE_FRENCH;
@@ -794,11 +747,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    * France: French
    */
   readonly franceFrench: LanguageAndRegion_FRANCE_FRENCH;
-  /**
-   * France: French
-   */
-  readonly francefrench: LanguageAndRegion_FRANCE_FRENCH;
-
   /**
    * Israel: Hebrew
    */
@@ -808,11 +756,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    */
   readonly israelHebrew: LanguageAndRegion_ISRAEL_HEBREW;
   /**
-   * Israel: Hebrew
-   */
-  readonly israelhebrew: LanguageAndRegion_ISRAEL_HEBREW;
-
-  /**
    * Hungary: Hungarian
    */
   readonly HUNGARY_HUNGARIAN: LanguageAndRegion_HUNGARY_HUNGARIAN;
@@ -820,11 +763,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    * Hungary: Hungarian
    */
   readonly hungaryHungarian: LanguageAndRegion_HUNGARY_HUNGARIAN;
-  /**
-   * Hungary: Hungarian
-   */
-  readonly hungaryhungarian: LanguageAndRegion_HUNGARY_HUNGARIAN;
-
   /**
    * Italy: Italian
    */
@@ -834,11 +772,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    */
   readonly italyItalian: LanguageAndRegion_ITALY_ITALIAN;
   /**
-   * Italy: Italian
-   */
-  readonly italyitalian: LanguageAndRegion_ITALY_ITALIAN;
-
-  /**
    * Japan: Japanese
    */
   readonly JAPAN_JAPANESE: LanguageAndRegion_JAPAN_JAPANESE;
@@ -846,11 +779,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    * Japan: Japanese
    */
   readonly japanJapanese: LanguageAndRegion_JAPAN_JAPANESE;
-  /**
-   * Japan: Japanese
-   */
-  readonly japanjapanese: LanguageAndRegion_JAPAN_JAPANESE;
-
   /**
    * Republic Of Korea: Korean
    */
@@ -860,11 +788,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    */
   readonly republicOfKoreaKorean: LanguageAndRegion_REPUBLIC_OF_KOREA_KOREAN;
   /**
-   * Republic Of Korea: Korean
-   */
-  readonly republicofkoreakorean: LanguageAndRegion_REPUBLIC_OF_KOREA_KOREAN;
-
-  /**
    * Norway: Norwegian
    */
   readonly NORWAY_NORWEGIAN: LanguageAndRegion_NORWAY_NORWEGIAN;
@@ -872,11 +795,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    * Norway: Norwegian
    */
   readonly norwayNorwegian: LanguageAndRegion_NORWAY_NORWEGIAN;
-  /**
-   * Norway: Norwegian
-   */
-  readonly norwaynorwegian: LanguageAndRegion_NORWAY_NORWEGIAN;
-
   /**
    * Netherlands: Dutch
    */
@@ -886,11 +804,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    */
   readonly netherlandsDutch: LanguageAndRegion_NETHERLANDS_DUTCH;
   /**
-   * Netherlands: Dutch
-   */
-  readonly netherlandsdutch: LanguageAndRegion_NETHERLANDS_DUTCH;
-
-  /**
    * Poland: Polish
    */
   readonly POLAND_POLISH: LanguageAndRegion_POLAND_POLISH;
@@ -898,11 +811,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    * Poland: Polish
    */
   readonly polandPolish: LanguageAndRegion_POLAND_POLISH;
-  /**
-   * Poland: Polish
-   */
-  readonly polandpolish: LanguageAndRegion_POLAND_POLISH;
-
   /**
    * Brazil: Portuguese
    */
@@ -912,11 +820,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    */
   readonly brazilPortuguese: LanguageAndRegion_BRAZIL_PORTUGUESE;
   /**
-   * Brazil: Portuguese
-   */
-  readonly brazilportuguese: LanguageAndRegion_BRAZIL_PORTUGUESE;
-
-  /**
    * Russian Federation: Russian
    */
   readonly RUSSIAN_FEDERATION_RUSSIAN: LanguageAndRegion_RUSSIAN_FEDERATION_RUSSIAN;
@@ -924,11 +827,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    * Russian Federation: Russian
    */
   readonly russianFederationRussian: LanguageAndRegion_RUSSIAN_FEDERATION_RUSSIAN;
-  /**
-   * Russian Federation: Russian
-   */
-  readonly russianfederationrussian: LanguageAndRegion_RUSSIAN_FEDERATION_RUSSIAN;
-
   /**
    * Sweden: Swedish
    */
@@ -938,11 +836,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    */
   readonly swedenSwedish: LanguageAndRegion_SWEDEN_SWEDISH;
   /**
-   * Sweden: Swedish
-   */
-  readonly swedenswedish: LanguageAndRegion_SWEDEN_SWEDISH;
-
-  /**
    * Turkey: Turkish
    */
   readonly TURKEY_TURKISH: LanguageAndRegion_TURKEY_TURKISH;
@@ -950,11 +843,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    * Turkey: Turkish
    */
   readonly turkeyTurkish: LanguageAndRegion_TURKEY_TURKISH;
-  /**
-   * Turkey: Turkish
-   */
-  readonly turkeyturkish: LanguageAndRegion_TURKEY_TURKISH;
-
   /**
    * Ukraine: Ukrainian
    */
@@ -964,11 +852,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    */
   readonly ukraineUkrainian: LanguageAndRegion_UKRAINE_UKRAINIAN;
   /**
-   * Ukraine: Ukrainian
-   */
-  readonly ukraineukrainian: LanguageAndRegion_UKRAINE_UKRAINIAN;
-
-  /**
    * Simplified Chinese
    */
   readonly SIMPLIFIED_CHINESE: LanguageAndRegion_SIMPLIFIED_CHINESE;
@@ -976,11 +859,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    * Simplified Chinese
    */
   readonly simplifiedChinese: LanguageAndRegion_SIMPLIFIED_CHINESE;
-  /**
-   * Simplified Chinese
-   */
-  readonly simplifiedchinese: LanguageAndRegion_SIMPLIFIED_CHINESE;
-
   /**
    * Traditional Chinese
    */
@@ -990,11 +868,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    */
   readonly traditionalChinese: LanguageAndRegion_TRADITIONAL_CHINESE;
   /**
-   * Traditional Chinese
-   */
-  readonly traditionalchinese: LanguageAndRegion_TRADITIONAL_CHINESE;
-
-  /**
    * Belarus: Belarusian
    */
   readonly BELARUS_BELARUSIAN: LanguageAndRegion_BELARUS_BELARUSIAN;
@@ -1002,11 +875,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    * Belarus: Belarusian
    */
   readonly belarusBelarusian: LanguageAndRegion_BELARUS_BELARUSIAN;
-  /**
-   * Belarus: Belarusian
-   */
-  readonly belarusbelarusian: LanguageAndRegion_BELARUS_BELARUSIAN;
-
   /**
    * Bulgaria: Bulgarian
    */
@@ -1016,11 +884,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    */
   readonly bulgariaBulgarian: LanguageAndRegion_BULGARIA_BULGARIAN;
   /**
-   * Bulgaria: Bulgarian
-   */
-  readonly bulgariabulgarian: LanguageAndRegion_BULGARIA_BULGARIAN;
-
-  /**
    * Estonia: Estonian
    */
   readonly ESTONIA_ESTONIAN: LanguageAndRegion_ESTONIA_ESTONIAN;
@@ -1028,11 +891,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    * Estonia: Estonian
    */
   readonly estoniaEstonian: LanguageAndRegion_ESTONIA_ESTONIAN;
-  /**
-   * Estonia: Estonian
-   */
-  readonly estoniaestonian: LanguageAndRegion_ESTONIA_ESTONIAN;
-
   /**
    * Croatia: Croatian
    */
@@ -1042,11 +900,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    */
   readonly croatiaCroatian: LanguageAndRegion_CROATIA_CROATIAN;
   /**
-   * Croatia: Croatian
-   */
-  readonly croatiacroatian: LanguageAndRegion_CROATIA_CROATIAN;
-
-  /**
    * Lituania: Lithuanian
    */
   readonly LITUANIA_LITHUANIAN: LanguageAndRegion_LITUANIA_LITHUANIAN;
@@ -1054,11 +907,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    * Lituania: Lithuanian
    */
   readonly lituaniaLithuanian: LanguageAndRegion_LITUANIA_LITHUANIAN;
-  /**
-   * Lituania: Lithuanian
-   */
-  readonly lituanialithuanian: LanguageAndRegion_LITUANIA_LITHUANIAN;
-
   /**
    * Latvia: Latvian
    */
@@ -1068,11 +916,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    */
   readonly latviaLatvian: LanguageAndRegion_LATVIA_LATVIAN;
   /**
-   * Latvia: Latvian
-   */
-  readonly latvialatvian: LanguageAndRegion_LATVIA_LATVIAN;
-
-  /**
    * Romania: Romanian
    */
   readonly ROMANIA_ROMANIAN: LanguageAndRegion_ROMANIA_ROMANIAN;
@@ -1080,11 +923,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    * Romania: Romanian
    */
   readonly romaniaRomanian: LanguageAndRegion_ROMANIA_ROMANIAN;
-  /**
-   * Romania: Romanian
-   */
-  readonly romaniaromanian: LanguageAndRegion_ROMANIA_ROMANIAN;
-
   /**
    * Slovakia: Slovak
    */
@@ -1094,11 +932,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    */
   readonly slovakiaSlovak: LanguageAndRegion_SLOVAKIA_SLOVAK;
   /**
-   * Slovakia: Slovak
-   */
-  readonly slovakiaslovak: LanguageAndRegion_SLOVAKIA_SLOVAK;
-
-  /**
    * Slovenia: Slovenian
    */
   readonly SLOVENIA_SLOVENIAN: LanguageAndRegion_SLOVENIA_SLOVENIAN;
@@ -1106,11 +939,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    * Slovenia: Slovenian
    */
   readonly sloveniaSlovenian: LanguageAndRegion_SLOVENIA_SLOVENIAN;
-  /**
-   * Slovenia: Slovenian
-   */
-  readonly sloveniaslovenian: LanguageAndRegion_SLOVENIA_SLOVENIAN;
-
   /**
    * Albania: Albanian
    */
@@ -1120,11 +948,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    */
   readonly albaniaAlbanian: LanguageAndRegion_ALBANIA_ALBANIAN;
   /**
-   * Albania: Albanian
-   */
-  readonly albaniaalbanian: LanguageAndRegion_ALBANIA_ALBANIAN;
-
-  /**
    * India: Tamil
    */
   readonly INDIA_TAMIL: LanguageAndRegion_INDIA_TAMIL;
@@ -1132,11 +955,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    * India: Tamil
    */
   readonly indiaTamil: LanguageAndRegion_INDIA_TAMIL;
-  /**
-   * India: Tamil
-   */
-  readonly indiatamil: LanguageAndRegion_INDIA_TAMIL;
-
   /**
    * Thailand: Thai
    */
@@ -1146,11 +964,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    */
   readonly thailandThai: LanguageAndRegion_THAILAND_THAI;
   /**
-   * Thailand: Thai
-   */
-  readonly thailandthai: LanguageAndRegion_THAILAND_THAI;
-
-  /**
    * Vietnam: Vietnamese
    */
   readonly VIETNAM_VIETNAMESE: LanguageAndRegion_VIETNAM_VIETNAMESE;
@@ -1158,11 +971,6 @@ export declare const LanguageAndRegion: typeof Enumeration & {
    * Vietnam: Vietnamese
    */
   readonly vietnamVietnamese: LanguageAndRegion_VIETNAM_VIETNAMESE;
-  /**
-   * Vietnam: Vietnamese
-   */
-  readonly vietnamvietnamese: LanguageAndRegion_VIETNAM_VIETNAMESE;
-
   /**
    * Indic
    */

@@ -1,0 +1,1 @@
+<classdef name="PaperSize" enumeration="true">  <shortdesc>Paper size options.</shortdesc>  <elements type="class">    <property name="AUTO" rwaccess="readonly">      <shortdesc>Automatic</shortdesc>      <datatype>        <type>number</type>        <value>1635019116</value>      </datatype>    </property>  </elements></classdef>

@@ -1,10 +1,11 @@
 /**
  * CursorTypes.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __CursorTypes: unique symbol;
 
 
 interface CursorTypes extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<CursorTypes>): boolean;
-
   /**
    * @internal **WARNING:** `__CursorTypes` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const CursorTypes: typeof Enumeration & {
    */
   readonly standardCursor: CursorTypes_STANDARD_CURSOR;
   /**
-   * Uses a standard cursor.
-   */
-  readonly standardcursor: CursorTypes_STANDARD_CURSOR;
-
-  /**
    * Uses a thick cursor.
    */
   readonly THICK_CURSOR: CursorTypes_THICK_CURSOR;
@@ -130,11 +123,6 @@ export declare const CursorTypes: typeof Enumeration & {
    * Uses a thick cursor.
    */
   readonly thickCursor: CursorTypes_THICK_CURSOR;
-  /**
-   * Uses a thick cursor.
-   */
-  readonly thickcursor: CursorTypes_THICK_CURSOR;
-
   /**
    * Uses a barbell cursor.
    */
@@ -144,11 +132,6 @@ export declare const CursorTypes: typeof Enumeration & {
    */
   readonly barbellCursor: CursorTypes_BARBELL_CURSOR;
   /**
-   * Uses a barbell cursor.
-   */
-  readonly barbellcursor: CursorTypes_BARBELL_CURSOR;
-
-  /**
    * Uses a block cursor.
    */
   readonly BLOCK_CURSOR: CursorTypes_BLOCK_CURSOR;
@@ -156,9 +139,4 @@ export declare const CursorTypes: typeof Enumeration & {
    * Uses a block cursor.
    */
   readonly blockCursor: CursorTypes_BLOCK_CURSOR;
-  /**
-   * Uses a block cursor.
-   */
-  readonly blockcursor: CursorTypes_BLOCK_CURSOR;
-
 }

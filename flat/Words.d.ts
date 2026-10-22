@@ -1,6 +1,7 @@
 /**
  * Words.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -11,8 +12,10 @@ import type { TextParent } from './_base/Parents';
 import type { Character } from './Character';
 import type { InsertionPoint } from './InsertionPoint';
 import type { Paragraph } from './Paragraph';
-import type { TextPlural } from './Text';
 import type { WordPlural } from './Word';
+import type { TextPlural } from './Text';
+import type { NothingEnum } from './Enums/NothingEnum';
+
 /**
  * A collection of {@link Word} objects. In InDesign, a word is defined as a
  * contiguous run of alphanumeric characters separated by whitespace or punctuation.
@@ -21,7 +24,14 @@ import type { WordPlural } from './Word';
  */
 export interface Words<TParent = TextParent> {
   /** The number of objects in the collection. */
-  readonly length: number;
+      readonly length: number | NothingEnum.NOTHING;
+      /**
+       * The object at the given position: `doc.pages[0]`. Out of range gives an invalid object, not
+       * `undefined` (check `isValid`).
+       */
+      readonly [index: number]: Word<TParent>;
+      /** Reflection on the collection. */
+      readonly reflect: Reflection;
   /** Displays the number of elements in the Collection. */
   count(): number;
   /**
@@ -84,10 +94,8 @@ export interface Words<TParent = TextParent> {
   everyItem(): WordPlural<TParent>;
   /** Generates a string which, if executed, will return the Collection. */
   toSource(): string;
-  /** The collection's specifier string — the same value as `toSpecifier()`, not a human-readable description. */
-  toString(): string;
-  /** The object's DOM class name. */
-  readonly constructorName: 'Words';
+  /** `"[object CollectionName]"`, such as `"[object Pages]"`. */
+      toString(): string;
   /**
    * Returns the contiguous {@link Text} range between two bounds (inclusive).
    *
@@ -101,4 +109,3 @@ export interface Words<TParent = TextParent> {
    */
   itemByRange(from: number | Text, to: number | Text): TextPlural<TParent>;
 }
-

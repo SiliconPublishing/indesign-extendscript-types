@@ -1,10 +1,11 @@
 /**
  * PreflightScopeOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __PreflightScopeOptions: unique symbol;
 
 
 interface PreflightScopeOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<PreflightScopeOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__PreflightScopeOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const PreflightScopeOptions: typeof Enumeration & {
    */
   readonly preflightAllPages: PreflightScopeOptions_PREFLIGHT_ALL_PAGES;
   /**
-   * Include all pages in the preflight.
-   */
-  readonly preflightallpages: PreflightScopeOptions_PREFLIGHT_ALL_PAGES;
-
-  /**
    * Include only the selected document for book preflight.
    */
   readonly PREFLIGHT_SELECTED_DOCUMENTS: PreflightScopeOptions_PREFLIGHT_SELECTED_DOCUMENTS;
@@ -115,11 +108,6 @@ export declare const PreflightScopeOptions: typeof Enumeration & {
    */
   readonly preflightSelectedDocuments: PreflightScopeOptions_PREFLIGHT_SELECTED_DOCUMENTS;
   /**
-   * Include only the selected document for book preflight.
-   */
-  readonly preflightselecteddocuments: PreflightScopeOptions_PREFLIGHT_SELECTED_DOCUMENTS;
-
-  /**
    * Include all documents in the book preflight.
    */
   readonly PREFLIGHT_ALL_DOCUMENTS: PreflightScopeOptions_PREFLIGHT_ALL_DOCUMENTS;
@@ -127,9 +115,4 @@ export declare const PreflightScopeOptions: typeof Enumeration & {
    * Include all documents in the book preflight.
    */
   readonly preflightAllDocuments: PreflightScopeOptions_PREFLIGHT_ALL_DOCUMENTS;
-  /**
-   * Include all documents in the book preflight.
-   */
-  readonly preflightalldocuments: PreflightScopeOptions_PREFLIGHT_ALL_DOCUMENTS;
-
 }

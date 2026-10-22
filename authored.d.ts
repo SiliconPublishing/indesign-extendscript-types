@@ -1,13 +1,12 @@
 /**
- * indesign-uxp-types/authored — the `indesign` module from the authored tree.
+ * indesign-extendscript-types/authored — the ExtendScript global scope from the authored tree.
  *
- * The same API as the default entry, declared with its full generics: every class carries
- * its parent and plural mode as type arguments. Tooltips are longer. Enable it in
- * tsconfig.json instead of the default:
+ * The same API as the default entry, declared with its full generics: every class carries its
+ * parent and plural mode as type arguments. Tooltips are longer. Use it instead of the default:
  *
- *     "types": ["indesign-uxp-types/authored"]
+ *     "noLib": true,
+ *     "types": ["indesign-extendscript-types/authored"]
  */
-/// <reference types="@adobe/cc-ext-uxp-types/uxp" />
-declare module 'indesign' {
-  export * from 'indesign-uxp-types/types';
-}
+/// <reference path="./lib/global.d.ts" />
+/// <reference path="./lib/ScriptUI.d.ts" />
+/// <reference path="./types/globals.d.ts" />

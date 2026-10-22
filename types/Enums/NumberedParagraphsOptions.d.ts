@@ -1,10 +1,11 @@
 /**
  * NumberedParagraphsOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __NumberedParagraphsOptions: unique symbol;
 
 
 interface NumberedParagraphsOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<NumberedParagraphsOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__NumberedParagraphsOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -104,11 +102,6 @@ export declare const NumberedParagraphsOptions: typeof Enumeration & {
    */
   readonly includeFullParagraph: NumberedParagraphsOptions_INCLUDE_FULL_PARAGRAPH;
   /**
-   * Includes the full paragraph text.
-   */
-  readonly includefullparagraph: NumberedParagraphsOptions_INCLUDE_FULL_PARAGRAPH;
-
-  /**
    * Includes only the paragraph number.
    */
   readonly INCLUDE_NUMBERS_ONLY: NumberedParagraphsOptions_INCLUDE_NUMBERS_ONLY;
@@ -117,11 +110,6 @@ export declare const NumberedParagraphsOptions: typeof Enumeration & {
    */
   readonly includeNumbersOnly: NumberedParagraphsOptions_INCLUDE_NUMBERS_ONLY;
   /**
-   * Includes only the paragraph number.
-   */
-  readonly includenumbersonly: NumberedParagraphsOptions_INCLUDE_NUMBERS_ONLY;
-
-  /**
    * Excludes paragraph numbers.
    */
   readonly EXCLUDE_NUMBERS: NumberedParagraphsOptions_EXCLUDE_NUMBERS;
@@ -129,9 +117,4 @@ export declare const NumberedParagraphsOptions: typeof Enumeration & {
    * Excludes paragraph numbers.
    */
   readonly excludeNumbers: NumberedParagraphsOptions_EXCLUDE_NUMBERS;
-  /**
-   * Excludes paragraph numbers.
-   */
-  readonly excludenumbers: NumberedParagraphsOptions_EXCLUDE_NUMBERS;
-
 }

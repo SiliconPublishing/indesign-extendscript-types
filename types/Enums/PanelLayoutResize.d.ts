@@ -1,10 +1,11 @@
 /**
  * PanelLayoutResize.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __PanelLayoutResize: unique symbol;
 
 
 interface PanelLayoutResize extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<PanelLayoutResize>): boolean;
-
   /**
    * @internal **WARNING:** `__PanelLayoutResize` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const PanelLayoutResize: typeof Enumeration & {
    */
   readonly proportionalResize: PanelLayoutResize_PROPORTIONAL_RESIZE;
   /**
-   * Resize panel areas proportionally.
-   */
-  readonly proportionalresize: PanelLayoutResize_PROPORTIONAL_RESIZE;
-
-  /**
    * Do not resize document pages panel area when resizing panel.
    */
   readonly PAGES_FIXED: PanelLayoutResize_PAGES_FIXED;
@@ -115,11 +108,6 @@ export declare const PanelLayoutResize: typeof Enumeration & {
    */
   readonly pagesFixed: PanelLayoutResize_PAGES_FIXED;
   /**
-   * Do not resize document pages panel area when resizing panel.
-   */
-  readonly pagesfixed: PanelLayoutResize_PAGES_FIXED;
-
-  /**
    * Do not resize master pages panel area when resizing panel.
    */
   readonly MASTERS_FIXED: PanelLayoutResize_MASTERS_FIXED;
@@ -127,9 +115,4 @@ export declare const PanelLayoutResize: typeof Enumeration & {
    * Do not resize master pages panel area when resizing panel.
    */
   readonly mastersFixed: PanelLayoutResize_MASTERS_FIXED;
-  /**
-   * Do not resize master pages panel area when resizing panel.
-   */
-  readonly mastersfixed: PanelLayoutResize_MASTERS_FIXED;
-
 }

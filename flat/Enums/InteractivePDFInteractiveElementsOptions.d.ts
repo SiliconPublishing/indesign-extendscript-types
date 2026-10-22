@@ -1,10 +1,11 @@
 /**
  * InteractivePDFInteractiveElementsOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __InteractivePDFInteractiveElementsOptions: unique symbol;
 
 
 interface InteractivePDFInteractiveElementsOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<InteractivePDFInteractiveElementsOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__InteractivePDFInteractiveElementsOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -83,11 +81,6 @@ export declare const InteractivePDFInteractiveElementsOptions: typeof Enumeratio
    */
   readonly includeAllMedia: InteractivePDFInteractiveElementsOptions_INCLUDE_ALL_MEDIA;
   /**
-   * Include all interactive elements.
-   */
-  readonly includeallmedia: InteractivePDFInteractiveElementsOptions_INCLUDE_ALL_MEDIA;
-
-  /**
    * Draw interactive elements appearance only.
    */
   readonly APPEARANCE_ONLY: InteractivePDFInteractiveElementsOptions_APPEARANCE_ONLY;
@@ -95,9 +88,4 @@ export declare const InteractivePDFInteractiveElementsOptions: typeof Enumeratio
    * Draw interactive elements appearance only.
    */
   readonly appearanceOnly: InteractivePDFInteractiveElementsOptions_APPEARANCE_ONLY;
-  /**
-   * Draw interactive elements appearance only.
-   */
-  readonly appearanceonly: InteractivePDFInteractiveElementsOptions_APPEARANCE_ONLY;
-
 }

@@ -1,6 +1,7 @@
 /**
  * Event.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -13,16 +14,22 @@ import type { DocumentEvent } from './DocumentEvent';
 import type { LayoutWindow } from './LayoutWindow';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+
 /**
  * An event dispatched by an InDesign DOM object during a script-observable
  * lifecycle transition (creation, deletion, save, place, and so on).
  */
 export interface Event {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -40,15 +47,6 @@ export interface Event {
    */
   set properties(value: PropertiesSetter<Event, 'single'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -58,16 +56,13 @@ export interface Event {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * The index of the object within its containing parent.
    */
   readonly index: number;
-  /** The object's DOM class name — reports the specific kind, such as `'DocumentEvent'` when the object is a {@link DocumentEvent}. */
-  readonly constructorName: 'Event' | 'DocumentEvent' | 'IdleEvent' | 'ImportExportEvent' | 'MutationEvent' | 'PrintEvent';
   /** Resolves the proxy into the individual {@link Event} objects it stands for. */
   getElements(): Event[];
   /** The unique ID of the Event. */
@@ -79,7 +74,7 @@ export interface Event {
    *
    * `unknown` because it varies by event: the document save and export events report the
    * {@link Document}, while `afterSelectionChanged` reports the {@link LayoutWindow}. Narrow it
-   * before use — {@link constructorName} on the value, or a check against the object you expect.
+   * before use — `instanceof` on the value, or a check against the object you expect.
    * The event names whose target has been measured say so in their own description.
    */
   readonly target: unknown;
@@ -103,21 +98,21 @@ export interface Event {
   preventDefault(): void;
 }
 
-
 /**
- * The broadcast proxy for {@link Event} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link Event} there.
+ * An event dispatched by an InDesign DOM object during a script-observable
+ * lifecycle transition (creation, deletion, save, place, and so on).
  */
 export interface EventPlural {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -135,15 +130,6 @@ export interface EventPlural {
    */
   set properties(value: PropertiesSetter<EventPlural, 'plural'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -153,16 +139,13 @@ export interface EventPlural {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * The index of the object within its containing parent.
    */
   readonly index: (number)[];
-  /** The object's DOM class name — reports the specific kind, such as `'DocumentEvent'` when the object is a {@link DocumentEvent}. */
-  readonly constructorName: 'Event' | 'DocumentEvent' | 'IdleEvent' | 'ImportExportEvent' | 'MutationEvent' | 'PrintEvent';
   /** Resolves the proxy into the individual {@link Event} objects it stands for. */
   getElements(): Event[];
   /** The unique ID of the Event. */
@@ -174,7 +157,7 @@ export interface EventPlural {
    *
    * `unknown` because it varies by event: the document save and export events report the
    * {@link Document}, while `afterSelectionChanged` reports the {@link LayoutWindow}. Narrow it
-   * before use — {@link constructorName} on the value, or a check against the object you expect.
+   * before use — `instanceof` on the value, or a check against the object you expect.
    * The event names whose target has been measured say so in their own description.
    */
   readonly target: (unknown)[];

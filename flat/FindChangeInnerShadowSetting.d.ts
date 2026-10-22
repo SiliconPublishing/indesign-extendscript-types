@@ -1,6 +1,7 @@
 /**
  * FindChangeInnerShadowSetting.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -11,35 +12,38 @@ import type { FindChangeStrokeTransparencySetting } from './FindChangeStrokeTran
 import type { FindChangeFillTransparencySetting } from './FindChangeFillTransparencySetting';
 import type { FindChangeContentTransparencySetting } from './FindChangeContentTransparencySetting';
 import type { Swatch } from './Swatch';
-import type { BlendMode } from './Enums/BlendMode';
-import type { ContentTransparencySetting } from './ContentTransparencySetting';
-import type { Event } from './Event';
-import type { EventHandler } from './_base/Events';
-import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
-import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { FilePath } from './_base/Types';
-import type { FillTransparencySetting } from './FillTransparencySetting';
-import type { InDesignEventMap } from './_base/Events';
-import type { MeasurementValue } from './_base/Types';
+import type { NothingEnum } from "./Enums/NothingEnum";
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
-import type { StrokeTransparencySetting } from './StrokeTransparencySetting';
-import type { TransparencySetting } from './TransparencySetting';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
+import type { EventHandler } from './_base/Events';
+import type { EventListener } from './EventListener';
+import type { EventString } from './_base/Events';
+import type { Event } from './Event';
+import type { FilePath } from './_base/Types';
+import type { MeasurementValue } from './_base/Types';
+import type { BlendMode } from './Enums/BlendMode';
+
 /**
  * The same {@link InnerShadowSetting} settings, applied as find/change criteria.
  */
 export interface FindChangeInnerShadowSetting {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
-  readonly parent: TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting;
+  readonly parent: FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting;
   /**
    * A snapshot of every editable property on this object.
    *
@@ -53,15 +57,6 @@ export interface FindChangeInnerShadowSetting {
    */
   set properties(value: PropertiesSetter<FindChangeInnerShadowSetting, 'single'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -71,10 +66,9 @@ export interface FindChangeInnerShadowSetting {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -115,67 +109,72 @@ export interface FindChangeInnerShadowSetting {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The horizontal offset of the shadow. */
-  get xOffset(): number;
-  set xOffset(value: MeasurementValue);
-  /** The vertical offset of the shadow. */
-  get yOffset(): number;
-  set yOffset(value: MeasurementValue);
+  /**
+   * The horizontal offset of the shadow.
+   *
+   * **Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
+   */
+  get xOffset(): number | NothingEnum.NOTHING;
+  set xOffset(value: MeasurementValue | NothingEnum.NOTHING);
+  /**
+   * The vertical offset of the shadow.
+   *
+   * **Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
+   */
+  get yOffset(): number | NothingEnum.NOTHING;
+  set yOffset(value: MeasurementValue | NothingEnum.NOTHING);
   /** If true, the inner shadow effect is applied. */
-  get applied(): boolean;
-  set applied(value: boolean);
+  get applied(): boolean | NothingEnum.NOTHING;
+  set applied(value: boolean | NothingEnum.NOTHING);
   /** The {@link Swatch} applied to the inner shadow. */
-  get effectColor(): Swatch;
-  set effectColor(value: Swatch);
+  get effectColor(): Swatch | NothingEnum.NOTHING;
+  set effectColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The blending mode for the inner shadow effect. */
-  get blendMode(): BlendMode;
-  set blendMode(value: BlendMode);
+  get blendMode(): BlendMode | NothingEnum.NOTHING;
+  set blendMode(value: BlendMode | NothingEnum.NOTHING);
   /** The opacity (as a percentage) of the inner shadow. (Range: 0 to 100). */
-  get opacity(): number;
-  set opacity(value: number);
+  get opacity(): number | NothingEnum.NOTHING;
+  set opacity(value: number | NothingEnum.NOTHING);
   /** The angle at which the inner shadow is thrown. (Range: -360 to 360). */
-  get angle(): number;
-  set angle(value: number);
+  get angle(): number | NothingEnum.NOTHING;
+  set angle(value: number | NothingEnum.NOTHING);
   /** The distance between the InnerShadowSetting and the shadow. */
-  get distance(): number;
-  set distance(value: MeasurementValue);
+  get distance(): number | NothingEnum.NOTHING;
+  set distance(value: MeasurementValue | NothingEnum.NOTHING);
   /** If true, the global light angle is used. */
-  get useGlobalLight(): boolean;
-  set useGlobalLight(value: boolean);
+  get useGlobalLight(): boolean | NothingEnum.NOTHING;
+  set useGlobalLight(value: boolean | NothingEnum.NOTHING);
   /** The amount to choke the inner shadow (as a percentage of shadow size). (Range: 0 to 100). */
-  get chokeAmount(): number;
-  set chokeAmount(value: number);
+  get chokeAmount(): number | NothingEnum.NOTHING;
+  set chokeAmount(value: number | NothingEnum.NOTHING);
   /** The size of the inner shadow. */
-  get size(): number;
-  set size(value: MeasurementValue);
+  get size(): number | NothingEnum.NOTHING;
+  set size(value: MeasurementValue | NothingEnum.NOTHING);
   /** The amount (as a percentage) of noise to add to the shadow. (Range: 0 to 100). */
-  get noise(): number;
-  set noise(value: number);
-  /** The object's DOM class name. */
-  readonly constructorName: 'FindChangeInnerShadowSetting';
+  get noise(): number | NothingEnum.NOTHING;
+  set noise(value: number | NothingEnum.NOTHING);
   /** Resolves the proxy into the individual {@link FindChangeInnerShadowSetting} objects it stands for. */
   getElements(): FindChangeInnerShadowSetting[];
 }
 
-
 /**
- * The broadcast proxy for {@link FindChangeInnerShadowSetting} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link FindChangeInnerShadowSetting} there.
+ * The same {@link InnerShadowSetting} settings, applied as find/change criteria.
  */
 export interface FindChangeInnerShadowSettingPlural {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
-  readonly parent: (TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting)[];
+  readonly parent: (FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting)[];
   /**
    * A snapshot of every editable property on this object.
    *
@@ -189,15 +188,6 @@ export interface FindChangeInnerShadowSettingPlural {
    */
   set properties(value: PropertiesSetter<FindChangeInnerShadowSettingPlural, 'plural'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -207,10 +197,9 @@ export interface FindChangeInnerShadowSettingPlural {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -251,44 +240,50 @@ export interface FindChangeInnerShadowSettingPlural {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The horizontal offset of the shadow. */
-  get xOffset(): (number)[];
-  set xOffset(value: MeasurementValue);
-  /** The vertical offset of the shadow. */
-  get yOffset(): (number)[];
-  set yOffset(value: MeasurementValue);
+  /**
+   * The horizontal offset of the shadow.
+   *
+   * **Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
+   */
+  get xOffset(): (number | NothingEnum.NOTHING)[];
+  set xOffset(value: MeasurementValue | NothingEnum.NOTHING);
+  /**
+   * The vertical offset of the shadow.
+   *
+   * **Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
+   */
+  get yOffset(): (number | NothingEnum.NOTHING)[];
+  set yOffset(value: MeasurementValue | NothingEnum.NOTHING);
   /** If true, the inner shadow effect is applied. */
-  get applied(): (boolean)[];
-  set applied(value: boolean);
+  get applied(): (boolean | NothingEnum.NOTHING)[];
+  set applied(value: boolean | NothingEnum.NOTHING);
   /** The {@link Swatch} applied to the inner shadow. */
-  get effectColor(): (Swatch)[];
-  set effectColor(value: Swatch);
+  get effectColor(): (Swatch | NothingEnum.NOTHING)[];
+  set effectColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The blending mode for the inner shadow effect. */
-  get blendMode(): (BlendMode)[];
-  set blendMode(value: BlendMode);
+  get blendMode(): (BlendMode | NothingEnum.NOTHING)[];
+  set blendMode(value: BlendMode | NothingEnum.NOTHING);
   /** The opacity (as a percentage) of the inner shadow. (Range: 0 to 100). */
-  get opacity(): (number)[];
-  set opacity(value: number);
+  get opacity(): (number | NothingEnum.NOTHING)[];
+  set opacity(value: number | NothingEnum.NOTHING);
   /** The angle at which the inner shadow is thrown. (Range: -360 to 360). */
-  get angle(): (number)[];
-  set angle(value: number);
+  get angle(): (number | NothingEnum.NOTHING)[];
+  set angle(value: number | NothingEnum.NOTHING);
   /** The distance between the InnerShadowSetting and the shadow. */
-  get distance(): (number)[];
-  set distance(value: MeasurementValue);
+  get distance(): (number | NothingEnum.NOTHING)[];
+  set distance(value: MeasurementValue | NothingEnum.NOTHING);
   /** If true, the global light angle is used. */
-  get useGlobalLight(): (boolean)[];
-  set useGlobalLight(value: boolean);
+  get useGlobalLight(): (boolean | NothingEnum.NOTHING)[];
+  set useGlobalLight(value: boolean | NothingEnum.NOTHING);
   /** The amount to choke the inner shadow (as a percentage of shadow size). (Range: 0 to 100). */
-  get chokeAmount(): (number)[];
-  set chokeAmount(value: number);
+  get chokeAmount(): (number | NothingEnum.NOTHING)[];
+  set chokeAmount(value: number | NothingEnum.NOTHING);
   /** The size of the inner shadow. */
-  get size(): (number)[];
-  set size(value: MeasurementValue);
+  get size(): (number | NothingEnum.NOTHING)[];
+  set size(value: MeasurementValue | NothingEnum.NOTHING);
   /** The amount (as a percentage) of noise to add to the shadow. (Range: 0 to 100). */
-  get noise(): (number)[];
-  set noise(value: number);
-  /** The object's DOM class name. */
-  readonly constructorName: 'FindChangeInnerShadowSetting';
+  get noise(): (number | NothingEnum.NOTHING)[];
+  set noise(value: number | NothingEnum.NOTHING);
   /** Resolves the proxy into the individual {@link FindChangeInnerShadowSetting} objects it stands for. */
   getElements(): FindChangeInnerShadowSetting[];
 }

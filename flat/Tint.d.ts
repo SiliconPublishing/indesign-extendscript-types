@@ -1,6 +1,7 @@
 /**
  * Tint.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -9,68 +10,25 @@ import type { Color } from './Color';
 import type { ColorModel } from './Enums/ColorModel';
 import type { ColorSpace } from './Enums/ColorSpace';
 import type { ColorGroup } from './ColorGroup';
-import type { Event } from './Event';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
+import type { Event } from './Event';
 import type { FilePath } from './_base/Types';
-import type { InDesignEventMap } from './_base/Events';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
 import type { Swatch } from './Swatch';
-import type { SwatchParent } from './_base/Parents';
 import type { SwatchReference } from './_base/Unions';
+import type { SwatchParent } from './_base/Parents';
+
 /**
  * A tint swatch — a percentage of a {@link baseColor}. Every property besides
  * {@link tintValue} is derived and read-only.
  */
 export interface Tint {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: SwatchParent;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<Tint, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<Tint, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -129,10 +87,49 @@ export interface Tint {
    * The index of the object within its containing parent.
    */
   readonly index: number;
+  /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: SwatchParent;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<Tint, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<Tint, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /** The unique ID of the swatch, stable across saves and reopens. */
   readonly id: number;
   /** The {@link ColorGroup} the swatch belongs to, if any. */
-  readonly parentColorGroup: ColorGroup;
+  readonly parentColorGroup: ColorGroup | null;
   /**
    * Deletes the swatch.
    * @param replacingWith The swatch to apply in place of the deleted swatch, wherever it was in use.
@@ -140,8 +137,6 @@ export interface Tint {
   remove(replacingWith?: Swatch | string): void;
   /** Merges the given swatches into this one, deleting them and reassigning their usages. */
   merge(withSwatches: Swatch[] | SwatchReference): Swatch;
-  /** The object's DOM class name. */
-  readonly constructorName: 'Tint';
   /** Resolves the proxy into the individual {@link Tint} objects it stands for. */
   getElements(): Tint[];
   /** The color that this tint is a percentage of. */
@@ -161,60 +156,11 @@ export interface Tint {
   duplicate(): Tint;
 }
 
-
 /**
- * The broadcast proxy for {@link Tint} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link Tint} there.
+ * A tint swatch — a percentage of a {@link baseColor}. Every property besides
+ * {@link tintValue} is derived and read-only.
  */
 export interface TintPlural {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (SwatchParent)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<TintPlural, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<TintPlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -273,10 +219,49 @@ export interface TintPlural {
    * The index of the object within its containing parent.
    */
   readonly index: (number)[];
+  /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (SwatchParent)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<TintPlural, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<TintPlural, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /** The unique ID of the swatch, stable across saves and reopens. */
   readonly id: (number)[];
   /** The {@link ColorGroup} the swatch belongs to, if any. */
-  readonly parentColorGroup: (ColorGroup)[];
+  readonly parentColorGroup: (ColorGroup | null)[];
   /**
    * Deletes the swatch.
    * @param replacingWith The swatch to apply in place of the deleted swatch, wherever it was in use.
@@ -284,8 +269,6 @@ export interface TintPlural {
   remove(replacingWith?: Swatch | string): (void)[];
   /** Merges the given swatches into this one, deleting them and reassigning their usages. */
   merge(withSwatches: Swatch[] | SwatchReference): (Swatch)[];
-  /** The object's DOM class name. */
-  readonly constructorName: 'Tint';
   /** Resolves the proxy into the individual {@link Tint} objects it stands for. */
   getElements(): Tint[];
   /** The color that this tint is a percentage of. */

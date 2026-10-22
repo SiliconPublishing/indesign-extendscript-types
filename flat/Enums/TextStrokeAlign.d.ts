@@ -1,10 +1,11 @@
 /**
  * TextStrokeAlign.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __TextStrokeAlign: unique symbol;
 
 
 interface TextStrokeAlign extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<TextStrokeAlign>): boolean;
-
   /**
    * @internal **WARNING:** `__TextStrokeAlign` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -86,11 +84,6 @@ export declare const TextStrokeAlign: typeof Enumeration & {
    */
   readonly centerAlignment: TextStrokeAlign_CENTER_ALIGNMENT;
   /**
-   * The stroke straddles the path.
-   */
-  readonly centeralignment: TextStrokeAlign_CENTER_ALIGNMENT;
-
-  /**
    * The stroke is outside the path, like a picture frame.
    */
   readonly OUTSIDE_ALIGNMENT: TextStrokeAlign_OUTSIDE_ALIGNMENT;
@@ -98,9 +91,4 @@ export declare const TextStrokeAlign: typeof Enumeration & {
    * The stroke is outside the path, like a picture frame.
    */
   readonly outsideAlignment: TextStrokeAlign_OUTSIDE_ALIGNMENT;
-  /**
-   * The stroke is outside the path, like a picture frame.
-   */
-  readonly outsidealignment: TextStrokeAlign_OUTSIDE_ALIGNMENT;
-
 }

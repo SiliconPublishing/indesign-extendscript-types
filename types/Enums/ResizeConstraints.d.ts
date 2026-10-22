@@ -1,10 +1,11 @@
 /**
  * ResizeConstraints.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ResizeConstraints: unique symbol;
 
 
 interface ResizeConstraints extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ResizeConstraints>): boolean;
-
   /**
    * @internal **WARNING:** `__ResizeConstraints` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -134,11 +132,6 @@ export declare const ResizeConstraints: typeof Enumeration & {
    */
   readonly keepCurrentValue: ResizeConstraints_KEEP_CURRENT_VALUE;
   /**
-   * Keep current value.
-   */
-  readonly keepcurrentvalue: ResizeConstraints_KEEP_CURRENT_VALUE;
-
-  /**
    * Keep current proportions.
    */
   readonly KEEP_CURRENT_PROPORTIONS: ResizeConstraints_KEEP_CURRENT_PROPORTIONS;
@@ -146,11 +139,6 @@ export declare const ResizeConstraints: typeof Enumeration & {
    * Keep current proportions.
    */
   readonly keepCurrentProportions: ResizeConstraints_KEEP_CURRENT_PROPORTIONS;
-  /**
-   * Keep current proportions.
-   */
-  readonly keepcurrentproportions: ResizeConstraints_KEEP_CURRENT_PROPORTIONS;
-
   /**
    * Tall proportions.
    */
@@ -160,11 +148,6 @@ export declare const ResizeConstraints: typeof Enumeration & {
    */
   readonly tallProportions: ResizeConstraints_TALL_PROPORTIONS;
   /**
-   * Tall proportions.
-   */
-  readonly tallproportions: ResizeConstraints_TALL_PROPORTIONS;
-
-  /**
    * Wide proportions.
    */
   readonly WIDE_PROPORTIONS: ResizeConstraints_WIDE_PROPORTIONS;
@@ -173,11 +156,6 @@ export declare const ResizeConstraints: typeof Enumeration & {
    */
   readonly wideProportions: ResizeConstraints_WIDE_PROPORTIONS;
   /**
-   * Wide proportions.
-   */
-  readonly wideproportions: ResizeConstraints_WIDE_PROPORTIONS;
-
-  /**
    * Inverse proportions.
    */
   readonly INVERSE_PROPORTIONS: ResizeConstraints_INVERSE_PROPORTIONS;
@@ -185,9 +163,4 @@ export declare const ResizeConstraints: typeof Enumeration & {
    * Inverse proportions.
    */
   readonly inverseProportions: ResizeConstraints_INVERSE_PROPORTIONS;
-  /**
-   * Inverse proportions.
-   */
-  readonly inverseproportions: ResizeConstraints_INVERSE_PROPORTIONS;
-
 }

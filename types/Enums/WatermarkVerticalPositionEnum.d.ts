@@ -1,10 +1,11 @@
 /**
  * WatermarkVerticalPositionEnum.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __WatermarkVerticalPositionEnum: unique symbol;
 
 
 interface WatermarkVerticalPositionEnum extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<WatermarkVerticalPositionEnum>): boolean;
-
   /**
    * @internal **WARNING:** `__WatermarkVerticalPositionEnum` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const WatermarkVerticalPositionEnum: typeof Enumeration & {
    */
   readonly watermarkVTop: WatermarkVerticalPositionEnum_WATERMARK_V_TOP;
   /**
-   * Place watermark vertical top.
-   */
-  readonly watermarkvtop: WatermarkVerticalPositionEnum_WATERMARK_V_TOP;
-
-  /**
    * Place watermark vertical center.
    */
   readonly WATERMARK_V_CENTER: WatermarkVerticalPositionEnum_WATERMARK_V_CENTER;
@@ -115,11 +108,6 @@ export declare const WatermarkVerticalPositionEnum: typeof Enumeration & {
    */
   readonly watermarkVCenter: WatermarkVerticalPositionEnum_WATERMARK_V_CENTER;
   /**
-   * Place watermark vertical center.
-   */
-  readonly watermarkvcenter: WatermarkVerticalPositionEnum_WATERMARK_V_CENTER;
-
-  /**
    * Place watermark vertical bottom.
    */
   readonly WATERMARK_V_BOTTOM: WatermarkVerticalPositionEnum_WATERMARK_V_BOTTOM;
@@ -127,9 +115,4 @@ export declare const WatermarkVerticalPositionEnum: typeof Enumeration & {
    * Place watermark vertical bottom.
    */
   readonly watermarkVBottom: WatermarkVerticalPositionEnum_WATERMARK_V_BOTTOM;
-  /**
-   * Place watermark vertical bottom.
-   */
-  readonly watermarkvbottom: WatermarkVerticalPositionEnum_WATERMARK_V_BOTTOM;
-
 }

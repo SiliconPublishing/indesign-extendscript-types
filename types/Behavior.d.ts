@@ -1,6 +1,7 @@
 /**
  * Behavior.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -20,9 +21,6 @@ import type { GotoURLBehavior } from './GotoURLBehavior';
 export interface Behavior<M extends Mode = 'single'>
   extends LabelableEventDOMObject<BehaviorParent, M>,
     IndexedDOMObject<BehaviorParent, M> {
-  /** The object's DOM class name — reports the specific kind, such as `'GotoURLBehavior'` when the object is a {@link GotoURLBehavior}. */
-  readonly constructorName: 'Behavior' | 'AnimationBehavior' | 'ClearFormBehavior' | 'GotoAnchorBehavior' | 'GotoFirstPageBehavior' | 'GotoLastPageBehavior' | 'GotoNextPageBehavior' | 'GotoNextStateBehavior' | 'GotoNextViewBehavior' | 'GotoPageBehavior' | 'GotoPreviousPageBehavior' | 'GotoPreviousStateBehavior' | 'GotoPreviousViewBehavior' | 'GotoStateBehavior' | 'GotoURLBehavior' | 'MovieBehavior' | 'OpenFileBehavior' | 'PrintFormBehavior' | 'ShowHideFieldsBehavior' | 'SoundBehavior' | 'SubmitFormBehavior' | 'ViewZoomBehavior';
-
   /** Resolves the proxy into the individual {@link Behavior} objects it stands for. */
   getElements(): Behavior<'single'>[];
 
@@ -48,12 +46,10 @@ export interface Behavior<M extends Mode = 'single'>
  * A behavior InDesign reports as a plain {@link Behavior} rather than as one of the specific
  * actions — go to a page, open a URL, play a sound, submit a form.
  *
- * Handle it in the `'Behavior'` case of a `constructorName` check. Only the members every
+ * Handle it in the `'Behavior'` branch of an `instanceof` check. Only the members every
  * behavior has — its name, whether it is enabled, and the event that triggers it — are
  * available on it; what the behavior actually *does* lives on the specific kinds.
  */
 export interface PlainBehavior<M extends Mode = 'single'> extends Behavior<M> {
-  /** Always `'Behavior'` — this is the generic case, by construction. */
-  readonly constructorName: 'Behavior';
 }
 

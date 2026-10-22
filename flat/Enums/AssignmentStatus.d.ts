@@ -1,10 +1,11 @@
 /**
  * AssignmentStatus.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __AssignmentStatus: unique symbol;
 
 
 interface AssignmentStatus extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<AssignmentStatus>): boolean;
-
   /**
    * @internal **WARNING:** `__AssignmentStatus` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const AssignmentStatus: typeof Enumeration & {
    */
   readonly assignmentUpToDate: AssignmentStatus_ASSIGNMENT_UP_TO_DATE;
   /**
-   * The assignment has not been modified.
-   */
-  readonly assignmentuptodate: AssignmentStatus_ASSIGNMENT_UP_TO_DATE;
-
-  /**
    * The assignment has been modified and needs to be updated.
    */
   readonly ASSIGNMENT_OUT_OF_DATE: AssignmentStatus_ASSIGNMENT_OUT_OF_DATE;
@@ -115,11 +108,6 @@ export declare const AssignmentStatus: typeof Enumeration & {
    */
   readonly assignmentOutOfDate: AssignmentStatus_ASSIGNMENT_OUT_OF_DATE;
   /**
-   * The assignment has been modified and needs to be updated.
-   */
-  readonly assignmentoutofdate: AssignmentStatus_ASSIGNMENT_OUT_OF_DATE;
-
-  /**
    * The assignment file is missing.
    */
   readonly ASSIGNMENT_FILE_MISSING: AssignmentStatus_ASSIGNMENT_FILE_MISSING;
@@ -127,9 +115,4 @@ export declare const AssignmentStatus: typeof Enumeration & {
    * The assignment file is missing.
    */
   readonly assignmentFileMissing: AssignmentStatus_ASSIGNMENT_FILE_MISSING;
-  /**
-   * The assignment file is missing.
-   */
-  readonly assignmentfilemissing: AssignmentStatus_ASSIGNMENT_FILE_MISSING;
-
 }

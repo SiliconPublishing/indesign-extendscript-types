@@ -1,10 +1,11 @@
 /**
  * XMLElementPosition.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __XMLElementPosition: unique symbol;
 
 
 interface XMLElementPosition extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<XMLElementPosition>): boolean;
-
   /**
    * @internal **WARNING:** `__XMLElementPosition` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -120,11 +118,6 @@ export declare const XMLElementPosition: typeof Enumeration & {
    */
   readonly beforeElement: XMLElementPosition_BEFORE_ELEMENT;
   /**
-   * Specifies the position before the XML element.
-   */
-  readonly beforeelement: XMLElementPosition_BEFORE_ELEMENT;
-
-  /**
    * Specifies the position after the XML element.
    */
   readonly AFTER_ELEMENT: XMLElementPosition_AFTER_ELEMENT;
@@ -132,11 +125,6 @@ export declare const XMLElementPosition: typeof Enumeration & {
    * Specifies the position after the XML element.
    */
   readonly afterElement: XMLElementPosition_AFTER_ELEMENT;
-  /**
-   * Specifies the position after the XML element.
-   */
-  readonly afterelement: XMLElementPosition_AFTER_ELEMENT;
-
   /**
    * Specifies the position at the beginning of the XML element.
    */
@@ -146,11 +134,6 @@ export declare const XMLElementPosition: typeof Enumeration & {
    */
   readonly elementStart: XMLElementPosition_ELEMENT_START;
   /**
-   * Specifies the position at the beginning of the XML element.
-   */
-  readonly elementstart: XMLElementPosition_ELEMENT_START;
-
-  /**
    * Specifies the position at the end of the XML element.
    */
   readonly ELEMENT_END: XMLElementPosition_ELEMENT_END;
@@ -158,9 +141,4 @@ export declare const XMLElementPosition: typeof Enumeration & {
    * Specifies the position at the end of the XML element.
    */
   readonly elementEnd: XMLElementPosition_ELEMENT_END;
-  /**
-   * Specifies the position at the end of the XML element.
-   */
-  readonly elementend: XMLElementPosition_ELEMENT_END;
-
 }

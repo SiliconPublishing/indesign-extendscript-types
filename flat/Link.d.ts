@@ -1,6 +1,7 @@
 /**
  * Link.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -18,65 +19,24 @@ import type { EditingState } from './Enums/EditingState';
 import type { LinkStatus } from './Enums/LinkStatus';
 import type { LinkResourceRenditionType } from './Enums/LinkResourceRenditionType';
 import type { FilePath, FolderPath } from './_base/Types';
-import type { Event } from './Event';
+import type { LinkUriType } from "./Enums/LinkUriType";
+import type { File } from "./_base/Types";
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { InDesignEventMap } from './_base/Events';
+import type { Event } from './Event';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+
 /**
  * A link to a placed or embedded file — an image, story, movie, or sound —
  * tracking the source file's status ({@link status}, {@link edited},
  * {@link needed}) and providing update/relink/embed operations.
  */
 export interface Link {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: Story | Graphic | Movie | Sound;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<Link, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<Link, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -132,11 +92,48 @@ export interface Link {
    */
   extractLabel(key: string): string;
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: Story | Graphic | Movie | Sound;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<Link, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<Link, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The index of the object within its containing parent.
    */
   readonly index: number;
-  /** The object's DOM class name. */
-  readonly constructorName: 'Link';
   /** Resolves the proxy into the individual {@link Link} objects it stands for. */
   getElements(): Link[];
   /** The unique ID of the link. */
@@ -218,62 +215,43 @@ export interface Link {
   copyLink(to: FilePath | FolderPath, versionComments?: string, forceSave?: boolean): void;
   /** Opens the source file in InDesign for SharedContent links. */
   goToSource(): void;
+  // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
+
+  /**
+   * The URI type of the link.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  readonly uriType: LinkUriType;
+  /**
+   * The path to the asset referenced by the URI. Can return: String or File.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  readonly uriPath: string | File;
+  /**
+   * If true, the link auto updates when the linked asset changes.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get autoUpdateLink(): boolean;
+  set autoUpdateLink(value: boolean);
+  /**
+   * Updates the HTTP link.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  updateHTTPLink(): Link;
+  /**
+   * Points the link to a new asset.
+   * @param to The full URI to the new HTTP asset.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  relinkHTTPLink(to: string): void;
 }
 
-
 /**
- * The broadcast proxy for {@link Link} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link Link} there.
+ * A link to a placed or embedded file — an image, story, movie, or sound —
+ * tracking the source file's status ({@link status}, {@link edited},
+ * {@link needed}) and providing update/relink/embed operations.
  */
 export interface LinkPlural {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (Story | Graphic | Movie | Sound)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<LinkPlural, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<LinkPlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -329,11 +307,48 @@ export interface LinkPlural {
    */
   extractLabel(key: string): (string)[];
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (Story | Graphic | Movie | Sound)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<LinkPlural, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<LinkPlural, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The index of the object within its containing parent.
    */
   readonly index: (number)[];
-  /** The object's DOM class name. */
-  readonly constructorName: 'Link';
   /** Resolves the proxy into the individual {@link Link} objects it stands for. */
   getElements(): Link[];
   /** The unique ID of the link. */
@@ -415,4 +430,33 @@ export interface LinkPlural {
   copyLink(to: FilePath | FolderPath, versionComments?: string, forceSave?: boolean): (void)[];
   /** Opens the source file in InDesign for SharedContent links. */
   goToSource(): (void)[];
+  // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
+
+  /**
+   * The URI type of the link.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  readonly uriType: (LinkUriType)[];
+  /**
+   * The path to the asset referenced by the URI. Can return: String or File.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  readonly uriPath: (string | File)[];
+  /**
+   * If true, the link auto updates when the linked asset changes.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get autoUpdateLink(): (boolean)[];
+  set autoUpdateLink(value: boolean);
+  /**
+   * Updates the HTTP link.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  updateHTTPLink(): (Link)[];
+  /**
+   * Points the link to a new asset.
+   * @param to The full URI to the new HTTP asset.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  relinkHTTPLink(to: string): (void)[];
 }

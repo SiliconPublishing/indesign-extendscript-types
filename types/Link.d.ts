@@ -1,6 +1,7 @@
 /**
  * Link.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -18,6 +19,8 @@ import type { EditingState } from './Enums/EditingState';
 import type { LinkStatus } from './Enums/LinkStatus';
 import type { LinkResourceRenditionType } from './Enums/LinkResourceRenditionType';
 import type { FilePath, FolderPath } from './_base/Types';
+import type { LinkUriType } from "./Enums/LinkUriType";
+import type { File } from "./_base/Types";
 
 /**
  * A link to a placed or embedded file — an image, story, movie, or sound —
@@ -27,9 +30,6 @@ import type { FilePath, FolderPath } from './_base/Types';
 export interface Link<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Story | Graphic | Movie | Sound, M>,
     IndexedDOMObject<Story | Graphic | Movie | Sound, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'Link';
-
   /** Resolves the proxy into the individual {@link Link} objects it stands for. */
   getElements(): Link<'single'>[];
 
@@ -143,4 +143,38 @@ export interface Link<M extends Mode = 'single'>
 
   /** Opens the source file in InDesign for SharedContent links. */
   goToSource(): Read<M, void>;
+
+  // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
+
+  /**
+   * The URI type of the link.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  readonly uriType: Read<M, LinkUriType>;
+
+  /**
+   * The path to the asset referenced by the URI. Can return: String or File.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  readonly uriPath: Read<M, string | File>;
+
+  /**
+   * If true, the link auto updates when the linked asset changes.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get autoUpdateLink(): Read<M, boolean>;
+  set autoUpdateLink(value: boolean);
+
+  /**
+   * Updates the HTTP link.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  updateHTTPLink(): Read<M, Link>;
+
+  /**
+   * Points the link to a new asset.
+   * @param to The full URI to the new HTTP asset.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  relinkHTTPLink(to: string): Read<M, void>;
 }

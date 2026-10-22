@@ -1,6 +1,7 @@
 /**
  * Page.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -60,63 +61,20 @@ import type { TrapPreset } from './TrapPreset';
 import type { XMLElement } from './XMLElement';
 import type { AnyGraphic, AnyPageItem } from './_base/Unions';
 import type { DocumentPreference } from './DocumentPreference';
-import type { Event } from './Event';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { InDesignEventMap } from './_base/Events';
+import type { Event } from './Event';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+
 /**
  * A single page within a {@link Spread} or {@link MasterSpread}.
  */
 export interface Page<TParent = Spread | MasterSpread> {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: TParent;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<Page<TParent>, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<Page<TParent>, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -175,10 +133,47 @@ export interface Page<TParent = Spread | MasterSpread> {
    * The index of the object within its containing parent.
    */
   readonly index: number;
+  /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: TParent;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<Page<TParent>, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<Page<TParent>, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /** The object's name. Derived by InDesign and not assignable. */
   readonly name: string;
-  /** The object's DOM class name. */
-  readonly constructorName: 'Page';
   /** Resolves the proxy into the individual {@link Page} objects it stands for. */
   getElements(): Page<TParent>[];
   /** The unique numeric ID of the page within its document. Stable across reordering, unlike {@link index}. */
@@ -271,13 +266,13 @@ export interface Page<TParent = Spread | MasterSpread> {
    * named {@link UIColors} value, or a {@link PageColorOptions} value.
    */
   get pageColor(): [number, number, number] | UIColors | PageColorOptions;
-  set pageColor(value: [number, number, number] | UIColors | PageColorOptions);
+  set pageColor(value: [number, number, number] | UIColors | PageColorOptions | NothingEnum.NOTHING);
   /** The {@link MasterSpread} applied to this page. Assign a master spread or its name; assign {@link NothingEnum.NOTHING} to remove it. */
   get appliedMaster(): MasterSpread;
   set appliedMaster(value: MasterSpread | string | NothingEnum);
   /** The transform applied to the master page's content before it lands on this page. */
   get masterPageTransform(): TransformationMatrix;
-  set masterPageTransform(value: TransformationMatrix);
+  set masterPageTransform(value: TransformationMatrix | string);
   /** Tab order of interactive form fields on this page in the exported PDF. */
   get tabOrder(): Array<Buttons | CheckBoxes | ComboBoxes | ListBoxes | RadioButtons | TextBoxes | SignatureFields>;
   set tabOrder(value: Array<Buttons | CheckBoxes | ComboBoxes | ListBoxes | RadioButtons | TextBoxes | SignatureFields>);
@@ -296,7 +291,7 @@ export interface Page<TParent = Spread | MasterSpread> {
    * @param placePoint Point to place at, in the format `[x, y]`.
    * @param autoflowing If `true`, autoflows placed text. Defaults to `false`.
    */
-  placeXML(using: XMLElement, placePoint?: MeasurementValue[], autoflowing?: boolean): PageItem;
+  placeXML(using: XMLElement, placePoint: MeasurementValue[], autoflowing?: boolean): PageItem;
   /**
    * Replaces the content of an XML element with content imported from a file.
    * @param using Path to the import file.
@@ -345,7 +340,7 @@ export interface Page<TParent = Spread | MasterSpread> {
    *
    * ```ts
    * const img = page.place(file)[0];
-   * if (img && img.parent.constructorName === 'Rectangle') {
+   * if (img && img.parent instanceof Rectangle) {
    *   img.parent.fit(FitOptions.PROPORTIONALLY);
    * }
    * ```
@@ -431,60 +426,10 @@ export interface Page<TParent = Spread | MasterSpread> {
   contentPlace(pageItems: PageItem | PageItem[], linkPageItems?: boolean, linkStories?: boolean, mapStyles?: boolean, placePoint?: MeasurementValue[], destinationLayer?: Layer, showingOptions?: boolean): PageItem[];
 }
 
-
 /**
- * The broadcast proxy for {@link Page} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link Page} there.
+ * A single page within a {@link Spread} or {@link MasterSpread}.
  */
 export interface PagePlural<TParent = Spread | MasterSpread> {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (TParent)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<PagePlural<TParent>, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<PagePlural<TParent>, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -543,10 +488,47 @@ export interface PagePlural<TParent = Spread | MasterSpread> {
    * The index of the object within its containing parent.
    */
   readonly index: (number)[];
+  /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (TParent)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<PagePlural<TParent>, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<PagePlural<TParent>, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /** The object's name. Derived by InDesign and not assignable. */
   readonly name: (string)[];
-  /** The object's DOM class name. */
-  readonly constructorName: 'Page';
   /** Resolves the proxy into the individual {@link Page} objects it stands for. */
   getElements(): Page<TParent>[];
   /** The unique numeric ID of the page within its document. Stable across reordering, unlike {@link index}. */
@@ -639,13 +621,13 @@ export interface PagePlural<TParent = Spread | MasterSpread> {
    * named {@link UIColors} value, or a {@link PageColorOptions} value.
    */
   get pageColor(): ([number, number, number] | UIColors | PageColorOptions)[];
-  set pageColor(value: [number, number, number] | UIColors | PageColorOptions);
+  set pageColor(value: [number, number, number] | UIColors | PageColorOptions | NothingEnum.NOTHING);
   /** The {@link MasterSpread} applied to this page. Assign a master spread or its name; assign {@link NothingEnum.NOTHING} to remove it. */
   get appliedMaster(): (MasterSpread)[];
   set appliedMaster(value: MasterSpread | string | NothingEnum);
   /** The transform applied to the master page's content before it lands on this page. */
   get masterPageTransform(): (TransformationMatrix)[];
-  set masterPageTransform(value: TransformationMatrix);
+  set masterPageTransform(value: TransformationMatrix | string);
   /** Tab order of interactive form fields on this page in the exported PDF. */
   get tabOrder(): (Array<Buttons | CheckBoxes | ComboBoxes | ListBoxes | RadioButtons | TextBoxes | SignatureFields>)[];
   set tabOrder(value: Array<Buttons | CheckBoxes | ComboBoxes | ListBoxes | RadioButtons | TextBoxes | SignatureFields>);
@@ -664,7 +646,7 @@ export interface PagePlural<TParent = Spread | MasterSpread> {
    * @param placePoint Point to place at, in the format `[x, y]`.
    * @param autoflowing If `true`, autoflows placed text. Defaults to `false`.
    */
-  placeXML(using: XMLElement, placePoint?: MeasurementValue[], autoflowing?: boolean): (PageItem)[];
+  placeXML(using: XMLElement, placePoint: MeasurementValue[], autoflowing?: boolean): (PageItem)[];
   /**
    * Replaces the content of an XML element with content imported from a file.
    * @param using Path to the import file.
@@ -713,7 +695,7 @@ export interface PagePlural<TParent = Spread | MasterSpread> {
    *
    * ```ts
    * const img = page.place(file)[0];
-   * if (img && img.parent.constructorName === 'Rectangle') {
+   * if (img && img.parent instanceof Rectangle) {
    *   img.parent.fit(FitOptions.PROPORTIONALLY);
    * }
    * ```

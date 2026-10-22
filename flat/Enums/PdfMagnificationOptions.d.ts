@@ -1,10 +1,11 @@
 /**
  * PdfMagnificationOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __PdfMagnificationOptions: unique symbol;
 
 
 interface PdfMagnificationOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<PdfMagnificationOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__PdfMagnificationOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -214,11 +212,6 @@ export declare const PdfMagnificationOptions: typeof Enumeration & {
    */
   readonly defaultValue: PdfMagnificationOptions_DEFAULT_VALUE;
   /**
-   * Uses default magnification.
-   */
-  readonly defaultvalue: PdfMagnificationOptions_DEFAULT_VALUE;
-
-  /**
    * Uses the actual size.
    */
   readonly ACTUAL_SIZE: PdfMagnificationOptions_ACTUAL_SIZE;
@@ -226,11 +219,6 @@ export declare const PdfMagnificationOptions: typeof Enumeration & {
    * Uses the actual size.
    */
   readonly actualSize: PdfMagnificationOptions_ACTUAL_SIZE;
-  /**
-   * Uses the actual size.
-   */
-  readonly actualsize: PdfMagnificationOptions_ACTUAL_SIZE;
-
   /**
    * Uses the fit page magnification option.
    */
@@ -240,11 +228,6 @@ export declare const PdfMagnificationOptions: typeof Enumeration & {
    */
   readonly fitPage: PdfMagnificationOptions_FIT_PAGE;
   /**
-   * Uses the fit page magnification option.
-   */
-  readonly fitpage: PdfMagnificationOptions_FIT_PAGE;
-
-  /**
    * Uses the fit width magnification option.
    */
   readonly FIT_WIDTH: PdfMagnificationOptions_FIT_WIDTH;
@@ -252,11 +235,6 @@ export declare const PdfMagnificationOptions: typeof Enumeration & {
    * Uses the fit width magnification option.
    */
   readonly fitWidth: PdfMagnificationOptions_FIT_WIDTH;
-  /**
-   * Uses the fit width magnification option.
-   */
-  readonly fitwidth: PdfMagnificationOptions_FIT_WIDTH;
-
   /**
    * Uses the fit height magnification option.
    */
@@ -266,11 +244,6 @@ export declare const PdfMagnificationOptions: typeof Enumeration & {
    */
   readonly fitHeight: PdfMagnificationOptions_FIT_HEIGHT;
   /**
-   * Uses the fit height magnification option.
-   */
-  readonly fitheight: PdfMagnificationOptions_FIT_HEIGHT;
-
-  /**
    * Uses the fit visible magnification option.
    */
   readonly FIT_VISIBLE: PdfMagnificationOptions_FIT_VISIBLE;
@@ -278,11 +251,6 @@ export declare const PdfMagnificationOptions: typeof Enumeration & {
    * Uses the fit visible magnification option.
    */
   readonly fitVisible: PdfMagnificationOptions_FIT_VISIBLE;
-  /**
-   * Uses the fit visible magnification option.
-   */
-  readonly fitvisible: PdfMagnificationOptions_FIT_VISIBLE;
-
   /**
    * Uses 25 percent magnification option.
    */
@@ -292,11 +260,6 @@ export declare const PdfMagnificationOptions: typeof Enumeration & {
    */
   readonly twentyFivePercent: PdfMagnificationOptions_TWENTY_FIVE_PERCENT;
   /**
-   * Uses 25 percent magnification option.
-   */
-  readonly twentyfivepercent: PdfMagnificationOptions_TWENTY_FIVE_PERCENT;
-
-  /**
    * Uses 50 percent magnification option.
    */
   readonly FIFTY_PERCENT: PdfMagnificationOptions_FIFTY_PERCENT;
@@ -304,11 +267,6 @@ export declare const PdfMagnificationOptions: typeof Enumeration & {
    * Uses 50 percent magnification option.
    */
   readonly fiftyPercent: PdfMagnificationOptions_FIFTY_PERCENT;
-  /**
-   * Uses 50 percent magnification option.
-   */
-  readonly fiftypercent: PdfMagnificationOptions_FIFTY_PERCENT;
-
   /**
    * Uses 75 percent magnification option.
    */
@@ -318,11 +276,6 @@ export declare const PdfMagnificationOptions: typeof Enumeration & {
    */
   readonly seventyFivePercent: PdfMagnificationOptions_SEVENTY_FIVE_PERCENT;
   /**
-   * Uses 75 percent magnification option.
-   */
-  readonly seventyfivepercent: PdfMagnificationOptions_SEVENTY_FIVE_PERCENT;
-
-  /**
    * Uses 100 percent magnification option.
    */
   readonly ONE_HUNDRED_PERCENT: PdfMagnificationOptions_ONE_HUNDRED_PERCENT;
@@ -330,9 +283,4 @@ export declare const PdfMagnificationOptions: typeof Enumeration & {
    * Uses 100 percent magnification option.
    */
   readonly oneHundredPercent: PdfMagnificationOptions_ONE_HUNDRED_PERCENT;
-  /**
-   * Uses 100 percent magnification option.
-   */
-  readonly onehundredpercent: PdfMagnificationOptions_ONE_HUNDRED_PERCENT;
-
 }

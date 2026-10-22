@@ -1,10 +1,11 @@
 /**
  * TrapImagePlacementTypes.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __TrapImagePlacementTypes: unique symbol;
 
 
 interface TrapImagePlacementTypes extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<TrapImagePlacementTypes>): boolean;
-
   /**
    * @internal **WARNING:** `__TrapImagePlacementTypes` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const TrapImagePlacementTypes: typeof Enumeration & {
    */
   readonly centerEdges: TrapImagePlacementTypes_CENTER_EDGES;
   /**
-   * Creates a trap that straddles the edge between vector objects and bitmap images.
-   */
-  readonly centeredges: TrapImagePlacementTypes_CENTER_EDGES;
-
-  /**
    * Causes vector objects to overlap abutting images.
    */
   readonly CHOKE: TrapImagePlacementTypes_CHOKE;
@@ -140,11 +133,6 @@ export declare const TrapImagePlacementTypes: typeof Enumeration & {
    */
   readonly imageNeutralDensity: TrapImagePlacementTypes_IMAGE_NEUTRAL_DENSITY;
   /**
-   * Applies the same trapping rules as used elsewhere in the document. Note: When used to trap an object to a photograph, can result in noticeably uneven edges as the trap moves from one side of the edge to another.
-   */
-  readonly imageneutraldensity: TrapImagePlacementTypes_IMAGE_NEUTRAL_DENSITY;
-
-  /**
    * Causes bitmap images to overlap the abutting objects.
    */
   readonly IMAGES_OVER_SPREAD: TrapImagePlacementTypes_IMAGES_OVER_SPREAD;
@@ -152,9 +140,4 @@ export declare const TrapImagePlacementTypes: typeof Enumeration & {
    * Causes bitmap images to overlap the abutting objects.
    */
   readonly imagesOverSpread: TrapImagePlacementTypes_IMAGES_OVER_SPREAD;
-  /**
-   * Causes bitmap images to overlap the abutting objects.
-   */
-  readonly imagesoverspread: TrapImagePlacementTypes_IMAGES_OVER_SPREAD;
-
 }

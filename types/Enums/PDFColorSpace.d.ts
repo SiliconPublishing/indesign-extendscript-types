@@ -1,10 +1,11 @@
 /**
  * PDFColorSpace.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __PDFColorSpace: unique symbol;
 
 
 interface PDFColorSpace extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<PDFColorSpace>): boolean;
-
   /**
    * @internal **WARNING:** `__PDFColorSpace` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -168,36 +166,13 @@ export declare const PDFColorSpace: typeof Enumeration & {
    */
   readonly unchangedColorSpace: PDFColorSpace_UNCHANGED_COLOR_SPACE;
   /**
-   * Leaves each image in its original color space.
-   */
-  readonly unchangedcolorspace: PDFColorSpace_UNCHANGED_COLOR_SPACE;
-
-  /**
    * Repurposes RGB colors.
    */
   readonly REPURPOSE_RGB: PDFColorSpace_REPURPOSE_RGB;
   /**
-   * Repurposes RGB colors.
-   */
-  readonly repurposeRgb: PDFColorSpace_REPURPOSE_RGB;
-  /**
-   * Repurposes RGB colors.
-   */
-  readonly repurposergb: PDFColorSpace_REPURPOSE_RGB;
-
-  /**
    * Repurposes CMYK colors.
    */
   readonly REPURPOSE_CMYK: PDFColorSpace_REPURPOSE_CMYK;
-  /**
-   * Repurposes CMYK colors.
-   */
-  readonly repurposeCmyk: PDFColorSpace_REPURPOSE_CMYK;
-  /**
-   * Repurposes CMYK colors.
-   */
-  readonly repurposecmyk: PDFColorSpace_REPURPOSE_CMYK;
-
   /**
    * Converts all color values to high-quality black-and-white images. Gray levels of the converted objects represent the luminosity of the original objects. 
    */

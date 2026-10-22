@@ -1,10 +1,11 @@
 /**
  * AnchoredRelativeTo.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __AnchoredRelativeTo: unique symbol;
 
 
 interface AnchoredRelativeTo extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<AnchoredRelativeTo>): boolean;
-
   /**
    * @internal **WARNING:** `__AnchoredRelativeTo` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -134,11 +132,6 @@ export declare const AnchoredRelativeTo: typeof Enumeration & {
    */
   readonly columnEdge: AnchoredRelativeTo_COLUMN_EDGE;
   /**
-   * Align the anchored object to the edge of the text or table column.
-   */
-  readonly columnedge: AnchoredRelativeTo_COLUMN_EDGE;
-
-  /**
    * Align the anchored object to the edge of the text frame.
    */
   readonly TEXT_FRAME: AnchoredRelativeTo_TEXT_FRAME;
@@ -146,11 +139,6 @@ export declare const AnchoredRelativeTo: typeof Enumeration & {
    * Align the anchored object to the edge of the text frame.
    */
   readonly textFrame: AnchoredRelativeTo_TEXT_FRAME;
-  /**
-   * Align the anchored object to the edge of the text frame.
-   */
-  readonly textframe: AnchoredRelativeTo_TEXT_FRAME;
-
   /**
    * Align the anchored object to the page margin.
    */
@@ -160,11 +148,6 @@ export declare const AnchoredRelativeTo: typeof Enumeration & {
    */
   readonly pageMargins: AnchoredRelativeTo_PAGE_MARGINS;
   /**
-   * Align the anchored object to the page margin.
-   */
-  readonly pagemargins: AnchoredRelativeTo_PAGE_MARGINS;
-
-  /**
    * Align the anchored object to the edge of the page.
    */
   readonly PAGE_EDGE: AnchoredRelativeTo_PAGE_EDGE;
@@ -173,11 +156,6 @@ export declare const AnchoredRelativeTo: typeof Enumeration & {
    */
   readonly pageEdge: AnchoredRelativeTo_PAGE_EDGE;
   /**
-   * Align the anchored object to the edge of the page.
-   */
-  readonly pageedge: AnchoredRelativeTo_PAGE_EDGE;
-
-  /**
    * Align the anchored object to the anchor.
    */
   readonly ANCHOR_LOCATION: AnchoredRelativeTo_ANCHOR_LOCATION;
@@ -185,9 +163,4 @@ export declare const AnchoredRelativeTo: typeof Enumeration & {
    * Align the anchored object to the anchor.
    */
   readonly anchorLocation: AnchoredRelativeTo_ANCHOR_LOCATION;
-  /**
-   * Align the anchored object to the anchor.
-   */
-  readonly anchorlocation: AnchoredRelativeTo_ANCHOR_LOCATION;
-
 }

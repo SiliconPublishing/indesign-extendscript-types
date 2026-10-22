@@ -1,10 +1,11 @@
 /**
  * SizeTypeEnum.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __SizeTypeEnum: unique symbol;
 
 
 interface SizeTypeEnum extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<SizeTypeEnum>): boolean;
-
   /**
    * @internal **WARNING:** `__SizeTypeEnum` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -168,11 +166,6 @@ export declare const SizeTypeEnum: typeof Enumeration & {
    */
   readonly noneSize: SizeTypeEnum_NONE_SIZE;
   /**
-   * No size specified.
-   */
-  readonly nonesize: SizeTypeEnum_NONE_SIZE;
-
-  /**
    * Default size.
    */
   readonly DEFAULT_SIZE: SizeTypeEnum_DEFAULT_SIZE;
@@ -180,11 +173,6 @@ export declare const SizeTypeEnum: typeof Enumeration & {
    * Default size.
    */
   readonly defaultSize: SizeTypeEnum_DEFAULT_SIZE;
-  /**
-   * Default size.
-   */
-  readonly defaultsize: SizeTypeEnum_DEFAULT_SIZE;
-
   /**
    * Fixed size.
    */
@@ -194,11 +182,6 @@ export declare const SizeTypeEnum: typeof Enumeration & {
    */
   readonly fixedSize: SizeTypeEnum_FIXED_SIZE;
   /**
-   * Fixed size.
-   */
-  readonly fixedsize: SizeTypeEnum_FIXED_SIZE;
-
-  /**
    * Relative to text flow.
    */
   readonly RELATIVE_TO_TEXT_FLOW: SizeTypeEnum_RELATIVE_TO_TEXT_FLOW;
@@ -206,11 +189,6 @@ export declare const SizeTypeEnum: typeof Enumeration & {
    * Relative to text flow.
    */
   readonly relativeToTextFlow: SizeTypeEnum_RELATIVE_TO_TEXT_FLOW;
-  /**
-   * Relative to text flow.
-   */
-  readonly relativetotextflow: SizeTypeEnum_RELATIVE_TO_TEXT_FLOW;
-
   /**
    * Relative to text size.
    */
@@ -220,11 +198,6 @@ export declare const SizeTypeEnum: typeof Enumeration & {
    */
   readonly relativeToTextSize: SizeTypeEnum_RELATIVE_TO_TEXT_SIZE;
   /**
-   * Relative to text size.
-   */
-  readonly relativetotextsize: SizeTypeEnum_RELATIVE_TO_TEXT_SIZE;
-
-  /**
    * Use custom width.
    */
   readonly USE_CUSTOM_WIDTH: SizeTypeEnum_USE_CUSTOM_WIDTH;
@@ -233,11 +206,6 @@ export declare const SizeTypeEnum: typeof Enumeration & {
    */
   readonly useCustomWidth: SizeTypeEnum_USE_CUSTOM_WIDTH;
   /**
-   * Use custom width.
-   */
-  readonly usecustomwidth: SizeTypeEnum_USE_CUSTOM_WIDTH;
-
-  /**
    * Use custom height.
    */
   readonly USE_CUSTOM_HEIGHT: SizeTypeEnum_USE_CUSTOM_HEIGHT;
@@ -245,9 +213,4 @@ export declare const SizeTypeEnum: typeof Enumeration & {
    * Use custom height.
    */
   readonly useCustomHeight: SizeTypeEnum_USE_CUSTOM_HEIGHT;
-  /**
-   * Use custom height.
-   */
-  readonly usecustomheight: SizeTypeEnum_USE_CUSTOM_HEIGHT;
-
 }

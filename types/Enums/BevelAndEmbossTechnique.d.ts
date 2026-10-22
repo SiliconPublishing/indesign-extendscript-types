@@ -1,10 +1,11 @@
 /**
  * BevelAndEmbossTechnique.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __BevelAndEmbossTechnique: unique symbol;
 
 
 interface BevelAndEmbossTechnique extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<BevelAndEmbossTechnique>): boolean;
-
   /**
    * @internal **WARNING:** `__BevelAndEmbossTechnique` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const BevelAndEmbossTechnique: typeof Enumeration & {
    */
   readonly smoothContour: BevelAndEmbossTechnique_SMOOTH_CONTOUR;
   /**
-   * Emboss and bevel contours are smooth.
-   */
-  readonly smoothcontour: BevelAndEmbossTechnique_SMOOTH_CONTOUR;
-
-  /**
    * Emboss and bevel contours are chiseled and have hard corners.
    */
   readonly CHISEL_HARD: BevelAndEmbossTechnique_CHISEL_HARD;
@@ -115,11 +108,6 @@ export declare const BevelAndEmbossTechnique: typeof Enumeration & {
    */
   readonly chiselHard: BevelAndEmbossTechnique_CHISEL_HARD;
   /**
-   * Emboss and bevel contours are chiseled and have hard corners.
-   */
-  readonly chiselhard: BevelAndEmbossTechnique_CHISEL_HARD;
-
-  /**
    * Emboss or bevel contours chiseled but softened somewhat.
    */
   readonly CHISEL_SOFT: BevelAndEmbossTechnique_CHISEL_SOFT;
@@ -127,9 +115,4 @@ export declare const BevelAndEmbossTechnique: typeof Enumeration & {
    * Emboss or bevel contours chiseled but softened somewhat.
    */
   readonly chiselSoft: BevelAndEmbossTechnique_CHISEL_SOFT;
-  /**
-   * Emboss or bevel contours chiseled but softened somewhat.
-   */
-  readonly chiselsoft: BevelAndEmbossTechnique_CHISEL_SOFT;
-
 }

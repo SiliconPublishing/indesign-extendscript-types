@@ -1,6 +1,7 @@
 /**
  * Paragraph.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -75,15 +76,12 @@ import type { XMLItem } from './XMLItem';
  * ({@link bulletsAndNumberingListType}, {@link numberingFormat} and the rest) that produce them.
  */
 export interface Paragraph<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'Paragraph';
-
   /** Resolves the proxy into the individual {@link Paragraph} objects it stands for. */
   getElements(): Paragraph<TParent, 'single'>[];
 
   /** The bullet or numbering string currently rendered for this paragraph. */
-  readonly bulletsAndNumberingResultText: Read<M, string>;
+  readonly bulletsAndNumberingResultText: Read<M, string | undefined>;
 
   /** The numbered-list level value currently rendered for this paragraph. */
-  readonly numberingResultNumber: Read<M, number>;
+  readonly numberingResultNumber: Read<M, number | undefined>;
 }

@@ -1,10 +1,11 @@
 /**
  * ColumnTypes.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ColumnTypes: unique symbol;
 
 
 interface ColumnTypes extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ColumnTypes>): boolean;
-
   /**
    * @internal **WARNING:** `__ColumnTypes` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -84,20 +82,12 @@ export declare const ColumnTypes: typeof Enumeration & {
   /**
    * Makes the column a body column.
    */
-  readonly bodycolumn: ColumnTypes_BODY_COLUMN;
-  /**
-   * Makes the column a body column.
-   */
   readonly BODY_COLUMN: ColumnTypes_BODY_COLUMN;
 
   /**
    * Makes the column a header column, repeated when the table breaks across frames. The column must be flush with the left or right edge of the table, or adjacent to an existing header column on the same side.
    */
   readonly headerColumn: ColumnTypes_HEADER_COLUMN;
-  /**
-   * Makes the column a header column, repeated when the table breaks across frames. The column must be flush with the left or right edge of the table, or adjacent to an existing header column on the same side.
-   */
-  readonly headercolumn: ColumnTypes_HEADER_COLUMN;
   /**
    * Makes the column a header column, repeated when the table breaks across frames. The column must be flush with the left or right edge of the table, or adjacent to an existing header column on the same side.
    */

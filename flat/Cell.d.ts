@@ -1,6 +1,7 @@
 /**
  * Cell.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -54,31 +55,32 @@ import type { ColumnTypes } from './Enums/ColumnTypes';
 import type { AnyGraphic, AnyPageItem } from './_base/Unions';
 import type { FirstBaseline } from './Enums/FirstBaseline';
 import type { RowTypes } from './Enums/RowTypes';
-import type { Cells } from './Cells';
-import type { Characters } from './Characters';
-import type { Columns } from './Columns';
-import type { Event } from './Event';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
+import type { Event } from './Event';
 import type { FilePath } from './_base/Types';
-import type { InDesignEventMap } from './_base/Events';
-import type { InsertionPoints } from './InsertionPoints';
-import type { Lines } from './Lines';
-import type { NothingEnum } from './Enums/NothingEnum';
-import type { Paragraphs } from './Paragraphs';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+import type { Cells } from './Cells';
 import type { Rows } from './Rows';
+import type { Columns } from './Columns';
 import type { SpecialCharacters } from './Enums/SpecialCharacters';
+import type { NothingEnum } from './Enums/NothingEnum';
 import type { StartParagraph } from './Enums/StartParagraph';
-import type { TextColumns } from './TextColumns';
-import type { TextStyleRanges } from './TextStyleRanges';
-import type { Texts } from './Texts';
 import type { VerticalJustification } from './Enums/VerticalJustification';
+import type { Texts } from './Texts';
+import type { Characters } from './Characters';
 import type { Words } from './Words';
+import type { Lines } from './Lines';
+import type { TextColumns } from './TextColumns';
+import type { Paragraphs } from './Paragraphs';
+import type { InsertionPoints } from './InsertionPoints';
+import type { TextStyleRanges } from './TextStyleRanges';
+
 /**
  * A single cell of a {@link Table}, the fundamental text- or graphic-bearing
  * unit of a table grid.
@@ -90,50 +92,6 @@ import type { Words } from './Words';
  * grid.
  */
 export interface Cell {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: Table;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<Cell, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<Cell, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -189,6 +147,45 @@ export interface Cell {
    */
   extractLabel(key: string): string;
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: Table;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<Cell, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<Cell, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The index of the object within its containing parent.
    */
   readonly index: number;
@@ -223,8 +220,7 @@ export interface Cell {
    * row or column puts that same string in every one of its cells, and assigning
    * an array shorter than the cell count leaves the remaining cells unchanged.
    */
-  get contents(): PageItem | string | SpecialCharacters | Array<string | SpecialCharacters | PageItem>
-  ;
+  get contents(): PageItem | string | SpecialCharacters | Array<string | SpecialCharacters | PageItem>;
   set contents(
     value:
       | PageItem
@@ -352,7 +348,7 @@ export interface Cell {
   set paragraphSpacingLimit(value: MeasurementValue);
   /** The space between the baseline of the text and the top inset of the frame or cell. */
   get minimumFirstBaselineOffset(): number;
-  set minimumFirstBaselineOffset(value: number);
+  set minimumFirstBaselineOffset(value: number | string);
   /** The rotation angle (in degrees) of the cell, specified as one of the following values: 0, 90, 180, or 270. */
   get rotationAngle(): number;
   set rotationAngle(value: number);
@@ -498,8 +494,6 @@ export interface Cell {
    * @param reverseOrder If true, returns the results in reverse order.
    */
   changeGlyph(reverseOrder?: boolean): Text[];
-  /** The object's DOM class name. */
-  readonly constructorName: 'Cell';
   /** Resolves the proxy into the individual {@link Cell} objects it stands for. */
   getElements(): Cell[];
   /** The unique ID of the cell, stable across saves and reopens. */
@@ -514,7 +508,7 @@ export interface Cell {
   /** Converts bullets and numbering in the cell's text to literal characters. */
   convertBulletsAndNumberingToText(): void;
   /** The {@link XMLItem} this cell is associated with, if the table is tagged. */
-  readonly associatedXMLElement: XMLItem;
+  readonly associatedXMLElement: XMLItem | null;
   /** If `true`, keeps the row with the next row when the table is split across text frames or pages. */
   get keepWithNextRow(): boolean;
   set keepWithNextRow(value: boolean);
@@ -690,60 +684,17 @@ export interface Cell {
   select(existingSelection?: SelectionOptions): void;
 }
 
-
 /**
- * The broadcast proxy for {@link Cell} — what `everyItem()` returns.
+ * A single cell of a {@link Table}, the fundamental text- or graphic-bearing
+ * unit of a table grid.
  *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link Cell} there.
+ * Holds its own story, reachable at any granularity — {@link characters},
+ * {@link words}, {@link paragraphs} — and searchable with find/change. Size,
+ * span, position, edge strokes, insets, and fill follow the same member
+ * names on {@link Row} and {@link Column}, since all three describe the same
+ * grid.
  */
 export interface CellPlural {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (Table)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<CellPlural, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<CellPlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -799,6 +750,45 @@ export interface CellPlural {
    */
   extractLabel(key: string): (string)[];
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (Table)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<CellPlural, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<CellPlural, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The index of the object within its containing parent.
    */
   readonly index: (number)[];
@@ -833,8 +823,7 @@ export interface CellPlural {
    * row or column puts that same string in every one of its cells, and assigning
    * an array shorter than the cell count leaves the remaining cells unchanged.
    */
-  get contents(): (PageItem | string | SpecialCharacters | Array<string | SpecialCharacters | PageItem>
-  )[];
+  get contents(): (PageItem | string | SpecialCharacters | Array<string | SpecialCharacters | PageItem>)[];
   set contents(
     value:
       | PageItem
@@ -962,7 +951,7 @@ export interface CellPlural {
   set paragraphSpacingLimit(value: MeasurementValue);
   /** The space between the baseline of the text and the top inset of the frame or cell. */
   get minimumFirstBaselineOffset(): (number)[];
-  set minimumFirstBaselineOffset(value: number);
+  set minimumFirstBaselineOffset(value: number | string);
   /** The rotation angle (in degrees) of the cell, specified as one of the following values: 0, 90, 180, or 270. */
   get rotationAngle(): (number)[];
   set rotationAngle(value: number);
@@ -1108,8 +1097,6 @@ export interface CellPlural {
    * @param reverseOrder If true, returns the results in reverse order.
    */
   changeGlyph(reverseOrder?: boolean): (Text[])[];
-  /** The object's DOM class name. */
-  readonly constructorName: 'Cell';
   /** Resolves the proxy into the individual {@link Cell} objects it stands for. */
   getElements(): Cell[];
   /** The unique ID of the cell, stable across saves and reopens. */
@@ -1124,7 +1111,7 @@ export interface CellPlural {
   /** Converts bullets and numbering in the cell's text to literal characters. */
   convertBulletsAndNumberingToText(): (void)[];
   /** The {@link XMLItem} this cell is associated with, if the table is tagged. */
-  readonly associatedXMLElement: (XMLItem)[];
+  readonly associatedXMLElement: (XMLItem | null)[];
   /** If `true`, keeps the row with the next row when the table is split across text frames or pages. */
   get keepWithNextRow(): (boolean)[];
   set keepWithNextRow(value: boolean);

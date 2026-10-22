@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.1.0 (indesign-extendscript-types)
+
+First ExtendScript edition, converted from indesign-uxp-types 1.0.0 and measured against
+InDesign 2026 (21.6.0.57).
+
+- **Globals instead of the `indesign` module:** `app`, every enumeration and DOM class, with event
+  names, `reflect` and `instanceof` narrowing. Every DOM type is also under `InDesign.`.
+- **ES3 core library** (`lib/`): `$` (with `$.dictionary`, `$.list`, `$.summary`), `File`, `Folder`,
+  a fully typed `BridgeTalk`, `XML`/`XMLList`, `Socket`, `UnitValue`, `Reflection`, ScriptUI, the
+  Error classes including `IOError`, `exit()`/`beep()`. Nothing the engine lacks.
+- **ExtendScript semantics:** `File`/`Folder` instead of promises of UXP entries; no
+  `constructorName` or `.equals()`; enumerator aliases cut to the camelCase ones that exist; names
+  accepted by `itemByRange()`.
+- **Measured types:** about 540 declarations widened by what InDesign returned or accepted
+  (unset style attributes as `NothingEnum.NOTHING`, swatch names, `null`s, unit strings);
+  33 members, 1 class, 2 enumerations and 2 enumerators the 21.6 dictionary has and upstream lacked;
+  six crash-prone members documented.
+- **Tooling:** dumps, runtime samplers, codemod, flattener (verified against upstream's own flat
+  tree), comparer, probes and `npm test`.
+- **Runtime coverage:** 417 of 424 object classes read at runtime (the other 7 cannot be made by
+  script), 16,129 properties read, 8,249 writable properties tried, 111 probes; nine crash-prone
+  reads/writes documented.
+- **XMP library** fully declared from measurement (`XMPMeta`, `XMPFile`, `XMPUtils`, `XMPDateTime`,
+  `XMPIterator`, `XMPProperty`, `XMPConst`'s 161 constants), replacing a stub.
+- **Corrections from probes:** `MasterSpread.primaryTextFrame` takes no `NothingEnum`;
+  `PrintEvent.documentPrintUiOption` is an array; `TimingTarget.parent` can be a `Spread`;
+  text objects' attribute setters take no `NothingEnum` (styles' do).
+
+
 ## 1.0.0
 
 First public release.

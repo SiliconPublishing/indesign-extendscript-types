@@ -1,6 +1,7 @@
 /**
  * CellStyleMapping.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -16,9 +17,6 @@ import type { MapType } from './Enums/MapType';
 export interface CellStyleMapping<M extends Mode = 'single'>
   extends EventTargetDOMObject<StyleMappingParent, M>,
     IndexedDOMObject<StyleMappingParent, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'CellStyleMapping';
-
   /** Resolves the proxy into the individual {@link CellStyleMapping} objects it stands for. */
   getElements(): CellStyleMapping<'single'>[];
 

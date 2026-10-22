@@ -1,10 +1,11 @@
 /**
  * RubyKentenPosition.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __RubyKentenPosition: unique symbol;
 
 
 interface RubyKentenPosition extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<RubyKentenPosition>): boolean;
-
   /**
    * @internal **WARNING:** `__RubyKentenPosition` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -86,11 +84,6 @@ export declare const RubyKentenPosition: typeof Enumeration & {
    */
   readonly aboveRight: RubyKentenPosition_ABOVE_RIGHT;
   /**
-   * Places kenten or ruby to the right and above the parent character. 
-   */
-  readonly aboveright: RubyKentenPosition_ABOVE_RIGHT;
-
-  /**
    * Places kenten or ruby to the left and below the parent character. 
    */
   readonly BELOW_LEFT: RubyKentenPosition_BELOW_LEFT;
@@ -98,9 +91,4 @@ export declare const RubyKentenPosition: typeof Enumeration & {
    * Places kenten or ruby to the left and below the parent character. 
    */
   readonly belowLeft: RubyKentenPosition_BELOW_LEFT;
-  /**
-   * Places kenten or ruby to the left and below the parent character. 
-   */
-  readonly belowleft: RubyKentenPosition_BELOW_LEFT;
-
 }

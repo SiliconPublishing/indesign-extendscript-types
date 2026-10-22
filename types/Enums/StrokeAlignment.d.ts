@@ -1,10 +1,11 @@
 /**
  * StrokeAlignment.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __StrokeAlignment: unique symbol;
 
 
 interface StrokeAlignment extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<StrokeAlignment>): boolean;
-
   /**
    * @internal **WARNING:** `__StrokeAlignment` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const StrokeAlignment: typeof Enumeration & {
    */
   readonly centerAlignment: StrokeAlignment_CENTER_ALIGNMENT;
   /**
-   * The stroke straddles the path.
-   */
-  readonly centeralignment: StrokeAlignment_CENTER_ALIGNMENT;
-
-  /**
    * The stroke is inside the path. 
    */
   readonly INSIDE_ALIGNMENT: StrokeAlignment_INSIDE_ALIGNMENT;
@@ -115,11 +108,6 @@ export declare const StrokeAlignment: typeof Enumeration & {
    */
   readonly insideAlignment: StrokeAlignment_INSIDE_ALIGNMENT;
   /**
-   * The stroke is inside the path. 
-   */
-  readonly insidealignment: StrokeAlignment_INSIDE_ALIGNMENT;
-
-  /**
    * The stroke is outside the path, like a picture frame.
    */
   readonly OUTSIDE_ALIGNMENT: StrokeAlignment_OUTSIDE_ALIGNMENT;
@@ -127,9 +115,4 @@ export declare const StrokeAlignment: typeof Enumeration & {
    * The stroke is outside the path, like a picture frame.
    */
   readonly outsideAlignment: StrokeAlignment_OUTSIDE_ALIGNMENT;
-  /**
-   * The stroke is outside the path, like a picture frame.
-   */
-  readonly outsidealignment: StrokeAlignment_OUTSIDE_ALIGNMENT;
-
 }

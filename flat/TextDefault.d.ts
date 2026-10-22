@@ -1,6 +1,7 @@
 /**
  * TextDefault.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -81,24 +82,30 @@ import type { SpanColumnTypeOptions } from './Enums/SpanColumnTypeOptions';
 import type { StartParagraph } from './Enums/StartParagraph';
 import type { TextStrokeAlign } from './Enums/TextStrokeAlign';
 import type { WarichuAlignment } from './Enums/WarichuAlignment';
-import type { Event } from './Event';
+import type { PropertiesGetter } from './_base/Properties';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
+import type { Event } from './Event';
 import type { FilePath } from './_base/Types';
-import type { InDesignEventMap } from './_base/Events';
-import type { PropertiesGetter } from './_base/Properties';
+
 /**
  * Application- or document-level default character and paragraph formatting applied to new text.
  */
 export interface TextDefault {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -116,15 +123,6 @@ export interface TextDefault {
    */
   set properties(value: PropertiesSetter<TextDefault, 'single'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -134,10 +132,9 @@ export interface TextDefault {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -178,8 +175,6 @@ export interface TextDefault {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The object's DOM class name. */
-  readonly constructorName: 'TextDefault';
   /** Resolves the proxy into the individual {@link TextDefault} objects it stands for. */
   getElements(): TextDefault[];
   /** Bullet character. */
@@ -233,10 +228,10 @@ export interface TextDefault {
   get paragraphShadingTint(): number;
   set paragraphShadingTint(value: number);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph shading. */
-  get paragraphShadingColor(): Swatch;
+  get paragraphShadingColor(): Swatch | string;
   set paragraphShadingColor(value: Swatch | string);
   /** The font applied to the TextDefault, specified as either a font object or the name of font family. */
-  get appliedFont(): Font;
+  get appliedFont(): Font | string;
   set appliedFont(value: Font | string);
   /** The name of the font style. */
   get fontStyle(): string;
@@ -320,10 +315,10 @@ export interface TextDefault {
   get otfSwash(): boolean;
   set otfSwash(value: boolean);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the underline stroke. */
-  get underlineColor(): Swatch;
+  get underlineColor(): Swatch | string;
   set underlineColor(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the underline stroke. Note: Valid when underline type is not solid. */
-  get underlineGapColor(): Swatch;
+  get underlineGapColor(): Swatch | string;
   set underlineGapColor(value: Swatch | string);
   /** The underline stroke tint (as a percentage). (Range: 0 to 100) */
   get underlineTint(): number;
@@ -338,7 +333,7 @@ export interface TextDefault {
   get underlineGapOverprint(): boolean;
   set underlineGapOverprint(value: boolean);
   /** The stroke type of the underline stroke. */
-  get underlineType(): StrokeStyle;
+  get underlineType(): StrokeStyle | string;
   set underlineType(value: StrokeStyle | string);
   /** The amount by which to offset the underline from the text baseline. */
   get underlineOffset(): number;
@@ -347,10 +342,10 @@ export interface TextDefault {
   get underlineWeight(): number;
   set underlineWeight(value: MeasurementValue);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the strikethrough stroke. */
-  get strikeThroughColor(): Swatch;
+  get strikeThroughColor(): Swatch | string;
   set strikeThroughColor(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the strikethrough stroke. */
-  get strikeThroughGapColor(): Swatch;
+  get strikeThroughGapColor(): Swatch | string;
   set strikeThroughGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the strikethrough stroke. (Range: 0 to 100) */
   get strikeThroughTint(): number;
@@ -365,7 +360,7 @@ export interface TextDefault {
   get strikeThroughGapOverprint(): boolean;
   set strikeThroughGapOverprint(value: boolean);
   /** The stroke type of the strikethrough stroke. */
-  get strikeThroughType(): StrokeStyle;
+  get strikeThroughType(): StrokeStyle | string;
   set strikeThroughType(value: StrokeStyle | string);
   /** The amount by which to offset the strikethrough stroke from the text baseline. */
   get strikeThroughOffset(): number;
@@ -392,7 +387,7 @@ export interface TextDefault {
   get paragraphBorderTint(): number;
   set paragraphBorderTint(value: number);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph stroke. */
-  get paragraphBorderColor(): Swatch;
+  get paragraphBorderColor(): Swatch | string;
   set paragraphBorderColor(value: Swatch | string);
   /** If true, the paragraph border gap will overprint. Note: Valid only when border type is not solid. */
   get paragraphBorderGapOverprint(): boolean;
@@ -401,10 +396,10 @@ export interface TextDefault {
   get paragraphBorderGapTint(): number;
   set paragraphBorderGapTint(value: number);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph border gap. Note: Valid only when the border type is not solid. */
-  get paragraphBorderGapColor(): Swatch;
+  get paragraphBorderGapColor(): Swatch | string;
   set paragraphBorderGapColor(value: Swatch | string);
   /** The type of the border for the paragraph. */
-  get paragraphBorderType(): StrokeStyle;
+  get paragraphBorderType(): StrokeStyle | string;
   set paragraphBorderType(value: StrokeStyle | string);
   /** The left line weight of the border of paragraph. */
   get paragraphBorderLeftLineWeight(): number;
@@ -628,10 +623,10 @@ export interface TextDefault {
   get ruleAboveWidth(): RuleWidth;
   set ruleAboveWidth(value: RuleWidth);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule above. */
-  get ruleAboveColor(): Swatch;
+  get ruleAboveColor(): Swatch | string;
   set ruleAboveColor(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule above. Note: Valid only when the paragraph rule above type is not solid. */
-  get ruleAboveGapColor(): Swatch;
+  get ruleAboveGapColor(): Swatch | string;
   set ruleAboveGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule. (Range: 0 to 100) Note: Valid only when the rule above type is not solid. */
   get ruleAboveGapTint(): number;
@@ -640,7 +635,7 @@ export interface TextDefault {
   get ruleAboveGapOverprint(): boolean;
   set ruleAboveGapOverprint(value: boolean);
   /** The stroke type of the rule above the paragraph. */
-  get ruleAboveType(): StrokeStyle;
+  get ruleAboveType(): StrokeStyle | string;
   set ruleAboveType(value: StrokeStyle | string);
   /** If true, applies a paragraph rule below. */
   get ruleBelow(): boolean;
@@ -664,16 +659,16 @@ export interface TextDefault {
   get ruleBelowWidth(): RuleWidth;
   set ruleBelowWidth(value: RuleWidth);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule below. */
-  get ruleBelowColor(): Swatch;
+  get ruleBelowColor(): Swatch | string;
   set ruleBelowColor(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule below. Note: Valid only when the paragraph rule below type is not solid. */
-  get ruleBelowGapColor(): Swatch;
+  get ruleBelowGapColor(): Swatch | string;
   set ruleBelowGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule below. (Range: 0 to 100) Note: Valid only when the paragraph rule below type is not solid. */
   get ruleBelowGapTint(): number;
   set ruleBelowGapTint(value: number);
   /** The stroke type of the rule below the paragraph. */
-  get ruleBelowType(): StrokeStyle;
+  get ruleBelowType(): StrokeStyle | string;
   set ruleBelowType(value: StrokeStyle | string);
   /** If true, allows hyphenation of capitalized words. */
   get hyphenateCapitalizedWords(): boolean;
@@ -847,7 +842,7 @@ export interface TextDefault {
   get tabList(): object[];
   set tabList(value: PropertiesSetter<TabStop>[]);
   /** The named grid in use. */
-  get appliedNamedGrid(): NamedGrid;
+  get appliedNamedGrid(): NamedGrid | null;
   set appliedNamedGrid(value: NamedGrid);
   /** If true, aligns only the first line to the frame grid or baseline grid. If false, aligns all lines to the grid. */
   get gridAlignFirstLineOnly(): boolean;
@@ -928,10 +923,10 @@ export interface TextDefault {
   get tatechuyokoYOffset(): number;
   set tatechuyokoYOffset(value: number);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of kenten characters. */
-  get kentenFillColor(): Swatch;
+  get kentenFillColor(): Swatch | string;
   set kentenFillColor(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of kenten characters. */
-  get kentenStrokeColor(): Swatch;
+  get kentenStrokeColor(): Swatch | string;
   set kentenStrokeColor(value: Swatch | string);
   /** The fill tint (as a percentage) of kenten characters. (Range: 0 to 100) */
   get kentenTint(): number;
@@ -961,7 +956,7 @@ export interface TextDefault {
   get kentenPosition(): RubyKentenPosition;
   set kentenPosition(value: RubyKentenPosition);
   /** The font to use for kenten characters. */
-  get kentenFont(): Font;
+  get kentenFont(): Font | null | string;
   set kentenFont(value: Font | string);
   /** The font style of kenten characters. */
   get kentenFontStyle(): string | NothingEnum.NOTHING;
@@ -982,10 +977,10 @@ export interface TextDefault {
   get kentenCharacterSet(): KentenCharacterSet;
   set kentenCharacterSet(value: KentenCharacterSet);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of ruby characters. */
-  get rubyFill(): Swatch;
+  get rubyFill(): Swatch | string;
   set rubyFill(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of ruby characters. */
-  get rubyStroke(): Swatch;
+  get rubyStroke(): Swatch | string;
   set rubyStroke(value: Swatch | string);
   /** The tint (as a percentage) of the ruby fill color. (Range: 0 to 100) */
   get rubyTint(): number;
@@ -1003,7 +998,7 @@ export interface TextDefault {
   get rubyStrokeTint(): number;
   set rubyStrokeTint(value: number);
   /** The font applied to ruby characters. */
-  get rubyFont(): Font;
+  get rubyFont(): Font | null | string;
   set rubyFont(value: Font | string);
   /** The font style of ruby characters. */
   get rubyFontStyle(): string | NothingEnum.NOTHING;
@@ -1114,10 +1109,10 @@ export interface TextDefault {
   get bulletsAndNumberingListType(): ListType;
   set bulletsAndNumberingListType(value: ListType);
   /** The character style to be used for the text after string. */
-  get bulletsCharacterStyle(): CharacterStyle;
+  get bulletsCharacterStyle(): CharacterStyle | string;
   set bulletsCharacterStyle(value: CharacterStyle | string);
   /** The character style to be used for the number string. */
-  get numberingCharacterStyle(): CharacterStyle;
+  get numberingCharacterStyle(): CharacterStyle | string;
   set numberingCharacterStyle(value: CharacterStyle | string);
   /** The number string expression for numbering. */
   get numberingExpression(): string;
@@ -1126,7 +1121,7 @@ export interface TextDefault {
   get bulletsTextAfter(): string;
   set bulletsTextAfter(value: string);
   /** The list to be part of. */
-  get appliedNumberingList(): NumberingList;
+  get appliedNumberingList(): NumberingList | string;
   set appliedNumberingList(value: NumberingList | string);
   /** The level of the paragraph. */
   get numberingLevel(): number;
@@ -1168,21 +1163,20 @@ export interface TextDefault {
   isNthDesignAxisHidden(nthAxisIndex: number): boolean;
 }
 
-
 /**
- * The broadcast proxy for {@link TextDefault} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link TextDefault} there.
+ * Application- or document-level default character and paragraph formatting applied to new text.
  */
 export interface TextDefaultPlural {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -1200,15 +1194,6 @@ export interface TextDefaultPlural {
    */
   set properties(value: PropertiesSetter<TextDefaultPlural, 'plural'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -1218,10 +1203,9 @@ export interface TextDefaultPlural {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -1262,8 +1246,6 @@ export interface TextDefaultPlural {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The object's DOM class name. */
-  readonly constructorName: 'TextDefault';
   /** Resolves the proxy into the individual {@link TextDefault} objects it stands for. */
   getElements(): TextDefault[];
   /** Bullet character. */
@@ -1317,10 +1299,10 @@ export interface TextDefaultPlural {
   get paragraphShadingTint(): (number)[];
   set paragraphShadingTint(value: number);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph shading. */
-  get paragraphShadingColor(): (Swatch)[];
+  get paragraphShadingColor(): (Swatch | string)[];
   set paragraphShadingColor(value: Swatch | string);
   /** The font applied to the TextDefault, specified as either a font object or the name of font family. */
-  get appliedFont(): (Font)[];
+  get appliedFont(): (Font | string)[];
   set appliedFont(value: Font | string);
   /** The name of the font style. */
   get fontStyle(): (string)[];
@@ -1404,10 +1386,10 @@ export interface TextDefaultPlural {
   get otfSwash(): (boolean)[];
   set otfSwash(value: boolean);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the underline stroke. */
-  get underlineColor(): (Swatch)[];
+  get underlineColor(): (Swatch | string)[];
   set underlineColor(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the underline stroke. Note: Valid when underline type is not solid. */
-  get underlineGapColor(): (Swatch)[];
+  get underlineGapColor(): (Swatch | string)[];
   set underlineGapColor(value: Swatch | string);
   /** The underline stroke tint (as a percentage). (Range: 0 to 100) */
   get underlineTint(): (number)[];
@@ -1422,7 +1404,7 @@ export interface TextDefaultPlural {
   get underlineGapOverprint(): (boolean)[];
   set underlineGapOverprint(value: boolean);
   /** The stroke type of the underline stroke. */
-  get underlineType(): (StrokeStyle)[];
+  get underlineType(): (StrokeStyle | string)[];
   set underlineType(value: StrokeStyle | string);
   /** The amount by which to offset the underline from the text baseline. */
   get underlineOffset(): (number)[];
@@ -1431,10 +1413,10 @@ export interface TextDefaultPlural {
   get underlineWeight(): (number)[];
   set underlineWeight(value: MeasurementValue);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the strikethrough stroke. */
-  get strikeThroughColor(): (Swatch)[];
+  get strikeThroughColor(): (Swatch | string)[];
   set strikeThroughColor(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the strikethrough stroke. */
-  get strikeThroughGapColor(): (Swatch)[];
+  get strikeThroughGapColor(): (Swatch | string)[];
   set strikeThroughGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the strikethrough stroke. (Range: 0 to 100) */
   get strikeThroughTint(): (number)[];
@@ -1449,7 +1431,7 @@ export interface TextDefaultPlural {
   get strikeThroughGapOverprint(): (boolean)[];
   set strikeThroughGapOverprint(value: boolean);
   /** The stroke type of the strikethrough stroke. */
-  get strikeThroughType(): (StrokeStyle)[];
+  get strikeThroughType(): (StrokeStyle | string)[];
   set strikeThroughType(value: StrokeStyle | string);
   /** The amount by which to offset the strikethrough stroke from the text baseline. */
   get strikeThroughOffset(): (number)[];
@@ -1476,7 +1458,7 @@ export interface TextDefaultPlural {
   get paragraphBorderTint(): (number)[];
   set paragraphBorderTint(value: number);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph stroke. */
-  get paragraphBorderColor(): (Swatch)[];
+  get paragraphBorderColor(): (Swatch | string)[];
   set paragraphBorderColor(value: Swatch | string);
   /** If true, the paragraph border gap will overprint. Note: Valid only when border type is not solid. */
   get paragraphBorderGapOverprint(): (boolean)[];
@@ -1485,10 +1467,10 @@ export interface TextDefaultPlural {
   get paragraphBorderGapTint(): (number)[];
   set paragraphBorderGapTint(value: number);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph border gap. Note: Valid only when the border type is not solid. */
-  get paragraphBorderGapColor(): (Swatch)[];
+  get paragraphBorderGapColor(): (Swatch | string)[];
   set paragraphBorderGapColor(value: Swatch | string);
   /** The type of the border for the paragraph. */
-  get paragraphBorderType(): (StrokeStyle)[];
+  get paragraphBorderType(): (StrokeStyle | string)[];
   set paragraphBorderType(value: StrokeStyle | string);
   /** The left line weight of the border of paragraph. */
   get paragraphBorderLeftLineWeight(): (number)[];
@@ -1712,10 +1694,10 @@ export interface TextDefaultPlural {
   get ruleAboveWidth(): (RuleWidth)[];
   set ruleAboveWidth(value: RuleWidth);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule above. */
-  get ruleAboveColor(): (Swatch)[];
+  get ruleAboveColor(): (Swatch | string)[];
   set ruleAboveColor(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule above. Note: Valid only when the paragraph rule above type is not solid. */
-  get ruleAboveGapColor(): (Swatch)[];
+  get ruleAboveGapColor(): (Swatch | string)[];
   set ruleAboveGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule. (Range: 0 to 100) Note: Valid only when the rule above type is not solid. */
   get ruleAboveGapTint(): (number)[];
@@ -1724,7 +1706,7 @@ export interface TextDefaultPlural {
   get ruleAboveGapOverprint(): (boolean)[];
   set ruleAboveGapOverprint(value: boolean);
   /** The stroke type of the rule above the paragraph. */
-  get ruleAboveType(): (StrokeStyle)[];
+  get ruleAboveType(): (StrokeStyle | string)[];
   set ruleAboveType(value: StrokeStyle | string);
   /** If true, applies a paragraph rule below. */
   get ruleBelow(): (boolean)[];
@@ -1748,16 +1730,16 @@ export interface TextDefaultPlural {
   get ruleBelowWidth(): (RuleWidth)[];
   set ruleBelowWidth(value: RuleWidth);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule below. */
-  get ruleBelowColor(): (Swatch)[];
+  get ruleBelowColor(): (Swatch | string)[];
   set ruleBelowColor(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule below. Note: Valid only when the paragraph rule below type is not solid. */
-  get ruleBelowGapColor(): (Swatch)[];
+  get ruleBelowGapColor(): (Swatch | string)[];
   set ruleBelowGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule below. (Range: 0 to 100) Note: Valid only when the paragraph rule below type is not solid. */
   get ruleBelowGapTint(): (number)[];
   set ruleBelowGapTint(value: number);
   /** The stroke type of the rule below the paragraph. */
-  get ruleBelowType(): (StrokeStyle)[];
+  get ruleBelowType(): (StrokeStyle | string)[];
   set ruleBelowType(value: StrokeStyle | string);
   /** If true, allows hyphenation of capitalized words. */
   get hyphenateCapitalizedWords(): (boolean)[];
@@ -1931,7 +1913,7 @@ export interface TextDefaultPlural {
   get tabList(): (object[])[];
   set tabList(value: PropertiesSetter<TabStop>[]);
   /** The named grid in use. */
-  get appliedNamedGrid(): (NamedGrid)[];
+  get appliedNamedGrid(): (NamedGrid | null)[];
   set appliedNamedGrid(value: NamedGrid);
   /** If true, aligns only the first line to the frame grid or baseline grid. If false, aligns all lines to the grid. */
   get gridAlignFirstLineOnly(): (boolean)[];
@@ -2012,10 +1994,10 @@ export interface TextDefaultPlural {
   get tatechuyokoYOffset(): (number)[];
   set tatechuyokoYOffset(value: number);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of kenten characters. */
-  get kentenFillColor(): (Swatch)[];
+  get kentenFillColor(): (Swatch | string)[];
   set kentenFillColor(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of kenten characters. */
-  get kentenStrokeColor(): (Swatch)[];
+  get kentenStrokeColor(): (Swatch | string)[];
   set kentenStrokeColor(value: Swatch | string);
   /** The fill tint (as a percentage) of kenten characters. (Range: 0 to 100) */
   get kentenTint(): (number)[];
@@ -2045,7 +2027,7 @@ export interface TextDefaultPlural {
   get kentenPosition(): (RubyKentenPosition)[];
   set kentenPosition(value: RubyKentenPosition);
   /** The font to use for kenten characters. */
-  get kentenFont(): (Font)[];
+  get kentenFont(): (Font | null | string)[];
   set kentenFont(value: Font | string);
   /** The font style of kenten characters. */
   get kentenFontStyle(): (string | NothingEnum.NOTHING)[];
@@ -2066,10 +2048,10 @@ export interface TextDefaultPlural {
   get kentenCharacterSet(): (KentenCharacterSet)[];
   set kentenCharacterSet(value: KentenCharacterSet);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of ruby characters. */
-  get rubyFill(): (Swatch)[];
+  get rubyFill(): (Swatch | string)[];
   set rubyFill(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of ruby characters. */
-  get rubyStroke(): (Swatch)[];
+  get rubyStroke(): (Swatch | string)[];
   set rubyStroke(value: Swatch | string);
   /** The tint (as a percentage) of the ruby fill color. (Range: 0 to 100) */
   get rubyTint(): (number)[];
@@ -2087,7 +2069,7 @@ export interface TextDefaultPlural {
   get rubyStrokeTint(): (number)[];
   set rubyStrokeTint(value: number);
   /** The font applied to ruby characters. */
-  get rubyFont(): (Font)[];
+  get rubyFont(): (Font | null | string)[];
   set rubyFont(value: Font | string);
   /** The font style of ruby characters. */
   get rubyFontStyle(): (string | NothingEnum.NOTHING)[];
@@ -2198,10 +2180,10 @@ export interface TextDefaultPlural {
   get bulletsAndNumberingListType(): (ListType)[];
   set bulletsAndNumberingListType(value: ListType);
   /** The character style to be used for the text after string. */
-  get bulletsCharacterStyle(): (CharacterStyle)[];
+  get bulletsCharacterStyle(): (CharacterStyle | string)[];
   set bulletsCharacterStyle(value: CharacterStyle | string);
   /** The character style to be used for the number string. */
-  get numberingCharacterStyle(): (CharacterStyle)[];
+  get numberingCharacterStyle(): (CharacterStyle | string)[];
   set numberingCharacterStyle(value: CharacterStyle | string);
   /** The number string expression for numbering. */
   get numberingExpression(): (string)[];
@@ -2210,7 +2192,7 @@ export interface TextDefaultPlural {
   get bulletsTextAfter(): (string)[];
   set bulletsTextAfter(value: string);
   /** The list to be part of. */
-  get appliedNumberingList(): (NumberingList)[];
+  get appliedNumberingList(): (NumberingList | string)[];
   set appliedNumberingList(value: NumberingList | string);
   /** The level of the paragraph. */
   get numberingLevel(): (number)[];

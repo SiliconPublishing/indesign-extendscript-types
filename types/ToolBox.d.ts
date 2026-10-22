@@ -1,6 +1,7 @@
 /**
  * ToolBox.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -15,9 +16,6 @@ import type { File } from './_base/Types';
  * drawing/selection tool.
  */
 export interface ToolBox<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'ToolBox';
-
   /** Resolves the proxy into the individual {@link ToolBox} objects it stands for. */
   getElements(): ToolBox<'single'>[];
 
@@ -28,7 +26,7 @@ export interface ToolBox<M extends Mode = 'single'> extends EventTargetDOMObject
   readonly currentToolHint: Read<M, string>;
 
   /** The icon resource file of the currently active tool. */
-  get currentToolIconFile(): Read<M, Promise<File>>;
+  get currentToolIconFile(): Read<M, File>;
 
   /** The currently active {@link UITools tool}. */
   get currentTool(): Read<M, UITools>;

@@ -1,6 +1,7 @@
 /**
  * CompositeFontEntry.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -17,9 +18,6 @@ export interface CompositeFontEntry<M extends Mode = 'single'>
   extends LabelableEventDOMObject<CompositeFont, M>,
     IndexedDOMObject<CompositeFont, M>,
     NamableDOMObject<CompositeFont, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'CompositeFontEntry';
-
   /** Resolves the proxy into the individual {@link CompositeFontEntry} objects it stands for. */
   getElements(): CompositeFontEntry<'single'>[];
 
@@ -30,7 +28,7 @@ export interface CompositeFontEntry<M extends Mode = 'single'>
   readonly locked: Read<M, boolean>;
 
   /** The font applied to this entry. Accepts a {@link Font} object or its family name. */
-  get appliedFont(): Read<M, Font>;
+  get appliedFont(): Read<M, Font | string>;
   set appliedFont(value: Font | string);
 
   /** The name of the font style applied to this entry. */

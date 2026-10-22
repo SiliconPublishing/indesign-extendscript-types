@@ -1,10 +1,11 @@
 /**
  * EpubFixedLayoutSpreadControl.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __EpubFixedLayoutSpreadControl: unique symbol;
 
 
 interface EpubFixedLayoutSpreadControl extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<EpubFixedLayoutSpreadControl>): boolean;
-
   /**
    * @internal **WARNING:** `__EpubFixedLayoutSpreadControl` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const EpubFixedLayoutSpreadControl: typeof Enumeration & {
    */
   readonly spreadsBasedOnDoc: EpubFixedLayoutSpreadControl_SPREADS_BASED_ON_DOC;
   /**
-   * Spreads based on document.
-   */
-  readonly spreadsbasedondoc: EpubFixedLayoutSpreadControl_SPREADS_BASED_ON_DOC;
-
-  /**
    * Physical spreads.
    */
   readonly PHYSICAL_SPREADS: EpubFixedLayoutSpreadControl_PHYSICAL_SPREADS;
@@ -130,11 +123,6 @@ export declare const EpubFixedLayoutSpreadControl: typeof Enumeration & {
    * Physical spreads.
    */
   readonly physicalSpreads: EpubFixedLayoutSpreadControl_PHYSICAL_SPREADS;
-  /**
-   * Physical spreads.
-   */
-  readonly physicalspreads: EpubFixedLayoutSpreadControl_PHYSICAL_SPREADS;
-
   /**
    * Synthetic spreads.
    */
@@ -144,11 +132,6 @@ export declare const EpubFixedLayoutSpreadControl: typeof Enumeration & {
    */
   readonly syntheticSpreads: EpubFixedLayoutSpreadControl_SYNTHETIC_SPREADS;
   /**
-   * Synthetic spreads.
-   */
-  readonly syntheticspreads: EpubFixedLayoutSpreadControl_SYNTHETIC_SPREADS;
-
-  /**
    * No spreads.
    */
   readonly NO_SPREADS: EpubFixedLayoutSpreadControl_NO_SPREADS;
@@ -156,9 +139,4 @@ export declare const EpubFixedLayoutSpreadControl: typeof Enumeration & {
    * No spreads.
    */
   readonly noSpreads: EpubFixedLayoutSpreadControl_NO_SPREADS;
-  /**
-   * No spreads.
-   */
-  readonly nospreads: EpubFixedLayoutSpreadControl_NO_SPREADS;
-
 }

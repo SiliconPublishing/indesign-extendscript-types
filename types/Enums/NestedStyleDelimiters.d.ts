@@ -1,10 +1,11 @@
 /**
  * NestedStyleDelimiters.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __NestedStyleDelimiters: unique symbol;
 
 
 interface NestedStyleDelimiters extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<NestedStyleDelimiters>): boolean;
-
   /**
    * @internal **WARNING:** `__NestedStyleDelimiters` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -343,11 +341,6 @@ export declare const NestedStyleDelimiters: typeof Enumeration & {
    */
   readonly anyWord: NestedStyleDelimiters_ANY_WORD;
   /**
-   * Uses the first word or words in the paragraph as the nested style delimiter. The first word is considered all characters preceding the first space or white space character in the paragraph.
-   */
-  readonly anyword: NestedStyleDelimiters_ANY_WORD;
-
-  /**
    * Uses the first character or characters other than zero-width markers as the nested style delimiter. Zero-width markers include anchors, index markers, XML tags, and so on.
    */
   readonly ANY_CHARACTER: NestedStyleDelimiters_ANY_CHARACTER;
@@ -355,11 +348,6 @@ export declare const NestedStyleDelimiters: typeof Enumeration & {
    * Uses the first character or characters other than zero-width markers as the nested style delimiter. Zero-width markers include anchors, index markers, XML tags, and so on.
    */
   readonly anyCharacter: NestedStyleDelimiters_ANY_CHARACTER;
-  /**
-   * Uses the first character or characters other than zero-width markers as the nested style delimiter. Zero-width markers include anchors, index markers, XML tags, and so on.
-   */
-  readonly anycharacter: NestedStyleDelimiters_ANY_CHARACTER;
-
   /**
    * Uses the first alpha character or characters as the nested style delimiter. Note: To specify the number of letters, see repetition.
    */
@@ -396,11 +384,6 @@ export declare const NestedStyleDelimiters: typeof Enumeration & {
    */
   readonly inlineGraphic: NestedStyleDelimiters_INLINE_GRAPHIC;
   /**
-   * Uses the first inline graphic as the nested style delimiter.
-   */
-  readonly inlinegraphic: NestedStyleDelimiters_INLINE_GRAPHIC;
-
-  /**
    * Uses the dropcap as the nested style delimiter.
    */
   readonly DROPCAP: NestedStyleDelimiters_DROPCAP;
@@ -418,11 +401,6 @@ export declare const NestedStyleDelimiters: typeof Enumeration & {
    */
   readonly forcedLineBreak: NestedStyleDelimiters_FORCED_LINE_BREAK;
   /**
-   * Uses the first forced line break as the nested style delimiter.
-   */
-  readonly forcedlinebreak: NestedStyleDelimiters_FORCED_LINE_BREAK;
-
-  /**
    * Uses the inserted end nested style here character as the nested style delimiter.
    */
   readonly END_NESTED_STYLE: NestedStyleDelimiters_END_NESTED_STYLE;
@@ -430,11 +408,6 @@ export declare const NestedStyleDelimiters: typeof Enumeration & {
    * Uses the inserted end nested style here character as the nested style delimiter.
    */
   readonly endNestedStyle: NestedStyleDelimiters_END_NESTED_STYLE;
-  /**
-   * Uses the inserted end nested style here character as the nested style delimiter.
-   */
-  readonly endnestedstyle: NestedStyleDelimiters_END_NESTED_STYLE;
-
   /**
    * Uses the first indent-to-here tab character as the nested style delimiter.
    *
@@ -452,15 +425,6 @@ export declare const NestedStyleDelimiters: typeof Enumeration & {
    */
   readonly indentHereTab: NestedStyleDelimiters_INDENT_HERE_TAB;
   /**
-   * Uses the first indent-to-here tab character as the nested style delimiter.
-   *
-   * Note: Does not use the first indent-to-here tab stop. If no actual indent-to-here tab
-   * character has been inserted in the paragraph, the nested style is applied through the end
-   * of the paragraph.
-   */
-  readonly indentheretab: NestedStyleDelimiters_INDENT_HERE_TAB;
-
-  /**
    * Uses the first em space as the nested style delimiter.
    */
   readonly EM_SPACE: NestedStyleDelimiters_EM_SPACE;
@@ -468,11 +432,6 @@ export declare const NestedStyleDelimiters: typeof Enumeration & {
    * Uses the first em space as the nested style delimiter.
    */
   readonly emSpace: NestedStyleDelimiters_EM_SPACE;
-  /**
-   * Uses the first em space as the nested style delimiter.
-   */
-  readonly emspace: NestedStyleDelimiters_EM_SPACE;
-
   /**
    * Uses the first en space as the nested style delimiter.
    */
@@ -482,11 +441,6 @@ export declare const NestedStyleDelimiters: typeof Enumeration & {
    */
   readonly enSpace: NestedStyleDelimiters_EN_SPACE;
   /**
-   * Uses the first en space as the nested style delimiter.
-   */
-  readonly enspace: NestedStyleDelimiters_EN_SPACE;
-
-  /**
    * Uses the first nonbreaking space as the nested style delimiter.
    */
   readonly NONBREAKING_SPACE: NestedStyleDelimiters_NONBREAKING_SPACE;
@@ -494,11 +448,6 @@ export declare const NestedStyleDelimiters: typeof Enumeration & {
    * Uses the first nonbreaking space as the nested style delimiter.
    */
   readonly nonbreakingSpace: NestedStyleDelimiters_NONBREAKING_SPACE;
-  /**
-   * Uses the first nonbreaking space as the nested style delimiter.
-   */
-  readonly nonbreakingspace: NestedStyleDelimiters_NONBREAKING_SPACE;
-
   /**
    * Uses the first automatic page number as the nested style delimiter.
    */
@@ -508,11 +457,6 @@ export declare const NestedStyleDelimiters: typeof Enumeration & {
    */
   readonly autoPageNumber: NestedStyleDelimiters_AUTO_PAGE_NUMBER;
   /**
-   * Uses the first automatic page number as the nested style delimiter.
-   */
-  readonly autopagenumber: NestedStyleDelimiters_AUTO_PAGE_NUMBER;
-
-  /**
    * Uses the first section name marker as the nested style delimiter.
    */
   readonly SECTION_MARKER: NestedStyleDelimiters_SECTION_MARKER;
@@ -520,11 +464,6 @@ export declare const NestedStyleDelimiters: typeof Enumeration & {
    * Uses the first section name marker as the nested style delimiter.
    */
   readonly sectionMarker: NestedStyleDelimiters_SECTION_MARKER;
-  /**
-   * Uses the first section name marker as the nested style delimiter.
-   */
-  readonly sectionmarker: NestedStyleDelimiters_SECTION_MARKER;
-
   /**
    * Repeat
    */

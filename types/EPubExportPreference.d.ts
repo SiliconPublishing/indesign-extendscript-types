@@ -1,6 +1,7 @@
 /**
  * EPubExportPreference.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -30,9 +31,6 @@ import type { UseSVGAsEnum } from './Enums/UseSVGAsEnum';
  * and the image, list, and layout conversion options for EPUB output.
  */
 export interface EPubExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Book | Document, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'EPubExportPreference';
-
   /** Resolves the proxy into the individual {@link EPubExportPreference} objects it stands for. */
   getElements(): EPubExportPreference<'single'>[];
 

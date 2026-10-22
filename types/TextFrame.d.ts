@@ -1,6 +1,7 @@
 /**
  * TextFrame.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -98,9 +99,6 @@ export interface TextFrame<TParent = PageItemParent, M extends Mode = 'single'>
     ShapeContainer<Character, M>,
     FormFieldContainer<Character, M>,
     EndnoteFrameContainer<Character, M> {
-  /** The object's DOM class name — reports the specific kind, such as `'EndnoteTextFrame'` when the object is a {@link EndnoteTextFrame}. */
-  readonly constructorName: 'TextFrame' | 'EndnoteTextFrame';
-
   /** Resolves the proxy into the individual {@link TextFrame} objects it stands for. */
   getElements(): TextFrame<TParent, 'single'>[];
 
@@ -186,7 +184,7 @@ export interface TextFrame<TParent = PageItemParent, M extends Mode = 'single'>
    * outgoing link.
    */
   get nextTextFrame(): Read<M, TextThreadEnd | null>;
-  set nextTextFrame(value: TextThreadEnd | NothingEnum | null);
+  set nextTextFrame(value: TextThreadEnd | NothingEnum | null | string);
 
   /**
    * Finds text matching the transliterate (character-type) find query.
@@ -257,7 +255,5 @@ export interface TextFrame<TParent = PageItemParent, M extends Mode = 'single'>
  * itself to hold a story's collected endnotes.
  */
 export interface PlainTextFrame<TParent = PageItemParent, M extends Mode = 'single'> extends TextFrame<TParent, M> {
-  /** Always `'TextFrame'` — this is the textframe case, by construction. */
-  readonly constructorName: 'TextFrame';
 }
 

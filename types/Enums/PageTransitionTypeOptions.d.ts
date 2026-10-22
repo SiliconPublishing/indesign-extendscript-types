@@ -1,10 +1,11 @@
 /**
  * PageTransitionTypeOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __PageTransitionTypeOptions: unique symbol;
 
 
 interface PageTransitionTypeOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<PageTransitionTypeOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__PageTransitionTypeOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -271,11 +269,6 @@ export declare const PageTransitionTypeOptions: typeof Enumeration & {
    */
   readonly blindsTransition: PageTransitionTypeOptions_BLINDS_TRANSITION;
   /**
-   * The Blinds page transition.
-   */
-  readonly blindstransition: PageTransitionTypeOptions_BLINDS_TRANSITION;
-
-  /**
    * The Box page transition.
    */
   readonly BOX_TRANSITION: PageTransitionTypeOptions_BOX_TRANSITION;
@@ -283,11 +276,6 @@ export declare const PageTransitionTypeOptions: typeof Enumeration & {
    * The Box page transition.
    */
   readonly boxTransition: PageTransitionTypeOptions_BOX_TRANSITION;
-  /**
-   * The Box page transition.
-   */
-  readonly boxtransition: PageTransitionTypeOptions_BOX_TRANSITION;
-
   /**
    * The Comb page transition. 
    */
@@ -297,11 +285,6 @@ export declare const PageTransitionTypeOptions: typeof Enumeration & {
    */
   readonly combTransition: PageTransitionTypeOptions_COMB_TRANSITION;
   /**
-   * The Comb page transition. 
-   */
-  readonly combtransition: PageTransitionTypeOptions_COMB_TRANSITION;
-
-  /**
    * The Cover page transition. 
    */
   readonly COVER_TRANSITION: PageTransitionTypeOptions_COVER_TRANSITION;
@@ -309,11 +292,6 @@ export declare const PageTransitionTypeOptions: typeof Enumeration & {
    * The Cover page transition. 
    */
   readonly coverTransition: PageTransitionTypeOptions_COVER_TRANSITION;
-  /**
-   * The Cover page transition. 
-   */
-  readonly covertransition: PageTransitionTypeOptions_COVER_TRANSITION;
-
   /**
    * The Dissolve page transition. 
    */
@@ -323,11 +301,6 @@ export declare const PageTransitionTypeOptions: typeof Enumeration & {
    */
   readonly dissolveTransition: PageTransitionTypeOptions_DISSOLVE_TRANSITION;
   /**
-   * The Dissolve page transition. 
-   */
-  readonly dissolvetransition: PageTransitionTypeOptions_DISSOLVE_TRANSITION;
-
-  /**
    * The Fade page transition. 
    */
   readonly FADE_TRANSITION: PageTransitionTypeOptions_FADE_TRANSITION;
@@ -335,11 +308,6 @@ export declare const PageTransitionTypeOptions: typeof Enumeration & {
    * The Fade page transition. 
    */
   readonly fadeTransition: PageTransitionTypeOptions_FADE_TRANSITION;
-  /**
-   * The Fade page transition. 
-   */
-  readonly fadetransition: PageTransitionTypeOptions_FADE_TRANSITION;
-
   /**
    * The Push page transition. 
    */
@@ -349,11 +317,6 @@ export declare const PageTransitionTypeOptions: typeof Enumeration & {
    */
   readonly pushTransition: PageTransitionTypeOptions_PUSH_TRANSITION;
   /**
-   * The Push page transition. 
-   */
-  readonly pushtransition: PageTransitionTypeOptions_PUSH_TRANSITION;
-
-  /**
    * The Split page transition. 
    */
   readonly SPLIT_TRANSITION: PageTransitionTypeOptions_SPLIT_TRANSITION;
@@ -361,11 +324,6 @@ export declare const PageTransitionTypeOptions: typeof Enumeration & {
    * The Split page transition. 
    */
   readonly splitTransition: PageTransitionTypeOptions_SPLIT_TRANSITION;
-  /**
-   * The Split page transition. 
-   */
-  readonly splittransition: PageTransitionTypeOptions_SPLIT_TRANSITION;
-
   /**
    * The Uncover page transition. 
    */
@@ -375,11 +333,6 @@ export declare const PageTransitionTypeOptions: typeof Enumeration & {
    */
   readonly uncoverTransition: PageTransitionTypeOptions_UNCOVER_TRANSITION;
   /**
-   * The Uncover page transition. 
-   */
-  readonly uncovertransition: PageTransitionTypeOptions_UNCOVER_TRANSITION;
-
-  /**
    * The Wipe page transition. 
    */
   readonly WIPE_TRANSITION: PageTransitionTypeOptions_WIPE_TRANSITION;
@@ -387,11 +340,6 @@ export declare const PageTransitionTypeOptions: typeof Enumeration & {
    * The Wipe page transition. 
    */
   readonly wipeTransition: PageTransitionTypeOptions_WIPE_TRANSITION;
-  /**
-   * The Wipe page transition. 
-   */
-  readonly wipetransition: PageTransitionTypeOptions_WIPE_TRANSITION;
-
   /**
    * The Zoom In page transition. 
    */
@@ -401,11 +349,6 @@ export declare const PageTransitionTypeOptions: typeof Enumeration & {
    */
   readonly zoomInTransition: PageTransitionTypeOptions_ZOOM_IN_TRANSITION;
   /**
-   * The Zoom In page transition. 
-   */
-  readonly zoomintransition: PageTransitionTypeOptions_ZOOM_IN_TRANSITION;
-
-  /**
    * The Zoom Out page transition. 
    */
   readonly ZOOM_OUT_TRANSITION: PageTransitionTypeOptions_ZOOM_OUT_TRANSITION;
@@ -413,9 +356,4 @@ export declare const PageTransitionTypeOptions: typeof Enumeration & {
    * The Zoom Out page transition. 
    */
   readonly zoomOutTransition: PageTransitionTypeOptions_ZOOM_OUT_TRANSITION;
-  /**
-   * The Zoom Out page transition. 
-   */
-  readonly zoomouttransition: PageTransitionTypeOptions_ZOOM_OUT_TRANSITION;
-
 }

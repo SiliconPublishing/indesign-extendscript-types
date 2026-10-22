@@ -1,10 +1,11 @@
 /**
  * KinsokuSet.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __KinsokuSet: unique symbol;
 
 
 interface KinsokuSet extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<KinsokuSet>): boolean;
-
   /**
    * @internal **WARNING:** `__KinsokuSet` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -159,11 +157,6 @@ export declare const KinsokuSet: typeof Enumeration & {
    */
   readonly hardKinsoku: KinsokuSet_HARD_KINSOKU;
   /**
-   * Uses the hard or maximum kinsoku set, which includes all Japanese characters that should not begin or end a line. 
-   */
-  readonly hardkinsoku: KinsokuSet_HARD_KINSOKU;
-
-  /**
    * Uses the soft or weak kinsoku set, which omits from the hard kinsoku set long vowel symbols and small hiragana and katakana characters.
    */
   readonly SOFT_KINSOKU: KinsokuSet_SOFT_KINSOKU;
@@ -171,11 +164,6 @@ export declare const KinsokuSet: typeof Enumeration & {
    * Uses the soft or weak kinsoku set, which omits from the hard kinsoku set long vowel symbols and small hiragana and katakana characters.
    */
   readonly softKinsoku: KinsokuSet_SOFT_KINSOKU;
-  /**
-   * Uses the soft or weak kinsoku set, which omits from the hard kinsoku set long vowel symbols and small hiragana and katakana characters.
-   */
-  readonly softkinsoku: KinsokuSet_SOFT_KINSOKU;
-
   /**
    * Uses the Korean kinsoku set.
    */
@@ -185,11 +173,6 @@ export declare const KinsokuSet: typeof Enumeration & {
    */
   readonly koreanKinsoku: KinsokuSet_KOREAN_KINSOKU;
   /**
-   * Uses the Korean kinsoku set.
-   */
-  readonly koreankinsoku: KinsokuSet_KOREAN_KINSOKU;
-
-  /**
    * Uses the simplified Chinese kinsoku set.
    */
   readonly SIMPLIFIED_CHINESE_KINSOKU: KinsokuSet_SIMPLIFIED_CHINESE_KINSOKU;
@@ -198,11 +181,6 @@ export declare const KinsokuSet: typeof Enumeration & {
    */
   readonly simplifiedChineseKinsoku: KinsokuSet_SIMPLIFIED_CHINESE_KINSOKU;
   /**
-   * Uses the simplified Chinese kinsoku set.
-   */
-  readonly simplifiedchinesekinsoku: KinsokuSet_SIMPLIFIED_CHINESE_KINSOKU;
-
-  /**
    * Uses the traditional Chinese kinsoku set.
    */
   readonly TRADITIONAL_CHINESE_KINSOKU: KinsokuSet_TRADITIONAL_CHINESE_KINSOKU;
@@ -210,9 +188,4 @@ export declare const KinsokuSet: typeof Enumeration & {
    * Uses the traditional Chinese kinsoku set.
    */
   readonly traditionalChineseKinsoku: KinsokuSet_TRADITIONAL_CHINESE_KINSOKU;
-  /**
-   * Uses the traditional Chinese kinsoku set.
-   */
-  readonly traditionalchinesekinsoku: KinsokuSet_TRADITIONAL_CHINESE_KINSOKU;
-
 }

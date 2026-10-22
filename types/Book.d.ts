@@ -1,6 +1,7 @@
 /**
  * Book.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -31,9 +32,6 @@ import type { File, Folder, FilePath, FolderPath } from './_base/Types';
 export interface Book<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Application, M>,
     IndexedDOMObject<Application, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'Book';
-
   /** Resolves the proxy into the individual {@link Book} objects it stands for. */
   getElements(): Book<'single'>[];
 
@@ -41,10 +39,10 @@ export interface Book<M extends Mode = 'single'>
   readonly name: Read<M, string>;
 
   /** The book's own file, as a {@link File} entry — reach the path with `.nativePath`. Throws if the book has never been saved; check {@link saved} first. */
-  readonly fullName: Read<M, Promise<File>>;
+  readonly fullName: Read<M, File>;
 
   /** The folder containing the book file, as a {@link Folder} entry — reach the path with `.nativePath`. Not the book file itself; see {@link fullName}. */
-  readonly filePath: Read<M, Promise<Folder>>;
+  readonly filePath: Read<M, Folder>;
 
   /** If `true`, the Book has been modified since it was last saved. */
   readonly modified: Read<M, boolean>;

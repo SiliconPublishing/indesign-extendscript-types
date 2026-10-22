@@ -1,10 +1,11 @@
 /**
  * PrintLayerOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __PrintLayerOptions: unique symbol;
 
 
 interface PrintLayerOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<PrintLayerOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__PrintLayerOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const PrintLayerOptions: typeof Enumeration & {
    */
   readonly allLayers: PrintLayerOptions_ALL_LAYERS;
   /**
-   * Prints all layers.
-   */
-  readonly alllayers: PrintLayerOptions_ALL_LAYERS;
-
-  /**
    * Prints all visible layers.
    */
   readonly VISIBLE_LAYERS: PrintLayerOptions_VISIBLE_LAYERS;
@@ -115,11 +108,6 @@ export declare const PrintLayerOptions: typeof Enumeration & {
    */
   readonly visibleLayers: PrintLayerOptions_VISIBLE_LAYERS;
   /**
-   * Prints all visible layers.
-   */
-  readonly visiblelayers: PrintLayerOptions_VISIBLE_LAYERS;
-
-  /**
    * Prints only layers that are both visible and printable. 
    */
   readonly VISIBLE_PRINTABLE_LAYERS: PrintLayerOptions_VISIBLE_PRINTABLE_LAYERS;
@@ -127,9 +115,4 @@ export declare const PrintLayerOptions: typeof Enumeration & {
    * Prints only layers that are both visible and printable. 
    */
   readonly visiblePrintableLayers: PrintLayerOptions_VISIBLE_PRINTABLE_LAYERS;
-  /**
-   * Prints only layers that are both visible and printable. 
-   */
-  readonly visibleprintablelayers: PrintLayerOptions_VISIBLE_PRINTABLE_LAYERS;
-
 }

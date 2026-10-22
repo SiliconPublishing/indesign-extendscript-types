@@ -1,10 +1,11 @@
 /**
  * UndoModes.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __UndoModes: unique symbol;
 
 
 interface UndoModes extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<UndoModes>): boolean;
-
   /**
    * @internal **WARNING:** `__UndoModes` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const UndoModes: typeof Enumeration & {
    */
   readonly scriptRequest: UndoModes_SCRIPT_REQUEST;
   /**
-   * Undo each script request as a separate step.
-   */
-  readonly scriptrequest: UndoModes_SCRIPT_REQUEST;
-
-  /**
    * Undo the entire script as a single step.
    */
   readonly ENTIRE_SCRIPT: UndoModes_ENTIRE_SCRIPT;
@@ -130,11 +123,6 @@ export declare const UndoModes: typeof Enumeration & {
    * Undo the entire script as a single step.
    */
   readonly entireScript: UndoModes_ENTIRE_SCRIPT;
-  /**
-   * Undo the entire script as a single step.
-   */
-  readonly entirescript: UndoModes_ENTIRE_SCRIPT;
-
   /**
    * Automatically undo the entire script as part of the previous step.
    */
@@ -144,11 +132,6 @@ export declare const UndoModes: typeof Enumeration & {
    */
   readonly autoUndo: UndoModes_AUTO_UNDO;
   /**
-   * Automatically undo the entire script as part of the previous step.
-   */
-  readonly autoundo: UndoModes_AUTO_UNDO;
-
-  /**
    * Fast undo the entire script as a single step.
    */
   readonly FAST_ENTIRE_SCRIPT: UndoModes_FAST_ENTIRE_SCRIPT;
@@ -156,9 +139,4 @@ export declare const UndoModes: typeof Enumeration & {
    * Fast undo the entire script as a single step.
    */
   readonly fastEntireScript: UndoModes_FAST_ENTIRE_SCRIPT;
-  /**
-   * Fast undo the entire script as a single step.
-   */
-  readonly fastentirescript: UndoModes_FAST_ENTIRE_SCRIPT;
-
 }

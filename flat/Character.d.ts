@@ -1,6 +1,7 @@
 /**
  * Character.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -66,141 +67,99 @@ import type { TextPath } from './TextPath';
 import type { TextVariableInstances } from './TextVariableInstances';
 import type { Tint } from './Tint';
 import type { XMLItem } from './XMLItem';
-import type { AdornmentOverprint } from './Enums/AdornmentOverprint';
-import type { AlternateGlyphForms } from './Enums/AlternateGlyphForms';
-import type { AnyGraphic } from './_base/Unions';
-import type { AnyPageItem } from './_base/Unions';
-import type { ChangecaseMode } from './Enums/ChangecaseMode';
-import type { CharacterAlignment } from './Enums/CharacterAlignment';
-import type { CharacterDirectionOptions } from './Enums/CharacterDirectionOptions';
-import type { Characters } from './Characters';
-import type { ColorSpace } from './Enums/ColorSpace';
-import type { ComposerName } from './_base/Types';
-import type { DiacriticPositionOptions } from './Enums/DiacriticPositionOptions';
-import type { EndCap } from './Enums/EndCap';
-import type { EndJoin } from './Enums/EndJoin';
-import type { Event } from './Event';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { ExportFormat } from './Enums/ExportFormat';
+import type { Event } from './Event';
 import type { FilePath } from './_base/Types';
-import type { GridAlignment } from './Enums/GridAlignment';
-import type { HyperlinkTextSource } from './HyperlinkTextSource';
-import type { HyphenationStyleEnum } from './Enums/HyphenationStyleEnum';
-import type { InDesignEventMap } from './_base/Events';
-import type { InsertionPoints } from './InsertionPoints';
-import type { Justification } from './Enums/Justification';
-import type { KashidasOptions } from './Enums/KashidasOptions';
-import type { KentenAlignment } from './Enums/KentenAlignment';
-import type { KentenCharacter } from './Enums/KentenCharacter';
-import type { KentenCharacterSet } from './Enums/KentenCharacterSet';
-import type { KerningMethodName } from './_base/Types';
-import type { KinsokuHangTypes } from './Enums/KinsokuHangTypes';
-import type { KinsokuSet } from './Enums/KinsokuSet';
-import type { KinsokuTable } from './KinsokuTable';
-import type { KinsokuType } from './Enums/KinsokuType';
-import type { LeadingModel } from './Enums/LeadingModel';
-import type { Lines } from './Lines';
-import type { ListAlignment } from './Enums/ListAlignment';
-import type { ListType } from './Enums/ListType';
-import type { LocationOptions } from './Enums/LocationOptions';
-import type { MeasurementValue } from './_base/Types';
-import type { MojikumiTable } from './MojikumiTable';
-import type { MojikumiTableDefaults } from './Enums/MojikumiTableDefaults';
-import type { NestedGrepStyles } from './NestedGrepStyles';
-import type { NestedLineStyles } from './NestedLineStyles';
-import type { NestedStyles } from './NestedStyles';
-import type { NumberingList } from './NumberingList';
-import type { OTFFigureStyle } from './Enums/OTFFigureStyle';
-import type { OutlineJoin } from './Enums/OutlineJoin';
-import type { OverrideType } from './Enums/OverrideType';
-import type { PDFExportPreset } from './PDFExportPreset';
-import type { PageItemUnion } from './_base/Unions';
-import type { PageItems } from './PageItems';
-import type { ParagraphBorderBottomOriginEnum } from './Enums/ParagraphBorderBottomOriginEnum';
-import type { ParagraphBorderEnum } from './Enums/ParagraphBorderEnum';
-import type { ParagraphBorderTopOriginEnum } from './Enums/ParagraphBorderTopOriginEnum';
-import type { ParagraphDirectionOptions } from './Enums/ParagraphDirectionOptions';
-import type { ParagraphShadingBottomOriginEnum } from './Enums/ParagraphShadingBottomOriginEnum';
-import type { ParagraphShadingTopOriginEnum } from './Enums/ParagraphShadingTopOriginEnum';
-import type { ParagraphShadingWidthEnum } from './Enums/ParagraphShadingWidthEnum';
-import type { Paragraphs } from './Paragraphs';
-import type { Position } from './Enums/Position';
-import type { Preferences } from './Preferences';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
-import type { RangeSortOrder } from './Enums/RangeSortOrder';
+import type { MeasurementValue } from './_base/Types';
+import type { KerningMethodName } from './_base/Types';
+import type { Position } from './Enums/Position';
+import type { OTFFigureStyle } from './Enums/OTFFigureStyle';
+import type { StrokeStyle } from './StrokeStyle';
+import type { CharacterDirectionOptions } from './Enums/CharacterDirectionOptions';
+import type { KashidasOptions } from './Enums/KashidasOptions';
+import type { DiacriticPositionOptions } from './Enums/DiacriticPositionOptions';
+import type { CharacterAlignment } from './Enums/CharacterAlignment';
+import type { AdornmentOverprint } from './Enums/AdornmentOverprint';
+import type { KentenCharacter } from './Enums/KentenCharacter';
+import type { KentenAlignment } from './Enums/KentenAlignment';
 import type { RubyKentenPosition } from './Enums/RubyKentenPosition';
-import type { RubyOverhang } from './Enums/RubyOverhang';
+import type { NothingEnum } from './Enums/NothingEnum';
+import type { KentenCharacterSet } from './Enums/KentenCharacterSet';
 import type { RubyParentSpacing } from './Enums/RubyParentSpacing';
-import type { RuleWidth } from './Enums/RuleWidth';
-import type { SelectionOptions } from './Enums/SelectionOptions';
-import type { SingleWordJustification } from './Enums/SingleWordJustification';
+import type { RubyOverhang } from './Enums/RubyOverhang';
+import type { AlternateGlyphForms } from './Enums/AlternateGlyphForms';
+import type { NestedLineStyles } from './NestedLineStyles';
+import type { NestedGrepStyles } from './NestedGrepStyles';
+import type { NestedStyles } from './NestedStyles';
+import type { TabStops } from './TabStops';
+import type { Preferences } from './Preferences';
+import type { ParagraphShadingWidthEnum } from './Enums/ParagraphShadingWidthEnum';
+import type { ParagraphShadingTopOriginEnum } from './Enums/ParagraphShadingTopOriginEnum';
+import type { ParagraphShadingBottomOriginEnum } from './Enums/ParagraphShadingBottomOriginEnum';
+import type { EndCap } from './Enums/EndCap';
+import type { EndJoin } from './Enums/EndJoin';
+import type { ParagraphBorderEnum } from './Enums/ParagraphBorderEnum';
+import type { ParagraphBorderTopOriginEnum } from './Enums/ParagraphBorderTopOriginEnum';
+import type { ParagraphBorderBottomOriginEnum } from './Enums/ParagraphBorderBottomOriginEnum';
+import type { HyphenationStyleEnum } from './Enums/HyphenationStyleEnum';
 import type { Spacing } from './Enums/Spacing';
+import type { Justification } from './Enums/Justification';
+import type { SingleWordJustification } from './Enums/SingleWordJustification';
+import type { StartParagraph } from './Enums/StartParagraph';
+import type { ComposerName } from './_base/Types';
+import type { RuleWidth } from './Enums/RuleWidth';
 import type { SpanColumnCountOptions } from './Enums/SpanColumnCountOptions';
 import type { SpanColumnTypeOptions } from './Enums/SpanColumnTypeOptions';
-import type { StartParagraph } from './Enums/StartParagraph';
-import type { StrokeStyle } from './StrokeStyle';
-import type { StyleType } from './Enums/StyleType';
-import type { TabStops } from './TabStops';
-import type { TextColumns } from './TextColumns';
-import type { TextDuplicateReference } from './Text';
+import type { ParagraphDirectionOptions } from './Enums/ParagraphDirectionOptions';
+import type { GridAlignment } from './Enums/GridAlignment';
+import type { KinsokuTable } from './KinsokuTable';
+import type { KinsokuSet } from './Enums/KinsokuSet';
+import type { KinsokuType } from './Enums/KinsokuType';
+import type { KinsokuHangTypes } from './Enums/KinsokuHangTypes';
+import type { MojikumiTable } from './MojikumiTable';
+import type { MojikumiTableDefaults } from './Enums/MojikumiTableDefaults';
+import type { LeadingModel } from './Enums/LeadingModel';
+import type { ListType } from './Enums/ListType';
+import type { NumberingList } from './NumberingList';
+import type { ListAlignment } from './Enums/ListAlignment';
 import type { TextStrokeAlign } from './Enums/TextStrokeAlign';
-import type { TextStyleRanges } from './TextStyleRanges';
+import type { OutlineJoin } from './Enums/OutlineJoin';
 import type { Texts } from './Texts';
+import type { Characters } from './Characters';
 import type { Words } from './Words';
+import type { Lines } from './Lines';
+import type { TextColumns } from './TextColumns';
+import type { Paragraphs } from './Paragraphs';
+import type { InsertionPoints } from './InsertionPoints';
+import type { TextStyleRanges } from './TextStyleRanges';
+import type { ChangecaseMode } from './Enums/ChangecaseMode';
+import type { OverrideType } from './Enums/OverrideType';
+import type { PageItems } from './PageItems';
+import type { AnyGraphic } from './_base/Unions';
+import type { AnyPageItem } from './_base/Unions';
+import type { ColorSpace } from './Enums/ColorSpace';
+import type { StyleType } from './Enums/StyleType';
 import type { XMLElement } from './XMLElement';
+import type { LocationOptions } from './Enums/LocationOptions';
+import type { TextDuplicateReference } from './Text';
+import type { PageItemUnion } from './_base/Unions';
+import type { RangeSortOrder } from './Enums/RangeSortOrder';
+import type { HyperlinkTextSource } from './HyperlinkTextSource';
+import type { ExportFormat } from './Enums/ExportFormat';
+import type { PDFExportPreset } from './PDFExportPreset';
+import type { SelectionOptions } from './Enums/SelectionOptions';
+
 /**
  * A single character in a text range.
  */
 export interface Character<TParent = TextParent> {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: TParent;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<Character<TParent>, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<Character<TParent>, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -242,6 +201,45 @@ export interface Character<TParent = TextParent> {
     captures?: boolean,
   ): boolean;
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: TParent;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<Character<TParent>, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<Character<TParent>, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The index of the object within its containing parent.
    */
   readonly index: number;
@@ -249,7 +247,7 @@ export interface Character<TParent = TextParent> {
    * The applied font. Accepts a {@link Font} object or a font-family name as a
    * `string`; pair with {@link fontStyle} to pick a specific style.
    */
-  get appliedFont(): Font;
+  get appliedFont(): Font | string;
   set appliedFont(value: Font | string);
   /** The name of the font style. */
   get fontStyle(): string;
@@ -312,10 +310,10 @@ export interface Character<TParent = TextParent> {
   get otfSwash(): boolean;
   set otfSwash(value: boolean);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the underline stroke. */
-  get underlineColor(): Swatch;
+  get underlineColor(): Swatch | string;
   set underlineColor(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the underline stroke. Note: Valid when underline type is not solid. */
-  get underlineGapColor(): Swatch;
+  get underlineGapColor(): Swatch | string;
   set underlineGapColor(value: Swatch | string);
   /** The underline stroke tint (as a percentage). (Range: 0 to 100). */
   get underlineTint(): number;
@@ -330,7 +328,7 @@ export interface Character<TParent = TextParent> {
   get underlineGapOverprint(): boolean;
   set underlineGapOverprint(value: boolean);
   /** The stroke type of the underline stroke. */
-  get underlineType(): StrokeStyle;
+  get underlineType(): StrokeStyle | string;
   set underlineType(value: StrokeStyle | string);
   /** The amount by which to offset the underline from the text baseline. */
   get underlineOffset(): number;
@@ -339,10 +337,10 @@ export interface Character<TParent = TextParent> {
   get underlineWeight(): number;
   set underlineWeight(value: MeasurementValue);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the strikethrough stroke. */
-  get strikeThroughColor(): Swatch;
+  get strikeThroughColor(): Swatch | string;
   set strikeThroughColor(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the strikethrough stroke. */
-  get strikeThroughGapColor(): Swatch;
+  get strikeThroughGapColor(): Swatch | string;
   set strikeThroughGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the strikethrough stroke. (Range: 0 to 100). */
   get strikeThroughTint(): number;
@@ -357,7 +355,7 @@ export interface Character<TParent = TextParent> {
   get strikeThroughGapOverprint(): boolean;
   set strikeThroughGapOverprint(value: boolean);
   /** The stroke type of the strikethrough stroke. */
-  get strikeThroughType(): StrokeStyle;
+  get strikeThroughType(): StrokeStyle | string;
   set strikeThroughType(value: StrokeStyle | string);
   /** The amount by which to offset the strikethrough stroke from the text baseline. */
   get strikeThroughOffset(): number;
@@ -465,10 +463,10 @@ export interface Character<TParent = TextParent> {
   get tatechuyokoYOffset(): number;
   set tatechuyokoYOffset(value: number);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of kenten characters. */
-  get kentenFillColor(): Swatch;
+  get kentenFillColor(): Swatch | string;
   set kentenFillColor(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of kenten characters. */
-  get kentenStrokeColor(): Swatch;
+  get kentenStrokeColor(): Swatch | string;
   set kentenStrokeColor(value: Swatch | string);
   /** The fill tint (as a percentage) of kenten characters. (Range: 0 to 100). */
   get kentenTint(): number;
@@ -498,10 +496,10 @@ export interface Character<TParent = TextParent> {
   get kentenPosition(): RubyKentenPosition;
   set kentenPosition(value: RubyKentenPosition);
   /** The font to use for kenten characters. */
-  get kentenFont(): Font;
+  get kentenFont(): Font | null | string;
   set kentenFont(value: Font | string);
   /** The font style of kenten characters. */
-  get kentenFontStyle(): string;
+  get kentenFontStyle(): string | NothingEnum.NOTHING;
   set kentenFontStyle(value: string);
   /** The size (in points) of kenten characters. */
   get kentenFontSize(): number;
@@ -519,10 +517,10 @@ export interface Character<TParent = TextParent> {
   get kentenCharacterSet(): KentenCharacterSet;
   set kentenCharacterSet(value: KentenCharacterSet);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of ruby characters. */
-  get rubyFill(): Swatch;
+  get rubyFill(): Swatch | string;
   set rubyFill(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of ruby characters. */
-  get rubyStroke(): Swatch;
+  get rubyStroke(): Swatch | string;
   set rubyStroke(value: Swatch | string);
   /** The tint (as a percentage) of the ruby fill color. (Range: 0 to 100). */
   get rubyTint(): number;
@@ -540,10 +538,10 @@ export interface Character<TParent = TextParent> {
   get rubyStrokeTint(): number;
   set rubyStrokeTint(value: number);
   /** The font applied to ruby characters. */
-  get rubyFont(): Font;
+  get rubyFont(): Font | null | string;
   set rubyFont(value: Font | string);
   /** The font style of ruby characters. */
-  get rubyFontStyle(): string;
+  get rubyFontStyle(): string | NothingEnum.NOTHING;
   set rubyFontStyle(value: string);
   /** The size (in points) of ruby characters. */
   get rubyFontSize(): number;
@@ -689,7 +687,7 @@ export interface Character<TParent = TextParent> {
   get paragraphShadingTint(): number;
   set paragraphShadingTint(value: number | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph shading. */
-  get paragraphShadingColor(): Swatch;
+  get paragraphShadingColor(): Swatch | string;
   set paragraphShadingColor(value: Swatch | string | never);
   /** If true, the paragraph border is on. */
   get paragraphBorderOn(): boolean;
@@ -701,7 +699,7 @@ export interface Character<TParent = TextParent> {
   get paragraphBorderTint(): number;
   set paragraphBorderTint(value: number | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph stroke. */
-  get paragraphBorderColor(): Swatch;
+  get paragraphBorderColor(): Swatch | string;
   set paragraphBorderColor(value: Swatch | string | never);
   /** If true, the paragraph border gap will overprint. Note: Valid only when border type is not solid. */
   get paragraphBorderGapOverprint(): boolean;
@@ -710,10 +708,10 @@ export interface Character<TParent = TextParent> {
   get paragraphBorderGapTint(): number;
   set paragraphBorderGapTint(value: number | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph border gap. Note: Valid only when the border type is not solid. */
-  get paragraphBorderGapColor(): Swatch;
+  get paragraphBorderGapColor(): Swatch | string;
   set paragraphBorderGapColor(value: Swatch | string | never);
   /** The type of the border for the paragraph. */
-  get paragraphBorderType(): StrokeStyle;
+  get paragraphBorderType(): StrokeStyle | string;
   set paragraphBorderType(value: StrokeStyle | string | never);
   /** The left line weight of the border of paragraph. */
   get paragraphBorderLeftLineWeight(): number;
@@ -942,10 +940,10 @@ export interface Character<TParent = TextParent> {
   get ruleAboveWidth(): RuleWidth;
   set ruleAboveWidth(value: RuleWidth | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule above. */
-  get ruleAboveColor(): Swatch;
+  get ruleAboveColor(): Swatch | string;
   set ruleAboveColor(value: Swatch | string | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule above. Note: Valid only when the paragraph rule above type is not solid. */
-  get ruleAboveGapColor(): Swatch;
+  get ruleAboveGapColor(): Swatch | string;
   set ruleAboveGapColor(value: Swatch | string | never);
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule. (Range: 0 to 100) Note: Valid only when the rule above type is not solid. */
   get ruleAboveGapTint(): number;
@@ -954,7 +952,7 @@ export interface Character<TParent = TextParent> {
   get ruleAboveGapOverprint(): boolean;
   set ruleAboveGapOverprint(value: boolean | never);
   /** The stroke type of the rule above the paragraph. */
-  get ruleAboveType(): StrokeStyle;
+  get ruleAboveType(): StrokeStyle | string;
   set ruleAboveType(value: StrokeStyle | string | never);
   /** If true, applies a paragraph rule below. */
   get ruleBelow(): boolean;
@@ -978,16 +976,16 @@ export interface Character<TParent = TextParent> {
   get ruleBelowWidth(): RuleWidth;
   set ruleBelowWidth(value: RuleWidth | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule below. */
-  get ruleBelowColor(): Swatch;
+  get ruleBelowColor(): Swatch | string;
   set ruleBelowColor(value: Swatch | string | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule below. Note: Valid only when the paragraph rule below type is not solid. */
-  get ruleBelowGapColor(): Swatch;
+  get ruleBelowGapColor(): Swatch | string;
   set ruleBelowGapColor(value: Swatch | string | never);
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule below. (Range: 0 to 100) Note: Valid only when the paragraph rule below type is not solid. */
   get ruleBelowGapTint(): number;
   set ruleBelowGapTint(value: number | never);
   /** The stroke type of the rule below the paragraph. */
-  get ruleBelowType(): StrokeStyle;
+  get ruleBelowType(): StrokeStyle | string;
   set ruleBelowType(value: StrokeStyle | string | never);
   /** If true, allows hyphenation of capitalized words. */
   get hyphenateCapitalizedWords(): boolean;
@@ -1126,10 +1124,10 @@ export interface Character<TParent = TextParent> {
   get bulletsAndNumberingListType(): ListType;
   set bulletsAndNumberingListType(value: ListType | never);
   /** The character style to be used for the text after string. */
-  get bulletsCharacterStyle(): CharacterStyle;
+  get bulletsCharacterStyle(): CharacterStyle | string;
   set bulletsCharacterStyle(value: CharacterStyle | string | never);
   /** The character style to be used for the number string. */
-  get numberingCharacterStyle(): CharacterStyle;
+  get numberingCharacterStyle(): CharacterStyle | string;
   set numberingCharacterStyle(value: CharacterStyle | string | never);
   /** The number string expression for numbering. */
   get numberingExpression(): string;
@@ -1138,7 +1136,7 @@ export interface Character<TParent = TextParent> {
   get bulletsTextAfter(): string;
   set bulletsTextAfter(value: string | never);
   /** The list to be part of. */
-  get appliedNumberingList(): NumberingList;
+  get appliedNumberingList(): NumberingList | string;
   set appliedNumberingList(value: NumberingList | string | never);
   /** The level of the paragraph. */
   get numberingLevel(): number;
@@ -1168,66 +1166,66 @@ export interface Character<TParent = TextParent> {
   get numberingAlignment(): ListAlignment;
   set numberingAlignment(value: ListAlignment | never);
   /** Horizontal scaling of the glyphs, as a percentage. */
-  get horizontalScale(): number;
-  set horizontalScale(value: number);
+  get horizontalScale(): number | NothingEnum.NOTHING;
+  set horizontalScale(value: number | never);
   /** Vertical scaling of the glyphs, as a percentage. */
-  get verticalScale(): number;
-  set verticalScale(value: number);
+  get verticalScale(): number | NothingEnum.NOTHING;
+  set verticalScale(value: number | never);
   /** Skew (false-italic) angle applied to the glyphs, in degrees. */
-  get skew(): number;
-  set skew(value: number);
+  get skew(): number | NothingEnum.NOTHING;
+  set skew(value: number | never);
   /** The tint (as a percentage, 0–100) of the fill color. Use `-1` to use the inherited or overridden value instead of a specific tint. */
-  get fillTint(): number;
-  set fillTint(value: number);
+  get fillTint(): number | NothingEnum.NOTHING;
+  set fillTint(value: number | never);
   /** The tint (as a percentage, 0–100) of the stroke color. Use `-1` to use the inherited or overridden value instead of a specific tint. */
-  get strokeTint(): number;
-  set strokeTint(value: number);
+  get strokeTint(): number | NothingEnum.NOTHING;
+  set strokeTint(value: number | never);
   /** The stroke weight applied to the characters of the text. */
-  get strokeWeight(): number;
-  set strokeWeight(value: MeasurementValue);
+  get strokeWeight(): number | NothingEnum.NOTHING;
+  set strokeWeight(value: MeasurementValue | never);
   /** If true, the stroke of the characters will overprint. */
-  get overprintStroke(): boolean;
-  set overprintStroke(value: boolean);
+  get overprintStroke(): boolean | NothingEnum.NOTHING;
+  set overprintStroke(value: boolean | never);
   /** If true, the fill color of the characters will overprint. */
-  get overprintFill(): boolean;
-  set overprintFill(value: boolean);
+  get overprintFill(): boolean | NothingEnum.NOTHING;
+  set overprintFill(value: boolean | never);
   /**
    * Swatch applied to the fill of the text. Accepts a {@link Swatch}
    * (or a {@link Color}, {@link Tint}, {@link Gradient}, or {@link MixedInk})
    * or its name.
    */
-  get fillColor(): Swatch;
-  set fillColor(value: Swatch | string);
+  get fillColor(): Swatch | null | NothingEnum.NOTHING;
+  set fillColor(value: Swatch | string | never);
   /** Swatch applied to the stroke of the text. Accepts a {@link Swatch} or its name. */
-  get strokeColor(): Swatch;
-  set strokeColor(value: Swatch | string);
+  get strokeColor(): Swatch | null | NothingEnum.NOTHING;
+  set strokeColor(value: Swatch | string | never);
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the fill of the text. */
-  get gradientFillLength(): number;
-  set gradientFillLength(value: number);
+  get gradientFillLength(): number | NothingEnum.NOTHING;
+  set gradientFillLength(value: number | never);
   /** The angle of a linear gradient applied to the fill of the text. (Range: -180 to 180). */
-  get gradientFillAngle(): number;
-  set gradientFillAngle(value: number);
+  get gradientFillAngle(): number | NothingEnum.NOTHING;
+  set gradientFillAngle(value: number | never);
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the stroke of the text. */
-  get gradientStrokeLength(): number;
-  set gradientStrokeLength(value: number);
+  get gradientStrokeLength(): number | NothingEnum.NOTHING;
+  set gradientStrokeLength(value: number | never);
   /** The angle of a linear gradient applied to the stroke of the text. (Range: -180 to 180). */
-  get gradientStrokeAngle(): number;
-  set gradientStrokeAngle(value: number);
+  get gradientStrokeAngle(): number | NothingEnum.NOTHING;
+  set gradientStrokeAngle(value: number | never);
   /** The starting point (in page coordinates) of a gradient applied to the fill of the text, in the format [x, y]. */
-  get gradientFillStart(): number[];
-  set gradientFillStart(value: number[]);
+  get gradientFillStart(): number[] | NothingEnum.NOTHING;
+  set gradientFillStart(value: number[] | never);
   /** The starting point (in page coordinates) of a gradient applied to the stroke of the text, in the format [x, y]. */
-  get gradientStrokeStart(): number[];
-  set gradientStrokeStart(value: number[]);
+  get gradientStrokeStart(): number[] | NothingEnum.NOTHING;
+  set gradientStrokeStart(value: number[] | never);
   /** The limit of the ratio of stroke width to miter length before a miter (pointed) join becomes a bevel (squared-off) join. */
-  get miterLimit(): number;
-  set miterLimit(value: number);
+  get miterLimit(): number | NothingEnum.NOTHING;
+  set miterLimit(value: number | never);
   /** The stroke alignment applied to the text. */
-  get strokeAlignment(): TextStrokeAlign;
-  set strokeAlignment(value: TextStrokeAlign);
+  get strokeAlignment(): TextStrokeAlign | NothingEnum.NOTHING;
+  set strokeAlignment(value: TextStrokeAlign | never);
   /** The stroke join type applied to the characters of the text. */
-  get endJoin(): OutlineJoin;
-  set endJoin(value: OutlineJoin);
+  get endJoin(): OutlineJoin | NothingEnum.NOTHING;
+  set endJoin(value: OutlineJoin | never);
   /** A collection of text objects. */
   readonly texts: Texts<TParent>;
   /** A collection of characters. */
@@ -1545,66 +1543,14 @@ export interface Character<TParent = TextParent> {
    * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
    */
   select(existingSelection?: SelectionOptions): void;
-  /** The object's DOM class name. */
-  readonly constructorName: 'Character';
   /** Resolves the proxy into the individual {@link Character} objects it stands for. */
   getElements(): Character<TParent>[];
 }
 
-
 /**
- * The broadcast proxy for {@link Character} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link Character} there.
+ * A single character in a text range.
  */
 export interface CharacterPlural<TParent = TextParent> {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (TParent)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<CharacterPlural<TParent>, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<CharacterPlural<TParent>, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -1646,6 +1592,45 @@ export interface CharacterPlural<TParent = TextParent> {
     captures?: boolean,
   ): boolean;
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (TParent)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<CharacterPlural<TParent>, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<CharacterPlural<TParent>, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The index of the object within its containing parent.
    */
   readonly index: (number)[];
@@ -1653,7 +1638,7 @@ export interface CharacterPlural<TParent = TextParent> {
    * The applied font. Accepts a {@link Font} object or a font-family name as a
    * `string`; pair with {@link fontStyle} to pick a specific style.
    */
-  get appliedFont(): (Font)[];
+  get appliedFont(): (Font | string)[];
   set appliedFont(value: Font | string);
   /** The name of the font style. */
   get fontStyle(): (string)[];
@@ -1716,10 +1701,10 @@ export interface CharacterPlural<TParent = TextParent> {
   get otfSwash(): (boolean)[];
   set otfSwash(value: boolean);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the underline stroke. */
-  get underlineColor(): (Swatch)[];
+  get underlineColor(): (Swatch | string)[];
   set underlineColor(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the underline stroke. Note: Valid when underline type is not solid. */
-  get underlineGapColor(): (Swatch)[];
+  get underlineGapColor(): (Swatch | string)[];
   set underlineGapColor(value: Swatch | string);
   /** The underline stroke tint (as a percentage). (Range: 0 to 100). */
   get underlineTint(): (number)[];
@@ -1734,7 +1719,7 @@ export interface CharacterPlural<TParent = TextParent> {
   get underlineGapOverprint(): (boolean)[];
   set underlineGapOverprint(value: boolean);
   /** The stroke type of the underline stroke. */
-  get underlineType(): (StrokeStyle)[];
+  get underlineType(): (StrokeStyle | string)[];
   set underlineType(value: StrokeStyle | string);
   /** The amount by which to offset the underline from the text baseline. */
   get underlineOffset(): (number)[];
@@ -1743,10 +1728,10 @@ export interface CharacterPlural<TParent = TextParent> {
   get underlineWeight(): (number)[];
   set underlineWeight(value: MeasurementValue);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the strikethrough stroke. */
-  get strikeThroughColor(): (Swatch)[];
+  get strikeThroughColor(): (Swatch | string)[];
   set strikeThroughColor(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the strikethrough stroke. */
-  get strikeThroughGapColor(): (Swatch)[];
+  get strikeThroughGapColor(): (Swatch | string)[];
   set strikeThroughGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the strikethrough stroke. (Range: 0 to 100). */
   get strikeThroughTint(): (number)[];
@@ -1761,7 +1746,7 @@ export interface CharacterPlural<TParent = TextParent> {
   get strikeThroughGapOverprint(): (boolean)[];
   set strikeThroughGapOverprint(value: boolean);
   /** The stroke type of the strikethrough stroke. */
-  get strikeThroughType(): (StrokeStyle)[];
+  get strikeThroughType(): (StrokeStyle | string)[];
   set strikeThroughType(value: StrokeStyle | string);
   /** The amount by which to offset the strikethrough stroke from the text baseline. */
   get strikeThroughOffset(): (number)[];
@@ -1869,10 +1854,10 @@ export interface CharacterPlural<TParent = TextParent> {
   get tatechuyokoYOffset(): (number)[];
   set tatechuyokoYOffset(value: number);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of kenten characters. */
-  get kentenFillColor(): (Swatch)[];
+  get kentenFillColor(): (Swatch | string)[];
   set kentenFillColor(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of kenten characters. */
-  get kentenStrokeColor(): (Swatch)[];
+  get kentenStrokeColor(): (Swatch | string)[];
   set kentenStrokeColor(value: Swatch | string);
   /** The fill tint (as a percentage) of kenten characters. (Range: 0 to 100). */
   get kentenTint(): (number)[];
@@ -1902,10 +1887,10 @@ export interface CharacterPlural<TParent = TextParent> {
   get kentenPosition(): (RubyKentenPosition)[];
   set kentenPosition(value: RubyKentenPosition);
   /** The font to use for kenten characters. */
-  get kentenFont(): (Font)[];
+  get kentenFont(): (Font | null | string)[];
   set kentenFont(value: Font | string);
   /** The font style of kenten characters. */
-  get kentenFontStyle(): (string)[];
+  get kentenFontStyle(): (string | NothingEnum.NOTHING)[];
   set kentenFontStyle(value: string);
   /** The size (in points) of kenten characters. */
   get kentenFontSize(): (number)[];
@@ -1923,10 +1908,10 @@ export interface CharacterPlural<TParent = TextParent> {
   get kentenCharacterSet(): (KentenCharacterSet)[];
   set kentenCharacterSet(value: KentenCharacterSet);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of ruby characters. */
-  get rubyFill(): (Swatch)[];
+  get rubyFill(): (Swatch | string)[];
   set rubyFill(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of ruby characters. */
-  get rubyStroke(): (Swatch)[];
+  get rubyStroke(): (Swatch | string)[];
   set rubyStroke(value: Swatch | string);
   /** The tint (as a percentage) of the ruby fill color. (Range: 0 to 100). */
   get rubyTint(): (number)[];
@@ -1944,10 +1929,10 @@ export interface CharacterPlural<TParent = TextParent> {
   get rubyStrokeTint(): (number)[];
   set rubyStrokeTint(value: number);
   /** The font applied to ruby characters. */
-  get rubyFont(): (Font)[];
+  get rubyFont(): (Font | null | string)[];
   set rubyFont(value: Font | string);
   /** The font style of ruby characters. */
-  get rubyFontStyle(): (string)[];
+  get rubyFontStyle(): (string | NothingEnum.NOTHING)[];
   set rubyFontStyle(value: string);
   /** The size (in points) of ruby characters. */
   get rubyFontSize(): (number)[];
@@ -2093,7 +2078,7 @@ export interface CharacterPlural<TParent = TextParent> {
   get paragraphShadingTint(): (number)[];
   set paragraphShadingTint(value: number | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph shading. */
-  get paragraphShadingColor(): (Swatch)[];
+  get paragraphShadingColor(): (Swatch | string)[];
   set paragraphShadingColor(value: Swatch | string | never);
   /** If true, the paragraph border is on. */
   get paragraphBorderOn(): (boolean)[];
@@ -2105,7 +2090,7 @@ export interface CharacterPlural<TParent = TextParent> {
   get paragraphBorderTint(): (number)[];
   set paragraphBorderTint(value: number | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph stroke. */
-  get paragraphBorderColor(): (Swatch)[];
+  get paragraphBorderColor(): (Swatch | string)[];
   set paragraphBorderColor(value: Swatch | string | never);
   /** If true, the paragraph border gap will overprint. Note: Valid only when border type is not solid. */
   get paragraphBorderGapOverprint(): (boolean)[];
@@ -2114,10 +2099,10 @@ export interface CharacterPlural<TParent = TextParent> {
   get paragraphBorderGapTint(): (number)[];
   set paragraphBorderGapTint(value: number | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph border gap. Note: Valid only when the border type is not solid. */
-  get paragraphBorderGapColor(): (Swatch)[];
+  get paragraphBorderGapColor(): (Swatch | string)[];
   set paragraphBorderGapColor(value: Swatch | string | never);
   /** The type of the border for the paragraph. */
-  get paragraphBorderType(): (StrokeStyle)[];
+  get paragraphBorderType(): (StrokeStyle | string)[];
   set paragraphBorderType(value: StrokeStyle | string | never);
   /** The left line weight of the border of paragraph. */
   get paragraphBorderLeftLineWeight(): (number)[];
@@ -2346,10 +2331,10 @@ export interface CharacterPlural<TParent = TextParent> {
   get ruleAboveWidth(): (RuleWidth)[];
   set ruleAboveWidth(value: RuleWidth | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule above. */
-  get ruleAboveColor(): (Swatch)[];
+  get ruleAboveColor(): (Swatch | string)[];
   set ruleAboveColor(value: Swatch | string | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule above. Note: Valid only when the paragraph rule above type is not solid. */
-  get ruleAboveGapColor(): (Swatch)[];
+  get ruleAboveGapColor(): (Swatch | string)[];
   set ruleAboveGapColor(value: Swatch | string | never);
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule. (Range: 0 to 100) Note: Valid only when the rule above type is not solid. */
   get ruleAboveGapTint(): (number)[];
@@ -2358,7 +2343,7 @@ export interface CharacterPlural<TParent = TextParent> {
   get ruleAboveGapOverprint(): (boolean)[];
   set ruleAboveGapOverprint(value: boolean | never);
   /** The stroke type of the rule above the paragraph. */
-  get ruleAboveType(): (StrokeStyle)[];
+  get ruleAboveType(): (StrokeStyle | string)[];
   set ruleAboveType(value: StrokeStyle | string | never);
   /** If true, applies a paragraph rule below. */
   get ruleBelow(): (boolean)[];
@@ -2382,16 +2367,16 @@ export interface CharacterPlural<TParent = TextParent> {
   get ruleBelowWidth(): (RuleWidth)[];
   set ruleBelowWidth(value: RuleWidth | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule below. */
-  get ruleBelowColor(): (Swatch)[];
+  get ruleBelowColor(): (Swatch | string)[];
   set ruleBelowColor(value: Swatch | string | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule below. Note: Valid only when the paragraph rule below type is not solid. */
-  get ruleBelowGapColor(): (Swatch)[];
+  get ruleBelowGapColor(): (Swatch | string)[];
   set ruleBelowGapColor(value: Swatch | string | never);
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule below. (Range: 0 to 100) Note: Valid only when the paragraph rule below type is not solid. */
   get ruleBelowGapTint(): (number)[];
   set ruleBelowGapTint(value: number | never);
   /** The stroke type of the rule below the paragraph. */
-  get ruleBelowType(): (StrokeStyle)[];
+  get ruleBelowType(): (StrokeStyle | string)[];
   set ruleBelowType(value: StrokeStyle | string | never);
   /** If true, allows hyphenation of capitalized words. */
   get hyphenateCapitalizedWords(): (boolean)[];
@@ -2530,10 +2515,10 @@ export interface CharacterPlural<TParent = TextParent> {
   get bulletsAndNumberingListType(): (ListType)[];
   set bulletsAndNumberingListType(value: ListType | never);
   /** The character style to be used for the text after string. */
-  get bulletsCharacterStyle(): (CharacterStyle)[];
+  get bulletsCharacterStyle(): (CharacterStyle | string)[];
   set bulletsCharacterStyle(value: CharacterStyle | string | never);
   /** The character style to be used for the number string. */
-  get numberingCharacterStyle(): (CharacterStyle)[];
+  get numberingCharacterStyle(): (CharacterStyle | string)[];
   set numberingCharacterStyle(value: CharacterStyle | string | never);
   /** The number string expression for numbering. */
   get numberingExpression(): (string)[];
@@ -2542,7 +2527,7 @@ export interface CharacterPlural<TParent = TextParent> {
   get bulletsTextAfter(): (string)[];
   set bulletsTextAfter(value: string | never);
   /** The list to be part of. */
-  get appliedNumberingList(): (NumberingList)[];
+  get appliedNumberingList(): (NumberingList | string)[];
   set appliedNumberingList(value: NumberingList | string | never);
   /** The level of the paragraph. */
   get numberingLevel(): (number)[];
@@ -2572,66 +2557,66 @@ export interface CharacterPlural<TParent = TextParent> {
   get numberingAlignment(): (ListAlignment)[];
   set numberingAlignment(value: ListAlignment | never);
   /** Horizontal scaling of the glyphs, as a percentage. */
-  get horizontalScale(): (number)[];
-  set horizontalScale(value: number);
+  get horizontalScale(): (number | NothingEnum.NOTHING)[];
+  set horizontalScale(value: number | never);
   /** Vertical scaling of the glyphs, as a percentage. */
-  get verticalScale(): (number)[];
-  set verticalScale(value: number);
+  get verticalScale(): (number | NothingEnum.NOTHING)[];
+  set verticalScale(value: number | never);
   /** Skew (false-italic) angle applied to the glyphs, in degrees. */
-  get skew(): (number)[];
-  set skew(value: number);
+  get skew(): (number | NothingEnum.NOTHING)[];
+  set skew(value: number | never);
   /** The tint (as a percentage, 0–100) of the fill color. Use `-1` to use the inherited or overridden value instead of a specific tint. */
-  get fillTint(): (number)[];
-  set fillTint(value: number);
+  get fillTint(): (number | NothingEnum.NOTHING)[];
+  set fillTint(value: number | never);
   /** The tint (as a percentage, 0–100) of the stroke color. Use `-1` to use the inherited or overridden value instead of a specific tint. */
-  get strokeTint(): (number)[];
-  set strokeTint(value: number);
+  get strokeTint(): (number | NothingEnum.NOTHING)[];
+  set strokeTint(value: number | never);
   /** The stroke weight applied to the characters of the text. */
-  get strokeWeight(): (number)[];
-  set strokeWeight(value: MeasurementValue);
+  get strokeWeight(): (number | NothingEnum.NOTHING)[];
+  set strokeWeight(value: MeasurementValue | never);
   /** If true, the stroke of the characters will overprint. */
-  get overprintStroke(): (boolean)[];
-  set overprintStroke(value: boolean);
+  get overprintStroke(): (boolean | NothingEnum.NOTHING)[];
+  set overprintStroke(value: boolean | never);
   /** If true, the fill color of the characters will overprint. */
-  get overprintFill(): (boolean)[];
-  set overprintFill(value: boolean);
+  get overprintFill(): (boolean | NothingEnum.NOTHING)[];
+  set overprintFill(value: boolean | never);
   /**
    * Swatch applied to the fill of the text. Accepts a {@link Swatch}
    * (or a {@link Color}, {@link Tint}, {@link Gradient}, or {@link MixedInk})
    * or its name.
    */
-  get fillColor(): (Swatch)[];
-  set fillColor(value: Swatch | string);
+  get fillColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set fillColor(value: Swatch | string | never);
   /** Swatch applied to the stroke of the text. Accepts a {@link Swatch} or its name. */
-  get strokeColor(): (Swatch)[];
-  set strokeColor(value: Swatch | string);
+  get strokeColor(): (Swatch | null | NothingEnum.NOTHING)[];
+  set strokeColor(value: Swatch | string | never);
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the fill of the text. */
-  get gradientFillLength(): (number)[];
-  set gradientFillLength(value: number);
+  get gradientFillLength(): (number | NothingEnum.NOTHING)[];
+  set gradientFillLength(value: number | never);
   /** The angle of a linear gradient applied to the fill of the text. (Range: -180 to 180). */
-  get gradientFillAngle(): (number)[];
-  set gradientFillAngle(value: number);
+  get gradientFillAngle(): (number | NothingEnum.NOTHING)[];
+  set gradientFillAngle(value: number | never);
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the stroke of the text. */
-  get gradientStrokeLength(): (number)[];
-  set gradientStrokeLength(value: number);
+  get gradientStrokeLength(): (number | NothingEnum.NOTHING)[];
+  set gradientStrokeLength(value: number | never);
   /** The angle of a linear gradient applied to the stroke of the text. (Range: -180 to 180). */
-  get gradientStrokeAngle(): (number)[];
-  set gradientStrokeAngle(value: number);
+  get gradientStrokeAngle(): (number | NothingEnum.NOTHING)[];
+  set gradientStrokeAngle(value: number | never);
   /** The starting point (in page coordinates) of a gradient applied to the fill of the text, in the format [x, y]. */
-  get gradientFillStart(): (number[])[];
-  set gradientFillStart(value: number[]);
+  get gradientFillStart(): (number[] | NothingEnum.NOTHING)[];
+  set gradientFillStart(value: number[] | never);
   /** The starting point (in page coordinates) of a gradient applied to the stroke of the text, in the format [x, y]. */
-  get gradientStrokeStart(): (number[])[];
-  set gradientStrokeStart(value: number[]);
+  get gradientStrokeStart(): (number[] | NothingEnum.NOTHING)[];
+  set gradientStrokeStart(value: number[] | never);
   /** The limit of the ratio of stroke width to miter length before a miter (pointed) join becomes a bevel (squared-off) join. */
-  get miterLimit(): (number)[];
-  set miterLimit(value: number);
+  get miterLimit(): (number | NothingEnum.NOTHING)[];
+  set miterLimit(value: number | never);
   /** The stroke alignment applied to the text. */
-  get strokeAlignment(): (TextStrokeAlign)[];
-  set strokeAlignment(value: TextStrokeAlign);
+  get strokeAlignment(): (TextStrokeAlign | NothingEnum.NOTHING)[];
+  set strokeAlignment(value: TextStrokeAlign | never);
   /** The stroke join type applied to the characters of the text. */
-  get endJoin(): (OutlineJoin)[];
-  set endJoin(value: OutlineJoin);
+  get endJoin(): (OutlineJoin | NothingEnum.NOTHING)[];
+  set endJoin(value: OutlineJoin | never);
   /** A collection of text objects. */
   readonly texts: Texts<TParent>;
   /** A collection of characters. */
@@ -2949,8 +2934,6 @@ export interface CharacterPlural<TParent = TextParent> {
    * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
    */
   select(existingSelection?: SelectionOptions): (void)[];
-  /** The object's DOM class name. */
-  readonly constructorName: 'Character';
   /** Resolves the proxy into the individual {@link Character} objects it stands for. */
   getElements(): Character<TParent>[];
 }

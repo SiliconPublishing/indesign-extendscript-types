@@ -1,0 +1,43 @@
+// Probe harness: each probe asserts one measured fact the declarations rely on.
+//   probe('name', function () { ...; return actualValue; }, expectedValue)
+// expected may be a function(actual) -> boolean. A probe that throws records the error message
+// as its actual value, so "this throws" is itself testable via didThrow().
+var __results = [];
+var __doc = null;
+
+function fixtureDocument() {
+    if (!__doc || !__doc.isValid) __doc = app.documents.add(false);
+    return __doc;
+}
+
+function closeFixtures() {
+    try { if (__doc && __doc.isValid) __doc.close(SaveOptions.NO); } catch (e) {}
+    __doc = null;
+}
+
+function __same(a, b) {
+    if (a instanceof Array && b instanceof Array) {
+        if (a.length !== b.length) return false;
+        for (var i = 0; i < a.length; i++) if (!__same(a[i], b[i])) return false;
+        return true;
+    }
+    return a === b;
+}
+
+function probe(name, fn, expected) {
+    var actual, threw = false;
+    try { actual = fn(); } catch (e) { threw = true; actual = 'throws: ' + e.message; }
+    var pass = typeof expected === 'function' ? !!expected(actual) : __same(actual, expected);
+    // undefined is reported as "<undefined>": JSON would turn it into null.
+    var show = function (v) { return v === undefined ? '<undefined>' : typeof v === 'object' && v !== null && !(v instanceof Array) ? String(v) : v; };
+    var r = { name: name, pass: pass, actual: show(actual) };
+    if (!pass && typeof expected !== 'function') r.expected = show(expected);
+    __results.push(r);
+}
+
+function didThrow(actual) { return typeof actual === 'string' && actual.indexOf('throws: ') === 0; }
+
+function finish() {
+    closeFixtures();
+    return __results;
+}

@@ -1,10 +1,11 @@
 /**
  * IndexCapitalizationOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __IndexCapitalizationOptions: unique symbol;
 
 
 interface IndexCapitalizationOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<IndexCapitalizationOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__IndexCapitalizationOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -142,15 +140,6 @@ export declare const IndexCapitalizationOptions: typeof Enumeration & {
    */
   readonly selectedEntry: IndexCapitalizationOptions_SELECTED_ENTRY;
   /**
-   * Capitalizes the specified topic but does not capitalize its nested topics.
-   *
-   * Valid only as parameter of the topic capitalize method; cannot be used as a parameter of
-   * the index capitalize method. Note: Must occur after the specified topic and its nested
-   * topics are created.
-   */
-  readonly selectedentry: IndexCapitalizationOptions_SELECTED_ENTRY;
-
-  /**
    * Capitalizes the specified topic and its nested topics.
    *
    * Valid only as parameter of the topic capitalize method; cannot be used as a parameter of
@@ -167,15 +156,6 @@ export declare const IndexCapitalizationOptions: typeof Enumeration & {
    */
   readonly includeSubentries: IndexCapitalizationOptions_INCLUDE_SUBENTRIES;
   /**
-   * Capitalizes the specified topic and its nested topics.
-   *
-   * Valid only as parameter of the topic capitalize method; cannot be used as a parameter of
-   * the index capitalize method. Note: Must occur after the selected topic and its nested
-   * subtopics are created.
-   */
-  readonly includesubentries: IndexCapitalizationOptions_INCLUDE_SUBENTRIES;
-
-  /**
    * Capitalizes all level 1 entries. Note: Capitalizes only topics created before the capitalization statement appears in the script. 
    */
   readonly ALL_LEVEL_1_ENTRIES: IndexCapitalizationOptions_ALL_LEVEL_1_ENTRIES;
@@ -184,11 +164,6 @@ export declare const IndexCapitalizationOptions: typeof Enumeration & {
    */
   readonly allLevel1Entries: IndexCapitalizationOptions_ALL_LEVEL_1_ENTRIES;
   /**
-   * Capitalizes all level 1 entries. Note: Capitalizes only topics created before the capitalization statement appears in the script. 
-   */
-  readonly alllevel1entries: IndexCapitalizationOptions_ALL_LEVEL_1_ENTRIES;
-
-  /**
    * Capitalizes all index entries. Note: Capitalizes only topics created before the capitalization statement appears in the script.
    */
   readonly ALL_ENTRIES: IndexCapitalizationOptions_ALL_ENTRIES;
@@ -196,9 +171,4 @@ export declare const IndexCapitalizationOptions: typeof Enumeration & {
    * Capitalizes all index entries. Note: Capitalizes only topics created before the capitalization statement appears in the script.
    */
   readonly allEntries: IndexCapitalizationOptions_ALL_ENTRIES;
-  /**
-   * Capitalizes all index entries. Note: Capitalizes only topics created before the capitalization statement appears in the script.
-   */
-  readonly allentries: IndexCapitalizationOptions_ALL_ENTRIES;
-
 }

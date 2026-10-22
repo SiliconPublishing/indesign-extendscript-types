@@ -1,10 +1,11 @@
 /**
  * ZoomOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ZoomOptions: unique symbol;
 
 
 interface ZoomOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ZoomOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__ZoomOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -152,11 +150,6 @@ export declare const ZoomOptions: typeof Enumeration & {
    */
   readonly zoomIn: ZoomOptions_ZOOM_IN;
   /**
-   * Magnifies the view to the next preset percentage. 
-   */
-  readonly zoomin: ZoomOptions_ZOOM_IN;
-
-  /**
    * Reduces the view to the next preset percentage.
    */
   readonly ZOOM_OUT: ZoomOptions_ZOOM_OUT;
@@ -164,11 +157,6 @@ export declare const ZoomOptions: typeof Enumeration & {
    * Reduces the view to the next preset percentage.
    */
   readonly zoomOut: ZoomOptions_ZOOM_OUT;
-  /**
-   * Reduces the view to the next preset percentage.
-   */
-  readonly zoomout: ZoomOptions_ZOOM_OUT;
-
   /**
    * Centers the active spread in the window.
    */
@@ -178,11 +166,6 @@ export declare const ZoomOptions: typeof Enumeration & {
    */
   readonly fitSpread: ZoomOptions_FIT_SPREAD;
   /**
-   * Centers the active spread in the window.
-   */
-  readonly fitspread: ZoomOptions_FIT_SPREAD;
-
-  /**
    * Centers the active page in the window.
    */
   readonly FIT_PAGE: ZoomOptions_FIT_PAGE;
@@ -190,11 +173,6 @@ export declare const ZoomOptions: typeof Enumeration & {
    * Centers the active page in the window.
    */
   readonly fitPage: ZoomOptions_FIT_PAGE;
-  /**
-   * Centers the active page in the window.
-   */
-  readonly fitpage: ZoomOptions_FIT_PAGE;
-
   /**
    * Fits the entire pasteboard in the window.
    */
@@ -204,11 +182,6 @@ export declare const ZoomOptions: typeof Enumeration & {
    */
   readonly showPasteboard: ZoomOptions_SHOW_PASTEBOARD;
   /**
-   * Fits the entire pasteboard in the window.
-   */
-  readonly showpasteboard: ZoomOptions_SHOW_PASTEBOARD;
-
-  /**
    * Zooms to 100%.
    */
   readonly ACTUAL_SIZE: ZoomOptions_ACTUAL_SIZE;
@@ -216,9 +189,4 @@ export declare const ZoomOptions: typeof Enumeration & {
    * Zooms to 100%.
    */
   readonly actualSize: ZoomOptions_ACTUAL_SIZE;
-  /**
-   * Zooms to 100%.
-   */
-  readonly actualsize: ZoomOptions_ACTUAL_SIZE;
-
 }

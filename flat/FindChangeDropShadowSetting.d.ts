@@ -1,6 +1,7 @@
 /**
  * FindChangeDropShadowSetting.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -11,36 +12,39 @@ import type { FindChangeStrokeTransparencySetting } from './FindChangeStrokeTran
 import type { FindChangeFillTransparencySetting } from './FindChangeFillTransparencySetting';
 import type { FindChangeContentTransparencySetting } from './FindChangeContentTransparencySetting';
 import type { Swatch } from './Swatch';
-import type { BlendMode } from './Enums/BlendMode';
-import type { ContentTransparencySetting } from './ContentTransparencySetting';
-import type { Event } from './Event';
-import type { EventHandler } from './_base/Events';
-import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
-import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { FilePath } from './_base/Types';
-import type { FillTransparencySetting } from './FillTransparencySetting';
-import type { InDesignEventMap } from './_base/Events';
-import type { MeasurementValue } from './_base/Types';
+import type { NothingEnum } from "./Enums/NothingEnum";
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
+import type { EventHandler } from './_base/Events';
+import type { EventListener } from './EventListener';
+import type { EventString } from './_base/Events';
+import type { Event } from './Event';
+import type { FilePath } from './_base/Types';
+import type { MeasurementValue } from './_base/Types';
 import type { ShadowMode } from './Enums/ShadowMode';
-import type { StrokeTransparencySetting } from './StrokeTransparencySetting';
-import type { TransparencySetting } from './TransparencySetting';
+import type { BlendMode } from './Enums/BlendMode';
+
 /**
  * The same {@link DropShadowSetting} settings, applied as find/change criteria.
  */
 export interface FindChangeDropShadowSetting {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
-  readonly parent: TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting;
+  readonly parent: FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting;
   /**
    * A snapshot of every editable property on this object.
    *
@@ -54,15 +58,6 @@ export interface FindChangeDropShadowSetting {
    */
   set properties(value: PropertiesSetter<FindChangeDropShadowSetting, 'single'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -72,10 +67,9 @@ export interface FindChangeDropShadowSetting {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -116,21 +110,29 @@ export interface FindChangeDropShadowSetting {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The distance between the item and its shadow. */
-  get distance(): number;
-  set distance(value: MeasurementValue);
-  /** The angle at which the shadow is thrown. */
-  get angle(): number;
-  set angle(value: number);
+  /**
+   * The distance between the item and its shadow.
+   *
+   * **Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
+   */
+  get distance(): number | NothingEnum.NOTHING;
+  set distance(value: MeasurementValue | NothingEnum.NOTHING);
+  /**
+   * The angle at which the shadow is thrown.
+   *
+   * **Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
+   */
+  get angle(): number | NothingEnum.NOTHING;
+  set angle(value: number | NothingEnum.NOTHING);
   /** The shadow mode. */
-  get mode(): ShadowMode;
-  set mode(value: ShadowMode);
+  get mode(): ShadowMode | NothingEnum.NOTHING;
+  set mode(value: ShadowMode | NothingEnum.NOTHING);
   /** The blending mode for the drop shadow effect. */
-  get blendMode(): BlendMode;
-  set blendMode(value: BlendMode);
+  get blendMode(): BlendMode | NothingEnum.NOTHING;
+  set blendMode(value: BlendMode | NothingEnum.NOTHING);
   /** The opacity of the drop shadow (as a percentage). (Range: 0 to 100). */
-  get opacity(): number;
-  set opacity(value: number);
+  get opacity(): number | NothingEnum.NOTHING;
+  set opacity(value: number | NothingEnum.NOTHING);
   /**
    * The horizontal offset of the drop shadow.
    *
@@ -138,8 +140,8 @@ export interface FindChangeDropShadowSetting {
    * inches: -13.8889 to 13.8889; for mm: -352.778 to 352.778; for cm: -35.277 to 35.277; for
    * ciceros: -78c2.389 to 78c2.389.
    */
-  get xOffset(): number;
-  set xOffset(value: MeasurementValue);
+  get xOffset(): number | NothingEnum.NOTHING;
+  set xOffset(value: MeasurementValue | NothingEnum.NOTHING);
   /**
    * The vertical offset of the drop shadow.
    *
@@ -147,54 +149,51 @@ export interface FindChangeDropShadowSetting {
    * inches: -13.8889 to 13.8889; for mm: -352.778 to 352.778; for cm: -35.277 to 35.277; for
    * ciceros: -78c2.389 to 78c2.389).
    */
-  get yOffset(): number;
-  set yOffset(value: MeasurementValue);
+  get yOffset(): number | NothingEnum.NOTHING;
+  set yOffset(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius (in pixels) of the blur applied to the drop shadow. (Range depends on the unit type. For points: 0 to 144; for picas: 0p0 to 12p0; for inches: 0 to 2; for mm: 0 to 50.08; for cm: 0 to 5.08; for ciceros: 0c0 to 11c3.128.). */
-  get size(): number;
-  set size(value: MeasurementValue);
+  get size(): number | NothingEnum.NOTHING;
+  set size(value: MeasurementValue | NothingEnum.NOTHING);
   /** The {@link Swatch} applied to the drop shadow. */
-  get effectColor(): Swatch;
-  set effectColor(value: Swatch);
+  get effectColor(): Swatch | NothingEnum.NOTHING;
+  set effectColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The amount (as a percentage) of noise applied to the shadow. (Range: 0 to 100). */
-  get noise(): number;
-  set noise(value: number);
+  get noise(): number | NothingEnum.NOTHING;
+  set noise(value: number | NothingEnum.NOTHING);
   /** The amount (as a percentage of the blur width) to spread the footprint of the drop shadow and reduce the radius of the blur. (Range: 0 to 100). */
-  get spread(): number;
-  set spread(value: number);
+  get spread(): number | NothingEnum.NOTHING;
+  set spread(value: number | NothingEnum.NOTHING);
   /** If true, uses the global light angle. */
-  get useGlobalLight(): boolean;
-  set useGlobalLight(value: boolean);
+  get useGlobalLight(): boolean | NothingEnum.NOTHING;
+  set useGlobalLight(value: boolean | NothingEnum.NOTHING);
   /** If true, the layer will knock out the drop shadow. */
-  get knockedOut(): boolean;
-  set knockedOut(value: boolean);
+  get knockedOut(): boolean | NothingEnum.NOTHING;
+  set knockedOut(value: boolean | NothingEnum.NOTHING);
   /** If true, the drop shadow will take into account other non-shadow effects. */
-  get honorOtherEffects(): boolean;
-  set honorOtherEffects(value: boolean);
-  /** The object's DOM class name. */
-  readonly constructorName: 'FindChangeDropShadowSetting';
+  get honorOtherEffects(): boolean | NothingEnum.NOTHING;
+  set honorOtherEffects(value: boolean | NothingEnum.NOTHING);
   /** Resolves the proxy into the individual {@link FindChangeDropShadowSetting} objects it stands for. */
   getElements(): FindChangeDropShadowSetting[];
 }
 
-
 /**
- * The broadcast proxy for {@link FindChangeDropShadowSetting} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link FindChangeDropShadowSetting} there.
+ * The same {@link DropShadowSetting} settings, applied as find/change criteria.
  */
 export interface FindChangeDropShadowSettingPlural {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
-  readonly parent: (TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting)[];
+  readonly parent: (FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting)[];
   /**
    * A snapshot of every editable property on this object.
    *
@@ -208,15 +207,6 @@ export interface FindChangeDropShadowSettingPlural {
    */
   set properties(value: PropertiesSetter<FindChangeDropShadowSettingPlural, 'plural'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -226,10 +216,9 @@ export interface FindChangeDropShadowSettingPlural {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -270,21 +259,29 @@ export interface FindChangeDropShadowSettingPlural {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The distance between the item and its shadow. */
-  get distance(): (number)[];
-  set distance(value: MeasurementValue);
-  /** The angle at which the shadow is thrown. */
-  get angle(): (number)[];
-  set angle(value: number);
+  /**
+   * The distance between the item and its shadow.
+   *
+   * **Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
+   */
+  get distance(): (number | NothingEnum.NOTHING)[];
+  set distance(value: MeasurementValue | NothingEnum.NOTHING);
+  /**
+   * The angle at which the shadow is thrown.
+   *
+   * **Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
+   */
+  get angle(): (number | NothingEnum.NOTHING)[];
+  set angle(value: number | NothingEnum.NOTHING);
   /** The shadow mode. */
-  get mode(): (ShadowMode)[];
-  set mode(value: ShadowMode);
+  get mode(): (ShadowMode | NothingEnum.NOTHING)[];
+  set mode(value: ShadowMode | NothingEnum.NOTHING);
   /** The blending mode for the drop shadow effect. */
-  get blendMode(): (BlendMode)[];
-  set blendMode(value: BlendMode);
+  get blendMode(): (BlendMode | NothingEnum.NOTHING)[];
+  set blendMode(value: BlendMode | NothingEnum.NOTHING);
   /** The opacity of the drop shadow (as a percentage). (Range: 0 to 100). */
-  get opacity(): (number)[];
-  set opacity(value: number);
+  get opacity(): (number | NothingEnum.NOTHING)[];
+  set opacity(value: number | NothingEnum.NOTHING);
   /**
    * The horizontal offset of the drop shadow.
    *
@@ -292,8 +289,8 @@ export interface FindChangeDropShadowSettingPlural {
    * inches: -13.8889 to 13.8889; for mm: -352.778 to 352.778; for cm: -35.277 to 35.277; for
    * ciceros: -78c2.389 to 78c2.389.
    */
-  get xOffset(): (number)[];
-  set xOffset(value: MeasurementValue);
+  get xOffset(): (number | NothingEnum.NOTHING)[];
+  set xOffset(value: MeasurementValue | NothingEnum.NOTHING);
   /**
    * The vertical offset of the drop shadow.
    *
@@ -301,31 +298,29 @@ export interface FindChangeDropShadowSettingPlural {
    * inches: -13.8889 to 13.8889; for mm: -352.778 to 352.778; for cm: -35.277 to 35.277; for
    * ciceros: -78c2.389 to 78c2.389).
    */
-  get yOffset(): (number)[];
-  set yOffset(value: MeasurementValue);
+  get yOffset(): (number | NothingEnum.NOTHING)[];
+  set yOffset(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius (in pixels) of the blur applied to the drop shadow. (Range depends on the unit type. For points: 0 to 144; for picas: 0p0 to 12p0; for inches: 0 to 2; for mm: 0 to 50.08; for cm: 0 to 5.08; for ciceros: 0c0 to 11c3.128.). */
-  get size(): (number)[];
-  set size(value: MeasurementValue);
+  get size(): (number | NothingEnum.NOTHING)[];
+  set size(value: MeasurementValue | NothingEnum.NOTHING);
   /** The {@link Swatch} applied to the drop shadow. */
-  get effectColor(): (Swatch)[];
-  set effectColor(value: Swatch);
+  get effectColor(): (Swatch | NothingEnum.NOTHING)[];
+  set effectColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The amount (as a percentage) of noise applied to the shadow. (Range: 0 to 100). */
-  get noise(): (number)[];
-  set noise(value: number);
+  get noise(): (number | NothingEnum.NOTHING)[];
+  set noise(value: number | NothingEnum.NOTHING);
   /** The amount (as a percentage of the blur width) to spread the footprint of the drop shadow and reduce the radius of the blur. (Range: 0 to 100). */
-  get spread(): (number)[];
-  set spread(value: number);
+  get spread(): (number | NothingEnum.NOTHING)[];
+  set spread(value: number | NothingEnum.NOTHING);
   /** If true, uses the global light angle. */
-  get useGlobalLight(): (boolean)[];
-  set useGlobalLight(value: boolean);
+  get useGlobalLight(): (boolean | NothingEnum.NOTHING)[];
+  set useGlobalLight(value: boolean | NothingEnum.NOTHING);
   /** If true, the layer will knock out the drop shadow. */
-  get knockedOut(): (boolean)[];
-  set knockedOut(value: boolean);
+  get knockedOut(): (boolean | NothingEnum.NOTHING)[];
+  set knockedOut(value: boolean | NothingEnum.NOTHING);
   /** If true, the drop shadow will take into account other non-shadow effects. */
-  get honorOtherEffects(): (boolean)[];
-  set honorOtherEffects(value: boolean);
-  /** The object's DOM class name. */
-  readonly constructorName: 'FindChangeDropShadowSetting';
+  get honorOtherEffects(): (boolean | NothingEnum.NOTHING)[];
+  set honorOtherEffects(value: boolean | NothingEnum.NOTHING);
   /** Resolves the proxy into the individual {@link FindChangeDropShadowSetting} objects it stands for. */
   getElements(): FindChangeDropShadowSetting[];
 }

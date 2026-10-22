@@ -1,120 +1,35 @@
 /**
  * Types.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { storage } from 'uxp';
-import type { InsertionPoint } from '../InsertionPoint';
 /**
- * A file to pass to InDesign: a native path string, or a UXP {@link File} entry.
+ * A file to pass to InDesign: a path string, or an ExtendScript {@link File}.
  *
- * Setters and method parameters take either — `app.open(entry)`, `app.open([a, b])`,
- * `rect.exportFile(format, entry)` — and the entry need not exist on disk yet. A
- * `file://` URL string is rejected: pass `entry.nativePath`, or the entry itself.
+ * Setters and method parameters take either — `app.open(path)`, `app.open([fileA, fileB])`,
+ * `doc.exportFile(format, file)` — and the file need not exist on disk yet.
  *
- * Reading a file-valued property back gives a `Promise<`{@link File}`>` instead —
- * `await` it, then read `nativePath`.
+ * Reading a file-valued property back always gives a {@link File}.
  */
 export type FilePath = string | File;
 
 /**
- * A folder to pass to InDesign: a native path string only.
+ * A folder to pass to InDesign: a path string, or an ExtendScript {@link Folder}.
  *
- * Unlike a file, a folder cannot be passed as a UXP {@link Folder} entry — InDesign
- * rejects it as "received nothing". Pass `folder.nativePath`.
- *
- * Reading a folder-valued property back gives a `Promise<`{@link Folder}`>` instead —
- * `await` it, then read `nativePath`.
+ * Reading a folder-valued property back always gives a {@link Folder}.
  */
-export type FolderPath = string;
+export type FolderPath = string | Folder;
 
-/**
- * A filesystem object handed back by the DOM: a UXP storage entry, not a path
- * string. Read `nativePath` for the platform path.
- */
-export type Entry = storage.Entry;
+/** A filesystem object handed back by the DOM: an ExtendScript {@link File} or {@link Folder}. */
+export type Entry = File | Folder;
 
-/**
- * A file on disk, as handed back by a path getter such as `Document.fullName`.
- */
-export type File = storage.File & storage.Entry;
+/** An ExtendScript file object (the global `File` class). */
+export type File = globalThis.File;
 
-/** A folder on disk, as handed back by a path getter such as `Document.filePath`. */
-export type Folder = storage.Folder;
-
-/* --------------------------------------------------------------------------
-   Measured fallback. Superseded by the `uxp` types above, kept because these
-   were built from observed prototypes rather than generated, and upstream is
-   auto-generated with acknowledged gaps (`File` not extending `Entry` is one).
-   If the dependency is unavailable, or upstream regresses, re-point `Entry` /
-   `File` / `Folder` at these three and the package still compiles.
-   -------------------------------------------------------------------------- */
-
-/**
- * The shape a UXP storage entry actually has at runtime — the fallback used when the `uxp`
- * package's own types are not installed. Refer to {@link Entry} in your own code.
- */
-export interface MeasuredEntry {
-  /** Whether this entry is a file rather than a folder. */
-  readonly isFile: boolean;
-  /** Whether this entry is a folder rather than a file. */
-  readonly isFolder: boolean;
-  /** Entries produced by the DOM report the full path here, not just the leaf. */
-  readonly name: string;
-  /** The platform path — the member to read when a path getter is what you wanted. */
-  readonly nativePath: string;
-  /** The same location as a `file://` URL. */
-  readonly url: string;
-}
-/**
- * The shape a UXP file actually has at runtime — the fallback used when the `uxp` package's
- * own types are not installed. Refer to {@link File} in your own code.
- */
-export interface MeasuredFile {
-  /** Entries produced by the DOM report the full path here, not just the leaf. */
-  readonly name: string;
-  /** The platform path — the member to read when a path getter is what you wanted. */
-  readonly nativePath: string;
-  /** The same location as a `file://` URL. */
-  readonly url: string;
-  readonly isFile: true;
-  readonly isFolder: false;
-  /** The mode the file was opened in. Typed loosely: the runtime value is not the `modes` constant. */
-  readonly mode: unknown;
-  /** Reads the whole file. Resolves to text, or to an `ArrayBuffer` when opened as binary. */
-  read(options?: object): Promise<string | ArrayBuffer>;
-  /** Overwrites the file. Resolves to the number of bytes written. */
-  write(data: string | ArrayBuffer, options?: object): Promise<number>;
-}
-
-/**
- * The shape a UXP folder actually has at runtime — the fallback used when the `uxp` package's
- * own types are not installed. Refer to {@link Folder} in your own code.
- */
-export interface MeasuredFolder {
-  /** Entries produced by the DOM report the full path here, not just the leaf. */
-  readonly name: string;
-  /** The platform path — the member to read when a path getter is what you wanted. */
-  readonly nativePath: string;
-  /** The same location as a `file://` URL. */
-  readonly url: string;
-  readonly isFile: false;
-  readonly isFolder: true;
-  /** Everything directly inside this folder, files and folders alike. */
-  getEntries(): Promise<MeasuredEntry[]>;
-  /** One entry by name or relative path. Rejects when nothing is there. */
-  getEntry(path: string): Promise<MeasuredEntry>;
-  /** Creates a file or folder here. Pass `{ type: 'folder' }` for a folder. */
-  createEntry(name: string, options?: object): Promise<MeasuredEntry>;
-  /** Creates a file here. */
-  createFile(name: string, options?: object): Promise<MeasuredFile>;
-  /** Creates a subfolder here. */
-  createFolder(name: string): Promise<MeasuredFolder>;
-  /** Renames an entry in this folder. */
-  renameEntry(entry: MeasuredEntry, newName: string, options?: object): Promise<void>;
-}
-
+/** An ExtendScript folder object (the global `Folder` class). */
+export type Folder = globalThis.Folder;
 
 /**
  * The pair-kerning method applied to text.
@@ -197,7 +112,7 @@ export type Read<M extends Mode, V> = M extends 'plural' ? V[] : V;
  * widened setter, array-ified `isValid` and `constructorName` against [[R15]], and
  * flattened method overload sets. None of that ever shipped: all 242 collections
  * pass an explicit `TPlural` bound to the mode-parameterised element
- * (`RectanglePlural<TParent>`), which is the correct construction.
+ * (`Rectangle<TParent, 'plural'>`), which is the correct construction.
  *
  * Six external reviewers independently read this default as live and reported it
  * as a high-severity break. It was not live — but a collection that forgot

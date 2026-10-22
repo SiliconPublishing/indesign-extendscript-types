@@ -1,6 +1,7 @@
 /**
  * Hyperlink.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -19,16 +20,17 @@ import type { HyperlinkAppearanceHighlight } from './Enums/HyperlinkAppearanceHi
 import type { HyperlinkAppearanceWidth } from './Enums/HyperlinkAppearanceWidth';
 import type { HyperlinkAppearanceStyle } from './Enums/HyperlinkAppearanceStyle';
 import type { UIColors } from './Enums/UIColors';
-import type { Event } from './Event';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
+import type { Event } from './Event';
 import type { FilePath } from './_base/Types';
-import type { InDesignEventMap } from './_base/Events';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+
 /**
  * A clickable hyperlink connecting a {@link HyperlinkPageItemSource}, {@link HyperlinkTextSource}, or {@link CrossReferenceSource} to a destination such as a page,
  * URL, or text range.
@@ -36,50 +38,6 @@ import type { PropertiesSetter } from './_base/Properties';
  * Its appearance ({@link highlight}, {@link width}, {@link borderColor}, {@link borderStyle}) only matters for interactive PDF export.
  */
 export interface Hyperlink {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: Document;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<Hyperlink, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<Hyperlink, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -139,12 +97,49 @@ export interface Hyperlink {
    */
   readonly index: number;
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: Document;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<Hyperlink, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<Hyperlink, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */
   get name(): string;
   set name(value: string);
-  /** The object's DOM class name. */
-  readonly constructorName: 'Hyperlink';
   /** Resolves the proxy into the individual {@link Hyperlink} objects it stands for. */
   getElements(): Hyperlink[];
   /** The unique ID of the hyperlink, stable across saves and reopens. */
@@ -159,8 +154,7 @@ export interface Hyperlink {
     | HyperlinkPageDestination
     | HyperlinkExternalPageDestination
     | HyperlinkURLDestination
-    | ParagraphDestination
-  ;
+    | ParagraphDestination;
   set destination(
     value:
       | HyperlinkTextDestination
@@ -201,60 +195,13 @@ export interface Hyperlink {
   showDestination(): void;
 }
 
-
 /**
- * The broadcast proxy for {@link Hyperlink} — what `everyItem()` returns.
+ * A clickable hyperlink connecting a {@link HyperlinkPageItemSource}, {@link HyperlinkTextSource}, or {@link CrossReferenceSource} to a destination such as a page,
+ * URL, or text range.
  *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link Hyperlink} there.
+ * Its appearance ({@link highlight}, {@link width}, {@link borderColor}, {@link borderStyle}) only matters for interactive PDF export.
  */
 export interface HyperlinkPlural {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (Document)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<HyperlinkPlural, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<HyperlinkPlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -314,12 +261,49 @@ export interface HyperlinkPlural {
    */
   readonly index: (number)[];
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (Document)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<HyperlinkPlural, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<HyperlinkPlural, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */
   get name(): (string)[];
   set name(value: string);
-  /** The object's DOM class name. */
-  readonly constructorName: 'Hyperlink';
   /** Resolves the proxy into the individual {@link Hyperlink} objects it stands for. */
   getElements(): Hyperlink[];
   /** The unique ID of the hyperlink, stable across saves and reopens. */
@@ -334,8 +318,7 @@ export interface HyperlinkPlural {
     | HyperlinkPageDestination
     | HyperlinkExternalPageDestination
     | HyperlinkURLDestination
-    | ParagraphDestination
-  )[];
+    | ParagraphDestination)[];
   set destination(
     value:
       | HyperlinkTextDestination

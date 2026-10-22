@@ -1,10 +1,11 @@
 /**
  * EmptyFrameFittingOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __EmptyFrameFittingOptions: unique symbol;
 
 
 interface EmptyFrameFittingOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<EmptyFrameFittingOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__EmptyFrameFittingOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -131,11 +129,6 @@ export declare const EmptyFrameFittingOptions: typeof Enumeration & {
    */
   readonly contentToFrame: EmptyFrameFittingOptions_CONTENT_TO_FRAME;
   /**
-   * Resizes content to fit the frame. Note: Content that has different proportions than the frame appears stretched or squeezed.
-   */
-  readonly contenttoframe: EmptyFrameFittingOptions_CONTENT_TO_FRAME;
-
-  /**
    * Resizes content to fit the frame while preserving content proportions. If the content and frame have different proportions, some empty space appears in the frame.
    */
   readonly PROPORTIONALLY: EmptyFrameFittingOptions_PROPORTIONALLY;
@@ -156,11 +149,4 @@ export declare const EmptyFrameFittingOptions: typeof Enumeration & {
    * obscured by the frame.
    */
   readonly fillProportionally: EmptyFrameFittingOptions_FILL_PROPORTIONALLY;
-  /**
-   * Resizes content to fill the frame while preserving the content's proportions.
-   * If the content and frame have different proportions, some of the content is
-   * obscured by the frame.
-   */
-  readonly fillproportionally: EmptyFrameFittingOptions_FILL_PROPORTIONALLY;
-
 }

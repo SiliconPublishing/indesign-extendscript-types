@@ -1,10 +1,11 @@
 /**
  * Profile.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __Profile: unique symbol;
 
 
 interface Profile extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<Profile>): boolean;
-
   /**
    * @internal **WARNING:** `__Profile` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -116,15 +114,6 @@ export declare const Profile: typeof Enumeration & {
    */
   readonly POSTSCRIPT_CMS: Profile_POSTSCRIPT_CMS;
   /**
-   * Uses the PostScript CMS profile. 
-   */
-  readonly postscriptCms: Profile_POSTSCRIPT_CMS;
-  /**
-   * Uses the PostScript CMS profile. 
-   */
-  readonly postscriptcms: Profile_POSTSCRIPT_CMS;
-
-  /**
    * Uses the document profile.
    */
   readonly USE_DOCUMENT: Profile_USE_DOCUMENT;
@@ -132,11 +121,6 @@ export declare const Profile: typeof Enumeration & {
    * Uses the document profile.
    */
   readonly useDocument: Profile_USE_DOCUMENT;
-  /**
-   * Uses the document profile.
-   */
-  readonly usedocument: Profile_USE_DOCUMENT;
-
   /**
    * Uses the working profile.
    */
@@ -150,13 +134,4 @@ export declare const Profile: typeof Enumeration & {
    * No CMS profile is used.
    */
   readonly NO_CMS: Profile_NO_CMS;
-  /**
-   * No CMS profile is used.
-   */
-  readonly noCms: Profile_NO_CMS;
-  /**
-   * No CMS profile is used.
-   */
-  readonly nocms: Profile_NO_CMS;
-
 }

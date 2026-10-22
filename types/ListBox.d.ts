@@ -1,6 +1,7 @@
 /**
  * ListBox.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -71,9 +72,6 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * multi-selectable, in an interactive PDF form.
  */
 export interface ListBox<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, ListBox, M>, FormFieldSurface<ListBox, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'ListBox';
-
   /** Resolves the proxy into the individual {@link ListBox} objects it stands for. */
   getElements(): ListBox<TParent, 'single'>[];
 

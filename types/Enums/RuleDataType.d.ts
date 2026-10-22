@@ -1,10 +1,11 @@
 /**
  * RuleDataType.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __RuleDataType: unique symbol;
 
 
 interface RuleDataType extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<RuleDataType>): boolean;
-
   /**
    * @internal **WARNING:** `__RuleDataType` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -166,11 +164,6 @@ export declare const RuleDataType: typeof Enumeration & {
    */
   readonly integerDataType: RuleDataType_INTEGER_DATA_TYPE;
   /**
-   * The data type is an int32.
-   */
-  readonly integerdatatype: RuleDataType_INTEGER_DATA_TYPE;
-
-  /**
    * The data type is an int16.
    */
   readonly SHORT_INTEGER_DATA_TYPE: RuleDataType_SHORT_INTEGER_DATA_TYPE;
@@ -178,11 +171,6 @@ export declare const RuleDataType: typeof Enumeration & {
    * The data type is an int16.
    */
   readonly shortIntegerDataType: RuleDataType_SHORT_INTEGER_DATA_TYPE;
-  /**
-   * The data type is an int16.
-   */
-  readonly shortintegerdatatype: RuleDataType_SHORT_INTEGER_DATA_TYPE;
-
   /**
    * The data type is a real.
    */
@@ -192,11 +180,6 @@ export declare const RuleDataType: typeof Enumeration & {
    */
   readonly realDataType: RuleDataType_REAL_DATA_TYPE;
   /**
-   * The data type is a real.
-   */
-  readonly realdatatype: RuleDataType_REAL_DATA_TYPE;
-
-  /**
    * The data type is a string.
    */
   readonly STRING_DATA_TYPE: RuleDataType_STRING_DATA_TYPE;
@@ -204,11 +187,6 @@ export declare const RuleDataType: typeof Enumeration & {
    * The data type is a string.
    */
   readonly stringDataType: RuleDataType_STRING_DATA_TYPE;
-  /**
-   * The data type is a string.
-   */
-  readonly stringdatatype: RuleDataType_STRING_DATA_TYPE;
-
   /**
    * The data type is a boolean.
    */
@@ -218,11 +196,6 @@ export declare const RuleDataType: typeof Enumeration & {
    */
   readonly booleanDataType: RuleDataType_BOOLEAN_DATA_TYPE;
   /**
-   * The data type is a boolean.
-   */
-  readonly booleandatatype: RuleDataType_BOOLEAN_DATA_TYPE;
-
-  /**
    * The data type is an object.
    */
   readonly OBJECT_DATA_TYPE: RuleDataType_OBJECT_DATA_TYPE;
@@ -231,11 +204,6 @@ export declare const RuleDataType: typeof Enumeration & {
    */
   readonly objectDataType: RuleDataType_OBJECT_DATA_TYPE;
   /**
-   * The data type is an object.
-   */
-  readonly objectdatatype: RuleDataType_OBJECT_DATA_TYPE;
-
-  /**
    * The data type is a list.
    */
   readonly LIST_DATA_TYPE: RuleDataType_LIST_DATA_TYPE;
@@ -243,9 +211,4 @@ export declare const RuleDataType: typeof Enumeration & {
    * The data type is a list.
    */
   readonly listDataType: RuleDataType_LIST_DATA_TYPE;
-  /**
-   * The data type is a list.
-   */
-  readonly listdatatype: RuleDataType_LIST_DATA_TYPE;
-
 }

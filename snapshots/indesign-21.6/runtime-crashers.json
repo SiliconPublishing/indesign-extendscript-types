@@ -1,0 +1,47 @@
+{
+ "FindChangeDropShadowSetting.distance": {
+  "crashes": true,
+  "version": "21.6",
+  "error": "Command failed: osascript -e with timeout of 600 seconds"
+ },
+ "FindChangeDropShadowSetting.angle": {
+  "crashes": true,
+  "version": "21.6",
+  "error": "Command failed: osascript -e with timeout of 600 seconds"
+ },
+ "FindChangeInnerShadowSetting.xOffset": {
+  "crashes": true,
+  "version": "21.6",
+  "error": "Command failed: osascript -e with timeout of 600 seconds"
+ },
+ "FindChangeInnerShadowSetting.yOffset": {
+  "crashes": true,
+  "version": "21.6",
+  "error": "Command failed: osascript -e with timeout of 600 seconds"
+ },
+ "XMLElement.contents:nothing": {
+  "crashes": true,
+  "version": "21.6",
+  "error": "Command failed: osascript -e with timeout of 600 seconds"
+ },
+ "XMLElement.contents:roundtrip": {
+  "crashes": true,
+  "version": "21.6",
+  "error": "Command failed: osascript -e with timeout of 600 seconds"
+ },
+ "Events[]": {
+  "crashes": true,
+  "version": "21.6",
+  "error": "Command failed: osascript -e with timeout of 600 seconds"
+ },
+ "LayoutWindow.activePage:name": {
+  "crashes": true,
+  "version": "21.6",
+  "error": "Command failed: osascript -e with timeout of 600 seconds"
+ },
+ "Window.activePage:name": {
+  "crashes": true,
+  "version": "21.6",
+  "error": "Command failed: osascript -e with timeout of 600 seconds"
+ }
+}

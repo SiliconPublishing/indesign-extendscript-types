@@ -1,6 +1,7 @@
 /**
  * PrinterPresets.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -18,9 +19,6 @@ import type { PrinterPreset } from './PrinterPreset';
  */
 export interface PrinterPresets
   extends BaseCollection<PrinterPreset, PrinterPreset, PrinterPreset<'plural'>>, NamedCollection<PrinterPreset> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'PrinterPresets';
-
   /**
    * Creates a new {@link PrinterPreset} with default printing values.
    * @param withProperties Initial values for properties of the new preset, such as its `name`.

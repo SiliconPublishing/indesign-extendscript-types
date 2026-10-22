@@ -1,6 +1,7 @@
 /**
  * PrintBookletPrintPreference.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -40,9 +41,6 @@ import type { PrintPreference } from './PrintPreference';
  * regular {@link PrintPreference}.
  */
 export interface PrintBookletPrintPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'PrintBookletPrintPreference';
-
   /** Resolves the proxy into the individual {@link PrintBookletPrintPreference} objects it stands for. */
   getElements(): PrintBookletPrintPreference<'single'>[];
 
@@ -70,7 +68,7 @@ export interface PrintBookletPrintPreference<M extends Mode = 'single'> extends 
   set ppd(value: PPDValues | string);
 
   /** The PostScript file to print to. Note: Valid only when the current printer is defined as postscript file. */
-  get printFile(): Read<M, Promise<File>>;
+  get printFile(): Read<M, File>;
   set printFile(value: FilePath);
 
   /** The number of copies to print. Note: Not valid when printer is PostScript File. */

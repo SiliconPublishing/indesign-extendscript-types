@@ -1,6 +1,7 @@
 /**
  * Application.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -228,6 +229,8 @@ import type { MenuActions } from './MenuActions';
 import type { ScriptMenuActions } from './ScriptMenuActions';
 import type { Menus } from './Menus';
 import type { SelectionItem } from './_base/Unions';
+import type { HTTPLinkPreferences } from "./HTTPLinkPreferences";
+import type { ScriptArg } from "./ScriptArg";
 
 /**
  * The InDesign application, reached as the global `app` — where every script starts.
@@ -243,9 +246,6 @@ import type { SelectionItem } from './_base/Unions';
  * {@link Document}, not here.
  */
 export interface Application<M extends Mode = 'single'> extends LabelableEventDOMObject<Application, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'Application';
-
   /** Resolves the proxy into the individual {@link Application} objects it stands for. */
   getElements(): Application<'single'>[];
 
@@ -259,10 +259,10 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
   readonly locale: Read<M, Locale>;
 
   /** The application's own executable file, as a {@link File} entry — reach the path with `.nativePath`. */
-  readonly fullName: Read<M, Promise<File>>;
+  readonly fullName: Read<M, File | Folder>;
 
   /** The folder containing the application executable, as a {@link Folder} entry — reach the path with `.nativePath`. Not the executable itself; see {@link fullName}. */
-  readonly filePath: Read<M, Promise<Folder>>;
+  readonly filePath: Read<M, Folder>;
 
   /** Whether the application is visible on screen. */
   readonly visible: Read<M, boolean>;
@@ -283,7 +283,7 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
   readonly featureSet: Read<M, FeatureSetOptions>;
 
   /** Path to the script currently running from the Scripts panel, if any. */
-  readonly activeScript: Read<M, Promise<File>>;
+  readonly activeScript: Read<M, File>;
 
   /** Undo mode in effect for the current script execution. */
   readonly activeScriptUndoMode: Read<M, UndoModes>;
@@ -1359,4 +1359,100 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
 
   /** Creates a custom mini-folio from asset and overlay descriptions. */
   createCustomMiniFolio(miniFolioDescription: object[], destination: FilePath): Read<M, void>;
+
+  // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
+
+  /**
+   * The current size of the Connector HTTP cache.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  readonly cacheSize: Read<M, number>;
+
+  /**
+   * The preference properties that define preferences for HTTP links.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  readonly httpLinkPreferences: Read<M, HTTPLinkPreferences>;
+
+  /**
+   * Arguments to pass to a script.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  readonly scriptArgs: Read<M, ScriptArg>;
+
+  /**
+   * Frame.io OAuth2 authentication server URL.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get frameioServerURL(): Read<M, string>;
+  set frameioServerURL(value: string);
+
+  /**
+   * Frame.io OAuth2 access token.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get frameioAccessToken(): Read<M, string>;
+  set frameioAccessToken(value: string);
+
+  /**
+   * Frame.io OAuth2 refresh token.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get frameioRefreshToken(): Read<M, string>;
+  set frameioRefreshToken(value: string);
+
+  /**
+   * The Frame.io authentication token status.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get frameioAuthTokenStatus(): Read<M, number>;
+  set frameioAuthTokenStatus(value: number);
+
+  /**
+   * The directory location of the Connector HTTP cache.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get cacheDir(): Read<M, File>;
+  set cacheDir(value: FilePath);
+
+  /**
+   * The maximum size limit of the Connector HTTP cache in MB. Set to 0 for no limit.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get cacheLimit(): Read<M, number>;
+  set cacheLimit(value: number);
+
+  /**
+   * The number of seconds between HTTP link status updates.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get linkStatusInterval(): Read<M, number>;
+  set linkStatusInterval(value: number);
+
+  /**
+   * The CEP usser GUID.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get cepUserGuid(): Read<M, string>;
+  set cepUserGuid(value: string);
+
+  /**
+   * Clear the Connector HTTP cache.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  clearHTTPCache(): Read<M, void>;
+
+  /**
+   * Trim the Connector HTTP cache.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  trimHTTPCache(): Read<M, void>;
+
+  /**
+   * Frame's license activated.
+   * @param licenseActivated Is license is activated.
+   * @param adobeUserId UXP Adobe user id. (Optional)
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  frameLicenseActivated(licenseActivated: boolean, adobeUserId?: string): Read<M, void>;
 }

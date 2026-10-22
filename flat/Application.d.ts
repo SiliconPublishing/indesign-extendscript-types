@@ -1,6 +1,7 @@
 /**
  * Application.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -228,15 +229,18 @@ import type { MenuActions } from './MenuActions';
 import type { ScriptMenuActions } from './ScriptMenuActions';
 import type { Menus } from './Menus';
 import type { SelectionItem } from './_base/Unions';
-import type { Event } from './Event';
+import type { HTTPLinkPreferences } from "./HTTPLinkPreferences";
+import type { ScriptArg } from "./ScriptArg";
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { InDesignEventMap } from './_base/Events';
+import type { Event } from './Event';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+
 /**
  * The InDesign application, reached as the global `app` — where every script starts.
  *
@@ -251,50 +255,6 @@ import type { PropertiesSetter } from './_base/Properties';
  * {@link Document}, not here.
  */
 export interface Application {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: Application;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<Application, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<Application, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -336,6 +296,45 @@ export interface Application {
     captures?: boolean,
   ): boolean;
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: Application;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<Application, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<Application, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * A property that can be set to any string.
    * Note: In InDesign's UI this is user viewable and modifiable via the Script Label panel.
    */
@@ -349,8 +348,6 @@ export interface Application {
    * Gets the label value associated with the specified key.
    */
   extractLabel(key: string): string;
-  /** The object's DOM class name. */
-  readonly constructorName: 'Application';
   /** Resolves the proxy into the individual {@link Application} objects it stands for. */
   getElements(): Application[];
   /** The application's name. Unlike most named objects, it cannot be renamed. */
@@ -360,9 +357,9 @@ export interface Application {
   /** The UI/formatting locale the application is running under. */
   readonly locale: Locale;
   /** The application's own executable file, as a {@link File} entry — reach the path with `.nativePath`. */
-  readonly fullName: Promise<File>;
+  readonly fullName: File | Folder;
   /** The folder containing the application executable, as a {@link Folder} entry — reach the path with `.nativePath`. Not the executable itself; see {@link fullName}. */
-  readonly filePath: Promise<Folder>;
+  readonly filePath: Folder;
   /** Whether the application is visible on screen. */
   readonly visible: boolean;
   /** The user's serial number. */
@@ -376,7 +373,7 @@ export interface Application {
   /** The licensed feature set. */
   readonly featureSet: FeatureSetOptions;
   /** Path to the script currently running from the Scripts panel, if any. */
-  readonly activeScript: Promise<File>;
+  readonly activeScript: File;
   /** Undo mode in effect for the current script execution. */
   readonly activeScriptUndoMode: UndoModes;
   /** Name of the action at the top of the undo stack — what {@link undo} will reverse. */
@@ -1169,62 +1166,104 @@ export interface Application {
   getAllOverlays(portraitDocumentForCheckingOverlays: Document, landscapeDocumentForCheckingOverlays: Document, miniFolioParams?: object[]): unknown[];
   /** Creates a custom mini-folio from asset and overlay descriptions. */
   createCustomMiniFolio(miniFolioDescription: object[], destination: FilePath): void;
+  // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
+
+  /**
+   * The current size of the Connector HTTP cache.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  readonly cacheSize: number;
+  /**
+   * The preference properties that define preferences for HTTP links.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  readonly httpLinkPreferences: HTTPLinkPreferences;
+  /**
+   * Arguments to pass to a script.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  readonly scriptArgs: ScriptArg;
+  /**
+   * Frame.io OAuth2 authentication server URL.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get frameioServerURL(): string;
+  set frameioServerURL(value: string);
+  /**
+   * Frame.io OAuth2 access token.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get frameioAccessToken(): string;
+  set frameioAccessToken(value: string);
+  /**
+   * Frame.io OAuth2 refresh token.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get frameioRefreshToken(): string;
+  set frameioRefreshToken(value: string);
+  /**
+   * The Frame.io authentication token status.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get frameioAuthTokenStatus(): number;
+  set frameioAuthTokenStatus(value: number);
+  /**
+   * The directory location of the Connector HTTP cache.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get cacheDir(): File;
+  set cacheDir(value: FilePath);
+  /**
+   * The maximum size limit of the Connector HTTP cache in MB. Set to 0 for no limit.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get cacheLimit(): number;
+  set cacheLimit(value: number);
+  /**
+   * The number of seconds between HTTP link status updates.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get linkStatusInterval(): number;
+  set linkStatusInterval(value: number);
+  /**
+   * The CEP usser GUID.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get cepUserGuid(): string;
+  set cepUserGuid(value: string);
+  /**
+   * Clear the Connector HTTP cache.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  clearHTTPCache(): void;
+  /**
+   * Trim the Connector HTTP cache.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  trimHTTPCache(): void;
+  /**
+   * Frame's license activated.
+   * @param licenseActivated Is license is activated.
+   * @param adobeUserId UXP Adobe user id. (Optional)
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  frameLicenseActivated(licenseActivated: boolean, adobeUserId?: string): void;
 }
 
-
 /**
- * The broadcast proxy for {@link Application} — what `everyItem()` returns.
+ * The InDesign application, reached as the global `app` — where every script starts.
  *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
+ * It holds the session-wide surface: the application-scoped collections
+ * ({@link documents}, {@link fonts}, {@link swatches}, {@link menus}, and the style and
+ * preset collections), the *default* preference objects that seed new documents, the
+ * find/change preference objects the document-level `findText` and `changeGrep` searches
+ * read, and the session commands `open`, `close`, `quit`, `print`, `place`, `doScript`
+ * and `undo`.
  *
- * Not a class in the InDesign DOM — look up {@link Application} there.
+ * Document-scoped state — `activeLayer`, page items, the document body — is on
+ * {@link Document}, not here.
  */
 export interface ApplicationPlural {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (Application)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<ApplicationPlural, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<ApplicationPlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -1266,6 +1305,45 @@ export interface ApplicationPlural {
     captures?: boolean,
   ): boolean;
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (Application)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<ApplicationPlural, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<ApplicationPlural, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * A property that can be set to any string.
    * Note: In InDesign's UI this is user viewable and modifiable via the Script Label panel.
    */
@@ -1279,8 +1357,6 @@ export interface ApplicationPlural {
    * Gets the label value associated with the specified key.
    */
   extractLabel(key: string): (string)[];
-  /** The object's DOM class name. */
-  readonly constructorName: 'Application';
   /** Resolves the proxy into the individual {@link Application} objects it stands for. */
   getElements(): Application[];
   /** The application's name. Unlike most named objects, it cannot be renamed. */
@@ -1290,9 +1366,9 @@ export interface ApplicationPlural {
   /** The UI/formatting locale the application is running under. */
   readonly locale: (Locale)[];
   /** The application's own executable file, as a {@link File} entry — reach the path with `.nativePath`. */
-  readonly fullName: (Promise<File>)[];
+  readonly fullName: (File | Folder)[];
   /** The folder containing the application executable, as a {@link Folder} entry — reach the path with `.nativePath`. Not the executable itself; see {@link fullName}. */
-  readonly filePath: (Promise<Folder>)[];
+  readonly filePath: (Folder)[];
   /** Whether the application is visible on screen. */
   readonly visible: (boolean)[];
   /** The user's serial number. */
@@ -1306,7 +1382,7 @@ export interface ApplicationPlural {
   /** The licensed feature set. */
   readonly featureSet: (FeatureSetOptions)[];
   /** Path to the script currently running from the Scripts panel, if any. */
-  readonly activeScript: (Promise<File>)[];
+  readonly activeScript: (File)[];
   /** Undo mode in effect for the current script execution. */
   readonly activeScriptUndoMode: (UndoModes)[];
   /** Name of the action at the top of the undo stack — what {@link undo} will reverse. */
@@ -2099,4 +2175,86 @@ export interface ApplicationPlural {
   getAllOverlays(portraitDocumentForCheckingOverlays: Document, landscapeDocumentForCheckingOverlays: Document, miniFolioParams?: object[]): (unknown[])[];
   /** Creates a custom mini-folio from asset and overlay descriptions. */
   createCustomMiniFolio(miniFolioDescription: object[], destination: FilePath): (void)[];
+  // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
+
+  /**
+   * The current size of the Connector HTTP cache.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  readonly cacheSize: (number)[];
+  /**
+   * The preference properties that define preferences for HTTP links.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  readonly httpLinkPreferences: (HTTPLinkPreferences)[];
+  /**
+   * Arguments to pass to a script.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  readonly scriptArgs: (ScriptArg)[];
+  /**
+   * Frame.io OAuth2 authentication server URL.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get frameioServerURL(): (string)[];
+  set frameioServerURL(value: string);
+  /**
+   * Frame.io OAuth2 access token.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get frameioAccessToken(): (string)[];
+  set frameioAccessToken(value: string);
+  /**
+   * Frame.io OAuth2 refresh token.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get frameioRefreshToken(): (string)[];
+  set frameioRefreshToken(value: string);
+  /**
+   * The Frame.io authentication token status.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get frameioAuthTokenStatus(): (number)[];
+  set frameioAuthTokenStatus(value: number);
+  /**
+   * The directory location of the Connector HTTP cache.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get cacheDir(): (File)[];
+  set cacheDir(value: FilePath);
+  /**
+   * The maximum size limit of the Connector HTTP cache in MB. Set to 0 for no limit.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get cacheLimit(): (number)[];
+  set cacheLimit(value: number);
+  /**
+   * The number of seconds between HTTP link status updates.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get linkStatusInterval(): (number)[];
+  set linkStatusInterval(value: number);
+  /**
+   * The CEP usser GUID.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get cepUserGuid(): (string)[];
+  set cepUserGuid(value: string);
+  /**
+   * Clear the Connector HTTP cache.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  clearHTTPCache(): (void)[];
+  /**
+   * Trim the Connector HTTP cache.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  trimHTTPCache(): (void)[];
+  /**
+   * Frame's license activated.
+   * @param licenseActivated Is license is activated.
+   * @param adobeUserId UXP Adobe user id. (Optional)
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  frameLicenseActivated(licenseActivated: boolean, adobeUserId?: string): (void)[];
 }

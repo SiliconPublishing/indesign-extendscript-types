@@ -1,10 +1,11 @@
 /**
  * PrintPageOrientation.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __PrintPageOrientation: unique symbol;
 
 
 interface PrintPageOrientation extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<PrintPageOrientation>): boolean;
-
   /**
    * @internal **WARNING:** `__PrintPageOrientation` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -136,11 +134,6 @@ export declare const PrintPageOrientation: typeof Enumeration & {
    */
   readonly reversePortrait: PrintPageOrientation_REVERSE_PORTRAIT;
   /**
-   * Reverse portrait.
-   */
-  readonly reverseportrait: PrintPageOrientation_REVERSE_PORTRAIT;
-
-  /**
    * Reverse landscape.
    */
   readonly REVERSE_LANDSCAPE: PrintPageOrientation_REVERSE_LANDSCAPE;
@@ -148,9 +141,4 @@ export declare const PrintPageOrientation: typeof Enumeration & {
    * Reverse landscape.
    */
   readonly reverseLandscape: PrintPageOrientation_REVERSE_LANDSCAPE;
-  /**
-   * Reverse landscape.
-   */
-  readonly reverselandscape: PrintPageOrientation_REVERSE_LANDSCAPE;
-
 }

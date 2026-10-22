@@ -1,10 +1,11 @@
 /**
  * HeaderTypes.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __HeaderTypes: unique symbol;
 
 
 interface HeaderTypes extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<HeaderTypes>): boolean;
-
   /**
    * @internal **WARNING:** `__HeaderTypes` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -486,11 +484,6 @@ export declare const HeaderTypes: typeof Enumeration & {
    */
   readonly basicLatin: HeaderTypes_BASIC_LATIN;
   /**
-   * Basic Latin
-   */
-  readonly basiclatin: HeaderTypes_BASIC_LATIN;
-
-  /**
    * Finnish/Swedish
    */
   readonly FINNISH_SWEDISH: HeaderTypes_FINNISH_SWEDISH;
@@ -499,11 +492,6 @@ export declare const HeaderTypes: typeof Enumeration & {
    */
   readonly finnishSwedish: HeaderTypes_FINNISH_SWEDISH;
   /**
-   * Finnish/Swedish
-   */
-  readonly finnishswedish: HeaderTypes_FINNISH_SWEDISH;
-
-  /**
    * Danish/Norwegian
    */
   readonly DANISH_NORWEGIAN: HeaderTypes_DANISH_NORWEGIAN;
@@ -511,11 +499,6 @@ export declare const HeaderTypes: typeof Enumeration & {
    * Danish/Norwegian
    */
   readonly danishNorwegian: HeaderTypes_DANISH_NORWEGIAN;
-  /**
-   * Danish/Norwegian
-   */
-  readonly danishnorwegian: HeaderTypes_DANISH_NORWEGIAN;
-
   /**
    * Spanish
    */
@@ -669,11 +652,6 @@ export declare const HeaderTypes: typeof Enumeration & {
    */
   readonly koreanConsonant: HeaderTypes_KOREAN_CONSONANT;
   /**
-   * Korean Consonant
-   */
-  readonly koreanconsonant: HeaderTypes_KOREAN_CONSONANT;
-
-  /**
    * Korean Consonant Plus Vowel
    */
   readonly KOREAN_CONSONANT_PLUS_VOWEL: HeaderTypes_KOREAN_CONSONANT_PLUS_VOWEL;
@@ -681,11 +659,6 @@ export declare const HeaderTypes: typeof Enumeration & {
    * Korean Consonant Plus Vowel
    */
   readonly koreanConsonantPlusVowel: HeaderTypes_KOREAN_CONSONANT_PLUS_VOWEL;
-  /**
-   * Korean Consonant Plus Vowel
-   */
-  readonly koreanconsonantplusvowel: HeaderTypes_KOREAN_CONSONANT_PLUS_VOWEL;
-
   /**
    * Hiragana: A, I, U, E, O...
    */
@@ -695,11 +668,6 @@ export declare const HeaderTypes: typeof Enumeration & {
    */
   readonly hiraganaAll: HeaderTypes_HIRAGANA_ALL;
   /**
-   * Hiragana: A, I, U, E, O...
-   */
-  readonly hiraganaall: HeaderTypes_HIRAGANA_ALL;
-
-  /**
    * Hiragana: A, Ka, Sa, Ta, Na...
    */
   readonly HIRAGANA_CONSONANTS_ONLY: HeaderTypes_HIRAGANA_CONSONANTS_ONLY;
@@ -707,11 +675,6 @@ export declare const HeaderTypes: typeof Enumeration & {
    * Hiragana: A, Ka, Sa, Ta, Na...
    */
   readonly hiraganaConsonantsOnly: HeaderTypes_HIRAGANA_CONSONANTS_ONLY;
-  /**
-   * Hiragana: A, Ka, Sa, Ta, Na...
-   */
-  readonly hiraganaconsonantsonly: HeaderTypes_HIRAGANA_CONSONANTS_ONLY;
-
   /**
    * Katakana: A, I, U, E, O...
    */
@@ -721,11 +684,6 @@ export declare const HeaderTypes: typeof Enumeration & {
    */
   readonly katakanaAll: HeaderTypes_KATAKANA_ALL;
   /**
-   * Katakana: A, I, U, E, O...
-   */
-  readonly katakanaall: HeaderTypes_KATAKANA_ALL;
-
-  /**
    * Katakana: A, Ka, Sa, Ta, Na...
    */
   readonly KATAKANA_CONSONANTS_ONLY: HeaderTypes_KATAKANA_CONSONANTS_ONLY;
@@ -733,11 +691,6 @@ export declare const HeaderTypes: typeof Enumeration & {
    * Katakana: A, Ka, Sa, Ta, Na...
    */
   readonly katakanaConsonantsOnly: HeaderTypes_KATAKANA_CONSONANTS_ONLY;
-  /**
-   * Katakana: A, Ka, Sa, Ta, Na...
-   */
-  readonly katakanaconsonantsonly: HeaderTypes_KATAKANA_CONSONANTS_ONLY;
-
   /**
    * Chinese Pinyin
    */
@@ -747,11 +700,6 @@ export declare const HeaderTypes: typeof Enumeration & {
    */
   readonly chinesePinyin: HeaderTypes_CHINESE_PINYIN;
   /**
-   * Chinese Pinyin
-   */
-  readonly chinesepinyin: HeaderTypes_CHINESE_PINYIN;
-
-  /**
    * Chinese Stroke Count
    */
   readonly CHINESE_STROKE_COUNT: HeaderTypes_CHINESE_STROKE_COUNT;
@@ -759,9 +707,4 @@ export declare const HeaderTypes: typeof Enumeration & {
    * Chinese Stroke Count
    */
   readonly chineseStrokeCount: HeaderTypes_CHINESE_STROKE_COUNT;
-  /**
-   * Chinese Stroke Count
-   */
-  readonly chinesestrokecount: HeaderTypes_CHINESE_STROKE_COUNT;
-
 }

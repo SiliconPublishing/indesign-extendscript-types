@@ -1,6 +1,7 @@
 /**
  * TimingLists.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -17,9 +18,6 @@ import type { TimingList } from './TimingList';
  * @collection TimingList
  */
 export interface TimingLists extends BaseCollection<TimingList, TimingList, TimingList<'plural'>> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'TimingLists';
-
   /**
    * Adds a new event-triggered timing list.
    * * Each `TimingList` is tied to exactly one `triggerEvent`. To trigger animations on multiple events (e.g., both Page Load and Click), you must create separate timing lists.

@@ -1,6 +1,7 @@
 /**
  * EventListener.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -22,9 +23,6 @@ export interface EventListener<M extends Mode = 'single'>
   extends IndexedDOMObject<unknown, M>,
     LabelableDOMObject<unknown, M>,
     NamableDOMObject<unknown, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'EventListener';
-
   /** Resolves the proxy into the individual {@link EventListener} objects it stands for. */
   getElements(): EventListener<'single'>[];
 
@@ -34,8 +32,8 @@ export interface EventListener<M extends Mode = 'single'>
   /** The event type this listener is registered for. */
   readonly eventType: Read<M, EventString>;
 
-  /** The handler invoked when the event fires — a JavaScript function, or the script file it runs, which reads back as a `Promise<`{@link File}`>`. */
-  readonly handler: Read<M, Function | Promise<File>>;
+  /** The handler invoked when the event fires — a JavaScript function, or the script file it runs, which reads back as a {@link File}. */
+  readonly handler: Read<M, Function | File>;
 
   /** Deletes the EventListener, unregistering it from its target. */
   remove(): Read<M, void>;

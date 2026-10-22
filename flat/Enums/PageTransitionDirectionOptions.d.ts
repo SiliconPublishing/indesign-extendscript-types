@@ -1,10 +1,11 @@
 /**
  * PageTransitionDirectionOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __PageTransitionDirectionOptions: unique symbol;
 
 
 interface PageTransitionDirectionOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<PageTransitionDirectionOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__PageTransitionDirectionOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -326,11 +324,6 @@ export declare const PageTransitionDirectionOptions: typeof Enumeration & {
    */
   readonly notApplicable: PageTransitionDirectionOptions_NOT_APPLICABLE;
   /**
-   * Direction does not apply. 
-   */
-  readonly notapplicable: PageTransitionDirectionOptions_NOT_APPLICABLE;
-
-  /**
    * The top to bottom direction. 
    */
   readonly DOWN: PageTransitionDirectionOptions_DOWN;
@@ -348,11 +341,6 @@ export declare const PageTransitionDirectionOptions: typeof Enumeration & {
    */
   readonly rightToLeft: PageTransitionDirectionOptions_RIGHT_TO_LEFT;
   /**
-   * The right to left direction.
-   */
-  readonly righttoleft: PageTransitionDirectionOptions_RIGHT_TO_LEFT;
-
-  /**
    * The down and left direction.
    */
   readonly LEFT_DOWN: PageTransitionDirectionOptions_LEFT_DOWN;
@@ -360,11 +348,6 @@ export declare const PageTransitionDirectionOptions: typeof Enumeration & {
    * The down and left direction.
    */
   readonly leftDown: PageTransitionDirectionOptions_LEFT_DOWN;
-  /**
-   * The down and left direction.
-   */
-  readonly leftdown: PageTransitionDirectionOptions_LEFT_DOWN;
-
   /**
    * The up and left direction. 
    */
@@ -374,11 +357,6 @@ export declare const PageTransitionDirectionOptions: typeof Enumeration & {
    */
   readonly leftUp: PageTransitionDirectionOptions_LEFT_UP;
   /**
-   * The up and left direction. 
-   */
-  readonly leftup: PageTransitionDirectionOptions_LEFT_UP;
-
-  /**
    * The left to right direction. 
    */
   readonly LEFT_TO_RIGHT: PageTransitionDirectionOptions_LEFT_TO_RIGHT;
@@ -386,11 +364,6 @@ export declare const PageTransitionDirectionOptions: typeof Enumeration & {
    * The left to right direction. 
    */
   readonly leftToRight: PageTransitionDirectionOptions_LEFT_TO_RIGHT;
-  /**
-   * The left to right direction. 
-   */
-  readonly lefttoright: PageTransitionDirectionOptions_LEFT_TO_RIGHT;
-
   /**
    * The down and right direction. 
    */
@@ -400,11 +373,6 @@ export declare const PageTransitionDirectionOptions: typeof Enumeration & {
    */
   readonly rightDown: PageTransitionDirectionOptions_RIGHT_DOWN;
   /**
-   * The down and right direction. 
-   */
-  readonly rightdown: PageTransitionDirectionOptions_RIGHT_DOWN;
-
-  /**
    * The up and right direction. 
    */
   readonly RIGHT_UP: PageTransitionDirectionOptions_RIGHT_UP;
@@ -412,11 +380,6 @@ export declare const PageTransitionDirectionOptions: typeof Enumeration & {
    * The up and right direction. 
    */
   readonly rightUp: PageTransitionDirectionOptions_RIGHT_UP;
-  /**
-   * The up and right direction. 
-   */
-  readonly rightup: PageTransitionDirectionOptions_RIGHT_UP;
-
   /**
    * The bottom to top direction. 
    */
@@ -471,11 +434,6 @@ export declare const PageTransitionDirectionOptions: typeof Enumeration & {
    */
   readonly horizontalIn: PageTransitionDirectionOptions_HORIZONTAL_IN;
   /**
-   * The horizontal inward direction. 
-   */
-  readonly horizontalin: PageTransitionDirectionOptions_HORIZONTAL_IN;
-
-  /**
    * The horizontal outward direction. 
    */
   readonly HORIZONTAL_OUT: PageTransitionDirectionOptions_HORIZONTAL_OUT;
@@ -483,11 +441,6 @@ export declare const PageTransitionDirectionOptions: typeof Enumeration & {
    * The horizontal outward direction. 
    */
   readonly horizontalOut: PageTransitionDirectionOptions_HORIZONTAL_OUT;
-  /**
-   * The horizontal outward direction. 
-   */
-  readonly horizontalout: PageTransitionDirectionOptions_HORIZONTAL_OUT;
-
   /**
    * The vertical inward direction. 
    */
@@ -497,11 +450,6 @@ export declare const PageTransitionDirectionOptions: typeof Enumeration & {
    */
   readonly verticalIn: PageTransitionDirectionOptions_VERTICAL_IN;
   /**
-   * The vertical inward direction. 
-   */
-  readonly verticalin: PageTransitionDirectionOptions_VERTICAL_IN;
-
-  /**
    * The vertical outward direction. 
    */
   readonly VERTICAL_OUT: PageTransitionDirectionOptions_VERTICAL_OUT;
@@ -509,9 +457,4 @@ export declare const PageTransitionDirectionOptions: typeof Enumeration & {
    * The vertical outward direction. 
    */
   readonly verticalOut: PageTransitionDirectionOptions_VERTICAL_OUT;
-  /**
-   * The vertical outward direction. 
-   */
-  readonly verticalout: PageTransitionDirectionOptions_VERTICAL_OUT;
-
 }

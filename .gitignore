@@ -1,2 +1,8 @@
 node_modules/
 *.tgz
+types.new/
+types.old/
+flat.new/
+flat.old/
+reports/
+.DS_Store

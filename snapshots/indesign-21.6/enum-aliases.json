@@ -1,0 +1,3050 @@
+{
+ "AcrobatCompatibility": [
+  "acrobat4",
+  "acrobat5",
+  "acrobat6",
+  "acrobat7",
+  "acrobat8"
+ ],
+ "AddPageOptions": [
+  "endOfStory",
+  "endOfSection",
+  "endOfDocument"
+ ],
+ "AdornmentOverprint": [
+  "auto",
+  "overprintOn",
+  "overprintOff"
+ ],
+ "AlignDistributeBounds": [
+  "itemBounds",
+  "pageBounds",
+  "marginBounds",
+  "spreadBounds",
+  "bleedBounds",
+  "keyObject"
+ ],
+ "AlignOptions": [
+  "leftEdges",
+  "topEdges",
+  "rightEdges",
+  "bottomEdges",
+  "horizontalCenters",
+  "verticalCenters"
+ ],
+ "AlignmentStyleOptions": [
+  "spreadsheet",
+  "leftAlign",
+  "rightAlign",
+  "centerAlign"
+ ],
+ "AlternateGlyphForms": [
+  "none",
+  "traditionalForm",
+  "expertForm",
+  "jis78Form",
+  "jis83Form",
+  "monospacedHalfWidthForm",
+  "thirdWidthForm",
+  "quarterWidthForm",
+  "nlcForm",
+  "proportionalWidthForm",
+  "fullWidthForm",
+  "jis04Form",
+  "jis90Form"
+ ],
+ "AlternatingFillsTypes": [
+  "noAlternatingPattern",
+  "alternatingRows",
+  "alternatingColumns"
+ ],
+ "AnchorPoint": [
+  "topLeftAnchor",
+  "topCenterAnchor",
+  "topRightAnchor",
+  "leftCenterAnchor",
+  "centerAnchor",
+  "rightCenterAnchor",
+  "bottomLeftAnchor",
+  "bottomCenterAnchor",
+  "bottomRightAnchor"
+ ],
+ "AnchorPosition": [
+  "inlinePosition",
+  "aboveLine",
+  "anchored"
+ ],
+ "AnchoredRelativeTo": [
+  "columnEdge",
+  "textFrame",
+  "pageMargins",
+  "pageEdge",
+  "anchorLocation"
+ ],
+ "AnimationEaseOptions": [
+  "noEase",
+  "easeIn",
+  "easeOut",
+  "easeInOut",
+  "customEase"
+ ],
+ "AnimationPlayOperations": [
+  "play",
+  "stop",
+  "pause",
+  "resume",
+  "reversePlayback",
+  "stopAll"
+ ],
+ "AntiAliasType": [
+  "grayAntialiasing",
+  "colorAntialiasing",
+  "thickerAntialiasing"
+ ],
+ "ArrangeBy": [
+  "rowsFirst",
+  "columnsFirst"
+ ],
+ "ArrowHead": [
+  "none",
+  "simpleArrowHead",
+  "simpleWideArrowHead",
+  "triangleArrowHead",
+  "triangleWideArrowHead",
+  "barbedArrowHead",
+  "curvedArrowHead",
+  "circleArrowHead",
+  "circleSolidArrowHead",
+  "squareArrowHead",
+  "squareSolidArrowHead",
+  "barArrowHead"
+ ],
+ "ArrowHeadAlignmentEnum": [
+  "insidePath",
+  "outsidePath"
+ ],
+ "AssetType": [
+  "imageType",
+  "epsType",
+  "pdfType",
+  "geometryType",
+  "pageType",
+  "textType",
+  "structureType",
+  "indesignFileType"
+ ],
+ "AssignmentExportOptions": [
+  "emptyFrames",
+  "assignedSpreads",
+  "everything"
+ ],
+ "AssignmentStatus": [
+  "assignmentUpToDate",
+  "assignmentOutOfDate",
+  "assignmentFileMissing"
+ ],
+ "AttachedDevices": [
+  "all",
+  "android",
+  "ios"
+ ],
+ "AutoEnum": [
+  "autoValue"
+ ],
+ "AutoSizingReferenceEnum": [
+  "topLeftPoint",
+  "topCenterPoint",
+  "topRightPoint",
+  "leftCenterPoint",
+  "centerPoint",
+  "rightCenterPoint",
+  "bottomLeftPoint",
+  "bottomCenterPoint",
+  "bottomRightPoint"
+ ],
+ "AutoSizingTypeEnum": [
+  "off",
+  "heightOnly",
+  "widthOnly",
+  "heightAndWidth",
+  "heightAndWidthProportionally"
+ ],
+ "BalanceLinesStyle": [
+  "noBalancing",
+  "veeShape",
+  "fullyBalanced",
+  "pyramidShape"
+ ],
+ "BaselineFrameGridRelativeOption": [
+  "topOfPage",
+  "topOfMargin",
+  "topOfFrame",
+  "topOfInset"
+ ],
+ "BaselineGridRelativeOption": [
+  "topOfPageOfBaselineGridRelativeOption",
+  "topOfMarginOfBaselineGridRelativeOption"
+ ],
+ "BehaviorEvents": [
+  "mouseUp",
+  "mouseDown",
+  "mouseEnter",
+  "mouseExit",
+  "onFocus",
+  "onBlur"
+ ],
+ "BevelAndEmbossDirection": [
+  "up",
+  "down"
+ ],
+ "BevelAndEmbossStyle": [
+  "outerBevel",
+  "innerBevel",
+  "emboss",
+  "pillowEmboss"
+ ],
+ "BevelAndEmbossTechnique": [
+  "smoothContour",
+  "chiselHard",
+  "chiselSoft"
+ ],
+ "BindingOptions": [
+  "rightAlign",
+  "leftAlign",
+  "defaultValue"
+ ],
+ "BitmapCompression": [
+  "none",
+  "autoCompression",
+  "jpeg",
+  "zip",
+  "jpeg2000"
+ ],
+ "BlendMode": [
+  "normal",
+  "multiply",
+  "screen",
+  "overlay",
+  "softLight",
+  "hardLight",
+  "colorDodge",
+  "colorBurn",
+  "darken",
+  "lighten",
+  "difference",
+  "exclusion",
+  "hue",
+  "saturation",
+  "color",
+  "luminosity"
+ ],
+ "BlendingSpace": [
+  "defaultValue",
+  "rgb",
+  "cmyk"
+ ],
+ "BookContentStatus": [
+  "normal",
+  "missingDocument",
+  "documentOutOfDate",
+  "documentInUse",
+  "documentIsOpen"
+ ],
+ "BookletTypeOptions": [
+  "twoUpSaddleStitch",
+  "twoUpPerfectBound",
+  "twoUpConsecutive",
+  "threeUpConsecutive",
+  "fourUpConsecutive"
+ ],
+ "BoundingBoxLimits": [
+  "outerStrokeBounds",
+  "geometricPathBounds"
+ ],
+ "BuildingBlockTypes": [
+  "customStringBuildingBlock",
+  "fileNameBuildingBlock",
+  "chapterNumberBuildingBlock",
+  "pageNumberBuildingBlock",
+  "fullParagraphBuildingBlock",
+  "paragraphNumberBuildingBlock",
+  "paragraphTextBuildingBlock",
+  "bookmarkNameBuildingBlock"
+ ],
+ "BulletCharacterType": [
+  "unicodeOnly",
+  "unicodeWithFont",
+  "glyphWithFont"
+ ],
+ "BulletListExportOption": [
+  "unorderedList",
+  "asText"
+ ],
+ "Capitalization": [
+  "normal",
+  "smallCaps",
+  "allCaps",
+  "capToSmallCap",
+  "lowerCase"
+ ],
+ "CellTypeEnum": [
+  "textTypeCell",
+  "graphicTypeCell"
+ ],
+ "ChangeBackgroundColorChoices": [
+  "changeBackgroundUsesGalleyBackgroundColor",
+  "changeBackgroundUsesUserColor",
+  "changeBackgroundUsesChangePrefColor"
+ ],
+ "ChangeCaseOptions": [
+  "none",
+  "uppercase",
+  "lowercase",
+  "titlecase",
+  "sentencecase"
+ ],
+ "ChangeConditionsModes": [
+  "replaceWith",
+  "addTo"
+ ],
+ "ChangeMarkings": [
+  "none",
+  "strikethrough",
+  "underlineSingle",
+  "outline"
+ ],
+ "ChangeTextColorChoices": [
+  "changeUsesGalleyTextColor",
+  "changeUsesChangePrefColor"
+ ],
+ "ChangeTypes": [
+  "insertedText",
+  "deletedText",
+  "movedText"
+ ],
+ "ChangebarLocations": [
+  "leftAlign",
+  "rightAlign"
+ ],
+ "ChangecaseMode": [
+  "uppercase",
+  "lowercase",
+  "titlecase",
+  "sentencecase"
+ ],
+ "ChapterNumberSources": [
+  "userDefined",
+  "continueFromPreviousDocument",
+  "sameAsPreviousDocument"
+ ],
+ "CharacterAlignment": [
+  "alignBaseline",
+  "alignEmTop",
+  "alignEmCenter",
+  "alignEmBottom"
+ ],
+ "CharacterCountLocation": [
+  "none",
+  "topAlign",
+  "leftAlign",
+  "bottomAlign",
+  "rightAlign"
+ ],
+ "CharacterDirectionOptions": [
+  "defaultDirection",
+  "leftToRightDirection",
+  "rightToLeftDirection"
+ ],
+ "ClippingPathType": [
+  "none",
+  "detectEdges",
+  "alphaChannel",
+  "photoshopPath",
+  "userModifiedPath"
+ ],
+ "ColorModel": [
+  "spot",
+  "process",
+  "registration",
+  "mixedinkmodel"
+ ],
+ "ColorOutputModes": [
+  "compositeLeaveUnchanged",
+  "compositeGray",
+  "separations",
+  "inripSeparations"
+ ],
+ "ColorRenderingDictionary": [
+  "defaultValue",
+  "useDocument",
+  "working"
+ ],
+ "ColorSettingsPolicy": [
+  "colorPolicyOff",
+  "preserveEmbeddedProfiles",
+  "convertToWorkingSpace",
+  "combinationOfPreserveAndSafeCmyk"
+ ],
+ "ColorSpace": [
+  "rgb",
+  "cmyk",
+  "lab",
+  "mixedink",
+  "hsb"
+ ],
+ "ColumnTypes": [
+  "bodyColumn",
+  "headerColumn"
+ ],
+ "CommentStatusEnum": [
+  "openStatus",
+  "resolvedStatus"
+ ],
+ "CommentTypeEnum": [
+  "stickyNoteType",
+  "highlightTextType",
+  "underlineTextType",
+  "squigglyTextType",
+  "strikethroughTextType",
+  "replaceTextType",
+  "insertTextType",
+  "textTypewriterType",
+  "textBoxType",
+  "freeformDrawingType",
+  "lineSegmentType",
+  "ovalType",
+  "rectangleType",
+  "polygonType",
+  "arrowType",
+  "textCalloutType",
+  "stampType",
+  "connectedLinesType",
+  "cloudType",
+  "invalidCommentType"
+ ],
+ "ComposeUsing": [
+  "useUserDictionary",
+  "useDocument",
+  "both"
+ ],
+ "CompressionQuality": [
+  "minimum",
+  "low",
+  "medium",
+  "high",
+  "maximum",
+  "fourBit",
+  "eightBit"
+ ],
+ "ConditionIndicatorMethod": [
+  "useUnderline",
+  "useHighlight"
+ ],
+ "ConditionIndicatorMode": [
+  "showIndicators",
+  "showAndPrintIndicators",
+  "hideIndicators"
+ ],
+ "ConditionUnderlineIndicatorAppearance": [
+  "wavy",
+  "solid",
+  "dashed"
+ ],
+ "ContainerType": [
+  "bag",
+  "seq",
+  "alt"
+ ],
+ "ContentType": [
+  "unassigned",
+  "graphicType",
+  "textType"
+ ],
+ "ContourOptionsTypes": [
+  "boundingBox",
+  "photoshopPath",
+  "detectEdges",
+  "alphaChannel",
+  "graphicFrame",
+  "sameAsClipping",
+  "selectSubject"
+ ],
+ "ConvertPageBreaks": [
+  "none",
+  "pageBreak",
+  "columnBreak"
+ ],
+ "ConvertShapeOptions": [
+  "convertToRectangle",
+  "convertToRoundedRectangle",
+  "convertToBeveledRectangle",
+  "convertToInverseRoundedRectangle",
+  "convertToOval",
+  "convertToTriangle",
+  "convertToPolygon",
+  "convertToLine",
+  "convertToStraightLine",
+  "convertToOpenPath",
+  "convertToClosedPath"
+ ],
+ "ConvertTablesOptions": [
+  "unformattedTable",
+  "unformattedTabbedText"
+ ],
+ "CoordinateSpaces": [
+  "pasteboardCoordinates",
+  "parentCoordinates",
+  "innerCoordinates",
+  "pageCoordinates",
+  "spreadCoordinates"
+ ],
+ "CopyrightStatus": [
+  "unknown",
+  "yes",
+  "no"
+ ],
+ "CornerOptions": [
+  "none",
+  "roundedCorner",
+  "inverseRoundedCorner",
+  "insetCorner",
+  "bevelCorner",
+  "fancyCorner"
+ ],
+ "CreateProxy": [
+  "asNeeded",
+  "always"
+ ],
+ "CrossReferenceType": [
+  "seeOrAlsoBracket",
+  "see",
+  "seeAlso",
+  "seeHerein",
+  "seeAlsoHerein",
+  "customCrossReference",
+  "customCrossReferenceBefore",
+  "customCrossReferenceAfter"
+ ],
+ "CursorTypes": [
+  "standardCursor",
+  "thickCursor",
+  "barbellCursor",
+  "blockCursor"
+ ],
+ "CustomLayoutTypeEnum": [
+  "floatLeft",
+  "floatRight",
+  "alignmentAndSpacing"
+ ],
+ "DataFormat": [
+  "ascii",
+  "binary"
+ ],
+ "DefaultRenderingIntent": [
+  "perceptual",
+  "saturation",
+  "relativeColorimetric",
+  "absoluteColorimetric"
+ ],
+ "DesignOptions": [
+  "fromCurrentAppearance",
+  "toCurrentAppearance",
+  "toCurrentLocation"
+ ],
+ "DiacriticPositionOptions": [
+  "defaultPosition",
+  "loosePosition",
+  "mediumPosition",
+  "tightPosition",
+  "opentypePosition",
+  "opentypePositionFromBaseline"
+ ],
+ "DigitsTypeOptions": [
+  "defaultDigits",
+  "arabicDigits",
+  "hindiDigits",
+  "farsiDigits",
+  "nativeDigits",
+  "fullFarsiDigits",
+  "thaiDigits",
+  "laoDigits",
+  "devanagariDigits",
+  "bengaliDigits",
+  "gurmukhiDigits",
+  "gujaratiDigits",
+  "oriyaDigits",
+  "tamilDigits",
+  "teluguDigits",
+  "kannadaDigits",
+  "malayalamDigits",
+  "tibetanDigits",
+  "khmerDigits",
+  "burmeseDigits"
+ ],
+ "DigpubArticleVersion": [
+  "all",
+  "plugin",
+  "article"
+ ],
+ "DigpubVersion": [
+  "all",
+  "plugin",
+  "folio",
+  "plist"
+ ],
+ "DimensionAttributes": [
+  "widthAttribute",
+  "heightAttribute",
+  "bothHeightWidthAttribute"
+ ],
+ "DimensionsConstraints": [
+  "fixedDimension",
+  "flexibleDimension"
+ ],
+ "DisplayOrderOptions": [
+  "orderByRows",
+  "orderByColumns"
+ ],
+ "DisplaySettingOptions": [
+  "highQuality",
+  "typical",
+  "optimized",
+  "defaultValue"
+ ],
+ "DistributeOptions": [
+  "leftEdges",
+  "topEdges",
+  "rightEdges",
+  "bottomEdges",
+  "horizontalCenters",
+  "verticalCenters",
+  "horizontalSpace",
+  "verticalSpace"
+ ],
+ "DocumentIntentOptions": [
+  "printIntent",
+  "webIntent",
+  "mobileIntent"
+ ],
+ "DocumentPrintUiOptions": [
+  "suppressPrintProgress",
+  "suppressPrintWarnings",
+  "suppressPrintDialog",
+  "suppressFileSaveDialog"
+ ],
+ "DynamicDocumentsJPEGQualityOptions": [
+  "minimum",
+  "low",
+  "medium",
+  "high",
+  "maximum"
+ ],
+ "DynamicDocumentsTextExportPolicy": [
+  "live",
+  "rasterize",
+  "vectorize",
+  "tlf"
+ ],
+ "DynamicMediaHandlingOptions": [
+  "includeAllMedia",
+  "appearanceOnly"
+ ],
+ "DynamicTriggerEvents": [
+  "onPageLoad",
+  "onPageClick",
+  "onStateLoad",
+  "onClick",
+  "onRollover",
+  "onRelease",
+  "onRolloff",
+  "onSelfClick",
+  "onSelfRollover"
+ ],
+ "EPSColorSpace": [
+  "rgb",
+  "cmyk",
+  "gray",
+  "unchangedColorSpace",
+  "postscriptColorManagement"
+ ],
+ "EPSImageData": [
+  "allImageData",
+  "proxyImageData"
+ ],
+ "EPubFootnotePlacement": [
+  "footnoteAfterStory",
+  "footnoteAfterParagraph",
+  "footnoteInsidePopup"
+ ],
+ "EditingState": [
+  "editingUnknown",
+  "editingNowhere",
+  "editingRemotely",
+  "editingLocally",
+  "editingLocallyLocked",
+  "editingConflict"
+ ],
+ "EmptyFrameFittingOptions": [
+  "none",
+  "contentToFrame",
+  "proportionally",
+  "fillProportionally"
+ ],
+ "EndCap": [
+  "buttEndCap",
+  "roundEndCap",
+  "projectingEndCap"
+ ],
+ "EndJoin": [
+  "miterEndJoin",
+  "roundEndJoin",
+  "bevelEndJoin"
+ ],
+ "EndnoteFrameCreate": [
+  "loadEndnotePlaceGun",
+  "newPage"
+ ],
+ "EndnoteRestarting": [
+  "continuous",
+  "storyRestart"
+ ],
+ "EndnoteScope": [
+  "storyScope",
+  "endnoteDocumentScope"
+ ],
+ "EpubAriaLabelSourceType": [],
+ "EpubCover": [
+  "none",
+  "firstPage",
+  "externalImage"
+ ],
+ "EpubFixedLayoutSpreadControl": [
+  "spreadsBasedOnDoc",
+  "physicalSpreads",
+  "syntheticSpreads",
+  "noSpreads"
+ ],
+ "EpubNavigationStyle": [
+  "noNavigation",
+  "filenameNavigation",
+  "tocStyleNavigation",
+  "bookmarksNavigation"
+ ],
+ "EpubVersion": [
+  "epub2",
+  "epub3"
+ ],
+ "EventPhases": [
+  "notDispatching",
+  "atTarget",
+  "bubblingPhase",
+  "done"
+ ],
+ "ExportFormat": [
+  "taggedText",
+  "pdfType",
+  "epsType",
+  "rtf",
+  "textType",
+  "xml",
+  "jpg",
+  "html",
+  "epub",
+  "htmlfxl",
+  "html5",
+  "indesignSnippet",
+  "indesignMarkup",
+  "incopyMarkup",
+  "pngFormat"
+ ],
+ "ExportLayerOptions": [
+  "exportAllLayers",
+  "exportVisibleLayers",
+  "exportVisiblePrintableLayers"
+ ],
+ "ExportOrder": [
+  "layoutOrder",
+  "articlePanelOrder",
+  "xmlStructureOrder"
+ ],
+ "ExportPresetFormat": [
+  "pdfExportPresetsFormat",
+  "printerPresetsFormat",
+  "flattenerPresetsFormat",
+  "documentPresetsFormat"
+ ],
+ "ExportRangeOrAllPages": [
+  "exportRange",
+  "exportAll"
+ ],
+ "FeatherCornerType": [
+  "sharp",
+  "rounded",
+  "diffusion"
+ ],
+ "FeatherMode": [
+  "none",
+  "standard"
+ ],
+ "FeatureSetOptions": [
+  "roman",
+  "japanese",
+  "righttoleft"
+ ],
+ "FindChangeTransliterateCharacterTypes": [
+  "halfWidthKatakana",
+  "halfWidthRomanSymbols",
+  "fullWidthHiragana",
+  "fullWidthKatakana",
+  "fullWidthRomanSymbols",
+  "westernArabicDigits",
+  "arabicIndicDigits",
+  "farsiDigits"
+ ],
+ "FirstBaseline": [
+  "ascentOffset",
+  "capHeight",
+  "leadingOffset",
+  "emboxHeight",
+  "xHeight",
+  "fixedHeight"
+ ],
+ "FitDimension": [
+  "fit1280x800",
+  "fit1240x620",
+  "fit1024x768",
+  "fit984x588",
+  "fit800x600",
+  "fit760x420",
+  "fit640x480",
+  "fit600x300"
+ ],
+ "FitMethodSettings": [
+  "fitPredefinedSettings",
+  "fitGivenWidthAndHeight",
+  "fitGivenScalePercentage"
+ ],
+ "FitOptions": [
+  "contentToFrame",
+  "centerContent",
+  "proportionally",
+  "contentAwareFit",
+  "frameToContent",
+  "fillProportionally",
+  "applyFrameFittingOptions"
+ ],
+ "Fitting": [
+  "proportional",
+  "fitContentToFrame",
+  "fitFrameToContent",
+  "preserveSizes",
+  "fillProportional",
+  "contentAwareFitting",
+  "honourExistingStyle"
+ ],
+ "FlattenerLevel": [
+  "low",
+  "mediumLow",
+  "medium",
+  "mediumHigh",
+  "high"
+ ],
+ "FlexClipsContent": [
+  "dontClip",
+  "clip"
+ ],
+ "FlexDirection": [
+  "flexRow",
+  "flexRowReverse",
+  "flexColumn",
+  "flexColumnReverse"
+ ],
+ "FlexEnum": [
+  "flexAuto"
+ ],
+ "FlexPosition": [
+  "flexStart",
+  "flexCenter",
+  "flexEnd"
+ ],
+ "FlexSpacing": [
+  "flexSpaceBetween",
+  "flexSpaceAround",
+  "flexSpaceEvenly"
+ ],
+ "FlexWidthHeightMode": [
+  "flexFixed",
+  "flexFill"
+ ],
+ "FlexWrap": [
+  "noWrap",
+  "wrap",
+  "wrapReverse"
+ ],
+ "Flip": [
+  "none",
+  "horizontal",
+  "vertical",
+  "horizontalAndVertical",
+  "both"
+ ],
+ "FlipValues": [
+  "notFlipped",
+  "flipped",
+  "undefinedFlipValue"
+ ],
+ "FloatingWindowPosition": [
+  "upperLeft",
+  "upperMiddle",
+  "upperRight",
+  "centerLeft",
+  "center",
+  "centerRight",
+  "lowerLeft",
+  "lowerMiddle",
+  "lowerRight"
+ ],
+ "FloatingWindowSize": [
+  "oneFifth",
+  "oneFourth",
+  "oneHalf",
+  "full",
+  "twice",
+  "triple",
+  "quadruple",
+  "max"
+ ],
+ "FolioBindingDirectionOptions": [
+  "left",
+  "right"
+ ],
+ "FolioOrientationOptions": [
+  "portrait",
+  "landscape",
+  "portraitAndLandscape",
+  "auto"
+ ],
+ "FollowShapeModeOptions": [
+  "none",
+  "leadingEdge",
+  "allEdges"
+ ],
+ "FontDownloading": [
+  "none",
+  "complete",
+  "subset",
+  "subsetLarge"
+ ],
+ "FontEmbedding": [
+  "none",
+  "complete",
+  "subset"
+ ],
+ "FontStatus": [
+  "installed",
+  "notAvailable",
+  "fauxed",
+  "substituted",
+  "unknown"
+ ],
+ "FontTypes": [
+  "type1",
+  "truetype",
+  "cid",
+  "atc",
+  "bitmap",
+  "ocf",
+  "unknown"
+ ],
+ "FootnoteFirstBaseline": [
+  "ascentOffset",
+  "capHeight",
+  "leadingOffset",
+  "emboxHeight",
+  "xHeight",
+  "fixedHeight"
+ ],
+ "FootnoteMarkerPositioning": [
+  "normalMarker",
+  "superscriptMarker",
+  "subscriptMarker",
+  "rubyMarker"
+ ],
+ "FootnoteNumberingStyle": [
+  "upperRoman",
+  "lowerRoman",
+  "upperLetters",
+  "lowerLetters",
+  "arabic",
+  "symbols",
+  "kanji",
+  "fullWidthArabic",
+  "singleLeadingZeros",
+  "doubleLeadingZeros",
+  "asterisks",
+  "arabicAlifBaTah",
+  "arabicAbjad",
+  "hebrewBiblical",
+  "hebrewNonStandard"
+ ],
+ "FootnotePrefixSuffix": [
+  "noPrefixSuffix",
+  "prefixSuffixReference",
+  "prefixSuffixMarker",
+  "prefixSuffixBoth"
+ ],
+ "FootnoteRestarting": [
+  "dontRestart",
+  "pageRestart",
+  "spreadRestart",
+  "sectionRestart"
+ ],
+ "GIFOptionsPalette": [
+  "adaptivePalette",
+  "macintoshPalette",
+  "webPalette",
+  "windowsPalette"
+ ],
+ "GlobalClashResolutionStrategy": [
+  "loadAllWithOverwrite",
+  "loadAllWithRename",
+  "doNotLoadTheStyle"
+ ],
+ "GlobalClashResolutionStrategyForMasterPage": [
+  "loadAllWithOverwrite",
+  "loadAllWithRename"
+ ],
+ "GlowTechnique": [
+  "softer",
+  "precise"
+ ],
+ "GoToZoomOptions": [
+  "inheritZoom",
+  "fitWindow",
+  "fitWidth",
+  "fitVisible",
+  "actualSize"
+ ],
+ "GradientType": [
+  "linear",
+  "radial"
+ ],
+ "GridAlignment": [
+  "none",
+  "alignBaseline",
+  "alignEmTop",
+  "alignEmCenter",
+  "alignEmBottom"
+ ],
+ "GridViewSettings": [
+  "gridViewEnum",
+  "znViewEnum",
+  "alignViewEnum",
+  "gridAndZnViewEnum"
+ ],
+ "GuideTypeOptions": [
+  "ruler",
+  "liquid"
+ ],
+ "HTTPLinkResolution": [
+  "lowRes",
+  "highRes"
+ ],
+ "HeaderColumnsPositionTypes": [
+  "headerColumnsLeft",
+  "headerColumnsRight"
+ ],
+ "HeaderFooterBreakTypes": [
+  "inAllTextColumns",
+  "oncePerTextFrame",
+  "oncePerPage"
+ ],
+ "HeaderTypes": [
+  "basicLatin",
+  "finnishSwedish",
+  "danishNorwegian",
+  "spanish",
+  "croatian",
+  "czech",
+  "estonian",
+  "hungarian",
+  "latvian",
+  "lithuanian",
+  "polish",
+  "romanian",
+  "slovak",
+  "slovenian",
+  "turkish",
+  "belarusian",
+  "bulgarian",
+  "russian",
+  "ukrainian",
+  "koreanConsonant",
+  "koreanConsonantPlusVowel",
+  "hiraganaAll",
+  "hiraganaConsonantsOnly",
+  "katakanaAll",
+  "katakanaConsonantsOnly",
+  "chinesePinyin",
+  "chineseStrokeCount"
+ ],
+ "HorizontalAlignment": [
+  "rightAlign",
+  "leftAlign",
+  "centerAlign",
+  "textAlign"
+ ],
+ "HorizontalOrVertical": [
+  "horizontal",
+  "vertical"
+ ],
+ "HyperlinkAppearanceHighlight": [
+  "none",
+  "invert",
+  "outline",
+  "inset"
+ ],
+ "HyperlinkAppearanceStyle": [
+  "solid",
+  "dashed"
+ ],
+ "HyperlinkAppearanceWidth": [
+  "thin",
+  "medium",
+  "thick"
+ ],
+ "HyperlinkDestinationPageSetting": [
+  "fixed",
+  "fitView",
+  "fitWindow",
+  "fitWidth",
+  "fitHeight",
+  "fitVisible",
+  "inheritZoom"
+ ],
+ "HyphenationStyleEnum": [
+  "hyphAll",
+  "hyphAllButUnaesthetic",
+  "hyphAesthetic",
+  "hyphPreferredAesthetic"
+ ],
+ "ICCProfiles": [
+  "includeNone",
+  "includeAll",
+  "includeTagged"
+ ],
+ "IconSizes": [
+  "extraSmallIcon",
+  "smallIcon",
+  "mediumIcon",
+  "largeIcon",
+  "extraLargeIcon",
+  "jumboIcon"
+ ],
+ "ImageAlignmentType": [
+  "alignLeft",
+  "alignCenter",
+  "alignRight"
+ ],
+ "ImageConversion": [
+  "automatic",
+  "jpeg",
+  "gif",
+  "png"
+ ],
+ "ImageDataTypes": [
+  "allImageData",
+  "optimizedSubsampling",
+  "proxyImageData",
+  "none"
+ ],
+ "ImageExportOption": [
+  "originalImage",
+  "optimizedImage",
+  "linkToServer"
+ ],
+ "ImageFormat": [
+  "jpeg",
+  "gif",
+  "png"
+ ],
+ "ImagePageBreakType": [
+  "pageBreakBefore",
+  "pageBreakAfter",
+  "pageBreakBeforeAndAfter"
+ ],
+ "ImageResolution": [
+  "ppi72",
+  "ppi96",
+  "ppi150",
+  "ppi300"
+ ],
+ "ImageSizeOption": [
+  "sizeNone",
+  "sizeFixed",
+  "sizeRelativeToTextFlow"
+ ],
+ "ImportFormat": [
+  "characterStylesFormat",
+  "paragraphStylesFormat",
+  "textStylesFormat",
+  "tocStylesFormat",
+  "objectStylesFormat",
+  "strokeStylesFormat",
+  "tableStylesFormat",
+  "cellStylesFormat",
+  "tableAndCellStylesFormat"
+ ],
+ "ImportPlatform": [
+  "macintosh",
+  "pc"
+ ],
+ "ImportedPageCropOptions": [
+  "cropContent",
+  "cropBleed",
+  "cropSlug"
+ ],
+ "InCopyUIColors": [
+  "canary",
+  "lemon",
+  "electrolyte",
+  "lime",
+  "forest",
+  "lichen",
+  "jade",
+  "aqua",
+  "cirrus",
+  "ether",
+  "slate",
+  "ultramarine",
+  "midnight",
+  "blueberry",
+  "eggplant",
+  "grape",
+  "fuchsia",
+  "iris",
+  "carnation",
+  "mocha",
+  "wheat",
+  "mustard",
+  "amber",
+  "cornstarch",
+  "powder",
+  "smoke",
+  "graphite",
+  "gunmetal",
+  "lightBlue",
+  "red",
+  "green",
+  "blue",
+  "yellow",
+  "magenta",
+  "cyan",
+  "gray",
+  "black",
+  "orange",
+  "darkGreen",
+  "teal",
+  "tan",
+  "brown",
+  "violet",
+  "gold",
+  "darkBlue",
+  "pink",
+  "lavender",
+  "brickRed",
+  "oliveGreen",
+  "peach",
+  "burgundy",
+  "grassGreen",
+  "ochre",
+  "purple",
+  "lightGray",
+  "charcoal",
+  "gridBlue",
+  "gridOrange",
+  "fiesta",
+  "lightOlive",
+  "lipstick",
+  "cuteTeal",
+  "sulphur",
+  "gridGreen",
+  "white"
+ ],
+ "IndexCapitalizationOptions": [
+  "selectedEntry",
+  "includeSubentries",
+  "allLevel1Entries",
+  "allEntries"
+ ],
+ "IndexFormat": [
+  "runinFormat",
+  "nestedFormat"
+ ],
+ "InkTypes": [
+  "normal",
+  "opaque",
+  "transparent",
+  "opaqueIgnore"
+ ],
+ "InnerGlowSource": [
+  "centerSourced",
+  "edgeSourced"
+ ],
+ "InteractiveElementsOptions": [
+  "doNotInclude",
+  "appearanceOnly"
+ ],
+ "InteractivePDFInteractiveElementsOptions": [
+  "includeAllMedia",
+  "appearanceOnly"
+ ],
+ "JPEGOptionsFormat": [
+  "baselineEncoding",
+  "progressiveEncoding"
+ ],
+ "JPEGOptionsQuality": [
+  "low",
+  "medium",
+  "high",
+  "maximum"
+ ],
+ "JoinOptions": [
+  "connect",
+  "combine"
+ ],
+ "JpegColorSpaceEnum": [
+  "rgb",
+  "cmyk",
+  "gray"
+ ],
+ "Justification": [
+  "leftAlign",
+  "centerAlign",
+  "rightAlign",
+  "leftJustified",
+  "rightJustified",
+  "centerJustified",
+  "fullyJustified",
+  "toBindingSide",
+  "awayFromBindingSide"
+ ],
+ "KashidasOptions": [
+  "defaultKashidas",
+  "kashidasOff"
+ ],
+ "KentenAlignment": [
+  "alignKentenLeft",
+  "alignKentenCenter"
+ ],
+ "KentenCharacter": [
+  "none",
+  "kentenSesameDot",
+  "kentenWhiteSesameDot",
+  "kentenBlackCircle",
+  "kentenWhiteCircle",
+  "kentenBlackTriangle",
+  "kentenWhiteTriangle",
+  "kentenBullseye",
+  "kentenFisheye",
+  "kentenSmallBlackCircle",
+  "kentenSmallWhiteCircle",
+  "custom"
+ ],
+ "KentenCharacterSet": [
+  "characterInput",
+  "jis",
+  "kuten",
+  "unicode"
+ ],
+ "KinsokuHangTypes": [
+  "none",
+  "kinsokuHangRegular",
+  "kinsokuHangForce"
+ ],
+ "KinsokuSet": [
+  "nothing",
+  "hardKinsoku",
+  "softKinsoku",
+  "koreanKinsoku",
+  "simplifiedChineseKinsoku",
+  "traditionalChineseKinsoku"
+ ],
+ "KinsokuType": [
+  "kinsokuPushInFirst",
+  "kinsokuPushOutFirst",
+  "kinsokuPushOutOnly",
+  "kinsokuPrioritizeAdjustmentAmount"
+ ],
+ "LanguageAndRegion": [
+  "standardArabic",
+  "czechRepublicCzech",
+  "denmarkDanish",
+  "germanyGerman",
+  "greeceGreek",
+  "unitedKingdomEnglish",
+  "unitedStatesEnglish",
+  "spainSpanish",
+  "finlandFinnish",
+  "franceFrench",
+  "israelHebrew",
+  "hungaryHungarian",
+  "italyItalian",
+  "japanJapanese",
+  "republicOfKoreaKorean",
+  "norwayNorwegian",
+  "netherlandsDutch",
+  "polandPolish",
+  "brazilPortuguese",
+  "russianFederationRussian",
+  "swedenSwedish",
+  "turkeyTurkish",
+  "ukraineUkrainian",
+  "simplifiedChinese",
+  "traditionalChinese",
+  "belarusBelarusian",
+  "bulgariaBulgarian",
+  "estoniaEstonian",
+  "croatiaCroatian",
+  "lituaniaLithuanian",
+  "latviaLatvian",
+  "romaniaRomanian",
+  "slovakiaSlovak",
+  "sloveniaSlovenian",
+  "albaniaAlbanian",
+  "indiaTamil",
+  "thailandThai",
+  "vietnamVietnamese",
+  "indic"
+ ],
+ "LayoutRuleOptions": [
+  "off",
+  "scale",
+  "recenter",
+  "guideBased",
+  "objectBased",
+  "useMaster",
+  "preserveExisting"
+ ],
+ "Leading": [
+  "auto"
+ ],
+ "LeadingModel": [
+  "leadingModelRoman",
+  "leadingModelAkiBelow",
+  "leadingModelAkiAbove",
+  "leadingModelCenter",
+  "leadingModelCenterDown"
+ ],
+ "LibraryPanelViews": [
+  "listView",
+  "thumbnailView",
+  "largeThumbnailView"
+ ],
+ "LineAlignment": [
+  "leftOrTopLineAlign",
+  "centerLineAlign",
+  "rightOrBottomLineAlign",
+  "leftOrTopLineJustify",
+  "centerLineJustify",
+  "rightOrBottomLineJustify",
+  "fullLineJustify"
+ ],
+ "LineSpacingType": [
+  "singleSpace",
+  "oneAndHalfSpace",
+  "doubleSpace",
+  "tripleSpace"
+ ],
+ "LinkResourceRenditionType": [
+  "fpo",
+  "actual"
+ ],
+ "LinkStatus": [
+  "normal",
+  "linkOutOfDate",
+  "linkMissing",
+  "linkEmbedded",
+  "linkInaccessible"
+ ],
+ "LinkUriType": [
+  "file",
+  "versionCue",
+  "buzzword",
+  "http",
+  "https",
+  "other"
+ ],
+ "ListAlignment": [
+  "leftAlign",
+  "centerAlign",
+  "rightAlign"
+ ],
+ "ListType": [
+  "noList",
+  "bulletList",
+  "numberedList"
+ ],
+ "LiveDrawingOptions": [
+  "never",
+  "immediately",
+  "delayed"
+ ],
+ "Locale": [
+  "danishLocale",
+  "englishLocale",
+  "internationalEnglishLocale",
+  "finnishLocale",
+  "frenchLocale",
+  "germanLocale",
+  "italianLocale",
+  "portugueseLocale",
+  "spanishLocale",
+  "swedishLocale",
+  "japaneseLocale",
+  "arabicLocale",
+  "czechLocale",
+  "greekLocale",
+  "hebrewLocale",
+  "hungarianLocale",
+  "polishLocale",
+  "romanianLocale",
+  "russianLocale",
+  "turkishLocale",
+  "ukrainianLocale",
+  "koreanLocale",
+  "simplifiedChineseLocale",
+  "traditionalChineseLocale"
+ ],
+ "LocationOptions": [
+  "before",
+  "after",
+  "atEnd",
+  "atBeginning",
+  "unknown"
+ ],
+ "LockStateValues": [
+  "none",
+  "unmanagedStory",
+  "checkedInStory",
+  "checkedOutStory",
+  "lockedStory",
+  "embeddedStory",
+  "missingLockState",
+  "mixedLockState"
+ ],
+ "MapType": [
+  "styleMappingRule",
+  "groupMappingRule",
+  "styleToGroupMappingRule",
+  "groupToStyleMappingRule"
+ ],
+ "MarkLineWeight": [
+  "p125pt",
+  "p25pt",
+  "p50pt",
+  "p05mm",
+  "p07mm",
+  "p10mm",
+  "p15mm",
+  "p20mm",
+  "p30mm"
+ ],
+ "MarkTypes": [
+  "defaultValue",
+  "jMarkWithCircle",
+  "jMarkWithoutCircle"
+ ],
+ "MatrixContent": [
+  "scaleValues",
+  "shearValue",
+  "rotationValue",
+  "translationValues"
+ ],
+ "MeasurementUnits": [
+  "points",
+  "picas",
+  "inches",
+  "inchesDecimal",
+  "millimeters",
+  "centimeters",
+  "ciceros",
+  "q",
+  "ha",
+  "americanPoints",
+  "u",
+  "bai",
+  "mils",
+  "pixels",
+  "custom",
+  "agates"
+ ],
+ "MojikumiTableDefaults": [
+  "nothing",
+  "lineEndAllOneHalfEmEnum",
+  "oneEmIndentLineEndUkeOneHalfEmEnum",
+  "oneOrOneHalfEmIndentLineEndUkeOneHalfEmEnum",
+  "oneOrOneHalfEmIndentLineEndAllOneEmEnum",
+  "oneEmIndentLineEndAllOneEmEnum",
+  "oneEmIndentLineEndAllNoFloatEnum",
+  "oneEmIndentLineEndUkeNoFloatEnum",
+  "oneOrOneHalfEmIndentLineEndUkeNoFloatEnum",
+  "oneEmIndentLineEndAllOneHalfEmEnum",
+  "lineEndAllOneEmEnum",
+  "lineEndUkeNoFloatEnum",
+  "oneOrOneHalfEmIndentLineEndPeriodOneEmEnum",
+  "oneEmIndentLineEndPeriodOneEmEnum",
+  "lineEndPeriodOneEmEnum",
+  "tradChineseDefault",
+  "simpChineseDefault"
+ ],
+ "MonoBitmapCompression": [
+  "none",
+  "ccit3",
+  "ccit4",
+  "zip",
+  "runLength"
+ ],
+ "MoviePlayOperations": [
+  "play",
+  "playFromNavigationPoint",
+  "stop",
+  "pause",
+  "resume",
+  "stopAll"
+ ],
+ "MoviePosterTypes": [
+  "none",
+  "standard",
+  "fromMovie",
+  "proxyImage"
+ ],
+ "NestedStyleDelimiters": [
+  "sentence",
+  "anyWord",
+  "anyCharacter",
+  "letters",
+  "digits",
+  "tabs",
+  "inlineGraphic",
+  "dropcap",
+  "forcedLineBreak",
+  "endNestedStyle",
+  "indentHereTab",
+  "emSpace",
+  "enSpace",
+  "nonbreakingSpace",
+  "autoPageNumber",
+  "sectionMarker",
+  "repeat"
+ ],
+ "NoteBackgrounds": [
+  "galleyBackgroundColor",
+  "useNoteColor"
+ ],
+ "NoteColorChoices": [
+  "useUserColor",
+  "useNotePrefColor"
+ ],
+ "NothingEnum": [
+  "nothing"
+ ],
+ "NumberedListExportOption": [
+  "orderedList",
+  "asText"
+ ],
+ "NumberedParagraphsOptions": [
+  "includeFullParagraph",
+  "includeNumbersOnly",
+  "excludeNumbers"
+ ],
+ "NumberingStyle": [
+  "upperRoman",
+  "lowerRoman",
+  "upperLetters",
+  "lowerLetters",
+  "arabic",
+  "kanji",
+  "katakanaModern",
+  "katakanaTraditional",
+  "formatNone",
+  "singleLeadingZeros",
+  "arabicAlifBaTah",
+  "arabicAbjad",
+  "hebrewBiblical",
+  "hebrewNonStandard",
+  "doubleLeadingZeros",
+  "tripleLeadingZeros"
+ ],
+ "OTFFigureStyle": [
+  "tabularLining",
+  "proportionalOldstyle",
+  "proportionalLining",
+  "tabularOldstyle",
+  "defaultValue"
+ ],
+ "ObjectTypes": [
+  "allFramesType",
+  "textFramesType",
+  "graphicFramesType",
+  "unassignedFramesType"
+ ],
+ "OpenOptions": [
+  "defaultValue",
+  "openOriginal",
+  "openCopy"
+ ],
+ "OpenTypeFeature": [
+  "low",
+  "discretionaryLigaturesFeature",
+  "fractionsFeature",
+  "ordinalFeature",
+  "swashFeature",
+  "titlingFeature",
+  "contextualAlternatesFeature",
+  "allSmallCapsFeature",
+  "superscriptFeature",
+  "subscriptFeature",
+  "numeratorFeature",
+  "denominatorFeature",
+  "tabularLiningFeature",
+  "proportionalOldstyleFeature",
+  "proportionalLiningFeature",
+  "tabularOldstyleFeature",
+  "defaultFigureStyleFeature",
+  "overlapSwash",
+  "stylisticAlternate",
+  "justificationAlternate",
+  "stretchedAlternate"
+ ],
+ "OutlineJoin": [
+  "miterEndJoin",
+  "roundEndJoin",
+  "bevelEndJoin"
+ ],
+ "OverrideType": [
+  "all",
+  "characterOnly",
+  "paragraphOnly"
+ ],
+ "PDFColorSpace": [
+  "rgb",
+  "cmyk",
+  "unchangedColorSpace",
+  "gray"
+ ],
+ "PDFCompressionType": [
+  "compressNone",
+  "compressStructure",
+  "compressObjects"
+ ],
+ "PDFCrop": [
+  "cropArt",
+  "cropTrim",
+  "cropBleed",
+  "cropMedia",
+  "cropContentVisibleLayers",
+  "cropContentAllLayers"
+ ],
+ "PDFJPEGQualityOptions": [
+  "minimum",
+  "low",
+  "medium",
+  "high",
+  "maximum"
+ ],
+ "PDFMarkWeight": [
+  "p125pt",
+  "p25pt",
+  "p50pt"
+ ],
+ "PDFProfileSelector": [
+  "useNoProfile",
+  "useMonitorProfile",
+  "useDocument",
+  "working"
+ ],
+ "PDFRasterCompressionOptions": [
+  "jpegCompression",
+  "losslessCompression",
+  "automaticCompression"
+ ],
+ "PDFXStandards": [
+  "none",
+  "pdfx1a2001Standard",
+  "pdfx32002Standard",
+  "pdfx1a2003Standard",
+  "pdfx32003Standard",
+  "pdfx42010Standard"
+ ],
+ "PNGColorSpaceEnum": [
+  "rgb",
+  "gray"
+ ],
+ "PNGExportRangeEnum": [
+  "exportRange",
+  "exportAll"
+ ],
+ "PNGQualityEnum": [
+  "low",
+  "medium",
+  "high",
+  "maximum"
+ ],
+ "PPDValues": [
+  "deviceIndependent"
+ ],
+ "PageBindingOptions": [
+  "defaultValue",
+  "rightToLeft",
+  "leftToRight"
+ ],
+ "PageColorOptions": [
+  "nothing",
+  "useMasterColor"
+ ],
+ "PageLayoutOptions": [
+  "defaultValue",
+  "singlePage",
+  "singlePageContinuous",
+  "twoUpFacing",
+  "twoUpFacingContinuous",
+  "twoUpCoverPage",
+  "twoUpCoverPageContinuous"
+ ],
+ "PageNumberPosition": [
+  "afterEntry",
+  "beforeEntry",
+  "none"
+ ],
+ "PageNumberStyle": [
+  "upperRoman",
+  "lowerRoman",
+  "upperLetters",
+  "lowerLetters",
+  "arabic",
+  "kanji",
+  "arabicAlifBaTah",
+  "arabicAbjad",
+  "hebrewBiblical",
+  "hebrewNonStandard",
+  "singleLeadingZeros",
+  "doubleLeadingZeros",
+  "tripleLeadingZeros"
+ ],
+ "PageNumberingOptions": [
+  "section",
+  "absolute"
+ ],
+ "PageOrientation": [
+  "landscape",
+  "portrait"
+ ],
+ "PagePositions": [
+  "upperLeft",
+  "centerHorizontally",
+  "centerVertically",
+  "centered"
+ ],
+ "PageRange": [
+  "allPages",
+  "selectedItems"
+ ],
+ "PageRangeFormat": [
+  "exportAllPages",
+  "exportPageRange"
+ ],
+ "PageReferenceType": [
+  "currentPage",
+  "toNextStyleChange",
+  "toNextUseOfStyle",
+  "toEndOfStory",
+  "toEndOfDocument",
+  "toEndOfSection",
+  "forNextNParagraphs",
+  "forNextNPages",
+  "suppressPageNumbers"
+ ],
+ "PageSideOptions": [
+  "rightHand",
+  "leftHand",
+  "singleSided"
+ ],
+ "PageTransitionDirectionOptions": [
+  "notApplicable",
+  "down",
+  "rightToLeft",
+  "leftDown",
+  "leftUp",
+  "leftToRight",
+  "rightDown",
+  "rightUp",
+  "up",
+  "in",
+  "out",
+  "horizontal",
+  "vertical",
+  "horizontalIn",
+  "horizontalOut",
+  "verticalIn",
+  "verticalOut"
+ ],
+ "PageTransitionDurationOptions": [
+  "fast",
+  "medium",
+  "slow"
+ ],
+ "PageTransitionOverrideOptions": [
+  "fromDocument",
+  "none",
+  "blindsTransition",
+  "boxTransition",
+  "combTransition",
+  "coverTransition",
+  "dissolveTransition",
+  "fadeTransition",
+  "pageTurnTransition",
+  "pushTransition",
+  "splitTransition",
+  "uncoverTransition",
+  "wipeTransition",
+  "zoomInTransition",
+  "zoomOutTransition"
+ ],
+ "PageTransitionTypeOptions": [
+  "none",
+  "blindsTransition",
+  "boxTransition",
+  "combTransition",
+  "coverTransition",
+  "dissolveTransition",
+  "fadeTransition",
+  "pushTransition",
+  "splitTransition",
+  "uncoverTransition",
+  "wipeTransition",
+  "zoomInTransition",
+  "zoomOutTransition"
+ ],
+ "PageViewOptions": [
+  "horizontally",
+  "vertically",
+  "byAlternateLayout"
+ ],
+ "PanelLayoutResize": [
+  "proportionalResize",
+  "pagesFixed",
+  "mastersFixed"
+ ],
+ "PanningTypes": [
+  "noGreeking",
+  "greekImages",
+  "greekImagesAndText"
+ ],
+ "PaperSize": [
+  "auto"
+ ],
+ "PaperSizes": [
+  "definedByDriver",
+  "custom"
+ ],
+ "ParagraphBorderBottomOriginEnum": [
+  "descentBottomOrigin",
+  "baselineBottomOrigin"
+ ],
+ "ParagraphBorderEnum": [
+  "textWidth",
+  "columnWidth"
+ ],
+ "ParagraphBorderTopOriginEnum": [
+  "ascentTopOrigin",
+  "baselineTopOrigin",
+  "leadingTopOrigin"
+ ],
+ "ParagraphDirectionOptions": [
+  "leftToRightDirection",
+  "rightToLeftDirection"
+ ],
+ "ParagraphJustificationOptions": [
+  "defaultJustification",
+  "arabicJustification",
+  "naskhJustification",
+  "naskhTatweelJustification",
+  "naskhKashidaJustification",
+  "naskhTatweelJustificationFrac",
+  "naskhKashidaJustificationFrac"
+ ],
+ "ParagraphShadingBottomOriginEnum": [
+  "descentBottomOrigin",
+  "baselineBottomOrigin"
+ ],
+ "ParagraphShadingTopOriginEnum": [
+  "ascentTopOrigin",
+  "baselineTopOrigin",
+  "leadingTopOrigin"
+ ],
+ "ParagraphShadingWidthEnum": [
+  "textWidth",
+  "columnWidth"
+ ],
+ "PathType": [
+  "openPath",
+  "closedPath"
+ ],
+ "PathTypeAlignments": [
+  "topPathAlignment",
+  "bottomPathAlignment",
+  "centerPathAlignment"
+ ],
+ "PdfDisplayTitleOptions": [
+  "displayFileName",
+  "displayDocumentTitle"
+ ],
+ "PdfMagnificationOptions": [
+  "defaultValue",
+  "actualSize",
+  "fitPage",
+  "fitWidth",
+  "fitHeight",
+  "fitVisible",
+  "twentyFivePercent",
+  "fiftyPercent",
+  "seventyFivePercent",
+  "oneHundredPercent"
+ ],
+ "PerformanceMetricOptions": [
+  "cpuTime",
+  "numberOfThreads",
+  "coreAllocationCount",
+  "coreMemorySize",
+  "residentMemorySize",
+  "virtualMemorySize",
+  "currentMemoryMark",
+  "handleCount",
+  "gdiObjectCount",
+  "heapAllocations",
+  "heapAllocationsPeak",
+  "memoryPurgeCount",
+  "memoryPurgeTime",
+  "bibAllocations",
+  "bibAllocationsPeak",
+  "bibCache",
+  "bibCachePeak",
+  "pdfAllocactions",
+  "pdfAllocactionsPeak",
+  "imageCacheAllocations",
+  "imageCacheAllocationsPeak",
+  "imageCacheFileBytesRead",
+  "imageCacheFileBytesWritten",
+  "imageCacheFileReadTime",
+  "imageCacheFileWriteTime",
+  "vxferalloc",
+  "vxferallocpeak",
+  "vxferbytesread",
+  "vxferbyteswritten",
+  "vxferreadtime",
+  "vxferwritetime",
+  "vxferfilebytesread",
+  "vxferfilebyteswritten",
+  "agmxshowtime",
+  "databaseFileBytesRead",
+  "databaseFileBytesWritten",
+  "databaseFileReadTime",
+  "databaseFileWriteTime",
+  "dropShadowMemoryReadTime",
+  "dropShadowMemoryReadBytes",
+  "dropShadowMemoryWriteTime",
+  "dropShadowMemoryWriteBytes",
+  "dropShadowFileReadTime",
+  "dropShadowFileReadBytes",
+  "dropShadowFileWriteTime",
+  "dropShadowFileWriteBytes",
+  "changeManagerUpdateCallCount",
+  "changeManagerUpdateCallTime",
+  "snapshotCount",
+  "galleyCompositionTime",
+  "layoutCompositionTime",
+  "galleyCompositionCount",
+  "layoutCompositionCount",
+  "drawManagerDrawTime",
+  "drawManagerNumberOfInterrupts",
+  "snapshotReadWriteTime",
+  "newSnapshotTime",
+  "databaseInstantiateCount",
+  "instanceCachePurgeCount",
+  "minisaveCount",
+  "xmpFilterTime",
+  "snapshotReadWriteByteCount",
+  "databaseFilePageReads",
+  "attachableEventCount",
+  "attachedScriptsCount",
+  "dispatchEventTime"
+ ],
+ "PlacedVectorProfilePolicy": [
+  "ignoreAll",
+  "ignoreOutputIntent",
+  "honorAllProfiles"
+ ],
+ "PlayOperations": [
+  "play",
+  "stop",
+  "pause",
+  "resume",
+  "stopAll"
+ ],
+ "PointType": [
+  "smooth",
+  "corner",
+  "plain",
+  "symmetrical"
+ ],
+ "Position": [
+  "normal",
+  "superscript",
+  "subscript",
+  "otSuperscript",
+  "otSubscript",
+  "otNumerator",
+  "otDenominator"
+ ],
+ "PositionAttributes": [
+  "xAttribute",
+  "yAttribute",
+  "bothXYAttribute"
+ ],
+ "PositionalForms": [
+  "none",
+  "calculate",
+  "initial",
+  "medial",
+  "final",
+  "isolated"
+ ],
+ "PostScriptLevels": [
+  "level2",
+  "level3"
+ ],
+ "PreflightLayerOptions": [
+  "preflightAllLayers",
+  "preflightVisibleLayers",
+  "preflightVisiblePrintableLayers"
+ ],
+ "PreflightProfileOptions": [
+  "useEmbeddedProfile",
+  "useWorkingProfile"
+ ],
+ "PreflightRuleFlag": [
+  "ruleIsDisabled",
+  "returnAsError",
+  "returnAsWarning",
+  "returnAsInformational"
+ ],
+ "PreflightScopeOptions": [
+  "preflightAllPages",
+  "preflightSelectedDocuments",
+  "preflightAllDocuments"
+ ],
+ "PreserveAppearanceFromLayoutEnum": [
+  "preserveAppearanceDefault",
+  "preserveAppearanceUseExistingImage",
+  "preserveAppearanceRasterizeContainer",
+  "preserveAppearanceRasterizeContent"
+ ],
+ "PreviewPagesOptions": [
+  "firstPage",
+  "first2Pages",
+  "first5Pages",
+  "first10Pages",
+  "allPages"
+ ],
+ "PreviewSizeOptions": [
+  "small",
+  "medium",
+  "large",
+  "extraLarge"
+ ],
+ "PreviewTypes": [
+  "none",
+  "tiffPreview",
+  "pictPreview"
+ ],
+ "PrintLayerOptions": [
+  "allLayers",
+  "visibleLayers",
+  "visiblePrintableLayers"
+ ],
+ "PrintPageOrientation": [
+  "portrait",
+  "landscape",
+  "reversePortrait",
+  "reverseLandscape"
+ ],
+ "Printer": [
+  "postscriptFile"
+ ],
+ "PrinterPresetTypes": [
+  "defaultValue",
+  "custom"
+ ],
+ "Profile": [
+  "useDocument",
+  "working"
+ ],
+ "ProofingType": [
+  "proofOff",
+  "custom"
+ ],
+ "PublishCoverEnum": [
+  "firstPage",
+  "externalImage",
+  "chosenPage"
+ ],
+ "PublishFormatEnum": [
+  "publishByPages",
+  "publishBySpread"
+ ],
+ "RangeSortOrder": [
+  "noSort",
+  "ascendingSort",
+  "descendingSort"
+ ],
+ "RasterResolutionOptions": [
+  "seventyTwoPpi",
+  "ninetySixPpi",
+  "oneHundredFortyFourPpi"
+ ],
+ "RecordSelection": [
+  "allRecords",
+  "oneRecord",
+  "range"
+ ],
+ "RecordsPerPage": [
+  "singleRecord",
+  "multipleRecord"
+ ],
+ "RenderingIntent": [
+  "useColorSettings",
+  "perceptual",
+  "saturation",
+  "relativeColorimetric",
+  "absoluteColorimetric"
+ ],
+ "RepaginateOption": [
+  "nextPage",
+  "nextOddPage",
+  "nextEvenPage"
+ ],
+ "ResizeConstraints": [
+  "keepCurrentValue",
+  "keepCurrentProportions",
+  "tallProportions",
+  "wideProportions",
+  "inverseProportions"
+ ],
+ "ResizeMethods": [
+  "addingCurrentDimensionsTo",
+  "multiplyingCurrentDimensionsBy",
+  "replacingCurrentDimensionsWith",
+  "reshapingAreaToRatio",
+  "reshapingBorderToRatio"
+ ],
+ "ResolveStyleClash": [
+  "resolveClashUseExisting",
+  "resolveClashAutoRename",
+  "resolveClashUseNew"
+ ],
+ "RestartPolicy": [
+  "anyPreviousLevel",
+  "afterSpecificLevel",
+  "rangeOfLevels"
+ ],
+ "RotationDirection": [
+  "forward",
+  "backward"
+ ],
+ "RowTypes": [
+  "bodyRow",
+  "headerRow",
+  "footerRow",
+  "mixedState"
+ ],
+ "RubyAlignments": [
+  "rubyLeft",
+  "rubyCenter",
+  "rubyRight",
+  "rubyFullJustify",
+  "rubyEqualAki",
+  "ruby1Aki"
+ ],
+ "RubyKentenPosition": [
+  "aboveRight",
+  "belowLeft"
+ ],
+ "RubyOverhang": [
+  "none",
+  "rubyOverhangOneRuby",
+  "rubyOverhangHalfRuby",
+  "rubyOverhangOneChar",
+  "rubyOverhangHalfChar",
+  "rubyOverhangNoLimit"
+ ],
+ "RubyParentSpacing": [
+  "rubyParentNoAdjustment",
+  "rubyParentBothSides",
+  "rubyParent121Aki",
+  "rubyParentEqualAki",
+  "rubyParentFullJustify"
+ ],
+ "RubyTypes": [
+  "groupRuby",
+  "perCharacterRuby"
+ ],
+ "RuleDataType": [
+  "integerDataType",
+  "shortIntegerDataType",
+  "realDataType",
+  "stringDataType",
+  "booleanDataType",
+  "objectDataType",
+  "listDataType"
+ ],
+ "RuleWidth": [
+  "textWidth",
+  "columnWidth"
+ ],
+ "RulerOrigin": [
+  "spreadOrigin",
+  "pageOrigin",
+  "spineOrigin"
+ ],
+ "Sampling": [
+  "none",
+  "downsample",
+  "subsample",
+  "bicubicDownsample"
+ ],
+ "SaveOptions": [
+  "no",
+  "ask",
+  "yes"
+ ],
+ "ScaleModes": [
+  "scaleWidthHeight",
+  "scaleToFit"
+ ],
+ "Screeening": [
+  "defaultValue",
+  "custom"
+ ],
+ "ScreenModeOptions": [
+  "previewOff",
+  "previewToPage",
+  "previewToBleed",
+  "previewToSlug",
+  "presentationPreview"
+ ],
+ "ScriptLanguage": [
+  "unknown",
+  "javascript",
+  "uxpscript",
+  "applescriptLanguage"
+ ],
+ "SearchModes": [
+  "textSearch",
+  "grepSearch",
+  "glyphSearch",
+  "objectSearch",
+  "colorSearch"
+ ],
+ "SearchStrategies": [
+  "firstOnPage",
+  "lastOnPage"
+ ],
+ "SelectAll": [
+  "all"
+ ],
+ "SelectionOptions": [
+  "addTo",
+  "removeFrom",
+  "replaceWith",
+  "setKey"
+ ],
+ "Sequences": [
+  "all",
+  "odd",
+  "even"
+ ],
+ "ShadowMode": [
+  "none",
+  "drop"
+ ],
+ "SignatureSizeOptions": [
+  "signatureSize4",
+  "signatureSize8",
+  "signatureSize12",
+  "signatureSize16",
+  "signatureSize32"
+ ],
+ "SingleWordJustification": [
+  "leftAlign",
+  "centerAlign",
+  "rightAlign",
+  "fullyJustified"
+ ],
+ "SizeTypeEnum": [
+  "noneSize",
+  "defaultSize",
+  "fixedSize",
+  "relativeToTextFlow",
+  "relativeToTextSize",
+  "useCustomWidth",
+  "useCustomHeight"
+ ],
+ "SmartMatchOptions": [
+  "matchStylePath",
+  "matchStyleName"
+ ],
+ "SmoothScrollingOptions": [
+  "noSmoothScroll",
+  "vertical",
+  "horizontal",
+  "verticalAndHorizontal"
+ ],
+ "SnapshotBlendingModes": [
+  "ignoreLayoutSnapshots",
+  "useNearestSnapshot",
+  "limitedSnapshotBlending",
+  "fullSnapshotBlending"
+ ],
+ "SortAssets": [
+  "byName",
+  "byOldest",
+  "byNewest",
+  "byType"
+ ],
+ "SoundPosterTypes": [
+  "none",
+  "standard",
+  "proxyImage"
+ ],
+ "SourceFieldType": [
+  "textField",
+  "imageField",
+  "qrcodeField"
+ ],
+ "SourceSpaces": [
+  "useDocument",
+  "proofSpace"
+ ],
+ "SourceType": [
+  "sourceCustom",
+  "sourceDecorativeImage"
+ ],
+ "Spacing": [
+  "setignore"
+ ],
+ "SpanColumnCountOptions": [
+  "all"
+ ],
+ "SpanColumnTypeOptions": [
+  "singleColumn",
+  "spanColumns",
+  "splitColumns"
+ ],
+ "SpecialCharacters": [
+  "autoPageNumber",
+  "nextPageNumber",
+  "previousPageNumber",
+  "sectionMarker",
+  "bulletCharacter",
+  "copyrightSymbol",
+  "degreeSymbol",
+  "ellipsisCharacter",
+  "forcedLineBreak",
+  "paragraphSymbol",
+  "registeredTrademark",
+  "sectionSymbol",
+  "trademarkSymbol",
+  "rightIndentTab",
+  "indentHereTab",
+  "emDash",
+  "enDash",
+  "discretionaryHyphen",
+  "nonbreakingHyphen",
+  "endNestedStyle",
+  "doubleLeftQuote",
+  "doubleRightQuote",
+  "singleLeftQuote",
+  "singleRightQuote",
+  "emSpace",
+  "enSpace",
+  "flushSpace",
+  "hairSpace",
+  "nonbreakingSpace",
+  "thinSpace",
+  "figureSpace",
+  "punctuationSpace",
+  "columnBreak",
+  "frameBreak",
+  "pageBreak",
+  "oddPageBreak",
+  "evenPageBreak",
+  "leftToRightEmbedding",
+  "rightToLeftEmbedding",
+  "popDirectionalFormatting",
+  "leftToRightOverride",
+  "rightToLeftOverride",
+  "dottedCircle",
+  "zeroWidthJoiner",
+  "footnoteSymbol",
+  "textVariable",
+  "singleStraightQuote",
+  "doubleStraightQuote",
+  "discretionaryLineBreak",
+  "zeroWidthNonjoiner",
+  "thirdSpace",
+  "quarterSpace",
+  "sixthSpace",
+  "fixedWidthNonbreakingSpace",
+  "hebrewMaqaf",
+  "hebrewGeresh",
+  "hebrewGershayim",
+  "arabicKashida",
+  "arabicComma",
+  "arabicSemicolon",
+  "arabicQuestionMark",
+  "leftToRightMark",
+  "rightToLeftMark",
+  "hebrewSofPasuk"
+ ],
+ "SpreadFlattenerLevel": [
+  "defaultValue",
+  "none",
+  "custom"
+ ],
+ "StartParagraph": [
+  "anywhere",
+  "nextColumn",
+  "nextFrame",
+  "nextPage",
+  "nextOddPage",
+  "nextEvenPage"
+ ],
+ "StateTypes": [
+  "up",
+  "rollover",
+  "down",
+  "upOn",
+  "rolloverOn",
+  "downOn",
+  "upOff",
+  "rolloverOff",
+  "downOff"
+ ],
+ "StaticAlignmentOptions": [
+  "leftAlign",
+  "centerAlign",
+  "rightAlign"
+ ],
+ "StoryDirectionOptions": [
+  "leftToRightDirection",
+  "rightToLeftDirection",
+  "unknownDirection"
+ ],
+ "StoryHorizontalOrVertical": [
+  "horizontal",
+  "vertical",
+  "unknown"
+ ],
+ "StoryTypes": [
+  "regularStory",
+  "tocStory",
+  "indexingStory",
+  "endnoteStory"
+ ],
+ "StrokeAlignment": [
+  "centerAlignment",
+  "insideAlignment",
+  "outsideAlignment"
+ ],
+ "StrokeCornerAdjustment": [
+  "none",
+  "dashes",
+  "gaps",
+  "dashesAndGaps"
+ ],
+ "StrokeFillProxyOptions": [
+  "stroke",
+  "fill"
+ ],
+ "StrokeFillTargetOptions": [
+  "formattingAffectsContainer",
+  "formattingAffectsText"
+ ],
+ "StrokeOrderTypes": [
+  "rowOnTop",
+  "columnOnTop",
+  "bestJoins",
+  "indesign2Compatibility"
+ ],
+ "StyleConflict": [
+  "publicationDefinition",
+  "tagFileDefinition"
+ ],
+ "StyleType": [
+  "characterStyleType",
+  "paragraphStyleType"
+ ],
+ "SyncConflictResolution": [
+  "skipConflicts",
+  "askAboutConflicts",
+  "preferLocal",
+  "preferProject"
+ ],
+ "TabStopAlignment": [
+  "leftAlign",
+  "centerAlign",
+  "rightAlign",
+  "characterAlign"
+ ],
+ "TableCaptionPositionOptions": [
+  "beforeTable",
+  "afterTable"
+ ],
+ "TableDirectionOptions": [
+  "leftToRightDirection",
+  "rightToLeftDirection"
+ ],
+ "TableFormattingOptions": [
+  "excelFormattedTable",
+  "excelUnformattedTable",
+  "excelUnformattedTabbedText",
+  "excelFormatOnlyOnce"
+ ],
+ "TagRaster": [
+  "grayOut",
+  "proxy",
+  "highResolution",
+  "defaultValue"
+ ],
+ "TagTextExportCharacterSet": [
+  "ascii",
+  "ansi",
+  "unicode",
+  "gb18030",
+  "ksc5601",
+  "chineseBig5",
+  "windowsArabic",
+  "windowsHebrew"
+ ],
+ "TagTextForm": [
+  "verbose",
+  "abbreviated"
+ ],
+ "TagTransparency": [
+  "off",
+  "lowQuality",
+  "mediumQuality",
+  "highQuality",
+  "defaultValue"
+ ],
+ "TagType": [
+  "tagFromStructure",
+  "tagArtifact",
+  "tagBasedOnObject"
+ ],
+ "TagVector": [
+  "grayOut",
+  "proxy",
+  "highResolution",
+  "defaultValue"
+ ],
+ "TaggedPDFStructureOrderOptions": [
+  "useArticles"
+ ],
+ "TaskAlertType": [
+  "taskInformation",
+  "taskWarning",
+  "taskError"
+ ],
+ "TaskState": [
+  "queued",
+  "running",
+  "waiting",
+  "cancelling",
+  "completed",
+  "cancelled"
+ ],
+ "TextDirection": [
+  "horizontalType",
+  "verticalType",
+  "mixedType",
+  "unknownType"
+ ],
+ "TextExportCharacterSet": [
+  "defaultPlatform",
+  "utf16",
+  "utf8"
+ ],
+ "TextExportFormatEnum": [
+  "htmlTag",
+  "svgTag"
+ ],
+ "TextFrameContents": [
+  "placeholderText",
+  "placeholderTextArabic",
+  "placeholderTextHebrew",
+  "placeholderTextCyrillic",
+  "placeholderTextGreek"
+ ],
+ "TextImportCharacterSet": [
+  "ansi",
+  "recommendshiftjis83pv",
+  "shiftjis90pv",
+  "shiftjis90ms",
+  "gb2312",
+  "chineseBig5",
+  "macintoshCyrillic",
+  "macintoshGreek",
+  "macintoshTurkish",
+  "windowsCyrillic",
+  "windowsGreek",
+  "windowsTurkish",
+  "gb18030",
+  "ksc5601",
+  "windowsBaltic",
+  "macintoshRoman",
+  "macintoshCroatian",
+  "macintoshIcelandic",
+  "macintoshRomanian",
+  "dosLatin2",
+  "macintoshGreekSharedCaps",
+  "macintoshArabic",
+  "macintoshHebrew",
+  "windowsArabic",
+  "windowsHebrew",
+  "utf16",
+  "utf8"
+ ],
+ "TextPathEffects": [
+  "rainbowPathEffect",
+  "skewPathEffect",
+  "ribbonPathEffect",
+  "stairStepPathEffect",
+  "gravityPathEffect"
+ ],
+ "TextStrokeAlign": [
+  "centerAlignment",
+  "outsideAlignment"
+ ],
+ "TextTypeAlignments": [
+  "ascenderTextAlignment",
+  "descenderTextAlignment",
+  "centerTextAlignment",
+  "baselineTextAlignment",
+  "aboveRightEmBoxTextAlignment",
+  "belowLeftEmBoxTextAlignment",
+  "aboveRightIcfBoxTextAlignment",
+  "belowLeftIcfBoxTextAlignment"
+ ],
+ "TextWrapModes": [
+  "none",
+  "jumpObjectTextWrap",
+  "nextColumnTextWrap",
+  "boundingBoxTextWrap",
+  "contour"
+ ],
+ "TextWrapSideOptions": [
+  "bothSides",
+  "leftSide",
+  "rightSide",
+  "sideTowardsSpine",
+  "sideAwayFromSpine",
+  "largestArea"
+ ],
+ "ThreadedTextFrameTextOptions": [
+  "textForCompleteStory"
+ ],
+ "ThumbsPerPage": [
+  "k1x2",
+  "k2x2",
+  "k3x3",
+  "k4x4",
+  "k5x5",
+  "k6x6",
+  "k7x7"
+ ],
+ "TilingTypes": [
+  "auto",
+  "autoJustified",
+  "manual"
+ ],
+ "ToolTipOptions": [
+  "normal",
+  "none",
+  "fast"
+ ],
+ "ToolsPanelOptions": [
+  "singleColumn",
+  "doubleColumn",
+  "singleRow"
+ ],
+ "TransformPositionReference": [
+  "pageEdgeReference",
+  "pageMarginReference"
+ ],
+ "TrapEndTypes": [
+  "miterTrapEnds",
+  "overlapTrapEnds"
+ ],
+ "TrapImagePlacementTypes": [
+  "centerEdges",
+  "choke",
+  "imageNeutralDensity",
+  "imagesOverSpread"
+ ],
+ "Trapping": [
+  "off",
+  "applicationBuiltin"
+ ],
+ "UIColors": [
+  "lightBlue",
+  "red",
+  "green",
+  "blue",
+  "yellow",
+  "magenta",
+  "cyan",
+  "gray",
+  "black",
+  "orange",
+  "darkGreen",
+  "teal",
+  "tan",
+  "brown",
+  "violet",
+  "gold",
+  "darkBlue",
+  "pink",
+  "lavender",
+  "brickRed",
+  "oliveGreen",
+  "peach",
+  "burgundy",
+  "grassGreen",
+  "ochre",
+  "purple",
+  "lightGray",
+  "charcoal",
+  "gridBlue",
+  "gridOrange",
+  "fiesta",
+  "lightOlive",
+  "lipstick",
+  "cuteTeal",
+  "sulphur",
+  "gridGreen",
+  "white"
+ ],
+ "UITools": [
+  "none",
+  "selectionTool",
+  "directSelectionTool",
+  "gapTool",
+  "penTool",
+  "addAnchorPoint",
+  "deleteAnchorPoint",
+  "convertDirectionPoint",
+  "lineTool",
+  "typeTool",
+  "typeOnPathTool",
+  "pencilTool",
+  "smoothTool",
+  "eraseTool",
+  "polygonFrameTool",
+  "rectangleFrameTool",
+  "ellipseFrameTool",
+  "polygonTool",
+  "rectangleTool",
+  "ellipseTool",
+  "rotateTool",
+  "scaleTool",
+  "shearTool",
+  "scissorsTool",
+  "freeTransformTool",
+  "gradientSwatchTool",
+  "gradientFeatherTool",
+  "noteTool",
+  "eyeDropperTool",
+  "measureTool",
+  "handTool",
+  "zoomTool",
+  "tableTool",
+  "placeCursorTool",
+  "motionPathTool",
+  "pageTool"
+ ],
+ "UndoModes": [
+  "scriptRequest",
+  "entireScript",
+  "autoUndo",
+  "fastEntireScript"
+ ],
+ "UpdateLinkOptions": [
+  "unknown",
+  "applicationSettings",
+  "keepOverrides"
+ ],
+ "UseSVGAsEnum": [
+  "embedCode",
+  "objectTags",
+  "imageTags"
+ ],
+ "UserInteractionLevels": [
+  "neverInteract",
+  "interactWithAll",
+  "interactWithAlerts"
+ ],
+ "VariableNumberingStyles": [
+  "current",
+  "arabic",
+  "upperRoman",
+  "lowerRoman",
+  "upperLetters",
+  "lowerLetters",
+  "kanji",
+  "fullWidthArabic",
+  "singleLeadingZeros",
+  "doubleLeadingZeros"
+ ],
+ "VariableScopes": [
+  "documentScope",
+  "sectionScope"
+ ],
+ "VariableTypes": [
+  "customTextType",
+  "fileNameType",
+  "lastPageNumberType",
+  "chapterNumberType",
+  "outputDateType",
+  "creationDateType",
+  "modificationDateType",
+  "matchCharacterStyleType",
+  "matchParagraphStyleType",
+  "liveCaptionType",
+  "xrefPageNumberType",
+  "xrefChapterNumberType"
+ ],
+ "VersionCueSyncStatus": [
+  "fileDownloaded",
+  "fileUploaded",
+  "fileUnlocked",
+  "fileSkipped",
+  "fileNoChange"
+ ],
+ "VersionState": [
+  "versionUnknown",
+  "projectFileNewer",
+  "localProjectMatch",
+  "localNewer",
+  "versionConflict",
+  "noResource"
+ ],
+ "VerticalAlignment": [
+  "topAlign",
+  "bottomAlign",
+  "centerAlign"
+ ],
+ "VerticalJustification": [
+  "topAlign",
+  "centerAlign",
+  "bottomAlign",
+  "justifyAlign"
+ ],
+ "VerticallyRelativeTo": [
+  "columnEdge",
+  "textFrame",
+  "pageMargins",
+  "pageEdge",
+  "lineBaseline",
+  "lineXheight",
+  "lineAscent",
+  "capheight",
+  "topOfLeading",
+  "emboxTop",
+  "emboxMiddle",
+  "emboxBottom"
+ ],
+ "ViewDisplaySettings": [
+  "highQuality",
+  "typical",
+  "optimized"
+ ],
+ "ViewZoomStyle": [
+  "fullScreen",
+  "zoomIn",
+  "zoomOut",
+  "fitPage",
+  "actualSize",
+  "fitWidth",
+  "fitVisible",
+  "singlePage",
+  "oneColumn",
+  "twoColumn"
+ ],
+ "WarichuAlignment": [
+  "auto",
+  "leftAlign",
+  "centerAlign",
+  "rightAlign",
+  "fullyJustified",
+  "leftJustified",
+  "centerJustified",
+  "rightJustified"
+ ],
+ "WatermarkHorizontalPositionEnum": [
+  "watermarkHLeft",
+  "watermarkHCenter",
+  "watermarkHRight"
+ ],
+ "WatermarkVerticalPositionEnum": [
+  "watermarkVTop",
+  "watermarkVCenter",
+  "watermarkVBottom"
+ ],
+ "WhenScalingOptions": [
+  "applyToContent",
+  "adjustScalingPercentage"
+ ],
+ "XMLElementLocation": [
+  "elementStart",
+  "elementEnd"
+ ],
+ "XMLElementPosition": [
+  "beforeElement",
+  "afterElement",
+  "elementStart",
+  "elementEnd"
+ ],
+ "XMLExportUntaggedTablesFormat": [
+  "none",
+  "cals"
+ ],
+ "XMLFileEncoding": [
+  "utf8",
+  "utf16"
+ ],
+ "XMLImportStyles": [
+  "appendImport",
+  "mergeImport"
+ ],
+ "XMLTransformFile": [],
+ "ZoomOptions": [
+  "zoomIn",
+  "zoomOut",
+  "fitSpread",
+  "fitPage",
+  "showPasteboard",
+  "actualSize"
+ ]
+}

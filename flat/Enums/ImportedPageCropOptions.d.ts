@@ -1,10 +1,11 @@
 /**
  * ImportedPageCropOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ImportedPageCropOptions: unique symbol;
 
 
 interface ImportedPageCropOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ImportedPageCropOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__ImportedPageCropOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const ImportedPageCropOptions: typeof Enumeration & {
    */
   readonly cropContent: ImportedPageCropOptions_CROP_CONTENT;
   /**
-   * Places the page's bounding box.
-   */
-  readonly cropcontent: ImportedPageCropOptions_CROP_CONTENT;
-
-  /**
    * Places the page's bleed area.
    */
   readonly CROP_BLEED: ImportedPageCropOptions_CROP_BLEED;
@@ -115,11 +108,6 @@ export declare const ImportedPageCropOptions: typeof Enumeration & {
    */
   readonly cropBleed: ImportedPageCropOptions_CROP_BLEED;
   /**
-   * Places the page's bleed area.
-   */
-  readonly cropbleed: ImportedPageCropOptions_CROP_BLEED;
-
-  /**
    * Places the page's slug area.
    */
   readonly CROP_SLUG: ImportedPageCropOptions_CROP_SLUG;
@@ -127,9 +115,4 @@ export declare const ImportedPageCropOptions: typeof Enumeration & {
    * Places the page's slug area.
    */
   readonly cropSlug: ImportedPageCropOptions_CROP_SLUG;
-  /**
-   * Places the page's slug area.
-   */
-  readonly cropslug: ImportedPageCropOptions_CROP_SLUG;
-
 }

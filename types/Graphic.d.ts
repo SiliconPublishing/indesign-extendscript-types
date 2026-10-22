@@ -1,6 +1,7 @@
 /**
  * Graphic.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -39,9 +40,6 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * and bitmap formats).
  */
 export interface Graphic<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, PageItemParent, M> {
-  /** The object's DOM class name — reports the specific format, such as `'PDF'` when this is a placed {@link PDF}. */
-  readonly constructorName: 'Graphic' | 'EPS' | 'Image' | 'ImportedPage' | 'PDF' | 'PICT' | 'SVG' | 'WMF';
-
   /** Resolves the proxy into the individual {@link Graphic} objects it stands for. */
   getElements(): Graphic<TParent, 'single'>[];
 
@@ -62,14 +60,12 @@ export interface Graphic<TParent = PageItemParent, M extends Mode = 'single'> ex
  * A placed graphic InDesign reports as a plain {@link Graphic} rather than as an image, EPS,
  * PDF, SVG or imported page.
  *
- * Handle it in the `'Graphic'` case of a `constructorName` check. Only the members every placed
+ * Handle it in the `'Graphic'` branch of an `instanceof` check. Only the members every placed
  * graphic has — its link, its image type name, and export-for-web — are available on it.
  */
 export interface PlainGraphic<
   TParent = PageItemParent,
   M extends Mode = 'single',
 > extends Graphic<TParent, M> {
-  /** Always `'Graphic'` — this is the generic case, by construction. */
-  readonly constructorName: 'Graphic';
 }
 

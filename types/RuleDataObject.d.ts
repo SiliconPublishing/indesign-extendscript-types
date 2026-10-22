@@ -1,6 +1,7 @@
 /**
  * RuleDataObject.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -18,9 +19,6 @@ import type { RuleDataValue } from './RuleDataObjects';
 export interface RuleDataObject<M extends Mode = 'single'>
   extends EventTargetDOMObject<PreflightProfileRule | PreflightRuleInstance, M>,
     IndexedDOMObject<PreflightProfileRule | PreflightRuleInstance, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'RuleDataObject';
-
   /** Resolves the proxy into the individual {@link RuleDataObject} objects it stands for. */
   getElements(): RuleDataObject<'single'>[];
 

@@ -1,10 +1,11 @@
 /**
  * UseSVGAsEnum.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __UseSVGAsEnum: unique symbol;
 
 
 interface UseSVGAsEnum extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<UseSVGAsEnum>): boolean;
-
   /**
    * @internal **WARNING:** `__UseSVGAsEnum` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const UseSVGAsEnum: typeof Enumeration & {
    */
   readonly embedCode: UseSVGAsEnum_EMBED_CODE;
   /**
-   * SVG will be exported as embedded code.
-   */
-  readonly embedcode: UseSVGAsEnum_EMBED_CODE;
-
-  /**
    * SVG will be exported as object tags.
    */
   readonly OBJECT_TAGS: UseSVGAsEnum_OBJECT_TAGS;
@@ -115,11 +108,6 @@ export declare const UseSVGAsEnum: typeof Enumeration & {
    */
   readonly objectTags: UseSVGAsEnum_OBJECT_TAGS;
   /**
-   * SVG will be exported as object tags.
-   */
-  readonly objecttags: UseSVGAsEnum_OBJECT_TAGS;
-
-  /**
    * SVG will be exported as image tags.
    */
   readonly IMAGE_TAGS: UseSVGAsEnum_IMAGE_TAGS;
@@ -127,9 +115,4 @@ export declare const UseSVGAsEnum: typeof Enumeration & {
    * SVG will be exported as image tags.
    */
   readonly imageTags: UseSVGAsEnum_IMAGE_TAGS;
-  /**
-   * SVG will be exported as image tags.
-   */
-  readonly imagetags: UseSVGAsEnum_IMAGE_TAGS;
-
 }

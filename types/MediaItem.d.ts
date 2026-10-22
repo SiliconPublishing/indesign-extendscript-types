@@ -1,6 +1,7 @@
 /**
  * MediaItem.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -40,9 +41,6 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * {@link Movie} and {@link Sound}.
  */
 export interface MediaItem<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, PageItemParent, M> {
-  /** The object's DOM class name — reports the specific kind, such as `'Movie'` when the object is a {@link Movie}. */
-  readonly constructorName: 'MediaItem' | 'Movie' | 'Sound';
-
   /** Resolves the proxy into the individual {@link MediaItem} objects it stands for. */
   getElements(): MediaItem<TParent, 'single'>[];
 
@@ -54,13 +52,11 @@ export interface MediaItem<TParent = PageItemParent, M extends Mode = 'single'> 
  * A media object InDesign reports as a plain {@link MediaItem} rather than as a movie or a
  * sound.
  *
- * Handle it in the `'MediaItem'` case of a `constructorName` check. Only the members every
+ * Handle it in the `'MediaItem'` branch of an `instanceof` check. Only the members every
  * media object has — its poster frame and its paths — are available on it.
  */
 export interface PlainMediaItem<
   TParent = PageItemParent,
   M extends Mode = 'single',
 > extends MediaItem<TParent, M> {
-  /** Always `'MediaItem'` — this is the generic case, by construction. */
-  readonly constructorName: 'MediaItem';
 }

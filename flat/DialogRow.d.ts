@@ -1,6 +1,7 @@
 /**
  * DialogRow.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -9,83 +10,40 @@ import type { EventTargetDOMObject, IndexedDOMObject } from './_base/DomObjects'
 import type { DialogColumn } from './DialogColumn';
 import type { WidgetContainer } from './_base/WidgetMixins';
 import type { DialogColumns } from './DialogColumns';
-import type { AngleComboboxes } from './AngleComboboxes';
-import type { AngleEditboxes } from './AngleEditboxes';
-import type { BorderPanels } from './BorderPanels';
-import type { CheckboxControls } from './CheckboxControls';
-import type { Dropdowns } from './Dropdowns';
-import type { EnablingGroups } from './EnablingGroups';
-import type { Event } from './Event';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
+import type { Event } from './Event';
 import type { FilePath } from './_base/Types';
-import type { InDesignEventMap } from './_base/Events';
-import type { IntegerComboboxes } from './IntegerComboboxes';
-import type { IntegerEditboxes } from './IntegerEditboxes';
-import type { MeasurementComboboxes } from './MeasurementComboboxes';
-import type { MeasurementEditboxes } from './MeasurementEditboxes';
-import type { PercentComboboxes } from './PercentComboboxes';
-import type { PercentEditboxes } from './PercentEditboxes';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
-import type { RadiobuttonGroups } from './RadiobuttonGroups';
-import type { RealComboboxes } from './RealComboboxes';
-import type { RealEditboxes } from './RealEditboxes';
-import type { StaticTexts } from './StaticTexts';
-import type { TextEditboxes } from './TextEditboxes';
 import type { Widgets } from './Widgets';
+import type { TextEditboxes } from './TextEditboxes';
+import type { IntegerEditboxes } from './IntegerEditboxes';
+import type { MeasurementEditboxes } from './MeasurementEditboxes';
+import type { RealEditboxes } from './RealEditboxes';
+import type { AngleEditboxes } from './AngleEditboxes';
+import type { PercentEditboxes } from './PercentEditboxes';
+import type { IntegerComboboxes } from './IntegerComboboxes';
+import type { MeasurementComboboxes } from './MeasurementComboboxes';
+import type { RealComboboxes } from './RealComboboxes';
+import type { AngleComboboxes } from './AngleComboboxes';
+import type { PercentComboboxes } from './PercentComboboxes';
+import type { CheckboxControls } from './CheckboxControls';
+import type { StaticTexts } from './StaticTexts';
+import type { Dropdowns } from './Dropdowns';
+import type { BorderPanels } from './BorderPanels';
+import type { EnablingGroups } from './EnablingGroups';
+import type { RadiobuttonGroups } from './RadiobuttonGroups';
+
 /**
  * A borderless row laid out inside a {@link DialogColumn} that holds
  * controls and nested {@link DialogColumn}s.
  */
 export interface DialogRow {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: DialogColumn;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<DialogRow, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<DialogRow, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -126,6 +84,45 @@ export interface DialogRow {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
+  /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: DialogColumn;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<DialogRow, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<DialogRow, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * The index of the object within its containing parent.
    */
@@ -166,8 +163,6 @@ export interface DialogRow {
   readonly enablingGroups: EnablingGroups;
   /** The radiobutton groups inside the container. */
   readonly radiobuttonGroups: RadiobuttonGroups;
-  /** The object's DOM class name. */
-  readonly constructorName: 'DialogRow';
   /** Resolves the proxy into the individual {@link DialogRow} objects it stands for. */
   getElements(): DialogRow[];
   /** The unique ID of the DialogRow. */
@@ -176,60 +171,11 @@ export interface DialogRow {
   readonly dialogColumns: DialogColumns;
 }
 
-
 /**
- * The broadcast proxy for {@link DialogRow} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link DialogRow} there.
+ * A borderless row laid out inside a {@link DialogColumn} that holds
+ * controls and nested {@link DialogColumn}s.
  */
 export interface DialogRowPlural {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (DialogColumn)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<DialogRowPlural, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<DialogRowPlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -271,6 +217,45 @@ export interface DialogRowPlural {
     captures?: boolean,
   ): boolean;
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (DialogColumn)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<DialogRowPlural, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<DialogRowPlural, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The index of the object within its containing parent.
    */
   readonly index: (number)[];
@@ -310,8 +295,6 @@ export interface DialogRowPlural {
   readonly enablingGroups: EnablingGroups;
   /** The radiobutton groups inside the container. */
   readonly radiobuttonGroups: RadiobuttonGroups;
-  /** The object's DOM class name. */
-  readonly constructorName: 'DialogRow';
   /** Resolves the proxy into the individual {@link DialogRow} objects it stands for. */
   getElements(): DialogRow[];
   /** The unique ID of the DialogRow. */

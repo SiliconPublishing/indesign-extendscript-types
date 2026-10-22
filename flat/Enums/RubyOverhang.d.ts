@@ -1,10 +1,11 @@
 /**
  * RubyOverhang.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __RubyOverhang: unique symbol;
 
 
 interface RubyOverhang extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<RubyOverhang>): boolean;
-
   /**
    * @internal **WARNING:** `__RubyOverhang` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -159,11 +157,6 @@ export declare const RubyOverhang: typeof Enumeration & {
    */
   readonly rubyOverhangOneRuby: RubyOverhang_RUBY_OVERHANG_ONE_RUBY;
   /**
-   * Ruby overhang is one ruby.
-   */
-  readonly rubyoverhangoneruby: RubyOverhang_RUBY_OVERHANG_ONE_RUBY;
-
-  /**
    * Ruby overhang is one-half ruby.
    */
   readonly RUBY_OVERHANG_HALF_RUBY: RubyOverhang_RUBY_OVERHANG_HALF_RUBY;
@@ -171,11 +164,6 @@ export declare const RubyOverhang: typeof Enumeration & {
    * Ruby overhang is one-half ruby.
    */
   readonly rubyOverhangHalfRuby: RubyOverhang_RUBY_OVERHANG_HALF_RUBY;
-  /**
-   * Ruby overhang is one-half ruby.
-   */
-  readonly rubyoverhanghalfruby: RubyOverhang_RUBY_OVERHANG_HALF_RUBY;
-
   /**
    * Ruby overhang is the size of one character.
    */
@@ -185,11 +173,6 @@ export declare const RubyOverhang: typeof Enumeration & {
    */
   readonly rubyOverhangOneChar: RubyOverhang_RUBY_OVERHANG_ONE_CHAR;
   /**
-   * Ruby overhang is the size of one character.
-   */
-  readonly rubyoverhangonechar: RubyOverhang_RUBY_OVERHANG_ONE_CHAR;
-
-  /**
    * Ruby overhang is one-half the size of one character.
    */
   readonly RUBY_OVERHANG_HALF_CHAR: RubyOverhang_RUBY_OVERHANG_HALF_CHAR;
@@ -198,11 +181,6 @@ export declare const RubyOverhang: typeof Enumeration & {
    */
   readonly rubyOverhangHalfChar: RubyOverhang_RUBY_OVERHANG_HALF_CHAR;
   /**
-   * Ruby overhang is one-half the size of one character.
-   */
-  readonly rubyoverhanghalfchar: RubyOverhang_RUBY_OVERHANG_HALF_CHAR;
-
-  /**
    * There is no ruby overhang size limit.
    */
   readonly RUBY_OVERHANG_NO_LIMIT: RubyOverhang_RUBY_OVERHANG_NO_LIMIT;
@@ -210,9 +188,4 @@ export declare const RubyOverhang: typeof Enumeration & {
    * There is no ruby overhang size limit.
    */
   readonly rubyOverhangNoLimit: RubyOverhang_RUBY_OVERHANG_NO_LIMIT;
-  /**
-   * There is no ruby overhang size limit.
-   */
-  readonly rubyoverhangnolimit: RubyOverhang_RUBY_OVERHANG_NO_LIMIT;
-
 }

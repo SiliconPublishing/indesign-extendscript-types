@@ -1,10 +1,11 @@
 /**
  * SearchStrategies.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __SearchStrategies: unique symbol;
 
 
 interface SearchStrategies extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<SearchStrategies>): boolean;
-
   /**
    * @internal **WARNING:** `__SearchStrategies` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -86,11 +84,6 @@ export declare const SearchStrategies: typeof Enumeration & {
    */
   readonly firstOnPage: SearchStrategies_FIRST_ON_PAGE;
   /**
-   * Searches forward from the start of the current page.
-   */
-  readonly firstonpage: SearchStrategies_FIRST_ON_PAGE;
-
-  /**
    * Search backward from the end of the current page.
    */
   readonly LAST_ON_PAGE: SearchStrategies_LAST_ON_PAGE;
@@ -98,9 +91,4 @@ export declare const SearchStrategies: typeof Enumeration & {
    * Search backward from the end of the current page.
    */
   readonly lastOnPage: SearchStrategies_LAST_ON_PAGE;
-  /**
-   * Search backward from the end of the current page.
-   */
-  readonly lastonpage: SearchStrategies_LAST_ON_PAGE;
-
 }

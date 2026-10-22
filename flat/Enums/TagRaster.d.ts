@@ -1,10 +1,11 @@
 /**
  * TagRaster.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __TagRaster: unique symbol;
 
 
 interface TagRaster extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<TagRaster>): boolean;
-
   /**
    * @internal **WARNING:** `__TagRaster` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const TagRaster: typeof Enumeration & {
    */
   readonly grayOut: TagRaster_GRAY_OUT;
   /**
-   * Grays out raster images.
-   */
-  readonly grayout: TagRaster_GRAY_OUT;
-
-  /**
    * Displays a low-resolution proxy image appropriate for identifying and positioning an image.
    */
   readonly PROXY: TagRaster_PROXY;
@@ -140,11 +133,6 @@ export declare const TagRaster: typeof Enumeration & {
    */
   readonly highResolution: TagRaster_HIGH_RESOLUTION;
   /**
-   * Displays a high-resolution version of the image.
-   */
-  readonly highresolution: TagRaster_HIGH_RESOLUTION;
-
-  /**
    * Uses the default setting. For information, see display performance preferences.
    */
   readonly DEFAULT_VALUE: TagRaster_DEFAULT_VALUE;
@@ -152,9 +140,4 @@ export declare const TagRaster: typeof Enumeration & {
    * Uses the default setting. For information, see display performance preferences.
    */
   readonly defaultValue: TagRaster_DEFAULT_VALUE;
-  /**
-   * Uses the default setting. For information, see display performance preferences.
-   */
-  readonly defaultvalue: TagRaster_DEFAULT_VALUE;
-
 }

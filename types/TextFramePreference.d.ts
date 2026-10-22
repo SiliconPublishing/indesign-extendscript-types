@@ -1,6 +1,7 @@
 /**
  * TextFramePreference.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -23,9 +24,6 @@ import type { VerticalJustification } from './Enums/VerticalJustification';
  * Text-frame column layout, inset, vertical-justification, and baseline-grid defaults, applicable at the application/document default level, on a live frame, or on an object style.
  */
 export interface TextFramePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application | Document | TextFrame | EndnoteTextFrame | ObjectStyle, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'TextFramePreference';
-
   /** Resolves the proxy into the individual {@link TextFramePreference} objects it stands for. */
   getElements(): TextFramePreference<'single'>[];
 
@@ -147,7 +145,7 @@ export interface TextFramePreference<M extends Mode = 'single'> extends EventTar
 
   /** The name of the stroke style applied to the column rule. */
   get columnRuleStrokeType(): Read<M, StrokeStyle>;
-  set columnRuleStrokeType(value: StrokeStyle);
+  set columnRuleStrokeType(value: StrokeStyle | string);
 
   /** The tint (as a percentage) of the column rule's stroke color. */
   get columnRuleStrokeTint(): Read<M, number>;

@@ -1,6 +1,7 @@
 /**
  * GradientStop.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -16,15 +17,12 @@ import type { MixedInk } from './MixedInk';
 export interface GradientStop<M extends Mode = 'single'>
   extends EventTargetDOMObject<Gradient, M>,
     IndexedDOMObject<Gradient, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'GradientStop';
-
   /** Resolves the proxy into the individual {@link GradientStop} objects it stands for. */
   getElements(): GradientStop<'single'>[];
 
   /** The swatch applied at this stop — a solid {@link Color} or a {@link MixedInk}. */
   get stopColor(): Read<M, MixedInk | Color>;
-  set stopColor(value: MixedInk | Color);
+  set stopColor(value: MixedInk | Color | string);
 
   /** The position of the stop along the gradient, as a percentage of its length. */
   get location(): Read<M, number>;

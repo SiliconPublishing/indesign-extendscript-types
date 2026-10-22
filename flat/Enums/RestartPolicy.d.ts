@@ -1,10 +1,11 @@
 /**
  * RestartPolicy.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __RestartPolicy: unique symbol;
 
 
 interface RestartPolicy extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<RestartPolicy>): boolean;
-
   /**
    * @internal **WARNING:** `__RestartPolicy` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const RestartPolicy: typeof Enumeration & {
    */
   readonly anyPreviousLevel: RestartPolicy_ANY_PREVIOUS_LEVEL;
   /**
-   * Restart numbering after any previous (higher) numbering level.
-   */
-  readonly anypreviouslevel: RestartPolicy_ANY_PREVIOUS_LEVEL;
-
-  /**
    * Restart numbering after a specific numbering level.
    */
   readonly AFTER_SPECIFIC_LEVEL: RestartPolicy_AFTER_SPECIFIC_LEVEL;
@@ -115,11 +108,6 @@ export declare const RestartPolicy: typeof Enumeration & {
    */
   readonly afterSpecificLevel: RestartPolicy_AFTER_SPECIFIC_LEVEL;
   /**
-   * Restart numbering after a specific numbering level.
-   */
-  readonly afterspecificlevel: RestartPolicy_AFTER_SPECIFIC_LEVEL;
-
-  /**
    * Restart numbering after any of a range of numbering levels.
    */
   readonly RANGE_OF_LEVELS: RestartPolicy_RANGE_OF_LEVELS;
@@ -127,9 +115,4 @@ export declare const RestartPolicy: typeof Enumeration & {
    * Restart numbering after any of a range of numbering levels.
    */
   readonly rangeOfLevels: RestartPolicy_RANGE_OF_LEVELS;
-  /**
-   * Restart numbering after any of a range of numbering levels.
-   */
-  readonly rangeoflevels: RestartPolicy_RANGE_OF_LEVELS;
-
 }

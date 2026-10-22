@@ -1,10 +1,11 @@
 /**
  * TagTransparency.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __TagTransparency: unique symbol;
 
 
 interface TagTransparency extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<TagTransparency>): boolean;
-
   /**
    * @internal **WARNING:** `__TagTransparency` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -161,15 +159,6 @@ export declare const TagTransparency: typeof Enumeration & {
    */
   readonly lowQuality: TagTransparency_LOW_QUALITY;
   /**
-   * Displays basic transparency (opacity and blend modes) and shows transparency effects such
-   * as drop shadow and feathering in a low-resolution approximation.
-   *
-   * Note: Does not isolate page content from the background. Objects with blend modes other
-   * than Normal might appear different in other applications and output.
-   */
-  readonly lowquality: TagTransparency_LOW_QUALITY;
-
-  /**
    * Displays drop shadows and feathering in low resolution.
    */
   readonly MEDIUM_QUALITY: TagTransparency_MEDIUM_QUALITY;
@@ -177,11 +166,6 @@ export declare const TagTransparency: typeof Enumeration & {
    * Displays drop shadows and feathering in low resolution.
    */
   readonly mediumQuality: TagTransparency_MEDIUM_QUALITY;
-  /**
-   * Displays drop shadows and feathering in low resolution.
-   */
-  readonly mediumquality: TagTransparency_MEDIUM_QUALITY;
-
   /**
    * Displays higher-resolution (144 dpi) drop shadows and feathers, CMYK mattes, and spread isolation.
    */
@@ -191,11 +175,6 @@ export declare const TagTransparency: typeof Enumeration & {
    */
   readonly highQuality: TagTransparency_HIGH_QUALITY;
   /**
-   * Displays higher-resolution (144 dpi) drop shadows and feathers, CMYK mattes, and spread isolation.
-   */
-  readonly highquality: TagTransparency_HIGH_QUALITY;
-
-  /**
    * Uses the default setting. For information, see display performance preferences.
    */
   readonly DEFAULT_VALUE: TagTransparency_DEFAULT_VALUE;
@@ -203,9 +182,4 @@ export declare const TagTransparency: typeof Enumeration & {
    * Uses the default setting. For information, see display performance preferences.
    */
   readonly defaultValue: TagTransparency_DEFAULT_VALUE;
-  /**
-   * Uses the default setting. For information, see display performance preferences.
-   */
-  readonly defaultvalue: TagTransparency_DEFAULT_VALUE;
-
 }

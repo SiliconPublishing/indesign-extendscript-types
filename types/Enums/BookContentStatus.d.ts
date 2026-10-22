@@ -1,10 +1,11 @@
 /**
  * BookContentStatus.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __BookContentStatus: unique symbol;
 
 
 interface BookContentStatus extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<BookContentStatus>): boolean;
-
   /**
    * @internal **WARNING:** `__BookContentStatus` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -143,11 +141,6 @@ export declare const BookContentStatus: typeof Enumeration & {
    */
   readonly missingDocument: BookContentStatus_MISSING_DOCUMENT;
   /**
-   * The book content object is missing because it has been moved, renamed, or deleted.
-   */
-  readonly missingdocument: BookContentStatus_MISSING_DOCUMENT;
-
-  /**
    * The book content object has been modified after repagination.
    */
   readonly DOCUMENT_OUT_OF_DATE: BookContentStatus_DOCUMENT_OUT_OF_DATE;
@@ -155,11 +148,6 @@ export declare const BookContentStatus: typeof Enumeration & {
    * The book content object has been modified after repagination.
    */
   readonly documentOutOfDate: BookContentStatus_DOCUMENT_OUT_OF_DATE;
-  /**
-   * The book content object has been modified after repagination.
-   */
-  readonly documentoutofdate: BookContentStatus_DOCUMENT_OUT_OF_DATE;
-
   /**
    * The book content object is being used by someone else and is therefore locked.
    */
@@ -169,11 +157,6 @@ export declare const BookContentStatus: typeof Enumeration & {
    */
   readonly documentInUse: BookContentStatus_DOCUMENT_IN_USE;
   /**
-   * The book content object is being used by someone else and is therefore locked.
-   */
-  readonly documentinuse: BookContentStatus_DOCUMENT_IN_USE;
-
-  /**
    * The book content object is open.
    */
   readonly DOCUMENT_IS_OPEN: BookContentStatus_DOCUMENT_IS_OPEN;
@@ -181,9 +164,4 @@ export declare const BookContentStatus: typeof Enumeration & {
    * The book content object is open.
    */
   readonly documentIsOpen: BookContentStatus_DOCUMENT_IS_OPEN;
-  /**
-   * The book content object is open.
-   */
-  readonly documentisopen: BookContentStatus_DOCUMENT_IS_OPEN;
-
 }

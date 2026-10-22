@@ -1,6 +1,7 @@
 /**
  * FormField.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -52,9 +53,6 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * {@link MultiStateObject}.
  */
 export interface FormField<TParent = PageItemParent, TChildParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, TChildParent, M> {
-  /** The object's DOM class name — reports the specific kind, such as `'CheckBox'` when this is a {@link CheckBox}. */
-  readonly constructorName: 'FormField' | 'Button' | 'CheckBox' | 'ComboBox' | 'ListBox' | 'MultiStateObject' | 'RadioButton' | 'SignatureField' | 'TextBox';
-
   /** Resolves the proxy into the individual {@link FormField} objects it stands for. */
   getElements(): FormField<TParent, TChildParent, 'single'>[];
 
@@ -74,7 +72,7 @@ export interface FormField<TParent = PageItemParent, TChildParent = PageItemPare
  * A form control InDesign reports as a plain {@link FormField} rather than as a button, check
  * box, combo box, list box, radio button, signature field, text box or multi-state object.
  *
- * Handle it in the `'FormField'` case of a `constructorName` check. Only the members every form
+ * Handle it in the `'FormField'` branch of an `instanceof` check. Only the members every form
  * control has are available on it.
  */
 export interface PlainFormField<
@@ -82,6 +80,4 @@ export interface PlainFormField<
   TChildParent = PageItemParent,
   M extends Mode = 'single',
 > extends FormField<TParent, TChildParent, M> {
-  /** Always `'FormField'` — this is the generic case, by construction. */
-  readonly constructorName: 'FormField';
 }

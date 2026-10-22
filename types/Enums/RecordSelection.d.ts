@@ -1,10 +1,11 @@
 /**
  * RecordSelection.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __RecordSelection: unique symbol;
 
 
 interface RecordSelection extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<RecordSelection>): boolean;
-
   /**
    * @internal **WARNING:** `__RecordSelection` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const RecordSelection: typeof Enumeration & {
    */
   readonly allRecords: RecordSelection_ALL_RECORDS;
   /**
-   * Merges all records.
-   */
-  readonly allrecords: RecordSelection_ALL_RECORDS;
-
-  /**
    * Merges the specified record. 
    */
   readonly ONE_RECORD: RecordSelection_ONE_RECORD;
@@ -114,11 +107,6 @@ export declare const RecordSelection: typeof Enumeration & {
    * Merges the specified record. 
    */
   readonly oneRecord: RecordSelection_ONE_RECORD;
-  /**
-   * Merges the specified record. 
-   */
-  readonly onerecord: RecordSelection_ONE_RECORD;
-
   /**
    * Merges all records in the specified range. 
    */

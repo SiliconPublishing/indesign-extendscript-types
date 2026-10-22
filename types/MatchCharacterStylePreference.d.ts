@@ -1,6 +1,7 @@
 /**
  * MatchCharacterStylePreference.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -15,9 +16,6 @@ import type { SearchStrategies } from './Enums/SearchStrategies';
  * The preferences for a running header/footer (match character style) variable.
  */
 export interface MatchCharacterStylePreference<M extends Mode = 'single'> extends EventTargetDOMObject<TextVariable, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'MatchCharacterStylePreference';
-
   /** Resolves the proxy into the individual {@link MatchCharacterStylePreference} objects it stands for. */
   getElements(): MatchCharacterStylePreference<'single'>[];
 
@@ -30,7 +28,7 @@ export interface MatchCharacterStylePreference<M extends Mode = 'single'> extend
   set textAfter(value: string);
 
   /** The character style applied to the text. */
-  get appliedCharacterStyle(): Read<M, CharacterStyle>;
+  get appliedCharacterStyle(): Read<M, CharacterStyle | null>;
   set appliedCharacterStyle(value: CharacterStyle | string);
 
   /** The starting point and direction in which the search will be conducted. */

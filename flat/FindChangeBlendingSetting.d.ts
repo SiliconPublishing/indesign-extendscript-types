@@ -1,6 +1,7 @@
 /**
  * FindChangeBlendingSetting.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -10,34 +11,37 @@ import type { FindChangeTransparencySetting } from './FindChangeTransparencySett
 import type { FindChangeStrokeTransparencySetting } from './FindChangeStrokeTransparencySetting';
 import type { FindChangeFillTransparencySetting } from './FindChangeFillTransparencySetting';
 import type { FindChangeContentTransparencySetting } from './FindChangeContentTransparencySetting';
-import type { BlendMode } from './Enums/BlendMode';
-import type { ContentTransparencySetting } from './ContentTransparencySetting';
-import type { Event } from './Event';
-import type { EventHandler } from './_base/Events';
-import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
-import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { FilePath } from './_base/Types';
-import type { FillTransparencySetting } from './FillTransparencySetting';
-import type { InDesignEventMap } from './_base/Events';
+import type { NothingEnum } from "./Enums/NothingEnum";
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
-import type { StrokeTransparencySetting } from './StrokeTransparencySetting';
-import type { TransparencySetting } from './TransparencySetting';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
+import type { EventHandler } from './_base/Events';
+import type { EventListener } from './EventListener';
+import type { EventString } from './_base/Events';
+import type { Event } from './Event';
+import type { FilePath } from './_base/Types';
+import type { BlendMode } from './Enums/BlendMode';
+
 /**
  * The same {@link BlendingSetting} settings, applied as find/change criteria.
  */
 export interface FindChangeBlendingSetting {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
-  readonly parent: TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting;
+  readonly parent: FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting;
   /**
    * A snapshot of every editable property on this object.
    *
@@ -51,15 +55,6 @@ export interface FindChangeBlendingSetting {
    */
   set properties(value: PropertiesSetter<FindChangeBlendingSetting, 'single'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -69,10 +64,9 @@ export interface FindChangeBlendingSetting {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -114,42 +108,39 @@ export interface FindChangeBlendingSetting {
     captures?: boolean,
   ): boolean;
   /** The blending mode for controlling how the base color interacts with the color of the BlendingSetting. */
-  get blendMode(): BlendMode;
-  set blendMode(value: BlendMode);
+  get blendMode(): BlendMode | NothingEnum.NOTHING;
+  set blendMode(value: BlendMode | NothingEnum.NOTHING);
   /** The fill opacity of the BlendingSetting (as a percentage). (Range: 0 to 100). */
-  get opacity(): number;
-  set opacity(value: number);
+  get opacity(): number | NothingEnum.NOTHING;
+  set opacity(value: number | NothingEnum.NOTHING);
   /** If true, the BlendingSetting is a knockout group. */
-  get knockoutGroup(): boolean;
-  set knockoutGroup(value: boolean);
+  get knockoutGroup(): boolean | NothingEnum.NOTHING;
+  set knockoutGroup(value: boolean | NothingEnum.NOTHING);
   /** If true, blending is applied only to the group. If false, blending includes all objects beneath the group. */
-  get isolateBlending(): boolean;
-  set isolateBlending(value: boolean);
-  /** The object's DOM class name. */
-  readonly constructorName: 'FindChangeBlendingSetting';
+  get isolateBlending(): boolean | NothingEnum.NOTHING;
+  set isolateBlending(value: boolean | NothingEnum.NOTHING);
   /** Resolves the proxy into the individual {@link FindChangeBlendingSetting} objects it stands for. */
   getElements(): FindChangeBlendingSetting[];
 }
 
-
 /**
- * The broadcast proxy for {@link FindChangeBlendingSetting} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link FindChangeBlendingSetting} there.
+ * The same {@link BlendingSetting} settings, applied as find/change criteria.
  */
 export interface FindChangeBlendingSettingPlural {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
-  readonly parent: (TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting)[];
+  readonly parent: (FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting)[];
   /**
    * A snapshot of every editable property on this object.
    *
@@ -163,15 +154,6 @@ export interface FindChangeBlendingSettingPlural {
    */
   set properties(value: PropertiesSetter<FindChangeBlendingSettingPlural, 'plural'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -181,10 +163,9 @@ export interface FindChangeBlendingSettingPlural {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -226,19 +207,17 @@ export interface FindChangeBlendingSettingPlural {
     captures?: boolean,
   ): boolean;
   /** The blending mode for controlling how the base color interacts with the color of the BlendingSetting. */
-  get blendMode(): (BlendMode)[];
-  set blendMode(value: BlendMode);
+  get blendMode(): (BlendMode | NothingEnum.NOTHING)[];
+  set blendMode(value: BlendMode | NothingEnum.NOTHING);
   /** The fill opacity of the BlendingSetting (as a percentage). (Range: 0 to 100). */
-  get opacity(): (number)[];
-  set opacity(value: number);
+  get opacity(): (number | NothingEnum.NOTHING)[];
+  set opacity(value: number | NothingEnum.NOTHING);
   /** If true, the BlendingSetting is a knockout group. */
-  get knockoutGroup(): (boolean)[];
-  set knockoutGroup(value: boolean);
+  get knockoutGroup(): (boolean | NothingEnum.NOTHING)[];
+  set knockoutGroup(value: boolean | NothingEnum.NOTHING);
   /** If true, blending is applied only to the group. If false, blending includes all objects beneath the group. */
-  get isolateBlending(): (boolean)[];
-  set isolateBlending(value: boolean);
-  /** The object's DOM class name. */
-  readonly constructorName: 'FindChangeBlendingSetting';
+  get isolateBlending(): (boolean | NothingEnum.NOTHING)[];
+  set isolateBlending(value: boolean | NothingEnum.NOTHING);
   /** Resolves the proxy into the individual {@link FindChangeBlendingSetting} objects it stands for. */
   getElements(): FindChangeBlendingSetting[];
 }

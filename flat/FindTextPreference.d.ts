@@ -1,6 +1,7 @@
 /**
  * FindTextPreference.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -62,26 +63,32 @@ import type { WarichuAlignment } from './Enums/WarichuAlignment';
 import type { Language } from './Language';
 import type { LanguageWithVendors } from './LanguageWithVendors';
 import type { ParagraphStyle } from './ParagraphStyle';
-import type { Event } from './Event';
-import type { EventHandler } from './_base/Events';
-import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
-import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { FilePath } from './_base/Types';
-import type { InDesignEventMap } from './_base/Events';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
+import type { EventHandler } from './_base/Events';
+import type { EventListener } from './EventListener';
+import type { EventString } from './_base/Events';
+import type { Event } from './Event';
+import type { FilePath } from './_base/Types';
+
 /**
  * The content and formatting criteria a text search matches against, set via
  * {@link Application.findTextPreferences} and used by {@link Application.findText}.
  */
 export interface FindTextPreference {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -99,15 +106,6 @@ export interface FindTextPreference {
    */
   set properties(value: PropertiesSetter<FindTextPreference, 'single'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -117,10 +115,9 @@ export interface FindTextPreference {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -161,8 +158,6 @@ export interface FindTextPreference {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The object's DOM class name. */
-  readonly constructorName: 'FindTextPreference';
   /** Resolves the proxy into the individual {@link FindTextPreference} objects it stands for. */
   getElements(): FindTextPreference[];
   /** The list-numbering levels that restart counting, and the policy each follows; see {@link NumberingRestartPolicy}. */
@@ -262,7 +257,7 @@ export interface FindTextPreference {
   get ignoreEdgeAlignment(): boolean | NothingEnum.NOTHING;
   set ignoreEdgeAlignment(value: boolean | NothingEnum.NOTHING);
   /** The font to match, as a {@link Font} object or a font family name. */
-  get appliedFont(): Font | NothingEnum.NOTHING;
+  get appliedFont(): Font | NothingEnum.NOTHING | string;
   set appliedFont(value: Font | string | NothingEnum.NOTHING | null);
   /** The name of the font style. */
   get fontStyle(): string | NothingEnum.NOTHING;
@@ -346,10 +341,10 @@ export interface FindTextPreference {
   get otfSwash(): boolean | NothingEnum.NOTHING;
   set otfSwash(value: boolean | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the underline stroke. */
-  get underlineColor(): Swatch | NothingEnum.NOTHING;
+  get underlineColor(): Swatch | NothingEnum.NOTHING | string;
   set underlineColor(value: Swatch | string | NothingEnum.NOTHING | null);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the underline stroke. Note: Valid when underline type is not solid. */
-  get underlineGapColor(): Swatch | NothingEnum.NOTHING;
+  get underlineGapColor(): Swatch | NothingEnum.NOTHING | string;
   set underlineGapColor(value: Swatch | string | NothingEnum.NOTHING | null);
   /** The underline stroke tint (as a percentage). (Range: 0 to 100). */
   get underlineTint(): number | NothingEnum.NOTHING;
@@ -364,7 +359,7 @@ export interface FindTextPreference {
   get underlineGapOverprint(): boolean | NothingEnum.NOTHING;
   set underlineGapOverprint(value: boolean | NothingEnum.NOTHING);
   /** The stroke type of the underline stroke. */
-  get underlineType(): StrokeStyle | NothingEnum.NOTHING;
+  get underlineType(): StrokeStyle | NothingEnum.NOTHING | null | string;
   set underlineType(value: StrokeStyle | string | NothingEnum.NOTHING | null);
   /** The amount by which to offset the underline from the text baseline. */
   get underlineOffset(): number | NothingEnum.NOTHING;
@@ -373,10 +368,10 @@ export interface FindTextPreference {
   get underlineWeight(): number | NothingEnum.NOTHING;
   set underlineWeight(value: MeasurementValue | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the strikethrough stroke. */
-  get strikeThroughColor(): Swatch | NothingEnum.NOTHING;
+  get strikeThroughColor(): Swatch | NothingEnum.NOTHING | string;
   set strikeThroughColor(value: Swatch | string | NothingEnum.NOTHING | null);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the strikethrough stroke. */
-  get strikeThroughGapColor(): Swatch | NothingEnum.NOTHING;
+  get strikeThroughGapColor(): Swatch | NothingEnum.NOTHING | string;
   set strikeThroughGapColor(value: Swatch | string | NothingEnum.NOTHING | null);
   /** The tint (as a percentage) of the strikethrough stroke. (Range: 0 to 100). */
   get strikeThroughTint(): number | NothingEnum.NOTHING;
@@ -391,7 +386,7 @@ export interface FindTextPreference {
   get strikeThroughGapOverprint(): boolean | NothingEnum.NOTHING;
   set strikeThroughGapOverprint(value: boolean | NothingEnum.NOTHING);
   /** The stroke type of the strikethrough stroke. */
-  get strikeThroughType(): StrokeStyle | NothingEnum.NOTHING;
+  get strikeThroughType(): StrokeStyle | NothingEnum.NOTHING | null | string;
   set strikeThroughType(value: StrokeStyle | string | NothingEnum.NOTHING | null);
   /** The amount by which to offset the strikethrough stroke from the text baseline. */
   get strikeThroughOffset(): number | NothingEnum.NOTHING;
@@ -559,10 +554,10 @@ export interface FindTextPreference {
   get tatechuyokoYOffset(): number | NothingEnum.NOTHING;
   set tatechuyokoYOffset(value: number | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of kenten characters. */
-  get kentenFillColor(): Swatch | NothingEnum.NOTHING;
+  get kentenFillColor(): Swatch | NothingEnum.NOTHING | string;
   set kentenFillColor(value: Swatch | string | NothingEnum.NOTHING | null);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of kenten characters. */
-  get kentenStrokeColor(): Swatch | NothingEnum.NOTHING;
+  get kentenStrokeColor(): Swatch | NothingEnum.NOTHING | string;
   set kentenStrokeColor(value: Swatch | string | NothingEnum.NOTHING | null);
   /** The fill tint (as a percentage) of kenten characters. (Range: 0 to 100). */
   get kentenTint(): number | NothingEnum.NOTHING;
@@ -592,7 +587,7 @@ export interface FindTextPreference {
   get kentenPosition(): RubyKentenPosition | NothingEnum.NOTHING;
   set kentenPosition(value: RubyKentenPosition | NothingEnum.NOTHING);
   /** The font to use for kenten characters. */
-  get kentenFont(): Font | NothingEnum.NOTHING;
+  get kentenFont(): Font | NothingEnum.NOTHING | null | string;
   set kentenFont(value: Font | string | NothingEnum.NOTHING | null);
   /** The font style of kenten characters. */
   get kentenFontStyle(): string | NothingEnum.NOTHING;
@@ -613,10 +608,10 @@ export interface FindTextPreference {
   get kentenCharacterSet(): KentenCharacterSet | NothingEnum.NOTHING;
   set kentenCharacterSet(value: KentenCharacterSet | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of ruby characters. */
-  get rubyFill(): Swatch | NothingEnum.NOTHING;
+  get rubyFill(): Swatch | NothingEnum.NOTHING | string;
   set rubyFill(value: Swatch | string | NothingEnum.NOTHING | null);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of ruby characters. */
-  get rubyStroke(): Swatch | NothingEnum.NOTHING;
+  get rubyStroke(): Swatch | NothingEnum.NOTHING | string;
   set rubyStroke(value: Swatch | string | NothingEnum.NOTHING | null);
   /** The tint (as a percentage) of the ruby fill color. (Range: 0 to 100). */
   get rubyTint(): number | NothingEnum.NOTHING;
@@ -634,7 +629,7 @@ export interface FindTextPreference {
   get rubyStrokeTint(): number | NothingEnum.NOTHING;
   set rubyStrokeTint(value: number | NothingEnum.NOTHING);
   /** The font applied to ruby characters. */
-  get rubyFont(): Font | NothingEnum.NOTHING;
+  get rubyFont(): Font | NothingEnum.NOTHING | null | string;
   set rubyFont(value: Font | string | NothingEnum.NOTHING | null);
   /** The font style of ruby characters. */
   get rubyFontStyle(): string | NothingEnum.NOTHING;
@@ -781,7 +776,7 @@ export interface FindTextPreference {
   get bulletsTextAfter(): string | NothingEnum.NOTHING;
   set bulletsTextAfter(value: string | NothingEnum.NOTHING);
   /** The list to be part of. */
-  get appliedNumberingList(): NumberingList | NothingEnum.NOTHING;
+  get appliedNumberingList(): NumberingList | NothingEnum.NOTHING | string;
   set appliedNumberingList(value: NumberingList | string | NothingEnum.NOTHING);
   /** The level of the paragraph. */
   get numberingLevel(): number | NothingEnum.NOTHING;
@@ -805,10 +800,10 @@ export interface FindTextPreference {
   get numberingApplyRestartPolicy(): boolean | NothingEnum.NOTHING;
   set numberingApplyRestartPolicy(value: boolean | NothingEnum.NOTHING);
   /** The character style to be used for the text after string. */
-  get bulletsCharacterStyle(): CharacterStyle | NothingEnum.NOTHING;
+  get bulletsCharacterStyle(): CharacterStyle | NothingEnum.NOTHING | string;
   set bulletsCharacterStyle(value: CharacterStyle | string | NothingEnum.NOTHING);
   /** The character style to be used for the number string. */
-  get numberingCharacterStyle(): CharacterStyle | NothingEnum.NOTHING;
+  get numberingCharacterStyle(): CharacterStyle | NothingEnum.NOTHING | string;
   set numberingCharacterStyle(value: CharacterStyle | string | NothingEnum.NOTHING);
   /** The number string expression for numbering. */
   get numberingExpression(): string | NothingEnum.NOTHING;
@@ -829,21 +824,21 @@ export interface FindTextPreference {
   isNthDesignAxisHidden(nthAxisIndex: number): boolean;
 }
 
-
 /**
- * The broadcast proxy for {@link FindTextPreference} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link FindTextPreference} there.
+ * The content and formatting criteria a text search matches against, set via
+ * {@link Application.findTextPreferences} and used by {@link Application.findText}.
  */
 export interface FindTextPreferencePlural {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -861,15 +856,6 @@ export interface FindTextPreferencePlural {
    */
   set properties(value: PropertiesSetter<FindTextPreferencePlural, 'plural'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -879,10 +865,9 @@ export interface FindTextPreferencePlural {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -923,8 +908,6 @@ export interface FindTextPreferencePlural {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The object's DOM class name. */
-  readonly constructorName: 'FindTextPreference';
   /** Resolves the proxy into the individual {@link FindTextPreference} objects it stands for. */
   getElements(): FindTextPreference[];
   /** The list-numbering levels that restart counting, and the policy each follows; see {@link NumberingRestartPolicy}. */
@@ -1024,7 +1007,7 @@ export interface FindTextPreferencePlural {
   get ignoreEdgeAlignment(): (boolean | NothingEnum.NOTHING)[];
   set ignoreEdgeAlignment(value: boolean | NothingEnum.NOTHING);
   /** The font to match, as a {@link Font} object or a font family name. */
-  get appliedFont(): (Font | NothingEnum.NOTHING)[];
+  get appliedFont(): (Font | NothingEnum.NOTHING | string)[];
   set appliedFont(value: Font | string | NothingEnum.NOTHING | null);
   /** The name of the font style. */
   get fontStyle(): (string | NothingEnum.NOTHING)[];
@@ -1108,10 +1091,10 @@ export interface FindTextPreferencePlural {
   get otfSwash(): (boolean | NothingEnum.NOTHING)[];
   set otfSwash(value: boolean | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the underline stroke. */
-  get underlineColor(): (Swatch | NothingEnum.NOTHING)[];
+  get underlineColor(): (Swatch | NothingEnum.NOTHING | string)[];
   set underlineColor(value: Swatch | string | NothingEnum.NOTHING | null);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the underline stroke. Note: Valid when underline type is not solid. */
-  get underlineGapColor(): (Swatch | NothingEnum.NOTHING)[];
+  get underlineGapColor(): (Swatch | NothingEnum.NOTHING | string)[];
   set underlineGapColor(value: Swatch | string | NothingEnum.NOTHING | null);
   /** The underline stroke tint (as a percentage). (Range: 0 to 100). */
   get underlineTint(): (number | NothingEnum.NOTHING)[];
@@ -1126,7 +1109,7 @@ export interface FindTextPreferencePlural {
   get underlineGapOverprint(): (boolean | NothingEnum.NOTHING)[];
   set underlineGapOverprint(value: boolean | NothingEnum.NOTHING);
   /** The stroke type of the underline stroke. */
-  get underlineType(): (StrokeStyle | NothingEnum.NOTHING)[];
+  get underlineType(): (StrokeStyle | NothingEnum.NOTHING | null | string)[];
   set underlineType(value: StrokeStyle | string | NothingEnum.NOTHING | null);
   /** The amount by which to offset the underline from the text baseline. */
   get underlineOffset(): (number | NothingEnum.NOTHING)[];
@@ -1135,10 +1118,10 @@ export interface FindTextPreferencePlural {
   get underlineWeight(): (number | NothingEnum.NOTHING)[];
   set underlineWeight(value: MeasurementValue | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the strikethrough stroke. */
-  get strikeThroughColor(): (Swatch | NothingEnum.NOTHING)[];
+  get strikeThroughColor(): (Swatch | NothingEnum.NOTHING | string)[];
   set strikeThroughColor(value: Swatch | string | NothingEnum.NOTHING | null);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the strikethrough stroke. */
-  get strikeThroughGapColor(): (Swatch | NothingEnum.NOTHING)[];
+  get strikeThroughGapColor(): (Swatch | NothingEnum.NOTHING | string)[];
   set strikeThroughGapColor(value: Swatch | string | NothingEnum.NOTHING | null);
   /** The tint (as a percentage) of the strikethrough stroke. (Range: 0 to 100). */
   get strikeThroughTint(): (number | NothingEnum.NOTHING)[];
@@ -1153,7 +1136,7 @@ export interface FindTextPreferencePlural {
   get strikeThroughGapOverprint(): (boolean | NothingEnum.NOTHING)[];
   set strikeThroughGapOverprint(value: boolean | NothingEnum.NOTHING);
   /** The stroke type of the strikethrough stroke. */
-  get strikeThroughType(): (StrokeStyle | NothingEnum.NOTHING)[];
+  get strikeThroughType(): (StrokeStyle | NothingEnum.NOTHING | null | string)[];
   set strikeThroughType(value: StrokeStyle | string | NothingEnum.NOTHING | null);
   /** The amount by which to offset the strikethrough stroke from the text baseline. */
   get strikeThroughOffset(): (number | NothingEnum.NOTHING)[];
@@ -1321,10 +1304,10 @@ export interface FindTextPreferencePlural {
   get tatechuyokoYOffset(): (number | NothingEnum.NOTHING)[];
   set tatechuyokoYOffset(value: number | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of kenten characters. */
-  get kentenFillColor(): (Swatch | NothingEnum.NOTHING)[];
+  get kentenFillColor(): (Swatch | NothingEnum.NOTHING | string)[];
   set kentenFillColor(value: Swatch | string | NothingEnum.NOTHING | null);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of kenten characters. */
-  get kentenStrokeColor(): (Swatch | NothingEnum.NOTHING)[];
+  get kentenStrokeColor(): (Swatch | NothingEnum.NOTHING | string)[];
   set kentenStrokeColor(value: Swatch | string | NothingEnum.NOTHING | null);
   /** The fill tint (as a percentage) of kenten characters. (Range: 0 to 100). */
   get kentenTint(): (number | NothingEnum.NOTHING)[];
@@ -1354,7 +1337,7 @@ export interface FindTextPreferencePlural {
   get kentenPosition(): (RubyKentenPosition | NothingEnum.NOTHING)[];
   set kentenPosition(value: RubyKentenPosition | NothingEnum.NOTHING);
   /** The font to use for kenten characters. */
-  get kentenFont(): (Font | NothingEnum.NOTHING)[];
+  get kentenFont(): (Font | NothingEnum.NOTHING | null | string)[];
   set kentenFont(value: Font | string | NothingEnum.NOTHING | null);
   /** The font style of kenten characters. */
   get kentenFontStyle(): (string | NothingEnum.NOTHING)[];
@@ -1375,10 +1358,10 @@ export interface FindTextPreferencePlural {
   get kentenCharacterSet(): (KentenCharacterSet | NothingEnum.NOTHING)[];
   set kentenCharacterSet(value: KentenCharacterSet | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of ruby characters. */
-  get rubyFill(): (Swatch | NothingEnum.NOTHING)[];
+  get rubyFill(): (Swatch | NothingEnum.NOTHING | string)[];
   set rubyFill(value: Swatch | string | NothingEnum.NOTHING | null);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of ruby characters. */
-  get rubyStroke(): (Swatch | NothingEnum.NOTHING)[];
+  get rubyStroke(): (Swatch | NothingEnum.NOTHING | string)[];
   set rubyStroke(value: Swatch | string | NothingEnum.NOTHING | null);
   /** The tint (as a percentage) of the ruby fill color. (Range: 0 to 100). */
   get rubyTint(): (number | NothingEnum.NOTHING)[];
@@ -1396,7 +1379,7 @@ export interface FindTextPreferencePlural {
   get rubyStrokeTint(): (number | NothingEnum.NOTHING)[];
   set rubyStrokeTint(value: number | NothingEnum.NOTHING);
   /** The font applied to ruby characters. */
-  get rubyFont(): (Font | NothingEnum.NOTHING)[];
+  get rubyFont(): (Font | NothingEnum.NOTHING | null | string)[];
   set rubyFont(value: Font | string | NothingEnum.NOTHING | null);
   /** The font style of ruby characters. */
   get rubyFontStyle(): (string | NothingEnum.NOTHING)[];
@@ -1543,7 +1526,7 @@ export interface FindTextPreferencePlural {
   get bulletsTextAfter(): (string | NothingEnum.NOTHING)[];
   set bulletsTextAfter(value: string | NothingEnum.NOTHING);
   /** The list to be part of. */
-  get appliedNumberingList(): (NumberingList | NothingEnum.NOTHING)[];
+  get appliedNumberingList(): (NumberingList | NothingEnum.NOTHING | string)[];
   set appliedNumberingList(value: NumberingList | string | NothingEnum.NOTHING);
   /** The level of the paragraph. */
   get numberingLevel(): (number | NothingEnum.NOTHING)[];
@@ -1567,10 +1550,10 @@ export interface FindTextPreferencePlural {
   get numberingApplyRestartPolicy(): (boolean | NothingEnum.NOTHING)[];
   set numberingApplyRestartPolicy(value: boolean | NothingEnum.NOTHING);
   /** The character style to be used for the text after string. */
-  get bulletsCharacterStyle(): (CharacterStyle | NothingEnum.NOTHING)[];
+  get bulletsCharacterStyle(): (CharacterStyle | NothingEnum.NOTHING | string)[];
   set bulletsCharacterStyle(value: CharacterStyle | string | NothingEnum.NOTHING);
   /** The character style to be used for the number string. */
-  get numberingCharacterStyle(): (CharacterStyle | NothingEnum.NOTHING)[];
+  get numberingCharacterStyle(): (CharacterStyle | NothingEnum.NOTHING | string)[];
   set numberingCharacterStyle(value: CharacterStyle | string | NothingEnum.NOTHING);
   /** The number string expression for numbering. */
   get numberingExpression(): (string | NothingEnum.NOTHING)[];

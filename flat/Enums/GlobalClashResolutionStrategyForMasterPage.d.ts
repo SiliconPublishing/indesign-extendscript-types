@@ -1,10 +1,11 @@
 /**
  * GlobalClashResolutionStrategyForMasterPage.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __GlobalClashResolutionStrategyForMasterPage: unique symbol;
 
 
 interface GlobalClashResolutionStrategyForMasterPage extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<GlobalClashResolutionStrategyForMasterPage>): boolean;
-
   /**
    * @internal **WARNING:** `__GlobalClashResolutionStrategyForMasterPage` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -86,11 +84,6 @@ export declare const GlobalClashResolutionStrategyForMasterPage: typeof Enumerat
    */
   readonly loadAllWithOverwrite: GlobalClashResolutionStrategyForMasterPage_LOAD_ALL_WITH_OVERWRITE;
   /**
-   * Overwrites the existing master page.
-   */
-  readonly loadallwithoverwrite: GlobalClashResolutionStrategyForMasterPage_LOAD_ALL_WITH_OVERWRITE;
-
-  /**
    * Renames the new master page.
    */
   readonly LOAD_ALL_WITH_RENAME: GlobalClashResolutionStrategyForMasterPage_LOAD_ALL_WITH_RENAME;
@@ -98,9 +91,4 @@ export declare const GlobalClashResolutionStrategyForMasterPage: typeof Enumerat
    * Renames the new master page.
    */
   readonly loadAllWithRename: GlobalClashResolutionStrategyForMasterPage_LOAD_ALL_WITH_RENAME;
-  /**
-   * Renames the new master page.
-   */
-  readonly loadallwithrename: GlobalClashResolutionStrategyForMasterPage_LOAD_ALL_WITH_RENAME;
-
 }

@@ -1,10 +1,11 @@
 /**
  * ImageSizeOption.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ImageSizeOption: unique symbol;
 
 
 interface ImageSizeOption extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ImageSizeOption>): boolean;
-
   /**
    * @internal **WARNING:** `__ImageSizeOption` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const ImageSizeOption: typeof Enumeration & {
    */
   readonly sizeNone: ImageSizeOption_SIZE_NONE;
   /**
-   * No CSS size is used.
-   */
-  readonly sizenone: ImageSizeOption_SIZE_NONE;
-
-  /**
    * Uses an absolute image size.
    */
   readonly SIZE_FIXED: ImageSizeOption_SIZE_FIXED;
@@ -115,11 +108,6 @@ export declare const ImageSizeOption: typeof Enumeration & {
    */
   readonly sizeFixed: ImageSizeOption_SIZE_FIXED;
   /**
-   * Uses an absolute image size.
-   */
-  readonly sizefixed: ImageSizeOption_SIZE_FIXED;
-
-  /**
    * Uses an image size relative to the text flow.
    */
   readonly SIZE_RELATIVE_TO_TEXT_FLOW: ImageSizeOption_SIZE_RELATIVE_TO_TEXT_FLOW;
@@ -127,9 +115,4 @@ export declare const ImageSizeOption: typeof Enumeration & {
    * Uses an image size relative to the text flow.
    */
   readonly sizeRelativeToTextFlow: ImageSizeOption_SIZE_RELATIVE_TO_TEXT_FLOW;
-  /**
-   * Uses an image size relative to the text flow.
-   */
-  readonly sizerelativetotextflow: ImageSizeOption_SIZE_RELATIVE_TO_TEXT_FLOW;
-
 }

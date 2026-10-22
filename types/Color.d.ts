@@ -1,6 +1,7 @@
 /**
  * Color.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -16,9 +17,6 @@ import type { ColorGroup } from './ColorGroup';
  * color space.
  */
 export interface Color<M extends Mode = 'single'> extends Swatch<M>{
-  /** The object's DOM class name — reports the specific kind, such as `'Tint'` when the object is a {@link Tint}. */
-  readonly constructorName: 'Color' | 'Tint';
-
   /** Resolves the proxy into the individual {@link Color} objects it stands for. */
   getElements(): Color<'single'>[];
 
@@ -52,7 +50,5 @@ export interface Color<M extends Mode = 'single'> extends Swatch<M>{
  * the colour members; only a tint additionally has a base colour and a tint percentage.
  */
 export interface PlainColor<M extends Mode = 'single'> extends Color<M> {
-  /** Always `'Color'` — this is the color case, by construction. */
-  readonly constructorName: 'Color';
 }
 

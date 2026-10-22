@@ -1,6 +1,7 @@
 /**
  * XmlStory.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -91,6 +92,11 @@ import type { TabStop } from './TabStop';
 import type { Tables } from './Tables';
 import type { TextVariableInstances } from './TextVariableInstances';
 import type { Tint } from './Tint';
+import type { StoryWindow } from "./StoryWindow";
+import type { Cell } from "./Cell";
+import type { Row } from "./Row";
+import type { Column } from "./Column";
+import type { Table } from "./Table";
 
 /**
  * XML text content not yet placed in the layout — a {@link Story} generated
@@ -109,9 +115,6 @@ export interface XmlStory<M extends Mode = 'single'>
     ParagraphFormatAttributes<M>,
     TextGraphicAttributes<M>,
     TextRangeContent<XmlStory, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'XmlStory';
-
   /** Resolves the proxy into the individual {@link XmlStory} objects it stands for. */
   getElements(): XmlStory<'single'>[];
 
@@ -130,7 +133,7 @@ export interface XmlStory<M extends Mode = 'single'>
   set userText(value: boolean);
 
   /** The {@link NamedGrid} the story composes against. */
-  get appliedNamedGrid(): Read<M, NamedGrid>;
+  get appliedNamedGrid(): Read<M, NamedGrid | null>;
   set appliedNamedGrid(value: NamedGrid | string);
 
   /** The {@link TextFrame}s or {@link TextPath}s this story's text flows through, in thread order. Empty until the XML content is placed. */
@@ -161,7 +164,7 @@ export interface XmlStory<M extends Mode = 'single'>
   readonly lockState: Read<M, LockStateValues>;
 
   /** The {@link XMLItem} (element, comment, or processing instruction) associated with the story. */
-  readonly associatedXMLElement: Read<M, XMLItem>;
+  readonly associatedXMLElement: Read<M, XMLItem | null>;
 
   /** Whether this is an endnote story. */
   readonly isEndnoteStory: Read<M, boolean>;
@@ -182,7 +185,7 @@ export interface XmlStory<M extends Mode = 'single'>
   readonly linkedStoryOptions: Read<M, LinkedStoryOption>;
 
   /** The {@link Link} to this story's source file, if it was placed from or exported to one. */
-  readonly itemLink: Read<M, Link>;
+  readonly itemLink: Read<M, Link | null>;
 
   /** Export options for the InCopy INCX document format — see {@link InCopyExportOption}. */
   readonly incopyExportOptions: Read<M, InCopyExportOption>;
@@ -307,4 +310,91 @@ export interface XmlStory<M extends Mode = 'single'>
     versionComments?: string,
     forceSave?: boolean,
   ): BackgroundTask;
+
+  // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
+
+  /**
+   * The IDML component name of the Story.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  get idmlComponentName(): Read<M, string>;
+  set idmlComponentName(value: string);
+
+  /**
+   * Opens the story in a story editor window.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  storyEdit(): Read<M, StoryWindow>;
+
+  /**
+   * Deletes the Story.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  remove(): Read<M, void>;
+
+  /**
+   * Moves the text to the specified location.
+   * @param to The location relative to the reference object or within the containing object.
+   * @param reference The reference object. Note: Required when the to parameter specifies before or after. Can accept: Text, Story, Cell, Row, Column, Table or PageItem. (Optional)
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  move(to: LocationOptions, reference?: Text | Story | Cell | Row | Column | Table | PageItem): Read<M, Text>;
+
+  /**
+   * Recomposes the text in the Story.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  recompose(): Read<M, void>;
+
+  /**
+   * Places XML content into the specified object. Note: Replaces any existing content.
+   * @param using The XML element whose content you want to place.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  placeXML(using: XMLElement): Read<M, void>;
+
+  /**
+   * Tag the object or the parent story using default tags defined in XML preference.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  autoTag(): Read<M, void>;
+
+  /**
+   * Associates the page item with the specified XML element while preserving existing content.
+   * @param using The XML element.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  markup(using: XMLElement): Read<M, void>;
+
+  /**
+   * Exports the object(s) to a file.
+   * @param format The export format, specified as an enumeration value or as an extension that appears in the Save as type or Format menu in the Export dialog. Can accept: ExportFormat enumerator or String.
+   * @param to The path to the export file.
+   * @param showingOptions If true, displays the export options dialog. (Optional)
+   * @param using The export style. (Optional)
+   * @param versionComments The comment for this version. (Optional)
+   * @param forceSave If true, forcibly saves a version. (Optional)
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): Read<M, void>;
+
+  /**
+   * Checks out the story.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  checkOut(): Read<M, boolean>;
+
+  /**
+   * Checks in the story or stories.
+   * @param versionComments The comment for this version. (Optional)
+   * @param forceSave If true, forcibly saves a version. (Optional)
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  checkIn(versionComments?: string, forceSave?: boolean): Read<M, boolean>;
+
+  /**
+   * Reverts the document to its state at the last save operation.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  revert(): Read<M, boolean>;
 }

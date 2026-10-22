@@ -1,10 +1,11 @@
 /**
  * BookletTypeOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __BookletTypeOptions: unique symbol;
 
 
 interface BookletTypeOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<BookletTypeOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__BookletTypeOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -136,11 +134,6 @@ export declare const BookletTypeOptions: typeof Enumeration & {
    */
   readonly twoUpSaddleStitch: BookletTypeOptions_TWO_UP_SADDLE_STITCH;
   /**
-   * Two up saddle stitch imposition.
-   */
-  readonly twoupsaddlestitch: BookletTypeOptions_TWO_UP_SADDLE_STITCH;
-
-  /**
    * Two up perfect bound imposition.
    */
   readonly TWO_UP_PERFECT_BOUND: BookletTypeOptions_TWO_UP_PERFECT_BOUND;
@@ -148,11 +141,6 @@ export declare const BookletTypeOptions: typeof Enumeration & {
    * Two up perfect bound imposition.
    */
   readonly twoUpPerfectBound: BookletTypeOptions_TWO_UP_PERFECT_BOUND;
-  /**
-   * Two up perfect bound imposition.
-   */
-  readonly twoupperfectbound: BookletTypeOptions_TWO_UP_PERFECT_BOUND;
-
   /**
    * Two up consecutive imposition.
    */
@@ -162,11 +150,6 @@ export declare const BookletTypeOptions: typeof Enumeration & {
    */
   readonly twoUpConsecutive: BookletTypeOptions_TWO_UP_CONSECUTIVE;
   /**
-   * Two up consecutive imposition.
-   */
-  readonly twoupconsecutive: BookletTypeOptions_TWO_UP_CONSECUTIVE;
-
-  /**
    * Three up consecutive imposition.
    */
   readonly THREE_UP_CONSECUTIVE: BookletTypeOptions_THREE_UP_CONSECUTIVE;
@@ -175,11 +158,6 @@ export declare const BookletTypeOptions: typeof Enumeration & {
    */
   readonly threeUpConsecutive: BookletTypeOptions_THREE_UP_CONSECUTIVE;
   /**
-   * Three up consecutive imposition.
-   */
-  readonly threeupconsecutive: BookletTypeOptions_THREE_UP_CONSECUTIVE;
-
-  /**
    * Four up consecutive imposition.
    */
   readonly FOUR_UP_CONSECUTIVE: BookletTypeOptions_FOUR_UP_CONSECUTIVE;
@@ -187,9 +165,4 @@ export declare const BookletTypeOptions: typeof Enumeration & {
    * Four up consecutive imposition.
    */
   readonly fourUpConsecutive: BookletTypeOptions_FOUR_UP_CONSECUTIVE;
-  /**
-   * Four up consecutive imposition.
-   */
-  readonly fourupconsecutive: BookletTypeOptions_FOUR_UP_CONSECUTIVE;
-
 }

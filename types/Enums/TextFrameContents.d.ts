@@ -1,10 +1,11 @@
 /**
  * TextFrameContents.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 import type { SpecialCharacters } from "./SpecialCharacters";
 
 
@@ -19,9 +20,6 @@ declare const __TextFrameContents: unique symbol;
 
 
 interface TextFrameContents extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<TextFrameContents, SpecialCharacters>): boolean;
-
   /**
    * @internal **WARNING:** `__TextFrameContents` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -135,11 +133,6 @@ export declare const TextFrameContents: typeof Enumeration & {
    */
   readonly placeholderText: TextFrameContents_PLACEHOLDER_TEXT;
   /**
-   * Fills the text frame with placeholder text.
-   */
-  readonly placeholdertext: TextFrameContents_PLACEHOLDER_TEXT;
-
-  /**
    * Fills the text frame with arabic placeholder text.
    */
   readonly PLACEHOLDER_TEXT_ARABIC: TextFrameContents_PLACEHOLDER_TEXT_ARABIC;
@@ -147,11 +140,6 @@ export declare const TextFrameContents: typeof Enumeration & {
    * Fills the text frame with arabic placeholder text.
    */
   readonly placeholderTextArabic: TextFrameContents_PLACEHOLDER_TEXT_ARABIC;
-  /**
-   * Fills the text frame with arabic placeholder text.
-   */
-  readonly placeholdertextarabic: TextFrameContents_PLACEHOLDER_TEXT_ARABIC;
-
   /**
    * Fills the text frame with hebrew placeholder text.
    */
@@ -161,11 +149,6 @@ export declare const TextFrameContents: typeof Enumeration & {
    */
   readonly placeholderTextHebrew: TextFrameContents_PLACEHOLDER_TEXT_HEBREW;
   /**
-   * Fills the text frame with hebrew placeholder text.
-   */
-  readonly placeholdertexthebrew: TextFrameContents_PLACEHOLDER_TEXT_HEBREW;
-
-  /**
    * Fills the text frame with cyrillic placeholder text.
    */
   readonly PLACEHOLDER_TEXT_CYRILLIC: TextFrameContents_PLACEHOLDER_TEXT_CYRILLIC;
@@ -174,11 +157,6 @@ export declare const TextFrameContents: typeof Enumeration & {
    */
   readonly placeholderTextCyrillic: TextFrameContents_PLACEHOLDER_TEXT_CYRILLIC;
   /**
-   * Fills the text frame with cyrillic placeholder text.
-   */
-  readonly placeholdertextcyrillic: TextFrameContents_PLACEHOLDER_TEXT_CYRILLIC;
-
-  /**
    * Fills the text frame with greek placeholder text.
    */
   readonly PLACEHOLDER_TEXT_GREEK: TextFrameContents_PLACEHOLDER_TEXT_GREEK;
@@ -186,9 +164,4 @@ export declare const TextFrameContents: typeof Enumeration & {
    * Fills the text frame with greek placeholder text.
    */
   readonly placeholderTextGreek: TextFrameContents_PLACEHOLDER_TEXT_GREEK;
-  /**
-   * Fills the text frame with greek placeholder text.
-   */
-  readonly placeholdertextgreek: TextFrameContents_PLACEHOLDER_TEXT_GREEK;
-
 }

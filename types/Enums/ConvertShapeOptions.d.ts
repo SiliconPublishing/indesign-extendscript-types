@@ -1,10 +1,11 @@
 /**
  * ConvertShapeOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ConvertShapeOptions: unique symbol;
 
 
 interface ConvertShapeOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ConvertShapeOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__ConvertShapeOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -240,11 +238,6 @@ export declare const ConvertShapeOptions: typeof Enumeration & {
    */
   readonly convertToRectangle: ConvertShapeOptions_CONVERT_TO_RECTANGLE;
   /**
-   * Converts the object to a rectangle.
-   */
-  readonly converttorectangle: ConvertShapeOptions_CONVERT_TO_RECTANGLE;
-
-  /**
    * Converts the object to a rectangle with rounded corners.
    */
   readonly CONVERT_TO_ROUNDED_RECTANGLE: ConvertShapeOptions_CONVERT_TO_ROUNDED_RECTANGLE;
@@ -252,11 +245,6 @@ export declare const ConvertShapeOptions: typeof Enumeration & {
    * Converts the object to a rectangle with rounded corners.
    */
   readonly convertToRoundedRectangle: ConvertShapeOptions_CONVERT_TO_ROUNDED_RECTANGLE;
-  /**
-   * Converts the object to a rectangle with rounded corners.
-   */
-  readonly converttoroundedrectangle: ConvertShapeOptions_CONVERT_TO_ROUNDED_RECTANGLE;
-
   /**
    * Converts the object to a rectangle with beveled corners.
    */
@@ -266,11 +254,6 @@ export declare const ConvertShapeOptions: typeof Enumeration & {
    */
   readonly convertToBeveledRectangle: ConvertShapeOptions_CONVERT_TO_BEVELED_RECTANGLE;
   /**
-   * Converts the object to a rectangle with beveled corners.
-   */
-  readonly converttobeveledrectangle: ConvertShapeOptions_CONVERT_TO_BEVELED_RECTANGLE;
-
-  /**
    * Converts the object to a rectangle with inverse rounded corners.
    */
   readonly CONVERT_TO_INVERSE_ROUNDED_RECTANGLE: ConvertShapeOptions_CONVERT_TO_INVERSE_ROUNDED_RECTANGLE;
@@ -278,11 +261,6 @@ export declare const ConvertShapeOptions: typeof Enumeration & {
    * Converts the object to a rectangle with inverse rounded corners.
    */
   readonly convertToInverseRoundedRectangle: ConvertShapeOptions_CONVERT_TO_INVERSE_ROUNDED_RECTANGLE;
-  /**
-   * Converts the object to a rectangle with inverse rounded corners.
-   */
-  readonly converttoinverseroundedrectangle: ConvertShapeOptions_CONVERT_TO_INVERSE_ROUNDED_RECTANGLE;
-
   /**
    * Converts the object to an ellipse.
    */
@@ -292,11 +270,6 @@ export declare const ConvertShapeOptions: typeof Enumeration & {
    */
   readonly convertToOval: ConvertShapeOptions_CONVERT_TO_OVAL;
   /**
-   * Converts the object to an ellipse.
-   */
-  readonly converttooval: ConvertShapeOptions_CONVERT_TO_OVAL;
-
-  /**
    * Converts the object to a triangle.
    */
   readonly CONVERT_TO_TRIANGLE: ConvertShapeOptions_CONVERT_TO_TRIANGLE;
@@ -304,11 +277,6 @@ export declare const ConvertShapeOptions: typeof Enumeration & {
    * Converts the object to a triangle.
    */
   readonly convertToTriangle: ConvertShapeOptions_CONVERT_TO_TRIANGLE;
-  /**
-   * Converts the object to a triangle.
-   */
-  readonly converttotriangle: ConvertShapeOptions_CONVERT_TO_TRIANGLE;
-
   /**
    * Converts the object to a polygon.
    */
@@ -318,11 +286,6 @@ export declare const ConvertShapeOptions: typeof Enumeration & {
    */
   readonly convertToPolygon: ConvertShapeOptions_CONVERT_TO_POLYGON;
   /**
-   * Converts the object to a polygon.
-   */
-  readonly converttopolygon: ConvertShapeOptions_CONVERT_TO_POLYGON;
-
-  /**
    * Converts the object to a line that connects the upper left and lower right corners of the object's bounding box.
    */
   readonly CONVERT_TO_LINE: ConvertShapeOptions_CONVERT_TO_LINE;
@@ -330,11 +293,6 @@ export declare const ConvertShapeOptions: typeof Enumeration & {
    * Converts the object to a line that connects the upper left and lower right corners of the object's bounding box.
    */
   readonly convertToLine: ConvertShapeOptions_CONVERT_TO_LINE;
-  /**
-   * Converts the object to a line that connects the upper left and lower right corners of the object's bounding box.
-   */
-  readonly converttoline: ConvertShapeOptions_CONVERT_TO_LINE;
-
   /**
    * Converts the object to straight line.
    *
@@ -354,16 +312,6 @@ export declare const ConvertShapeOptions: typeof Enumeration & {
    */
   readonly convertToStraightLine: ConvertShapeOptions_CONVERT_TO_STRAIGHT_LINE;
   /**
-   * Converts the object to straight line.
-   *
-   * If the object is a square, circle, or its bounding box is wider than it is tall, the line
-   * is horizontal and connects the center points on the vertical sides of the bounding box.
-   * If the object's bounding box is taller than it is wide, the line connects the center
-   * points of the horizontal sides of the bounding box.
-   */
-  readonly converttostraightline: ConvertShapeOptions_CONVERT_TO_STRAIGHT_LINE;
-
-  /**
    * Converts the object to an open path.
    */
   readonly CONVERT_TO_OPEN_PATH: ConvertShapeOptions_CONVERT_TO_OPEN_PATH;
@@ -372,11 +320,6 @@ export declare const ConvertShapeOptions: typeof Enumeration & {
    */
   readonly convertToOpenPath: ConvertShapeOptions_CONVERT_TO_OPEN_PATH;
   /**
-   * Converts the object to an open path.
-   */
-  readonly converttoopenpath: ConvertShapeOptions_CONVERT_TO_OPEN_PATH;
-
-  /**
    * Converts the object to a closed path.
    */
   readonly CONVERT_TO_CLOSED_PATH: ConvertShapeOptions_CONVERT_TO_CLOSED_PATH;
@@ -384,9 +327,4 @@ export declare const ConvertShapeOptions: typeof Enumeration & {
    * Converts the object to a closed path.
    */
   readonly convertToClosedPath: ConvertShapeOptions_CONVERT_TO_CLOSED_PATH;
-  /**
-   * Converts the object to a closed path.
-   */
-  readonly converttoclosedpath: ConvertShapeOptions_CONVERT_TO_CLOSED_PATH;
-
 }

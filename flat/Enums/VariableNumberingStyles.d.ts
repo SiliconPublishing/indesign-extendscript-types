@@ -1,10 +1,11 @@
 /**
  * VariableNumberingStyles.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __VariableNumberingStyles: unique symbol;
 
 
 interface VariableNumberingStyles extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<VariableNumberingStyles>): boolean;
-
   /**
    * @internal **WARNING:** `__VariableNumberingStyles` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -234,11 +232,6 @@ export declare const VariableNumberingStyles: typeof Enumeration & {
    */
   readonly upperRoman: VariableNumberingStyles_UPPER_ROMAN;
   /**
-   * Uppercase Roman numerals.
-   */
-  readonly upperroman: VariableNumberingStyles_UPPER_ROMAN;
-
-  /**
    * Lowercase Roman numerals.
    */
   readonly LOWER_ROMAN: VariableNumberingStyles_LOWER_ROMAN;
@@ -246,11 +239,6 @@ export declare const VariableNumberingStyles: typeof Enumeration & {
    * Lowercase Roman numerals.
    */
   readonly lowerRoman: VariableNumberingStyles_LOWER_ROMAN;
-  /**
-   * Lowercase Roman numerals.
-   */
-  readonly lowerroman: VariableNumberingStyles_LOWER_ROMAN;
-
   /**
    * Uppercase letters.
    */
@@ -260,11 +248,6 @@ export declare const VariableNumberingStyles: typeof Enumeration & {
    */
   readonly upperLetters: VariableNumberingStyles_UPPER_LETTERS;
   /**
-   * Uppercase letters.
-   */
-  readonly upperletters: VariableNumberingStyles_UPPER_LETTERS;
-
-  /**
    * Lowercase letters.
    */
   readonly LOWER_LETTERS: VariableNumberingStyles_LOWER_LETTERS;
@@ -272,11 +255,6 @@ export declare const VariableNumberingStyles: typeof Enumeration & {
    * Lowercase letters.
    */
   readonly lowerLetters: VariableNumberingStyles_LOWER_LETTERS;
-  /**
-   * Lowercase letters.
-   */
-  readonly lowerletters: VariableNumberingStyles_LOWER_LETTERS;
-
   /**
    * Single leading zero.
    */
@@ -286,11 +264,6 @@ export declare const VariableNumberingStyles: typeof Enumeration & {
    */
   readonly singleLeadingZeros: VariableNumberingStyles_SINGLE_LEADING_ZEROS;
   /**
-   * Single leading zero.
-   */
-  readonly singleleadingzeros: VariableNumberingStyles_SINGLE_LEADING_ZEROS;
-
-  /**
    * Double leading zeros.
    */
   readonly DOUBLE_LEADING_ZEROS: VariableNumberingStyles_DOUBLE_LEADING_ZEROS;
@@ -298,11 +271,6 @@ export declare const VariableNumberingStyles: typeof Enumeration & {
    * Double leading zeros.
    */
   readonly doubleLeadingZeros: VariableNumberingStyles_DOUBLE_LEADING_ZEROS;
-  /**
-   * Double leading zeros.
-   */
-  readonly doubleleadingzeros: VariableNumberingStyles_DOUBLE_LEADING_ZEROS;
-
   /**
    * Kanji.
    */
@@ -320,9 +288,4 @@ export declare const VariableNumberingStyles: typeof Enumeration & {
    * Full-width Arabic numerals.
    */
   readonly fullWidthArabic: VariableNumberingStyles_FULL_WIDTH_ARABIC;
-  /**
-   * Full-width Arabic numerals.
-   */
-  readonly fullwidtharabic: VariableNumberingStyles_FULL_WIDTH_ARABIC;
-
 }

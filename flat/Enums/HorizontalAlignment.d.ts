@@ -1,10 +1,11 @@
 /**
  * HorizontalAlignment.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __HorizontalAlignment: unique symbol;
 
 
 interface HorizontalAlignment extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<HorizontalAlignment>): boolean;
-
   /**
    * @internal **WARNING:** `__HorizontalAlignment` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const HorizontalAlignment: typeof Enumeration & {
    */
   readonly rightAlign: HorizontalAlignment_RIGHT_ALIGN;
   /**
-   * Place the anchored object to the right of the reference. 
-   */
-  readonly rightalign: HorizontalAlignment_RIGHT_ALIGN;
-
-  /**
    * Place the anchored object to the left of the reference.
    */
   readonly LEFT_ALIGN: HorizontalAlignment_LEFT_ALIGN;
@@ -130,11 +123,6 @@ export declare const HorizontalAlignment: typeof Enumeration & {
    * Place the anchored object to the left of the reference.
    */
   readonly leftAlign: HorizontalAlignment_LEFT_ALIGN;
-  /**
-   * Place the anchored object to the left of the reference.
-   */
-  readonly leftalign: HorizontalAlignment_LEFT_ALIGN;
-
   /**
    * Place the anchored object at the center of the reference.
    */
@@ -144,11 +132,6 @@ export declare const HorizontalAlignment: typeof Enumeration & {
    */
   readonly centerAlign: HorizontalAlignment_CENTER_ALIGN;
   /**
-   * Place the anchored object at the center of the reference.
-   */
-  readonly centeralign: HorizontalAlignment_CENTER_ALIGN;
-
-  /**
    * Place the anchored object relative to the text alignment.
    */
   readonly TEXT_ALIGN: HorizontalAlignment_TEXT_ALIGN;
@@ -156,9 +139,4 @@ export declare const HorizontalAlignment: typeof Enumeration & {
    * Place the anchored object relative to the text alignment.
    */
   readonly textAlign: HorizontalAlignment_TEXT_ALIGN;
-  /**
-   * Place the anchored object relative to the text alignment.
-   */
-  readonly textalign: HorizontalAlignment_TEXT_ALIGN;
-
 }

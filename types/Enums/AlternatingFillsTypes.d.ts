@@ -1,10 +1,11 @@
 /**
  * AlternatingFillsTypes.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __AlternatingFillsTypes: unique symbol;
 
 
 interface AlternatingFillsTypes extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<AlternatingFillsTypes>): boolean;
-
   /**
    * @internal **WARNING:** `__AlternatingFillsTypes` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const AlternatingFillsTypes: typeof Enumeration & {
    */
   readonly noAlternatingPattern: AlternatingFillsTypes_NO_ALTERNATING_PATTERN;
   /**
-   * No alternating pattern.
-   */
-  readonly noalternatingpattern: AlternatingFillsTypes_NO_ALTERNATING_PATTERN;
-
-  /**
    * Alternates row fills.
    */
   readonly ALTERNATING_ROWS: AlternatingFillsTypes_ALTERNATING_ROWS;
@@ -115,11 +108,6 @@ export declare const AlternatingFillsTypes: typeof Enumeration & {
    */
   readonly alternatingRows: AlternatingFillsTypes_ALTERNATING_ROWS;
   /**
-   * Alternates row fills.
-   */
-  readonly alternatingrows: AlternatingFillsTypes_ALTERNATING_ROWS;
-
-  /**
    * Alternates column fills.
    */
   readonly ALTERNATING_COLUMNS: AlternatingFillsTypes_ALTERNATING_COLUMNS;
@@ -127,9 +115,4 @@ export declare const AlternatingFillsTypes: typeof Enumeration & {
    * Alternates column fills.
    */
   readonly alternatingColumns: AlternatingFillsTypes_ALTERNATING_COLUMNS;
-  /**
-   * Alternates column fills.
-   */
-  readonly alternatingcolumns: AlternatingFillsTypes_ALTERNATING_COLUMNS;
-
 }

@@ -1,10 +1,11 @@
 /**
  * FootnoteMarkerPositioning.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __FootnoteMarkerPositioning: unique symbol;
 
 
 interface FootnoteMarkerPositioning extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<FootnoteMarkerPositioning>): boolean;
-
   /**
    * @internal **WARNING:** `__FootnoteMarkerPositioning` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const FootnoteMarkerPositioning: typeof Enumeration & {
    */
   readonly normalMarker: FootnoteMarkerPositioning_NORMAL_MARKER;
   /**
-   * Uses the position defined in the character style applied to footnote reference numbers. For information, see footnote marker style.
-   */
-  readonly normalmarker: FootnoteMarkerPositioning_NORMAL_MARKER;
-
-  /**
    * Superscripts footnote reference numbers.
    */
   readonly SUPERSCRIPT_MARKER: FootnoteMarkerPositioning_SUPERSCRIPT_MARKER;
@@ -130,11 +123,6 @@ export declare const FootnoteMarkerPositioning: typeof Enumeration & {
    * Superscripts footnote reference numbers.
    */
   readonly superscriptMarker: FootnoteMarkerPositioning_SUPERSCRIPT_MARKER;
-  /**
-   * Superscripts footnote reference numbers.
-   */
-  readonly superscriptmarker: FootnoteMarkerPositioning_SUPERSCRIPT_MARKER;
-
   /**
    * Subscripts footnote reference numbers.
    */
@@ -144,11 +132,6 @@ export declare const FootnoteMarkerPositioning: typeof Enumeration & {
    */
   readonly subscriptMarker: FootnoteMarkerPositioning_SUBSCRIPT_MARKER;
   /**
-   * Subscripts footnote reference numbers.
-   */
-  readonly subscriptmarker: FootnoteMarkerPositioning_SUBSCRIPT_MARKER;
-
-  /**
    * Gives the marker ruby style positioning.
    */
   readonly RUBY_MARKER: FootnoteMarkerPositioning_RUBY_MARKER;
@@ -156,9 +139,4 @@ export declare const FootnoteMarkerPositioning: typeof Enumeration & {
    * Gives the marker ruby style positioning.
    */
   readonly rubyMarker: FootnoteMarkerPositioning_RUBY_MARKER;
-  /**
-   * Gives the marker ruby style positioning.
-   */
-  readonly rubymarker: FootnoteMarkerPositioning_RUBY_MARKER;
-
 }

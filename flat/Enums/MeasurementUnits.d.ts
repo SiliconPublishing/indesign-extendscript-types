@@ -1,10 +1,11 @@
 /**
  * MeasurementUnits.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 import type { AutoEnum } from "./AutoEnum";
 
 
@@ -19,9 +20,6 @@ declare const __MeasurementUnits: unique symbol;
 
 
 interface MeasurementUnits extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<MeasurementUnits, AutoEnum>): boolean;
-
   /**
    * @internal **WARNING:** `__MeasurementUnits` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -338,11 +336,6 @@ export declare const MeasurementUnits: typeof Enumeration & {
    */
   readonly inchesDecimal: MeasurementUnits_INCHES_DECIMAL;
   /**
-   * Decimal inches.
-   */
-  readonly inchesdecimal: MeasurementUnits_INCHES_DECIMAL;
-
-  /**
    * Millimeters.
    */
   readonly MILLIMETERS: MeasurementUnits_MILLIMETERS;
@@ -449,9 +442,4 @@ export declare const MeasurementUnits: typeof Enumeration & {
    * American points.
    */
   readonly americanPoints: MeasurementUnits_AMERICAN_POINTS;
-  /**
-   * American points.
-   */
-  readonly americanpoints: MeasurementUnits_AMERICAN_POINTS;
-
 }

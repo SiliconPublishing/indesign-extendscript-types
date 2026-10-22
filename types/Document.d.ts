@@ -1,6 +1,7 @@
 /**
  * Document.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -235,9 +236,6 @@ export interface Document<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Application, M>,
     IndexedDOMObject<Application, M>,
     NamableDOMObject<Application, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'Document';
-
   /** Resolves the proxy into the individual {@link Document} objects it stands for. */
   getElements(): Document<'single'>[];
 
@@ -247,10 +245,10 @@ export interface Document<M extends Mode = 'single'>
   // ---- File identity -------------------------------------------------------
 
   /** The document's own file, as a {@link File} entry — reach the path with `.nativePath`. Throws if the document has never been saved; check {@link saved} first. */
-  readonly fullName: Read<M, Promise<File>>;
+  readonly fullName: Read<M, File>;
 
   /** The folder containing the document, as a {@link Folder} entry — reach the path with `.nativePath`. Not the document file itself; see {@link fullName}. */
-  readonly filePath: Read<M, Promise<Folder>>;
+  readonly filePath: Read<M, Folder>;
 
   /** The cloud path for a cloud document; accessing it on a non-cloud document throws. */
   readonly cloudPath: Read<M, string>;
@@ -967,7 +965,7 @@ export interface Document<M extends Mode = 'single'>
    *
    * ```ts
    * const img = doc.place(file)[0];
-   * if (img && img.parent.constructorName === 'Rectangle') {
+   * if (img && img.parent instanceof Rectangle) {
    *   img.parent.fit(FitOptions.PROPORTIONALLY);
    * }
    * ```
@@ -1378,4 +1376,16 @@ export interface Document<M extends Mode = 'single'>
 
   /** Internal use only — reserved for the InDesign engineering team. */
   internalMethod(internalParameter1: string, internalParameter2: string): Read<M, string>;
+
+  // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
+
+  /**
+   * Place a HTTP link
+   * @param httpurls URL strings to the assets seperated by space.
+   * @param showingOptions Whether to display the import options dialog. (Optional)
+   * @param createLink Whether to create a link for the placed asset. (Optional)
+   * @param replaceSelected Whether to replace the selected item. (Optional)
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  placeHTTPLink(httpurls: string, showingOptions?: boolean, createLink?: boolean, replaceSelected?: boolean): Read<M, void>;
 }

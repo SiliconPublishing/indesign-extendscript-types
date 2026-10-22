@@ -1,10 +1,11 @@
 /**
  * Justification.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __Justification: unique symbol;
 
 
 interface Justification extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<Justification>): boolean;
-
   /**
    * @internal **WARNING:** `__Justification` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -198,11 +196,6 @@ export declare const Justification: typeof Enumeration & {
    */
   readonly leftAlign: Justification_LEFT_ALIGN;
   /**
-   * Left aligns the text.
-   */
-  readonly leftalign: Justification_LEFT_ALIGN;
-
-  /**
    * Center aligns the text.
    */
   readonly CENTER_ALIGN: Justification_CENTER_ALIGN;
@@ -210,11 +203,6 @@ export declare const Justification: typeof Enumeration & {
    * Center aligns the text.
    */
   readonly centerAlign: Justification_CENTER_ALIGN;
-  /**
-   * Center aligns the text.
-   */
-  readonly centeralign: Justification_CENTER_ALIGN;
-
   /**
    * Right aligns the text.
    */
@@ -224,11 +212,6 @@ export declare const Justification: typeof Enumeration & {
    */
   readonly rightAlign: Justification_RIGHT_ALIGN;
   /**
-   * Right aligns the text.
-   */
-  readonly rightalign: Justification_RIGHT_ALIGN;
-
-  /**
    * Justifies the text and left aligns the last line in the paragraph.
    */
   readonly LEFT_JUSTIFIED: Justification_LEFT_JUSTIFIED;
@@ -236,11 +219,6 @@ export declare const Justification: typeof Enumeration & {
    * Justifies the text and left aligns the last line in the paragraph.
    */
   readonly leftJustified: Justification_LEFT_JUSTIFIED;
-  /**
-   * Justifies the text and left aligns the last line in the paragraph.
-   */
-  readonly leftjustified: Justification_LEFT_JUSTIFIED;
-
   /**
    * Justifies the text and right aligns the last line in the paragraph.
    */
@@ -250,11 +228,6 @@ export declare const Justification: typeof Enumeration & {
    */
   readonly rightJustified: Justification_RIGHT_JUSTIFIED;
   /**
-   * Justifies the text and right aligns the last line in the paragraph.
-   */
-  readonly rightjustified: Justification_RIGHT_JUSTIFIED;
-
-  /**
    * Justifies the text and center aligns the last line in the paragraph.
    */
   readonly CENTER_JUSTIFIED: Justification_CENTER_JUSTIFIED;
@@ -262,11 +235,6 @@ export declare const Justification: typeof Enumeration & {
    * Justifies the text and center aligns the last line in the paragraph.
    */
   readonly centerJustified: Justification_CENTER_JUSTIFIED;
-  /**
-   * Justifies the text and center aligns the last line in the paragraph.
-   */
-  readonly centerjustified: Justification_CENTER_JUSTIFIED;
-
   /**
    * Justifies the text, including the last line in the paragraph.
    */
@@ -276,11 +244,6 @@ export declare const Justification: typeof Enumeration & {
    */
   readonly fullyJustified: Justification_FULLY_JUSTIFIED;
   /**
-   * Justifies the text, including the last line in the paragraph.
-   */
-  readonly fullyjustified: Justification_FULLY_JUSTIFIED;
-
-  /**
    * Aligns text to the binding spine of the page or spread.
    */
   readonly TO_BINDING_SIDE: Justification_TO_BINDING_SIDE;
@@ -289,11 +252,6 @@ export declare const Justification: typeof Enumeration & {
    */
   readonly toBindingSide: Justification_TO_BINDING_SIDE;
   /**
-   * Aligns text to the binding spine of the page or spread.
-   */
-  readonly tobindingside: Justification_TO_BINDING_SIDE;
-
-  /**
    * Aligns text to the side opposite the binding spine of the page.
    */
   readonly AWAY_FROM_BINDING_SIDE: Justification_AWAY_FROM_BINDING_SIDE;
@@ -301,9 +259,4 @@ export declare const Justification: typeof Enumeration & {
    * Aligns text to the side opposite the binding spine of the page.
    */
   readonly awayFromBindingSide: Justification_AWAY_FROM_BINDING_SIDE;
-  /**
-   * Aligns text to the side opposite the binding spine of the page.
-   */
-  readonly awayfrombindingside: Justification_AWAY_FROM_BINDING_SIDE;
-
 }

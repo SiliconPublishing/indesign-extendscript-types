@@ -1,10 +1,11 @@
 /**
  * VerticallyRelativeTo.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __VerticallyRelativeTo: unique symbol;
 
 
 interface VerticallyRelativeTo extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<VerticallyRelativeTo>): boolean;
-
   /**
    * @internal **WARNING:** `__VerticallyRelativeTo` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -246,11 +244,6 @@ export declare const VerticallyRelativeTo: typeof Enumeration & {
    */
   readonly columnEdge: VerticallyRelativeTo_COLUMN_EDGE;
   /**
-   * Align the anchored object to the edge of the text or table column.
-   */
-  readonly columnedge: VerticallyRelativeTo_COLUMN_EDGE;
-
-  /**
    * Align the anchored object to the edge of the text frame.
    */
   readonly TEXT_FRAME: VerticallyRelativeTo_TEXT_FRAME;
@@ -258,11 +251,6 @@ export declare const VerticallyRelativeTo: typeof Enumeration & {
    * Align the anchored object to the edge of the text frame.
    */
   readonly textFrame: VerticallyRelativeTo_TEXT_FRAME;
-  /**
-   * Align the anchored object to the edge of the text frame.
-   */
-  readonly textframe: VerticallyRelativeTo_TEXT_FRAME;
-
   /**
    * Align the anchored object to the page margin.
    */
@@ -272,11 +260,6 @@ export declare const VerticallyRelativeTo: typeof Enumeration & {
    */
   readonly pageMargins: VerticallyRelativeTo_PAGE_MARGINS;
   /**
-   * Align the anchored object to the page margin.
-   */
-  readonly pagemargins: VerticallyRelativeTo_PAGE_MARGINS;
-
-  /**
    * Align the anchored object to the edge of the page.
    */
   readonly PAGE_EDGE: VerticallyRelativeTo_PAGE_EDGE;
@@ -284,11 +267,6 @@ export declare const VerticallyRelativeTo: typeof Enumeration & {
    * Align the anchored object to the edge of the page.
    */
   readonly pageEdge: VerticallyRelativeTo_PAGE_EDGE;
-  /**
-   * Align the anchored object to the edge of the page.
-   */
-  readonly pageedge: VerticallyRelativeTo_PAGE_EDGE;
-
   /**
    * Align the anchored object to the baseline of the line of text.
    */
@@ -298,11 +276,6 @@ export declare const VerticallyRelativeTo: typeof Enumeration & {
    */
   readonly lineBaseline: VerticallyRelativeTo_LINE_BASELINE;
   /**
-   * Align the anchored object to the baseline of the line of text.
-   */
-  readonly linebaseline: VerticallyRelativeTo_LINE_BASELINE;
-
-  /**
    * Align the anchored object to the top of lower case letters with no ascent, such as x.
    */
   readonly LINE_XHEIGHT: VerticallyRelativeTo_LINE_XHEIGHT;
@@ -311,11 +284,6 @@ export declare const VerticallyRelativeTo: typeof Enumeration & {
    */
   readonly lineXheight: VerticallyRelativeTo_LINE_XHEIGHT;
   /**
-   * Align the anchored object to the top of lower case letters with no ascent, such as x.
-   */
-  readonly linexheight: VerticallyRelativeTo_LINE_XHEIGHT;
-
-  /**
    * Align the anchored object to the top of the tallest letters in the text.
    */
   readonly LINE_ASCENT: VerticallyRelativeTo_LINE_ASCENT;
@@ -323,11 +291,6 @@ export declare const VerticallyRelativeTo: typeof Enumeration & {
    * Align the anchored object to the top of the tallest letters in the text.
    */
   readonly lineAscent: VerticallyRelativeTo_LINE_ASCENT;
-  /**
-   * Align the anchored object to the top of the tallest letters in the text.
-   */
-  readonly lineascent: VerticallyRelativeTo_LINE_ASCENT;
-
   /**
    * Align the anchored object to the top of capital letters.
    */
@@ -346,11 +309,6 @@ export declare const VerticallyRelativeTo: typeof Enumeration & {
    */
   readonly topOfLeading: VerticallyRelativeTo_TOP_OF_LEADING;
   /**
-   * Align the anchored object to the top of the text leading.
-   */
-  readonly topofleading: VerticallyRelativeTo_TOP_OF_LEADING;
-
-  /**
    * Align the anchored object to the top of the embox.
    */
   readonly EMBOX_TOP: VerticallyRelativeTo_EMBOX_TOP;
@@ -358,11 +316,6 @@ export declare const VerticallyRelativeTo: typeof Enumeration & {
    * Align the anchored object to the top of the embox.
    */
   readonly emboxTop: VerticallyRelativeTo_EMBOX_TOP;
-  /**
-   * Align the anchored object to the top of the embox.
-   */
-  readonly emboxtop: VerticallyRelativeTo_EMBOX_TOP;
-
   /**
    * Align the anchored object to the middle of the embox.
    */
@@ -372,11 +325,6 @@ export declare const VerticallyRelativeTo: typeof Enumeration & {
    */
   readonly emboxMiddle: VerticallyRelativeTo_EMBOX_MIDDLE;
   /**
-   * Align the anchored object to the middle of the embox.
-   */
-  readonly emboxmiddle: VerticallyRelativeTo_EMBOX_MIDDLE;
-
-  /**
    * Align the anchored object to the bottom of the embox.
    */
   readonly EMBOX_BOTTOM: VerticallyRelativeTo_EMBOX_BOTTOM;
@@ -384,9 +332,4 @@ export declare const VerticallyRelativeTo: typeof Enumeration & {
    * Align the anchored object to the bottom of the embox.
    */
   readonly emboxBottom: VerticallyRelativeTo_EMBOX_BOTTOM;
-  /**
-   * Align the anchored object to the bottom of the embox.
-   */
-  readonly emboxbottom: VerticallyRelativeTo_EMBOX_BOTTOM;
-
 }

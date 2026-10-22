@@ -1,0 +1,1 @@
+<classdef name="SelectAll" enumeration="true">  <shortdesc>Selection options.</shortdesc>  <elements type="class">    <property name="ALL" rwaccess="readonly">      <shortdesc>Selects all.</shortdesc>      <datatype>        <type>number</type>        <value>1634495520</value>      </datatype>    </property>  </elements></classdef>

@@ -1,6 +1,7 @@
 /**
  * ObjectStyle.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -36,25 +37,27 @@ import type { DimensionAttributes } from './Enums/DimensionAttributes';
 import type { PositionAttributes } from './Enums/PositionAttributes';
 import type { ObjectStyles } from './ObjectStyles';
 import type { FlexObject } from './FlexObject';
-import type { ArrowHead } from './Enums/ArrowHead';
-import type { ArrowHeadAlignmentEnum } from './Enums/ArrowHeadAlignmentEnum';
-import type { CornerOptions } from './Enums/CornerOptions';
-import type { EndCap } from './Enums/EndCap';
-import type { EndJoin } from './Enums/EndJoin';
-import type { Event } from './Event';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
+import type { Event } from './Event';
 import type { FilePath } from './_base/Types';
-import type { InDesignEventMap } from './_base/Events';
-import type { MeasurementValue } from './_base/Types';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
-import type { StrokeAlignment } from './Enums/StrokeAlignment';
-import type { StrokeStyle } from './StrokeStyle';
 import type { Swatch } from './Swatch';
+import type { MeasurementValue } from './_base/Types';
+import type { NothingEnum } from './Enums/NothingEnum';
+import type { EndCap } from './Enums/EndCap';
+import type { EndJoin } from './Enums/EndJoin';
+import type { StrokeStyle } from './StrokeStyle';
+import type { ArrowHead } from './Enums/ArrowHead';
+import type { StrokeAlignment } from './Enums/StrokeAlignment';
+import type { CornerOptions } from './Enums/CornerOptions';
+import type { ArrowHeadAlignmentEnum } from './Enums/ArrowHeadAlignmentEnum';
+
 /**
  * A named object style definition, held in a document's or the application's {@link ObjectStyles} collection (optionally nested inside an {@link ObjectStyleGroup}).
  *
@@ -67,50 +70,6 @@ import type { Swatch } from './Swatch';
  * length, and the dash-and-gap pattern, belong to the drawn object rather than to the style.
  */
 export interface ObjectStyle {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: Document | Application | ObjectStyleGroup;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<ObjectStyle, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<ObjectStyle, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -166,6 +125,45 @@ export interface ObjectStyle {
    */
   extractLabel(key: string): string;
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: Document | Application | ObjectStyleGroup;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<ObjectStyle, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<ObjectStyle, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The index of the object within its containing parent.
    */
   readonly index: number;
@@ -180,7 +178,7 @@ export interface ObjectStyle {
   set overprintFill(value: boolean);
   /** The weight (in points) to apply to the PageItem's stroke. */
   get strokeWeight(): number;
-  set strokeWeight(value: MeasurementValue);
+  set strokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
   /** The limit of the ratio of stroke width to miter length before a miter (pointed) join becomes a bevel (squared-off) join. */
   get miterLimit(): number;
   set miterLimit(value: number);
@@ -216,7 +214,7 @@ export interface ObjectStyle {
   set overprintStroke(value: boolean);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of a dashed, dotted, or striped stroke. For information, see stroke type. */
   get gapColor(): Swatch;
-  set gapColor(value: Swatch);
+  set gapColor(value: Swatch | string);
   /** The tint as a percentage of the gap color. (To specify a tint percent, use a number in the range of 0 to 100; to use the inherited or overridden value, use -1.) */
   get gapTint(): number;
   set gapTint(value: number);
@@ -250,16 +248,16 @@ export interface ObjectStyle {
   set bottomRightCornerOption(value: CornerOptions);
   /** The radius in measurement units of the corner effect applied to the top left corner of rectangular shapes and all corners of non-rectangular shapes */
   get topLeftCornerRadius(): number;
-  set topLeftCornerRadius(value: MeasurementValue);
+  set topLeftCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius in measurement units of the corner effect applied to the top right corner of rectangular shapes */
   get topRightCornerRadius(): number;
-  set topRightCornerRadius(value: MeasurementValue);
+  set topRightCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius in measurement units of the corner effect applied to the bottom left corner of rectangular shapes */
   get bottomLeftCornerRadius(): number;
-  set bottomLeftCornerRadius(value: MeasurementValue);
+  set bottomLeftCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius in measurement units of the corner effect applied to the bottom right corner of rectangular shapes */
   get bottomRightCornerRadius(): number;
-  set bottomRightCornerRadius(value: MeasurementValue);
+  set bottomRightCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The arrowhead alignment applied to the PageItem. */
   get arrowHeadAlignment(): ArrowHeadAlignmentEnum;
   set arrowHeadAlignment(value: ArrowHeadAlignmentEnum);
@@ -269,8 +267,6 @@ export interface ObjectStyle {
   /** The scaling applied to the arrowhead at the end of the path. (Range: 1 to 1000) */
   get rightArrowHeadScale(): number;
   set rightArrowHeadScale(value: number);
-  /** The object's DOM class name. */
-  readonly constructorName: 'ObjectStyle';
   /** Resolves the proxy into the individual {@link ObjectStyle} objects it stands for. */
   getElements(): ObjectStyle[];
   /** The unique ID of the object style, stable across saves and reopens. */
@@ -438,60 +434,18 @@ export interface ObjectStyle {
   remove(replacingWith?: ObjectStyle | string): void;
 }
 
-
 /**
- * The broadcast proxy for {@link ObjectStyle} — what `everyItem()` returns.
+ * A named object style definition, held in a document's or the application's {@link ObjectStyles} collection (optionally nested inside an {@link ObjectStyleGroup}).
  *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
+ * An enabling flag gates each category independently — {@link enableFill}, {@link enableStroke},
+ * {@link enableParagraphStyle}, and similar — so applying the style overrides only the
+ * categories it enables, leaving everything else on the target object untouched.
  *
- * Not a class in the InDesign DOM — look up {@link ObjectStyle} there.
+ * It carries the same fill, stroke, gradient, overprint, corner-effect and arrowhead
+ * attributes any drawable object has, but none of the geometry — a gradient's start point and
+ * length, and the dash-and-gap pattern, belong to the drawn object rather than to the style.
  */
 export interface ObjectStylePlural {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (Document | Application | ObjectStyleGroup)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<ObjectStylePlural, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<ObjectStylePlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -547,6 +501,45 @@ export interface ObjectStylePlural {
    */
   extractLabel(key: string): (string)[];
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (Document | Application | ObjectStyleGroup)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<ObjectStylePlural, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<ObjectStylePlural, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The index of the object within its containing parent.
    */
   readonly index: (number)[];
@@ -561,7 +554,7 @@ export interface ObjectStylePlural {
   set overprintFill(value: boolean);
   /** The weight (in points) to apply to the PageItem's stroke. */
   get strokeWeight(): (number)[];
-  set strokeWeight(value: MeasurementValue);
+  set strokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
   /** The limit of the ratio of stroke width to miter length before a miter (pointed) join becomes a bevel (squared-off) join. */
   get miterLimit(): (number)[];
   set miterLimit(value: number);
@@ -597,7 +590,7 @@ export interface ObjectStylePlural {
   set overprintStroke(value: boolean);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of a dashed, dotted, or striped stroke. For information, see stroke type. */
   get gapColor(): (Swatch)[];
-  set gapColor(value: Swatch);
+  set gapColor(value: Swatch | string);
   /** The tint as a percentage of the gap color. (To specify a tint percent, use a number in the range of 0 to 100; to use the inherited or overridden value, use -1.) */
   get gapTint(): (number)[];
   set gapTint(value: number);
@@ -631,16 +624,16 @@ export interface ObjectStylePlural {
   set bottomRightCornerOption(value: CornerOptions);
   /** The radius in measurement units of the corner effect applied to the top left corner of rectangular shapes and all corners of non-rectangular shapes */
   get topLeftCornerRadius(): (number)[];
-  set topLeftCornerRadius(value: MeasurementValue);
+  set topLeftCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius in measurement units of the corner effect applied to the top right corner of rectangular shapes */
   get topRightCornerRadius(): (number)[];
-  set topRightCornerRadius(value: MeasurementValue);
+  set topRightCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius in measurement units of the corner effect applied to the bottom left corner of rectangular shapes */
   get bottomLeftCornerRadius(): (number)[];
-  set bottomLeftCornerRadius(value: MeasurementValue);
+  set bottomLeftCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius in measurement units of the corner effect applied to the bottom right corner of rectangular shapes */
   get bottomRightCornerRadius(): (number)[];
-  set bottomRightCornerRadius(value: MeasurementValue);
+  set bottomRightCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The arrowhead alignment applied to the PageItem. */
   get arrowHeadAlignment(): (ArrowHeadAlignmentEnum)[];
   set arrowHeadAlignment(value: ArrowHeadAlignmentEnum);
@@ -650,8 +643,6 @@ export interface ObjectStylePlural {
   /** The scaling applied to the arrowhead at the end of the path. (Range: 1 to 1000) */
   get rightArrowHeadScale(): (number)[];
   set rightArrowHeadScale(value: number);
-  /** The object's DOM class name. */
-  readonly constructorName: 'ObjectStyle';
   /** Resolves the proxy into the individual {@link ObjectStyle} objects it stands for. */
   getElements(): ObjectStyle[];
   /** The unique ID of the object style, stable across saves and reopens. */

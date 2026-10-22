@@ -1,10 +1,11 @@
 /**
  * FlexWrap.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __FlexWrap: unique symbol;
 
 
 interface FlexWrap extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<FlexWrap>): boolean;
-
   /**
    * @internal **WARNING:** `__FlexWrap` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const FlexWrap: typeof Enumeration & {
    */
   readonly noWrap: FlexWrap_NO_WRAP;
   /**
-   * Does not wrap items.
-   */
-  readonly nowrap: FlexWrap_NO_WRAP;
-
-  /**
    * Wraps items.
    */
   readonly WRAP: FlexWrap_WRAP;
@@ -123,9 +116,4 @@ export declare const FlexWrap: typeof Enumeration & {
    * Wraps items in reverse order.
    */
   readonly wrapReverse: FlexWrap_WRAP_REVERSE;
-  /**
-   * Wraps items in reverse order.
-   */
-  readonly wrapreverse: FlexWrap_WRAP_REVERSE;
-
 }

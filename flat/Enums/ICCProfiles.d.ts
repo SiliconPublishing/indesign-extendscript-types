@@ -1,10 +1,11 @@
 /**
  * ICCProfiles.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ICCProfiles: unique symbol;
 
 
 interface ICCProfiles extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ICCProfiles>): boolean;
-
   /**
    * @internal **WARNING:** `__ICCProfiles` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const ICCProfiles: typeof Enumeration & {
    */
   readonly includeNone: ICCProfiles_INCLUDE_NONE;
   /**
-   * Does not include ICC profiles.
-   */
-  readonly includenone: ICCProfiles_INCLUDE_NONE;
-
-  /**
    * Includes all ICC profiles.
    */
   readonly INCLUDE_ALL: ICCProfiles_INCLUDE_ALL;
@@ -130,11 +123,6 @@ export declare const ICCProfiles: typeof Enumeration & {
    * Includes all ICC profiles.
    */
   readonly includeAll: ICCProfiles_INCLUDE_ALL;
-  /**
-   * Includes all ICC profiles.
-   */
-  readonly includeall: ICCProfiles_INCLUDE_ALL;
-
   /**
    * Includes tagged source profiles.
    */
@@ -144,21 +132,7 @@ export declare const ICCProfiles: typeof Enumeration & {
    */
   readonly includeTagged: ICCProfiles_INCLUDE_TAGGED;
   /**
-   * Includes tagged source profiles.
-   */
-  readonly includetagged: ICCProfiles_INCLUDE_TAGGED;
-
-  /**
    * Includes RGB and tagged source CMYK profiles.
    */
   readonly INCLUDE_RGB_AND_TAGGED: ICCProfiles_INCLUDE_RGB_AND_TAGGED;
-  /**
-   * Includes RGB and tagged source CMYK profiles.
-   */
-  readonly includeRgbAndTagged: ICCProfiles_INCLUDE_RGB_AND_TAGGED;
-  /**
-   * Includes RGB and tagged source CMYK profiles.
-   */
-  readonly includergbandtagged: ICCProfiles_INCLUDE_RGB_AND_TAGGED;
-
 }

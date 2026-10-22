@@ -1,6 +1,7 @@
 /**
  * TextAttributes.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -92,86 +93,86 @@ import type { Tint } from '../Tint';
  * Available on the {@link Text} family, {@link Story}, {@link CharacterStyle},
  * and {@link ParagraphStyle}.
  */
-export interface TextGraphicAttributes<M extends Mode = 'single'> {
+export interface TextGraphicAttributes<M extends Mode = 'single', NSet = never> {
   /** Horizontal scaling of the glyphs, as a percentage. */
-  get horizontalScale(): Read<M, number>;
-  set horizontalScale(value: number);
+  get horizontalScale(): Read<M, number | NothingEnum.NOTHING>;
+  set horizontalScale(value: number | NSet);
 
   /** Vertical scaling of the glyphs, as a percentage. */
-  get verticalScale(): Read<M, number>;
-  set verticalScale(value: number);
+  get verticalScale(): Read<M, number | NothingEnum.NOTHING>;
+  set verticalScale(value: number | NSet);
 
   /** Skew (false-italic) angle applied to the glyphs, in degrees. */
-  get skew(): Read<M, number>;
-  set skew(value: number);
+  get skew(): Read<M, number | NothingEnum.NOTHING>;
+  set skew(value: number | NSet);
 
   /** The tint (as a percentage, 0–100) of the fill color. Use `-1` to use the inherited or overridden value instead of a specific tint. */
-  get fillTint(): Read<M, number>;
-  set fillTint(value: number);
+  get fillTint(): Read<M, number | NothingEnum.NOTHING>;
+  set fillTint(value: number | NSet);
 
   /** The tint (as a percentage, 0–100) of the stroke color. Use `-1` to use the inherited or overridden value instead of a specific tint. */
-  get strokeTint(): Read<M, number>;
-  set strokeTint(value: number);
+  get strokeTint(): Read<M, number | NothingEnum.NOTHING>;
+  set strokeTint(value: number | NSet);
 
   /** The stroke weight applied to the characters of the text. */
-  get strokeWeight(): Read<M, number>;
-  set strokeWeight(value: MeasurementValue);
+  get strokeWeight(): Read<M, number | NothingEnum.NOTHING>;
+  set strokeWeight(value: MeasurementValue | NSet);
 
   /** If true, the stroke of the characters will overprint. */
-  get overprintStroke(): Read<M, boolean>;
-  set overprintStroke(value: boolean);
+  get overprintStroke(): Read<M, boolean | NothingEnum.NOTHING>;
+  set overprintStroke(value: boolean | NSet);
 
   /** If true, the fill color of the characters will overprint. */
-  get overprintFill(): Read<M, boolean>;
-  set overprintFill(value: boolean);
+  get overprintFill(): Read<M, boolean | NothingEnum.NOTHING>;
+  set overprintFill(value: boolean | NSet);
 
   /**
    * Swatch applied to the fill of the text. Accepts a {@link Swatch}
    * (or a {@link Color}, {@link Tint}, {@link Gradient}, or {@link MixedInk})
    * or its name.
    */
-  get fillColor(): Read<M, Swatch>;
-  set fillColor(value: Swatch | string);
+  get fillColor(): Read<M, Swatch | null | NothingEnum.NOTHING>;
+  set fillColor(value: Swatch | string | NSet);
 
   /** Swatch applied to the stroke of the text. Accepts a {@link Swatch} or its name. */
-  get strokeColor(): Read<M, Swatch>;
-  set strokeColor(value: Swatch | string);
+  get strokeColor(): Read<M, Swatch | null | NothingEnum.NOTHING>;
+  set strokeColor(value: Swatch | string | NSet);
 
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the fill of the text. */
-  get gradientFillLength(): Read<M, number>;
-  set gradientFillLength(value: number);
+  get gradientFillLength(): Read<M, number | NothingEnum.NOTHING>;
+  set gradientFillLength(value: number | NSet);
 
   /** The angle of a linear gradient applied to the fill of the text. (Range: -180 to 180). */
-  get gradientFillAngle(): Read<M, number>;
-  set gradientFillAngle(value: number);
+  get gradientFillAngle(): Read<M, number | NothingEnum.NOTHING>;
+  set gradientFillAngle(value: number | NSet);
 
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the stroke of the text. */
-  get gradientStrokeLength(): Read<M, number>;
-  set gradientStrokeLength(value: number);
+  get gradientStrokeLength(): Read<M, number | NothingEnum.NOTHING>;
+  set gradientStrokeLength(value: number | NSet);
 
   /** The angle of a linear gradient applied to the stroke of the text. (Range: -180 to 180). */
-  get gradientStrokeAngle(): Read<M, number>;
-  set gradientStrokeAngle(value: number);
+  get gradientStrokeAngle(): Read<M, number | NothingEnum.NOTHING>;
+  set gradientStrokeAngle(value: number | NSet);
 
   /** The starting point (in page coordinates) of a gradient applied to the fill of the text, in the format [x, y]. */
-  get gradientFillStart(): Read<M, number[]>;
-  set gradientFillStart(value: number[]);
+  get gradientFillStart(): Read<M, number[] | NothingEnum.NOTHING>;
+  set gradientFillStart(value: number[] | NSet);
 
   /** The starting point (in page coordinates) of a gradient applied to the stroke of the text, in the format [x, y]. */
-  get gradientStrokeStart(): Read<M, number[]>;
-  set gradientStrokeStart(value: number[]);
+  get gradientStrokeStart(): Read<M, number[] | NothingEnum.NOTHING>;
+  set gradientStrokeStart(value: number[] | NSet);
 
   /** The limit of the ratio of stroke width to miter length before a miter (pointed) join becomes a bevel (squared-off) join. */
-  get miterLimit(): Read<M, number>;
-  set miterLimit(value: number);
+  get miterLimit(): Read<M, number | NothingEnum.NOTHING>;
+  set miterLimit(value: number | NSet);
 
   /** The stroke alignment applied to the text. */
-  get strokeAlignment(): Read<M, TextStrokeAlign>;
-  set strokeAlignment(value: TextStrokeAlign);
+  get strokeAlignment(): Read<M, TextStrokeAlign | NothingEnum.NOTHING>;
+  set strokeAlignment(value: TextStrokeAlign | NSet);
 
   /** The stroke join type applied to the characters of the text. */
-  get endJoin(): Read<M, OutlineJoin>;
-  set endJoin(value: OutlineJoin);
+  get endJoin(): Read<M, OutlineJoin | NothingEnum.NOTHING>;
+  set endJoin(value: OutlineJoin | NSet);
 
 }
 
@@ -197,242 +198,242 @@ export interface CharacterAttributesBase<M extends Mode = 'single', NGet = never
    * The applied font. Accepts a {@link Font} object or a font-family name as a
    * `string`; pair with {@link fontStyle} to pick a specific style.
    */
-  get appliedFont(): Read<M, Font | NObj>;
-  set appliedFont(value: Font | string | NSet);
+  get appliedFont(): Read<M, Font | NObj | string | NothingEnum.NOTHING>;
+  set appliedFont(value: Font | string | NSet | NothingEnum.NOTHING);
 
   /** The name of the font style. */
   get fontStyle(): Read<M, string | NGet>;
-  set fontStyle(value: string | NSet);
+  set fontStyle(value: string | NSet | NothingEnum.NOTHING);
 
   /** The type size. */
   get pointSize(): Read<M, number | NGet>;
-  set pointSize(value: MeasurementValue | NSet);
+  set pointSize(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /**
    * The leading. A number is explicit leading; the {@link Leading} enumerator
    * `AUTO` selects automatic leading.
    */
   get leading(): Read<M, number | Leading | NGet>;
-  set leading(value: MeasurementValue | Leading | NSet);
+  set leading(value: MeasurementValue | Leading | NSet | NothingEnum.NOTHING);
 
   /** The type of pair kerning. */
   get kerningMethod(): Read<M, KerningMethodName | NGet>;
-  set kerningMethod(value: KerningMethodName | NSet);
+  set kerningMethod(value: KerningMethodName | NSet | NothingEnum.NOTHING);
 
   /** Tracking, in thousandths of an em, applied between characters. */
   get tracking(): Read<M, number | NGet>;
-  set tracking(value: number | NSet);
+  set tracking(value: number | NSet | NothingEnum.NOTHING);
 
   /** Whether the text renders normally, as small caps, as all caps, or using the font's OpenType small-caps forms. See {@link Capitalization}. */
   get capitalization(): Read<M, Capitalization | NGet>;
-  set capitalization(value: Capitalization | NSet);
+  set capitalization(value: Capitalization | NSet | NothingEnum.NOTHING);
 
   /** The text position relative to the baseline. */
   get position(): Read<M, Position | NGet>;
-  set position(value: Position | NSet);
+  set position(value: Position | NSet | NothingEnum.NOTHING);
 
   /** If true, underlines the text. */
   get underline(): Read<M, boolean | NGet>;
-  set underline(value: boolean | NSet);
+  set underline(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, draws a strikethrough line through the text. */
   get strikeThru(): Read<M, boolean | NGet>;
-  set strikeThru(value: boolean | NSet);
+  set strikeThru(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If `true`, substitutes ligature glyphs (e.g. `fi`, `fl`) where available. */
   get ligatures(): Read<M, boolean | NGet>;
-  set ligatures(value: boolean | NSet);
+  set ligatures(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, keeps the text on the same line. */
   get noBreak(): Read<M, boolean | NGet>;
-  set noBreak(value: boolean | NSet);
+  set noBreak(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The baseline shift applied to the text. */
   get baselineShift(): Read<M, number | NGet>;
-  set baselineShift(value: MeasurementValue | NSet);
+  set baselineShift(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The figure style in OpenType fonts. */
   get otfFigureStyle(): Read<M, OTFFigureStyle | NGet>;
-  set otfFigureStyle(value: OTFFigureStyle | NSet);
+  set otfFigureStyle(value: OTFFigureStyle | NSet | NothingEnum.NOTHING);
 
   /** If true, uses ordinals in OpenType fonts. */
   get otfOrdinal(): Read<M, boolean | NGet>;
-  set otfOrdinal(value: boolean | NSet);
+  set otfOrdinal(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, uses fractions in OpenType fonts. */
   get otfFraction(): Read<M, boolean | NGet>;
-  set otfFraction(value: boolean | NSet);
+  set otfFraction(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, uses discretionary ligatures in OpenType fonts. */
   get otfDiscretionaryLigature(): Read<M, boolean | NGet>;
-  set otfDiscretionaryLigature(value: boolean | NSet);
+  set otfDiscretionaryLigature(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, uses titling forms in OpenType fonts. */
   get otfTitling(): Read<M, boolean | NGet>;
-  set otfTitling(value: boolean | NSet);
+  set otfTitling(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, uses contextual alternate forms in OpenType fonts. */
   get otfContextualAlternate(): Read<M, boolean | NGet>;
-  set otfContextualAlternate(value: boolean | NSet);
+  set otfContextualAlternate(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, uses swash forms in OpenType fonts. */
   get otfSwash(): Read<M, boolean | NGet>;
-  set otfSwash(value: boolean | NSet);
+  set otfSwash(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the underline stroke. */
-  get underlineColor(): Read<M, Swatch | NObj>;
-  set underlineColor(value: Swatch | string | NSet);
+  get underlineColor(): Read<M, Swatch | NObj | string | NothingEnum.NOTHING>;
+  set underlineColor(value: Swatch | string | NSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the underline stroke. Note: Valid when underline type is not solid. */
-  get underlineGapColor(): Read<M, Swatch | NObj>;
-  set underlineGapColor(value: Swatch | string | NSet);
+  get underlineGapColor(): Read<M, Swatch | NObj | string | NothingEnum.NOTHING>;
+  set underlineGapColor(value: Swatch | string | NSet | NothingEnum.NOTHING);
 
   /** The underline stroke tint (as a percentage). (Range: 0 to 100). */
   get underlineTint(): Read<M, number | NGet>;
-  set underlineTint(value: number | NSet);
+  set underlineTint(value: number | NSet | NothingEnum.NOTHING);
 
   /** The tint (as a percentage) of the gap color of the underline stroke. (Range: 0 to 100) Note: Valid when underline type is not solid. */
   get underlineGapTint(): Read<M, number | NGet>;
-  set underlineGapTint(value: number | NSet);
+  set underlineGapTint(value: number | NSet | NothingEnum.NOTHING);
 
   /** If true, the underline stroke color will overprint. */
   get underlineOverprint(): Read<M, boolean | NGet>;
-  set underlineOverprint(value: boolean | NSet);
+  set underlineOverprint(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, the gap color of the underline stroke will overprint. */
   get underlineGapOverprint(): Read<M, boolean | NGet>;
-  set underlineGapOverprint(value: boolean | NSet);
+  set underlineGapOverprint(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The stroke type of the underline stroke. */
-  get underlineType(): Read<M, StrokeStyle | NObj>;
-  set underlineType(value: StrokeStyle | string | NSet);
+  get underlineType(): Read<M, StrokeStyle | NObj | string | NothingEnum.NOTHING>;
+  set underlineType(value: StrokeStyle | string | NSet | NothingEnum.NOTHING);
 
   /** The amount by which to offset the underline from the text baseline. */
   get underlineOffset(): Read<M, number | NGet>;
-  set underlineOffset(value: MeasurementValue | NSet);
+  set underlineOffset(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The stroke weight of the underline stroke. */
   get underlineWeight(): Read<M, number | NGet>;
-  set underlineWeight(value: MeasurementValue | NSet);
+  set underlineWeight(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the strikethrough stroke. */
-  get strikeThroughColor(): Read<M, Swatch | NObj>;
-  set strikeThroughColor(value: Swatch | string | NSet);
+  get strikeThroughColor(): Read<M, Swatch | NObj | string | NothingEnum.NOTHING>;
+  set strikeThroughColor(value: Swatch | string | NSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the strikethrough stroke. */
-  get strikeThroughGapColor(): Read<M, Swatch | NObj>;
-  set strikeThroughGapColor(value: Swatch | string | NSet);
+  get strikeThroughGapColor(): Read<M, Swatch | NObj | string | NothingEnum.NOTHING>;
+  set strikeThroughGapColor(value: Swatch | string | NSet | NothingEnum.NOTHING);
 
   /** The tint (as a percentage) of the strikethrough stroke. (Range: 0 to 100). */
   get strikeThroughTint(): Read<M, number | NGet>;
-  set strikeThroughTint(value: number | NSet);
+  set strikeThroughTint(value: number | NSet | NothingEnum.NOTHING);
 
   /** The tint (as a percentage) of the strikethrough stroke gap color. (Range: 0 to 100) Note: Valid when strike through type is not solid. */
   get strikeThroughGapTint(): Read<M, number | NGet>;
-  set strikeThroughGapTint(value: number | NSet);
+  set strikeThroughGapTint(value: number | NSet | NothingEnum.NOTHING);
 
   /** If true, the strikethrough stroke will overprint. */
   get strikeThroughOverprint(): Read<M, boolean | NGet>;
-  set strikeThroughOverprint(value: boolean | NSet);
+  set strikeThroughOverprint(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, the gap color of the strikethrough stroke will overprint. Note: Valid when strike through type is not solid. */
   get strikeThroughGapOverprint(): Read<M, boolean | NGet>;
-  set strikeThroughGapOverprint(value: boolean | NSet);
+  set strikeThroughGapOverprint(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The stroke type of the strikethrough stroke. */
-  get strikeThroughType(): Read<M, StrokeStyle | NObj>;
-  set strikeThroughType(value: StrokeStyle | string | NSet);
+  get strikeThroughType(): Read<M, StrokeStyle | NObj | string | NothingEnum.NOTHING>;
+  set strikeThroughType(value: StrokeStyle | string | NSet | NothingEnum.NOTHING);
 
   /** The amount by which to offset the strikethrough stroke from the text baseline. */
   get strikeThroughOffset(): Read<M, number | NGet>;
-  set strikeThroughOffset(value: MeasurementValue | NSet);
+  set strikeThroughOffset(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The stroke weight of the strikethrough stroke. */
   get strikeThroughWeight(): Read<M, number | NGet>;
-  set strikeThroughWeight(value: MeasurementValue | NSet);
+  set strikeThroughWeight(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /**
    * The applied language / spelling dictionary. Accepts a
    * {@link LanguageWithVendors} or {@link Language} object, or its name.
    */
-  get appliedLanguage(): Read<M, LanguageWithVendors | Language | NGet>;
-  set appliedLanguage(value: LanguageWithVendors | Language | string | NSet);
+  get appliedLanguage(): Read<M, LanguageWithVendors | Language | NGet | null>;
+  set appliedLanguage(value: LanguageWithVendors | Language | string | NSet | NothingEnum.NOTHING);
 
   /** Value of Design Axes. */
   get designAxes(): Read<M, number[] | NGet>;
-  set designAxes(value: number[] | NSet);
+  set designAxes(value: number[] | NSet | NothingEnum.NOTHING);
 
   /** If true, use a slashed zeroes in OpenType fonts. */
   get otfSlashedZero(): Read<M, boolean | NGet>;
-  set otfSlashedZero(value: boolean | NSet);
+  set otfSlashedZero(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, use historical forms in OpenType fonts. */
   get otfHistorical(): Read<M, boolean | NGet>;
-  set otfHistorical(value: boolean | NSet);
+  set otfHistorical(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The stylistic sets to use in OpenType fonts. */
   get otfStylisticSets(): Read<M, number | NGet>;
-  set otfStylisticSets(value: number | NSet);
+  set otfStylisticSets(value: number | NSet | NothingEnum.NOTHING);
 
   /** If true, uses mark positioning in OpenType fonts. */
   get otfMark(): Read<M, boolean | NGet>;
-  set otfMark(value: boolean | NSet);
+  set otfMark(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, uses localized forms in OpenType fonts. */
   get otfLocale(): Read<M, boolean | NGet>;
-  set otfLocale(value: boolean | NSet);
+  set otfLocale(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** Which contextual glyph form — initial, medial, final, or isolated — to use for connected scripts, or `CALCULATE` to derive it automatically. See {@link PositionalForms}. */
   get positionalForm(): Read<M, PositionalForms | NGet>;
-  set positionalForm(value: PositionalForms | NSet);
+  set positionalForm(value: PositionalForms | NSet | NothingEnum.NOTHING);
 
   /** If true, use overlapping swash forms in OpenType fonts. */
   get otfOverlapSwash(): Read<M, boolean | NGet>;
-  set otfOverlapSwash(value: boolean | NSet);
+  set otfOverlapSwash(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, use stylistic alternate forms in OpenType fonts. */
   get otfStylisticAlternate(): Read<M, boolean | NGet>;
-  set otfStylisticAlternate(value: boolean | NSet);
+  set otfStylisticAlternate(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, use alternate justification forms in OpenType fonts. */
   get otfJustificationAlternate(): Read<M, boolean | NGet>;
-  set otfJustificationAlternate(value: boolean | NSet);
+  set otfJustificationAlternate(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, use stretched alternate forms in OpenType fonts. */
   get otfStretchedAlternate(): Read<M, boolean | NGet>;
-  set otfStretchedAlternate(value: boolean | NSet);
+  set otfStretchedAlternate(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The direction of the character. */
   get characterDirection(): Read<M, CharacterDirectionOptions | NGet>;
-  set characterDirection(value: CharacterDirectionOptions | NSet);
+  set characterDirection(value: CharacterDirectionOptions | NSet | NothingEnum.NOTHING);
 
   /** The keyboard direction of the character. */
   get keyboardDirection(): Read<M, CharacterDirectionOptions | NGet>;
-  set keyboardDirection(value: CharacterDirectionOptions | NSet);
+  set keyboardDirection(value: CharacterDirectionOptions | NSet | NothingEnum.NOTHING);
 
   /** Which digit glyphs — Arabic numerals, Hindi, Farsi, or another script's digits — render numbers in the text. See {@link DigitsTypeOptions}. */
   get digitsType(): Read<M, DigitsTypeOptions | NGet>;
-  set digitsType(value: DigitsTypeOptions | NSet);
+  set digitsType(value: DigitsTypeOptions | NSet | NothingEnum.NOTHING);
 
   /** Use of Kashidas for justification. */
   get kashidas(): Read<M, KashidasOptions | NGet>;
-  set kashidas(value: KashidasOptions | NSet);
+  set kashidas(value: KashidasOptions | NSet | NothingEnum.NOTHING);
 
   /** Position of diacritical characters. */
   get diacriticPosition(): Read<M, DiacriticPositionOptions | NGet>;
-  set diacriticPosition(value: DiacriticPositionOptions | NSet);
+  set diacriticPosition(value: DiacriticPositionOptions | NSet | NothingEnum.NOTHING);
 
   /** The x (horizontal) offset for diacritic adjustment. */
   get xOffsetDiacritic(): Read<M, number | NGet>;
-  set xOffsetDiacritic(value: number | NSet);
+  set xOffsetDiacritic(value: number | NSet | NothingEnum.NOTHING);
 
   /** The y (vertical) offset for diacritic adjustment. */
   get yOffsetDiacritic(): Read<M, number | NGet>;
-  set yOffsetDiacritic(value: number | NSet);
+  set yOffsetDiacritic(value: number | NSet | NothingEnum.NOTHING);
 
   /** The alignment of small characters to the largest character in the line. */
   get characterAlignment(): Read<M, CharacterAlignment | NGet>;
-  set characterAlignment(value: CharacterAlignment | NSet);
+  set characterAlignment(value: CharacterAlignment | NSet | NothingEnum.NOTHING);
 
   /** The amount of horizontal character compression. */
   get tsume(): Read<M, number | NothingEnum.NOTHING>;
@@ -440,15 +441,15 @@ export interface CharacterAttributesBase<M extends Mode = 'single', NGet = never
 
   /** The amount of space before each character. */
   get leadingAki(): Read<M, number | NGet>;
-  set leadingAki(value: number | NSet);
+  set leadingAki(value: number | NSet | NothingEnum.NOTHING);
 
   /** The amount of space after each character. */
   get trailingAki(): Read<M, number | NGet>;
-  set trailingAki(value: number | NSet);
+  set trailingAki(value: number | NSet | NothingEnum.NOTHING);
 
   /** The rotation angle (in degrees) of individual characters. Note: The rotation is counterclockwise. */
   get characterRotation(): Read<M, number | NGet>;
-  set characterRotation(value: number | NSet);
+  set characterRotation(value: number | NSet | NothingEnum.NOTHING);
 
   /** The number of grid squares in which to arrange the text. */
   get jidori(): Read<M, number | NothingEnum.NOTHING>;
@@ -483,11 +484,11 @@ export interface CharacterAttributesBase<M extends Mode = 'single', NGet = never
   set tatechuyokoYOffset(value: number | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of kenten characters. */
-  get kentenFillColor(): Read<M, Swatch | NothingEnum.NOTHING>;
+  get kentenFillColor(): Read<M, Swatch | NothingEnum.NOTHING | null | string>;
   set kentenFillColor(value: Swatch | string | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of kenten characters. */
-  get kentenStrokeColor(): Read<M, Swatch | NothingEnum.NOTHING>;
+  get kentenStrokeColor(): Read<M, Swatch | NothingEnum.NOTHING | null | string>;
   set kentenStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
 
   /** The fill tint (as a percentage) of kenten characters. (Range: 0 to 100). */
@@ -527,7 +528,7 @@ export interface CharacterAttributesBase<M extends Mode = 'single', NGet = never
   set kentenPosition(value: RubyKentenPosition | NothingEnum.NOTHING);
 
   /** The font to use for kenten characters. */
-  get kentenFont(): Read<M, Font | NothingEnum.NOTHING>;
+  get kentenFont(): Read<M, Font | NothingEnum.NOTHING | null | string>;
   set kentenFont(value: Font | string | NothingEnum.NOTHING);
 
   /** The font style of kenten characters. */
@@ -555,11 +556,11 @@ export interface CharacterAttributesBase<M extends Mode = 'single', NGet = never
   set kentenCharacterSet(value: KentenCharacterSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of ruby characters. */
-  get rubyFill(): Read<M, Swatch | NothingEnum.NOTHING>;
+  get rubyFill(): Read<M, Swatch | NothingEnum.NOTHING | null | string>;
   set rubyFill(value: Swatch | string | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of ruby characters. */
-  get rubyStroke(): Read<M, Swatch | NothingEnum.NOTHING>;
+  get rubyStroke(): Read<M, Swatch | NothingEnum.NOTHING | null | string>;
   set rubyStroke(value: Swatch | string | NothingEnum.NOTHING);
 
   /** The tint (as a percentage) of the ruby fill color. (Range: 0 to 100). */
@@ -583,7 +584,7 @@ export interface CharacterAttributesBase<M extends Mode = 'single', NGet = never
   set rubyStrokeTint(value: number | NothingEnum.NOTHING);
 
   /** The font applied to ruby characters. */
-  get rubyFont(): Read<M, Font | NothingEnum.NOTHING>;
+  get rubyFont(): Read<M, Font | NothingEnum.NOTHING | null | string>;
   set rubyFont(value: Font | string | NothingEnum.NOTHING);
 
   /** The font style of ruby characters. */
@@ -680,7 +681,7 @@ export interface CharacterAttributesBase<M extends Mode = 'single', NGet = never
 
   /** If true, kerns according to proportional CJK metrics in OpenType fonts. */
   get otfProportionalMetrics(): Read<M, boolean | NGet>;
-  set otfProportionalMetrics(value: boolean | NSet);
+  set otfProportionalMetrics(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, switches hiragana fonts, which have different glyphs for horizontal and vertical. */
   get otfHVKana(): Read<M, boolean | NothingEnum.NOTHING>;
@@ -688,11 +689,11 @@ export interface CharacterAttributesBase<M extends Mode = 'single', NGet = never
 
   /** If true, applies italics to half-width alphanumerics. */
   get otfRomanItalics(): Read<M, boolean | NGet>;
-  set otfRomanItalics(value: boolean | NSet);
+  set otfRomanItalics(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, the line changes size when characters are scaled. */
   get scaleAffectsLineHeight(): Read<M, boolean | NGet>;
-  set scaleAffectsLineHeight(value: boolean | NSet);
+  set scaleAffectsLineHeight(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, uses grid tracking to track non-Roman characters in CJK grids. */
   get cjkGridTracking(): Read<M, boolean | NothingEnum.NOTHING>;
@@ -700,7 +701,7 @@ export interface CharacterAttributesBase<M extends Mode = 'single', NGet = never
 
   /** The glyph variant to substitute for standard glyphs. */
   get glyphForm(): Read<M, AlternateGlyphForms | NGet>;
-  set glyphForm(value: AlternateGlyphForms | NSet);
+  set glyphForm(value: AlternateGlyphForms | NSet | NothingEnum.NOTHING);
 
   /** The number of digits included in auto tcy (tate-chuu-yoko) in ruby. */
   get rubyAutoTcyDigits(): Read<M, number | NothingEnum.NOTHING>;
@@ -714,6 +715,7 @@ export interface CharacterAttributesBase<M extends Mode = 'single', NGet = never
   get rubyAutoTcyAutoScale(): Read<M, boolean | NothingEnum.NOTHING>;
   set rubyAutoTcyAutoScale(value: boolean | NothingEnum.NOTHING);
 }
+
 /**
  * Live character-level formatting on a text range: font, size, leading,
  * kerning, tracking, OpenType features, underline/strikethrough, ruby/kenten,
@@ -727,7 +729,7 @@ export interface CharacterFormatAttributes {
    * The applied font. Accepts a {@link Font} object or a font-family name as a
    * `string`; pair with {@link fontStyle} to pick a specific style.
    */
-  get appliedFont(): Font;
+  get appliedFont(): Font | string;
   set appliedFont(value: Font | string);
   /** The name of the font style. */
   get fontStyle(): string;
@@ -790,10 +792,10 @@ export interface CharacterFormatAttributes {
   get otfSwash(): boolean;
   set otfSwash(value: boolean);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the underline stroke. */
-  get underlineColor(): Swatch;
+  get underlineColor(): Swatch | string;
   set underlineColor(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the underline stroke. Note: Valid when underline type is not solid. */
-  get underlineGapColor(): Swatch;
+  get underlineGapColor(): Swatch | string;
   set underlineGapColor(value: Swatch | string);
   /** The underline stroke tint (as a percentage). (Range: 0 to 100). */
   get underlineTint(): number;
@@ -808,7 +810,7 @@ export interface CharacterFormatAttributes {
   get underlineGapOverprint(): boolean;
   set underlineGapOverprint(value: boolean);
   /** The stroke type of the underline stroke. */
-  get underlineType(): StrokeStyle;
+  get underlineType(): StrokeStyle | string;
   set underlineType(value: StrokeStyle | string);
   /** The amount by which to offset the underline from the text baseline. */
   get underlineOffset(): number;
@@ -817,10 +819,10 @@ export interface CharacterFormatAttributes {
   get underlineWeight(): number;
   set underlineWeight(value: MeasurementValue);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the strikethrough stroke. */
-  get strikeThroughColor(): Swatch;
+  get strikeThroughColor(): Swatch | string;
   set strikeThroughColor(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the strikethrough stroke. */
-  get strikeThroughGapColor(): Swatch;
+  get strikeThroughGapColor(): Swatch | string;
   set strikeThroughGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the strikethrough stroke. (Range: 0 to 100). */
   get strikeThroughTint(): number;
@@ -835,7 +837,7 @@ export interface CharacterFormatAttributes {
   get strikeThroughGapOverprint(): boolean;
   set strikeThroughGapOverprint(value: boolean);
   /** The stroke type of the strikethrough stroke. */
-  get strikeThroughType(): StrokeStyle;
+  get strikeThroughType(): StrokeStyle | string;
   set strikeThroughType(value: StrokeStyle | string);
   /** The amount by which to offset the strikethrough stroke from the text baseline. */
   get strikeThroughOffset(): number;
@@ -943,10 +945,10 @@ export interface CharacterFormatAttributes {
   get tatechuyokoYOffset(): number;
   set tatechuyokoYOffset(value: number);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of kenten characters. */
-  get kentenFillColor(): Swatch;
+  get kentenFillColor(): Swatch | string;
   set kentenFillColor(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of kenten characters. */
-  get kentenStrokeColor(): Swatch;
+  get kentenStrokeColor(): Swatch | string;
   set kentenStrokeColor(value: Swatch | string);
   /** The fill tint (as a percentage) of kenten characters. (Range: 0 to 100). */
   get kentenTint(): number;
@@ -976,10 +978,10 @@ export interface CharacterFormatAttributes {
   get kentenPosition(): RubyKentenPosition;
   set kentenPosition(value: RubyKentenPosition);
   /** The font to use for kenten characters. */
-  get kentenFont(): Font;
+  get kentenFont(): Font | null | string;
   set kentenFont(value: Font | string);
   /** The font style of kenten characters. */
-  get kentenFontStyle(): string;
+  get kentenFontStyle(): string | NothingEnum.NOTHING;
   set kentenFontStyle(value: string);
   /** The size (in points) of kenten characters. */
   get kentenFontSize(): number;
@@ -997,10 +999,10 @@ export interface CharacterFormatAttributes {
   get kentenCharacterSet(): KentenCharacterSet;
   set kentenCharacterSet(value: KentenCharacterSet);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of ruby characters. */
-  get rubyFill(): Swatch;
+  get rubyFill(): Swatch | string;
   set rubyFill(value: Swatch | string);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of ruby characters. */
-  get rubyStroke(): Swatch;
+  get rubyStroke(): Swatch | string;
   set rubyStroke(value: Swatch | string);
   /** The tint (as a percentage) of the ruby fill color. (Range: 0 to 100). */
   get rubyTint(): number;
@@ -1018,10 +1020,10 @@ export interface CharacterFormatAttributes {
   get rubyStrokeTint(): number;
   set rubyStrokeTint(value: number);
   /** The font applied to ruby characters. */
-  get rubyFont(): Font;
+  get rubyFont(): Font | null | string;
   set rubyFont(value: Font | string);
   /** The font style of ruby characters. */
-  get rubyFontStyle(): string;
+  get rubyFontStyle(): string | NothingEnum.NOTHING;
   set rubyFontStyle(value: string);
   /** The size (in points) of ruby characters. */
   get rubyFontSize(): number;
@@ -1119,6 +1121,410 @@ export interface CharacterFormatAttributes {
 }
 
 /**
+ * Live character-level formatting on a text range: font, size, leading,
+ * kerning, tracking, OpenType features, underline/strikethrough, ruby/kenten,
+ * and CJK attributes.
+ *
+ * Available on the {@link Text} family, {@link Story}, and {@link XmlStory}.
+ * The style-definition twin is {@link CharacterStyleAttributes}.
+ */
+export interface CharacterFormatAttributesPlural {
+  /**
+   * The applied font. Accepts a {@link Font} object or a font-family name as a
+   * `string`; pair with {@link fontStyle} to pick a specific style.
+   */
+  get appliedFont(): (Font | string)[];
+  set appliedFont(value: Font | string);
+  /** The name of the font style. */
+  get fontStyle(): (string)[];
+  set fontStyle(value: string);
+  /** The type size. */
+  get pointSize(): (number)[];
+  set pointSize(value: MeasurementValue);
+  /**
+   * The leading. A number is explicit leading; the {@link Leading} enumerator
+   * `AUTO` selects automatic leading.
+   */
+  get leading(): (number | Leading)[];
+  set leading(value: MeasurementValue | Leading);
+  /** The type of pair kerning. */
+  get kerningMethod(): (KerningMethodName)[];
+  set kerningMethod(value: KerningMethodName);
+  /** Tracking, in thousandths of an em, applied between characters. */
+  get tracking(): (number)[];
+  set tracking(value: number);
+  /** Whether the text renders normally, as small caps, as all caps, or using the font's OpenType small-caps forms. See {@link Capitalization}. */
+  get capitalization(): (Capitalization)[];
+  set capitalization(value: Capitalization);
+  /** The text position relative to the baseline. */
+  get position(): (Position)[];
+  set position(value: Position);
+  /** If true, underlines the text. */
+  get underline(): (boolean)[];
+  set underline(value: boolean);
+  /** If true, draws a strikethrough line through the text. */
+  get strikeThru(): (boolean)[];
+  set strikeThru(value: boolean);
+  /** If `true`, substitutes ligature glyphs (e.g. `fi`, `fl`) where available. */
+  get ligatures(): (boolean)[];
+  set ligatures(value: boolean);
+  /** If true, keeps the text on the same line. */
+  get noBreak(): (boolean)[];
+  set noBreak(value: boolean);
+  /** The baseline shift applied to the text. */
+  get baselineShift(): (number)[];
+  set baselineShift(value: MeasurementValue);
+  /** The figure style in OpenType fonts. */
+  get otfFigureStyle(): (OTFFigureStyle)[];
+  set otfFigureStyle(value: OTFFigureStyle);
+  /** If true, uses ordinals in OpenType fonts. */
+  get otfOrdinal(): (boolean)[];
+  set otfOrdinal(value: boolean);
+  /** If true, uses fractions in OpenType fonts. */
+  get otfFraction(): (boolean)[];
+  set otfFraction(value: boolean);
+  /** If true, uses discretionary ligatures in OpenType fonts. */
+  get otfDiscretionaryLigature(): (boolean)[];
+  set otfDiscretionaryLigature(value: boolean);
+  /** If true, uses titling forms in OpenType fonts. */
+  get otfTitling(): (boolean)[];
+  set otfTitling(value: boolean);
+  /** If true, uses contextual alternate forms in OpenType fonts. */
+  get otfContextualAlternate(): (boolean)[];
+  set otfContextualAlternate(value: boolean);
+  /** If true, uses swash forms in OpenType fonts. */
+  get otfSwash(): (boolean)[];
+  set otfSwash(value: boolean);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the underline stroke. */
+  get underlineColor(): (Swatch | string)[];
+  set underlineColor(value: Swatch | string);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the underline stroke. Note: Valid when underline type is not solid. */
+  get underlineGapColor(): (Swatch | string)[];
+  set underlineGapColor(value: Swatch | string);
+  /** The underline stroke tint (as a percentage). (Range: 0 to 100). */
+  get underlineTint(): (number)[];
+  set underlineTint(value: number);
+  /** The tint (as a percentage) of the gap color of the underline stroke. (Range: 0 to 100) Note: Valid when underline type is not solid. */
+  get underlineGapTint(): (number)[];
+  set underlineGapTint(value: number);
+  /** If true, the underline stroke color will overprint. */
+  get underlineOverprint(): (boolean)[];
+  set underlineOverprint(value: boolean);
+  /** If true, the gap color of the underline stroke will overprint. */
+  get underlineGapOverprint(): (boolean)[];
+  set underlineGapOverprint(value: boolean);
+  /** The stroke type of the underline stroke. */
+  get underlineType(): (StrokeStyle | string)[];
+  set underlineType(value: StrokeStyle | string);
+  /** The amount by which to offset the underline from the text baseline. */
+  get underlineOffset(): (number)[];
+  set underlineOffset(value: MeasurementValue);
+  /** The stroke weight of the underline stroke. */
+  get underlineWeight(): (number)[];
+  set underlineWeight(value: MeasurementValue);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the strikethrough stroke. */
+  get strikeThroughColor(): (Swatch | string)[];
+  set strikeThroughColor(value: Swatch | string);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the strikethrough stroke. */
+  get strikeThroughGapColor(): (Swatch | string)[];
+  set strikeThroughGapColor(value: Swatch | string);
+  /** The tint (as a percentage) of the strikethrough stroke. (Range: 0 to 100). */
+  get strikeThroughTint(): (number)[];
+  set strikeThroughTint(value: number);
+  /** The tint (as a percentage) of the strikethrough stroke gap color. (Range: 0 to 100) Note: Valid when strike through type is not solid. */
+  get strikeThroughGapTint(): (number)[];
+  set strikeThroughGapTint(value: number);
+  /** If true, the strikethrough stroke will overprint. */
+  get strikeThroughOverprint(): (boolean)[];
+  set strikeThroughOverprint(value: boolean);
+  /** If true, the gap color of the strikethrough stroke will overprint. Note: Valid when strike through type is not solid. */
+  get strikeThroughGapOverprint(): (boolean)[];
+  set strikeThroughGapOverprint(value: boolean);
+  /** The stroke type of the strikethrough stroke. */
+  get strikeThroughType(): (StrokeStyle | string)[];
+  set strikeThroughType(value: StrokeStyle | string);
+  /** The amount by which to offset the strikethrough stroke from the text baseline. */
+  get strikeThroughOffset(): (number)[];
+  set strikeThroughOffset(value: MeasurementValue);
+  /** The stroke weight of the strikethrough stroke. */
+  get strikeThroughWeight(): (number)[];
+  set strikeThroughWeight(value: MeasurementValue);
+  /**
+   * The applied language / spelling dictionary. Accepts a
+   * {@link LanguageWithVendors} or {@link Language} object, or its name.
+   */
+  get appliedLanguage(): (LanguageWithVendors | Language)[];
+  set appliedLanguage(value: LanguageWithVendors | Language | string);
+  /** Value of Design Axes. */
+  get designAxes(): (number[])[];
+  set designAxes(value: number[]);
+  /** If true, use a slashed zeroes in OpenType fonts. */
+  get otfSlashedZero(): (boolean)[];
+  set otfSlashedZero(value: boolean);
+  /** If true, use historical forms in OpenType fonts. */
+  get otfHistorical(): (boolean)[];
+  set otfHistorical(value: boolean);
+  /** The stylistic sets to use in OpenType fonts. */
+  get otfStylisticSets(): (number)[];
+  set otfStylisticSets(value: number);
+  /** If true, uses mark positioning in OpenType fonts. */
+  get otfMark(): (boolean)[];
+  set otfMark(value: boolean);
+  /** If true, uses localized forms in OpenType fonts. */
+  get otfLocale(): (boolean)[];
+  set otfLocale(value: boolean);
+  /** Which contextual glyph form — initial, medial, final, or isolated — to use for connected scripts, or `CALCULATE` to derive it automatically. See {@link PositionalForms}. */
+  get positionalForm(): (PositionalForms)[];
+  set positionalForm(value: PositionalForms);
+  /** If true, use overlapping swash forms in OpenType fonts. */
+  get otfOverlapSwash(): (boolean)[];
+  set otfOverlapSwash(value: boolean);
+  /** If true, use stylistic alternate forms in OpenType fonts. */
+  get otfStylisticAlternate(): (boolean)[];
+  set otfStylisticAlternate(value: boolean);
+  /** If true, use alternate justification forms in OpenType fonts. */
+  get otfJustificationAlternate(): (boolean)[];
+  set otfJustificationAlternate(value: boolean);
+  /** If true, use stretched alternate forms in OpenType fonts. */
+  get otfStretchedAlternate(): (boolean)[];
+  set otfStretchedAlternate(value: boolean);
+  /** The direction of the character. */
+  get characterDirection(): (CharacterDirectionOptions)[];
+  set characterDirection(value: CharacterDirectionOptions);
+  /** The keyboard direction of the character. */
+  get keyboardDirection(): (CharacterDirectionOptions)[];
+  set keyboardDirection(value: CharacterDirectionOptions);
+  /** Which digit glyphs — Arabic numerals, Hindi, Farsi, or another script's digits — render numbers in the text. See {@link DigitsTypeOptions}. */
+  get digitsType(): (DigitsTypeOptions)[];
+  set digitsType(value: DigitsTypeOptions);
+  /** Use of Kashidas for justification. */
+  get kashidas(): (KashidasOptions)[];
+  set kashidas(value: KashidasOptions);
+  /** Position of diacritical characters. */
+  get diacriticPosition(): (DiacriticPositionOptions)[];
+  set diacriticPosition(value: DiacriticPositionOptions);
+  /** The x (horizontal) offset for diacritic adjustment. */
+  get xOffsetDiacritic(): (number)[];
+  set xOffsetDiacritic(value: number);
+  /** The y (vertical) offset for diacritic adjustment. */
+  get yOffsetDiacritic(): (number)[];
+  set yOffsetDiacritic(value: number);
+  /** The alignment of small characters to the largest character in the line. */
+  get characterAlignment(): (CharacterAlignment)[];
+  set characterAlignment(value: CharacterAlignment);
+  /** The amount of horizontal character compression. */
+  get tsume(): (number)[];
+  set tsume(value: number);
+  /** The amount of space before each character. */
+  get leadingAki(): (number)[];
+  set leadingAki(value: number);
+  /** The amount of space after each character. */
+  get trailingAki(): (number)[];
+  set trailingAki(value: number);
+  /** The rotation angle (in degrees) of individual characters. Note: The rotation is counterclockwise. */
+  get characterRotation(): (number)[];
+  set characterRotation(value: number);
+  /** The number of grid squares in which to arrange the text. */
+  get jidori(): (number)[];
+  set jidori(value: number);
+  /** The amount (as a percentage) of shatai obliquing to apply. */
+  get shataiMagnification(): (number)[];
+  set shataiMagnification(value: number);
+  /** The shatai lens angle (in degrees). */
+  get shataiDegreeAngle(): (number)[];
+  set shataiDegreeAngle(value: number);
+  /** If true, applies shatai rotation. */
+  get shataiAdjustRotation(): (boolean)[];
+  set shataiAdjustRotation(value: boolean);
+  /** If true, adjusts shatai tsume. */
+  get shataiAdjustTsume(): (boolean)[];
+  set shataiAdjustTsume(value: boolean);
+  /** If true, makes the character horizontal in vertical text. */
+  get tatechuyoko(): (boolean)[];
+  set tatechuyoko(value: boolean);
+  /** The horizontal offset for horizontal characters in vertical text. */
+  get tatechuyokoXOffset(): (number)[];
+  set tatechuyokoXOffset(value: number);
+  /** The vertical offset for horizontal characters in vertical text. */
+  get tatechuyokoYOffset(): (number)[];
+  set tatechuyokoYOffset(value: number);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of kenten characters. */
+  get kentenFillColor(): (Swatch | string)[];
+  set kentenFillColor(value: Swatch | string);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of kenten characters. */
+  get kentenStrokeColor(): (Swatch | string)[];
+  set kentenStrokeColor(value: Swatch | string);
+  /** The fill tint (as a percentage) of kenten characters. (Range: 0 to 100). */
+  get kentenTint(): (number)[];
+  set kentenTint(value: number);
+  /** The stroke tint (as a percentage) of kenten characters. (Range: 0 to 100). */
+  get kentenStrokeTint(): (number)[];
+  set kentenStrokeTint(value: number);
+  /** The stroke weight (in points) of kenten characters. */
+  get kentenWeight(): (number)[];
+  set kentenWeight(value: number);
+  /** The method of overprinting the kenten fill. */
+  get kentenOverprintFill(): (AdornmentOverprint)[];
+  set kentenOverprintFill(value: AdornmentOverprint);
+  /** The method of overprinting the kenten stroke. */
+  get kentenOverprintStroke(): (AdornmentOverprint)[];
+  set kentenOverprintStroke(value: AdornmentOverprint);
+  /** The style of kenten characters. */
+  get kentenKind(): (KentenCharacter)[];
+  set kentenKind(value: KentenCharacter);
+  /** The distance between kenten characters and their parent characters. */
+  get kentenPlacement(): (number)[];
+  set kentenPlacement(value: number);
+  /** The alignment of kenten characters relative to the parent characters. */
+  get kentenAlignment(): (KentenAlignment)[];
+  set kentenAlignment(value: KentenAlignment);
+  /** The kenten position relative to the parent character. */
+  get kentenPosition(): (RubyKentenPosition)[];
+  set kentenPosition(value: RubyKentenPosition);
+  /** The font to use for kenten characters. */
+  get kentenFont(): (Font | null | string)[];
+  set kentenFont(value: Font | string);
+  /** The font style of kenten characters. */
+  get kentenFontStyle(): (string | NothingEnum.NOTHING)[];
+  set kentenFontStyle(value: string);
+  /** The size (in points) of kenten characters. */
+  get kentenFontSize(): (number)[];
+  set kentenFontSize(value: number);
+  /** The horizontal size of kenten characters as a percent of the original size. */
+  get kentenXScale(): (number)[];
+  set kentenXScale(value: number);
+  /** The vertical size of kenten characters as a percent of the original size. */
+  get kentenYScale(): (number)[];
+  set kentenYScale(value: number);
+  /** The character used for kenten. Note: Valid only when kenten kind is custom. */
+  get kentenCustomCharacter(): (string)[];
+  set kentenCustomCharacter(value: string);
+  /** The character set used for the custom kenten character. Note: Valid only when kenten kind is custom. */
+  get kentenCharacterSet(): (KentenCharacterSet)[];
+  set kentenCharacterSet(value: KentenCharacterSet);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of ruby characters. */
+  get rubyFill(): (Swatch | string)[];
+  set rubyFill(value: Swatch | string);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of ruby characters. */
+  get rubyStroke(): (Swatch | string)[];
+  set rubyStroke(value: Swatch | string);
+  /** The tint (as a percentage) of the ruby fill color. (Range: 0 to 100). */
+  get rubyTint(): (number)[];
+  set rubyTint(value: number);
+  /** The stroke weight (in points) of ruby characters. */
+  get rubyWeight(): (number)[];
+  set rubyWeight(value: number);
+  /** The method of overprinting the ruby fill. */
+  get rubyOverprintFill(): (AdornmentOverprint)[];
+  set rubyOverprintFill(value: AdornmentOverprint);
+  /** The method of overprinting the ruby stroke. */
+  get rubyOverprintStroke(): (AdornmentOverprint)[];
+  set rubyOverprintStroke(value: AdornmentOverprint);
+  /** The stroke tint (as a percentage) of ruby characters. */
+  get rubyStrokeTint(): (number)[];
+  set rubyStrokeTint(value: number);
+  /** The font applied to ruby characters. */
+  get rubyFont(): (Font | null | string)[];
+  set rubyFont(value: Font | string);
+  /** The font style of ruby characters. */
+  get rubyFontStyle(): (string | NothingEnum.NOTHING)[];
+  set rubyFontStyle(value: string);
+  /** The size (in points) of ruby characters. */
+  get rubyFontSize(): (number)[];
+  set rubyFontSize(value: number);
+  /** If true, uses OpenType Pro fonts for ruby. */
+  get rubyOpenTypePro(): (boolean)[];
+  set rubyOpenTypePro(value: boolean);
+  /** The horizontal size of ruby characters, specified as a percent of the original size. */
+  get rubyXScale(): (number)[];
+  set rubyXScale(value: number);
+  /** The vertical size of ruby characters, specified as a percent of the original size. */
+  get rubyYScale(): (number)[];
+  set rubyYScale(value: number);
+  /** Whether ruby is assigned once to the whole character group or individually per character. See {@link RubyTypes}. */
+  get rubyType(): (RubyTypes)[];
+  set rubyType(value: RubyTypes);
+  /** How the ruby text aligns relative to its parent characters — left, centered, right, justified, or one of the JIS/aki spacing variants. See {@link RubyAlignments}. */
+  get rubyAlignment(): (RubyAlignments)[];
+  set rubyAlignment(value: RubyAlignments);
+  /** The position of ruby characters relative to the parent text. */
+  get rubyPosition(): (RubyKentenPosition)[];
+  set rubyPosition(value: RubyKentenPosition);
+  /** The amount of horizontal space between ruby and parent characters. */
+  get rubyXOffset(): (number)[];
+  set rubyXOffset(value: number);
+  /** The amount of vertical space between ruby and parent characters. */
+  get rubyYOffset(): (number)[];
+  set rubyYOffset(value: number);
+  /** The ruby spacing relative to the parent text. */
+  get rubyParentSpacing(): (RubyParentSpacing)[];
+  set rubyParentSpacing(value: RubyParentSpacing);
+  /** If true, auto aligns ruby. */
+  get rubyAutoAlign(): (boolean)[];
+  set rubyAutoAlign(value: boolean);
+  /** If true, constrains ruby overhang to the specified amount. For information on specifying an amount, see ruby parent overhang amount. */
+  get rubyOverhang(): (boolean)[];
+  set rubyOverhang(value: boolean);
+  /** If true, automatically scales ruby to the specified percent of parent text size. For information on specifying a percent, see ruby parent scaling percent. */
+  get rubyAutoScaling(): (boolean)[];
+  set rubyAutoScaling(value: boolean);
+  /** The amount (as a percentage) to scale the parent text size to determine the ruby text size. */
+  get rubyParentScalingPercent(): (number)[];
+  set rubyParentScalingPercent(value: number);
+  /** The amount by which ruby characters can overhang the parent text. */
+  get rubyParentOverhangAmount(): (RubyOverhang)[];
+  set rubyParentOverhangAmount(value: RubyOverhang);
+  /** If true, turns on warichu. */
+  get warichu(): (boolean)[];
+  set warichu(value: boolean);
+  /** The amount (as a percentage) to scale parent text size to determine warichu size. */
+  get warichuSize(): (number)[];
+  set warichuSize(value: number);
+  /** The number of lines of warichu within a single normal line. */
+  get warichuLines(): (number)[];
+  set warichuLines(value: number);
+  /** The gap between lines of warichu characters. */
+  get warichuLineSpacing(): (number)[];
+  set warichuLineSpacing(value: number);
+  /** How warichu lines align within the text frame — automatic, left/center/right, or one of the justified variants. See {@link WarichuAlignment}. */
+  get warichuAlignment(): (WarichuAlignment)[];
+  set warichuAlignment(value: WarichuAlignment);
+  /** The minimum number of characters allowed after a line break. */
+  get warichuCharsAfterBreak(): (number)[];
+  set warichuCharsAfterBreak(value: number);
+  /** The minimum number of characters allowed before a line break. */
+  get warichuCharsBeforeBreak(): (number)[];
+  set warichuCharsBeforeBreak(value: number);
+  /** If true, kerns according to proportional CJK metrics in OpenType fonts. */
+  get otfProportionalMetrics(): (boolean)[];
+  set otfProportionalMetrics(value: boolean);
+  /** If true, switches hiragana fonts, which have different glyphs for horizontal and vertical. */
+  get otfHVKana(): (boolean)[];
+  set otfHVKana(value: boolean);
+  /** If true, applies italics to half-width alphanumerics. */
+  get otfRomanItalics(): (boolean)[];
+  set otfRomanItalics(value: boolean);
+  /** If true, the line changes size when characters are scaled. */
+  get scaleAffectsLineHeight(): (boolean)[];
+  set scaleAffectsLineHeight(value: boolean);
+  /** If true, uses grid tracking to track non-Roman characters in CJK grids. */
+  get cjkGridTracking(): (boolean)[];
+  set cjkGridTracking(value: boolean);
+  /** The glyph variant to substitute for standard glyphs. */
+  get glyphForm(): (AlternateGlyphForms)[];
+  set glyphForm(value: AlternateGlyphForms);
+  /** The number of digits included in auto tcy (tate-chuu-yoko) in ruby. */
+  get rubyAutoTcyDigits(): (number)[];
+  set rubyAutoTcyDigits(value: number);
+  /** If true, includes Roman characters in auto tcy (tate-chuu-yoko) in ruby. */
+  get rubyAutoTcyIncludeRoman(): (boolean)[];
+  set rubyAutoTcyIncludeRoman(value: boolean);
+  /** If true, automatically scales glyphs in auto tcy (tate-chuu-yoko) in ruby to fit one em. */
+  get rubyAutoTcyAutoScale(): (boolean)[];
+  set rubyAutoTcyAutoScale(value: boolean);
+}
+
+/**
  * Character formatting stored as a named **style definition**
  * ({@link CharacterStyle}).
  *
@@ -1131,197 +1537,197 @@ export interface CharacterStyleAttributes {
    * The applied font. Accepts a {@link Font} object or a font-family name as a
    * `string`; pair with {@link fontStyle} to pick a specific style.
    */
-  get appliedFont(): Font | never;
-  set appliedFont(value: Font | string | never);
+  get appliedFont(): Font | never | string | NothingEnum.NOTHING;
+  set appliedFont(value: Font | string | never | NothingEnum.NOTHING);
   /** The name of the font style. */
   get fontStyle(): string | never;
-  set fontStyle(value: string | never);
+  set fontStyle(value: string | never | NothingEnum.NOTHING);
   /** The type size. */
   get pointSize(): number | never;
-  set pointSize(value: MeasurementValue | never);
+  set pointSize(value: MeasurementValue | never | NothingEnum.NOTHING);
   /**
    * The leading. A number is explicit leading; the {@link Leading} enumerator
    * `AUTO` selects automatic leading.
    */
   get leading(): number | Leading | never;
-  set leading(value: MeasurementValue | Leading | never);
+  set leading(value: MeasurementValue | Leading | never | NothingEnum.NOTHING);
   /** The type of pair kerning. */
   get kerningMethod(): KerningMethodName | never;
-  set kerningMethod(value: KerningMethodName | never);
+  set kerningMethod(value: KerningMethodName | never | NothingEnum.NOTHING);
   /** Tracking, in thousandths of an em, applied between characters. */
   get tracking(): number | never;
-  set tracking(value: number | never);
+  set tracking(value: number | never | NothingEnum.NOTHING);
   /** Whether the text renders normally, as small caps, as all caps, or using the font's OpenType small-caps forms. See {@link Capitalization}. */
   get capitalization(): Capitalization | never;
-  set capitalization(value: Capitalization | never);
+  set capitalization(value: Capitalization | never | NothingEnum.NOTHING);
   /** The text position relative to the baseline. */
   get position(): Position | never;
-  set position(value: Position | never);
+  set position(value: Position | never | NothingEnum.NOTHING);
   /** If true, underlines the text. */
   get underline(): boolean | never;
-  set underline(value: boolean | never);
+  set underline(value: boolean | never | NothingEnum.NOTHING);
   /** If true, draws a strikethrough line through the text. */
   get strikeThru(): boolean | never;
-  set strikeThru(value: boolean | never);
+  set strikeThru(value: boolean | never | NothingEnum.NOTHING);
   /** If `true`, substitutes ligature glyphs (e.g. `fi`, `fl`) where available. */
   get ligatures(): boolean | never;
-  set ligatures(value: boolean | never);
+  set ligatures(value: boolean | never | NothingEnum.NOTHING);
   /** If true, keeps the text on the same line. */
   get noBreak(): boolean | never;
-  set noBreak(value: boolean | never);
+  set noBreak(value: boolean | never | NothingEnum.NOTHING);
   /** The baseline shift applied to the text. */
   get baselineShift(): number | never;
-  set baselineShift(value: MeasurementValue | never);
+  set baselineShift(value: MeasurementValue | never | NothingEnum.NOTHING);
   /** The figure style in OpenType fonts. */
   get otfFigureStyle(): OTFFigureStyle | never;
-  set otfFigureStyle(value: OTFFigureStyle | never);
+  set otfFigureStyle(value: OTFFigureStyle | never | NothingEnum.NOTHING);
   /** If true, uses ordinals in OpenType fonts. */
   get otfOrdinal(): boolean | never;
-  set otfOrdinal(value: boolean | never);
+  set otfOrdinal(value: boolean | never | NothingEnum.NOTHING);
   /** If true, uses fractions in OpenType fonts. */
   get otfFraction(): boolean | never;
-  set otfFraction(value: boolean | never);
+  set otfFraction(value: boolean | never | NothingEnum.NOTHING);
   /** If true, uses discretionary ligatures in OpenType fonts. */
   get otfDiscretionaryLigature(): boolean | never;
-  set otfDiscretionaryLigature(value: boolean | never);
+  set otfDiscretionaryLigature(value: boolean | never | NothingEnum.NOTHING);
   /** If true, uses titling forms in OpenType fonts. */
   get otfTitling(): boolean | never;
-  set otfTitling(value: boolean | never);
+  set otfTitling(value: boolean | never | NothingEnum.NOTHING);
   /** If true, uses contextual alternate forms in OpenType fonts. */
   get otfContextualAlternate(): boolean | never;
-  set otfContextualAlternate(value: boolean | never);
+  set otfContextualAlternate(value: boolean | never | NothingEnum.NOTHING);
   /** If true, uses swash forms in OpenType fonts. */
   get otfSwash(): boolean | never;
-  set otfSwash(value: boolean | never);
+  set otfSwash(value: boolean | never | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the underline stroke. */
-  get underlineColor(): Swatch | never;
-  set underlineColor(value: Swatch | string | never);
+  get underlineColor(): Swatch | never | string | NothingEnum.NOTHING;
+  set underlineColor(value: Swatch | string | never | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the underline stroke. Note: Valid when underline type is not solid. */
-  get underlineGapColor(): Swatch | never;
-  set underlineGapColor(value: Swatch | string | never);
+  get underlineGapColor(): Swatch | never | string | NothingEnum.NOTHING;
+  set underlineGapColor(value: Swatch | string | never | NothingEnum.NOTHING);
   /** The underline stroke tint (as a percentage). (Range: 0 to 100). */
   get underlineTint(): number | never;
-  set underlineTint(value: number | never);
+  set underlineTint(value: number | never | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the gap color of the underline stroke. (Range: 0 to 100) Note: Valid when underline type is not solid. */
   get underlineGapTint(): number | never;
-  set underlineGapTint(value: number | never);
+  set underlineGapTint(value: number | never | NothingEnum.NOTHING);
   /** If true, the underline stroke color will overprint. */
   get underlineOverprint(): boolean | never;
-  set underlineOverprint(value: boolean | never);
+  set underlineOverprint(value: boolean | never | NothingEnum.NOTHING);
   /** If true, the gap color of the underline stroke will overprint. */
   get underlineGapOverprint(): boolean | never;
-  set underlineGapOverprint(value: boolean | never);
+  set underlineGapOverprint(value: boolean | never | NothingEnum.NOTHING);
   /** The stroke type of the underline stroke. */
-  get underlineType(): StrokeStyle | never;
-  set underlineType(value: StrokeStyle | string | never);
+  get underlineType(): StrokeStyle | never | string | NothingEnum.NOTHING;
+  set underlineType(value: StrokeStyle | string | never | NothingEnum.NOTHING);
   /** The amount by which to offset the underline from the text baseline. */
   get underlineOffset(): number | never;
-  set underlineOffset(value: MeasurementValue | never);
+  set underlineOffset(value: MeasurementValue | never | NothingEnum.NOTHING);
   /** The stroke weight of the underline stroke. */
   get underlineWeight(): number | never;
-  set underlineWeight(value: MeasurementValue | never);
+  set underlineWeight(value: MeasurementValue | never | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the strikethrough stroke. */
-  get strikeThroughColor(): Swatch | never;
-  set strikeThroughColor(value: Swatch | string | never);
+  get strikeThroughColor(): Swatch | never | string | NothingEnum.NOTHING;
+  set strikeThroughColor(value: Swatch | string | never | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the strikethrough stroke. */
-  get strikeThroughGapColor(): Swatch | never;
-  set strikeThroughGapColor(value: Swatch | string | never);
+  get strikeThroughGapColor(): Swatch | never | string | NothingEnum.NOTHING;
+  set strikeThroughGapColor(value: Swatch | string | never | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the strikethrough stroke. (Range: 0 to 100). */
   get strikeThroughTint(): number | never;
-  set strikeThroughTint(value: number | never);
+  set strikeThroughTint(value: number | never | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the strikethrough stroke gap color. (Range: 0 to 100) Note: Valid when strike through type is not solid. */
   get strikeThroughGapTint(): number | never;
-  set strikeThroughGapTint(value: number | never);
+  set strikeThroughGapTint(value: number | never | NothingEnum.NOTHING);
   /** If true, the strikethrough stroke will overprint. */
   get strikeThroughOverprint(): boolean | never;
-  set strikeThroughOverprint(value: boolean | never);
+  set strikeThroughOverprint(value: boolean | never | NothingEnum.NOTHING);
   /** If true, the gap color of the strikethrough stroke will overprint. Note: Valid when strike through type is not solid. */
   get strikeThroughGapOverprint(): boolean | never;
-  set strikeThroughGapOverprint(value: boolean | never);
+  set strikeThroughGapOverprint(value: boolean | never | NothingEnum.NOTHING);
   /** The stroke type of the strikethrough stroke. */
-  get strikeThroughType(): StrokeStyle | never;
-  set strikeThroughType(value: StrokeStyle | string | never);
+  get strikeThroughType(): StrokeStyle | never | string | NothingEnum.NOTHING;
+  set strikeThroughType(value: StrokeStyle | string | never | NothingEnum.NOTHING);
   /** The amount by which to offset the strikethrough stroke from the text baseline. */
   get strikeThroughOffset(): number | never;
-  set strikeThroughOffset(value: MeasurementValue | never);
+  set strikeThroughOffset(value: MeasurementValue | never | NothingEnum.NOTHING);
   /** The stroke weight of the strikethrough stroke. */
   get strikeThroughWeight(): number | never;
-  set strikeThroughWeight(value: MeasurementValue | never);
+  set strikeThroughWeight(value: MeasurementValue | never | NothingEnum.NOTHING);
   /**
    * The applied language / spelling dictionary. Accepts a
    * {@link LanguageWithVendors} or {@link Language} object, or its name.
    */
-  get appliedLanguage(): LanguageWithVendors | Language | never;
-  set appliedLanguage(value: LanguageWithVendors | Language | string | never);
+  get appliedLanguage(): LanguageWithVendors | Language | never | null;
+  set appliedLanguage(value: LanguageWithVendors | Language | string | never | NothingEnum.NOTHING);
   /** Value of Design Axes. */
   get designAxes(): number[] | never;
-  set designAxes(value: number[] | never);
+  set designAxes(value: number[] | never | NothingEnum.NOTHING);
   /** If true, use a slashed zeroes in OpenType fonts. */
   get otfSlashedZero(): boolean | never;
-  set otfSlashedZero(value: boolean | never);
+  set otfSlashedZero(value: boolean | never | NothingEnum.NOTHING);
   /** If true, use historical forms in OpenType fonts. */
   get otfHistorical(): boolean | never;
-  set otfHistorical(value: boolean | never);
+  set otfHistorical(value: boolean | never | NothingEnum.NOTHING);
   /** The stylistic sets to use in OpenType fonts. */
   get otfStylisticSets(): number | never;
-  set otfStylisticSets(value: number | never);
+  set otfStylisticSets(value: number | never | NothingEnum.NOTHING);
   /** If true, uses mark positioning in OpenType fonts. */
   get otfMark(): boolean | never;
-  set otfMark(value: boolean | never);
+  set otfMark(value: boolean | never | NothingEnum.NOTHING);
   /** If true, uses localized forms in OpenType fonts. */
   get otfLocale(): boolean | never;
-  set otfLocale(value: boolean | never);
+  set otfLocale(value: boolean | never | NothingEnum.NOTHING);
   /** Which contextual glyph form — initial, medial, final, or isolated — to use for connected scripts, or `CALCULATE` to derive it automatically. See {@link PositionalForms}. */
   get positionalForm(): PositionalForms | never;
-  set positionalForm(value: PositionalForms | never);
+  set positionalForm(value: PositionalForms | never | NothingEnum.NOTHING);
   /** If true, use overlapping swash forms in OpenType fonts. */
   get otfOverlapSwash(): boolean | never;
-  set otfOverlapSwash(value: boolean | never);
+  set otfOverlapSwash(value: boolean | never | NothingEnum.NOTHING);
   /** If true, use stylistic alternate forms in OpenType fonts. */
   get otfStylisticAlternate(): boolean | never;
-  set otfStylisticAlternate(value: boolean | never);
+  set otfStylisticAlternate(value: boolean | never | NothingEnum.NOTHING);
   /** If true, use alternate justification forms in OpenType fonts. */
   get otfJustificationAlternate(): boolean | never;
-  set otfJustificationAlternate(value: boolean | never);
+  set otfJustificationAlternate(value: boolean | never | NothingEnum.NOTHING);
   /** If true, use stretched alternate forms in OpenType fonts. */
   get otfStretchedAlternate(): boolean | never;
-  set otfStretchedAlternate(value: boolean | never);
+  set otfStretchedAlternate(value: boolean | never | NothingEnum.NOTHING);
   /** The direction of the character. */
   get characterDirection(): CharacterDirectionOptions | never;
-  set characterDirection(value: CharacterDirectionOptions | never);
+  set characterDirection(value: CharacterDirectionOptions | never | NothingEnum.NOTHING);
   /** The keyboard direction of the character. */
   get keyboardDirection(): CharacterDirectionOptions | never;
-  set keyboardDirection(value: CharacterDirectionOptions | never);
+  set keyboardDirection(value: CharacterDirectionOptions | never | NothingEnum.NOTHING);
   /** Which digit glyphs — Arabic numerals, Hindi, Farsi, or another script's digits — render numbers in the text. See {@link DigitsTypeOptions}. */
   get digitsType(): DigitsTypeOptions | never;
-  set digitsType(value: DigitsTypeOptions | never);
+  set digitsType(value: DigitsTypeOptions | never | NothingEnum.NOTHING);
   /** Use of Kashidas for justification. */
   get kashidas(): KashidasOptions | never;
-  set kashidas(value: KashidasOptions | never);
+  set kashidas(value: KashidasOptions | never | NothingEnum.NOTHING);
   /** Position of diacritical characters. */
   get diacriticPosition(): DiacriticPositionOptions | never;
-  set diacriticPosition(value: DiacriticPositionOptions | never);
+  set diacriticPosition(value: DiacriticPositionOptions | never | NothingEnum.NOTHING);
   /** The x (horizontal) offset for diacritic adjustment. */
   get xOffsetDiacritic(): number | never;
-  set xOffsetDiacritic(value: number | never);
+  set xOffsetDiacritic(value: number | never | NothingEnum.NOTHING);
   /** The y (vertical) offset for diacritic adjustment. */
   get yOffsetDiacritic(): number | never;
-  set yOffsetDiacritic(value: number | never);
+  set yOffsetDiacritic(value: number | never | NothingEnum.NOTHING);
   /** The alignment of small characters to the largest character in the line. */
   get characterAlignment(): CharacterAlignment | never;
-  set characterAlignment(value: CharacterAlignment | never);
+  set characterAlignment(value: CharacterAlignment | never | NothingEnum.NOTHING);
   /** The amount of horizontal character compression. */
   get tsume(): number | NothingEnum.NOTHING;
   set tsume(value: number | NothingEnum.NOTHING);
   /** The amount of space before each character. */
   get leadingAki(): number | never;
-  set leadingAki(value: number | never);
+  set leadingAki(value: number | never | NothingEnum.NOTHING);
   /** The amount of space after each character. */
   get trailingAki(): number | never;
-  set trailingAki(value: number | never);
+  set trailingAki(value: number | never | NothingEnum.NOTHING);
   /** The rotation angle (in degrees) of individual characters. Note: The rotation is counterclockwise. */
   get characterRotation(): number | never;
-  set characterRotation(value: number | never);
+  set characterRotation(value: number | never | NothingEnum.NOTHING);
   /** The number of grid squares in which to arrange the text. */
   get jidori(): number | NothingEnum.NOTHING;
   set jidori(value: number | NothingEnum.NOTHING);
@@ -1347,10 +1753,10 @@ export interface CharacterStyleAttributes {
   get tatechuyokoYOffset(): number | NothingEnum.NOTHING;
   set tatechuyokoYOffset(value: number | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of kenten characters. */
-  get kentenFillColor(): Swatch | NothingEnum.NOTHING;
+  get kentenFillColor(): Swatch | NothingEnum.NOTHING | null | string;
   set kentenFillColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of kenten characters. */
-  get kentenStrokeColor(): Swatch | NothingEnum.NOTHING;
+  get kentenStrokeColor(): Swatch | NothingEnum.NOTHING | null | string;
   set kentenStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
   /** The fill tint (as a percentage) of kenten characters. (Range: 0 to 100). */
   get kentenTint(): number | NothingEnum.NOTHING;
@@ -1380,7 +1786,7 @@ export interface CharacterStyleAttributes {
   get kentenPosition(): RubyKentenPosition | NothingEnum.NOTHING;
   set kentenPosition(value: RubyKentenPosition | NothingEnum.NOTHING);
   /** The font to use for kenten characters. */
-  get kentenFont(): Font | NothingEnum.NOTHING;
+  get kentenFont(): Font | NothingEnum.NOTHING | null | string;
   set kentenFont(value: Font | string | NothingEnum.NOTHING);
   /** The font style of kenten characters. */
   get kentenFontStyle(): string | NothingEnum.NOTHING;
@@ -1401,10 +1807,10 @@ export interface CharacterStyleAttributes {
   get kentenCharacterSet(): KentenCharacterSet | NothingEnum.NOTHING;
   set kentenCharacterSet(value: KentenCharacterSet | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of ruby characters. */
-  get rubyFill(): Swatch | NothingEnum.NOTHING;
+  get rubyFill(): Swatch | NothingEnum.NOTHING | null | string;
   set rubyFill(value: Swatch | string | NothingEnum.NOTHING);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of ruby characters. */
-  get rubyStroke(): Swatch | NothingEnum.NOTHING;
+  get rubyStroke(): Swatch | NothingEnum.NOTHING | null | string;
   set rubyStroke(value: Swatch | string | NothingEnum.NOTHING);
   /** The tint (as a percentage) of the ruby fill color. (Range: 0 to 100). */
   get rubyTint(): number | NothingEnum.NOTHING;
@@ -1422,7 +1828,7 @@ export interface CharacterStyleAttributes {
   get rubyStrokeTint(): number | NothingEnum.NOTHING;
   set rubyStrokeTint(value: number | NothingEnum.NOTHING);
   /** The font applied to ruby characters. */
-  get rubyFont(): Font | NothingEnum.NOTHING;
+  get rubyFont(): Font | NothingEnum.NOTHING | null | string;
   set rubyFont(value: Font | string | NothingEnum.NOTHING);
   /** The font style of ruby characters. */
   get rubyFontStyle(): string | NothingEnum.NOTHING;
@@ -1495,22 +1901,22 @@ export interface CharacterStyleAttributes {
   set warichuCharsBeforeBreak(value: number | NothingEnum.NOTHING);
   /** If true, kerns according to proportional CJK metrics in OpenType fonts. */
   get otfProportionalMetrics(): boolean | never;
-  set otfProportionalMetrics(value: boolean | never);
+  set otfProportionalMetrics(value: boolean | never | NothingEnum.NOTHING);
   /** If true, switches hiragana fonts, which have different glyphs for horizontal and vertical. */
   get otfHVKana(): boolean | NothingEnum.NOTHING;
   set otfHVKana(value: boolean | NothingEnum.NOTHING);
   /** If true, applies italics to half-width alphanumerics. */
   get otfRomanItalics(): boolean | never;
-  set otfRomanItalics(value: boolean | never);
+  set otfRomanItalics(value: boolean | never | NothingEnum.NOTHING);
   /** If true, the line changes size when characters are scaled. */
   get scaleAffectsLineHeight(): boolean | never;
-  set scaleAffectsLineHeight(value: boolean | never);
+  set scaleAffectsLineHeight(value: boolean | never | NothingEnum.NOTHING);
   /** If true, uses grid tracking to track non-Roman characters in CJK grids. */
   get cjkGridTracking(): boolean | NothingEnum.NOTHING;
   set cjkGridTracking(value: boolean | NothingEnum.NOTHING);
   /** The glyph variant to substitute for standard glyphs. */
   get glyphForm(): AlternateGlyphForms | never;
-  set glyphForm(value: AlternateGlyphForms | never);
+  set glyphForm(value: AlternateGlyphForms | never | NothingEnum.NOTHING);
   /** The number of digits included in auto tcy (tate-chuu-yoko) in ruby. */
   get rubyAutoTcyDigits(): number | NothingEnum.NOTHING;
   set rubyAutoTcyDigits(value: number | NothingEnum.NOTHING);
@@ -1522,6 +1928,409 @@ export interface CharacterStyleAttributes {
   set rubyAutoTcyAutoScale(value: boolean | NothingEnum.NOTHING);
 }
 
+/**
+ * Character formatting stored as a named **style definition**
+ * ({@link CharacterStyle}).
+ *
+ * Same attributes as {@link CharacterFormatAttributes}, but any attribute the
+ * style leaves unset reads back and accepts {@link NothingEnum.NOTHING}
+ * instead of a resolved value.
+ */
+export interface CharacterStyleAttributesPlural {
+  /**
+   * The applied font. Accepts a {@link Font} object or a font-family name as a
+   * `string`; pair with {@link fontStyle} to pick a specific style.
+   */
+  get appliedFont(): (Font | never | string | NothingEnum.NOTHING)[];
+  set appliedFont(value: Font | string | never | NothingEnum.NOTHING);
+  /** The name of the font style. */
+  get fontStyle(): (string | never)[];
+  set fontStyle(value: string | never | NothingEnum.NOTHING);
+  /** The type size. */
+  get pointSize(): (number | never)[];
+  set pointSize(value: MeasurementValue | never | NothingEnum.NOTHING);
+  /**
+   * The leading. A number is explicit leading; the {@link Leading} enumerator
+   * `AUTO` selects automatic leading.
+   */
+  get leading(): (number | Leading | never)[];
+  set leading(value: MeasurementValue | Leading | never | NothingEnum.NOTHING);
+  /** The type of pair kerning. */
+  get kerningMethod(): (KerningMethodName | never)[];
+  set kerningMethod(value: KerningMethodName | never | NothingEnum.NOTHING);
+  /** Tracking, in thousandths of an em, applied between characters. */
+  get tracking(): (number | never)[];
+  set tracking(value: number | never | NothingEnum.NOTHING);
+  /** Whether the text renders normally, as small caps, as all caps, or using the font's OpenType small-caps forms. See {@link Capitalization}. */
+  get capitalization(): (Capitalization | never)[];
+  set capitalization(value: Capitalization | never | NothingEnum.NOTHING);
+  /** The text position relative to the baseline. */
+  get position(): (Position | never)[];
+  set position(value: Position | never | NothingEnum.NOTHING);
+  /** If true, underlines the text. */
+  get underline(): (boolean | never)[];
+  set underline(value: boolean | never | NothingEnum.NOTHING);
+  /** If true, draws a strikethrough line through the text. */
+  get strikeThru(): (boolean | never)[];
+  set strikeThru(value: boolean | never | NothingEnum.NOTHING);
+  /** If `true`, substitutes ligature glyphs (e.g. `fi`, `fl`) where available. */
+  get ligatures(): (boolean | never)[];
+  set ligatures(value: boolean | never | NothingEnum.NOTHING);
+  /** If true, keeps the text on the same line. */
+  get noBreak(): (boolean | never)[];
+  set noBreak(value: boolean | never | NothingEnum.NOTHING);
+  /** The baseline shift applied to the text. */
+  get baselineShift(): (number | never)[];
+  set baselineShift(value: MeasurementValue | never | NothingEnum.NOTHING);
+  /** The figure style in OpenType fonts. */
+  get otfFigureStyle(): (OTFFigureStyle | never)[];
+  set otfFigureStyle(value: OTFFigureStyle | never | NothingEnum.NOTHING);
+  /** If true, uses ordinals in OpenType fonts. */
+  get otfOrdinal(): (boolean | never)[];
+  set otfOrdinal(value: boolean | never | NothingEnum.NOTHING);
+  /** If true, uses fractions in OpenType fonts. */
+  get otfFraction(): (boolean | never)[];
+  set otfFraction(value: boolean | never | NothingEnum.NOTHING);
+  /** If true, uses discretionary ligatures in OpenType fonts. */
+  get otfDiscretionaryLigature(): (boolean | never)[];
+  set otfDiscretionaryLigature(value: boolean | never | NothingEnum.NOTHING);
+  /** If true, uses titling forms in OpenType fonts. */
+  get otfTitling(): (boolean | never)[];
+  set otfTitling(value: boolean | never | NothingEnum.NOTHING);
+  /** If true, uses contextual alternate forms in OpenType fonts. */
+  get otfContextualAlternate(): (boolean | never)[];
+  set otfContextualAlternate(value: boolean | never | NothingEnum.NOTHING);
+  /** If true, uses swash forms in OpenType fonts. */
+  get otfSwash(): (boolean | never)[];
+  set otfSwash(value: boolean | never | NothingEnum.NOTHING);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the underline stroke. */
+  get underlineColor(): (Swatch | never | string | NothingEnum.NOTHING)[];
+  set underlineColor(value: Swatch | string | never | NothingEnum.NOTHING);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the underline stroke. Note: Valid when underline type is not solid. */
+  get underlineGapColor(): (Swatch | never | string | NothingEnum.NOTHING)[];
+  set underlineGapColor(value: Swatch | string | never | NothingEnum.NOTHING);
+  /** The underline stroke tint (as a percentage). (Range: 0 to 100). */
+  get underlineTint(): (number | never)[];
+  set underlineTint(value: number | never | NothingEnum.NOTHING);
+  /** The tint (as a percentage) of the gap color of the underline stroke. (Range: 0 to 100) Note: Valid when underline type is not solid. */
+  get underlineGapTint(): (number | never)[];
+  set underlineGapTint(value: number | never | NothingEnum.NOTHING);
+  /** If true, the underline stroke color will overprint. */
+  get underlineOverprint(): (boolean | never)[];
+  set underlineOverprint(value: boolean | never | NothingEnum.NOTHING);
+  /** If true, the gap color of the underline stroke will overprint. */
+  get underlineGapOverprint(): (boolean | never)[];
+  set underlineGapOverprint(value: boolean | never | NothingEnum.NOTHING);
+  /** The stroke type of the underline stroke. */
+  get underlineType(): (StrokeStyle | never | string | NothingEnum.NOTHING)[];
+  set underlineType(value: StrokeStyle | string | never | NothingEnum.NOTHING);
+  /** The amount by which to offset the underline from the text baseline. */
+  get underlineOffset(): (number | never)[];
+  set underlineOffset(value: MeasurementValue | never | NothingEnum.NOTHING);
+  /** The stroke weight of the underline stroke. */
+  get underlineWeight(): (number | never)[];
+  set underlineWeight(value: MeasurementValue | never | NothingEnum.NOTHING);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the strikethrough stroke. */
+  get strikeThroughColor(): (Swatch | never | string | NothingEnum.NOTHING)[];
+  set strikeThroughColor(value: Swatch | string | never | NothingEnum.NOTHING);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the strikethrough stroke. */
+  get strikeThroughGapColor(): (Swatch | never | string | NothingEnum.NOTHING)[];
+  set strikeThroughGapColor(value: Swatch | string | never | NothingEnum.NOTHING);
+  /** The tint (as a percentage) of the strikethrough stroke. (Range: 0 to 100). */
+  get strikeThroughTint(): (number | never)[];
+  set strikeThroughTint(value: number | never | NothingEnum.NOTHING);
+  /** The tint (as a percentage) of the strikethrough stroke gap color. (Range: 0 to 100) Note: Valid when strike through type is not solid. */
+  get strikeThroughGapTint(): (number | never)[];
+  set strikeThroughGapTint(value: number | never | NothingEnum.NOTHING);
+  /** If true, the strikethrough stroke will overprint. */
+  get strikeThroughOverprint(): (boolean | never)[];
+  set strikeThroughOverprint(value: boolean | never | NothingEnum.NOTHING);
+  /** If true, the gap color of the strikethrough stroke will overprint. Note: Valid when strike through type is not solid. */
+  get strikeThroughGapOverprint(): (boolean | never)[];
+  set strikeThroughGapOverprint(value: boolean | never | NothingEnum.NOTHING);
+  /** The stroke type of the strikethrough stroke. */
+  get strikeThroughType(): (StrokeStyle | never | string | NothingEnum.NOTHING)[];
+  set strikeThroughType(value: StrokeStyle | string | never | NothingEnum.NOTHING);
+  /** The amount by which to offset the strikethrough stroke from the text baseline. */
+  get strikeThroughOffset(): (number | never)[];
+  set strikeThroughOffset(value: MeasurementValue | never | NothingEnum.NOTHING);
+  /** The stroke weight of the strikethrough stroke. */
+  get strikeThroughWeight(): (number | never)[];
+  set strikeThroughWeight(value: MeasurementValue | never | NothingEnum.NOTHING);
+  /**
+   * The applied language / spelling dictionary. Accepts a
+   * {@link LanguageWithVendors} or {@link Language} object, or its name.
+   */
+  get appliedLanguage(): (LanguageWithVendors | Language | never | null)[];
+  set appliedLanguage(value: LanguageWithVendors | Language | string | never | NothingEnum.NOTHING);
+  /** Value of Design Axes. */
+  get designAxes(): (number[] | never)[];
+  set designAxes(value: number[] | never | NothingEnum.NOTHING);
+  /** If true, use a slashed zeroes in OpenType fonts. */
+  get otfSlashedZero(): (boolean | never)[];
+  set otfSlashedZero(value: boolean | never | NothingEnum.NOTHING);
+  /** If true, use historical forms in OpenType fonts. */
+  get otfHistorical(): (boolean | never)[];
+  set otfHistorical(value: boolean | never | NothingEnum.NOTHING);
+  /** The stylistic sets to use in OpenType fonts. */
+  get otfStylisticSets(): (number | never)[];
+  set otfStylisticSets(value: number | never | NothingEnum.NOTHING);
+  /** If true, uses mark positioning in OpenType fonts. */
+  get otfMark(): (boolean | never)[];
+  set otfMark(value: boolean | never | NothingEnum.NOTHING);
+  /** If true, uses localized forms in OpenType fonts. */
+  get otfLocale(): (boolean | never)[];
+  set otfLocale(value: boolean | never | NothingEnum.NOTHING);
+  /** Which contextual glyph form — initial, medial, final, or isolated — to use for connected scripts, or `CALCULATE` to derive it automatically. See {@link PositionalForms}. */
+  get positionalForm(): (PositionalForms | never)[];
+  set positionalForm(value: PositionalForms | never | NothingEnum.NOTHING);
+  /** If true, use overlapping swash forms in OpenType fonts. */
+  get otfOverlapSwash(): (boolean | never)[];
+  set otfOverlapSwash(value: boolean | never | NothingEnum.NOTHING);
+  /** If true, use stylistic alternate forms in OpenType fonts. */
+  get otfStylisticAlternate(): (boolean | never)[];
+  set otfStylisticAlternate(value: boolean | never | NothingEnum.NOTHING);
+  /** If true, use alternate justification forms in OpenType fonts. */
+  get otfJustificationAlternate(): (boolean | never)[];
+  set otfJustificationAlternate(value: boolean | never | NothingEnum.NOTHING);
+  /** If true, use stretched alternate forms in OpenType fonts. */
+  get otfStretchedAlternate(): (boolean | never)[];
+  set otfStretchedAlternate(value: boolean | never | NothingEnum.NOTHING);
+  /** The direction of the character. */
+  get characterDirection(): (CharacterDirectionOptions | never)[];
+  set characterDirection(value: CharacterDirectionOptions | never | NothingEnum.NOTHING);
+  /** The keyboard direction of the character. */
+  get keyboardDirection(): (CharacterDirectionOptions | never)[];
+  set keyboardDirection(value: CharacterDirectionOptions | never | NothingEnum.NOTHING);
+  /** Which digit glyphs — Arabic numerals, Hindi, Farsi, or another script's digits — render numbers in the text. See {@link DigitsTypeOptions}. */
+  get digitsType(): (DigitsTypeOptions | never)[];
+  set digitsType(value: DigitsTypeOptions | never | NothingEnum.NOTHING);
+  /** Use of Kashidas for justification. */
+  get kashidas(): (KashidasOptions | never)[];
+  set kashidas(value: KashidasOptions | never | NothingEnum.NOTHING);
+  /** Position of diacritical characters. */
+  get diacriticPosition(): (DiacriticPositionOptions | never)[];
+  set diacriticPosition(value: DiacriticPositionOptions | never | NothingEnum.NOTHING);
+  /** The x (horizontal) offset for diacritic adjustment. */
+  get xOffsetDiacritic(): (number | never)[];
+  set xOffsetDiacritic(value: number | never | NothingEnum.NOTHING);
+  /** The y (vertical) offset for diacritic adjustment. */
+  get yOffsetDiacritic(): (number | never)[];
+  set yOffsetDiacritic(value: number | never | NothingEnum.NOTHING);
+  /** The alignment of small characters to the largest character in the line. */
+  get characterAlignment(): (CharacterAlignment | never)[];
+  set characterAlignment(value: CharacterAlignment | never | NothingEnum.NOTHING);
+  /** The amount of horizontal character compression. */
+  get tsume(): (number | NothingEnum.NOTHING)[];
+  set tsume(value: number | NothingEnum.NOTHING);
+  /** The amount of space before each character. */
+  get leadingAki(): (number | never)[];
+  set leadingAki(value: number | never | NothingEnum.NOTHING);
+  /** The amount of space after each character. */
+  get trailingAki(): (number | never)[];
+  set trailingAki(value: number | never | NothingEnum.NOTHING);
+  /** The rotation angle (in degrees) of individual characters. Note: The rotation is counterclockwise. */
+  get characterRotation(): (number | never)[];
+  set characterRotation(value: number | never | NothingEnum.NOTHING);
+  /** The number of grid squares in which to arrange the text. */
+  get jidori(): (number | NothingEnum.NOTHING)[];
+  set jidori(value: number | NothingEnum.NOTHING);
+  /** The amount (as a percentage) of shatai obliquing to apply. */
+  get shataiMagnification(): (number | NothingEnum.NOTHING)[];
+  set shataiMagnification(value: number | NothingEnum.NOTHING);
+  /** The shatai lens angle (in degrees). */
+  get shataiDegreeAngle(): (number | NothingEnum.NOTHING)[];
+  set shataiDegreeAngle(value: number | NothingEnum.NOTHING);
+  /** If true, applies shatai rotation. */
+  get shataiAdjustRotation(): (boolean | NothingEnum.NOTHING)[];
+  set shataiAdjustRotation(value: boolean | NothingEnum.NOTHING);
+  /** If true, adjusts shatai tsume. */
+  get shataiAdjustTsume(): (boolean | NothingEnum.NOTHING)[];
+  set shataiAdjustTsume(value: boolean | NothingEnum.NOTHING);
+  /** If true, makes the character horizontal in vertical text. */
+  get tatechuyoko(): (boolean | NothingEnum.NOTHING)[];
+  set tatechuyoko(value: boolean | NothingEnum.NOTHING);
+  /** The horizontal offset for horizontal characters in vertical text. */
+  get tatechuyokoXOffset(): (number | NothingEnum.NOTHING)[];
+  set tatechuyokoXOffset(value: number | NothingEnum.NOTHING);
+  /** The vertical offset for horizontal characters in vertical text. */
+  get tatechuyokoYOffset(): (number | NothingEnum.NOTHING)[];
+  set tatechuyokoYOffset(value: number | NothingEnum.NOTHING);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of kenten characters. */
+  get kentenFillColor(): (Swatch | NothingEnum.NOTHING | null | string)[];
+  set kentenFillColor(value: Swatch | string | NothingEnum.NOTHING);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of kenten characters. */
+  get kentenStrokeColor(): (Swatch | NothingEnum.NOTHING | null | string)[];
+  set kentenStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
+  /** The fill tint (as a percentage) of kenten characters. (Range: 0 to 100). */
+  get kentenTint(): (number | NothingEnum.NOTHING)[];
+  set kentenTint(value: number | NothingEnum.NOTHING);
+  /** The stroke tint (as a percentage) of kenten characters. (Range: 0 to 100). */
+  get kentenStrokeTint(): (number | NothingEnum.NOTHING)[];
+  set kentenStrokeTint(value: number | NothingEnum.NOTHING);
+  /** The stroke weight (in points) of kenten characters. */
+  get kentenWeight(): (number | NothingEnum.NOTHING)[];
+  set kentenWeight(value: number | NothingEnum.NOTHING);
+  /** The method of overprinting the kenten fill. */
+  get kentenOverprintFill(): (AdornmentOverprint | NothingEnum.NOTHING)[];
+  set kentenOverprintFill(value: AdornmentOverprint | NothingEnum.NOTHING);
+  /** The method of overprinting the kenten stroke. */
+  get kentenOverprintStroke(): (AdornmentOverprint | NothingEnum.NOTHING)[];
+  set kentenOverprintStroke(value: AdornmentOverprint | NothingEnum.NOTHING);
+  /** The style of kenten characters. */
+  get kentenKind(): (KentenCharacter | NothingEnum.NOTHING)[];
+  set kentenKind(value: KentenCharacter | NothingEnum.NOTHING);
+  /** The distance between kenten characters and their parent characters. */
+  get kentenPlacement(): (number | NothingEnum.NOTHING)[];
+  set kentenPlacement(value: number | NothingEnum.NOTHING);
+  /** The alignment of kenten characters relative to the parent characters. */
+  get kentenAlignment(): (KentenAlignment | NothingEnum.NOTHING)[];
+  set kentenAlignment(value: KentenAlignment | NothingEnum.NOTHING);
+  /** The kenten position relative to the parent character. */
+  get kentenPosition(): (RubyKentenPosition | NothingEnum.NOTHING)[];
+  set kentenPosition(value: RubyKentenPosition | NothingEnum.NOTHING);
+  /** The font to use for kenten characters. */
+  get kentenFont(): (Font | NothingEnum.NOTHING | null | string)[];
+  set kentenFont(value: Font | string | NothingEnum.NOTHING);
+  /** The font style of kenten characters. */
+  get kentenFontStyle(): (string | NothingEnum.NOTHING)[];
+  set kentenFontStyle(value: string | NothingEnum.NOTHING);
+  /** The size (in points) of kenten characters. */
+  get kentenFontSize(): (number | NothingEnum.NOTHING)[];
+  set kentenFontSize(value: number | NothingEnum.NOTHING);
+  /** The horizontal size of kenten characters as a percent of the original size. */
+  get kentenXScale(): (number | NothingEnum.NOTHING)[];
+  set kentenXScale(value: number | NothingEnum.NOTHING);
+  /** The vertical size of kenten characters as a percent of the original size. */
+  get kentenYScale(): (number | NothingEnum.NOTHING)[];
+  set kentenYScale(value: number | NothingEnum.NOTHING);
+  /** The character used for kenten. Note: Valid only when kenten kind is custom. */
+  get kentenCustomCharacter(): (string | NothingEnum.NOTHING)[];
+  set kentenCustomCharacter(value: string | NothingEnum.NOTHING);
+  /** The character set used for the custom kenten character. Note: Valid only when kenten kind is custom. */
+  get kentenCharacterSet(): (KentenCharacterSet | NothingEnum.NOTHING)[];
+  set kentenCharacterSet(value: KentenCharacterSet | NothingEnum.NOTHING);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of ruby characters. */
+  get rubyFill(): (Swatch | NothingEnum.NOTHING | null | string)[];
+  set rubyFill(value: Swatch | string | NothingEnum.NOTHING);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of ruby characters. */
+  get rubyStroke(): (Swatch | NothingEnum.NOTHING | null | string)[];
+  set rubyStroke(value: Swatch | string | NothingEnum.NOTHING);
+  /** The tint (as a percentage) of the ruby fill color. (Range: 0 to 100). */
+  get rubyTint(): (number | NothingEnum.NOTHING)[];
+  set rubyTint(value: number | NothingEnum.NOTHING);
+  /** The stroke weight (in points) of ruby characters. */
+  get rubyWeight(): (number | NothingEnum.NOTHING)[];
+  set rubyWeight(value: number | NothingEnum.NOTHING);
+  /** The method of overprinting the ruby fill. */
+  get rubyOverprintFill(): (AdornmentOverprint | NothingEnum.NOTHING)[];
+  set rubyOverprintFill(value: AdornmentOverprint | NothingEnum.NOTHING);
+  /** The method of overprinting the ruby stroke. */
+  get rubyOverprintStroke(): (AdornmentOverprint | NothingEnum.NOTHING)[];
+  set rubyOverprintStroke(value: AdornmentOverprint | NothingEnum.NOTHING);
+  /** The stroke tint (as a percentage) of ruby characters. */
+  get rubyStrokeTint(): (number | NothingEnum.NOTHING)[];
+  set rubyStrokeTint(value: number | NothingEnum.NOTHING);
+  /** The font applied to ruby characters. */
+  get rubyFont(): (Font | NothingEnum.NOTHING | null | string)[];
+  set rubyFont(value: Font | string | NothingEnum.NOTHING);
+  /** The font style of ruby characters. */
+  get rubyFontStyle(): (string | NothingEnum.NOTHING)[];
+  set rubyFontStyle(value: string | NothingEnum.NOTHING);
+  /** The size (in points) of ruby characters. */
+  get rubyFontSize(): (number | NothingEnum.NOTHING)[];
+  set rubyFontSize(value: number | NothingEnum.NOTHING);
+  /** If true, uses OpenType Pro fonts for ruby. */
+  get rubyOpenTypePro(): (boolean | NothingEnum.NOTHING)[];
+  set rubyOpenTypePro(value: boolean | NothingEnum.NOTHING);
+  /** The horizontal size of ruby characters, specified as a percent of the original size. */
+  get rubyXScale(): (number | NothingEnum.NOTHING)[];
+  set rubyXScale(value: number | NothingEnum.NOTHING);
+  /** The vertical size of ruby characters, specified as a percent of the original size. */
+  get rubyYScale(): (number | NothingEnum.NOTHING)[];
+  set rubyYScale(value: number | NothingEnum.NOTHING);
+  /** Whether ruby is assigned once to the whole character group or individually per character. See {@link RubyTypes}. */
+  get rubyType(): (RubyTypes | NothingEnum.NOTHING)[];
+  set rubyType(value: RubyTypes | NothingEnum.NOTHING);
+  /** How the ruby text aligns relative to its parent characters — left, centered, right, justified, or one of the JIS/aki spacing variants. See {@link RubyAlignments}. */
+  get rubyAlignment(): (RubyAlignments | NothingEnum.NOTHING)[];
+  set rubyAlignment(value: RubyAlignments | NothingEnum.NOTHING);
+  /** The position of ruby characters relative to the parent text. */
+  get rubyPosition(): (RubyKentenPosition | NothingEnum.NOTHING)[];
+  set rubyPosition(value: RubyKentenPosition | NothingEnum.NOTHING);
+  /** The amount of horizontal space between ruby and parent characters. */
+  get rubyXOffset(): (number | NothingEnum.NOTHING)[];
+  set rubyXOffset(value: number | NothingEnum.NOTHING);
+  /** The amount of vertical space between ruby and parent characters. */
+  get rubyYOffset(): (number | NothingEnum.NOTHING)[];
+  set rubyYOffset(value: number | NothingEnum.NOTHING);
+  /** The ruby spacing relative to the parent text. */
+  get rubyParentSpacing(): (RubyParentSpacing | NothingEnum.NOTHING)[];
+  set rubyParentSpacing(value: RubyParentSpacing | NothingEnum.NOTHING);
+  /** If true, auto aligns ruby. */
+  get rubyAutoAlign(): (boolean | NothingEnum.NOTHING)[];
+  set rubyAutoAlign(value: boolean | NothingEnum.NOTHING);
+  /** If true, constrains ruby overhang to the specified amount. For information on specifying an amount, see ruby parent overhang amount. */
+  get rubyOverhang(): (boolean | NothingEnum.NOTHING)[];
+  set rubyOverhang(value: boolean | NothingEnum.NOTHING);
+  /** If true, automatically scales ruby to the specified percent of parent text size. For information on specifying a percent, see ruby parent scaling percent. */
+  get rubyAutoScaling(): (boolean | NothingEnum.NOTHING)[];
+  set rubyAutoScaling(value: boolean | NothingEnum.NOTHING);
+  /** The amount (as a percentage) to scale the parent text size to determine the ruby text size. */
+  get rubyParentScalingPercent(): (number | NothingEnum.NOTHING)[];
+  set rubyParentScalingPercent(value: number | NothingEnum.NOTHING);
+  /** The amount by which ruby characters can overhang the parent text. */
+  get rubyParentOverhangAmount(): (RubyOverhang | NothingEnum.NOTHING)[];
+  set rubyParentOverhangAmount(value: RubyOverhang | NothingEnum.NOTHING);
+  /** If true, turns on warichu. */
+  get warichu(): (boolean | NothingEnum.NOTHING)[];
+  set warichu(value: boolean | NothingEnum.NOTHING);
+  /** The amount (as a percentage) to scale parent text size to determine warichu size. */
+  get warichuSize(): (number | NothingEnum.NOTHING)[];
+  set warichuSize(value: number | NothingEnum.NOTHING);
+  /** The number of lines of warichu within a single normal line. */
+  get warichuLines(): (number | NothingEnum.NOTHING)[];
+  set warichuLines(value: number | NothingEnum.NOTHING);
+  /** The gap between lines of warichu characters. */
+  get warichuLineSpacing(): (number | NothingEnum.NOTHING)[];
+  set warichuLineSpacing(value: number | NothingEnum.NOTHING);
+  /** How warichu lines align within the text frame — automatic, left/center/right, or one of the justified variants. See {@link WarichuAlignment}. */
+  get warichuAlignment(): (WarichuAlignment | NothingEnum.NOTHING)[];
+  set warichuAlignment(value: WarichuAlignment | NothingEnum.NOTHING);
+  /** The minimum number of characters allowed after a line break. */
+  get warichuCharsAfterBreak(): (number | NothingEnum.NOTHING)[];
+  set warichuCharsAfterBreak(value: number | NothingEnum.NOTHING);
+  /** The minimum number of characters allowed before a line break. */
+  get warichuCharsBeforeBreak(): (number | NothingEnum.NOTHING)[];
+  set warichuCharsBeforeBreak(value: number | NothingEnum.NOTHING);
+  /** If true, kerns according to proportional CJK metrics in OpenType fonts. */
+  get otfProportionalMetrics(): (boolean | never)[];
+  set otfProportionalMetrics(value: boolean | never | NothingEnum.NOTHING);
+  /** If true, switches hiragana fonts, which have different glyphs for horizontal and vertical. */
+  get otfHVKana(): (boolean | NothingEnum.NOTHING)[];
+  set otfHVKana(value: boolean | NothingEnum.NOTHING);
+  /** If true, applies italics to half-width alphanumerics. */
+  get otfRomanItalics(): (boolean | never)[];
+  set otfRomanItalics(value: boolean | never | NothingEnum.NOTHING);
+  /** If true, the line changes size when characters are scaled. */
+  get scaleAffectsLineHeight(): (boolean | never)[];
+  set scaleAffectsLineHeight(value: boolean | never | NothingEnum.NOTHING);
+  /** If true, uses grid tracking to track non-Roman characters in CJK grids. */
+  get cjkGridTracking(): (boolean | NothingEnum.NOTHING)[];
+  set cjkGridTracking(value: boolean | NothingEnum.NOTHING);
+  /** The glyph variant to substitute for standard glyphs. */
+  get glyphForm(): (AlternateGlyphForms | never)[];
+  set glyphForm(value: AlternateGlyphForms | never | NothingEnum.NOTHING);
+  /** The number of digits included in auto tcy (tate-chuu-yoko) in ruby. */
+  get rubyAutoTcyDigits(): (number | NothingEnum.NOTHING)[];
+  set rubyAutoTcyDigits(value: number | NothingEnum.NOTHING);
+  /** If true, includes Roman characters in auto tcy (tate-chuu-yoko) in ruby. */
+  get rubyAutoTcyIncludeRoman(): (boolean | NothingEnum.NOTHING)[];
+  set rubyAutoTcyIncludeRoman(value: boolean | NothingEnum.NOTHING);
+  /** If true, automatically scales glyphs in auto tcy (tate-chuu-yoko) in ruby to fit one em. */
+  get rubyAutoTcyAutoScale(): (boolean | NothingEnum.NOTHING)[];
+  set rubyAutoTcyAutoScale(value: boolean | NothingEnum.NOTHING);
+}
 
 /** Paragraph-level formatting members shared by the live {@link ParagraphFormatAttributes} and style-definition {@link ParagraphStyleAttributes}. */
 export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never> {
@@ -1595,7 +2404,7 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   set paragraphShadingTint(value: number | NSet);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph shading. */
-  get paragraphShadingColor(): Read<M, Swatch>;
+  get paragraphShadingColor(): Read<M, Swatch | string>;
   set paragraphShadingColor(value: Swatch | string | NSet);
 
   /** If true, the paragraph border is on. */
@@ -1611,7 +2420,7 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   set paragraphBorderTint(value: number | NSet);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph stroke. */
-  get paragraphBorderColor(): Read<M, Swatch>;
+  get paragraphBorderColor(): Read<M, Swatch | string>;
   set paragraphBorderColor(value: Swatch | string | NSet);
 
   /** If true, the paragraph border gap will overprint. Note: Valid only when border type is not solid. */
@@ -1623,11 +2432,11 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   set paragraphBorderGapTint(value: number | NSet);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph border gap. Note: Valid only when the border type is not solid. */
-  get paragraphBorderGapColor(): Read<M, Swatch>;
+  get paragraphBorderGapColor(): Read<M, Swatch | string>;
   set paragraphBorderGapColor(value: Swatch | string | NSet);
 
   /** The type of the border for the paragraph. */
-  get paragraphBorderType(): Read<M, StrokeStyle>;
+  get paragraphBorderType(): Read<M, StrokeStyle | string>;
   set paragraphBorderType(value: StrokeStyle | string | NSet);
 
   /** The left line weight of the border of paragraph. */
@@ -1927,11 +2736,11 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   set ruleAboveWidth(value: RuleWidth | NSet);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule above. */
-  get ruleAboveColor(): Read<M, Swatch>;
+  get ruleAboveColor(): Read<M, Swatch | string>;
   set ruleAboveColor(value: Swatch | string | NSet);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule above. Note: Valid only when the paragraph rule above type is not solid. */
-  get ruleAboveGapColor(): Read<M, Swatch>;
+  get ruleAboveGapColor(): Read<M, Swatch | string>;
   set ruleAboveGapColor(value: Swatch | string | NSet);
 
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule. (Range: 0 to 100) Note: Valid only when the rule above type is not solid. */
@@ -1943,7 +2752,7 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   set ruleAboveGapOverprint(value: boolean | NSet);
 
   /** The stroke type of the rule above the paragraph. */
-  get ruleAboveType(): Read<M, StrokeStyle>;
+  get ruleAboveType(): Read<M, StrokeStyle | string>;
   set ruleAboveType(value: StrokeStyle | string | NSet);
 
   /** If true, applies a paragraph rule below. */
@@ -1975,11 +2784,11 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   set ruleBelowWidth(value: RuleWidth | NSet);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule below. */
-  get ruleBelowColor(): Read<M, Swatch>;
+  get ruleBelowColor(): Read<M, Swatch | string>;
   set ruleBelowColor(value: Swatch | string | NSet);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule below. Note: Valid only when the paragraph rule below type is not solid. */
-  get ruleBelowGapColor(): Read<M, Swatch>;
+  get ruleBelowGapColor(): Read<M, Swatch | string>;
   set ruleBelowGapColor(value: Swatch | string | NSet);
 
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule below. (Range: 0 to 100) Note: Valid only when the paragraph rule below type is not solid. */
@@ -1987,7 +2796,7 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   set ruleBelowGapTint(value: number | NSet);
 
   /** The stroke type of the rule below the paragraph. */
-  get ruleBelowType(): Read<M, StrokeStyle>;
+  get ruleBelowType(): Read<M, StrokeStyle | string>;
   set ruleBelowType(value: StrokeStyle | string | NSet);
 
   /** If true, allows hyphenation of capitalized words. */
@@ -2171,11 +2980,11 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   set bulletsAndNumberingListType(value: ListType | NSet);
 
   /** The character style to be used for the text after string. */
-  get bulletsCharacterStyle(): Read<M, CharacterStyle>;
+  get bulletsCharacterStyle(): Read<M, CharacterStyle | string>;
   set bulletsCharacterStyle(value: CharacterStyle | string | NSet);
 
   /** The character style to be used for the number string. */
-  get numberingCharacterStyle(): Read<M, CharacterStyle>;
+  get numberingCharacterStyle(): Read<M, CharacterStyle | string>;
   set numberingCharacterStyle(value: CharacterStyle | string | NSet);
 
   /** The number string expression for numbering. */
@@ -2187,7 +2996,7 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   set bulletsTextAfter(value: string | NSet);
 
   /** The list to be part of. */
-  get appliedNumberingList(): Read<M, NumberingList>;
+  get appliedNumberingList(): Read<M, NumberingList | string>;
   set appliedNumberingList(value: NumberingList | string | NSet);
 
   /** The level of the paragraph. */
@@ -2224,6 +3033,7 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   get numberingAlignment(): Read<M, ListAlignment>;
   set numberingAlignment(value: ListAlignment | NSet);
 }
+
 /**
  * Live paragraph-level formatting on a text range: indents, spacing,
  * justification, drop caps, rules, borders and shading, hyphenation,
@@ -2285,7 +3095,7 @@ export interface ParagraphFormatAttributes {
   get paragraphShadingTint(): number;
   set paragraphShadingTint(value: number | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph shading. */
-  get paragraphShadingColor(): Swatch;
+  get paragraphShadingColor(): Swatch | string;
   set paragraphShadingColor(value: Swatch | string | never);
   /** If true, the paragraph border is on. */
   get paragraphBorderOn(): boolean;
@@ -2297,7 +3107,7 @@ export interface ParagraphFormatAttributes {
   get paragraphBorderTint(): number;
   set paragraphBorderTint(value: number | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph stroke. */
-  get paragraphBorderColor(): Swatch;
+  get paragraphBorderColor(): Swatch | string;
   set paragraphBorderColor(value: Swatch | string | never);
   /** If true, the paragraph border gap will overprint. Note: Valid only when border type is not solid. */
   get paragraphBorderGapOverprint(): boolean;
@@ -2306,10 +3116,10 @@ export interface ParagraphFormatAttributes {
   get paragraphBorderGapTint(): number;
   set paragraphBorderGapTint(value: number | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph border gap. Note: Valid only when the border type is not solid. */
-  get paragraphBorderGapColor(): Swatch;
+  get paragraphBorderGapColor(): Swatch | string;
   set paragraphBorderGapColor(value: Swatch | string | never);
   /** The type of the border for the paragraph. */
-  get paragraphBorderType(): StrokeStyle;
+  get paragraphBorderType(): StrokeStyle | string;
   set paragraphBorderType(value: StrokeStyle | string | never);
   /** The left line weight of the border of paragraph. */
   get paragraphBorderLeftLineWeight(): number;
@@ -2538,10 +3348,10 @@ export interface ParagraphFormatAttributes {
   get ruleAboveWidth(): RuleWidth;
   set ruleAboveWidth(value: RuleWidth | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule above. */
-  get ruleAboveColor(): Swatch;
+  get ruleAboveColor(): Swatch | string;
   set ruleAboveColor(value: Swatch | string | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule above. Note: Valid only when the paragraph rule above type is not solid. */
-  get ruleAboveGapColor(): Swatch;
+  get ruleAboveGapColor(): Swatch | string;
   set ruleAboveGapColor(value: Swatch | string | never);
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule. (Range: 0 to 100) Note: Valid only when the rule above type is not solid. */
   get ruleAboveGapTint(): number;
@@ -2550,7 +3360,7 @@ export interface ParagraphFormatAttributes {
   get ruleAboveGapOverprint(): boolean;
   set ruleAboveGapOverprint(value: boolean | never);
   /** The stroke type of the rule above the paragraph. */
-  get ruleAboveType(): StrokeStyle;
+  get ruleAboveType(): StrokeStyle | string;
   set ruleAboveType(value: StrokeStyle | string | never);
   /** If true, applies a paragraph rule below. */
   get ruleBelow(): boolean;
@@ -2574,16 +3384,16 @@ export interface ParagraphFormatAttributes {
   get ruleBelowWidth(): RuleWidth;
   set ruleBelowWidth(value: RuleWidth | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule below. */
-  get ruleBelowColor(): Swatch;
+  get ruleBelowColor(): Swatch | string;
   set ruleBelowColor(value: Swatch | string | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule below. Note: Valid only when the paragraph rule below type is not solid. */
-  get ruleBelowGapColor(): Swatch;
+  get ruleBelowGapColor(): Swatch | string;
   set ruleBelowGapColor(value: Swatch | string | never);
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule below. (Range: 0 to 100) Note: Valid only when the paragraph rule below type is not solid. */
   get ruleBelowGapTint(): number;
   set ruleBelowGapTint(value: number | never);
   /** The stroke type of the rule below the paragraph. */
-  get ruleBelowType(): StrokeStyle;
+  get ruleBelowType(): StrokeStyle | string;
   set ruleBelowType(value: StrokeStyle | string | never);
   /** If true, allows hyphenation of capitalized words. */
   get hyphenateCapitalizedWords(): boolean;
@@ -2722,10 +3532,10 @@ export interface ParagraphFormatAttributes {
   get bulletsAndNumberingListType(): ListType;
   set bulletsAndNumberingListType(value: ListType | never);
   /** The character style to be used for the text after string. */
-  get bulletsCharacterStyle(): CharacterStyle;
+  get bulletsCharacterStyle(): CharacterStyle | string;
   set bulletsCharacterStyle(value: CharacterStyle | string | never);
   /** The character style to be used for the number string. */
-  get numberingCharacterStyle(): CharacterStyle;
+  get numberingCharacterStyle(): CharacterStyle | string;
   set numberingCharacterStyle(value: CharacterStyle | string | never);
   /** The number string expression for numbering. */
   get numberingExpression(): string;
@@ -2734,7 +3544,7 @@ export interface ParagraphFormatAttributes {
   get bulletsTextAfter(): string;
   set bulletsTextAfter(value: string | never);
   /** The list to be part of. */
-  get appliedNumberingList(): NumberingList;
+  get appliedNumberingList(): NumberingList | string;
   set appliedNumberingList(value: NumberingList | string | never);
   /** The level of the paragraph. */
   get numberingLevel(): number;
@@ -2762,6 +3572,547 @@ export interface ParagraphFormatAttributes {
   set bulletsAlignment(value: ListAlignment | never);
   /** The alignment of the number. */
   get numberingAlignment(): ListAlignment;
+  set numberingAlignment(value: ListAlignment | never);
+}
+
+/**
+ * Live paragraph-level formatting on a text range: indents, spacing,
+ * justification, drop caps, rules, borders and shading, hyphenation,
+ * bullets/numbering, nested styles, and tab stops.
+ *
+ * Resolves for any text range, even one shorter than a full paragraph.
+ * Applied alongside {@link CharacterFormatAttributes}; the style-definition
+ * twin is {@link ParagraphStyleAttributes}.
+ */
+export interface ParagraphFormatAttributesPlural {
+  /** The {@link Bullet} character used by the paragraph's bulleted list. */
+  readonly bulletChar: (Bullet)[];
+  /** The {@link NumberingRestartPolicy} governing when the paragraph's list numbering restarts. */
+  readonly numberingRestartPolicies: (NumberingRestartPolicy)[];
+  /** A collection of nested line styles. */
+  readonly nestedLineStyles: NestedLineStyles;
+  /** A collection of nested GREP styles. */
+  readonly nestedGrepStyles: NestedGrepStyles;
+  /** A collection of nested styles. */
+  readonly nestedStyles: NestedStyles;
+  /** A collection of tab stops. */
+  readonly tabStops: TabStops;
+  /** A collection of preferences objects. */
+  readonly preferences: Preferences;
+  /** The distance to offset the left edge of the paragraph. */
+  get paragraphShadingLeftOffset(): (number)[];
+  set paragraphShadingLeftOffset(value: MeasurementValue | never);
+  /** The distance to offset the right edge of the paragraph. */
+  get paragraphShadingRightOffset(): (number)[];
+  set paragraphShadingRightOffset(value: MeasurementValue | never);
+  /** The distance to offset the top edge of the paragraph. */
+  get paragraphShadingTopOffset(): (number)[];
+  set paragraphShadingTopOffset(value: MeasurementValue | never);
+  /** The distance to offset the bottom edge of the paragraph. */
+  get paragraphShadingBottomOffset(): (number)[];
+  set paragraphShadingBottomOffset(value: MeasurementValue | never);
+  /** The basis (text width or column width) used to calculate the width of the paragraph shading. */
+  get paragraphShadingWidth(): (ParagraphShadingWidthEnum)[];
+  set paragraphShadingWidth(value: ParagraphShadingWidthEnum | never);
+  /** The basis (cap height, ascent or baseline) used to calculate the top origin of the paragraph shading. */
+  get paragraphShadingTopOrigin(): (ParagraphShadingTopOriginEnum)[];
+  set paragraphShadingTopOrigin(value: ParagraphShadingTopOriginEnum | never);
+  /** The basis (descent or baseline) used to calculate the bottom origin of the paragraph shading. */
+  get paragraphShadingBottomOrigin(): (ParagraphShadingBottomOriginEnum)[];
+  set paragraphShadingBottomOrigin(value: ParagraphShadingBottomOriginEnum | never);
+  /** If true, forces the shading of the paragraph to be clipped with respect to frame shape. */
+  get paragraphShadingClipToFrame(): (boolean)[];
+  set paragraphShadingClipToFrame(value: boolean | never);
+  /** If true, suppress printing of the shading of the paragraph. */
+  get paragraphShadingSuppressPrinting(): (boolean)[];
+  set paragraphShadingSuppressPrinting(value: boolean | never);
+  /** If true, the paragraph shading is On. */
+  get paragraphShadingOn(): (boolean)[];
+  set paragraphShadingOn(value: boolean | never);
+  /** If true, the paragraph shading will overprint. */
+  get paragraphShadingOverprint(): (boolean)[];
+  set paragraphShadingOverprint(value: boolean | never);
+  /** The tint (as a percentage) of the paragraph shading. (Range: 0 to 100) */
+  get paragraphShadingTint(): (number)[];
+  set paragraphShadingTint(value: number | never);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph shading. */
+  get paragraphShadingColor(): (Swatch | string)[];
+  set paragraphShadingColor(value: Swatch | string | never);
+  /** If true, the paragraph border is on. */
+  get paragraphBorderOn(): (boolean)[];
+  set paragraphBorderOn(value: boolean | never);
+  /** If true, the paragraph border will overprint. */
+  get paragraphBorderOverprint(): (boolean)[];
+  set paragraphBorderOverprint(value: boolean | never);
+  /** The tint (as a percentage) of the paragraph stroke. (Range: 0 to 100) */
+  get paragraphBorderTint(): (number)[];
+  set paragraphBorderTint(value: number | never);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph stroke. */
+  get paragraphBorderColor(): (Swatch | string)[];
+  set paragraphBorderColor(value: Swatch | string | never);
+  /** If true, the paragraph border gap will overprint. Note: Valid only when border type is not solid. */
+  get paragraphBorderGapOverprint(): (boolean)[];
+  set paragraphBorderGapOverprint(value: boolean | never);
+  /** The tint (as a percentage) of the paragraph border gap. Note: Valid only when the border type is not solid. (Range: 0 to 100) */
+  get paragraphBorderGapTint(): (number)[];
+  set paragraphBorderGapTint(value: number | never);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph border gap. Note: Valid only when the border type is not solid. */
+  get paragraphBorderGapColor(): (Swatch | string)[];
+  set paragraphBorderGapColor(value: Swatch | string | never);
+  /** The type of the border for the paragraph. */
+  get paragraphBorderType(): (StrokeStyle | string)[];
+  set paragraphBorderType(value: StrokeStyle | string | never);
+  /** The left line weight of the border of paragraph. */
+  get paragraphBorderLeftLineWeight(): (number)[];
+  set paragraphBorderLeftLineWeight(value: MeasurementValue | never);
+  /** The top line weight of the border of paragraph. */
+  get paragraphBorderTopLineWeight(): (number)[];
+  set paragraphBorderTopLineWeight(value: MeasurementValue | never);
+  /** The right line weight of the border of paragraph. */
+  get paragraphBorderRightLineWeight(): (number)[];
+  set paragraphBorderRightLineWeight(value: MeasurementValue | never);
+  /** The bottom line weight of the border of paragraph. */
+  get paragraphBorderBottomLineWeight(): (number)[];
+  set paragraphBorderBottomLineWeight(value: MeasurementValue | never);
+  /** The end shape of an open path. */
+  get paragraphBorderStrokeEndCap(): (EndCap)[];
+  set paragraphBorderStrokeEndCap(value: EndCap | never);
+  /** The corner join applied to the ParagraphStyle. */
+  get paragraphBorderStrokeEndJoin(): (EndJoin)[];
+  set paragraphBorderStrokeEndJoin(value: EndJoin | never);
+  /** The radius in measurement units of the corner effect applied to the top left corner of rectangular shapes and all corners of non-rectangular shapes */
+  get paragraphShadingTopLeftCornerRadius(): (number)[];
+  set paragraphShadingTopLeftCornerRadius(value: MeasurementValue | never);
+  /**
+   * The corner shape applied to the top-left corner of a rectangular shading
+   * area, and to all corners of a non-rectangular one.
+   *
+   * A {@link CornerOptions} radius is set explicitly, unlike the rounded or
+   * beveled effect of a stroke's end join, which follows the stroke weight.
+   */
+  get paragraphShadingTopLeftCornerOption(): (CornerOptions)[];
+  set paragraphShadingTopLeftCornerOption(value: CornerOptions | never);
+  /** The radius in measurement units of the corner effect applied to the top right corner of rectangular shapes */
+  get paragraphShadingTopRightCornerRadius(): (number)[];
+  set paragraphShadingTopRightCornerRadius(value: MeasurementValue | never);
+  /** The shape to apply to the top right corner of rectangular shapes */
+  get paragraphShadingTopRightCornerOption(): (CornerOptions)[];
+  set paragraphShadingTopRightCornerOption(value: CornerOptions | never);
+  /** The radius in measurement units of the corner effect applied to the bottom left corner of rectangular shapes */
+  get paragraphShadingBottomLeftCornerRadius(): (number)[];
+  set paragraphShadingBottomLeftCornerRadius(value: MeasurementValue | never);
+  /** The shape to apply to the bottom left corner of rectangular shapes. */
+  get paragraphShadingBottomLeftCornerOption(): (CornerOptions)[];
+  set paragraphShadingBottomLeftCornerOption(value: CornerOptions | never);
+  /** The radius in measurement units of the corner effect applied to the bottom right corner of rectangular shapes */
+  get paragraphShadingBottomRightCornerRadius(): (number)[];
+  set paragraphShadingBottomRightCornerRadius(value: MeasurementValue | never);
+  /** The shape to apply to the bottom right corner of rectangular shapes. */
+  get paragraphShadingBottomRightCornerOption(): (CornerOptions)[];
+  set paragraphShadingBottomRightCornerOption(value: CornerOptions | never);
+  /** The radius in measurement units of the corner effect applied to the top left corner of rectangular shapes and all corners of non-rectangular shapes */
+  get paragraphBorderTopLeftCornerRadius(): (number)[];
+  set paragraphBorderTopLeftCornerRadius(value: MeasurementValue | never);
+  /**
+   * The corner shape applied to the top-left corner of a rectangular border,
+   * and to all corners of a non-rectangular one.
+   *
+   * Unlike {@link paragraphBorderStrokeEndJoin}, a {@link CornerOptions}
+   * radius is set explicitly rather than derived from the stroke weight.
+   */
+  get paragraphBorderTopLeftCornerOption(): (CornerOptions)[];
+  set paragraphBorderTopLeftCornerOption(value: CornerOptions | never);
+  /** The radius in measurement units of the corner effect applied to the top right corner of rectangular shapes */
+  get paragraphBorderTopRightCornerRadius(): (number)[];
+  set paragraphBorderTopRightCornerRadius(value: MeasurementValue | never);
+  /** The shape to apply to the top right corner of rectangular shapes */
+  get paragraphBorderTopRightCornerOption(): (CornerOptions)[];
+  set paragraphBorderTopRightCornerOption(value: CornerOptions | never);
+  /** The radius in measurement units of the corner effect applied to the bottom left corner of rectangular shapes */
+  get paragraphBorderBottomLeftCornerRadius(): (number)[];
+  set paragraphBorderBottomLeftCornerRadius(value: MeasurementValue | never);
+  /** The shape to apply to the bottom left corner of rectangular shapes. */
+  get paragraphBorderBottomLeftCornerOption(): (CornerOptions)[];
+  set paragraphBorderBottomLeftCornerOption(value: CornerOptions | never);
+  /** The radius in measurement units of the corner effect applied to the bottom right corner of rectangular shapes */
+  get paragraphBorderBottomRightCornerRadius(): (number)[];
+  set paragraphBorderBottomRightCornerRadius(value: MeasurementValue | never);
+  /** The shape to apply to the bottom right corner of rectangular shapes. */
+  get paragraphBorderBottomRightCornerOption(): (CornerOptions)[];
+  set paragraphBorderBottomRightCornerOption(value: CornerOptions | never);
+  /** The basis (text width or column width) used to calculate the width of the paragraph border. */
+  get paragraphBorderWidth(): (ParagraphBorderEnum)[];
+  set paragraphBorderWidth(value: ParagraphBorderEnum | never);
+  /** The basis (cap height, ascent or baseline) used to calculate the top origin of the paragraph border. */
+  get paragraphBorderTopOrigin(): (ParagraphBorderTopOriginEnum)[];
+  set paragraphBorderTopOrigin(value: ParagraphBorderTopOriginEnum | never);
+  /** The basis (descent or baseline) used to calculate the bottom origin of the paragraph border. */
+  get paragraphBorderBottomOrigin(): (ParagraphBorderBottomOriginEnum)[];
+  set paragraphBorderBottomOrigin(value: ParagraphBorderBottomOriginEnum | never);
+  /** The distance to offset the left edge of the paragraph border. */
+  get paragraphBorderLeftOffset(): (number)[];
+  set paragraphBorderLeftOffset(value: MeasurementValue | never);
+  /** The distance to offset the right edge of the paragraph border. */
+  get paragraphBorderRightOffset(): (number)[];
+  set paragraphBorderRightOffset(value: MeasurementValue | never);
+  /** The distance to offset the top edge of the paragraph border. */
+  get paragraphBorderTopOffset(): (number)[];
+  set paragraphBorderTopOffset(value: MeasurementValue | never);
+  /** The distance to offset the bottom edge of the paragraph border. */
+  get paragraphBorderBottomOffset(): (number)[];
+  set paragraphBorderBottomOffset(value: MeasurementValue | never);
+  /** If true, then paragraph border is also displayed at the points where the paragraph splits across frames or columns. */
+  get paragraphBorderDisplayIfSplits(): (boolean)[];
+  set paragraphBorderDisplayIfSplits(value: boolean | never);
+  /** The hyphenation style chosen for the provider. */
+  get providerHyphenationStyle(): (HyphenationStyleEnum)[];
+  set providerHyphenationStyle(value: HyphenationStyleEnum | never);
+  /** If true, consecutive para borders with completely similar properties are merged. */
+  get mergeConsecutiveParaBorders(): (boolean)[];
+  set mergeConsecutiveParaBorders(value: boolean | never);
+  /** The space between paragraphs using same style. */
+  get sameParaStyleSpacing(): (number | Spacing)[];
+  set sameParaStyleSpacing(value: MeasurementValue | Spacing | never);
+  /** Paragraph kashida width. 0 is none, 1 is short, 2 is medium, 3 is long */
+  get paragraphKashidaWidth(): (number)[];
+  set paragraphKashidaWidth(value: number | never);
+  /** If true, aligns the baseline of the text to the baseline grid. */
+  get alignToBaseline(): (boolean)[];
+  set alignToBaseline(value: boolean | never);
+  /** First-line indent, relative to {@link leftIndent}. Negative values hang. */
+  get firstLineIndent(): (number)[];
+  set firstLineIndent(value: MeasurementValue | never);
+  /** The width of the left indent. */
+  get leftIndent(): (number)[];
+  set leftIndent(value: MeasurementValue | never);
+  /** The width of the right indent. */
+  get rightIndent(): (number)[];
+  set rightIndent(value: MeasurementValue | never);
+  /** The height of the paragraph space above. */
+  get spaceBefore(): (number)[];
+  set spaceBefore(value: MeasurementValue | never);
+  /** The height of the paragraph space below. */
+  get spaceAfter(): (number)[];
+  set spaceAfter(value: MeasurementValue | never);
+  /**
+   * Balances ragged lines. `true` uses the default style; a
+   * {@link BalanceLinesStyle} value selects a specific style. Ignored by the
+   * single-line composer.
+   */
+  get balanceRaggedLines(): (boolean | BalanceLinesStyle)[];
+  set balanceRaggedLines(value: boolean | BalanceLinesStyle | never);
+  /** Horizontal alignment of the paragraph's lines. */
+  get justification(): (Justification)[];
+  set justification(value: Justification | never);
+  /** The alignment to use for lines that contain a single word. */
+  get singleWordJustification(): (SingleWordJustification)[];
+  set singleWordJustification(value: SingleWordJustification | never);
+  /** The percent of the type size to use for auto leading. (Range: 0 to 500). */
+  get autoLeading(): (number)[];
+  set autoLeading(value: number | never);
+  /** The number of lines to drop cap. */
+  get dropCapLines(): (number)[];
+  set dropCapLines(value: number | never);
+  /** The number of characters to drop cap. */
+  get dropCapCharacters(): (number)[];
+  set dropCapCharacters(value: number | never);
+  /** If true, keeps a specified number of lines together when the paragraph breaks across columns or text frames. */
+  get keepLinesTogether(): (boolean)[];
+  set keepLinesTogether(value: boolean | never);
+  /** If true, keeps all lines of the paragraph together. If false, allows paragraphs to break across pages or columns. */
+  get keepAllLinesTogether(): (boolean)[];
+  set keepAllLinesTogether(value: boolean | never);
+  /** The minimum number of lines to keep with the next paragraph. */
+  get keepWithNext(): (number)[];
+  set keepWithNext(value: number | never);
+  /** The minimum number of lines to keep together in a paragraph before allowing a page break. */
+  get keepFirstLines(): (number)[];
+  set keepFirstLines(value: number | never);
+  /** The minimum number of lines to keep together in a paragraph after a page break. */
+  get keepLastLines(): (number)[];
+  set keepLastLines(value: number | never);
+  /** The location at which to start the paragraph. */
+  get startParagraph(): (StartParagraph)[];
+  set startParagraph(value: StartParagraph | never);
+  /** The text composer to use to compose the text. */
+  get composer(): (ComposerName)[];
+  set composer(value: ComposerName | never);
+  /** The minimum word spacing, specified as a percentage of the font word space value. Note: Valid only when text is justified. (Range: 0 to 1000) */
+  get minimumWordSpacing(): (number)[];
+  set minimumWordSpacing(value: number | never);
+  /** The maximum word spacing, specified as a percentage of the font word space value. Note: Valid only when text is justified. (Range: 0 to 1000) */
+  get maximumWordSpacing(): (number)[];
+  set maximumWordSpacing(value: number | never);
+  /** The desired word spacing, specified as a percentage of the font word space value. (Range: 0 to 1000) */
+  get desiredWordSpacing(): (number)[];
+  set desiredWordSpacing(value: number | never);
+  /** The minimum letter spacing, specified as a percentage of the built-in space between letters in the font. (Range: -100 to 500) Note: Valid only when text is justified. */
+  get minimumLetterSpacing(): (number)[];
+  set minimumLetterSpacing(value: number | never);
+  /** The maximum letter spacing, specified as a percentage of the built-in space between letters in the font. (Range: -100 to 500) Note: Valid only when text is justified. */
+  get maximumLetterSpacing(): (number)[];
+  set maximumLetterSpacing(value: number | never);
+  /** The desired letter spacing, specified as a percentage of the built-in space between letters in the font. (Range: -100 to 500) */
+  get desiredLetterSpacing(): (number)[];
+  set desiredLetterSpacing(value: number | never);
+  /** The minimum width (as a percentage) of individual characters. (Range: 50 to 200) */
+  get minimumGlyphScaling(): (number)[];
+  set minimumGlyphScaling(value: number | never);
+  /** The maximum width (as a percentage) of individual characters. (Range: 50 to 200) */
+  get maximumGlyphScaling(): (number)[];
+  set maximumGlyphScaling(value: number | never);
+  /** The desired width (as a percentage) of individual characters. (Range: 50 to 200) */
+  get desiredGlyphScaling(): (number)[];
+  set desiredGlyphScaling(value: number | never);
+  /** If true, places a rule above the paragraph. */
+  get ruleAbove(): (boolean)[];
+  set ruleAbove(value: boolean | never);
+  /** If true, the paragraph rule above will overprint. */
+  get ruleAboveOverprint(): (boolean)[];
+  set ruleAboveOverprint(value: boolean | never);
+  /** The line weight of the rule above. */
+  get ruleAboveLineWeight(): (number)[];
+  set ruleAboveLineWeight(value: MeasurementValue | never);
+  /** The tint (as a percentage) of the paragraph rule above. (Range: 0 to 100) */
+  get ruleAboveTint(): (number)[];
+  set ruleAboveTint(value: number | never);
+  /** The amount to offset the paragraph rule above from the baseline of the first line the paragraph. */
+  get ruleAboveOffset(): (number)[];
+  set ruleAboveOffset(value: MeasurementValue | never);
+  /** The distance to indent the left edge of the paragraph rule above (based on either the text width or the column width of the first line in the paragraph. */
+  get ruleAboveLeftIndent(): (number)[];
+  set ruleAboveLeftIndent(value: MeasurementValue | never);
+  /** The distance to indent the right edge of the paragraph rule above (based on either the text width or the column width of the first line in the paragraph. */
+  get ruleAboveRightIndent(): (number)[];
+  set ruleAboveRightIndent(value: MeasurementValue | never);
+  /** The basis (text width or column width) used to calculate the width of the paragraph rule above. */
+  get ruleAboveWidth(): (RuleWidth)[];
+  set ruleAboveWidth(value: RuleWidth | never);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule above. */
+  get ruleAboveColor(): (Swatch | string)[];
+  set ruleAboveColor(value: Swatch | string | never);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule above. Note: Valid only when the paragraph rule above type is not solid. */
+  get ruleAboveGapColor(): (Swatch | string)[];
+  set ruleAboveGapColor(value: Swatch | string | never);
+  /** The tint (as a percentage) of the stroke gap color of the paragraph rule. (Range: 0 to 100) Note: Valid only when the rule above type is not solid. */
+  get ruleAboveGapTint(): (number)[];
+  set ruleAboveGapTint(value: number | never);
+  /** If true, the stroke gap of the paragraph rule above will overprint. Note: Valid only the rule above type is not solid. */
+  get ruleAboveGapOverprint(): (boolean)[];
+  set ruleAboveGapOverprint(value: boolean | never);
+  /** The stroke type of the rule above the paragraph. */
+  get ruleAboveType(): (StrokeStyle | string)[];
+  set ruleAboveType(value: StrokeStyle | string | never);
+  /** If true, applies a paragraph rule below. */
+  get ruleBelow(): (boolean)[];
+  set ruleBelow(value: boolean | never);
+  /** The line weight of the rule below. */
+  get ruleBelowLineWeight(): (number)[];
+  set ruleBelowLineWeight(value: MeasurementValue | never);
+  /** The tint (as a percentage) of the paragraph rule below. (Range: 0 to 100) */
+  get ruleBelowTint(): (number)[];
+  set ruleBelowTint(value: number | never);
+  /** The amount to offset the the paragraph rule below from the baseline of the last line of the paragraph. */
+  get ruleBelowOffset(): (number)[];
+  set ruleBelowOffset(value: MeasurementValue | never);
+  /** The distance to indent the left edge of the paragraph rule below (based on either the text width or the column width of the last line in the paragraph. */
+  get ruleBelowLeftIndent(): (number)[];
+  set ruleBelowLeftIndent(value: MeasurementValue | never);
+  /** The distance to indent the right edge of the paragraph rule below (based on either the text width or the column width of the last line in the paragraph. */
+  get ruleBelowRightIndent(): (number)[];
+  set ruleBelowRightIndent(value: MeasurementValue | never);
+  /** The basis (text width or column width) used to calculate the width of the paragraph rule below. */
+  get ruleBelowWidth(): (RuleWidth)[];
+  set ruleBelowWidth(value: RuleWidth | never);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule below. */
+  get ruleBelowColor(): (Swatch | string)[];
+  set ruleBelowColor(value: Swatch | string | never);
+  /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule below. Note: Valid only when the paragraph rule below type is not solid. */
+  get ruleBelowGapColor(): (Swatch | string)[];
+  set ruleBelowGapColor(value: Swatch | string | never);
+  /** The tint (as a percentage) of the stroke gap color of the paragraph rule below. (Range: 0 to 100) Note: Valid only when the paragraph rule below type is not solid. */
+  get ruleBelowGapTint(): (number)[];
+  set ruleBelowGapTint(value: number | never);
+  /** The stroke type of the rule below the paragraph. */
+  get ruleBelowType(): (StrokeStyle | string)[];
+  set ruleBelowType(value: StrokeStyle | string | never);
+  /** If true, allows hyphenation of capitalized words. */
+  get hyphenateCapitalizedWords(): (boolean)[];
+  set hyphenateCapitalizedWords(value: boolean | never);
+  /** If true, allows hyphenation. */
+  get hyphenation(): (boolean)[];
+  set hyphenation(value: boolean | never);
+  /** The minimum number of letters at the end of a word that can be broken by a hyphen. */
+  get hyphenateBeforeLast(): (number)[];
+  set hyphenateBeforeLast(value: number | never);
+  /** The minimum number of letters at the beginning of a word that can be broken by a hyphen. */
+  get hyphenateAfterFirst(): (number)[];
+  set hyphenateAfterFirst(value: number | never);
+  /** The minimum number of letters a word must have in order to qualify for hyphenation. */
+  get hyphenateWordsLongerThan(): (number)[];
+  set hyphenateWordsLongerThan(value: number | never);
+  /** The maximum number of hyphens that can appear on consecutive lines. To specify unlimited consecutive lines, use zero. */
+  get hyphenateLadderLimit(): (number)[];
+  set hyphenateLadderLimit(value: number | never);
+  /** The amount of white space allowed at the end of a line of non-justified text before hyphenation begins. Note: Valid when composer is single-line composer. */
+  get hyphenationZone(): (number)[];
+  set hyphenationZone(value: MeasurementValue | never);
+  /** The relative desirability of better spacing vs. fewer hyphens. A lower value results in greater use of hyphens. (Range: 0 to 100) */
+  get hyphenWeight(): (number)[];
+  set hyphenWeight(value: number | never);
+  /** The character style to apply to the drop cap. */
+  get dropCapStyle(): (CharacterStyle)[];
+  set dropCapStyle(value: CharacterStyle | string | never);
+  /** The amount to indent the last line in the paragraph. */
+  get lastLineIndent(): (number)[];
+  set lastLineIndent(value: MeasurementValue | never);
+  /** If true, allows hyphenation in the last word in a paragraph. Note: Valid only when hyphenation is true. */
+  get hyphenateLastWord(): (boolean)[];
+  set hyphenateLastWord(value: boolean | never);
+  /** If the first line in the paragraph should be kept with the last line of previous paragraph. */
+  get keepWithPrevious(): (boolean)[];
+  set keepWithPrevious(value: boolean | never);
+  /** The number of columns a paragraph spans or the number of split columns. */
+  get spanSplitColumnCount(): (number | SpanColumnCountOptions)[];
+  set spanSplitColumnCount(value: number | SpanColumnCountOptions | never);
+  /** Whether a paragraph should be a single column, span columns or split columns */
+  get spanColumnType(): (SpanColumnTypeOptions)[];
+  set spanColumnType(value: SpanColumnTypeOptions | never);
+  /** The inside gutter if the paragraph splits columns */
+  get splitColumnInsideGutter(): (number)[];
+  set splitColumnInsideGutter(value: MeasurementValue | never);
+  /** The outside gutter if the paragraph splits columns */
+  get splitColumnOutsideGutter(): (number)[];
+  set splitColumnOutsideGutter(value: MeasurementValue | never);
+  /** The minimum space before a span or a split column */
+  get spanColumnMinSpaceBefore(): (number)[];
+  set spanColumnMinSpaceBefore(value: MeasurementValue | never);
+  /** The minimum space after a span or a split column */
+  get spanColumnMinSpaceAfter(): (number)[];
+  set spanColumnMinSpaceAfter(value: MeasurementValue | never);
+  /** If true, the rule below will overprint. */
+  get ruleBelowOverprint(): (boolean)[];
+  set ruleBelowOverprint(value: boolean | never);
+  /** If true, the gap color of the rule below will overprint. */
+  get ruleBelowGapOverprint(): (boolean)[];
+  set ruleBelowGapOverprint(value: boolean | never);
+  /** Details about the drop cap based on the glyph outlines. 1 = left side bearing. 2 = descenders. 0x100,0x200,0x400 are used for Japanese frame grid. */
+  get dropcapDetail(): (number)[];
+  set dropcapDetail(value: number | never);
+  /** If true, allows the last word in a text column to be hyphenated. */
+  get hyphenateAcrossColumns(): (boolean)[];
+  set hyphenateAcrossColumns(value: boolean | never);
+  /** If true, forces the rule above the paragraph to remain in the frame bounds. Note: Valid only when rule above is true. */
+  get keepRuleAboveInFrame(): (boolean)[];
+  set keepRuleAboveInFrame(value: boolean | never);
+  /** If true, ignores optical edge alignment for the paragraph. */
+  get ignoreEdgeAlignment(): (boolean)[];
+  set ignoreEdgeAlignment(value: boolean | never);
+  /** Whether the paragraph reads left-to-right or right-to-left. */
+  get paragraphDirection(): (ParagraphDirectionOptions)[];
+  set paragraphDirection(value: ParagraphDirectionOptions | never);
+  /** The justification method for Arabic-script text — the default, or one of the Naskh/Kashida variants. See {@link ParagraphJustificationOptions}. */
+  get paragraphJustification(): (ParagraphJustificationOptions)[];
+  set paragraphJustification(value: ParagraphJustificationOptions | never);
+  /**
+   * The paragraph's tab stops, as an array of property-name/value pair arrays.
+   *
+   * Assigning replaces the whole list; there is no way to add a single stop
+   * through this property. The individual {@link TabStop} objects are reachable
+   * through {@link tabStops}.
+   */
+  get tabList(): (object[])[];
+  set tabList(value: PropertiesSetter<TabStop>[] | never);
+  /** If true, aligns only the first line to the frame grid or baseline grid. If false, aligns all lines to the grid. */
+  get gridAlignFirstLineOnly(): (boolean)[];
+  set gridAlignFirstLineOnly(value: boolean | never);
+  /** The alignment to the frame grid or baseline grid. */
+  get gridAlignment(): (GridAlignment)[];
+  set gridAlignment(value: GridAlignment | never);
+  /** The manual gyoudori setting. */
+  get gridGyoudori(): (number)[];
+  set gridGyoudori(value: number | never);
+  /** The number of half-width characters at or below which the characters automatically run horizontally in vertical text. */
+  get autoTcy(): (number)[];
+  set autoTcy(value: number | never);
+  /** If true, auto tcy includes Roman characters. */
+  get autoTcyIncludeRoman(): (boolean)[];
+  set autoTcyIncludeRoman(value: boolean | never);
+  /** The kinsoku set that determines legitimate line breaks. */
+  kinsokuSet: (KinsokuTable | KinsokuSet | string)[];
+  /** The type of kinsoku processing for preventing kinsoku characters from beginning or ending a line. Note: Valid only when a kinsoku set is defined. */
+  get kinsokuType(): (KinsokuType)[];
+  set kinsokuType(value: KinsokuType | never);
+  /** The type of hanging punctuation to allow. Note: Valid only when a kinsoku set is in effect. */
+  get kinsokuHangType(): (KinsokuHangTypes)[];
+  set kinsokuHangType(value: KinsokuHangTypes | never);
+  /** If true, adds the double period (..), ellipse (...), and double hyphen (--) to the selected kinsoku set. Note: Valid only when a kinsoku set is in effect. */
+  get bunriKinshi(): (boolean)[];
+  set bunriKinshi(value: boolean | never);
+  /** The mojikumi table. For information, see mojikumi table defaults. */
+  mojikumi: (MojikumiTable | string | MojikumiTableDefaults)[];
+  /** If true, disallows line breaks in numbers. If false, lines can break between digits in multi-digit numbers. */
+  get rensuuji(): (boolean)[];
+  set rensuuji(value: boolean | never);
+  /** If true, rotates Roman characters in vertical text. */
+  get rotateSingleByteCharacters(): (boolean)[];
+  set rotateSingleByteCharacters(value: boolean | never);
+  /** The point from which leading is measured from line to line. */
+  get leadingModel(): (LeadingModel)[];
+  set leadingModel(value: LeadingModel | never);
+  /** If true, the gyoudori mode applies to the entire paragraph. If false, the gyoudori mode applies to each line in the paragraph. */
+  get paragraphGyoudori(): (boolean)[];
+  set paragraphGyoudori(value: boolean | never);
+  /** If true, ideographic spaces will not wrap to the next line like text characters. */
+  get treatIdeographicSpaceAsSpace(): (boolean)[];
+  set treatIdeographicSpaceAsSpace(value: boolean | never);
+  /** If true, words unassociated with a hyphenation dictionary can break to the next line on any character. */
+  get allowArbitraryHyphenation(): (boolean)[];
+  set allowArbitraryHyphenation(value: boolean | never);
+  /** List type for bullets and numbering. */
+  get bulletsAndNumberingListType(): (ListType)[];
+  set bulletsAndNumberingListType(value: ListType | never);
+  /** The character style to be used for the text after string. */
+  get bulletsCharacterStyle(): (CharacterStyle | string)[];
+  set bulletsCharacterStyle(value: CharacterStyle | string | never);
+  /** The character style to be used for the number string. */
+  get numberingCharacterStyle(): (CharacterStyle | string)[];
+  set numberingCharacterStyle(value: CharacterStyle | string | never);
+  /** The number string expression for numbering. */
+  get numberingExpression(): (string)[];
+  set numberingExpression(value: string | never);
+  /** The text after string expression for bullets. */
+  get bulletsTextAfter(): (string)[];
+  set bulletsTextAfter(value: string | never);
+  /** The list to be part of. */
+  get appliedNumberingList(): (NumberingList | string)[];
+  set appliedNumberingList(value: NumberingList | string | never);
+  /** The level of the paragraph. */
+  get numberingLevel(): (number)[];
+  set numberingLevel(value: number | never);
+  /**
+   * The numeral or letter style for the number string.
+   *
+   * Accepts a {@link NumberingStyle} member, or the format template string InDesign stores
+   * for it — `I, II, III, IV...`, `$ID/(kanji) 1,2,3,4...`. The templates are tabulated on
+   * {@link NumberingStyle}.
+   */
+  get numberingFormat(): (NumberingStyle | string)[];
+  set numberingFormat(value: NumberingStyle | string | never);
+  /** Continue the numbering at this level. */
+  get numberingContinue(): (boolean)[];
+  set numberingContinue(value: boolean | never);
+  /** Determines starting number in a numbered list. */
+  get numberingStartAt(): (number)[];
+  set numberingStartAt(value: number | never);
+  /** If true, apply the numbering restart policy. */
+  get numberingApplyRestartPolicy(): (boolean)[];
+  set numberingApplyRestartPolicy(value: boolean | never);
+  /** The alignment of the bullet character. */
+  get bulletsAlignment(): (ListAlignment)[];
+  set bulletsAlignment(value: ListAlignment | never);
+  /** The alignment of the number. */
+  get numberingAlignment(): (ListAlignment)[];
   set numberingAlignment(value: ListAlignment | never);
 }
 
@@ -2824,7 +4175,7 @@ export interface ParagraphStyleAttributes {
   get paragraphShadingTint(): number;
   set paragraphShadingTint(value: number | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph shading. */
-  get paragraphShadingColor(): Swatch;
+  get paragraphShadingColor(): Swatch | string;
   set paragraphShadingColor(value: Swatch | string | never);
   /** If true, the paragraph border is on. */
   get paragraphBorderOn(): boolean;
@@ -2836,7 +4187,7 @@ export interface ParagraphStyleAttributes {
   get paragraphBorderTint(): number;
   set paragraphBorderTint(value: number | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph stroke. */
-  get paragraphBorderColor(): Swatch;
+  get paragraphBorderColor(): Swatch | string;
   set paragraphBorderColor(value: Swatch | string | never);
   /** If true, the paragraph border gap will overprint. Note: Valid only when border type is not solid. */
   get paragraphBorderGapOverprint(): boolean;
@@ -2845,10 +4196,10 @@ export interface ParagraphStyleAttributes {
   get paragraphBorderGapTint(): number;
   set paragraphBorderGapTint(value: number | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph border gap. Note: Valid only when the border type is not solid. */
-  get paragraphBorderGapColor(): Swatch;
+  get paragraphBorderGapColor(): Swatch | string;
   set paragraphBorderGapColor(value: Swatch | string | never);
   /** The type of the border for the paragraph. */
-  get paragraphBorderType(): StrokeStyle;
+  get paragraphBorderType(): StrokeStyle | string;
   set paragraphBorderType(value: StrokeStyle | string | never);
   /** The left line weight of the border of paragraph. */
   get paragraphBorderLeftLineWeight(): number;
@@ -3077,10 +4428,10 @@ export interface ParagraphStyleAttributes {
   get ruleAboveWidth(): RuleWidth;
   set ruleAboveWidth(value: RuleWidth | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule above. */
-  get ruleAboveColor(): Swatch;
+  get ruleAboveColor(): Swatch | string;
   set ruleAboveColor(value: Swatch | string | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule above. Note: Valid only when the paragraph rule above type is not solid. */
-  get ruleAboveGapColor(): Swatch;
+  get ruleAboveGapColor(): Swatch | string;
   set ruleAboveGapColor(value: Swatch | string | never);
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule. (Range: 0 to 100) Note: Valid only when the rule above type is not solid. */
   get ruleAboveGapTint(): number;
@@ -3089,7 +4440,7 @@ export interface ParagraphStyleAttributes {
   get ruleAboveGapOverprint(): boolean;
   set ruleAboveGapOverprint(value: boolean | never);
   /** The stroke type of the rule above the paragraph. */
-  get ruleAboveType(): StrokeStyle;
+  get ruleAboveType(): StrokeStyle | string;
   set ruleAboveType(value: StrokeStyle | string | never);
   /** If true, applies a paragraph rule below. */
   get ruleBelow(): boolean;
@@ -3113,16 +4464,16 @@ export interface ParagraphStyleAttributes {
   get ruleBelowWidth(): RuleWidth;
   set ruleBelowWidth(value: RuleWidth | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule below. */
-  get ruleBelowColor(): Swatch;
+  get ruleBelowColor(): Swatch | string;
   set ruleBelowColor(value: Swatch | string | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule below. Note: Valid only when the paragraph rule below type is not solid. */
-  get ruleBelowGapColor(): Swatch;
+  get ruleBelowGapColor(): Swatch | string;
   set ruleBelowGapColor(value: Swatch | string | never);
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule below. (Range: 0 to 100) Note: Valid only when the paragraph rule below type is not solid. */
   get ruleBelowGapTint(): number;
   set ruleBelowGapTint(value: number | never);
   /** The stroke type of the rule below the paragraph. */
-  get ruleBelowType(): StrokeStyle;
+  get ruleBelowType(): StrokeStyle | string;
   set ruleBelowType(value: StrokeStyle | string | never);
   /** If true, allows hyphenation of capitalized words. */
   get hyphenateCapitalizedWords(): boolean;
@@ -3261,10 +4612,10 @@ export interface ParagraphStyleAttributes {
   get bulletsAndNumberingListType(): ListType;
   set bulletsAndNumberingListType(value: ListType | never);
   /** The character style to be used for the text after string. */
-  get bulletsCharacterStyle(): CharacterStyle;
+  get bulletsCharacterStyle(): CharacterStyle | string;
   set bulletsCharacterStyle(value: CharacterStyle | string | never);
   /** The character style to be used for the number string. */
-  get numberingCharacterStyle(): CharacterStyle;
+  get numberingCharacterStyle(): CharacterStyle | string;
   set numberingCharacterStyle(value: CharacterStyle | string | never);
   /** The number string expression for numbering. */
   get numberingExpression(): string;
@@ -3273,7 +4624,7 @@ export interface ParagraphStyleAttributes {
   get bulletsTextAfter(): string;
   set bulletsTextAfter(value: string | never);
   /** The list to be part of. */
-  get appliedNumberingList(): NumberingList;
+  get appliedNumberingList(): NumberingList | string;
   set appliedNumberingList(value: NumberingList | string | never);
   /** The level of the paragraph. */
   get numberingLevel(): number;
@@ -3304,1362 +4655,12 @@ export interface ParagraphStyleAttributes {
   set numberingAlignment(value: ListAlignment | never);
 }
 
-
 /**
- * The broadcast proxy for {@link CharacterFormatAttributes} — what `everyItem()` returns.
+ * Paragraph formatting stored as a named **style definition**
+ * ({@link ParagraphStyle}).
  *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link CharacterFormatAttributes} there.
- */
-export interface CharacterFormatAttributesPlural {
-  /**
-   * The applied font. Accepts a {@link Font} object or a font-family name as a
-   * `string`; pair with {@link fontStyle} to pick a specific style.
-   */
-  get appliedFont(): (Font)[];
-  set appliedFont(value: Font | string);
-  /** The name of the font style. */
-  get fontStyle(): (string)[];
-  set fontStyle(value: string);
-  /** The type size. */
-  get pointSize(): (number)[];
-  set pointSize(value: MeasurementValue);
-  /**
-   * The leading. A number is explicit leading; the {@link Leading} enumerator
-   * `AUTO` selects automatic leading.
-   */
-  get leading(): (number | Leading)[];
-  set leading(value: MeasurementValue | Leading);
-  /** The type of pair kerning. */
-  get kerningMethod(): (KerningMethodName)[];
-  set kerningMethod(value: KerningMethodName);
-  /** Tracking, in thousandths of an em, applied between characters. */
-  get tracking(): (number)[];
-  set tracking(value: number);
-  /** Whether the text renders normally, as small caps, as all caps, or using the font's OpenType small-caps forms. See {@link Capitalization}. */
-  get capitalization(): (Capitalization)[];
-  set capitalization(value: Capitalization);
-  /** The text position relative to the baseline. */
-  get position(): (Position)[];
-  set position(value: Position);
-  /** If true, underlines the text. */
-  get underline(): (boolean)[];
-  set underline(value: boolean);
-  /** If true, draws a strikethrough line through the text. */
-  get strikeThru(): (boolean)[];
-  set strikeThru(value: boolean);
-  /** If `true`, substitutes ligature glyphs (e.g. `fi`, `fl`) where available. */
-  get ligatures(): (boolean)[];
-  set ligatures(value: boolean);
-  /** If true, keeps the text on the same line. */
-  get noBreak(): (boolean)[];
-  set noBreak(value: boolean);
-  /** The baseline shift applied to the text. */
-  get baselineShift(): (number)[];
-  set baselineShift(value: MeasurementValue);
-  /** The figure style in OpenType fonts. */
-  get otfFigureStyle(): (OTFFigureStyle)[];
-  set otfFigureStyle(value: OTFFigureStyle);
-  /** If true, uses ordinals in OpenType fonts. */
-  get otfOrdinal(): (boolean)[];
-  set otfOrdinal(value: boolean);
-  /** If true, uses fractions in OpenType fonts. */
-  get otfFraction(): (boolean)[];
-  set otfFraction(value: boolean);
-  /** If true, uses discretionary ligatures in OpenType fonts. */
-  get otfDiscretionaryLigature(): (boolean)[];
-  set otfDiscretionaryLigature(value: boolean);
-  /** If true, uses titling forms in OpenType fonts. */
-  get otfTitling(): (boolean)[];
-  set otfTitling(value: boolean);
-  /** If true, uses contextual alternate forms in OpenType fonts. */
-  get otfContextualAlternate(): (boolean)[];
-  set otfContextualAlternate(value: boolean);
-  /** If true, uses swash forms in OpenType fonts. */
-  get otfSwash(): (boolean)[];
-  set otfSwash(value: boolean);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the underline stroke. */
-  get underlineColor(): (Swatch)[];
-  set underlineColor(value: Swatch | string);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the underline stroke. Note: Valid when underline type is not solid. */
-  get underlineGapColor(): (Swatch)[];
-  set underlineGapColor(value: Swatch | string);
-  /** The underline stroke tint (as a percentage). (Range: 0 to 100). */
-  get underlineTint(): (number)[];
-  set underlineTint(value: number);
-  /** The tint (as a percentage) of the gap color of the underline stroke. (Range: 0 to 100) Note: Valid when underline type is not solid. */
-  get underlineGapTint(): (number)[];
-  set underlineGapTint(value: number);
-  /** If true, the underline stroke color will overprint. */
-  get underlineOverprint(): (boolean)[];
-  set underlineOverprint(value: boolean);
-  /** If true, the gap color of the underline stroke will overprint. */
-  get underlineGapOverprint(): (boolean)[];
-  set underlineGapOverprint(value: boolean);
-  /** The stroke type of the underline stroke. */
-  get underlineType(): (StrokeStyle)[];
-  set underlineType(value: StrokeStyle | string);
-  /** The amount by which to offset the underline from the text baseline. */
-  get underlineOffset(): (number)[];
-  set underlineOffset(value: MeasurementValue);
-  /** The stroke weight of the underline stroke. */
-  get underlineWeight(): (number)[];
-  set underlineWeight(value: MeasurementValue);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the strikethrough stroke. */
-  get strikeThroughColor(): (Swatch)[];
-  set strikeThroughColor(value: Swatch | string);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the strikethrough stroke. */
-  get strikeThroughGapColor(): (Swatch)[];
-  set strikeThroughGapColor(value: Swatch | string);
-  /** The tint (as a percentage) of the strikethrough stroke. (Range: 0 to 100). */
-  get strikeThroughTint(): (number)[];
-  set strikeThroughTint(value: number);
-  /** The tint (as a percentage) of the strikethrough stroke gap color. (Range: 0 to 100) Note: Valid when strike through type is not solid. */
-  get strikeThroughGapTint(): (number)[];
-  set strikeThroughGapTint(value: number);
-  /** If true, the strikethrough stroke will overprint. */
-  get strikeThroughOverprint(): (boolean)[];
-  set strikeThroughOverprint(value: boolean);
-  /** If true, the gap color of the strikethrough stroke will overprint. Note: Valid when strike through type is not solid. */
-  get strikeThroughGapOverprint(): (boolean)[];
-  set strikeThroughGapOverprint(value: boolean);
-  /** The stroke type of the strikethrough stroke. */
-  get strikeThroughType(): (StrokeStyle)[];
-  set strikeThroughType(value: StrokeStyle | string);
-  /** The amount by which to offset the strikethrough stroke from the text baseline. */
-  get strikeThroughOffset(): (number)[];
-  set strikeThroughOffset(value: MeasurementValue);
-  /** The stroke weight of the strikethrough stroke. */
-  get strikeThroughWeight(): (number)[];
-  set strikeThroughWeight(value: MeasurementValue);
-  /**
-   * The applied language / spelling dictionary. Accepts a
-   * {@link LanguageWithVendors} or {@link Language} object, or its name.
-   */
-  get appliedLanguage(): (LanguageWithVendors | Language)[];
-  set appliedLanguage(value: LanguageWithVendors | Language | string);
-  /** Value of Design Axes. */
-  get designAxes(): (number[])[];
-  set designAxes(value: number[]);
-  /** If true, use a slashed zeroes in OpenType fonts. */
-  get otfSlashedZero(): (boolean)[];
-  set otfSlashedZero(value: boolean);
-  /** If true, use historical forms in OpenType fonts. */
-  get otfHistorical(): (boolean)[];
-  set otfHistorical(value: boolean);
-  /** The stylistic sets to use in OpenType fonts. */
-  get otfStylisticSets(): (number)[];
-  set otfStylisticSets(value: number);
-  /** If true, uses mark positioning in OpenType fonts. */
-  get otfMark(): (boolean)[];
-  set otfMark(value: boolean);
-  /** If true, uses localized forms in OpenType fonts. */
-  get otfLocale(): (boolean)[];
-  set otfLocale(value: boolean);
-  /** Which contextual glyph form — initial, medial, final, or isolated — to use for connected scripts, or `CALCULATE` to derive it automatically. See {@link PositionalForms}. */
-  get positionalForm(): (PositionalForms)[];
-  set positionalForm(value: PositionalForms);
-  /** If true, use overlapping swash forms in OpenType fonts. */
-  get otfOverlapSwash(): (boolean)[];
-  set otfOverlapSwash(value: boolean);
-  /** If true, use stylistic alternate forms in OpenType fonts. */
-  get otfStylisticAlternate(): (boolean)[];
-  set otfStylisticAlternate(value: boolean);
-  /** If true, use alternate justification forms in OpenType fonts. */
-  get otfJustificationAlternate(): (boolean)[];
-  set otfJustificationAlternate(value: boolean);
-  /** If true, use stretched alternate forms in OpenType fonts. */
-  get otfStretchedAlternate(): (boolean)[];
-  set otfStretchedAlternate(value: boolean);
-  /** The direction of the character. */
-  get characterDirection(): (CharacterDirectionOptions)[];
-  set characterDirection(value: CharacterDirectionOptions);
-  /** The keyboard direction of the character. */
-  get keyboardDirection(): (CharacterDirectionOptions)[];
-  set keyboardDirection(value: CharacterDirectionOptions);
-  /** Which digit glyphs — Arabic numerals, Hindi, Farsi, or another script's digits — render numbers in the text. See {@link DigitsTypeOptions}. */
-  get digitsType(): (DigitsTypeOptions)[];
-  set digitsType(value: DigitsTypeOptions);
-  /** Use of Kashidas for justification. */
-  get kashidas(): (KashidasOptions)[];
-  set kashidas(value: KashidasOptions);
-  /** Position of diacritical characters. */
-  get diacriticPosition(): (DiacriticPositionOptions)[];
-  set diacriticPosition(value: DiacriticPositionOptions);
-  /** The x (horizontal) offset for diacritic adjustment. */
-  get xOffsetDiacritic(): (number)[];
-  set xOffsetDiacritic(value: number);
-  /** The y (vertical) offset for diacritic adjustment. */
-  get yOffsetDiacritic(): (number)[];
-  set yOffsetDiacritic(value: number);
-  /** The alignment of small characters to the largest character in the line. */
-  get characterAlignment(): (CharacterAlignment)[];
-  set characterAlignment(value: CharacterAlignment);
-  /** The amount of horizontal character compression. */
-  get tsume(): (number)[];
-  set tsume(value: number);
-  /** The amount of space before each character. */
-  get leadingAki(): (number)[];
-  set leadingAki(value: number);
-  /** The amount of space after each character. */
-  get trailingAki(): (number)[];
-  set trailingAki(value: number);
-  /** The rotation angle (in degrees) of individual characters. Note: The rotation is counterclockwise. */
-  get characterRotation(): (number)[];
-  set characterRotation(value: number);
-  /** The number of grid squares in which to arrange the text. */
-  get jidori(): (number)[];
-  set jidori(value: number);
-  /** The amount (as a percentage) of shatai obliquing to apply. */
-  get shataiMagnification(): (number)[];
-  set shataiMagnification(value: number);
-  /** The shatai lens angle (in degrees). */
-  get shataiDegreeAngle(): (number)[];
-  set shataiDegreeAngle(value: number);
-  /** If true, applies shatai rotation. */
-  get shataiAdjustRotation(): (boolean)[];
-  set shataiAdjustRotation(value: boolean);
-  /** If true, adjusts shatai tsume. */
-  get shataiAdjustTsume(): (boolean)[];
-  set shataiAdjustTsume(value: boolean);
-  /** If true, makes the character horizontal in vertical text. */
-  get tatechuyoko(): (boolean)[];
-  set tatechuyoko(value: boolean);
-  /** The horizontal offset for horizontal characters in vertical text. */
-  get tatechuyokoXOffset(): (number)[];
-  set tatechuyokoXOffset(value: number);
-  /** The vertical offset for horizontal characters in vertical text. */
-  get tatechuyokoYOffset(): (number)[];
-  set tatechuyokoYOffset(value: number);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of kenten characters. */
-  get kentenFillColor(): (Swatch)[];
-  set kentenFillColor(value: Swatch | string);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of kenten characters. */
-  get kentenStrokeColor(): (Swatch)[];
-  set kentenStrokeColor(value: Swatch | string);
-  /** The fill tint (as a percentage) of kenten characters. (Range: 0 to 100). */
-  get kentenTint(): (number)[];
-  set kentenTint(value: number);
-  /** The stroke tint (as a percentage) of kenten characters. (Range: 0 to 100). */
-  get kentenStrokeTint(): (number)[];
-  set kentenStrokeTint(value: number);
-  /** The stroke weight (in points) of kenten characters. */
-  get kentenWeight(): (number)[];
-  set kentenWeight(value: number);
-  /** The method of overprinting the kenten fill. */
-  get kentenOverprintFill(): (AdornmentOverprint)[];
-  set kentenOverprintFill(value: AdornmentOverprint);
-  /** The method of overprinting the kenten stroke. */
-  get kentenOverprintStroke(): (AdornmentOverprint)[];
-  set kentenOverprintStroke(value: AdornmentOverprint);
-  /** The style of kenten characters. */
-  get kentenKind(): (KentenCharacter)[];
-  set kentenKind(value: KentenCharacter);
-  /** The distance between kenten characters and their parent characters. */
-  get kentenPlacement(): (number)[];
-  set kentenPlacement(value: number);
-  /** The alignment of kenten characters relative to the parent characters. */
-  get kentenAlignment(): (KentenAlignment)[];
-  set kentenAlignment(value: KentenAlignment);
-  /** The kenten position relative to the parent character. */
-  get kentenPosition(): (RubyKentenPosition)[];
-  set kentenPosition(value: RubyKentenPosition);
-  /** The font to use for kenten characters. */
-  get kentenFont(): (Font)[];
-  set kentenFont(value: Font | string);
-  /** The font style of kenten characters. */
-  get kentenFontStyle(): (string)[];
-  set kentenFontStyle(value: string);
-  /** The size (in points) of kenten characters. */
-  get kentenFontSize(): (number)[];
-  set kentenFontSize(value: number);
-  /** The horizontal size of kenten characters as a percent of the original size. */
-  get kentenXScale(): (number)[];
-  set kentenXScale(value: number);
-  /** The vertical size of kenten characters as a percent of the original size. */
-  get kentenYScale(): (number)[];
-  set kentenYScale(value: number);
-  /** The character used for kenten. Note: Valid only when kenten kind is custom. */
-  get kentenCustomCharacter(): (string)[];
-  set kentenCustomCharacter(value: string);
-  /** The character set used for the custom kenten character. Note: Valid only when kenten kind is custom. */
-  get kentenCharacterSet(): (KentenCharacterSet)[];
-  set kentenCharacterSet(value: KentenCharacterSet);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of ruby characters. */
-  get rubyFill(): (Swatch)[];
-  set rubyFill(value: Swatch | string);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of ruby characters. */
-  get rubyStroke(): (Swatch)[];
-  set rubyStroke(value: Swatch | string);
-  /** The tint (as a percentage) of the ruby fill color. (Range: 0 to 100). */
-  get rubyTint(): (number)[];
-  set rubyTint(value: number);
-  /** The stroke weight (in points) of ruby characters. */
-  get rubyWeight(): (number)[];
-  set rubyWeight(value: number);
-  /** The method of overprinting the ruby fill. */
-  get rubyOverprintFill(): (AdornmentOverprint)[];
-  set rubyOverprintFill(value: AdornmentOverprint);
-  /** The method of overprinting the ruby stroke. */
-  get rubyOverprintStroke(): (AdornmentOverprint)[];
-  set rubyOverprintStroke(value: AdornmentOverprint);
-  /** The stroke tint (as a percentage) of ruby characters. */
-  get rubyStrokeTint(): (number)[];
-  set rubyStrokeTint(value: number);
-  /** The font applied to ruby characters. */
-  get rubyFont(): (Font)[];
-  set rubyFont(value: Font | string);
-  /** The font style of ruby characters. */
-  get rubyFontStyle(): (string)[];
-  set rubyFontStyle(value: string);
-  /** The size (in points) of ruby characters. */
-  get rubyFontSize(): (number)[];
-  set rubyFontSize(value: number);
-  /** If true, uses OpenType Pro fonts for ruby. */
-  get rubyOpenTypePro(): (boolean)[];
-  set rubyOpenTypePro(value: boolean);
-  /** The horizontal size of ruby characters, specified as a percent of the original size. */
-  get rubyXScale(): (number)[];
-  set rubyXScale(value: number);
-  /** The vertical size of ruby characters, specified as a percent of the original size. */
-  get rubyYScale(): (number)[];
-  set rubyYScale(value: number);
-  /** Whether ruby is assigned once to the whole character group or individually per character. See {@link RubyTypes}. */
-  get rubyType(): (RubyTypes)[];
-  set rubyType(value: RubyTypes);
-  /** How the ruby text aligns relative to its parent characters — left, centered, right, justified, or one of the JIS/aki spacing variants. See {@link RubyAlignments}. */
-  get rubyAlignment(): (RubyAlignments)[];
-  set rubyAlignment(value: RubyAlignments);
-  /** The position of ruby characters relative to the parent text. */
-  get rubyPosition(): (RubyKentenPosition)[];
-  set rubyPosition(value: RubyKentenPosition);
-  /** The amount of horizontal space between ruby and parent characters. */
-  get rubyXOffset(): (number)[];
-  set rubyXOffset(value: number);
-  /** The amount of vertical space between ruby and parent characters. */
-  get rubyYOffset(): (number)[];
-  set rubyYOffset(value: number);
-  /** The ruby spacing relative to the parent text. */
-  get rubyParentSpacing(): (RubyParentSpacing)[];
-  set rubyParentSpacing(value: RubyParentSpacing);
-  /** If true, auto aligns ruby. */
-  get rubyAutoAlign(): (boolean)[];
-  set rubyAutoAlign(value: boolean);
-  /** If true, constrains ruby overhang to the specified amount. For information on specifying an amount, see ruby parent overhang amount. */
-  get rubyOverhang(): (boolean)[];
-  set rubyOverhang(value: boolean);
-  /** If true, automatically scales ruby to the specified percent of parent text size. For information on specifying a percent, see ruby parent scaling percent. */
-  get rubyAutoScaling(): (boolean)[];
-  set rubyAutoScaling(value: boolean);
-  /** The amount (as a percentage) to scale the parent text size to determine the ruby text size. */
-  get rubyParentScalingPercent(): (number)[];
-  set rubyParentScalingPercent(value: number);
-  /** The amount by which ruby characters can overhang the parent text. */
-  get rubyParentOverhangAmount(): (RubyOverhang)[];
-  set rubyParentOverhangAmount(value: RubyOverhang);
-  /** If true, turns on warichu. */
-  get warichu(): (boolean)[];
-  set warichu(value: boolean);
-  /** The amount (as a percentage) to scale parent text size to determine warichu size. */
-  get warichuSize(): (number)[];
-  set warichuSize(value: number);
-  /** The number of lines of warichu within a single normal line. */
-  get warichuLines(): (number)[];
-  set warichuLines(value: number);
-  /** The gap between lines of warichu characters. */
-  get warichuLineSpacing(): (number)[];
-  set warichuLineSpacing(value: number);
-  /** How warichu lines align within the text frame — automatic, left/center/right, or one of the justified variants. See {@link WarichuAlignment}. */
-  get warichuAlignment(): (WarichuAlignment)[];
-  set warichuAlignment(value: WarichuAlignment);
-  /** The minimum number of characters allowed after a line break. */
-  get warichuCharsAfterBreak(): (number)[];
-  set warichuCharsAfterBreak(value: number);
-  /** The minimum number of characters allowed before a line break. */
-  get warichuCharsBeforeBreak(): (number)[];
-  set warichuCharsBeforeBreak(value: number);
-  /** If true, kerns according to proportional CJK metrics in OpenType fonts. */
-  get otfProportionalMetrics(): (boolean)[];
-  set otfProportionalMetrics(value: boolean);
-  /** If true, switches hiragana fonts, which have different glyphs for horizontal and vertical. */
-  get otfHVKana(): (boolean)[];
-  set otfHVKana(value: boolean);
-  /** If true, applies italics to half-width alphanumerics. */
-  get otfRomanItalics(): (boolean)[];
-  set otfRomanItalics(value: boolean);
-  /** If true, the line changes size when characters are scaled. */
-  get scaleAffectsLineHeight(): (boolean)[];
-  set scaleAffectsLineHeight(value: boolean);
-  /** If true, uses grid tracking to track non-Roman characters in CJK grids. */
-  get cjkGridTracking(): (boolean)[];
-  set cjkGridTracking(value: boolean);
-  /** The glyph variant to substitute for standard glyphs. */
-  get glyphForm(): (AlternateGlyphForms)[];
-  set glyphForm(value: AlternateGlyphForms);
-  /** The number of digits included in auto tcy (tate-chuu-yoko) in ruby. */
-  get rubyAutoTcyDigits(): (number)[];
-  set rubyAutoTcyDigits(value: number);
-  /** If true, includes Roman characters in auto tcy (tate-chuu-yoko) in ruby. */
-  get rubyAutoTcyIncludeRoman(): (boolean)[];
-  set rubyAutoTcyIncludeRoman(value: boolean);
-  /** If true, automatically scales glyphs in auto tcy (tate-chuu-yoko) in ruby to fit one em. */
-  get rubyAutoTcyAutoScale(): (boolean)[];
-  set rubyAutoTcyAutoScale(value: boolean);
-}
-
-/**
- * The broadcast proxy for {@link CharacterStyleAttributes} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link CharacterStyleAttributes} there.
- */
-export interface CharacterStyleAttributesPlural {
-  /**
-   * The applied font. Accepts a {@link Font} object or a font-family name as a
-   * `string`; pair with {@link fontStyle} to pick a specific style.
-   */
-  get appliedFont(): (Font | never)[];
-  set appliedFont(value: Font | string | never);
-  /** The name of the font style. */
-  get fontStyle(): (string | never)[];
-  set fontStyle(value: string | never);
-  /** The type size. */
-  get pointSize(): (number | never)[];
-  set pointSize(value: MeasurementValue | never);
-  /**
-   * The leading. A number is explicit leading; the {@link Leading} enumerator
-   * `AUTO` selects automatic leading.
-   */
-  get leading(): (number | Leading | never)[];
-  set leading(value: MeasurementValue | Leading | never);
-  /** The type of pair kerning. */
-  get kerningMethod(): (KerningMethodName | never)[];
-  set kerningMethod(value: KerningMethodName | never);
-  /** Tracking, in thousandths of an em, applied between characters. */
-  get tracking(): (number | never)[];
-  set tracking(value: number | never);
-  /** Whether the text renders normally, as small caps, as all caps, or using the font's OpenType small-caps forms. See {@link Capitalization}. */
-  get capitalization(): (Capitalization | never)[];
-  set capitalization(value: Capitalization | never);
-  /** The text position relative to the baseline. */
-  get position(): (Position | never)[];
-  set position(value: Position | never);
-  /** If true, underlines the text. */
-  get underline(): (boolean | never)[];
-  set underline(value: boolean | never);
-  /** If true, draws a strikethrough line through the text. */
-  get strikeThru(): (boolean | never)[];
-  set strikeThru(value: boolean | never);
-  /** If `true`, substitutes ligature glyphs (e.g. `fi`, `fl`) where available. */
-  get ligatures(): (boolean | never)[];
-  set ligatures(value: boolean | never);
-  /** If true, keeps the text on the same line. */
-  get noBreak(): (boolean | never)[];
-  set noBreak(value: boolean | never);
-  /** The baseline shift applied to the text. */
-  get baselineShift(): (number | never)[];
-  set baselineShift(value: MeasurementValue | never);
-  /** The figure style in OpenType fonts. */
-  get otfFigureStyle(): (OTFFigureStyle | never)[];
-  set otfFigureStyle(value: OTFFigureStyle | never);
-  /** If true, uses ordinals in OpenType fonts. */
-  get otfOrdinal(): (boolean | never)[];
-  set otfOrdinal(value: boolean | never);
-  /** If true, uses fractions in OpenType fonts. */
-  get otfFraction(): (boolean | never)[];
-  set otfFraction(value: boolean | never);
-  /** If true, uses discretionary ligatures in OpenType fonts. */
-  get otfDiscretionaryLigature(): (boolean | never)[];
-  set otfDiscretionaryLigature(value: boolean | never);
-  /** If true, uses titling forms in OpenType fonts. */
-  get otfTitling(): (boolean | never)[];
-  set otfTitling(value: boolean | never);
-  /** If true, uses contextual alternate forms in OpenType fonts. */
-  get otfContextualAlternate(): (boolean | never)[];
-  set otfContextualAlternate(value: boolean | never);
-  /** If true, uses swash forms in OpenType fonts. */
-  get otfSwash(): (boolean | never)[];
-  set otfSwash(value: boolean | never);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the underline stroke. */
-  get underlineColor(): (Swatch | never)[];
-  set underlineColor(value: Swatch | string | never);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the underline stroke. Note: Valid when underline type is not solid. */
-  get underlineGapColor(): (Swatch | never)[];
-  set underlineGapColor(value: Swatch | string | never);
-  /** The underline stroke tint (as a percentage). (Range: 0 to 100). */
-  get underlineTint(): (number | never)[];
-  set underlineTint(value: number | never);
-  /** The tint (as a percentage) of the gap color of the underline stroke. (Range: 0 to 100) Note: Valid when underline type is not solid. */
-  get underlineGapTint(): (number | never)[];
-  set underlineGapTint(value: number | never);
-  /** If true, the underline stroke color will overprint. */
-  get underlineOverprint(): (boolean | never)[];
-  set underlineOverprint(value: boolean | never);
-  /** If true, the gap color of the underline stroke will overprint. */
-  get underlineGapOverprint(): (boolean | never)[];
-  set underlineGapOverprint(value: boolean | never);
-  /** The stroke type of the underline stroke. */
-  get underlineType(): (StrokeStyle | never)[];
-  set underlineType(value: StrokeStyle | string | never);
-  /** The amount by which to offset the underline from the text baseline. */
-  get underlineOffset(): (number | never)[];
-  set underlineOffset(value: MeasurementValue | never);
-  /** The stroke weight of the underline stroke. */
-  get underlineWeight(): (number | never)[];
-  set underlineWeight(value: MeasurementValue | never);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the strikethrough stroke. */
-  get strikeThroughColor(): (Swatch | never)[];
-  set strikeThroughColor(value: Swatch | string | never);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the strikethrough stroke. */
-  get strikeThroughGapColor(): (Swatch | never)[];
-  set strikeThroughGapColor(value: Swatch | string | never);
-  /** The tint (as a percentage) of the strikethrough stroke. (Range: 0 to 100). */
-  get strikeThroughTint(): (number | never)[];
-  set strikeThroughTint(value: number | never);
-  /** The tint (as a percentage) of the strikethrough stroke gap color. (Range: 0 to 100) Note: Valid when strike through type is not solid. */
-  get strikeThroughGapTint(): (number | never)[];
-  set strikeThroughGapTint(value: number | never);
-  /** If true, the strikethrough stroke will overprint. */
-  get strikeThroughOverprint(): (boolean | never)[];
-  set strikeThroughOverprint(value: boolean | never);
-  /** If true, the gap color of the strikethrough stroke will overprint. Note: Valid when strike through type is not solid. */
-  get strikeThroughGapOverprint(): (boolean | never)[];
-  set strikeThroughGapOverprint(value: boolean | never);
-  /** The stroke type of the strikethrough stroke. */
-  get strikeThroughType(): (StrokeStyle | never)[];
-  set strikeThroughType(value: StrokeStyle | string | never);
-  /** The amount by which to offset the strikethrough stroke from the text baseline. */
-  get strikeThroughOffset(): (number | never)[];
-  set strikeThroughOffset(value: MeasurementValue | never);
-  /** The stroke weight of the strikethrough stroke. */
-  get strikeThroughWeight(): (number | never)[];
-  set strikeThroughWeight(value: MeasurementValue | never);
-  /**
-   * The applied language / spelling dictionary. Accepts a
-   * {@link LanguageWithVendors} or {@link Language} object, or its name.
-   */
-  get appliedLanguage(): (LanguageWithVendors | Language | never)[];
-  set appliedLanguage(value: LanguageWithVendors | Language | string | never);
-  /** Value of Design Axes. */
-  get designAxes(): (number[] | never)[];
-  set designAxes(value: number[] | never);
-  /** If true, use a slashed zeroes in OpenType fonts. */
-  get otfSlashedZero(): (boolean | never)[];
-  set otfSlashedZero(value: boolean | never);
-  /** If true, use historical forms in OpenType fonts. */
-  get otfHistorical(): (boolean | never)[];
-  set otfHistorical(value: boolean | never);
-  /** The stylistic sets to use in OpenType fonts. */
-  get otfStylisticSets(): (number | never)[];
-  set otfStylisticSets(value: number | never);
-  /** If true, uses mark positioning in OpenType fonts. */
-  get otfMark(): (boolean | never)[];
-  set otfMark(value: boolean | never);
-  /** If true, uses localized forms in OpenType fonts. */
-  get otfLocale(): (boolean | never)[];
-  set otfLocale(value: boolean | never);
-  /** Which contextual glyph form — initial, medial, final, or isolated — to use for connected scripts, or `CALCULATE` to derive it automatically. See {@link PositionalForms}. */
-  get positionalForm(): (PositionalForms | never)[];
-  set positionalForm(value: PositionalForms | never);
-  /** If true, use overlapping swash forms in OpenType fonts. */
-  get otfOverlapSwash(): (boolean | never)[];
-  set otfOverlapSwash(value: boolean | never);
-  /** If true, use stylistic alternate forms in OpenType fonts. */
-  get otfStylisticAlternate(): (boolean | never)[];
-  set otfStylisticAlternate(value: boolean | never);
-  /** If true, use alternate justification forms in OpenType fonts. */
-  get otfJustificationAlternate(): (boolean | never)[];
-  set otfJustificationAlternate(value: boolean | never);
-  /** If true, use stretched alternate forms in OpenType fonts. */
-  get otfStretchedAlternate(): (boolean | never)[];
-  set otfStretchedAlternate(value: boolean | never);
-  /** The direction of the character. */
-  get characterDirection(): (CharacterDirectionOptions | never)[];
-  set characterDirection(value: CharacterDirectionOptions | never);
-  /** The keyboard direction of the character. */
-  get keyboardDirection(): (CharacterDirectionOptions | never)[];
-  set keyboardDirection(value: CharacterDirectionOptions | never);
-  /** Which digit glyphs — Arabic numerals, Hindi, Farsi, or another script's digits — render numbers in the text. See {@link DigitsTypeOptions}. */
-  get digitsType(): (DigitsTypeOptions | never)[];
-  set digitsType(value: DigitsTypeOptions | never);
-  /** Use of Kashidas for justification. */
-  get kashidas(): (KashidasOptions | never)[];
-  set kashidas(value: KashidasOptions | never);
-  /** Position of diacritical characters. */
-  get diacriticPosition(): (DiacriticPositionOptions | never)[];
-  set diacriticPosition(value: DiacriticPositionOptions | never);
-  /** The x (horizontal) offset for diacritic adjustment. */
-  get xOffsetDiacritic(): (number | never)[];
-  set xOffsetDiacritic(value: number | never);
-  /** The y (vertical) offset for diacritic adjustment. */
-  get yOffsetDiacritic(): (number | never)[];
-  set yOffsetDiacritic(value: number | never);
-  /** The alignment of small characters to the largest character in the line. */
-  get characterAlignment(): (CharacterAlignment | never)[];
-  set characterAlignment(value: CharacterAlignment | never);
-  /** The amount of horizontal character compression. */
-  get tsume(): (number | NothingEnum.NOTHING)[];
-  set tsume(value: number | NothingEnum.NOTHING);
-  /** The amount of space before each character. */
-  get leadingAki(): (number | never)[];
-  set leadingAki(value: number | never);
-  /** The amount of space after each character. */
-  get trailingAki(): (number | never)[];
-  set trailingAki(value: number | never);
-  /** The rotation angle (in degrees) of individual characters. Note: The rotation is counterclockwise. */
-  get characterRotation(): (number | never)[];
-  set characterRotation(value: number | never);
-  /** The number of grid squares in which to arrange the text. */
-  get jidori(): (number | NothingEnum.NOTHING)[];
-  set jidori(value: number | NothingEnum.NOTHING);
-  /** The amount (as a percentage) of shatai obliquing to apply. */
-  get shataiMagnification(): (number | NothingEnum.NOTHING)[];
-  set shataiMagnification(value: number | NothingEnum.NOTHING);
-  /** The shatai lens angle (in degrees). */
-  get shataiDegreeAngle(): (number | NothingEnum.NOTHING)[];
-  set shataiDegreeAngle(value: number | NothingEnum.NOTHING);
-  /** If true, applies shatai rotation. */
-  get shataiAdjustRotation(): (boolean | NothingEnum.NOTHING)[];
-  set shataiAdjustRotation(value: boolean | NothingEnum.NOTHING);
-  /** If true, adjusts shatai tsume. */
-  get shataiAdjustTsume(): (boolean | NothingEnum.NOTHING)[];
-  set shataiAdjustTsume(value: boolean | NothingEnum.NOTHING);
-  /** If true, makes the character horizontal in vertical text. */
-  get tatechuyoko(): (boolean | NothingEnum.NOTHING)[];
-  set tatechuyoko(value: boolean | NothingEnum.NOTHING);
-  /** The horizontal offset for horizontal characters in vertical text. */
-  get tatechuyokoXOffset(): (number | NothingEnum.NOTHING)[];
-  set tatechuyokoXOffset(value: number | NothingEnum.NOTHING);
-  /** The vertical offset for horizontal characters in vertical text. */
-  get tatechuyokoYOffset(): (number | NothingEnum.NOTHING)[];
-  set tatechuyokoYOffset(value: number | NothingEnum.NOTHING);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of kenten characters. */
-  get kentenFillColor(): (Swatch | NothingEnum.NOTHING)[];
-  set kentenFillColor(value: Swatch | string | NothingEnum.NOTHING);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of kenten characters. */
-  get kentenStrokeColor(): (Swatch | NothingEnum.NOTHING)[];
-  set kentenStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
-  /** The fill tint (as a percentage) of kenten characters. (Range: 0 to 100). */
-  get kentenTint(): (number | NothingEnum.NOTHING)[];
-  set kentenTint(value: number | NothingEnum.NOTHING);
-  /** The stroke tint (as a percentage) of kenten characters. (Range: 0 to 100). */
-  get kentenStrokeTint(): (number | NothingEnum.NOTHING)[];
-  set kentenStrokeTint(value: number | NothingEnum.NOTHING);
-  /** The stroke weight (in points) of kenten characters. */
-  get kentenWeight(): (number | NothingEnum.NOTHING)[];
-  set kentenWeight(value: number | NothingEnum.NOTHING);
-  /** The method of overprinting the kenten fill. */
-  get kentenOverprintFill(): (AdornmentOverprint | NothingEnum.NOTHING)[];
-  set kentenOverprintFill(value: AdornmentOverprint | NothingEnum.NOTHING);
-  /** The method of overprinting the kenten stroke. */
-  get kentenOverprintStroke(): (AdornmentOverprint | NothingEnum.NOTHING)[];
-  set kentenOverprintStroke(value: AdornmentOverprint | NothingEnum.NOTHING);
-  /** The style of kenten characters. */
-  get kentenKind(): (KentenCharacter | NothingEnum.NOTHING)[];
-  set kentenKind(value: KentenCharacter | NothingEnum.NOTHING);
-  /** The distance between kenten characters and their parent characters. */
-  get kentenPlacement(): (number | NothingEnum.NOTHING)[];
-  set kentenPlacement(value: number | NothingEnum.NOTHING);
-  /** The alignment of kenten characters relative to the parent characters. */
-  get kentenAlignment(): (KentenAlignment | NothingEnum.NOTHING)[];
-  set kentenAlignment(value: KentenAlignment | NothingEnum.NOTHING);
-  /** The kenten position relative to the parent character. */
-  get kentenPosition(): (RubyKentenPosition | NothingEnum.NOTHING)[];
-  set kentenPosition(value: RubyKentenPosition | NothingEnum.NOTHING);
-  /** The font to use for kenten characters. */
-  get kentenFont(): (Font | NothingEnum.NOTHING)[];
-  set kentenFont(value: Font | string | NothingEnum.NOTHING);
-  /** The font style of kenten characters. */
-  get kentenFontStyle(): (string | NothingEnum.NOTHING)[];
-  set kentenFontStyle(value: string | NothingEnum.NOTHING);
-  /** The size (in points) of kenten characters. */
-  get kentenFontSize(): (number | NothingEnum.NOTHING)[];
-  set kentenFontSize(value: number | NothingEnum.NOTHING);
-  /** The horizontal size of kenten characters as a percent of the original size. */
-  get kentenXScale(): (number | NothingEnum.NOTHING)[];
-  set kentenXScale(value: number | NothingEnum.NOTHING);
-  /** The vertical size of kenten characters as a percent of the original size. */
-  get kentenYScale(): (number | NothingEnum.NOTHING)[];
-  set kentenYScale(value: number | NothingEnum.NOTHING);
-  /** The character used for kenten. Note: Valid only when kenten kind is custom. */
-  get kentenCustomCharacter(): (string | NothingEnum.NOTHING)[];
-  set kentenCustomCharacter(value: string | NothingEnum.NOTHING);
-  /** The character set used for the custom kenten character. Note: Valid only when kenten kind is custom. */
-  get kentenCharacterSet(): (KentenCharacterSet | NothingEnum.NOTHING)[];
-  set kentenCharacterSet(value: KentenCharacterSet | NothingEnum.NOTHING);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of ruby characters. */
-  get rubyFill(): (Swatch | NothingEnum.NOTHING)[];
-  set rubyFill(value: Swatch | string | NothingEnum.NOTHING);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of ruby characters. */
-  get rubyStroke(): (Swatch | NothingEnum.NOTHING)[];
-  set rubyStroke(value: Swatch | string | NothingEnum.NOTHING);
-  /** The tint (as a percentage) of the ruby fill color. (Range: 0 to 100). */
-  get rubyTint(): (number | NothingEnum.NOTHING)[];
-  set rubyTint(value: number | NothingEnum.NOTHING);
-  /** The stroke weight (in points) of ruby characters. */
-  get rubyWeight(): (number | NothingEnum.NOTHING)[];
-  set rubyWeight(value: number | NothingEnum.NOTHING);
-  /** The method of overprinting the ruby fill. */
-  get rubyOverprintFill(): (AdornmentOverprint | NothingEnum.NOTHING)[];
-  set rubyOverprintFill(value: AdornmentOverprint | NothingEnum.NOTHING);
-  /** The method of overprinting the ruby stroke. */
-  get rubyOverprintStroke(): (AdornmentOverprint | NothingEnum.NOTHING)[];
-  set rubyOverprintStroke(value: AdornmentOverprint | NothingEnum.NOTHING);
-  /** The stroke tint (as a percentage) of ruby characters. */
-  get rubyStrokeTint(): (number | NothingEnum.NOTHING)[];
-  set rubyStrokeTint(value: number | NothingEnum.NOTHING);
-  /** The font applied to ruby characters. */
-  get rubyFont(): (Font | NothingEnum.NOTHING)[];
-  set rubyFont(value: Font | string | NothingEnum.NOTHING);
-  /** The font style of ruby characters. */
-  get rubyFontStyle(): (string | NothingEnum.NOTHING)[];
-  set rubyFontStyle(value: string | NothingEnum.NOTHING);
-  /** The size (in points) of ruby characters. */
-  get rubyFontSize(): (number | NothingEnum.NOTHING)[];
-  set rubyFontSize(value: number | NothingEnum.NOTHING);
-  /** If true, uses OpenType Pro fonts for ruby. */
-  get rubyOpenTypePro(): (boolean | NothingEnum.NOTHING)[];
-  set rubyOpenTypePro(value: boolean | NothingEnum.NOTHING);
-  /** The horizontal size of ruby characters, specified as a percent of the original size. */
-  get rubyXScale(): (number | NothingEnum.NOTHING)[];
-  set rubyXScale(value: number | NothingEnum.NOTHING);
-  /** The vertical size of ruby characters, specified as a percent of the original size. */
-  get rubyYScale(): (number | NothingEnum.NOTHING)[];
-  set rubyYScale(value: number | NothingEnum.NOTHING);
-  /** Whether ruby is assigned once to the whole character group or individually per character. See {@link RubyTypes}. */
-  get rubyType(): (RubyTypes | NothingEnum.NOTHING)[];
-  set rubyType(value: RubyTypes | NothingEnum.NOTHING);
-  /** How the ruby text aligns relative to its parent characters — left, centered, right, justified, or one of the JIS/aki spacing variants. See {@link RubyAlignments}. */
-  get rubyAlignment(): (RubyAlignments | NothingEnum.NOTHING)[];
-  set rubyAlignment(value: RubyAlignments | NothingEnum.NOTHING);
-  /** The position of ruby characters relative to the parent text. */
-  get rubyPosition(): (RubyKentenPosition | NothingEnum.NOTHING)[];
-  set rubyPosition(value: RubyKentenPosition | NothingEnum.NOTHING);
-  /** The amount of horizontal space between ruby and parent characters. */
-  get rubyXOffset(): (number | NothingEnum.NOTHING)[];
-  set rubyXOffset(value: number | NothingEnum.NOTHING);
-  /** The amount of vertical space between ruby and parent characters. */
-  get rubyYOffset(): (number | NothingEnum.NOTHING)[];
-  set rubyYOffset(value: number | NothingEnum.NOTHING);
-  /** The ruby spacing relative to the parent text. */
-  get rubyParentSpacing(): (RubyParentSpacing | NothingEnum.NOTHING)[];
-  set rubyParentSpacing(value: RubyParentSpacing | NothingEnum.NOTHING);
-  /** If true, auto aligns ruby. */
-  get rubyAutoAlign(): (boolean | NothingEnum.NOTHING)[];
-  set rubyAutoAlign(value: boolean | NothingEnum.NOTHING);
-  /** If true, constrains ruby overhang to the specified amount. For information on specifying an amount, see ruby parent overhang amount. */
-  get rubyOverhang(): (boolean | NothingEnum.NOTHING)[];
-  set rubyOverhang(value: boolean | NothingEnum.NOTHING);
-  /** If true, automatically scales ruby to the specified percent of parent text size. For information on specifying a percent, see ruby parent scaling percent. */
-  get rubyAutoScaling(): (boolean | NothingEnum.NOTHING)[];
-  set rubyAutoScaling(value: boolean | NothingEnum.NOTHING);
-  /** The amount (as a percentage) to scale the parent text size to determine the ruby text size. */
-  get rubyParentScalingPercent(): (number | NothingEnum.NOTHING)[];
-  set rubyParentScalingPercent(value: number | NothingEnum.NOTHING);
-  /** The amount by which ruby characters can overhang the parent text. */
-  get rubyParentOverhangAmount(): (RubyOverhang | NothingEnum.NOTHING)[];
-  set rubyParentOverhangAmount(value: RubyOverhang | NothingEnum.NOTHING);
-  /** If true, turns on warichu. */
-  get warichu(): (boolean | NothingEnum.NOTHING)[];
-  set warichu(value: boolean | NothingEnum.NOTHING);
-  /** The amount (as a percentage) to scale parent text size to determine warichu size. */
-  get warichuSize(): (number | NothingEnum.NOTHING)[];
-  set warichuSize(value: number | NothingEnum.NOTHING);
-  /** The number of lines of warichu within a single normal line. */
-  get warichuLines(): (number | NothingEnum.NOTHING)[];
-  set warichuLines(value: number | NothingEnum.NOTHING);
-  /** The gap between lines of warichu characters. */
-  get warichuLineSpacing(): (number | NothingEnum.NOTHING)[];
-  set warichuLineSpacing(value: number | NothingEnum.NOTHING);
-  /** How warichu lines align within the text frame — automatic, left/center/right, or one of the justified variants. See {@link WarichuAlignment}. */
-  get warichuAlignment(): (WarichuAlignment | NothingEnum.NOTHING)[];
-  set warichuAlignment(value: WarichuAlignment | NothingEnum.NOTHING);
-  /** The minimum number of characters allowed after a line break. */
-  get warichuCharsAfterBreak(): (number | NothingEnum.NOTHING)[];
-  set warichuCharsAfterBreak(value: number | NothingEnum.NOTHING);
-  /** The minimum number of characters allowed before a line break. */
-  get warichuCharsBeforeBreak(): (number | NothingEnum.NOTHING)[];
-  set warichuCharsBeforeBreak(value: number | NothingEnum.NOTHING);
-  /** If true, kerns according to proportional CJK metrics in OpenType fonts. */
-  get otfProportionalMetrics(): (boolean | never)[];
-  set otfProportionalMetrics(value: boolean | never);
-  /** If true, switches hiragana fonts, which have different glyphs for horizontal and vertical. */
-  get otfHVKana(): (boolean | NothingEnum.NOTHING)[];
-  set otfHVKana(value: boolean | NothingEnum.NOTHING);
-  /** If true, applies italics to half-width alphanumerics. */
-  get otfRomanItalics(): (boolean | never)[];
-  set otfRomanItalics(value: boolean | never);
-  /** If true, the line changes size when characters are scaled. */
-  get scaleAffectsLineHeight(): (boolean | never)[];
-  set scaleAffectsLineHeight(value: boolean | never);
-  /** If true, uses grid tracking to track non-Roman characters in CJK grids. */
-  get cjkGridTracking(): (boolean | NothingEnum.NOTHING)[];
-  set cjkGridTracking(value: boolean | NothingEnum.NOTHING);
-  /** The glyph variant to substitute for standard glyphs. */
-  get glyphForm(): (AlternateGlyphForms | never)[];
-  set glyphForm(value: AlternateGlyphForms | never);
-  /** The number of digits included in auto tcy (tate-chuu-yoko) in ruby. */
-  get rubyAutoTcyDigits(): (number | NothingEnum.NOTHING)[];
-  set rubyAutoTcyDigits(value: number | NothingEnum.NOTHING);
-  /** If true, includes Roman characters in auto tcy (tate-chuu-yoko) in ruby. */
-  get rubyAutoTcyIncludeRoman(): (boolean | NothingEnum.NOTHING)[];
-  set rubyAutoTcyIncludeRoman(value: boolean | NothingEnum.NOTHING);
-  /** If true, automatically scales glyphs in auto tcy (tate-chuu-yoko) in ruby to fit one em. */
-  get rubyAutoTcyAutoScale(): (boolean | NothingEnum.NOTHING)[];
-  set rubyAutoTcyAutoScale(value: boolean | NothingEnum.NOTHING);
-}
-
-/**
- * The broadcast proxy for {@link ParagraphFormatAttributes} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link ParagraphFormatAttributes} there.
- */
-export interface ParagraphFormatAttributesPlural {
-  /** The {@link Bullet} character used by the paragraph's bulleted list. */
-  readonly bulletChar: (Bullet)[];
-  /** The {@link NumberingRestartPolicy} governing when the paragraph's list numbering restarts. */
-  readonly numberingRestartPolicies: (NumberingRestartPolicy)[];
-  /** A collection of nested line styles. */
-  readonly nestedLineStyles: NestedLineStyles;
-  /** A collection of nested GREP styles. */
-  readonly nestedGrepStyles: NestedGrepStyles;
-  /** A collection of nested styles. */
-  readonly nestedStyles: NestedStyles;
-  /** A collection of tab stops. */
-  readonly tabStops: TabStops;
-  /** A collection of preferences objects. */
-  readonly preferences: Preferences;
-  /** The distance to offset the left edge of the paragraph. */
-  get paragraphShadingLeftOffset(): (number)[];
-  set paragraphShadingLeftOffset(value: MeasurementValue | never);
-  /** The distance to offset the right edge of the paragraph. */
-  get paragraphShadingRightOffset(): (number)[];
-  set paragraphShadingRightOffset(value: MeasurementValue | never);
-  /** The distance to offset the top edge of the paragraph. */
-  get paragraphShadingTopOffset(): (number)[];
-  set paragraphShadingTopOffset(value: MeasurementValue | never);
-  /** The distance to offset the bottom edge of the paragraph. */
-  get paragraphShadingBottomOffset(): (number)[];
-  set paragraphShadingBottomOffset(value: MeasurementValue | never);
-  /** The basis (text width or column width) used to calculate the width of the paragraph shading. */
-  get paragraphShadingWidth(): (ParagraphShadingWidthEnum)[];
-  set paragraphShadingWidth(value: ParagraphShadingWidthEnum | never);
-  /** The basis (cap height, ascent or baseline) used to calculate the top origin of the paragraph shading. */
-  get paragraphShadingTopOrigin(): (ParagraphShadingTopOriginEnum)[];
-  set paragraphShadingTopOrigin(value: ParagraphShadingTopOriginEnum | never);
-  /** The basis (descent or baseline) used to calculate the bottom origin of the paragraph shading. */
-  get paragraphShadingBottomOrigin(): (ParagraphShadingBottomOriginEnum)[];
-  set paragraphShadingBottomOrigin(value: ParagraphShadingBottomOriginEnum | never);
-  /** If true, forces the shading of the paragraph to be clipped with respect to frame shape. */
-  get paragraphShadingClipToFrame(): (boolean)[];
-  set paragraphShadingClipToFrame(value: boolean | never);
-  /** If true, suppress printing of the shading of the paragraph. */
-  get paragraphShadingSuppressPrinting(): (boolean)[];
-  set paragraphShadingSuppressPrinting(value: boolean | never);
-  /** If true, the paragraph shading is On. */
-  get paragraphShadingOn(): (boolean)[];
-  set paragraphShadingOn(value: boolean | never);
-  /** If true, the paragraph shading will overprint. */
-  get paragraphShadingOverprint(): (boolean)[];
-  set paragraphShadingOverprint(value: boolean | never);
-  /** The tint (as a percentage) of the paragraph shading. (Range: 0 to 100) */
-  get paragraphShadingTint(): (number)[];
-  set paragraphShadingTint(value: number | never);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph shading. */
-  get paragraphShadingColor(): (Swatch)[];
-  set paragraphShadingColor(value: Swatch | string | never);
-  /** If true, the paragraph border is on. */
-  get paragraphBorderOn(): (boolean)[];
-  set paragraphBorderOn(value: boolean | never);
-  /** If true, the paragraph border will overprint. */
-  get paragraphBorderOverprint(): (boolean)[];
-  set paragraphBorderOverprint(value: boolean | never);
-  /** The tint (as a percentage) of the paragraph stroke. (Range: 0 to 100) */
-  get paragraphBorderTint(): (number)[];
-  set paragraphBorderTint(value: number | never);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph stroke. */
-  get paragraphBorderColor(): (Swatch)[];
-  set paragraphBorderColor(value: Swatch | string | never);
-  /** If true, the paragraph border gap will overprint. Note: Valid only when border type is not solid. */
-  get paragraphBorderGapOverprint(): (boolean)[];
-  set paragraphBorderGapOverprint(value: boolean | never);
-  /** The tint (as a percentage) of the paragraph border gap. Note: Valid only when the border type is not solid. (Range: 0 to 100) */
-  get paragraphBorderGapTint(): (number)[];
-  set paragraphBorderGapTint(value: number | never);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph border gap. Note: Valid only when the border type is not solid. */
-  get paragraphBorderGapColor(): (Swatch)[];
-  set paragraphBorderGapColor(value: Swatch | string | never);
-  /** The type of the border for the paragraph. */
-  get paragraphBorderType(): (StrokeStyle)[];
-  set paragraphBorderType(value: StrokeStyle | string | never);
-  /** The left line weight of the border of paragraph. */
-  get paragraphBorderLeftLineWeight(): (number)[];
-  set paragraphBorderLeftLineWeight(value: MeasurementValue | never);
-  /** The top line weight of the border of paragraph. */
-  get paragraphBorderTopLineWeight(): (number)[];
-  set paragraphBorderTopLineWeight(value: MeasurementValue | never);
-  /** The right line weight of the border of paragraph. */
-  get paragraphBorderRightLineWeight(): (number)[];
-  set paragraphBorderRightLineWeight(value: MeasurementValue | never);
-  /** The bottom line weight of the border of paragraph. */
-  get paragraphBorderBottomLineWeight(): (number)[];
-  set paragraphBorderBottomLineWeight(value: MeasurementValue | never);
-  /** The end shape of an open path. */
-  get paragraphBorderStrokeEndCap(): (EndCap)[];
-  set paragraphBorderStrokeEndCap(value: EndCap | never);
-  /** The corner join applied to the ParagraphStyle. */
-  get paragraphBorderStrokeEndJoin(): (EndJoin)[];
-  set paragraphBorderStrokeEndJoin(value: EndJoin | never);
-  /** The radius in measurement units of the corner effect applied to the top left corner of rectangular shapes and all corners of non-rectangular shapes */
-  get paragraphShadingTopLeftCornerRadius(): (number)[];
-  set paragraphShadingTopLeftCornerRadius(value: MeasurementValue | never);
-  /**
-   * The corner shape applied to the top-left corner of a rectangular shading
-   * area, and to all corners of a non-rectangular one.
-   *
-   * A {@link CornerOptions} radius is set explicitly, unlike the rounded or
-   * beveled effect of a stroke's end join, which follows the stroke weight.
-   */
-  get paragraphShadingTopLeftCornerOption(): (CornerOptions)[];
-  set paragraphShadingTopLeftCornerOption(value: CornerOptions | never);
-  /** The radius in measurement units of the corner effect applied to the top right corner of rectangular shapes */
-  get paragraphShadingTopRightCornerRadius(): (number)[];
-  set paragraphShadingTopRightCornerRadius(value: MeasurementValue | never);
-  /** The shape to apply to the top right corner of rectangular shapes */
-  get paragraphShadingTopRightCornerOption(): (CornerOptions)[];
-  set paragraphShadingTopRightCornerOption(value: CornerOptions | never);
-  /** The radius in measurement units of the corner effect applied to the bottom left corner of rectangular shapes */
-  get paragraphShadingBottomLeftCornerRadius(): (number)[];
-  set paragraphShadingBottomLeftCornerRadius(value: MeasurementValue | never);
-  /** The shape to apply to the bottom left corner of rectangular shapes. */
-  get paragraphShadingBottomLeftCornerOption(): (CornerOptions)[];
-  set paragraphShadingBottomLeftCornerOption(value: CornerOptions | never);
-  /** The radius in measurement units of the corner effect applied to the bottom right corner of rectangular shapes */
-  get paragraphShadingBottomRightCornerRadius(): (number)[];
-  set paragraphShadingBottomRightCornerRadius(value: MeasurementValue | never);
-  /** The shape to apply to the bottom right corner of rectangular shapes. */
-  get paragraphShadingBottomRightCornerOption(): (CornerOptions)[];
-  set paragraphShadingBottomRightCornerOption(value: CornerOptions | never);
-  /** The radius in measurement units of the corner effect applied to the top left corner of rectangular shapes and all corners of non-rectangular shapes */
-  get paragraphBorderTopLeftCornerRadius(): (number)[];
-  set paragraphBorderTopLeftCornerRadius(value: MeasurementValue | never);
-  /**
-   * The corner shape applied to the top-left corner of a rectangular border,
-   * and to all corners of a non-rectangular one.
-   *
-   * Unlike {@link paragraphBorderStrokeEndJoin}, a {@link CornerOptions}
-   * radius is set explicitly rather than derived from the stroke weight.
-   */
-  get paragraphBorderTopLeftCornerOption(): (CornerOptions)[];
-  set paragraphBorderTopLeftCornerOption(value: CornerOptions | never);
-  /** The radius in measurement units of the corner effect applied to the top right corner of rectangular shapes */
-  get paragraphBorderTopRightCornerRadius(): (number)[];
-  set paragraphBorderTopRightCornerRadius(value: MeasurementValue | never);
-  /** The shape to apply to the top right corner of rectangular shapes */
-  get paragraphBorderTopRightCornerOption(): (CornerOptions)[];
-  set paragraphBorderTopRightCornerOption(value: CornerOptions | never);
-  /** The radius in measurement units of the corner effect applied to the bottom left corner of rectangular shapes */
-  get paragraphBorderBottomLeftCornerRadius(): (number)[];
-  set paragraphBorderBottomLeftCornerRadius(value: MeasurementValue | never);
-  /** The shape to apply to the bottom left corner of rectangular shapes. */
-  get paragraphBorderBottomLeftCornerOption(): (CornerOptions)[];
-  set paragraphBorderBottomLeftCornerOption(value: CornerOptions | never);
-  /** The radius in measurement units of the corner effect applied to the bottom right corner of rectangular shapes */
-  get paragraphBorderBottomRightCornerRadius(): (number)[];
-  set paragraphBorderBottomRightCornerRadius(value: MeasurementValue | never);
-  /** The shape to apply to the bottom right corner of rectangular shapes. */
-  get paragraphBorderBottomRightCornerOption(): (CornerOptions)[];
-  set paragraphBorderBottomRightCornerOption(value: CornerOptions | never);
-  /** The basis (text width or column width) used to calculate the width of the paragraph border. */
-  get paragraphBorderWidth(): (ParagraphBorderEnum)[];
-  set paragraphBorderWidth(value: ParagraphBorderEnum | never);
-  /** The basis (cap height, ascent or baseline) used to calculate the top origin of the paragraph border. */
-  get paragraphBorderTopOrigin(): (ParagraphBorderTopOriginEnum)[];
-  set paragraphBorderTopOrigin(value: ParagraphBorderTopOriginEnum | never);
-  /** The basis (descent or baseline) used to calculate the bottom origin of the paragraph border. */
-  get paragraphBorderBottomOrigin(): (ParagraphBorderBottomOriginEnum)[];
-  set paragraphBorderBottomOrigin(value: ParagraphBorderBottomOriginEnum | never);
-  /** The distance to offset the left edge of the paragraph border. */
-  get paragraphBorderLeftOffset(): (number)[];
-  set paragraphBorderLeftOffset(value: MeasurementValue | never);
-  /** The distance to offset the right edge of the paragraph border. */
-  get paragraphBorderRightOffset(): (number)[];
-  set paragraphBorderRightOffset(value: MeasurementValue | never);
-  /** The distance to offset the top edge of the paragraph border. */
-  get paragraphBorderTopOffset(): (number)[];
-  set paragraphBorderTopOffset(value: MeasurementValue | never);
-  /** The distance to offset the bottom edge of the paragraph border. */
-  get paragraphBorderBottomOffset(): (number)[];
-  set paragraphBorderBottomOffset(value: MeasurementValue | never);
-  /** If true, then paragraph border is also displayed at the points where the paragraph splits across frames or columns. */
-  get paragraphBorderDisplayIfSplits(): (boolean)[];
-  set paragraphBorderDisplayIfSplits(value: boolean | never);
-  /** The hyphenation style chosen for the provider. */
-  get providerHyphenationStyle(): (HyphenationStyleEnum)[];
-  set providerHyphenationStyle(value: HyphenationStyleEnum | never);
-  /** If true, consecutive para borders with completely similar properties are merged. */
-  get mergeConsecutiveParaBorders(): (boolean)[];
-  set mergeConsecutiveParaBorders(value: boolean | never);
-  /** The space between paragraphs using same style. */
-  get sameParaStyleSpacing(): (number | Spacing)[];
-  set sameParaStyleSpacing(value: MeasurementValue | Spacing | never);
-  /** Paragraph kashida width. 0 is none, 1 is short, 2 is medium, 3 is long */
-  get paragraphKashidaWidth(): (number)[];
-  set paragraphKashidaWidth(value: number | never);
-  /** If true, aligns the baseline of the text to the baseline grid. */
-  get alignToBaseline(): (boolean)[];
-  set alignToBaseline(value: boolean | never);
-  /** First-line indent, relative to {@link leftIndent}. Negative values hang. */
-  get firstLineIndent(): (number)[];
-  set firstLineIndent(value: MeasurementValue | never);
-  /** The width of the left indent. */
-  get leftIndent(): (number)[];
-  set leftIndent(value: MeasurementValue | never);
-  /** The width of the right indent. */
-  get rightIndent(): (number)[];
-  set rightIndent(value: MeasurementValue | never);
-  /** The height of the paragraph space above. */
-  get spaceBefore(): (number)[];
-  set spaceBefore(value: MeasurementValue | never);
-  /** The height of the paragraph space below. */
-  get spaceAfter(): (number)[];
-  set spaceAfter(value: MeasurementValue | never);
-  /**
-   * Balances ragged lines. `true` uses the default style; a
-   * {@link BalanceLinesStyle} value selects a specific style. Ignored by the
-   * single-line composer.
-   */
-  get balanceRaggedLines(): (boolean | BalanceLinesStyle)[];
-  set balanceRaggedLines(value: boolean | BalanceLinesStyle | never);
-  /** Horizontal alignment of the paragraph's lines. */
-  get justification(): (Justification)[];
-  set justification(value: Justification | never);
-  /** The alignment to use for lines that contain a single word. */
-  get singleWordJustification(): (SingleWordJustification)[];
-  set singleWordJustification(value: SingleWordJustification | never);
-  /** The percent of the type size to use for auto leading. (Range: 0 to 500). */
-  get autoLeading(): (number)[];
-  set autoLeading(value: number | never);
-  /** The number of lines to drop cap. */
-  get dropCapLines(): (number)[];
-  set dropCapLines(value: number | never);
-  /** The number of characters to drop cap. */
-  get dropCapCharacters(): (number)[];
-  set dropCapCharacters(value: number | never);
-  /** If true, keeps a specified number of lines together when the paragraph breaks across columns or text frames. */
-  get keepLinesTogether(): (boolean)[];
-  set keepLinesTogether(value: boolean | never);
-  /** If true, keeps all lines of the paragraph together. If false, allows paragraphs to break across pages or columns. */
-  get keepAllLinesTogether(): (boolean)[];
-  set keepAllLinesTogether(value: boolean | never);
-  /** The minimum number of lines to keep with the next paragraph. */
-  get keepWithNext(): (number)[];
-  set keepWithNext(value: number | never);
-  /** The minimum number of lines to keep together in a paragraph before allowing a page break. */
-  get keepFirstLines(): (number)[];
-  set keepFirstLines(value: number | never);
-  /** The minimum number of lines to keep together in a paragraph after a page break. */
-  get keepLastLines(): (number)[];
-  set keepLastLines(value: number | never);
-  /** The location at which to start the paragraph. */
-  get startParagraph(): (StartParagraph)[];
-  set startParagraph(value: StartParagraph | never);
-  /** The text composer to use to compose the text. */
-  get composer(): (ComposerName)[];
-  set composer(value: ComposerName | never);
-  /** The minimum word spacing, specified as a percentage of the font word space value. Note: Valid only when text is justified. (Range: 0 to 1000) */
-  get minimumWordSpacing(): (number)[];
-  set minimumWordSpacing(value: number | never);
-  /** The maximum word spacing, specified as a percentage of the font word space value. Note: Valid only when text is justified. (Range: 0 to 1000) */
-  get maximumWordSpacing(): (number)[];
-  set maximumWordSpacing(value: number | never);
-  /** The desired word spacing, specified as a percentage of the font word space value. (Range: 0 to 1000) */
-  get desiredWordSpacing(): (number)[];
-  set desiredWordSpacing(value: number | never);
-  /** The minimum letter spacing, specified as a percentage of the built-in space between letters in the font. (Range: -100 to 500) Note: Valid only when text is justified. */
-  get minimumLetterSpacing(): (number)[];
-  set minimumLetterSpacing(value: number | never);
-  /** The maximum letter spacing, specified as a percentage of the built-in space between letters in the font. (Range: -100 to 500) Note: Valid only when text is justified. */
-  get maximumLetterSpacing(): (number)[];
-  set maximumLetterSpacing(value: number | never);
-  /** The desired letter spacing, specified as a percentage of the built-in space between letters in the font. (Range: -100 to 500) */
-  get desiredLetterSpacing(): (number)[];
-  set desiredLetterSpacing(value: number | never);
-  /** The minimum width (as a percentage) of individual characters. (Range: 50 to 200) */
-  get minimumGlyphScaling(): (number)[];
-  set minimumGlyphScaling(value: number | never);
-  /** The maximum width (as a percentage) of individual characters. (Range: 50 to 200) */
-  get maximumGlyphScaling(): (number)[];
-  set maximumGlyphScaling(value: number | never);
-  /** The desired width (as a percentage) of individual characters. (Range: 50 to 200) */
-  get desiredGlyphScaling(): (number)[];
-  set desiredGlyphScaling(value: number | never);
-  /** If true, places a rule above the paragraph. */
-  get ruleAbove(): (boolean)[];
-  set ruleAbove(value: boolean | never);
-  /** If true, the paragraph rule above will overprint. */
-  get ruleAboveOverprint(): (boolean)[];
-  set ruleAboveOverprint(value: boolean | never);
-  /** The line weight of the rule above. */
-  get ruleAboveLineWeight(): (number)[];
-  set ruleAboveLineWeight(value: MeasurementValue | never);
-  /** The tint (as a percentage) of the paragraph rule above. (Range: 0 to 100) */
-  get ruleAboveTint(): (number)[];
-  set ruleAboveTint(value: number | never);
-  /** The amount to offset the paragraph rule above from the baseline of the first line the paragraph. */
-  get ruleAboveOffset(): (number)[];
-  set ruleAboveOffset(value: MeasurementValue | never);
-  /** The distance to indent the left edge of the paragraph rule above (based on either the text width or the column width of the first line in the paragraph. */
-  get ruleAboveLeftIndent(): (number)[];
-  set ruleAboveLeftIndent(value: MeasurementValue | never);
-  /** The distance to indent the right edge of the paragraph rule above (based on either the text width or the column width of the first line in the paragraph. */
-  get ruleAboveRightIndent(): (number)[];
-  set ruleAboveRightIndent(value: MeasurementValue | never);
-  /** The basis (text width or column width) used to calculate the width of the paragraph rule above. */
-  get ruleAboveWidth(): (RuleWidth)[];
-  set ruleAboveWidth(value: RuleWidth | never);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule above. */
-  get ruleAboveColor(): (Swatch)[];
-  set ruleAboveColor(value: Swatch | string | never);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule above. Note: Valid only when the paragraph rule above type is not solid. */
-  get ruleAboveGapColor(): (Swatch)[];
-  set ruleAboveGapColor(value: Swatch | string | never);
-  /** The tint (as a percentage) of the stroke gap color of the paragraph rule. (Range: 0 to 100) Note: Valid only when the rule above type is not solid. */
-  get ruleAboveGapTint(): (number)[];
-  set ruleAboveGapTint(value: number | never);
-  /** If true, the stroke gap of the paragraph rule above will overprint. Note: Valid only the rule above type is not solid. */
-  get ruleAboveGapOverprint(): (boolean)[];
-  set ruleAboveGapOverprint(value: boolean | never);
-  /** The stroke type of the rule above the paragraph. */
-  get ruleAboveType(): (StrokeStyle)[];
-  set ruleAboveType(value: StrokeStyle | string | never);
-  /** If true, applies a paragraph rule below. */
-  get ruleBelow(): (boolean)[];
-  set ruleBelow(value: boolean | never);
-  /** The line weight of the rule below. */
-  get ruleBelowLineWeight(): (number)[];
-  set ruleBelowLineWeight(value: MeasurementValue | never);
-  /** The tint (as a percentage) of the paragraph rule below. (Range: 0 to 100) */
-  get ruleBelowTint(): (number)[];
-  set ruleBelowTint(value: number | never);
-  /** The amount to offset the the paragraph rule below from the baseline of the last line of the paragraph. */
-  get ruleBelowOffset(): (number)[];
-  set ruleBelowOffset(value: MeasurementValue | never);
-  /** The distance to indent the left edge of the paragraph rule below (based on either the text width or the column width of the last line in the paragraph. */
-  get ruleBelowLeftIndent(): (number)[];
-  set ruleBelowLeftIndent(value: MeasurementValue | never);
-  /** The distance to indent the right edge of the paragraph rule below (based on either the text width or the column width of the last line in the paragraph. */
-  get ruleBelowRightIndent(): (number)[];
-  set ruleBelowRightIndent(value: MeasurementValue | never);
-  /** The basis (text width or column width) used to calculate the width of the paragraph rule below. */
-  get ruleBelowWidth(): (RuleWidth)[];
-  set ruleBelowWidth(value: RuleWidth | never);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule below. */
-  get ruleBelowColor(): (Swatch)[];
-  set ruleBelowColor(value: Swatch | string | never);
-  /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule below. Note: Valid only when the paragraph rule below type is not solid. */
-  get ruleBelowGapColor(): (Swatch)[];
-  set ruleBelowGapColor(value: Swatch | string | never);
-  /** The tint (as a percentage) of the stroke gap color of the paragraph rule below. (Range: 0 to 100) Note: Valid only when the paragraph rule below type is not solid. */
-  get ruleBelowGapTint(): (number)[];
-  set ruleBelowGapTint(value: number | never);
-  /** The stroke type of the rule below the paragraph. */
-  get ruleBelowType(): (StrokeStyle)[];
-  set ruleBelowType(value: StrokeStyle | string | never);
-  /** If true, allows hyphenation of capitalized words. */
-  get hyphenateCapitalizedWords(): (boolean)[];
-  set hyphenateCapitalizedWords(value: boolean | never);
-  /** If true, allows hyphenation. */
-  get hyphenation(): (boolean)[];
-  set hyphenation(value: boolean | never);
-  /** The minimum number of letters at the end of a word that can be broken by a hyphen. */
-  get hyphenateBeforeLast(): (number)[];
-  set hyphenateBeforeLast(value: number | never);
-  /** The minimum number of letters at the beginning of a word that can be broken by a hyphen. */
-  get hyphenateAfterFirst(): (number)[];
-  set hyphenateAfterFirst(value: number | never);
-  /** The minimum number of letters a word must have in order to qualify for hyphenation. */
-  get hyphenateWordsLongerThan(): (number)[];
-  set hyphenateWordsLongerThan(value: number | never);
-  /** The maximum number of hyphens that can appear on consecutive lines. To specify unlimited consecutive lines, use zero. */
-  get hyphenateLadderLimit(): (number)[];
-  set hyphenateLadderLimit(value: number | never);
-  /** The amount of white space allowed at the end of a line of non-justified text before hyphenation begins. Note: Valid when composer is single-line composer. */
-  get hyphenationZone(): (number)[];
-  set hyphenationZone(value: MeasurementValue | never);
-  /** The relative desirability of better spacing vs. fewer hyphens. A lower value results in greater use of hyphens. (Range: 0 to 100) */
-  get hyphenWeight(): (number)[];
-  set hyphenWeight(value: number | never);
-  /** The character style to apply to the drop cap. */
-  get dropCapStyle(): (CharacterStyle)[];
-  set dropCapStyle(value: CharacterStyle | string | never);
-  /** The amount to indent the last line in the paragraph. */
-  get lastLineIndent(): (number)[];
-  set lastLineIndent(value: MeasurementValue | never);
-  /** If true, allows hyphenation in the last word in a paragraph. Note: Valid only when hyphenation is true. */
-  get hyphenateLastWord(): (boolean)[];
-  set hyphenateLastWord(value: boolean | never);
-  /** If the first line in the paragraph should be kept with the last line of previous paragraph. */
-  get keepWithPrevious(): (boolean)[];
-  set keepWithPrevious(value: boolean | never);
-  /** The number of columns a paragraph spans or the number of split columns. */
-  get spanSplitColumnCount(): (number | SpanColumnCountOptions)[];
-  set spanSplitColumnCount(value: number | SpanColumnCountOptions | never);
-  /** Whether a paragraph should be a single column, span columns or split columns */
-  get spanColumnType(): (SpanColumnTypeOptions)[];
-  set spanColumnType(value: SpanColumnTypeOptions | never);
-  /** The inside gutter if the paragraph splits columns */
-  get splitColumnInsideGutter(): (number)[];
-  set splitColumnInsideGutter(value: MeasurementValue | never);
-  /** The outside gutter if the paragraph splits columns */
-  get splitColumnOutsideGutter(): (number)[];
-  set splitColumnOutsideGutter(value: MeasurementValue | never);
-  /** The minimum space before a span or a split column */
-  get spanColumnMinSpaceBefore(): (number)[];
-  set spanColumnMinSpaceBefore(value: MeasurementValue | never);
-  /** The minimum space after a span or a split column */
-  get spanColumnMinSpaceAfter(): (number)[];
-  set spanColumnMinSpaceAfter(value: MeasurementValue | never);
-  /** If true, the rule below will overprint. */
-  get ruleBelowOverprint(): (boolean)[];
-  set ruleBelowOverprint(value: boolean | never);
-  /** If true, the gap color of the rule below will overprint. */
-  get ruleBelowGapOverprint(): (boolean)[];
-  set ruleBelowGapOverprint(value: boolean | never);
-  /** Details about the drop cap based on the glyph outlines. 1 = left side bearing. 2 = descenders. 0x100,0x200,0x400 are used for Japanese frame grid. */
-  get dropcapDetail(): (number)[];
-  set dropcapDetail(value: number | never);
-  /** If true, allows the last word in a text column to be hyphenated. */
-  get hyphenateAcrossColumns(): (boolean)[];
-  set hyphenateAcrossColumns(value: boolean | never);
-  /** If true, forces the rule above the paragraph to remain in the frame bounds. Note: Valid only when rule above is true. */
-  get keepRuleAboveInFrame(): (boolean)[];
-  set keepRuleAboveInFrame(value: boolean | never);
-  /** If true, ignores optical edge alignment for the paragraph. */
-  get ignoreEdgeAlignment(): (boolean)[];
-  set ignoreEdgeAlignment(value: boolean | never);
-  /** Whether the paragraph reads left-to-right or right-to-left. */
-  get paragraphDirection(): (ParagraphDirectionOptions)[];
-  set paragraphDirection(value: ParagraphDirectionOptions | never);
-  /** The justification method for Arabic-script text — the default, or one of the Naskh/Kashida variants. See {@link ParagraphJustificationOptions}. */
-  get paragraphJustification(): (ParagraphJustificationOptions)[];
-  set paragraphJustification(value: ParagraphJustificationOptions | never);
-  /**
-   * The paragraph's tab stops, as an array of property-name/value pair arrays.
-   *
-   * Assigning replaces the whole list; there is no way to add a single stop
-   * through this property. The individual {@link TabStop} objects are reachable
-   * through {@link tabStops}.
-   */
-  get tabList(): (object[])[];
-  set tabList(value: PropertiesSetter<TabStop>[] | never);
-  /** If true, aligns only the first line to the frame grid or baseline grid. If false, aligns all lines to the grid. */
-  get gridAlignFirstLineOnly(): (boolean)[];
-  set gridAlignFirstLineOnly(value: boolean | never);
-  /** The alignment to the frame grid or baseline grid. */
-  get gridAlignment(): (GridAlignment)[];
-  set gridAlignment(value: GridAlignment | never);
-  /** The manual gyoudori setting. */
-  get gridGyoudori(): (number)[];
-  set gridGyoudori(value: number | never);
-  /** The number of half-width characters at or below which the characters automatically run horizontally in vertical text. */
-  get autoTcy(): (number)[];
-  set autoTcy(value: number | never);
-  /** If true, auto tcy includes Roman characters. */
-  get autoTcyIncludeRoman(): (boolean)[];
-  set autoTcyIncludeRoman(value: boolean | never);
-  /** The kinsoku set that determines legitimate line breaks. */
-  kinsokuSet: (KinsokuTable | KinsokuSet | string)[];
-  /** The type of kinsoku processing for preventing kinsoku characters from beginning or ending a line. Note: Valid only when a kinsoku set is defined. */
-  get kinsokuType(): (KinsokuType)[];
-  set kinsokuType(value: KinsokuType | never);
-  /** The type of hanging punctuation to allow. Note: Valid only when a kinsoku set is in effect. */
-  get kinsokuHangType(): (KinsokuHangTypes)[];
-  set kinsokuHangType(value: KinsokuHangTypes | never);
-  /** If true, adds the double period (..), ellipse (...), and double hyphen (--) to the selected kinsoku set. Note: Valid only when a kinsoku set is in effect. */
-  get bunriKinshi(): (boolean)[];
-  set bunriKinshi(value: boolean | never);
-  /** The mojikumi table. For information, see mojikumi table defaults. */
-  mojikumi: (MojikumiTable | string | MojikumiTableDefaults)[];
-  /** If true, disallows line breaks in numbers. If false, lines can break between digits in multi-digit numbers. */
-  get rensuuji(): (boolean)[];
-  set rensuuji(value: boolean | never);
-  /** If true, rotates Roman characters in vertical text. */
-  get rotateSingleByteCharacters(): (boolean)[];
-  set rotateSingleByteCharacters(value: boolean | never);
-  /** The point from which leading is measured from line to line. */
-  get leadingModel(): (LeadingModel)[];
-  set leadingModel(value: LeadingModel | never);
-  /** If true, the gyoudori mode applies to the entire paragraph. If false, the gyoudori mode applies to each line in the paragraph. */
-  get paragraphGyoudori(): (boolean)[];
-  set paragraphGyoudori(value: boolean | never);
-  /** If true, ideographic spaces will not wrap to the next line like text characters. */
-  get treatIdeographicSpaceAsSpace(): (boolean)[];
-  set treatIdeographicSpaceAsSpace(value: boolean | never);
-  /** If true, words unassociated with a hyphenation dictionary can break to the next line on any character. */
-  get allowArbitraryHyphenation(): (boolean)[];
-  set allowArbitraryHyphenation(value: boolean | never);
-  /** List type for bullets and numbering. */
-  get bulletsAndNumberingListType(): (ListType)[];
-  set bulletsAndNumberingListType(value: ListType | never);
-  /** The character style to be used for the text after string. */
-  get bulletsCharacterStyle(): (CharacterStyle)[];
-  set bulletsCharacterStyle(value: CharacterStyle | string | never);
-  /** The character style to be used for the number string. */
-  get numberingCharacterStyle(): (CharacterStyle)[];
-  set numberingCharacterStyle(value: CharacterStyle | string | never);
-  /** The number string expression for numbering. */
-  get numberingExpression(): (string)[];
-  set numberingExpression(value: string | never);
-  /** The text after string expression for bullets. */
-  get bulletsTextAfter(): (string)[];
-  set bulletsTextAfter(value: string | never);
-  /** The list to be part of. */
-  get appliedNumberingList(): (NumberingList)[];
-  set appliedNumberingList(value: NumberingList | string | never);
-  /** The level of the paragraph. */
-  get numberingLevel(): (number)[];
-  set numberingLevel(value: number | never);
-  /**
-   * The numeral or letter style for the number string.
-   *
-   * Accepts a {@link NumberingStyle} member, or the format template string InDesign stores
-   * for it — `I, II, III, IV...`, `$ID/(kanji) 1,2,3,4...`. The templates are tabulated on
-   * {@link NumberingStyle}.
-   */
-  get numberingFormat(): (NumberingStyle | string)[];
-  set numberingFormat(value: NumberingStyle | string | never);
-  /** Continue the numbering at this level. */
-  get numberingContinue(): (boolean)[];
-  set numberingContinue(value: boolean | never);
-  /** Determines starting number in a numbered list. */
-  get numberingStartAt(): (number)[];
-  set numberingStartAt(value: number | never);
-  /** If true, apply the numbering restart policy. */
-  get numberingApplyRestartPolicy(): (boolean)[];
-  set numberingApplyRestartPolicy(value: boolean | never);
-  /** The alignment of the bullet character. */
-  get bulletsAlignment(): (ListAlignment)[];
-  set bulletsAlignment(value: ListAlignment | never);
-  /** The alignment of the number. */
-  get numberingAlignment(): (ListAlignment)[];
-  set numberingAlignment(value: ListAlignment | never);
-}
-
-/**
- * The broadcast proxy for {@link ParagraphStyleAttributes} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link ParagraphStyleAttributes} there.
+ * A paragraph style also carries the full character-attribute set — see
+ * {@link CharacterStyleAttributes}.
  */
 export interface ParagraphStyleAttributesPlural {
   /** The {@link Bullet} character used by the paragraph's bulleted list. */
@@ -4713,7 +4714,7 @@ export interface ParagraphStyleAttributesPlural {
   get paragraphShadingTint(): (number)[];
   set paragraphShadingTint(value: number | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph shading. */
-  get paragraphShadingColor(): (Swatch)[];
+  get paragraphShadingColor(): (Swatch | string)[];
   set paragraphShadingColor(value: Swatch | string | never);
   /** If true, the paragraph border is on. */
   get paragraphBorderOn(): (boolean)[];
@@ -4725,7 +4726,7 @@ export interface ParagraphStyleAttributesPlural {
   get paragraphBorderTint(): (number)[];
   set paragraphBorderTint(value: number | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph stroke. */
-  get paragraphBorderColor(): (Swatch)[];
+  get paragraphBorderColor(): (Swatch | string)[];
   set paragraphBorderColor(value: Swatch | string | never);
   /** If true, the paragraph border gap will overprint. Note: Valid only when border type is not solid. */
   get paragraphBorderGapOverprint(): (boolean)[];
@@ -4734,10 +4735,10 @@ export interface ParagraphStyleAttributesPlural {
   get paragraphBorderGapTint(): (number)[];
   set paragraphBorderGapTint(value: number | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph border gap. Note: Valid only when the border type is not solid. */
-  get paragraphBorderGapColor(): (Swatch)[];
+  get paragraphBorderGapColor(): (Swatch | string)[];
   set paragraphBorderGapColor(value: Swatch | string | never);
   /** The type of the border for the paragraph. */
-  get paragraphBorderType(): (StrokeStyle)[];
+  get paragraphBorderType(): (StrokeStyle | string)[];
   set paragraphBorderType(value: StrokeStyle | string | never);
   /** The left line weight of the border of paragraph. */
   get paragraphBorderLeftLineWeight(): (number)[];
@@ -4966,10 +4967,10 @@ export interface ParagraphStyleAttributesPlural {
   get ruleAboveWidth(): (RuleWidth)[];
   set ruleAboveWidth(value: RuleWidth | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule above. */
-  get ruleAboveColor(): (Swatch)[];
+  get ruleAboveColor(): (Swatch | string)[];
   set ruleAboveColor(value: Swatch | string | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule above. Note: Valid only when the paragraph rule above type is not solid. */
-  get ruleAboveGapColor(): (Swatch)[];
+  get ruleAboveGapColor(): (Swatch | string)[];
   set ruleAboveGapColor(value: Swatch | string | never);
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule. (Range: 0 to 100) Note: Valid only when the rule above type is not solid. */
   get ruleAboveGapTint(): (number)[];
@@ -4978,7 +4979,7 @@ export interface ParagraphStyleAttributesPlural {
   get ruleAboveGapOverprint(): (boolean)[];
   set ruleAboveGapOverprint(value: boolean | never);
   /** The stroke type of the rule above the paragraph. */
-  get ruleAboveType(): (StrokeStyle)[];
+  get ruleAboveType(): (StrokeStyle | string)[];
   set ruleAboveType(value: StrokeStyle | string | never);
   /** If true, applies a paragraph rule below. */
   get ruleBelow(): (boolean)[];
@@ -5002,16 +5003,16 @@ export interface ParagraphStyleAttributesPlural {
   get ruleBelowWidth(): (RuleWidth)[];
   set ruleBelowWidth(value: RuleWidth | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule below. */
-  get ruleBelowColor(): (Swatch)[];
+  get ruleBelowColor(): (Swatch | string)[];
   set ruleBelowColor(value: Swatch | string | never);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule below. Note: Valid only when the paragraph rule below type is not solid. */
-  get ruleBelowGapColor(): (Swatch)[];
+  get ruleBelowGapColor(): (Swatch | string)[];
   set ruleBelowGapColor(value: Swatch | string | never);
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule below. (Range: 0 to 100) Note: Valid only when the paragraph rule below type is not solid. */
   get ruleBelowGapTint(): (number)[];
   set ruleBelowGapTint(value: number | never);
   /** The stroke type of the rule below the paragraph. */
-  get ruleBelowType(): (StrokeStyle)[];
+  get ruleBelowType(): (StrokeStyle | string)[];
   set ruleBelowType(value: StrokeStyle | string | never);
   /** If true, allows hyphenation of capitalized words. */
   get hyphenateCapitalizedWords(): (boolean)[];
@@ -5150,10 +5151,10 @@ export interface ParagraphStyleAttributesPlural {
   get bulletsAndNumberingListType(): (ListType)[];
   set bulletsAndNumberingListType(value: ListType | never);
   /** The character style to be used for the text after string. */
-  get bulletsCharacterStyle(): (CharacterStyle)[];
+  get bulletsCharacterStyle(): (CharacterStyle | string)[];
   set bulletsCharacterStyle(value: CharacterStyle | string | never);
   /** The character style to be used for the number string. */
-  get numberingCharacterStyle(): (CharacterStyle)[];
+  get numberingCharacterStyle(): (CharacterStyle | string)[];
   set numberingCharacterStyle(value: CharacterStyle | string | never);
   /** The number string expression for numbering. */
   get numberingExpression(): (string)[];
@@ -5162,7 +5163,7 @@ export interface ParagraphStyleAttributesPlural {
   get bulletsTextAfter(): (string)[];
   set bulletsTextAfter(value: string | never);
   /** The list to be part of. */
-  get appliedNumberingList(): (NumberingList)[];
+  get appliedNumberingList(): (NumberingList | string)[];
   set appliedNumberingList(value: NumberingList | string | never);
   /** The level of the paragraph. */
   get numberingLevel(): (number)[];

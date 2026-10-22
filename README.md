@@ -1,156 +1,167 @@
-# indesign-uxp-types
+# indesign-extendscript-types
 
-TypeScript declarations for the **Adobe InDesign UXP** scripting DOM — the `indesign` module that
-UXP plugins and `.idjs` scripts `require`. Completion, hover documentation and type checking in
-VSCode or any TypeScript-aware editor.
+TypeScript declarations for **Adobe InDesign ExtendScript** (`.jsx`): the InDesign DOM as
+ExtendScript sees it, and the ExtendScript engine's own library (`$`, `File`, `Folder`,
+`BridgeTalk`, `XML`, `Socket`, `UnitValue`, `Reflection`, ScriptUI, ...). They give you completion,
+hover documentation and type checking in VS Code or any TypeScript-aware editor, for `.ts` sources
+you compile to ES3 or for `.jsx` files checked in place.
 
-> [!IMPORTANT]
-> **Built for UXP.** These declarations describe the UXP scripting DOM: `require('indesign')` in
-> UXP plugins and `.idjs` scripts. ExtendScript (`.jsx`) drives the same object model through a
-> different engine, and hands some values back differently — so the types can help there too, but
-> only as a workaround, with real caveats. See
-> [Using it with ExtendScript](#using-it-with-extendscript-a-workaround).
+- **InDesign 2026 (21.6)**. Every class, property, method, parameter and enumerator in InDesign's
+  own scripting dictionary is checked against the declarations on every test run.
+- **Measured, not guessed.** A live InDesign was asked what it returns, what it accepts and what it
+  throws, and the declarations follow the answers (see [How it is measured](#how-it-is-measured)).
+- **Converted from [indesign-uxp-types](https://github.com/vamitul/indesign-uxp-types)** by Vlad
+  Vladila, the UXP edition of the same DOM. The conversion is a repeatable codemod, so upstream
+  improvements flow in.
 
-- **InDesign 2026**, modelled on Adobe's 21.5 object-model dictionary, which also covers 21.6.
-- Every class, enum and member the dictionary declares, checked against it on every build.
-- Hand-written and runtime-measured where the dictionary is vague or wrong: which values a
-  property really accepts, what `everyItem()` returns, what a path getter resolves to.
-
-## Install
+## Install and enable
 
 ```sh
-npm install --save-dev indesign-uxp-types
+npm install --save-dev indesign-extendscript-types
 ```
 
-This also installs Adobe's UXP types (`@adobe/cc-ext-uxp-types`), a peer dependency: the
-declarations use its `File` and `Folder`.
-
-## Enable it
-
-In `tsconfig.json`:
+`tsconfig.json`: ExtendScript is ES3, so turn TypeScript's own library off and use this package's:
 
 ```jsonc
 {
   "compilerOptions": {
-    "types": ["indesign-uxp-types"],
-    "skipLibCheck": true
+    "noLib": true,
+    "types": ["indesign-extendscript-types"],
+    "target": "es5",
+    "module": "none",
+    "strict": true,
+    // to check .jsx files in place:
+    "allowJs": true,
+    "checkJs": true
   }
 }
 ```
 
-Then:
+Then, with no imports (everything is global, as in ExtendScript):
 
 ```ts
-import { app, SaveOptions } from 'indesign';
-
-const doc = app.activeDocument;
-const frame = doc.spreads.item(0).textFrames.item(0);
-frame.parent;            // Spread
+var doc = app.documents.add();
+var frame = doc.pages[0].textFrames.add({ geometricBounds: [0, 0, 100, 100], contents: 'Hello' });
+doc.exportFile(ExportFormat.PDF_TYPE, new File(Folder.desktop + '/hello.pdf'));
+$.writeln(doc.fullName.fsName);
 doc.close(SaveOptions.NO);
 ```
 
-`skipLibCheck` is needed because Adobe's UXP types conflict with TypeScript's DOM library; the
-errors are in their file, not in yours or in this package.
-
-**Already using Adobe's recommended `typeRoots` setup?** `typeRoots` limits where `types` are looked
-up, so either add `"./node_modules"` to it, or put this line once at the top of one of your files:
-
-```ts
-/// <reference types="indesign-uxp-types" />
-```
-
-Not `import 'indesign-uxp-types'` — that survives into the compiled JavaScript as a `require` the
-plugin cannot satisfy at runtime.
-
-**Plain JavaScript** works the same way — add `// @ts-check` (or `"checkJs": true`) and
-`const { app } = require('indesign')` is typed.
+TypeScript can no longer emit ES3, so `.ts` sources need a compiler that can (Babel with an ES3
+preset, for instance). Type-checking `.jsx` with `checkJs` needs nothing more.
 
 ## Two variants
 
-The package ships two sets of declarations for the same API, aimed at different users.
- 
-The **authored** set is the hand-built source. It takes full advantage of Typescript generics and inheritance to fully model the complex InDesign scripting API and class hierarchy, but comes with the cost of nearly-unreadable tooltips. 
-The **default** set is generated from it and checked by the same tests. It has gone through a further post-processing step that flattenes the generics and complexity of the authored types and thus producing a much more user-friendly set of declaration, at the cost of loosing the `extends` chaining.
-
-If you write scripts, use the default set. If something looks wrong, switching to the authored set is a quick check — and please report it, since the two should always agree.
-
-If you develop InDesign C++ plugins and want to add TypeScript declarations for your own
-scripting surface, start from the authored set: a member you add to a base class such as
-`PageItem` then reaches every subclass. In the default set it stays on the class you added it to.
-A future release should contain a set of tools to help you produce and publish these additions for consumers.
-To switch between the two sets, edit your `tsconfig.json` file to point to the relevant set.
+The same API, declared twice:
 
 | entry | tooltips | use it when |
 |---|---|---|
-| `indesign-uxp-types` (default) | short: `Rectangle<Spread>.geometricBounds: number[]` | writing scripts and plugins |
-| `indesign-uxp-types/authored` | fully generic: `TransformableItem<"single">.geometricBounds` | extending the API |
+| `indesign-extendscript-types` (default) | short: `Rectangle<Spread>.geometricBounds: number[]` | writing scripts |
+| `indesign-extendscript-types/authored` | fully generic: `TransformableItem<"single">.geometricBounds` | extending the declarations |
 
-Switch in `tsconfig.json` with `"types": ["indesign-uxp-types/authored"]`. Pick one, never both.
+The default (`flat/`) is generated from the authored tree (`types/`). Pick one in `"types"`, never
+both.
 
-## Some things the types will stop you getting wrong
+## What ExtendScript does differently from UXP
 
-- **Enumerators and DOM objects never compare equal with `===`** — not even to themselves. Use
-  `.equals()` on the enumerator: `Leading.AUTO.equals(style.leading)`. A `switch` over enum
-  members always falls to `default`.
-- **`.item()` never returns `null`**; it returns a reference that may not resolve. Test
-  `.isValid`. On an event object, don't: snapshot `{ ...evt.properties }` instead.
-- **`everyItem()` and `itemByRange()` return a proxy.** Reading a property returns an array, one
-  value per item; assigning one value sets every item at once. `getElements()` resolves the items.
-- **A text `itemByRange()` returns one contiguous `Text` range**, whatever collection it came from.
-- **Paths go in as strings and come out as entries.** A file parameter or setter takes a path or a
-  UXP `File`; a folder one takes a path string only. A getter such as `doc.fullName` resolves to a
-  `File` — `(await doc.fullName).nativePath` for the path. `filePath` is the containing folder.
-- **Collections can be empty.** With `noUncheckedIndexedAccess`, `getElements()[0]` is
-  `T | undefined`, as it should be.
+Each line is a probe in `test/probes/` that runs against InDesign.
 
-## Using it with ExtendScript: a workaround
+- **Everything is global.** `app`, every enumeration and every DOM class are globals; there is no
+  `require('indesign')`. A class global carries its event names and `reflect`
+  (`Document.AFTER_OPEN`, `TextFrame.reflect`) and works with `instanceof`, which narrows:
+  `if (item instanceof TextFrame) item.contents`. A collection class (`Pages`) becomes a global only
+  once a collection of its kind has been obtained.
+- **`===` works.** Two reads of the same object compare equal, and enumerators compare equal to each
+  other and to their number (`SaveOptions.NO === 1852776480`). There is no `.equals()` and no
+  `constructorName` (use `instanceof`, or `obj.constructor.name`).
+- **Enumerators** are `Enumerator` objects: `String(e)` is the name, `e.valueOf()` the number. Setters
+  take the enumerator or its bare number, never the name string. The camelCase aliases exist
+  (`SaveOptions.no`, `NumberingStyle.upperRoman`); upstream's all-lowercase ones do not.
+- **Files are `File` and `Folder` objects, returned directly**, not promises. `doc.fullName` is a
+  `File`, `doc.filePath` a `Folder`, and file parameters take a `File`, a `Folder` or a path string.
+  `itemByRange()` takes names too.
+- **Unset style attributes read back as `NothingEnum.NOTHING`** (UXP gives `null`), and styles and
+  find/change preferences accept it to unset; text objects do not. Many object-valued properties
+  can also come back as a string (a swatch name such as `"Text Color"`, a missing font) or `null`
+  (`parentPage` on the pasteboard), and say so.
+- **`toString()` is `"[object Page]"`**; `toSpecifier()` gives the path, `resolve()` takes it back.
+- **ScriptUI owns `Window`, `Button`, `Group`, `Panel`, `StaticText`, `Image`, `Event`:**
+  `new Window('dialog')` is a ScriptUI window. InDesign's classes of those names are
+  `InDesign.Window` and so on. Every DOM type is also reachable under the `InDesign` namespace.
+- **`app.doScript(string)` runs in the caller's scope**, like `eval`: it sees the caller's locals,
+  and `arguments` is the caller's, not `withArguments`. `doScript` of `ScriptLanguage.UXPSCRIPT`
+  returns `undefined`.
+- **Strict ES3.** No `forEach`, `map`, `JSON`, `Object.keys`, `bind`, `trim`, `Promise`: the engine has
+  none of them, so the declarations do not either. It does have `Date.now()`, `toSource()`,
+  `watch()`/`unwatch()`, and `reflect` on every object.
+- **Some reads and writes crash InDesign 21.6.** Reading `distance`/`angle` of a
+  `FindChangeDropShadowSetting` or `xOffset`/`yOffset` of a `FindChangeInnerShadowSetting`;
+  assigning to `XMLElement.contents`; assigning a page name to a layout window's `activePage`;
+  and taking items from an `Events` collection, all take InDesign down. The declarations say so.
+- **Some references die when inspected.** On a just-added `StyleExportTagMap`, reading
+  `constructor` or `reflect` invalidates the reference (`isValid` turns false, the next read
+  throws); ordinary properties are safe. `typeof` itself throws on an invalidated reference.
+- **Background exports wait for the script to end.** A task from `asynchronousExportFile` stays
+  RUNNING until the script yields, its document cannot be closed before (`"User canceled this
+  action"`), and reading `isValid` on it garbles the reference (`status` reads undefined after).
+- **With `userInteractionLevel = NEVER_INTERACT`**, anything that would ask the user fails with
+  `"User canceled this action"` instead.
+- **XMP** (`XMPMeta`, `XMPConst`, `XMPFile`, `XMPUtils`, `XMPDateTime`) exists once
+  `new ExternalObject('lib:AdobeXMPScript')` has run, so those globals are typed `| undefined`
+  until checked. Setters return `null`, a missing property reads `null`, iteration ends with
+  `null`, `XMPMeta.deleteNamespace` is unimplemented, and `RegExp.$_`/`RegExp.input` are always
+  empty.
 
-The classes, collections, properties and methods are the same in both engines, so these types can
-still give completion and catch many mistakes in an ExtendScript project. This is not a supported
-use: the types describe what UXP does, and where ExtendScript differs, they will be wrong.
+In a `.jsx` file, TypeScript does not type the parameter of a function assigned to a property
+(`bt.onResult = function (reply) {}`); add `/** @param {BridgeTalk} reply */` or write `.ts`.
 
-- **There is no `indesign` module.** In ExtendScript `app` and every enum are globals. Declare the
-  ones you use:
+## How it is measured
 
-  ```ts
-  declare const app: import('indesign').Application;
-  declare const SaveOptions: typeof import('indesign').SaveOptions;
-  ```
+Everything runs in InDesign's pristine `main` ExtendScript engine, through AppleScript
+(`tools/run-extendscript.mjs`), on macOS:
 
-- **No `constructorName`, no `.equals()`.** Both exist only in UXP. In ExtendScript an enumerator is
-  a plain number, so `===` and `switch` work there — the reverse of UXP — while the types still
-  offer `.equals()`, which will fail at runtime. Use `obj.constructor.name` for the class.
-- **Paths are ExtendScript `File` and `Folder` objects, returned directly.** `doc.fullName` is a
-  `File` there, not a promise of a UXP entry, and file parameters take an ExtendScript `File`.
-  Declare ExtendScript's own `File` and `Folder` (for example from
-  [`types-for-adobe`](https://www.npmjs.com/package/types-for-adobe)) and cast at every path.
-- **ExtendScript is ES3.** Current TypeScript can no longer compile to it (`target: "ES3"` was
-  removed), so you need a transpiler that still can. Promises, `async` and `await` do not exist
-  there.
-- The UXP types that come along as a peer dependency are of no use in ExtendScript.
-
-## Versions
-
-| package | InDesign | dictionary |
+| snapshot (`snapshots/indesign-21.6/`) | what | from |
 |---|---|---|
-| 1.x | 2026 (21.5, 21.6) | 21.5 |
+| `dictionary.json` | every class, property, method, parameter and enumerator | `$.dictionary` |
+| `globals.json` | which classes exist as globals, and their statics | `$.global` |
+| `enum-aliases.json` | which enumerator aliases exist | probing each candidate |
+| `corejs.json` | the ES3 library: reflection on every core class, feature tests of ES5+ members | reflection |
+| `runtime.json` | the type of every property read, on a fixture document (417 of 424 object classes reached; see REPORT.md) | `tools/dump/runtime.jsx` |
+| `writes.json` | which kinds of value every writable property accepts | `tools/dump/writes.jsx` |
+| `runtime-crashers.json` | reads and writes that crash InDesign | the samplers, which survive crashes |
 
-What changed in each release: [CHANGELOG.md](CHANGELOG.md).
+`tools/compare/` reads both declaration trees with the TypeScript compiler and diffs them against
+the snapshots. `npm test` fails on any difference that is not informational or explained, with a
+reason and usually a probe, in `tools/compare/allowlist.json`.
+[`REPORT.md`](snapshots/indesign-21.6/REPORT.md) summarises coverage and findings.
 
-## Issues
+## Maintaining
 
-Report a wrong or missing declaration at
-[github.com/vamitul/indesign-uxp-types/issues](https://github.com/vamitul/indesign-uxp-types/issues),
-with the InDesign build (`app.version`) and a few lines that show it.
+```sh
+npm run build          # upstream types/ → codemod → types/ and flat/
+npm test               # typecheck both trees, verify the flattener, compare with the snapshots
+npm run test:live      # also re-measure InDesign and run the probes (macOS, InDesign 2026 running)
+npm run dump           # re-measure dictionary, globals, enum aliases, core JS
+npm run dump:runtime   # re-run the read sampler (may crash InDesign; crashes are recorded and skipped)
+npm run dump:writes    # re-run the write sampler (same)
+npm run report         # regenerate REPORT.md
+```
 
-## Support the project
+- **A new upstream release:** `git fetch upstream && npm run build && npm test`. The codemod
+  (`tools/codemod/`) starts from a pristine `git archive` of `upstream/main`. Each rule reports how
+  often it applied and stops the build when an upstream change moves its anchor.
+- **A new InDesign version:** re-run the dumps into a new snapshot folder, then `npm test`. Members
+  the dictionary has and upstream lacks are generated (`tools/codemod/fill.mjs`). Getters and
+  setters are widened by what the runtime samples observed (`tools/codemod/widen.mjs`), and the
+  rest shows up as findings.
+- **One-off corrections** go in `overlays/patches.json`, each naming the probe that justifies it.
 
-This package, and the other open-source tools I'm releasing for InDesign developers, is free and
-stays free. If it saves you time, or your team depends on it, you can help keep it maintained:
-
-- [GitHub Sponsors](https://github.com/sponsors/vamitul): monthly or one-time
-- [Buy Me a Coffee](https://buymeacoffee.com/vamitul): a quick one-off thank-you
+The pieces: `tools/dump/` (measurement), `tools/codemod/` (conversion), `tools/flatten/` (the flat
+tree; `npm run verify:flatten` checks it reproduces upstream's own flat tree from upstream's
+authored one), `tools/compare/` (comparison), `test/probes/` (behaviour), `test/typecheck/`
+(fixtures that must and must not compile), `lib/` (the ES3 library, maintained by hand).
 
 ## Licence
 
-[MIT](LICENSE). Adobe and InDesign are trademarks of Adobe Inc. This package is not affiliated with or endorsed by Adobe.
+[MIT](LICENSE). Based on indesign-uxp-types by Vlad Vladila (Krommatine Systems). Adobe and InDesign
+are trademarks of Adobe Inc. This package is not affiliated with or endorsed by Adobe.

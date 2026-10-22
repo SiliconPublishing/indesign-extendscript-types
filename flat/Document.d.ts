@@ -1,6 +1,7 @@
 /**
  * Document.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -220,15 +221,16 @@ import type { Windows } from './Windows';
 import type { LayoutWindows } from './LayoutWindows';
 import type { StoryWindows } from './StoryWindows';
 import type { AnyGraphic, AnyPageItem, SelectionItem } from './_base/Unions';
-import type { Event } from './Event';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { InDesignEventMap } from './_base/Events';
+import type { Event } from './Event';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+
 /**
  * An open InDesign document — the root container for a publication's pages,
  * spreads, stories, styles, swatches, and every page item.
@@ -240,50 +242,6 @@ import type { PropertiesSetter } from './_base/Properties';
  * package and place.
  */
 export interface Document {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: Application;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<Document, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<Document, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -343,12 +301,49 @@ export interface Document {
    */
   readonly index: number;
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: Application;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<Document, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<Document, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */
   get name(): string;
   set name(value: string);
-  /** The object's DOM class name. */
-  readonly constructorName: 'Document';
   /** Resolves the proxy into the individual {@link Document} objects it stands for. */
   getElements(): Document[];
   /** The unique numeric ID of the document within the session. Stable for the document's lifetime, unlike {@link index}. */
@@ -356,9 +351,9 @@ export interface Document {
   // ---- File identity -------------------------------------------------------
 
   /** The document's own file, as a {@link File} entry — reach the path with `.nativePath`. Throws if the document has never been saved; check {@link saved} first. */
-  readonly fullName: Promise<File>;
+  readonly fullName: File;
   /** The folder containing the document, as a {@link Folder} entry — reach the path with `.nativePath`. Not the document file itself; see {@link fullName}. */
-  readonly filePath: Promise<Folder>;
+  readonly filePath: Folder;
   /** The cloud path for a cloud document; accessing it on a non-cloud document throws. */
   readonly cloudPath: string;
   /** Whether this is an Adobe cloud document rather than a local file. */
@@ -806,7 +801,7 @@ export interface Document {
    * original, and opens the new copy.
    * @param to Destination path; omit to save in place.
    * @param stationery If `true`, saves as a template. Defaults to `false`.
-   * @param versionComments Version Cue comment for Document save.
+   * @param versionComments Version Cue comment for this save.
    * @param forceSave If `true`, forces a new version even with no changes. Defaults to `false`.
    */
   save(to?: FilePath, stationery?: boolean, versionComments?: string, forceSave?: boolean): Document;
@@ -866,7 +861,7 @@ export interface Document {
    *
    * ```ts
    * const img = doc.place(file)[0];
-   * if (img && img.parent.constructorName === 'Rectangle') {
+   * if (img && img.parent instanceof Rectangle) {
    *   img.parent.fit(FitOptions.PROPORTIONALLY);
    * }
    * ```
@@ -1207,62 +1202,30 @@ export interface Document {
   handleMathMLMessage(resyncData: string): void;
   /** Internal use only — reserved for the InDesign engineering team. */
   internalMethod(internalParameter1: string, internalParameter2: string): string;
+  // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
+
+  /**
+   * Place a HTTP link
+   * @param httpurls URL strings to the assets seperated by space.
+   * @param showingOptions Whether to display the import options dialog. (Optional)
+   * @param createLink Whether to create a link for the placed asset. (Optional)
+   * @param replaceSelected Whether to replace the selected item. (Optional)
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  placeHTTPLink(httpurls: string, showingOptions?: boolean, createLink?: boolean, replaceSelected?: boolean): void;
 }
 
-
 /**
- * The broadcast proxy for {@link Document} — what `everyItem()` returns.
+ * An open InDesign document — the root container for a publication's pages,
+ * spreads, stories, styles, swatches, and every page item.
  *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link Document} there.
+ * Reach one through {@link Application.documents} or
+ * {@link Application.activeDocument}. Alongside its child collections a document
+ * carries the preference objects that scope layout, text, export and print
+ * behaviour to this file, and the file-level operations — save, close, export,
+ * package and place.
  */
 export interface DocumentPlural {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (Application)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<DocumentPlural, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<DocumentPlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -1322,12 +1285,49 @@ export interface DocumentPlural {
    */
   readonly index: (number)[];
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (Application)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<DocumentPlural, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<DocumentPlural, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */
   get name(): (string)[];
   set name(value: string);
-  /** The object's DOM class name. */
-  readonly constructorName: 'Document';
   /** Resolves the proxy into the individual {@link Document} objects it stands for. */
   getElements(): Document[];
   /** The unique numeric ID of the document within the session. Stable for the document's lifetime, unlike {@link index}. */
@@ -1335,9 +1335,9 @@ export interface DocumentPlural {
   // ---- File identity -------------------------------------------------------
 
   /** The document's own file, as a {@link File} entry — reach the path with `.nativePath`. Throws if the document has never been saved; check {@link saved} first. */
-  readonly fullName: (Promise<File>)[];
+  readonly fullName: (File)[];
   /** The folder containing the document, as a {@link Folder} entry — reach the path with `.nativePath`. Not the document file itself; see {@link fullName}. */
-  readonly filePath: (Promise<Folder>)[];
+  readonly filePath: (Folder)[];
   /** The cloud path for a cloud document; accessing it on a non-cloud document throws. */
   readonly cloudPath: (string)[];
   /** Whether this is an Adobe cloud document rather than a local file. */
@@ -1785,7 +1785,7 @@ export interface DocumentPlural {
    * original, and opens the new copy.
    * @param to Destination path; omit to save in place.
    * @param stationery If `true`, saves as a template. Defaults to `false`.
-   * @param versionComments Version Cue comment for DocumentPlural save.
+   * @param versionComments Version Cue comment for this save.
    * @param forceSave If `true`, forces a new version even with no changes. Defaults to `false`.
    */
   save(to?: FilePath, stationery?: boolean, versionComments?: string, forceSave?: boolean): (Document)[];
@@ -1845,7 +1845,7 @@ export interface DocumentPlural {
    *
    * ```ts
    * const img = doc.place(file)[0];
-   * if (img && img.parent.constructorName === 'Rectangle') {
+   * if (img && img.parent instanceof Rectangle) {
    *   img.parent.fit(FitOptions.PROPORTIONALLY);
    * }
    * ```
@@ -2186,4 +2186,15 @@ export interface DocumentPlural {
   handleMathMLMessage(resyncData: string): (void)[];
   /** Internal use only — reserved for the InDesign engineering team. */
   internalMethod(internalParameter1: string, internalParameter2: string): (string)[];
+  // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
+
+  /**
+   * Place a HTTP link
+   * @param httpurls URL strings to the assets seperated by space.
+   * @param showingOptions Whether to display the import options dialog. (Optional)
+   * @param createLink Whether to create a link for the placed asset. (Optional)
+   * @param replaceSelected Whether to replace the selected item. (Optional)
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  placeHTTPLink(httpurls: string, showingOptions?: boolean, createLink?: boolean, replaceSelected?: boolean): (void)[];
 }

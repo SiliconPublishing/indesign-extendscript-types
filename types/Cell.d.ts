@@ -1,6 +1,7 @@
 /**
  * Cell.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -71,9 +72,6 @@ export interface Cell<M extends Mode = 'single'>
     TableGeometry<M>,
     TableCellAttributes<M>,
     TextContainerContent<Cell, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'Cell';
-
   /** Resolves the proxy into the individual {@link Cell} objects it stands for. */
   getElements(): Cell<'single'>[];
 
@@ -94,7 +92,7 @@ export interface Cell<M extends Mode = 'single'>
   convertBulletsAndNumberingToText(): Read<M, void>;
 
   /** The {@link XMLItem} this cell is associated with, if the table is tagged. */
-  readonly associatedXMLElement: Read<M, XMLItem>;
+  readonly associatedXMLElement: Read<M, XMLItem | null>;
 
   /** If `true`, keeps the row with the next row when the table is split across text frames or pages. */
   get keepWithNextRow(): Read<M, boolean>;

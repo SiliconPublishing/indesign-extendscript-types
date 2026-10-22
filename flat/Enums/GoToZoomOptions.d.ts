@@ -1,10 +1,11 @@
 /**
  * GoToZoomOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __GoToZoomOptions: unique symbol;
 
 
 interface GoToZoomOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<GoToZoomOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__GoToZoomOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -134,11 +132,6 @@ export declare const GoToZoomOptions: typeof Enumeration & {
    */
   readonly inheritZoom: GoToZoomOptions_INHERIT_ZOOM;
   /**
-   * Inherits the zoom setting from the previously displayed page.
-   */
-  readonly inheritzoom: GoToZoomOptions_INHERIT_ZOOM;
-
-  /**
    * Fits the page in the display window.
    */
   readonly FIT_WINDOW: GoToZoomOptions_FIT_WINDOW;
@@ -146,11 +139,6 @@ export declare const GoToZoomOptions: typeof Enumeration & {
    * Fits the page in the display window.
    */
   readonly fitWindow: GoToZoomOptions_FIT_WINDOW;
-  /**
-   * Fits the page in the display window.
-   */
-  readonly fitwindow: GoToZoomOptions_FIT_WINDOW;
-
   /**
    * Fits the page to the width of the window; may obscure the lower portion of the page.
    */
@@ -160,11 +148,6 @@ export declare const GoToZoomOptions: typeof Enumeration & {
    */
   readonly fitWidth: GoToZoomOptions_FIT_WIDTH;
   /**
-   * Fits the page to the width of the window; may obscure the lower portion of the page.
-   */
-  readonly fitwidth: GoToZoomOptions_FIT_WIDTH;
-
-  /**
    * Fits the text area of the page to the window width; obscures page margins and may obscure the lower portion of the page.
    */
   readonly FIT_VISIBLE: GoToZoomOptions_FIT_VISIBLE;
@@ -173,11 +156,6 @@ export declare const GoToZoomOptions: typeof Enumeration & {
    */
   readonly fitVisible: GoToZoomOptions_FIT_VISIBLE;
   /**
-   * Fits the text area of the page to the window width; obscures page margins and may obscure the lower portion of the page.
-   */
-  readonly fitvisible: GoToZoomOptions_FIT_VISIBLE;
-
-  /**
    * Displays the page at 100% magnification.
    */
   readonly ACTUAL_SIZE: GoToZoomOptions_ACTUAL_SIZE;
@@ -185,9 +163,4 @@ export declare const GoToZoomOptions: typeof Enumeration & {
    * Displays the page at 100% magnification.
    */
   readonly actualSize: GoToZoomOptions_ACTUAL_SIZE;
-  /**
-   * Displays the page at 100% magnification.
-   */
-  readonly actualsize: GoToZoomOptions_ACTUAL_SIZE;
-
 }

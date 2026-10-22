@@ -1,10 +1,11 @@
 /**
  * VariableTypes.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __VariableTypes: unique symbol;
 
 
 interface VariableTypes extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<VariableTypes>): boolean;
-
   /**
    * @internal **WARNING:** `__VariableTypes` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -248,11 +246,6 @@ export declare const VariableTypes: typeof Enumeration & {
    */
   readonly customTextType: VariableTypes_CUSTOM_TEXT_TYPE;
   /**
-   * Custom text variable.
-   */
-  readonly customtexttype: VariableTypes_CUSTOM_TEXT_TYPE;
-
-  /**
    * File name variable.
    */
   readonly FILE_NAME_TYPE: VariableTypes_FILE_NAME_TYPE;
@@ -260,11 +253,6 @@ export declare const VariableTypes: typeof Enumeration & {
    * File name variable.
    */
   readonly fileNameType: VariableTypes_FILE_NAME_TYPE;
-  /**
-   * File name variable.
-   */
-  readonly filenametype: VariableTypes_FILE_NAME_TYPE;
-
   /**
    * Last page number variable.
    */
@@ -274,11 +262,6 @@ export declare const VariableTypes: typeof Enumeration & {
    */
   readonly lastPageNumberType: VariableTypes_LAST_PAGE_NUMBER_TYPE;
   /**
-   * Last page number variable.
-   */
-  readonly lastpagenumbertype: VariableTypes_LAST_PAGE_NUMBER_TYPE;
-
-  /**
    * Chapter number variable.
    */
   readonly CHAPTER_NUMBER_TYPE: VariableTypes_CHAPTER_NUMBER_TYPE;
@@ -286,11 +269,6 @@ export declare const VariableTypes: typeof Enumeration & {
    * Chapter number variable.
    */
   readonly chapterNumberType: VariableTypes_CHAPTER_NUMBER_TYPE;
-  /**
-   * Chapter number variable.
-   */
-  readonly chapternumbertype: VariableTypes_CHAPTER_NUMBER_TYPE;
-
   /**
    * Output date variable.
    */
@@ -300,11 +278,6 @@ export declare const VariableTypes: typeof Enumeration & {
    */
   readonly outputDateType: VariableTypes_OUTPUT_DATE_TYPE;
   /**
-   * Output date variable.
-   */
-  readonly outputdatetype: VariableTypes_OUTPUT_DATE_TYPE;
-
-  /**
    * Creation date variable.
    */
   readonly CREATION_DATE_TYPE: VariableTypes_CREATION_DATE_TYPE;
@@ -312,11 +285,6 @@ export declare const VariableTypes: typeof Enumeration & {
    * Creation date variable.
    */
   readonly creationDateType: VariableTypes_CREATION_DATE_TYPE;
-  /**
-   * Creation date variable.
-   */
-  readonly creationdatetype: VariableTypes_CREATION_DATE_TYPE;
-
   /**
    * Modification date variable.
    */
@@ -326,11 +294,6 @@ export declare const VariableTypes: typeof Enumeration & {
    */
   readonly modificationDateType: VariableTypes_MODIFICATION_DATE_TYPE;
   /**
-   * Modification date variable.
-   */
-  readonly modificationdatetype: VariableTypes_MODIFICATION_DATE_TYPE;
-
-  /**
    * Running header (character style) variable.
    */
   readonly MATCH_CHARACTER_STYLE_TYPE: VariableTypes_MATCH_CHARACTER_STYLE_TYPE;
@@ -338,11 +301,6 @@ export declare const VariableTypes: typeof Enumeration & {
    * Running header (character style) variable.
    */
   readonly matchCharacterStyleType: VariableTypes_MATCH_CHARACTER_STYLE_TYPE;
-  /**
-   * Running header (character style) variable.
-   */
-  readonly matchcharacterstyletype: VariableTypes_MATCH_CHARACTER_STYLE_TYPE;
-
   /**
    * Running header (paragraph style) variable.
    */
@@ -352,11 +310,6 @@ export declare const VariableTypes: typeof Enumeration & {
    */
   readonly matchParagraphStyleType: VariableTypes_MATCH_PARAGRAPH_STYLE_TYPE;
   /**
-   * Running header (paragraph style) variable.
-   */
-  readonly matchparagraphstyletype: VariableTypes_MATCH_PARAGRAPH_STYLE_TYPE;
-
-  /**
    * Private cross reference page number variable.
    */
   readonly XREF_PAGE_NUMBER_TYPE: VariableTypes_XREF_PAGE_NUMBER_TYPE;
@@ -364,11 +317,6 @@ export declare const VariableTypes: typeof Enumeration & {
    * Private cross reference page number variable.
    */
   readonly xrefPageNumberType: VariableTypes_XREF_PAGE_NUMBER_TYPE;
-  /**
-   * Private cross reference page number variable.
-   */
-  readonly xrefpagenumbertype: VariableTypes_XREF_PAGE_NUMBER_TYPE;
-
   /**
    * Private cross reference chapter number variable.
    */
@@ -378,11 +326,6 @@ export declare const VariableTypes: typeof Enumeration & {
    */
   readonly xrefChapterNumberType: VariableTypes_XREF_CHAPTER_NUMBER_TYPE;
   /**
-   * Private cross reference chapter number variable.
-   */
-  readonly xrefchapternumbertype: VariableTypes_XREF_CHAPTER_NUMBER_TYPE;
-
-  /**
    * Live Caption variable.
    */
   readonly LIVE_CAPTION_TYPE: VariableTypes_LIVE_CAPTION_TYPE;
@@ -390,9 +333,4 @@ export declare const VariableTypes: typeof Enumeration & {
    * Live Caption variable.
    */
   readonly liveCaptionType: VariableTypes_LIVE_CAPTION_TYPE;
-  /**
-   * Live Caption variable.
-   */
-  readonly livecaptiontype: VariableTypes_LIVE_CAPTION_TYPE;
-
 }

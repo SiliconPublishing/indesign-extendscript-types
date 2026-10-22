@@ -1,6 +1,7 @@
 /**
  * Unions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -144,7 +145,7 @@ export type PageItemUnion =
 /**
  * Every concrete page-item class a container can hand back — the type behind
  * {@link PageItemHolder}'s `allPageItems` and a selection's page items. Check
- * `constructorName` to narrow a value of this type to one specific class.
+ * `instanceof` to narrow a value of this type to one specific class.
  */
 export type AnyPageItem = AnyPageItemOf;
 
@@ -165,7 +166,7 @@ export type AnyPageItemOf<TParent = PageItemParent> =
   | HtmlItem<TParent> | FlexObject<TParent>;
 
 /**
- * Every class a {@link Swatches} collection can hand back. Check `constructorName`
+ * Every class a {@link Swatches} collection can hand back. Use `instanceof`
  * to narrow — `'Swatch'` is the plain case ({@link PlainSwatch}), which is what
  * `[None]` is.
  */
@@ -189,7 +190,7 @@ export type AnyGraphicOf<TParent = PageItemParent> =
  * objects the Selection tool can reach, and the Structure pane's XML nodes.
  *
  * A selection may legitimately hold several kinds of object at once, so filter
- * or check `constructorName` before acting on it. Note that InDesign may report
+ * or use `instanceof` before acting on it. Note that InDesign may report
  * a narrower class than the one you selected: selecting a row or a column
  * leaves a `Cell`, and selecting a text range leaves a `TextColumn`.
  */
@@ -209,7 +210,7 @@ export type SelectionItem =
 /**
  * Every class a {@link Behaviors} collection can hand back.
  *
- * Check `constructorName` to tell which one you have. Almost everything worth reading — a
+ * Use `instanceof` to tell which one you have. Almost everything worth reading — a
  * URL, a page number, a sound, the fields to show — belongs to one specific kind of behavior
  * rather than to all of them, so the check is how you reach it.
  */

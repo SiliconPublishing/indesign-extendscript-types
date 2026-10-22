@@ -1,0 +1,588 @@
+// Builds a fixture document holding as many kinds of DOM object as can be made by script, for the
+// runtime samplers (tools/dump/runtime.jsx, writes.jsx) and the probes. ES3; every step is
+// independent, so a step that fails is recorded in `fixtureErrors` and the rest still run.
+//
+//   var doc = buildFixture(folderPath);   // folderPath: a scratch folder for placed/exported files
+//   fixtureRoots                          // every object the steps made: the samplers start here
+//   ...
+//   closeFixture(doc);                    // closes it and undoes what it added to the application
+//
+// Event objects exist only while their event is dispatched. Define `onFixtureEvent(event)` before
+// building to see them: the fixture's listeners pass each event to it during dispatch.
+// Background tasks and idle events need the script to yield: see tools/dump/async.jsx.
+var fixtureErrors = [];
+var fixtureRoots = [];
+var fixtureCleanup = [];
+// Set by the samplers: fixtureProgress(key) logs each step before it runs, and fixtureSkip holds
+// the steps that crashed InDesign before ("<fixture:name>"), which are not run again.
+var fixtureProgress = null;
+var fixtureSkip = {};
+var fixtureSavedInteraction = null;
+
+function fixtureStep(name, fn) {
+    var key = '<fixture:' + name + '>';
+    if (fixtureSkip[key]) {
+        fixtureErrors.push(name + ': skipped, it crashed InDesign before');
+        return;
+    }
+    if (fixtureProgress) fixtureProgress(key);
+    try {
+        fn();
+    } catch (e) {
+        fixtureErrors.push(name + ': ' + e.message + (e.line ? ' (line ' + e.line + ')' : ''));
+    }
+}
+
+/**
+ * Registers a function returning an object, looked up when the samplers start: for objects
+ * whose reference from creation goes stale while they live on (export tag maps, graphic layers).
+ */
+function rootLater(fn) {
+    fixtureRoots.push(fn);
+}
+
+/** Registers an object as a starting point for the samplers, and returns it. */
+function root(obj) {
+    if (obj !== null && obj !== undefined) fixtureRoots.push(obj);
+    return obj;
+}
+
+function writeTextFile(path, text) {
+    var f = new File(path);
+    f.encoding = 'UTF-8';
+    f.open('w');
+    f.write(text);
+    f.close();
+    return f;
+}
+
+function fixtureEventHandler(e) {
+    try { if (typeof onFixtureEvent === 'function') onFixtureEvent(e); } catch (x) {}
+}
+
+function buildFixture(dir) {
+    new Folder(dir).create();
+    // No dialogs while building (saves, exports, placing): restored by closeFixture().
+    fixtureSavedInteraction = app.scriptPreferences.userInteractionLevel;
+    app.scriptPreferences.userInteractionLevel = UserInteractionLevels.NEVER_INTERACT;
+    var doc = root(app.documents.add(false));
+    var page, tf, story, table, rect, img, btn, mso, anchorDest, topic, ps, cs, os, fixtureGroup, fixtureMovie;
+
+    // Saved, so that fullName/filePath read back and assignments and books can use it.
+    fixtureStep('save', function () {
+        doc.save(new File(dir + '/fixture.indd'));
+    });
+    fixtureStep('events', function () {
+        doc.addEventListener('afterSave', fixtureEventHandler);
+        doc.addEventListener('beforeExport', fixtureEventHandler);
+        doc.addEventListener('afterExport', fixtureEventHandler);
+        doc.addEventListener('afterAttributeChanged', fixtureEventHandler);
+    });
+
+    fixtureStep('pages', function () {
+        // Coordinates below are page-relative points, so items land on their page (612 x 792),
+        // not the pasteboard; the default units are picas.
+        doc.viewPreferences.rulerOrigin = RulerOrigin.PAGE_ORIGIN;
+        doc.viewPreferences.horizontalMeasurementUnits = MeasurementUnits.POINTS;
+        doc.viewPreferences.verticalMeasurementUnits = MeasurementUnits.POINTS;
+        doc.documentPreferences.facingPages = true;
+        doc.pages.add();
+        doc.pages.add();
+        page = root(doc.pages[0]);
+        root(doc.sections.add(doc.pages[2], { continueNumbering: false, pageNumberStart: 10 }));
+    });
+    fixtureStep('layers', function () {
+        root(doc.layers.add({ name: 'Second' }));
+    });
+    fixtureStep('swatches', function () {
+        var c = root(doc.colors.add({ name: 'Fixture CMYK', model: ColorModel.PROCESS, space: ColorSpace.CMYK, colorValue: [10, 20, 30, 0] }));
+        root(doc.colors.add({ name: 'Fixture Spot', model: ColorModel.SPOT, space: ColorSpace.RGB, colorValue: [200, 30, 30] }));
+        root(doc.colors.add({ name: 'Fixture Spot 2', model: ColorModel.SPOT, space: ColorSpace.CMYK, colorValue: [0, 100, 0, 0] }));
+        root(doc.tints.add(c, { tintValue: 50 }));
+        var g = root(doc.gradients.add({ name: 'Fixture Gradient' }));
+        g.gradientStops[0].stopColor = c;
+        root(doc.colorGroups.add('Fixture Group', [c]));
+    });
+    fixtureStep('mixed inks', function () {
+        root(doc.mixedInks.add([doc.inks.item(0), doc.inks.itemByName('Fixture Spot')], [50, 50], { name: 'Fixture Mixed' }));
+        root(doc.mixedInkGroups.add([doc.inks.item(0), doc.inks.itemByName('Fixture Spot 2')], [10, 10], [2, 2], [10, 10], { name: 'Fixture Mixed Group' }));
+    });
+    fixtureStep('styles', function () {
+        cs = root(doc.characterStyles.add({ name: 'Fixture Char', pointSize: 14 }));
+        root(doc.characterStyles.add({ name: 'Fixture Char Derived', basedOn: cs, horizontalScale: 90 }));
+        ps = root(doc.paragraphStyles.add({ name: 'Fixture Para', appliedFont: 'Minion Pro\tRegular' }));
+        root(ps.nestedStyles.add({ appliedCharacterStyle: cs, delimiter: '.' }));
+        root(ps.nestedLineStyles.add({ appliedCharacterStyle: cs, lineCount: 1 }));
+        root(ps.nestedGrepStyles.add({ appliedCharacterStyle: cs, grepExpression: '\\d+' }));
+        root(ps.tabStops.add({ position: 36, alignment: TabStopAlignment.LEFT_ALIGN }));
+        root(doc.paragraphStyleGroups.add({ name: 'Fixture Para Group' }).paragraphStyles.add({ name: 'Grouped Para' }));
+        root(doc.characterStyleGroups.add({ name: 'Fixture Char Group' }));
+        var cell = root(doc.cellStyles.add({ name: 'Fixture Cell' }));
+        root(doc.tableStyles.add({ name: 'Fixture Table', bodyRegionCellStyle: cell }));
+        os = root(doc.objectStyles.add({ name: 'Fixture Object' }));
+        root(doc.dashedStrokeStyles.add({ name: 'Fixture Dashed', dashArray: [4, 2] }));
+        root(doc.dottedStrokeStyles.add({ name: 'Fixture Dotted' }));
+        root(doc.stripedStrokeStyles.add({ name: 'Fixture Striped' }));
+        root(doc.numberingLists.add({ name: 'Fixture List' }));
+    });
+    fixtureStep('style groups', function () {
+        root(doc.cellStyleGroups.add({ name: 'Fixture Cell Group' }));
+        root(doc.tableStyleGroups.add({ name: 'Fixture Table Group' }));
+        root(doc.objectStyleGroups.add({ name: 'Fixture Object Group' }));
+    });
+    fixtureStep('style mappings', function () {
+        var rule = MapType.STYLE_MAPPING_RULE;
+        root(doc.charStyleMappings.add('Word Char', cs.name, rule));
+        root(doc.paraStyleMappings.add('Word Para', ps.name, rule));
+        root(doc.tableStyleMappings.add('Word Table', 'Fixture Table', rule));
+        root(doc.cellStyleMappings.add('Word Cell', 'Fixture Cell', rule));
+    });
+    fixtureStep('export tag maps', function () {
+        ps.styleExportTagMaps.add('EPUB', 'p', 'fixture', '');
+        cs.styleExportTagMaps.add('EPUB', 'span', 'fixture', '');
+        os.objectStyleExportTagMaps.add('EPUB', 'div', 'fixture', '');
+        rootLater(function () { return doc.paragraphStyles.itemByName('Fixture Para').styleExportTagMaps[0]; });
+        rootLater(function () { return doc.characterStyles.itemByName('Fixture Char').styleExportTagMaps[0]; });
+        rootLater(function () { return doc.objectStyles.itemByName('Fixture Object').objectStyleExportTagMaps[0]; });
+    });
+    fixtureStep('text frame', function () {
+        tf = root(page.textFrames.add({ geometricBounds: [20, 20, 120, 120], contents: 'Fixture text. Second sentence 123.\rSecond paragraph with more words.\tTabbed.' }));
+        story = root(tf.parentStory);
+        story.paragraphs[0].appliedParagraphStyle = ps;
+        story.words[1].appliedCharacterStyle = cs;
+        tf.textFramePreferences.textColumnCount = 2;
+        var tf2 = root(page.textFrames.add({ geometricBounds: [130, 20, 160, 120] }));
+        tf.nextTextFrame = tf2;
+        root(story.paragraphs[1]);
+        root(story.paragraphs[1].tabStops.add({ position: 72 }));
+        root(story.characters[0]);
+        root(story.words[0]);
+        root(story.lines[0]);
+        root(story.insertionPoints[0]);
+        root(story.textColumns[0]);
+        root(story.textStyleRanges[0]);
+        root(story.texts[0]);
+    });
+    fixtureStep('text path', function () {
+        root(root(page.ovals.add({ geometricBounds: [170, 20, 200, 60] })).textPaths.add({ contents: 'On a path' }));
+    });
+    fixtureStep('table', function () {
+        story.insertionPoints[-1].contents = '\r';
+        table = root(story.insertionPoints[-1].tables.add({ bodyRowCount: 3, columnCount: 3, headerRowCount: 1, footerRowCount: 1 }));
+        table.cells[0].contents = 'H';
+        table.cells[4].contents = 'B';
+        table.cells.item(5).merge(table.cells.item(6));
+        root(table.cells[0]);
+        root(table.cells[4]);
+        root(table.rows[1]);
+        root(table.columns[1]);
+    });
+    fixtureStep('graphic cell', function () {
+        var c = table.cells[8];
+        c.convertCellType(CellTypeEnum.GRAPHIC_TYPE_CELL);
+        root(c);
+    });
+    fixtureStep('footnote', function () {
+        var fn = root(story.insertionPoints[5].footnotes.add());
+        fn.insertionPoints[-1].contents = 'A footnote';
+    });
+    fixtureStep('endnote', function () {
+        var r = root(story.insertionPoints[10].createEndnote());
+        root(story.endnotes[0]);
+        root(story.characters[10].endnoteRanges[0]);
+    });
+    fixtureStep('note', function () {
+        var n = root(story.insertionPoints[12].notes.add());
+        n.insertionPoints[0].contents = 'A note';
+    });
+    fixtureStep('anchored object', function () {
+        var a = root(story.insertionPoints[3].rectangles.add({ geometricBounds: [0, 0, 5, 5] }));
+        a.anchoredObjectSettings.anchoredPosition = AnchorPosition.ANCHORED;
+    });
+    fixtureStep('page items', function () {
+        rect = root(page.rectangles.add({ geometricBounds: [20, 130, 60, 170], fillColor: 'Fixture CMYK' }));
+        root(page.ovals.add({ geometricBounds: [70, 130, 100, 160] }));
+        root(page.polygons.add({ geometricBounds: [110, 130, 140, 160], numberOfSides: 5 }));
+        root(page.graphicLines.add({ geometricBounds: [150, 130, 150, 170] }));
+        var a = page.rectangles.add({ geometricBounds: [210, 20, 220, 30] });
+        var b = page.rectangles.add({ geometricBounds: [210, 40, 220, 50] });
+        fixtureGroup = root(page.groups.add([a, b]));
+        root(page.guides.add({ location: 50, orientation: HorizontalOrVertical.VERTICAL }));
+        root(rect.paths[0]);
+        root(rect.paths[0].pathPoints[0]);
+    });
+    fixtureStep('placed image', function () {
+        var jpg = new File(dir + '/fixture.jpg');
+        if (!jpg.exists) {
+            app.jpegExportPreferences.exportResolution = 36;
+            doc.exportFile(ExportFormat.JPG, jpg);
+        }
+        img = root(page.rectangles.add({ geometricBounds: [230, 20, 260, 60] }).place(jpg)[0]);
+        root(img.itemLink);
+    });
+    fixtureStep('placed text', function () {
+        var txt = writeTextFile(dir + '/fixture.txt', 'Placed text');
+        root(page.textFrames.add({ geometricBounds: [230, 70, 260, 110] }).place(txt)[0]);
+    });
+    fixtureStep('placed pdf with layers', function () {
+        var pdf = new File(dir + '/fixture.pdf');
+        if (!pdf.exists) {
+            app.pdfExportPreferences.acrobatCompatibility = AcrobatCompatibility.ACROBAT_7;
+            app.pdfExportPreferences.exportLayers = true;
+            doc.exportFile(ExportFormat.PDF_TYPE, pdf);
+        }
+        var placed = root(doc.pages[1].rectangles.add({ geometricBounds: [20, 20, 60, 60] }).place(pdf)[0]);
+        root(placed.graphicLayerOptions);
+        rootLater(function () {
+            var g = doc.allGraphics;
+            for (var i = 0; i < g.length; i++) if (g[i].constructor.name === 'PDF') return g[i].graphicLayerOptions.graphicLayers[0];
+            return null;
+        });
+    });
+    fixtureStep('placed eps', function () {
+        var eps = new File(dir + '/fixture.eps');
+        app.epsExportPreferences.pageRange = '1';
+        doc.exportFile(ExportFormat.EPS_TYPE, eps);
+        // A multi-page export names its files after the pages; take whichever EPS was written.
+        if (!eps.exists) eps = new Folder(dir).getFiles('*.eps')[0];
+        root(doc.pages[1].rectangles.add({ geometricBounds: [230, 70, 260, 110] }).place(eps)[0]);
+    });
+    fixtureStep('placed svg', function () {
+        var svg = writeTextFile(dir + '/fixture.svg', '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><rect width="10" height="10" fill="red"/></svg>');
+        root(doc.pages[2].rectangles.add({ geometricBounds: [130, 20, 160, 60] }).place(svg)[0]);
+    });
+    fixtureStep('placed indesign page', function () {
+        var other = app.documents.add(false);
+        other.pages[0].textFrames.add({ geometricBounds: [0, 0, 50, 50], contents: 'Other' });
+        other.save(new File(dir + '/other.indd'));
+        other.close(SaveOptions.NO);
+        root(doc.pages[2].rectangles.add({ geometricBounds: [170, 20, 220, 70] }).place(new File(dir + '/other.indd'))[0]);
+    });
+    fixtureStep('html item', function () {
+        var frame = root(doc.pages[2].rectangles.add({ geometricBounds: [230, 20, 260, 60] }));
+        root(frame.htmlItems.add(undefined, undefined, undefined, { htmlContent: '<p>html</p>' }));
+    });
+    fixtureStep('math', function () {
+        root(doc.mathObjects.add('<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>=</mo><mn>1</mn></math>', doc.pages[2], doc.layers[0], [70, 230]));
+    });
+    fixtureStep('interactive', function () {
+        var p2 = doc.pages[1];
+        btn = root(p2.buttons.add({ geometricBounds: [70, 20, 90, 60], name: 'Fixture Button' }));
+        root(btn.gotoNextPageBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP }));
+        root(btn.gotoURLBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_DOWN, url: 'https://example.com' }));
+        root(btn.states[0]);
+        root(p2.checkBoxes.add({ geometricBounds: [100, 20, 110, 30] }));
+        root(p2.textBoxes.add({ geometricBounds: [100, 40, 110, 80] }));
+        root(p2.radioButtons.add({ geometricBounds: [120, 20, 130, 30] }));
+        root(p2.comboBoxes.add({ geometricBounds: [120, 40, 130, 80] }));
+        root(p2.listBoxes.add({ geometricBounds: [140, 40, 160, 80] }));
+        root(p2.signatureFields.add({ geometricBounds: [170, 40, 190, 80] }));
+        mso = root(p2.multiStateObjects.add({ geometricBounds: [200, 20, 220, 60] }));
+        root(mso.states.add());
+    });
+    // Each behavior type a button can carry; some need a target.
+    fixtureStep('behavior: first/last/previous page, views, clear/print form', function () {
+        root(btn.gotoFirstPageBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP }));
+        root(btn.gotoLastPageBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP }));
+        root(btn.gotoPreviousPageBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP }));
+        root(btn.gotoNextViewBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP }));
+        root(btn.gotoPreviousViewBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP }));
+        root(btn.clearFormBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP }));
+        root(btn.printFormBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP }));
+    });
+    fixtureStep('behavior: page, zoom, open file, submit, show/hide', function () {
+        root(btn.gotoPageBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP, pageNumber: 1 }));
+        root(btn.viewZoomBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP, viewZoomStyle: ViewZoomStyle.FIT_PAGE }));
+        root(btn.openFileBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP, filePath: dir + '/fixture.pdf' }));
+        root(btn.submitFormBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP, url: 'https://example.com' }));
+        root(btn.showHideFieldsBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP }));
+    });
+    fixtureStep('behavior: states', function () {
+        root(btn.gotoStateBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP, associatedMultiStateObject: mso, stateName: mso.states[0].name }));
+        root(btn.gotoNextStateBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP, associatedMultiStateObject: mso }));
+        root(btn.gotoPreviousStateBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP, associatedMultiStateObject: mso }));
+    });
+    fixtureStep('hyperlinks', function () {
+        var src = root(doc.hyperlinkTextSources.add(story.words[0]));
+        var dest = root(doc.hyperlinkURLDestinations.add('https://example.com'));
+        root(doc.hyperlinks.add(src, dest, { name: 'Fixture Link' }));
+        anchorDest = root(doc.hyperlinkTextDestinations.add(story.words[3]));
+        root(doc.hyperlinkPageDestinations.add(doc.pages[1]));
+        root(doc.bookmarks.add(anchorDest));
+        var itemSrc = root(doc.hyperlinkPageItemSources.add(rect));
+        root(doc.hyperlinks.add(itemSrc, doc.hyperlinkURLDestinations.add('https://example.org'), { name: 'Fixture Item Link' }));
+    });
+    fixtureStep('behavior: anchor', function () {
+        root(btn.gotoAnchorBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP, anchorItem: anchorDest }));
+    });
+    fixtureStep('cross reference', function () {
+        var dest = root(doc.paragraphDestinations.add(story.paragraphs[1]));
+        var src = root(doc.crossReferenceSources.add(story.insertionPoints[-1], doc.crossReferenceFormats[0]));
+        root(doc.hyperlinks.add(src, dest));
+        root(doc.crossReferenceFormats[0]);
+    });
+    fixtureStep('xml', function () {
+        var tag = root(doc.xmlTags.add('fixture'));
+        var r = root(doc.xmlElements[0]);
+        var el = root(r.xmlElements.add(tag, 'content'));
+        root(el.xmlAttributes.add('attr', 'value'));
+        root(el.xmlComments.add('comment'));
+        root(el.xmlInstructions.add('target', 'data'));
+        tf.markup(r.xmlElements.add(tag));
+        root(doc.xmlExportMaps.add(ps, tag));
+        root(doc.xmlImportMaps.add(tag, ps));
+        root(root(doc.xmlStories[0]));
+    });
+    fixtureStep('dtd and validation', function () {
+        var dtd = writeTextFile(dir + '/fixture.dtd', '<!ELEMENT Root (only)>\n<!ELEMENT only (#PCDATA)>\n');
+        doc.importDtd(dtd);
+        root(doc.dtds[0]);
+        doc.xmlElements[0].validate();
+        root(doc.validationErrors[0]);
+    });
+    fixtureStep('xml rule processor', function () {
+        var proc = root(app.xmlRuleProcessors.add(['//fixture']));
+        root(proc.startProcessingRuleSet(doc.xmlElements[0]));
+        fixtureCleanup.push(function () {
+            try { proc.endProcessingRuleSet(); } catch (e) {}
+            proc.remove();
+        });
+    });
+    fixtureStep('index', function () {
+        var idx = root(doc.indexes.add());
+        topic = root(idx.topics.add('Fixture Topic'));
+        root(topic.pageReferences.add(story.words[2]));
+        var other = idx.topics.add('Other Topic');
+        root(topic.crossReferences.add(other, CrossReferenceType.SEE));
+        root(doc.indexingSortOptions[0]);
+    });
+    fixtureStep('conditions', function () {
+        var c = root(doc.conditions.add({ name: 'Fixture Condition' }));
+        root(doc.conditionSets.add({ name: 'Fixture Set' }));
+        story.words[4].appliedConditions = [c];
+    });
+    fixtureStep('text variables', function () {
+        var types = [
+            ['Fixture Custom', VariableTypes.CUSTOM_TEXT_TYPE],
+            ['Fixture Date', VariableTypes.CREATION_DATE_TYPE],
+            ['Fixture File', VariableTypes.FILE_NAME_TYPE],
+            ['Fixture Running', VariableTypes.MATCH_CHARACTER_STYLE_TYPE],
+            ['Fixture Para Header', VariableTypes.MATCH_PARAGRAPH_STYLE_TYPE],
+            ['Fixture Caption', VariableTypes.LIVE_CAPTION_TYPE],
+            ['Fixture Chapter', VariableTypes.CHAPTER_NUMBER_TYPE],
+            ['Fixture Page Count', VariableTypes.LAST_PAGE_NUMBER_TYPE],
+            ['Fixture XRef Chapter', VariableTypes.XREF_CHAPTER_NUMBER_TYPE],
+        ];
+        for (var i = 0; i < types.length; i++) {
+            try {
+                var v = root(doc.textVariables.add({ name: types[i][0], variableType: types[i][1] }));
+                root(v.variableOptions);
+                if (i === 0) root(story.insertionPoints[-1].textVariableInstances.add({ associatedTextVariable: v }));
+            } catch (e) {
+                fixtureErrors.push('text variable ' + types[i][0] + ': ' + e.message);
+            }
+        }
+    });
+    fixtureStep('toc', function () {
+        var toc = root(doc.tocStyles.add({ name: 'Fixture TOC' }));
+        root(toc.tocStyleEntries.add({ name: 'Fixture Para' }));
+    });
+    fixtureStep('articles', function () {
+        var art = root(doc.articles.add('Fixture Article'));
+        root(art.articleMembers.add(tf));
+        root(art.articleMembers.add(fixtureGroup));
+        root(fixtureGroup.articleChildren[0]);
+    });
+    fixtureStep('master', function () {
+        var m = root(doc.masterSpreads.add());
+        root(m.pages[0].textFrames.add({ geometricBounds: [0, 0, 20, 20] }));
+    });
+    var animated;
+    fixtureStep('animation', function () {
+        animated = root(doc.pages[1].ovals.add({ geometricBounds: [230, 20, 250, 40] }));
+        animated.animationSettings.duration = 1;
+        animated.animationSettings.motionPathPoints = [[[[0, 0], [0, 0], [0, 0]], [[10, 10], [10, 10], [10, 10]]], true];
+        root(animated.animationSettings);
+    });
+    fixtureStep('animation behavior', function () {
+        root(btn.animationBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP, animatedPageItem: animated }));
+    });
+    fixtureStep('timing', function () {
+        var spread = doc.pages[1].parent;
+        var list = root(spread.timingSettings.timingLists.itemByName ? spread.timingSettings.timingLists[0] : null);
+        if (!list || !list.isValid) list = root(spread.timingSettings.timingLists.add(DynamicTriggerEvents.ON_PAGE_LOAD));
+        var group = root(list.timingGroups.length ? list.timingGroups[0] : list.timingGroups.add(animated, 0));
+        root(group.timingTargets[0]);
+    });
+    // Media: dir holds fixture.mp4 and fixture.mp3 (test/fixtures/media, copied in by the samplers).
+    fixtureStep('movie', function () {
+        // On the button's page: a movie or sound behavior targets an item on the button's spread.
+        fixtureMovie = root(btn.parentPage.rectangles.add({ geometricBounds: [20, 130, 60, 170] }).place(new File(dir + '/fixture.mp4'))[0]);
+        root(fixtureMovie.navigationPoints.add({ name: 'Start', time: 0 }));
+        root(btn.movieBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP, movieItem: fixtureMovie }));
+    });
+    fixtureStep('sound', function () {
+        var sound = root(btn.parentPage.rectangles.add({ geometricBounds: [70, 130, 100, 160] }).place(new File(dir + '/fixture.mp3'))[0]);
+        root(btn.soundBehaviors.add({ behaviorEvent: BehaviorEvents.MOUSE_UP, soundItem: sound }));
+    });
+    fixtureStep('flex', function () {
+        root(doc.pages[2].flexObjects.add({ geometricBounds: [20, 20, 120, 120] }));
+    });
+    fixtureStep('preflight', function () {
+        // Application-level and saved by InDesign: removed again by closeFixture().
+        removeFixtureProfile();
+        root(app.preflightProfiles.add({ name: 'Fixture Profile' }));
+        doc.preflightOptions.preflightOff = false;
+    });
+    fixtureStep('data merge', function () {
+        var csv = writeTextFile(dir + '/fixture.csv', 'name,@image,#qr\nOne,fixture.jpg,https://example.com\n');
+        doc.dataMergeProperties.selectDataSource(csv);
+        var fields = doc.dataMergeProperties.dataMergeFields;
+        root(fields[0]);
+        // Fields by position: name, @image, #qr.
+        root(doc.dataMergeTextPlaceholders.add(story, story.insertionPoints[-1], fields[0]));
+        root(doc.dataMergeImagePlaceholders.add(page.rectangles.add({ geometricBounds: [130, 130, 160, 160] }), fields[1]));
+        root(doc.dataMergeQrcodePlaceholders.add(page.rectangles.add({ geometricBounds: [170, 130, 200, 160] }), fields[2]));
+    });
+    fixtureStep('changes', function () {
+        story.trackChanges = true;
+        story.insertionPoints[0].contents = 'Tracked ';
+        root(story.changes[0]);
+    });
+    fixtureStep('assignment', function () {
+        // AssignedStory cannot be made by script (no method adds a story to an assignment).
+        root(doc.assignments.add(new File(dir + '/fixture.icma'), { name: 'Fixture Assignment' }));
+    });
+    fixtureStep('kinsoku/mojikumi', function () {
+        root(doc.kinsokuTables.add({ name: 'Fixture Kinsoku' }));
+        root(doc.mojikumiTables.add({ name: 'Fixture Mojikumi' }));
+    });
+    fixtureStep('composite font', function () {
+        var f = root(doc.compositeFonts.add({ name: 'Fixture Composite' }));
+        root(f.compositeFontEntries[0]);
+    });
+    fixtureStep('dialog', function () {
+        // Built, never shown; destroyed by closeFixture().
+        var d = root(app.dialogs.add({ name: 'Fixture Dialog', canCancel: true }));
+        fixtureCleanup.push(function () { d.destroy(); });
+        var col = root(d.dialogColumns.add());
+        var row = root(col.dialogRows.add());
+        var inner = root(row.dialogColumns.add());
+        root(inner.staticTexts.add({ staticLabel: 'Label' }));
+        root(inner.textEditboxes.add({ editContents: 'text' }));
+        root(inner.integerEditboxes.add({ editValue: 1 }));
+        root(inner.integerComboboxes.add({ editValue: 1, stringList: ['1', '2'] }));
+        root(inner.realEditboxes.add({ editValue: 1.5 }));
+        root(inner.realComboboxes.add({ editValue: 1.5, stringList: ['1.5'] }));
+        root(inner.measurementEditboxes.add({ editValue: 12 }));
+        root(inner.measurementComboboxes.add({ editValue: 12, stringList: ['12'] }));
+        root(inner.percentEditboxes.add({ editValue: 50 }));
+        root(inner.percentComboboxes.add({ editValue: 50, stringList: ['50'] }));
+        root(inner.angleEditboxes.add({ editValue: 45 }));
+        root(inner.angleComboboxes.add({ editValue: 45, stringList: ['45'] }));
+        root(inner.checkboxControls.add({ staticLabel: 'Check', checkedState: true }));
+        root(inner.dropdowns.add({ stringList: ['a', 'b'], selectedIndex: 0 }));
+        var radios = root(inner.radiobuttonGroups.add());
+        root(radios.radiobuttonControls.add({ staticLabel: 'One', checkedState: true }));
+        var panel = root(inner.borderPanels.add());
+        root(panel.dialogColumns.add().staticTexts.add({ staticLabel: 'In panel' }));
+        var enabling = root(inner.enablingGroups.add({ staticLabel: 'Enable', checkedState: true }));
+        root(enabling.dialogColumns.add().staticTexts.add({ staticLabel: 'Enabled' }));
+    });
+    fixtureStep('book', function () {
+        var book = root(app.books.add(new File(dir + '/fixture.indb')));
+        fixtureCleanup.push(function () { book.close(SaveOptions.NO); });
+        root(book.bookContents.add(new File(dir + '/other.indd')));
+    });
+    fixtureStep('library', function () {
+        var lib = root(app.libraries.add(new File(dir + '/fixture.indl')));
+        fixtureCleanup.push(function () { lib.close(); });
+        root(lib.store(rect));
+        root(lib.assets[0]);
+    });
+    fixtureStep('idle task', function () {
+        var t = root(app.idleTasks.add({ name: 'Fixture Idle', sleep: 0 }));
+        fixtureCleanup.push(function () { t.remove(); });
+    });
+    fixtureStep('script menu action and Event', function () {
+        var action = root(app.scriptMenuActions.add('Fixture Action'));
+        fixtureCleanup.push(function () { action.remove(); });
+        action.addEventListener('onInvoke', fixtureEventHandler);
+        action.invoke();
+    });
+    fixtureStep('snippet', function () {
+        var snip = new File(dir + '/fixture.idms');
+        rect.exportFile(ExportFormat.INDESIGN_SNIPPET, snip);
+        root(doc.pages[2].place(snip)[0]);
+    });
+    fixtureStep('external page destination', function () {
+        // A page of another open document; closed by closeFixture().
+        var other = app.open(new File(dir + '/other.indd'), false);
+        fixtureCleanup.push(function () { other.close(SaveOptions.NO); });
+        root(doc.hyperlinkExternalPageDestinations.add(other.pages[0]));
+    });
+    fixtureStep('print to a PostScript file (PrintEvent)', function () {
+        var pp = doc.printPreferences;
+        pp.printer = Printer.POSTSCRIPT_FILE;
+        // Never print unless the output really is a file.
+        if (String(pp.printer) !== 'POSTSCRIPT_FILE') throw new Error('printer is not POSTSCRIPT_FILE; not printing');
+        try { pp.ppd = 'Device Independent'; } catch (e) {}
+        pp.printFile = new File(dir + '/fixture.ps');
+        if (String(pp.printer) !== 'POSTSCRIPT_FILE') throw new Error('printer changed; not printing');
+        doc.addEventListener('beforePrint', fixtureEventHandler);
+        doc.addEventListener('afterPrint', fixtureEventHandler);
+        doc.print(false);
+    });
+    fixtureStep('panels', function () {
+        var panels = app.panels;
+        for (var i = 0; i < panels.length; i++) root(panels[i]);
+    });
+    fixtureStep('story editor window', function () {
+        // Needs a layout window; both close with the document.
+        doc.windows.add();
+        root(story.storyEdit());
+        root(doc.layoutWindows[0]);
+    });
+    fixtureStep('place gun (snippets, EPS text)', function () {
+        var gun = root(doc.placeGuns);
+        gun.loadPlaceGun([new File(dir + '/fixture.idms'), new Folder(dir).getFiles('*.eps')[0]], false);
+        fixtureCleanup.push(function () { gun.abortPlaceGun(); });
+        root(gun.snippets[0]);
+        root(gun.epstexts[0]);
+        root(gun.epss[0]);
+    });
+    fixtureStep('fire document events', function () {
+        doc.save();
+        doc.exportFile(ExportFormat.JPG, new File(dir + '/events.jpg'));
+    });
+    return doc;
+}
+
+function removeFixtureProfile() {
+    var p = app.preflightProfiles.itemByName('Fixture Profile');
+    if (p.isValid) p.remove();
+}
+
+/**
+ * Closes the fixture document without saving and undoes what it added to the application.
+ * Returns what could not be undone (empty when all went well).
+ */
+function closeFixture(doc) {
+    var problems = [];
+    for (var i = fixtureCleanup.length - 1; i >= 0; i--) {
+        try { fixtureCleanup[i](); } catch (e) { problems.push('cleanup: ' + e.message); }
+    }
+    fixtureCleanup = [];
+    // A background export holds the document open; wait for it.
+    try { app.waitForAllTasks(); } catch (e) {}
+    for (var attempt = 0; attempt < 3 && doc && doc.isValid; attempt++) {
+        try { doc.close(SaveOptions.NO); } catch (e) {
+            if (attempt === 2) problems.push('close: ' + e.message);
+            $.sleep(500);
+        }
+    }
+    try { removeFixtureProfile(); } catch (e) {}
+    if (fixtureSavedInteraction !== null) app.scriptPreferences.userInteractionLevel = fixtureSavedInteraction;
+    fixtureSavedInteraction = null;
+    return problems;
+}

@@ -1,6 +1,7 @@
 /**
  * PageItemDefault.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -22,14 +23,12 @@ import type { CornerOptions } from './Enums/CornerOptions';
 import type { EndCap } from './Enums/EndCap';
 import type { EndJoin } from './Enums/EndJoin';
 import type { StrokeAlignment } from './Enums/StrokeAlignment';
+import type { NothingEnum } from "./Enums/NothingEnum";
 
 /**
  * Application- or document-level default page-item formatting (fill, stroke, object styles) applied to newly created page items.
  */
 export interface PageItemDefault<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'PageItemDefault';
-
   /** Resolves the proxy into the individual {@link PageItemDefault} objects it stands for. */
   getElements(): PageItemDefault<'single'>[];
 
@@ -73,19 +72,19 @@ export interface PageItemDefault<M extends Mode = 'single'> extends EventTargetD
 
   /** The radius in measurement units of the corner effect applied to the top left corner of rectangular shapes and all corners of non-rectangular shapes */
   get topLeftCornerRadius(): Read<M, number>;
-  set topLeftCornerRadius(value: MeasurementValue);
+  set topLeftCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** The radius in measurement units of the corner effect applied to the top right corner of rectangular shapes */
   get topRightCornerRadius(): Read<M, number>;
-  set topRightCornerRadius(value: MeasurementValue);
+  set topRightCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** The radius in measurement units of the corner effect applied to the bottom left corner of rectangular shapes */
   get bottomLeftCornerRadius(): Read<M, number>;
-  set bottomLeftCornerRadius(value: MeasurementValue);
+  set bottomLeftCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** The radius in measurement units of the corner effect applied to the bottom right corner of rectangular shapes */
   get bottomRightCornerRadius(): Read<M, number>;
-  set bottomRightCornerRadius(value: MeasurementValue);
+  set bottomRightCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** The default graphic object style applied to the PageItemDefault. */
   get appliedGraphicObjectStyle(): Read<M, ObjectStyle>;
@@ -109,7 +108,7 @@ export interface PageItemDefault<M extends Mode = 'single'> extends EventTargetD
 
   /** The weight (in points) to apply to the PageItemDefault's stroke. */
   get strokeWeight(): Read<M, number>;
-  set strokeWeight(value: MeasurementValue);
+  set strokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** The limit of the ratio of stroke width to miter length before a miter (pointed) join becomes a bevel (squared-off) join. */
   get miterLimit(): Read<M, number>;
@@ -161,7 +160,7 @@ export interface PageItemDefault<M extends Mode = 'single'> extends EventTargetD
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of a dashed, dotted, or striped stroke. For information, see stroke type. */
   get gapColor(): Read<M, Swatch>;
-  set gapColor(value: Swatch);
+  set gapColor(value: Swatch | string);
 
   /** The tint as a percentage of the gap color. (To specify a tint percent, use a number in the range of 0 to 100; to use the inherited or overridden value, use -1.) */
   get gapTint(): Read<M, number>;

@@ -1,0 +1,33 @@
+// Minimal ES3 JSON.stringify for the pristine ExtendScript engine (it has no JSON).
+var __json = (function () {
+    var meta = { 8: '\\b', 9: '\\t', 10: '\\n', 12: '\\f', 13: '\\r', 34: '\\"', 92: '\\\\' };
+    function quote(s) {
+        var out = [];
+        for (var i = 0; i < s.length; i++) {
+            var c = s.charCodeAt(i);
+            if (meta[c]) out.push(meta[c]);
+            else if (c < 32 || c > 126) out.push('\\u' + ('0000' + c.toString(16)).slice(-4));
+            else out.push(s.charAt(i));
+        }
+        return '"' + out.join('') + '"';
+    }
+    function str(v) {
+        if (v === null || v === undefined) return 'null';
+        var t = typeof v;
+        if (t === 'string') return quote(v);
+        if (t === 'number') return isFinite(v) ? String(v) : 'null';
+        if (t === 'boolean') return String(v);
+        if (v instanceof Array) {
+            var a = [];
+            for (var i = 0; i < v.length; i++) a.push(str(v[i]));
+            return '[' + a.join(',') + ']';
+        }
+        if (t === 'object') {
+            var p = [];
+            for (var k in v) if (Object.prototype.hasOwnProperty.call(v, k)) p.push(quote(k) + ':' + str(v[k]));
+            return '{' + p.join(',') + '}';
+        }
+        return quote(String(v));
+    }
+    return { stringify: str };
+})();

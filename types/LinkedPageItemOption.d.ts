@@ -1,6 +1,7 @@
 /**
  * LinkedPageItemOption.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -16,9 +17,6 @@ import type { FormField } from './FormField';
  * overwriting local edits, and which kinds of edits survive an update.
  */
 export interface LinkedPageItemOption<M extends Mode = 'single'> extends EventTargetDOMObject<PageItemUnion | Application | Document | FormField, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'LinkedPageItemOption';
-
   /** Resolves the proxy into the individual {@link LinkedPageItemOption} objects it stands for. */
   getElements(): LinkedPageItemOption<'single'>[];
 

@@ -1,10 +1,11 @@
 /**
  * SyncConflictResolution.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __SyncConflictResolution: unique symbol;
 
 
 interface SyncConflictResolution extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<SyncConflictResolution>): boolean;
-
   /**
    * @internal **WARNING:** `__SyncConflictResolution` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const SyncConflictResolution: typeof Enumeration & {
    */
   readonly skipConflicts: SyncConflictResolution_SKIP_CONFLICTS;
   /**
-   * Skips conflicting files.
-   */
-  readonly skipconflicts: SyncConflictResolution_SKIP_CONFLICTS;
-
-  /**
    * Asks the user how to resolve conflicts.
    */
   readonly ASK_ABOUT_CONFLICTS: SyncConflictResolution_ASK_ABOUT_CONFLICTS;
@@ -130,11 +123,6 @@ export declare const SyncConflictResolution: typeof Enumeration & {
    * Asks the user how to resolve conflicts.
    */
   readonly askAboutConflicts: SyncConflictResolution_ASK_ABOUT_CONFLICTS;
-  /**
-   * Asks the user how to resolve conflicts.
-   */
-  readonly askaboutconflicts: SyncConflictResolution_ASK_ABOUT_CONFLICTS;
-
   /**
    * Uses the local version.
    */
@@ -144,11 +132,6 @@ export declare const SyncConflictResolution: typeof Enumeration & {
    */
   readonly preferLocal: SyncConflictResolution_PREFER_LOCAL;
   /**
-   * Uses the local version.
-   */
-  readonly preferlocal: SyncConflictResolution_PREFER_LOCAL;
-
-  /**
    * Uses the project version.
    */
   readonly PREFER_PROJECT: SyncConflictResolution_PREFER_PROJECT;
@@ -156,9 +139,4 @@ export declare const SyncConflictResolution: typeof Enumeration & {
    * Uses the project version.
    */
   readonly preferProject: SyncConflictResolution_PREFER_PROJECT;
-  /**
-   * Uses the project version.
-   */
-  readonly preferproject: SyncConflictResolution_PREFER_PROJECT;
-
 }

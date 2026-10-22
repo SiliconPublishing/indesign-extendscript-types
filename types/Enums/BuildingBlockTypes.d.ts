@@ -1,10 +1,11 @@
 /**
  * BuildingBlockTypes.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __BuildingBlockTypes: unique symbol;
 
 
 interface BuildingBlockTypes extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<BuildingBlockTypes>): boolean;
-
   /**
    * @internal **WARNING:** `__BuildingBlockTypes` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -182,11 +180,6 @@ export declare const BuildingBlockTypes: typeof Enumeration & {
    */
   readonly customStringBuildingBlock: BuildingBlockTypes_CUSTOM_STRING_BUILDING_BLOCK;
   /**
-   * Custom string building block type.
-   */
-  readonly customstringbuildingblock: BuildingBlockTypes_CUSTOM_STRING_BUILDING_BLOCK;
-
-  /**
    * File name building block type.
    */
   readonly FILE_NAME_BUILDING_BLOCK: BuildingBlockTypes_FILE_NAME_BUILDING_BLOCK;
@@ -194,11 +187,6 @@ export declare const BuildingBlockTypes: typeof Enumeration & {
    * File name building block type.
    */
   readonly fileNameBuildingBlock: BuildingBlockTypes_FILE_NAME_BUILDING_BLOCK;
-  /**
-   * File name building block type.
-   */
-  readonly filenamebuildingblock: BuildingBlockTypes_FILE_NAME_BUILDING_BLOCK;
-
   /**
    * Chapter number building block type.
    */
@@ -208,11 +196,6 @@ export declare const BuildingBlockTypes: typeof Enumeration & {
    */
   readonly chapterNumberBuildingBlock: BuildingBlockTypes_CHAPTER_NUMBER_BUILDING_BLOCK;
   /**
-   * Chapter number building block type.
-   */
-  readonly chapternumberbuildingblock: BuildingBlockTypes_CHAPTER_NUMBER_BUILDING_BLOCK;
-
-  /**
    * Page number building block type.
    */
   readonly PAGE_NUMBER_BUILDING_BLOCK: BuildingBlockTypes_PAGE_NUMBER_BUILDING_BLOCK;
@@ -220,11 +203,6 @@ export declare const BuildingBlockTypes: typeof Enumeration & {
    * Page number building block type.
    */
   readonly pageNumberBuildingBlock: BuildingBlockTypes_PAGE_NUMBER_BUILDING_BLOCK;
-  /**
-   * Page number building block type.
-   */
-  readonly pagenumberbuildingblock: BuildingBlockTypes_PAGE_NUMBER_BUILDING_BLOCK;
-
   /**
    * Full paragraph building block type.
    */
@@ -234,11 +212,6 @@ export declare const BuildingBlockTypes: typeof Enumeration & {
    */
   readonly fullParagraphBuildingBlock: BuildingBlockTypes_FULL_PARAGRAPH_BUILDING_BLOCK;
   /**
-   * Full paragraph building block type.
-   */
-  readonly fullparagraphbuildingblock: BuildingBlockTypes_FULL_PARAGRAPH_BUILDING_BLOCK;
-
-  /**
    * Paragraph number building block type.
    */
   readonly PARAGRAPH_NUMBER_BUILDING_BLOCK: BuildingBlockTypes_PARAGRAPH_NUMBER_BUILDING_BLOCK;
@@ -246,11 +219,6 @@ export declare const BuildingBlockTypes: typeof Enumeration & {
    * Paragraph number building block type.
    */
   readonly paragraphNumberBuildingBlock: BuildingBlockTypes_PARAGRAPH_NUMBER_BUILDING_BLOCK;
-  /**
-   * Paragraph number building block type.
-   */
-  readonly paragraphnumberbuildingblock: BuildingBlockTypes_PARAGRAPH_NUMBER_BUILDING_BLOCK;
-
   /**
    * Paragraph text building block type.
    */
@@ -260,11 +228,6 @@ export declare const BuildingBlockTypes: typeof Enumeration & {
    */
   readonly paragraphTextBuildingBlock: BuildingBlockTypes_PARAGRAPH_TEXT_BUILDING_BLOCK;
   /**
-   * Paragraph text building block type.
-   */
-  readonly paragraphtextbuildingblock: BuildingBlockTypes_PARAGRAPH_TEXT_BUILDING_BLOCK;
-
-  /**
    * Bookmark name building block type.
    */
   readonly BOOKMARK_NAME_BUILDING_BLOCK: BuildingBlockTypes_BOOKMARK_NAME_BUILDING_BLOCK;
@@ -272,9 +235,4 @@ export declare const BuildingBlockTypes: typeof Enumeration & {
    * Bookmark name building block type.
    */
   readonly bookmarkNameBuildingBlock: BuildingBlockTypes_BOOKMARK_NAME_BUILDING_BLOCK;
-  /**
-   * Bookmark name building block type.
-   */
-  readonly bookmarknamebuildingblock: BuildingBlockTypes_BOOKMARK_NAME_BUILDING_BLOCK;
-
 }

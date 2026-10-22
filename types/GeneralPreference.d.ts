@@ -1,6 +1,7 @@
 /**
  * GeneralPreference.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -18,9 +19,6 @@ import type { ToolsPanelOptions } from './Enums/ToolsPanelOptions';
  * Application-wide general UI and behavior preferences.
  */
 export interface GeneralPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'GeneralPreference';
-
   /** Resolves the proxy into the individual {@link GeneralPreference} objects it stands for. */
   getElements(): GeneralPreference<'single'>[];
 
@@ -35,7 +33,8 @@ export interface GeneralPreference<M extends Mode = 'single'> extends EventTarge
   set contextBarVisible(value: boolean);
 
   /** If true, application lives in a frame. */
-  readonly useApplicationFrame: Read<M, boolean>;
+  get useApplicationFrame(): Read<M, boolean>;
+  set useApplicationFrame(value: boolean);
 
   /** Whether and how quickly tool tips appear: normal, off, or fast — see {@link ToolTipOptions}. */
   get toolTips(): Read<M, ToolTipOptions>;
@@ -192,7 +191,7 @@ export interface GeneralPreference<M extends Mode = 'single'> extends EventTarge
   set previewPages(value: PreviewPagesOptions);
 
   /** The location in which to store temporary files. */
-  get temporaryFolder(): Read<M, Promise<Folder>>;
+  get temporaryFolder(): Read<M, Folder>;
   set temporaryFolder(value: FolderPath);
 
   /** Whether page numbers follow the section's numbering or count every page sequentially through the document — see {@link PageNumberingOptions}. */

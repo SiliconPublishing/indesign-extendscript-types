@@ -1,6 +1,7 @@
 /**
  * Table.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -90,15 +91,12 @@ export interface Table<M extends Mode = 'single'>
   extends LabelableEventDOMObject<TableParent, M>,
     IndexedDOMObject<TableParent, M>,
     TableFormatAttributes<M>{
-  /** The object's DOM class name. */
-  readonly constructorName: 'Table';
-
   /** Resolves the proxy into the individual {@link Table} objects it stands for. */
   getElements(): Table<'single'>[];
 
   // ---- Caption and header columns --------------------------------------------
   // Absent from the InDesign 2026 object-model dictionary; modelled from the
-  // live UXP runtime.
+  // live UXP runtime (not yet re-measured in ExtendScript).
 
   /** How many paragraphs at the start (or end) of the caption story belong to the caption. @default `0` */
   get captionParagraphCount(): Read<M, number>;
@@ -120,7 +118,7 @@ export interface Table<M extends Mode = 'single'>
   set name(value: string);
 
   /** The {@link XMLItem} this table is associated with, if tagged. */
-  readonly associatedXMLElement: Read<M, XMLItem>;
+  readonly associatedXMLElement: Read<M, XMLItem | null>;
 
   /** The {@link InsertionPoint} immediately before the table in its containing story. */
   readonly storyOffset: Read<M, InsertionPoint>;

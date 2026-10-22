@@ -1,6 +1,7 @@
 /**
  * Rectangle.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -67,104 +68,62 @@ import type { WMFs } from './WMFs';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
-import type { AnchorPoint } from './Enums/AnchorPoint';
-import type { AnyGraphic } from './_base/Unions';
-import type { AnyPageItem } from './_base/Unions';
-import type { ArrowHead } from './Enums/ArrowHead';
-import type { ArrowHeadAlignmentEnum } from './Enums/ArrowHeadAlignmentEnum';
-import type { Asset } from './Asset';
-import type { BoundsArray } from './_base/Types';
-import type { BoundsSpecifier } from './_base/PageItemMixins';
-import type { ContentType } from './Enums/ContentType';
-import type { ConvertShapeOptions } from './Enums/ConvertShapeOptions';
-import type { CoordinateSpaces } from './Enums/CoordinateSpaces';
-import type { CornerOptions } from './Enums/CornerOptions';
-import type { DimensionsConstraints } from './Enums/DimensionsConstraints';
-import type { DisplaySettingOptions } from './Enums/DisplaySettingOptions';
-import type { EndCap } from './Enums/EndCap';
-import type { EndJoin } from './Enums/EndJoin';
-import type { Event } from './Event';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { ExportFormat } from './Enums/ExportFormat';
+import type { Event } from './Event';
 import type { FilePath } from './_base/Types';
-import type { FlexEnum } from './Enums/FlexEnum';
-import type { FlexWidthHeightMode } from './Enums/FlexWidthHeightMode';
-import type { Flip } from './Enums/Flip';
-import type { Guide } from './Guide';
-import type { InDesignEventMap } from './_base/Events';
-import type { LockStateValues } from './Enums/LockStateValues';
-import type { MatrixContentValue } from './_base/PageItemMixins';
-import type { MeasurementValue } from './_base/Types';
-import type { Movie } from './Movie';
-import type { PDFExportPreset } from './PDFExportPreset';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
-import type { ResizeConstraints } from './Enums/ResizeConstraints';
-import type { ResizeMethods } from './Enums/ResizeMethods';
-import type { SelectionOptions } from './Enums/SelectionOptions';
-import type { Sound } from './Sound';
+import type { BoundsArray } from './_base/Types';
+import type { Flip } from './Enums/Flip';
+import type { AnchorPoint } from './Enums/AnchorPoint';
 import type { Spread } from './Spread';
-import type { StrokeAlignment } from './Enums/StrokeAlignment';
-import type { StrokeCornerAdjustment } from './Enums/StrokeCornerAdjustment';
-import type { StrokeStyle } from './StrokeStyle';
-import type { Swatch } from './Swatch';
-import type { TransformMatrixValue } from './_base/PageItemMixins';
+import type { MeasurementValue } from './_base/Types';
+import type { CoordinateSpaces } from './Enums/CoordinateSpaces';
 import type { TransformOrigin } from './_base/PageItemMixins';
+import type { TransformMatrixValue } from './_base/PageItemMixins';
+import type { MatrixContentValue } from './_base/PageItemMixins';
 import type { TransformationMatrix } from './TransformationMatrix';
+import type { BoundsSpecifier } from './_base/PageItemMixins';
+import type { ResizeMethods } from './Enums/ResizeMethods';
+import type { ResizeConstraints } from './Enums/ResizeConstraints';
+import type { Swatch } from './Swatch';
+import type { NothingEnum } from './Enums/NothingEnum';
+import type { EndCap } from './Enums/EndCap';
+import type { EndJoin } from './Enums/EndJoin';
+import type { StrokeStyle } from './StrokeStyle';
+import type { ArrowHead } from './Enums/ArrowHead';
+import type { StrokeAlignment } from './Enums/StrokeAlignment';
+import type { CornerOptions } from './Enums/CornerOptions';
+import type { ArrowHeadAlignmentEnum } from './Enums/ArrowHeadAlignmentEnum';
+import type { StrokeCornerAdjustment } from './Enums/StrokeCornerAdjustment';
+import type { AnyGraphic } from './_base/Unions';
+import type { AnyPageItem } from './_base/Unions';
 import type { XMLItem } from './XMLItem';
+import type { Guide } from './Guide';
+import type { Movie } from './Movie';
+import type { Sound } from './Sound';
+import type { DimensionsConstraints } from './Enums/DimensionsConstraints';
+import type { FlexWidthHeightMode } from './Enums/FlexWidthHeightMode';
+import type { FlexEnum } from './Enums/FlexEnum';
+import type { DisplaySettingOptions } from './Enums/DisplaySettingOptions';
+import type { Asset } from './Asset';
+import type { ConvertShapeOptions } from './Enums/ConvertShapeOptions';
+import type { ExportFormat } from './Enums/ExportFormat';
+import type { PDFExportPreset } from './PDFExportPreset';
+import type { SelectionOptions } from './Enums/SelectionOptions';
+import type { ContentType } from './Enums/ContentType';
+import type { LockStateValues } from './Enums/LockStateValues';
+
 /**
  * A rectangular frame — the most common page item, used for graphic frames,
  * color blocks, and placed images.
  */
 export interface Rectangle<TParent = PageItemParent> {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: TParent;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<Rectangle<TParent>, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<Rectangle<TParent>, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -219,6 +178,45 @@ export interface Rectangle<TParent = PageItemParent> {
    * Gets the label value associated with the specified key.
    */
   extractLabel(key: string): string;
+  /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: TParent;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<Rectangle<TParent>, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<Rectangle<TParent>, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * The index of the object within its containing parent.
    */
@@ -379,7 +377,7 @@ export interface Rectangle<TParent = PageItemParent> {
   set overprintFill(value: boolean);
   /** The weight (in points) to apply to the PageItem's stroke. */
   get strokeWeight(): number;
-  set strokeWeight(value: MeasurementValue);
+  set strokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
   /** The limit of the ratio of stroke width to miter length before a miter (pointed) join becomes a bevel (squared-off) join. */
   get miterLimit(): number;
   set miterLimit(value: number);
@@ -415,7 +413,7 @@ export interface Rectangle<TParent = PageItemParent> {
   set overprintStroke(value: boolean);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of a dashed, dotted, or striped stroke. For information, see stroke type. */
   get gapColor(): Swatch;
-  set gapColor(value: Swatch);
+  set gapColor(value: Swatch | string);
   /** The tint as a percentage of the gap color. (To specify a tint percent, use a number in the range of 0 to 100; to use the inherited or overridden value, use -1.) */
   get gapTint(): number;
   set gapTint(value: number);
@@ -449,16 +447,16 @@ export interface Rectangle<TParent = PageItemParent> {
   set bottomRightCornerOption(value: CornerOptions);
   /** The radius in measurement units of the corner effect applied to the top left corner of rectangular shapes and all corners of non-rectangular shapes */
   get topLeftCornerRadius(): number;
-  set topLeftCornerRadius(value: MeasurementValue);
+  set topLeftCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius in measurement units of the corner effect applied to the top right corner of rectangular shapes */
   get topRightCornerRadius(): number;
-  set topRightCornerRadius(value: MeasurementValue);
+  set topRightCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius in measurement units of the corner effect applied to the bottom left corner of rectangular shapes */
   get bottomLeftCornerRadius(): number;
-  set bottomLeftCornerRadius(value: MeasurementValue);
+  set bottomLeftCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius in measurement units of the corner effect applied to the bottom right corner of rectangular shapes */
   get bottomRightCornerRadius(): number;
-  set bottomRightCornerRadius(value: MeasurementValue);
+  set bottomRightCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The arrowhead alignment applied to the PageItem. */
   get arrowHeadAlignment(): ArrowHeadAlignmentEnum;
   set arrowHeadAlignment(value: ArrowHeadAlignmentEnum);
@@ -479,13 +477,13 @@ export interface Rectangle<TParent = PageItemParent> {
   set gradientFillStart(value: MeasurementValue[]);
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the fill of the PageItem. */
   get gradientFillLength(): number;
-  set gradientFillLength(value: MeasurementValue);
+  set gradientFillLength(value: MeasurementValue | NothingEnum.NOTHING);
   /** The starting point (in page coordinates) of a gradient applied to the stroke of the PageItem, in the format [x, y]. */
   get gradientStrokeStart(): number[];
   set gradientStrokeStart(value: MeasurementValue[]);
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the stroke of the PageItem. */
   get gradientStrokeLength(): number;
-  set gradientStrokeLength(value: MeasurementValue);
+  set gradientStrokeLength(value: MeasurementValue | NothingEnum.NOTHING);
   /** All {@link PageItems} in this container regardless of type — the general-purpose iterator for mixed content. */
   readonly pageItems: PageItems<Rectangle>;
   /** Every {@link Graphic} anywhere in this container, recursing into nested groups. A snapshot array, not a live collection. */
@@ -526,7 +524,7 @@ export interface Rectangle<TParent = PageItemParent> {
   /** Per-item {@link Preferences} objects (text-frame, story, and other frame-level preference bags). */
   readonly preferences: Preferences;
   /** The {@link XMLElement} this item is tagged with in the document's XML structure, if any. */
-  readonly associatedXMLElement: XMLItem;
+  readonly associatedXMLElement: XMLItem | null;
   /** The {@link Page} this item appears on, or an unresolved proxy if it is on the pasteboard (check `.isValid`). */
   readonly parentPage: Page;
   /** Every {@link Article} this item belongs to, in reading-order membership. */
@@ -537,7 +535,7 @@ export interface Rectangle<TParent = PageItemParent> {
    */
   readonly overridden: boolean;
   /** The master-page object this overridden item derives from, if any. */
-  readonly overriddenMasterPageItem: PageItem | Guide | Graphic | Movie | Sound;
+  readonly overriddenMasterPageItem: PageItem | Guide | Graphic | Movie | Sound | null;
   /** Whether this master-page item may be overridden on document pages. */
   get allowOverrides(): boolean;
   set allowOverrides(value: boolean);
@@ -557,7 +555,7 @@ export interface Rectangle<TParent = PageItemParent> {
   get itemLayer(): Layer;
   set itemLayer(value: Layer | string);
   /** The {@link ObjectStyle} applied to the item. Assign a style object or its name. */
-  get appliedObjectStyle(): ObjectStyle;
+  get appliedObjectStyle(): ObjectStyle | null;
   set appliedObjectStyle(value: ObjectStyle | string);
   /** Whether the item is locked against selection and editing. */
   get locked(): boolean;
@@ -796,8 +794,6 @@ export interface Rectangle<TParent = PageItemParent> {
   minusBack(withItems: PageItem | PageItem[]): PageItem;
   /** Creates a new shape from the areas where this shape and others do *not* overlap. */
   excludeOverlapPath(withItems: PageItem | PageItem[]): PageItem;
-  /** The object's DOM class name. */
-  readonly constructorName: 'Rectangle';
   /** Resolves the proxy into the individual {@link Rectangle}s it stands for. */
   getElements(): Rectangle<TParent>[];
   /** Auto-fit settings for content placed or pasted into the frame — see {@link FrameFittingOption}. */
@@ -813,60 +809,11 @@ export interface Rectangle<TParent = PageItemParent> {
   clearFrameFittingOptions(): void;
 }
 
-
 /**
- * The broadcast proxy for {@link Rectangle} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link Rectangle} there.
+ * A rectangular frame — the most common page item, used for graphic frames,
+ * color blocks, and placed images.
  */
 export interface RectanglePlural<TParent = PageItemParent> {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (TParent)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<RectanglePlural<TParent>, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<RectanglePlural<TParent>, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -921,6 +868,45 @@ export interface RectanglePlural<TParent = PageItemParent> {
    * Gets the label value associated with the specified key.
    */
   extractLabel(key: string): (string)[];
+  /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (TParent)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<RectanglePlural<TParent>, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<RectanglePlural<TParent>, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * The index of the object within its containing parent.
    */
@@ -1081,7 +1067,7 @@ export interface RectanglePlural<TParent = PageItemParent> {
   set overprintFill(value: boolean);
   /** The weight (in points) to apply to the PageItem's stroke. */
   get strokeWeight(): (number)[];
-  set strokeWeight(value: MeasurementValue);
+  set strokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
   /** The limit of the ratio of stroke width to miter length before a miter (pointed) join becomes a bevel (squared-off) join. */
   get miterLimit(): (number)[];
   set miterLimit(value: number);
@@ -1117,7 +1103,7 @@ export interface RectanglePlural<TParent = PageItemParent> {
   set overprintStroke(value: boolean);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of a dashed, dotted, or striped stroke. For information, see stroke type. */
   get gapColor(): (Swatch)[];
-  set gapColor(value: Swatch);
+  set gapColor(value: Swatch | string);
   /** The tint as a percentage of the gap color. (To specify a tint percent, use a number in the range of 0 to 100; to use the inherited or overridden value, use -1.) */
   get gapTint(): (number)[];
   set gapTint(value: number);
@@ -1151,16 +1137,16 @@ export interface RectanglePlural<TParent = PageItemParent> {
   set bottomRightCornerOption(value: CornerOptions);
   /** The radius in measurement units of the corner effect applied to the top left corner of rectangular shapes and all corners of non-rectangular shapes */
   get topLeftCornerRadius(): (number)[];
-  set topLeftCornerRadius(value: MeasurementValue);
+  set topLeftCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius in measurement units of the corner effect applied to the top right corner of rectangular shapes */
   get topRightCornerRadius(): (number)[];
-  set topRightCornerRadius(value: MeasurementValue);
+  set topRightCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius in measurement units of the corner effect applied to the bottom left corner of rectangular shapes */
   get bottomLeftCornerRadius(): (number)[];
-  set bottomLeftCornerRadius(value: MeasurementValue);
+  set bottomLeftCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius in measurement units of the corner effect applied to the bottom right corner of rectangular shapes */
   get bottomRightCornerRadius(): (number)[];
-  set bottomRightCornerRadius(value: MeasurementValue);
+  set bottomRightCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The arrowhead alignment applied to the PageItem. */
   get arrowHeadAlignment(): (ArrowHeadAlignmentEnum)[];
   set arrowHeadAlignment(value: ArrowHeadAlignmentEnum);
@@ -1181,13 +1167,13 @@ export interface RectanglePlural<TParent = PageItemParent> {
   set gradientFillStart(value: MeasurementValue[]);
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the fill of the PageItem. */
   get gradientFillLength(): (number)[];
-  set gradientFillLength(value: MeasurementValue);
+  set gradientFillLength(value: MeasurementValue | NothingEnum.NOTHING);
   /** The starting point (in page coordinates) of a gradient applied to the stroke of the PageItem, in the format [x, y]. */
   get gradientStrokeStart(): (number[])[];
   set gradientStrokeStart(value: MeasurementValue[]);
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the stroke of the PageItem. */
   get gradientStrokeLength(): (number)[];
-  set gradientStrokeLength(value: MeasurementValue);
+  set gradientStrokeLength(value: MeasurementValue | NothingEnum.NOTHING);
   /** All {@link PageItems} in this container regardless of type — the general-purpose iterator for mixed content. */
   readonly pageItems: PageItems<Rectangle>;
   /** Every {@link Graphic} anywhere in this container, recursing into nested groups. A snapshot array, not a live collection. */
@@ -1228,7 +1214,7 @@ export interface RectanglePlural<TParent = PageItemParent> {
   /** Per-item {@link Preferences} objects (text-frame, story, and other frame-level preference bags). */
   readonly preferences: Preferences;
   /** The {@link XMLElement} this item is tagged with in the document's XML structure, if any. */
-  readonly associatedXMLElement: (XMLItem)[];
+  readonly associatedXMLElement: (XMLItem | null)[];
   /** The {@link Page} this item appears on, or an unresolved proxy if it is on the pasteboard (check `.isValid`). */
   readonly parentPage: (Page)[];
   /** Every {@link Article} this item belongs to, in reading-order membership. */
@@ -1239,7 +1225,7 @@ export interface RectanglePlural<TParent = PageItemParent> {
    */
   readonly overridden: (boolean)[];
   /** The master-page object this overridden item derives from, if any. */
-  readonly overriddenMasterPageItem: (PageItem | Guide | Graphic | Movie | Sound)[];
+  readonly overriddenMasterPageItem: (PageItem | Guide | Graphic | Movie | Sound | null)[];
   /** Whether this master-page item may be overridden on document pages. */
   get allowOverrides(): (boolean)[];
   set allowOverrides(value: boolean);
@@ -1259,7 +1245,7 @@ export interface RectanglePlural<TParent = PageItemParent> {
   get itemLayer(): (Layer)[];
   set itemLayer(value: Layer | string);
   /** The {@link ObjectStyle} applied to the item. Assign a style object or its name. */
-  get appliedObjectStyle(): (ObjectStyle)[];
+  get appliedObjectStyle(): (ObjectStyle | null)[];
   set appliedObjectStyle(value: ObjectStyle | string);
   /** Whether the item is locked against selection and editing. */
   get locked(): (boolean)[];
@@ -1498,8 +1484,6 @@ export interface RectanglePlural<TParent = PageItemParent> {
   minusBack(withItems: PageItem | PageItem[]): (PageItem)[];
   /** Creates a new shape from the areas where this shape and others do *not* overlap. */
   excludeOverlapPath(withItems: PageItem | PageItem[]): (PageItem)[];
-  /** The object's DOM class name. */
-  readonly constructorName: 'Rectangle';
   /** Resolves the proxy into the individual {@link Rectangle}s it stands for. */
   getElements(): Rectangle<TParent>[];
   /** Auto-fit settings for content placed or pasted into the frame — see {@link FrameFittingOption}. */

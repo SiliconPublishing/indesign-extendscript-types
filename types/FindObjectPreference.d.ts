@@ -1,6 +1,7 @@
 /**
  * FindObjectPreference.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -55,9 +56,6 @@ import type { ObjectStyle } from './ObjectStyle';
  * {@link Application.findObjectPreferences} and used by {@link Application.findObject}.
  */
 export interface FindObjectPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'FindObjectPreference';
-
   /** Resolves the proxy into the individual {@link FindObjectPreference} objects it stands for. */
   getElements(): FindObjectPreference<'single'>[];
 
@@ -113,11 +111,11 @@ export interface FindObjectPreference<M extends Mode = 'single'> extends EventTa
 
   /** Minimum Spacing Before First Footnote. */
   get footnotesMinimumSpacing(): Read<M, number | NothingEnum.NOTHING>;
-  set footnotesMinimumSpacing(value: number | NothingEnum.NOTHING);
+  set footnotesMinimumSpacing(value: number | NothingEnum.NOTHING | string);
 
   /** Space between footnotes. */
   get footnotesSpaceBetween(): Read<M, number | NothingEnum.NOTHING>;
-  set footnotesSpaceBetween(value: number | NothingEnum.NOTHING);
+  set footnotesSpaceBetween(value: number | NothingEnum.NOTHING | string);
 
   /** The applied object style(s). */
   get appliedObjectStyles(): Read<M, string | NothingEnum.NOTHING>;
@@ -217,11 +215,11 @@ export interface FindObjectPreference<M extends Mode = 'single'> extends EventTa
 
   /** The space between columns in the text frame. */
   get textColumnGutter(): Read<M, number | NothingEnum.NOTHING>;
-  set textColumnGutter(value: number | NothingEnum.NOTHING);
+  set textColumnGutter(value: number | NothingEnum.NOTHING | string);
 
   /** The column width of the columns in the text frame. */
   get textColumnFixedWidth(): Read<M, number | NothingEnum.NOTHING>;
-  set textColumnFixedWidth(value: number | NothingEnum.NOTHING);
+  set textColumnFixedWidth(value: number | NothingEnum.NOTHING | string);
 
   /** If true, maintains column width when the text frame is resized. If false, causes columns to resize when the text frame is resized. Note: When true, resizing the frame can change the number of columns in the frame. */
   get useFixedColumnWidth(): Read<M, boolean | NothingEnum.NOTHING>;
@@ -237,7 +235,7 @@ export interface FindObjectPreference<M extends Mode = 'single'> extends EventTa
 
   /** The minimum distance between the baseline of the text and the top inset of the text frame or cell. */
   get minimumFirstBaselineOffset(): Read<M, number | NothingEnum.NOTHING>;
-  set minimumFirstBaselineOffset(value: number | NothingEnum.NOTHING);
+  set minimumFirstBaselineOffset(value: number | NothingEnum.NOTHING | string);
 
   /** The vertical alignment of the text content. */
   get verticalJustification(): Read<M, VerticalJustification | NothingEnum.NOTHING>;
@@ -245,7 +243,7 @@ export interface FindObjectPreference<M extends Mode = 'single'> extends EventTa
 
   /** The maximum amount of vertical space between two paragraphs. Note: Valid only when vertical justification is justified; the specified amount is applied in addition to the space before or space after values defined for the paragraph. */
   get verticalThreshold(): Read<M, number | NothingEnum.NOTHING>;
-  set verticalThreshold(value: number | NothingEnum.NOTHING);
+  set verticalThreshold(value: number | NothingEnum.NOTHING | string);
 
   /** If true, ignores text wrap settings for drawn or placed objects in the text frame. */
   get ignoreWrap(): Read<M, boolean | NothingEnum.NOTHING>;
@@ -257,7 +255,7 @@ export interface FindObjectPreference<M extends Mode = 'single'> extends EventTa
 
   /** The amount to offset the baseline grid. */
   get startingOffsetForBaselineFrameGrid(): Read<M, number | NothingEnum.NOTHING>;
-  set startingOffsetForBaselineFrameGrid(value: number | NothingEnum.NOTHING);
+  set startingOffsetForBaselineFrameGrid(value: number | NothingEnum.NOTHING | string);
 
   /** The location (top of page, top margin, top of frame, or frame inset) on which to base the custom baseline grid. */
   get baselineFrameGridRelativeOption(): Read<M, BaselineFrameGridRelativeOption | NothingEnum.NOTHING>;
@@ -265,7 +263,7 @@ export interface FindObjectPreference<M extends Mode = 'single'> extends EventTa
 
   /** The distance between grid lines. */
   get baselineFrameGridIncrement(): Read<M, number | NothingEnum.NOTHING>;
-  set baselineFrameGridIncrement(value: number | NothingEnum.NOTHING);
+  set baselineFrameGridIncrement(value: number | NothingEnum.NOTHING | string);
 
   /** The grid line color, specified either as an array of three doubles, each in the range 0 to 255 and representing R, G, and B values, or as a UI color. */
   get baselineFrameGridColor(): Read<M, number[] | UIColors | NothingEnum.NOTHING>;

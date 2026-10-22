@@ -1,10 +1,11 @@
 /**
  * SnapshotBlendingModes.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __SnapshotBlendingModes: unique symbol;
 
 
 interface SnapshotBlendingModes extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<SnapshotBlendingModes>): boolean;
-
   /**
    * @internal **WARNING:** `__SnapshotBlendingModes` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const SnapshotBlendingModes: typeof Enumeration & {
    */
   readonly ignoreLayoutSnapshots: SnapshotBlendingModes_IGNORE_LAYOUT_SNAPSHOTS;
   /**
-   * Turns off the influence of layout snapshots completely.
-   */
-  readonly ignorelayoutsnapshots: SnapshotBlendingModes_IGNORE_LAYOUT_SNAPSHOTS;
-
-  /**
    * Use the layout snapshot nearest in size and shape to the new layout.
    */
   readonly USE_NEAREST_SNAPSHOT: SnapshotBlendingModes_USE_NEAREST_SNAPSHOT;
@@ -130,11 +123,6 @@ export declare const SnapshotBlendingModes: typeof Enumeration & {
    * Use the layout snapshot nearest in size and shape to the new layout.
    */
   readonly useNearestSnapshot: SnapshotBlendingModes_USE_NEAREST_SNAPSHOT;
-  /**
-   * Use the layout snapshot nearest in size and shape to the new layout.
-   */
-  readonly usenearestsnapshot: SnapshotBlendingModes_USE_NEAREST_SNAPSHOT;
-
   /**
    * Use only layout snapshots within the same class as the new layout.
    */
@@ -144,11 +132,6 @@ export declare const SnapshotBlendingModes: typeof Enumeration & {
    */
   readonly limitedSnapshotBlending: SnapshotBlendingModes_LIMITED_SNAPSHOT_BLENDING;
   /**
-   * Use only layout snapshots within the same class as the new layout.
-   */
-  readonly limitedsnapshotblending: SnapshotBlendingModes_LIMITED_SNAPSHOT_BLENDING;
-
-  /**
    * Use up to three nearest snapshots even if a snapshot is in a different class that the new layout.
    */
   readonly FULL_SNAPSHOT_BLENDING: SnapshotBlendingModes_FULL_SNAPSHOT_BLENDING;
@@ -156,9 +139,4 @@ export declare const SnapshotBlendingModes: typeof Enumeration & {
    * Use up to three nearest snapshots even if a snapshot is in a different class that the new layout.
    */
   readonly fullSnapshotBlending: SnapshotBlendingModes_FULL_SNAPSHOT_BLENDING;
-  /**
-   * Use up to three nearest snapshots even if a snapshot is in a different class that the new layout.
-   */
-  readonly fullsnapshotblending: SnapshotBlendingModes_FULL_SNAPSHOT_BLENDING;
-
 }

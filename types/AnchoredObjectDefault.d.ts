@@ -1,6 +1,7 @@
 /**
  * AnchoredObjectDefault.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -11,15 +12,13 @@ import type { MeasurementValue } from './_base/Types';
 import type { ObjectStyle } from './ObjectStyle';
 import type { ParagraphStyle } from './ParagraphStyle';
 import type { ContentType } from './Enums/ContentType';
+import type { NothingEnum } from "./Enums/NothingEnum";
 
 /**
  * Default content type, size, and style applied to a new anchored object
  * when none are specified explicitly.
  */
 export interface AnchoredObjectDefault<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'AnchoredObjectDefault';
-
   /** Resolves the proxy into the individual {@link AnchoredObjectDefault} objects it stands for. */
   getElements(): AnchoredObjectDefault<'single'>[];
 
@@ -29,17 +28,17 @@ export interface AnchoredObjectDefault<M extends Mode = 'single'> extends EventT
 
   /** The initial height of a new anchored object. */
   get initialAnchorHeight(): Read<M, number>;
-  set initialAnchorHeight(value: MeasurementValue);
+  set initialAnchorHeight(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** The initial width of a new anchored object. */
   get initialAnchorWidth(): Read<M, number>;
-  set initialAnchorWidth(value: MeasurementValue);
+  set initialAnchorWidth(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** The initial paragraph style of a new anchored object. Note: Valid when anchor content is text. */
   get anchoredParagraphStyle(): Read<M, ParagraphStyle>;
-  set anchoredParagraphStyle(value: ParagraphStyle);
+  set anchoredParagraphStyle(value: ParagraphStyle | string);
 
   /** The initial object style of a new anchored object. */
   get anchoredObjectStyle(): Read<M, ObjectStyle>;
-  set anchoredObjectStyle(value: ObjectStyle);
+  set anchoredObjectStyle(value: ObjectStyle | string);
 }

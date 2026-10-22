@@ -1,10 +1,11 @@
 /**
  * WatermarkHorizontalPositionEnum.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __WatermarkHorizontalPositionEnum: unique symbol;
 
 
 interface WatermarkHorizontalPositionEnum extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<WatermarkHorizontalPositionEnum>): boolean;
-
   /**
    * @internal **WARNING:** `__WatermarkHorizontalPositionEnum` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const WatermarkHorizontalPositionEnum: typeof Enumeration & {
    */
   readonly watermarkHLeft: WatermarkHorizontalPositionEnum_WATERMARK_H_LEFT;
   /**
-   * Place watermark horizontal left.
-   */
-  readonly watermarkhleft: WatermarkHorizontalPositionEnum_WATERMARK_H_LEFT;
-
-  /**
    * Place watermark horizontal center.
    */
   readonly WATERMARK_H_CENTER: WatermarkHorizontalPositionEnum_WATERMARK_H_CENTER;
@@ -115,11 +108,6 @@ export declare const WatermarkHorizontalPositionEnum: typeof Enumeration & {
    */
   readonly watermarkHCenter: WatermarkHorizontalPositionEnum_WATERMARK_H_CENTER;
   /**
-   * Place watermark horizontal center.
-   */
-  readonly watermarkhcenter: WatermarkHorizontalPositionEnum_WATERMARK_H_CENTER;
-
-  /**
    * Place watermark horizontal right.
    */
   readonly WATERMARK_H_RIGHT: WatermarkHorizontalPositionEnum_WATERMARK_H_RIGHT;
@@ -127,9 +115,4 @@ export declare const WatermarkHorizontalPositionEnum: typeof Enumeration & {
    * Place watermark horizontal right.
    */
   readonly watermarkHRight: WatermarkHorizontalPositionEnum_WATERMARK_H_RIGHT;
-  /**
-   * Place watermark horizontal right.
-   */
-  readonly watermarkhright: WatermarkHorizontalPositionEnum_WATERMARK_H_RIGHT;
-
 }

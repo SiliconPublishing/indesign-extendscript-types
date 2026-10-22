@@ -1,6 +1,7 @@
 /**
  * SatinSetting.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -14,21 +15,19 @@ import type { Swatch } from './Swatch';
 import type { TransparencySetting } from './TransparencySetting';
 import type { BlendMode } from './Enums/BlendMode';
 import type { FindChangeSatinSetting } from './FindChangeSatinSetting';
+import type { NothingEnum } from "./Enums/NothingEnum";
 
 /**
  * Settings for the satin effect, which applies interior shading with a wavy,
  * satin-like appearance based on the object's shape.
  */
-export interface SatinSetting<M extends Mode = 'single'> extends EventTargetDOMObject<TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, M> {
-  /** The object's DOM class name — reports the specific kind, such as `'FindChangeSatinSetting'` when the object is a {@link FindChangeSatinSetting}. */
-  readonly constructorName: 'SatinSetting' | 'FindChangeSatinSetting';
-
+export interface SatinSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M> {
   /** Resolves the proxy into the individual {@link SatinSetting} objects it stands for. */
-  getElements(): SatinSetting<'single'>[];
+  getElements(): SatinSetting<'single', TParent>[];
 
   /** If true, applies the satin effect. */
-  get applied(): Read<M, boolean>;
-  set applied(value: boolean);
+  get applied(): Read<M, boolean | NothingEnum.NOTHING>;
+  set applied(value: boolean | NSet);
 
   /**
    * The color applied to the satin effect, specified as a swatch (color, gradient, tint, or
@@ -41,30 +40,30 @@ export interface SatinSetting<M extends Mode = 'single'> extends EventTargetDOMO
    * -128 to 127; for HSB, specify three colors in the format [H,S,B], with H in the range 0
    * to 360 and S and B as percentages in the range 0 to 100.
    */
-  get effectColor(): Read<M, Swatch>;
-  set effectColor(value: Swatch);
+  get effectColor(): Read<M, Swatch | NothingEnum.NOTHING>;
+  set effectColor(value: Swatch | string | NSet);
 
   /** The blending mode for the satin effect. */
-  get blendMode(): Read<M, BlendMode>;
-  set blendMode(value: BlendMode);
+  get blendMode(): Read<M, BlendMode | NothingEnum.NOTHING>;
+  set blendMode(value: BlendMode | NSet);
 
   /** The opacity of the satin effect (as a percentage). (Range: 0 to 100). */
-  get opacity(): Read<M, number>;
-  set opacity(value: number);
+  get opacity(): Read<M, number | NothingEnum.NOTHING>;
+  set opacity(value: number | NSet);
 
   /** The light angle of the satin effect. (Range: -360 to 360). */
-  get angle(): Read<M, number>;
-  set angle(value: number);
+  get angle(): Read<M, number | NothingEnum.NOTHING>;
+  set angle(value: number | NSet);
 
   /** The distance (in pixels) from the SatinSetting to the satin effect. */
-  get distance(): Read<M, number>;
-  set distance(value: MeasurementValue);
+  get distance(): Read<M, number | NothingEnum.NOTHING>;
+  set distance(value: MeasurementValue | NSet);
 
   /** The width (in pixels) of the satin effect. */
-  get size(): Read<M, number>;
-  set size(value: MeasurementValue);
+  get size(): Read<M, number | NothingEnum.NOTHING>;
+  set size(value: MeasurementValue | NSet);
 
   /** If true, inverts the satin effect. */
-  get invertEffect(): Read<M, boolean>;
-  set invertEffect(value: boolean);
+  get invertEffect(): Read<M, boolean | NothingEnum.NOTHING>;
+  set invertEffect(value: boolean | NSet);
 }

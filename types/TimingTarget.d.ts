@@ -1,6 +1,7 @@
 /**
  * TimingTarget.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -10,17 +11,15 @@ import type { EventTargetDOMObject, IndexedDOMObject } from './_base/DomObjects'
 import type { TimingGroup } from './TimingGroup';
 import type { LocationOptions } from './Enums/LocationOptions';
 import type { TimingList } from './TimingList';
+import type { Spread } from "./Spread";
 
 /**
  * A single animated, media, or button-behavior target within a
  * {@link TimingGroup}, optionally delayed relative to the group's start.
  */
 export interface TimingTarget<M extends Mode = 'single'>
-  extends EventTargetDOMObject<TimingGroup, M>,
-    IndexedDOMObject<TimingGroup, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'TimingTarget';
-
+  extends EventTargetDOMObject<TimingGroup | Spread, M>,
+    IndexedDOMObject<TimingGroup | Spread, M> {
   /** Resolves the proxy into the individual {@link TimingTarget} objects it stands for. */
   getElements(): TimingTarget<'single'>[];
 
@@ -29,15 +28,15 @@ export interface TimingTarget<M extends Mode = 'single'>
    * animation applied (where `animationSettings.hasCustomSettings` is
    * `true`), a button behavior, or a media clip.
    */
-  get dynamicTarget(): Read<M, DynamicTarget>;
+  get dynamicTarget(): Read<M, DynamicTarget | undefined>;
   set dynamicTarget(value: DynamicTarget);
 
   /** The delay in seconds before this target starts, measured from when the previous group finishes. Range `0`–`60`. */
-  get delaySeconds(): Read<M, number>;
+  get delaySeconds(): Read<M, number | undefined>;
   set delaySeconds(value: number);
 
   /** Whether the animation reverses on roll-off. Only meaningful when the trigger event is self roll-off. */
-  get reverseAnimation(): Read<M, boolean>;
+  get reverseAnimation(): Read<M, boolean | undefined>;
   set reverseAnimation(value: boolean);
 
   /** Deletes the timing target. */

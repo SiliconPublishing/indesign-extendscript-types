@@ -1,10 +1,11 @@
 /**
  * StoryTypes.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __StoryTypes: unique symbol;
 
 
 interface StoryTypes extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<StoryTypes>): boolean;
-
   /**
    * @internal **WARNING:** `__StoryTypes` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -120,11 +118,6 @@ export declare const StoryTypes: typeof Enumeration & {
    */
   readonly regularStory: StoryTypes_REGULAR_STORY;
   /**
-   * The story is a regular text story.
-   */
-  readonly regularstory: StoryTypes_REGULAR_STORY;
-
-  /**
    * The story is a table of contents.
    */
   readonly TOC_STORY: StoryTypes_TOC_STORY;
@@ -132,11 +125,6 @@ export declare const StoryTypes: typeof Enumeration & {
    * The story is a table of contents.
    */
   readonly tocStory: StoryTypes_TOC_STORY;
-  /**
-   * The story is a table of contents.
-   */
-  readonly tocstory: StoryTypes_TOC_STORY;
-
   /**
    * The story is an index.
    */
@@ -146,11 +134,6 @@ export declare const StoryTypes: typeof Enumeration & {
    */
   readonly indexingStory: StoryTypes_INDEXING_STORY;
   /**
-   * The story is an index.
-   */
-  readonly indexingstory: StoryTypes_INDEXING_STORY;
-
-  /**
    * The story is an endnote story.
    */
   readonly ENDNOTE_STORY: StoryTypes_ENDNOTE_STORY;
@@ -158,9 +141,4 @@ export declare const StoryTypes: typeof Enumeration & {
    * The story is an endnote story.
    */
   readonly endnoteStory: StoryTypes_ENDNOTE_STORY;
-  /**
-   * The story is an endnote story.
-   */
-  readonly endnotestory: StoryTypes_ENDNOTE_STORY;
-
 }

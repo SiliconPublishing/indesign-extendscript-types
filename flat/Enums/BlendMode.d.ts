@@ -1,10 +1,11 @@
 /**
  * BlendMode.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __BlendMode: unique symbol;
 
 
 interface BlendMode extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<BlendMode>): boolean;
-
   /**
    * @internal **WARNING:** `__BlendMode` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -378,15 +376,6 @@ export declare const BlendMode: typeof Enumeration & {
    */
   readonly softLight: BlendMode_SOFT_LIGHT;
   /**
-   * For blend colors lighter than 50% gray, lightens the artwork as if it were dodged; for
-   * blend colors darker than 50% gray, darkens the artwork as if it were burned.
-   *
-   * Note: Painting with pure black or white produces a distinctly darker or lighter area, but
-   * does not result in pure black or white.
-   */
-  readonly softlight: BlendMode_SOFT_LIGHT;
-
-  /**
    * For blend colors lighter than 50% gray, lightens the artwork as if it were screened; for
    * blend colors darker than 50% gray, darkens the artwork as if it were multiplied.
    *
@@ -401,14 +390,6 @@ export declare const BlendMode: typeof Enumeration & {
    */
   readonly hardLight: BlendMode_HARD_LIGHT;
   /**
-   * For blend colors lighter than 50% gray, lightens the artwork as if it were screened; for
-   * blend colors darker than 50% gray, darkens the artwork as if it were multiplied.
-   *
-   * Note: Painting with pure black or white results in pure black or white.
-   */
-  readonly hardlight: BlendMode_HARD_LIGHT;
-
-  /**
    * Brightens the base color to reflect the blend color. Note: Blending with pure black produces no change.
    */
   readonly COLOR_DODGE: BlendMode_COLOR_DODGE;
@@ -417,11 +398,6 @@ export declare const BlendMode: typeof Enumeration & {
    */
   readonly colorDodge: BlendMode_COLOR_DODGE;
   /**
-   * Brightens the base color to reflect the blend color. Note: Blending with pure black produces no change.
-   */
-  readonly colordodge: BlendMode_COLOR_DODGE;
-
-  /**
    * Darkens the base color to reflect the blend color. Note: Blending with white produces no change.
    */
   readonly COLOR_BURN: BlendMode_COLOR_BURN;
@@ -429,11 +405,6 @@ export declare const BlendMode: typeof Enumeration & {
    * Darkens the base color to reflect the blend color. Note: Blending with white produces no change.
    */
   readonly colorBurn: BlendMode_COLOR_BURN;
-  /**
-   * Darkens the base color to reflect the blend color. Note: Blending with white produces no change.
-   */
-  readonly colorburn: BlendMode_COLOR_BURN;
-
   /**
    * Selects the darker of the base or blend colors as the resulting color; replaces areas lighter than the blend color but does not change areas darker than the blend color.
    */

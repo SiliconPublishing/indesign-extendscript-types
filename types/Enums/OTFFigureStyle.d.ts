@@ -1,10 +1,11 @@
 /**
  * OTFFigureStyle.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __OTFFigureStyle: unique symbol;
 
 
 interface OTFFigureStyle extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<OTFFigureStyle>): boolean;
-
   /**
    * @internal **WARNING:** `__OTFFigureStyle` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -134,11 +132,6 @@ export declare const OTFFigureStyle: typeof Enumeration & {
    */
   readonly tabularLining: OTFFigureStyle_TABULAR_LINING;
   /**
-   * Use monospaced lining figures.
-   */
-  readonly tabularlining: OTFFigureStyle_TABULAR_LINING;
-
-  /**
    * Use proportional width oldstyle figures.
    */
   readonly PROPORTIONAL_OLDSTYLE: OTFFigureStyle_PROPORTIONAL_OLDSTYLE;
@@ -146,11 +139,6 @@ export declare const OTFFigureStyle: typeof Enumeration & {
    * Use proportional width oldstyle figures.
    */
   readonly proportionalOldstyle: OTFFigureStyle_PROPORTIONAL_OLDSTYLE;
-  /**
-   * Use proportional width oldstyle figures.
-   */
-  readonly proportionaloldstyle: OTFFigureStyle_PROPORTIONAL_OLDSTYLE;
-
   /**
    * Use proportional width lining figures.
    */
@@ -160,11 +148,6 @@ export declare const OTFFigureStyle: typeof Enumeration & {
    */
   readonly proportionalLining: OTFFigureStyle_PROPORTIONAL_LINING;
   /**
-   * Use proportional width lining figures.
-   */
-  readonly proportionallining: OTFFigureStyle_PROPORTIONAL_LINING;
-
-  /**
    * Use monospaced oldstyle figures.
    */
   readonly TABULAR_OLDSTYLE: OTFFigureStyle_TABULAR_OLDSTYLE;
@@ -173,11 +156,6 @@ export declare const OTFFigureStyle: typeof Enumeration & {
    */
   readonly tabularOldstyle: OTFFigureStyle_TABULAR_OLDSTYLE;
   /**
-   * Use monospaced oldstyle figures.
-   */
-  readonly tabularoldstyle: OTFFigureStyle_TABULAR_OLDSTYLE;
-
-  /**
    * Use the default figure style for the font.
    */
   readonly DEFAULT_VALUE: OTFFigureStyle_DEFAULT_VALUE;
@@ -185,9 +163,4 @@ export declare const OTFFigureStyle: typeof Enumeration & {
    * Use the default figure style for the font.
    */
   readonly defaultValue: OTFFigureStyle_DEFAULT_VALUE;
-  /**
-   * Use the default figure style for the font.
-   */
-  readonly defaultvalue: OTFFigureStyle_DEFAULT_VALUE;
-
 }

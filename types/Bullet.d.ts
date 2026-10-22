@@ -1,6 +1,7 @@
 /**
  * Bullet.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -33,9 +34,6 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * The bullet character used by a paragraph's bulleted list.
  */
 export interface Bullet<M extends Mode = 'single'> extends EventTargetDOMObject<TextDefault | ParagraphStyle | Text | InsertionPoint | TextStyleRange | Paragraph | TextColumn | Line | Word | Character | Story | XmlStory | FindTextPreference | ChangeTextPreference | FindGrepPreference | ChangeGrepPreference | FindTransliteratePreference | ChangeTransliteratePreference, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'Bullet';
-
   /** Resolves the proxy into the individual {@link Bullet} objects it stands for. */
   getElements(): Bullet<'single'>[];
 
@@ -48,7 +46,7 @@ export interface Bullet<M extends Mode = 'single'> extends EventTargetDOMObject<
   set characterValue(value: number);
 
   /** Font of the bullet character. */
-  get bulletsFont(): Read<M, Font | AutoEnum>;
+  get bulletsFont(): Read<M, Font | AutoEnum | string>;
   set bulletsFont(value: Font | AutoEnum | string);
 
   /** Font style of the bullet character. */

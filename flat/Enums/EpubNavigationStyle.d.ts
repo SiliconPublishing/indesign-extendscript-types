@@ -1,10 +1,11 @@
 /**
  * EpubNavigationStyle.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __EpubNavigationStyle: unique symbol;
 
 
 interface EpubNavigationStyle extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<EpubNavigationStyle>): boolean;
-
   /**
    * @internal **WARNING:** `__EpubNavigationStyle` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const EpubNavigationStyle: typeof Enumeration & {
    */
   readonly noNavigation: EpubNavigationStyle_NO_NAVIGATION;
   /**
-   * No navigation.
-   */
-  readonly nonavigation: EpubNavigationStyle_NO_NAVIGATION;
-
-  /**
    * File name based navigation
    */
   readonly FILENAME_NAVIGATION: EpubNavigationStyle_FILENAME_NAVIGATION;
@@ -130,11 +123,6 @@ export declare const EpubNavigationStyle: typeof Enumeration & {
    * File name based navigation
    */
   readonly filenameNavigation: EpubNavigationStyle_FILENAME_NAVIGATION;
-  /**
-   * File name based navigation
-   */
-  readonly filenamenavigation: EpubNavigationStyle_FILENAME_NAVIGATION;
-
   /**
    * TOC style based navigation
    */
@@ -144,11 +132,6 @@ export declare const EpubNavigationStyle: typeof Enumeration & {
    */
   readonly tocStyleNavigation: EpubNavigationStyle_TOC_STYLE_NAVIGATION;
   /**
-   * TOC style based navigation
-   */
-  readonly tocstylenavigation: EpubNavigationStyle_TOC_STYLE_NAVIGATION;
-
-  /**
    * Bookmarks based navigation
    */
   readonly BOOKMARKS_NAVIGATION: EpubNavigationStyle_BOOKMARKS_NAVIGATION;
@@ -156,9 +139,4 @@ export declare const EpubNavigationStyle: typeof Enumeration & {
    * Bookmarks based navigation
    */
   readonly bookmarksNavigation: EpubNavigationStyle_BOOKMARKS_NAVIGATION;
-  /**
-   * Bookmarks based navigation
-   */
-  readonly bookmarksnavigation: EpubNavigationStyle_BOOKMARKS_NAVIGATION;
-
 }

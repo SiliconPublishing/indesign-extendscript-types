@@ -1,6 +1,7 @@
 /**
  * GraphicAttributes.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -16,6 +17,7 @@ import type { StrokeStyle } from '../StrokeStyle';
 import type { Swatch } from '../Swatch';
 import type { MeasurementValue } from './Types';
 import type { ObjectStyle } from '../ObjectStyle';
+import type { NothingEnum } from "../Enums/NothingEnum";
 
 /**
  * Stroke, fill, gradient, overprint, corner-effect, and arrowhead attributes of
@@ -39,7 +41,7 @@ export interface GraphicAttributesBase<M extends Mode = 'single'> {
 
   /** The weight (in points) to apply to the PageItem's stroke. */
   get strokeWeight(): Read<M, number>;
-  set strokeWeight(value: MeasurementValue);
+  set strokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** The limit of the ratio of stroke width to miter length before a miter (pointed) join becomes a bevel (squared-off) join. */
   get miterLimit(): Read<M, number>;
@@ -87,7 +89,7 @@ export interface GraphicAttributesBase<M extends Mode = 'single'> {
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of a dashed, dotted, or striped stroke. For information, see stroke type. */
   get gapColor(): Read<M, Swatch>;
-  set gapColor(value: Swatch);
+  set gapColor(value: Swatch | string);
 
   /** The tint as a percentage of the gap color. (To specify a tint percent, use a number in the range of 0 to 100; to use the inherited or overridden value, use -1.) */
   get gapTint(): Read<M, number>;
@@ -130,19 +132,19 @@ export interface GraphicAttributesBase<M extends Mode = 'single'> {
 
   /** The radius in measurement units of the corner effect applied to the top left corner of rectangular shapes and all corners of non-rectangular shapes */
   get topLeftCornerRadius(): Read<M, number>;
-  set topLeftCornerRadius(value: MeasurementValue);
+  set topLeftCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** The radius in measurement units of the corner effect applied to the top right corner of rectangular shapes */
   get topRightCornerRadius(): Read<M, number>;
-  set topRightCornerRadius(value: MeasurementValue);
+  set topRightCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** The radius in measurement units of the corner effect applied to the bottom left corner of rectangular shapes */
   get bottomLeftCornerRadius(): Read<M, number>;
-  set bottomLeftCornerRadius(value: MeasurementValue);
+  set bottomLeftCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** The radius in measurement units of the corner effect applied to the bottom right corner of rectangular shapes */
   get bottomRightCornerRadius(): Read<M, number>;
-  set bottomRightCornerRadius(value: MeasurementValue);
+  set bottomRightCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** The arrowhead alignment applied to the PageItem. */
   get arrowHeadAlignment(): Read<M, ArrowHeadAlignmentEnum>;
@@ -157,6 +159,7 @@ export interface GraphicAttributesBase<M extends Mode = 'single'> {
   set rightArrowHeadScale(value: number);
 
 }
+
 /**
  * Where a drawn object's stroke and gradient actually sit: the gradient's start point and
  * length, the dash-and-gap spacing along the stroke.
@@ -176,7 +179,7 @@ export interface GraphicAttributes {
   set overprintFill(value: boolean);
   /** The weight (in points) to apply to the PageItem's stroke. */
   get strokeWeight(): number;
-  set strokeWeight(value: MeasurementValue);
+  set strokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
   /** The limit of the ratio of stroke width to miter length before a miter (pointed) join becomes a bevel (squared-off) join. */
   get miterLimit(): number;
   set miterLimit(value: number);
@@ -212,7 +215,7 @@ export interface GraphicAttributes {
   set overprintStroke(value: boolean);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of a dashed, dotted, or striped stroke. For information, see stroke type. */
   get gapColor(): Swatch;
-  set gapColor(value: Swatch);
+  set gapColor(value: Swatch | string);
   /** The tint as a percentage of the gap color. (To specify a tint percent, use a number in the range of 0 to 100; to use the inherited or overridden value, use -1.) */
   get gapTint(): number;
   set gapTint(value: number);
@@ -246,16 +249,16 @@ export interface GraphicAttributes {
   set bottomRightCornerOption(value: CornerOptions);
   /** The radius in measurement units of the corner effect applied to the top left corner of rectangular shapes and all corners of non-rectangular shapes */
   get topLeftCornerRadius(): number;
-  set topLeftCornerRadius(value: MeasurementValue);
+  set topLeftCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius in measurement units of the corner effect applied to the top right corner of rectangular shapes */
   get topRightCornerRadius(): number;
-  set topRightCornerRadius(value: MeasurementValue);
+  set topRightCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius in measurement units of the corner effect applied to the bottom left corner of rectangular shapes */
   get bottomLeftCornerRadius(): number;
-  set bottomLeftCornerRadius(value: MeasurementValue);
+  set bottomLeftCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius in measurement units of the corner effect applied to the bottom right corner of rectangular shapes */
   get bottomRightCornerRadius(): number;
-  set bottomRightCornerRadius(value: MeasurementValue);
+  set bottomRightCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The arrowhead alignment applied to the PageItem. */
   get arrowHeadAlignment(): ArrowHeadAlignmentEnum;
   set arrowHeadAlignment(value: ArrowHeadAlignmentEnum);
@@ -276,23 +279,21 @@ export interface GraphicAttributes {
   set gradientFillStart(value: MeasurementValue[]);
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the fill of the PageItem. */
   get gradientFillLength(): number;
-  set gradientFillLength(value: MeasurementValue);
+  set gradientFillLength(value: MeasurementValue | NothingEnum.NOTHING);
   /** The starting point (in page coordinates) of a gradient applied to the stroke of the PageItem, in the format [x, y]. */
   get gradientStrokeStart(): number[];
   set gradientStrokeStart(value: MeasurementValue[]);
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the stroke of the PageItem. */
   get gradientStrokeLength(): number;
-  set gradientStrokeLength(value: MeasurementValue);
+  set gradientStrokeLength(value: MeasurementValue | NothingEnum.NOTHING);
 }
 
-
 /**
- * The broadcast proxy for {@link GraphicAttributes} — what `everyItem()` returns.
+ * Where a drawn object's stroke and gradient actually sit: the gradient's start point and
+ * length, the dash-and-gap spacing along the stroke.
  *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link GraphicAttributes} there.
+ * An {@link ObjectStyle} records that a fill *is* a gradient, but has nowhere to put it, so
+ * these members belong to drawn objects only.
  */
 export interface GraphicAttributesPlural {
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of the PageItem. */
@@ -306,7 +307,7 @@ export interface GraphicAttributesPlural {
   set overprintFill(value: boolean);
   /** The weight (in points) to apply to the PageItem's stroke. */
   get strokeWeight(): (number)[];
-  set strokeWeight(value: MeasurementValue);
+  set strokeWeight(value: MeasurementValue | NothingEnum.NOTHING);
   /** The limit of the ratio of stroke width to miter length before a miter (pointed) join becomes a bevel (squared-off) join. */
   get miterLimit(): (number)[];
   set miterLimit(value: number);
@@ -342,7 +343,7 @@ export interface GraphicAttributesPlural {
   set overprintStroke(value: boolean);
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of a dashed, dotted, or striped stroke. For information, see stroke type. */
   get gapColor(): (Swatch)[];
-  set gapColor(value: Swatch);
+  set gapColor(value: Swatch | string);
   /** The tint as a percentage of the gap color. (To specify a tint percent, use a number in the range of 0 to 100; to use the inherited or overridden value, use -1.) */
   get gapTint(): (number)[];
   set gapTint(value: number);
@@ -376,16 +377,16 @@ export interface GraphicAttributesPlural {
   set bottomRightCornerOption(value: CornerOptions);
   /** The radius in measurement units of the corner effect applied to the top left corner of rectangular shapes and all corners of non-rectangular shapes */
   get topLeftCornerRadius(): (number)[];
-  set topLeftCornerRadius(value: MeasurementValue);
+  set topLeftCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius in measurement units of the corner effect applied to the top right corner of rectangular shapes */
   get topRightCornerRadius(): (number)[];
-  set topRightCornerRadius(value: MeasurementValue);
+  set topRightCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius in measurement units of the corner effect applied to the bottom left corner of rectangular shapes */
   get bottomLeftCornerRadius(): (number)[];
-  set bottomLeftCornerRadius(value: MeasurementValue);
+  set bottomLeftCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The radius in measurement units of the corner effect applied to the bottom right corner of rectangular shapes */
   get bottomRightCornerRadius(): (number)[];
-  set bottomRightCornerRadius(value: MeasurementValue);
+  set bottomRightCornerRadius(value: MeasurementValue | NothingEnum.NOTHING);
   /** The arrowhead alignment applied to the PageItem. */
   get arrowHeadAlignment(): (ArrowHeadAlignmentEnum)[];
   set arrowHeadAlignment(value: ArrowHeadAlignmentEnum);
@@ -406,11 +407,11 @@ export interface GraphicAttributesPlural {
   set gradientFillStart(value: MeasurementValue[]);
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the fill of the PageItem. */
   get gradientFillLength(): (number)[];
-  set gradientFillLength(value: MeasurementValue);
+  set gradientFillLength(value: MeasurementValue | NothingEnum.NOTHING);
   /** The starting point (in page coordinates) of a gradient applied to the stroke of the PageItem, in the format [x, y]. */
   get gradientStrokeStart(): (number[])[];
   set gradientStrokeStart(value: MeasurementValue[]);
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the stroke of the PageItem. */
   get gradientStrokeLength(): (number)[];
-  set gradientStrokeLength(value: MeasurementValue);
+  set gradientStrokeLength(value: MeasurementValue | NothingEnum.NOTHING);
 }

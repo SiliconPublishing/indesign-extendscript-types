@@ -1,10 +1,11 @@
 /**
  * BitmapCompression.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __BitmapCompression: unique symbol;
 
 
 interface BitmapCompression extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<BitmapCompression>): boolean;
-
   /**
    * @internal **WARNING:** `__BitmapCompression` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -159,11 +157,6 @@ export declare const BitmapCompression: typeof Enumeration & {
    */
   readonly autoCompression: BitmapCompression_AUTO_COMPRESSION;
   /**
-   * Uses JPEG compression and automatically determines the best quality type. Valid only when acrobat compatibility is acrobat 6 or higher.
-   */
-  readonly autocompression: BitmapCompression_AUTO_COMPRESSION;
-
-  /**
    * Uses JPEG compression.
    */
   readonly JPEG: BitmapCompression_JPEG;
@@ -194,13 +187,4 @@ export declare const BitmapCompression: typeof Enumeration & {
    * Uses JPEG 2000 compression and automatically determines the best quality type.
    */
   readonly AUTOMATIC_JPEG_2000: BitmapCompression_AUTOMATIC_JPEG_2000;
-  /**
-   * Uses JPEG 2000 compression and automatically determines the best quality type.
-   */
-  readonly automaticJpeg2000: BitmapCompression_AUTOMATIC_JPEG_2000;
-  /**
-   * Uses JPEG 2000 compression and automatically determines the best quality type.
-   */
-  readonly automaticjpeg2000: BitmapCompression_AUTOMATIC_JPEG_2000;
-
 }

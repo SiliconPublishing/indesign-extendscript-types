@@ -1,10 +1,11 @@
 /**
  * VerticalAlignment.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __VerticalAlignment: unique symbol;
 
 
 interface VerticalAlignment extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<VerticalAlignment>): boolean;
-
   /**
    * @internal **WARNING:** `__VerticalAlignment` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const VerticalAlignment: typeof Enumeration & {
    */
   readonly topAlign: VerticalAlignment_TOP_ALIGN;
   /**
-   * Place the anchored object at the top of the vertical reference point.
-   */
-  readonly topalign: VerticalAlignment_TOP_ALIGN;
-
-  /**
    * Place the anchored object at the bottom of the vertical reference point.
    */
   readonly BOTTOM_ALIGN: VerticalAlignment_BOTTOM_ALIGN;
@@ -115,11 +108,6 @@ export declare const VerticalAlignment: typeof Enumeration & {
    */
   readonly bottomAlign: VerticalAlignment_BOTTOM_ALIGN;
   /**
-   * Place the anchored object at the bottom of the vertical reference point.
-   */
-  readonly bottomalign: VerticalAlignment_BOTTOM_ALIGN;
-
-  /**
    * Place the anchored object at the vertical center of the vertical reference point.
    */
   readonly CENTER_ALIGN: VerticalAlignment_CENTER_ALIGN;
@@ -127,9 +115,4 @@ export declare const VerticalAlignment: typeof Enumeration & {
    * Place the anchored object at the vertical center of the vertical reference point.
    */
   readonly centerAlign: VerticalAlignment_CENTER_ALIGN;
-  /**
-   * Place the anchored object at the vertical center of the vertical reference point.
-   */
-  readonly centeralign: VerticalAlignment_CENTER_ALIGN;
-
 }

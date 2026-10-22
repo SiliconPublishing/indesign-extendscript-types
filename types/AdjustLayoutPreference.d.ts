@@ -1,6 +1,7 @@
 /**
  * AdjustLayoutPreference.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -13,9 +14,6 @@ import type { Document } from './Document';
  * automatically when the page size, orientation, or margins change.
  */
 export interface AdjustLayoutPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'AdjustLayoutPreference';
-
   /** Resolves the proxy into the individual {@link AdjustLayoutPreference} objects it stands for. */
   getElements(): AdjustLayoutPreference<'single'>[];
 

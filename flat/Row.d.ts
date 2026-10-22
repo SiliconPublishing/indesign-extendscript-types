@@ -1,6 +1,7 @@
 /**
  * Row.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -19,23 +20,24 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
 import type { Text } from './Text';
 import type { FirstBaseline } from './Enums/FirstBaseline';
 import type { RowTypes } from './Enums/RowTypes';
-import type { Cells } from './Cells';
-import type { Columns } from './Columns';
-import type { Event } from './Event';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
+import type { Event } from './Event';
 import type { FilePath } from './_base/Types';
-import type { InDesignEventMap } from './_base/Events';
-import type { NothingEnum } from './Enums/NothingEnum';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+import type { Cells } from './Cells';
 import type { Rows } from './Rows';
+import type { Columns } from './Columns';
 import type { SpecialCharacters } from './Enums/SpecialCharacters';
+import type { NothingEnum } from './Enums/NothingEnum';
 import type { StartParagraph } from './Enums/StartParagraph';
 import type { VerticalJustification } from './Enums/VerticalJustification';
+
 /**
  * A single row of a {@link Table}, spanning every column.
  *
@@ -45,50 +47,6 @@ import type { VerticalJustification } from './Enums/VerticalJustification';
  * multi-cell range like this one.
  */
 export interface Row {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: Table;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<Row, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<Row, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -130,6 +88,45 @@ export interface Row {
     captures?: boolean,
   ): boolean;
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: Table;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<Row, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<Row, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The index of the object within its containing parent.
    */
   readonly index: number;
@@ -164,8 +161,7 @@ export interface Row {
    * row or column puts that same string in every one of its cells, and assigning
    * an array shorter than the cell count leaves the remaining cells unchanged.
    */
-  get contents(): PageItem | string | SpecialCharacters | Array<string | SpecialCharacters | PageItem>
-  ;
+  get contents(): PageItem | string | SpecialCharacters | Array<string | SpecialCharacters | PageItem>;
   set contents(
     value:
       | PageItem
@@ -296,7 +292,7 @@ export interface Row {
   set paragraphSpacingLimit(value: MeasurementValue);
   /** The space between the baseline of the text and the top inset of the frame or cell. */
   get minimumFirstBaselineOffset(): number;
-  set minimumFirstBaselineOffset(value: number);
+  set minimumFirstBaselineOffset(value: number | string);
   /** The rotation angle (in degrees) of the cell, specified as one of the following values: 0, 90, 180, or 270. */
   get rotationAngle(): number;
   set rotationAngle(value: number);
@@ -396,8 +392,6 @@ export interface Row {
   /** If true, the gap color of the bottom edge border stroke will overprint. Note: Not valid when bottom edge stroke type is solid. */
   get bottomEdgeStrokeGapOverprint(): boolean;
   set bottomEdgeStrokeGapOverprint(value: boolean);
-  /** The object's DOM class name. */
-  readonly constructorName: 'Row';
   /** Resolves the proxy into the individual {@link Row} objects it stands for. */
   getElements(): Row[];
   /** The name of the row, in the form `"Row n"`. */
@@ -538,60 +532,15 @@ export interface Row {
   select(existingSelection?: SelectionOptions): void;
 }
 
-
 /**
- * The broadcast proxy for {@link Row} — what `everyItem()` returns.
+ * A single row of a {@link Table}, spanning every column.
  *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link Row} there.
+ * A range-like view over the row's {@link Cell}s. Size, span, position, edge
+ * strokes, insets, and fill follow the same member names as {@link Cell} and
+ * {@link Column}; the inner-gridline stroke properties are unique to a
+ * multi-cell range like this one.
  */
 export interface RowPlural {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (Table)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<RowPlural, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<RowPlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -633,6 +582,45 @@ export interface RowPlural {
     captures?: boolean,
   ): boolean;
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (Table)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<RowPlural, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<RowPlural, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The index of the object within its containing parent.
    */
   readonly index: (number)[];
@@ -667,8 +655,7 @@ export interface RowPlural {
    * row or column puts that same string in every one of its cells, and assigning
    * an array shorter than the cell count leaves the remaining cells unchanged.
    */
-  get contents(): (PageItem | string | SpecialCharacters | Array<string | SpecialCharacters | PageItem>
-  )[];
+  get contents(): (PageItem | string | SpecialCharacters | Array<string | SpecialCharacters | PageItem>)[];
   set contents(
     value:
       | PageItem
@@ -799,7 +786,7 @@ export interface RowPlural {
   set paragraphSpacingLimit(value: MeasurementValue);
   /** The space between the baseline of the text and the top inset of the frame or cell. */
   get minimumFirstBaselineOffset(): (number)[];
-  set minimumFirstBaselineOffset(value: number);
+  set minimumFirstBaselineOffset(value: number | string);
   /** The rotation angle (in degrees) of the cell, specified as one of the following values: 0, 90, 180, or 270. */
   get rotationAngle(): (number)[];
   set rotationAngle(value: number);
@@ -899,8 +886,6 @@ export interface RowPlural {
   /** If true, the gap color of the bottom edge border stroke will overprint. Note: Not valid when bottom edge stroke type is solid. */
   get bottomEdgeStrokeGapOverprint(): (boolean)[];
   set bottomEdgeStrokeGapOverprint(value: boolean);
-  /** The object's DOM class name. */
-  readonly constructorName: 'Row';
   /** Resolves the proxy into the individual {@link Row} objects it stands for. */
   getElements(): Row[];
   /** The name of the row, in the form `"Row n"`. */

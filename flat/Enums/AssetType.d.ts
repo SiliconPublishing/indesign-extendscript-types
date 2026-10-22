@@ -1,10 +1,11 @@
 /**
  * AssetType.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 import type { Asset } from '../Asset';
 import type { Library } from '../Library';
 
@@ -20,9 +21,6 @@ declare const __AssetType: unique symbol;
 
 
 interface AssetType extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<AssetType>): boolean;
-
   /**
    * @internal **WARNING:** `__AssetType` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -184,11 +182,6 @@ export declare const AssetType: typeof Enumeration & {
    */
   readonly imageType: AssetType_IMAGE_TYPE;
   /**
-   * The asset is cataloged as an image asset.
-   */
-  readonly imagetype: AssetType_IMAGE_TYPE;
-
-  /**
    * The asset is cataloged as an EPS asset.
    */
   readonly EPS_TYPE: AssetType_EPS_TYPE;
@@ -196,11 +189,6 @@ export declare const AssetType: typeof Enumeration & {
    * The asset is cataloged as an EPS asset.
    */
   readonly epsType: AssetType_EPS_TYPE;
-  /**
-   * The asset is cataloged as an EPS asset.
-   */
-  readonly epstype: AssetType_EPS_TYPE;
-
   /**
    * The asset is cataloged as a PDF asset.
    */
@@ -210,11 +198,6 @@ export declare const AssetType: typeof Enumeration & {
    */
   readonly pdfType: AssetType_PDF_TYPE;
   /**
-   * The asset is cataloged as a PDF asset.
-   */
-  readonly pdftype: AssetType_PDF_TYPE;
-
-  /**
    * The asset is cataloged as a geometric page item asset.
    */
   readonly GEOMETRY_TYPE: AssetType_GEOMETRY_TYPE;
@@ -222,11 +205,6 @@ export declare const AssetType: typeof Enumeration & {
    * The asset is cataloged as a geometric page item asset.
    */
   readonly geometryType: AssetType_GEOMETRY_TYPE;
-  /**
-   * The asset is cataloged as a geometric page item asset.
-   */
-  readonly geometrytype: AssetType_GEOMETRY_TYPE;
-
   /**
    * The asset is cataloged as a page asset.
    */
@@ -236,11 +214,6 @@ export declare const AssetType: typeof Enumeration & {
    */
   readonly pageType: AssetType_PAGE_TYPE;
   /**
-   * The asset is cataloged as a page asset.
-   */
-  readonly pagetype: AssetType_PAGE_TYPE;
-
-  /**
    * The asset is cataloged as a text asset.
    */
   readonly TEXT_TYPE: AssetType_TEXT_TYPE;
@@ -248,11 +221,6 @@ export declare const AssetType: typeof Enumeration & {
    * The asset is cataloged as a text asset.
    */
   readonly textType: AssetType_TEXT_TYPE;
-  /**
-   * The asset is cataloged as a text asset.
-   */
-  readonly texttype: AssetType_TEXT_TYPE;
-
   /**
    * The asset is cataloged as a structure asset.
    */
@@ -262,11 +230,6 @@ export declare const AssetType: typeof Enumeration & {
    */
   readonly structureType: AssetType_STRUCTURE_TYPE;
   /**
-   * The asset is cataloged as a structure asset.
-   */
-  readonly structuretype: AssetType_STRUCTURE_TYPE;
-
-  /**
    * The asset is cataloged as an InDesign file asset.
    */
   readonly INDESIGN_FILE_TYPE: AssetType_INDESIGN_FILE_TYPE;
@@ -274,9 +237,4 @@ export declare const AssetType: typeof Enumeration & {
    * The asset is cataloged as an InDesign file asset.
    */
   readonly indesignFileType: AssetType_INDESIGN_FILE_TYPE;
-  /**
-   * The asset is cataloged as an InDesign file asset.
-   */
-  readonly indesignfiletype: AssetType_INDESIGN_FILE_TYPE;
-
 }

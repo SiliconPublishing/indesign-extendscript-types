@@ -1,10 +1,11 @@
 /**
  * PDFXStandards.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __PDFXStandards: unique symbol;
 
 
 interface PDFXStandards extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<PDFXStandards>): boolean;
-
   /**
    * @internal **WARNING:** `__PDFXStandards` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -159,11 +157,6 @@ export declare const PDFXStandards: typeof Enumeration & {
    */
   readonly pdfx1a2001Standard: PDFXStandards_PDFX1A2001_STANDARD;
   /**
-   * Checks for compliance with the PDF/X-1a:2001 standard.
-   */
-  readonly pdfx1a2001standard: PDFXStandards_PDFX1A2001_STANDARD;
-
-  /**
    * Checks for compliance with the PDF/X-3:2002 standard.
    */
   readonly PDFX32002_STANDARD: PDFXStandards_PDFX32002_STANDARD;
@@ -171,11 +164,6 @@ export declare const PDFXStandards: typeof Enumeration & {
    * Checks for compliance with the PDF/X-3:2002 standard.
    */
   readonly pdfx32002Standard: PDFXStandards_PDFX32002_STANDARD;
-  /**
-   * Checks for compliance with the PDF/X-3:2002 standard.
-   */
-  readonly pdfx32002standard: PDFXStandards_PDFX32002_STANDARD;
-
   /**
    * Checks for compliance with the PDF/X-1a:2003 standard.
    */
@@ -185,11 +173,6 @@ export declare const PDFXStandards: typeof Enumeration & {
    */
   readonly pdfx1a2003Standard: PDFXStandards_PDFX1A2003_STANDARD;
   /**
-   * Checks for compliance with the PDF/X-1a:2003 standard.
-   */
-  readonly pdfx1a2003standard: PDFXStandards_PDFX1A2003_STANDARD;
-
-  /**
    * Checks for compliance with the PDF/X-3:2003 standard.
    */
   readonly PDFX32003_STANDARD: PDFXStandards_PDFX32003_STANDARD;
@@ -198,11 +181,6 @@ export declare const PDFXStandards: typeof Enumeration & {
    */
   readonly pdfx32003Standard: PDFXStandards_PDFX32003_STANDARD;
   /**
-   * Checks for compliance with the PDF/X-3:2003 standard.
-   */
-  readonly pdfx32003standard: PDFXStandards_PDFX32003_STANDARD;
-
-  /**
    * PDFX42010 standard is used.
    */
   readonly PDFX42010_STANDARD: PDFXStandards_PDFX42010_STANDARD;
@@ -210,9 +188,4 @@ export declare const PDFXStandards: typeof Enumeration & {
    * PDFX42010 standard is used.
    */
   readonly pdfx42010Standard: PDFXStandards_PDFX42010_STANDARD;
-  /**
-   * PDFX42010 standard is used.
-   */
-  readonly pdfx42010standard: PDFXStandards_PDFX42010_STANDARD;
-
 }

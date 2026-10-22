@@ -1,10 +1,11 @@
 /**
  * ClippingPathType.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ClippingPathType: unique symbol;
 
 
 interface ClippingPathType extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ClippingPathType>): boolean;
-
   /**
    * @internal **WARNING:** `__ClippingPathType` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -143,11 +141,6 @@ export declare const ClippingPathType: typeof Enumeration & {
    */
   readonly detectEdges: ClippingPathType_DETECT_EDGES;
   /**
-   * The clipping path is based on pixel value threshold and tolerance.
-   */
-  readonly detectedges: ClippingPathType_DETECT_EDGES;
-
-  /**
    * The clipping path is based on an alpha channel defined for the graphic in a graphics application.
    */
   readonly ALPHA_CHANNEL: ClippingPathType_ALPHA_CHANNEL;
@@ -155,11 +148,6 @@ export declare const ClippingPathType: typeof Enumeration & {
    * The clipping path is based on an alpha channel defined for the graphic in a graphics application.
    */
   readonly alphaChannel: ClippingPathType_ALPHA_CHANNEL;
-  /**
-   * The clipping path is based on an alpha channel defined for the graphic in a graphics application.
-   */
-  readonly alphachannel: ClippingPathType_ALPHA_CHANNEL;
-
   /**
    * The clipping path is defined for the graphic in Photoshop.
    */
@@ -169,11 +157,6 @@ export declare const ClippingPathType: typeof Enumeration & {
    */
   readonly photoshopPath: ClippingPathType_PHOTOSHOP_PATH;
   /**
-   * The clipping path is defined for the graphic in Photoshop.
-   */
-  readonly photoshoppath: ClippingPathType_PHOTOSHOP_PATH;
-
-  /**
    * (Read-only) The clipping path has been manually edited.
    */
   readonly USER_MODIFIED_PATH: ClippingPathType_USER_MODIFIED_PATH;
@@ -181,9 +164,4 @@ export declare const ClippingPathType: typeof Enumeration & {
    * (Read-only) The clipping path has been manually edited.
    */
   readonly userModifiedPath: ClippingPathType_USER_MODIFIED_PATH;
-  /**
-   * (Read-only) The clipping path has been manually edited.
-   */
-  readonly usermodifiedpath: ClippingPathType_USER_MODIFIED_PATH;
-
 }

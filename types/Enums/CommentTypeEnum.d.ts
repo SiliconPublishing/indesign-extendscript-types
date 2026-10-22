@@ -1,10 +1,11 @@
 /**
  * CommentTypeEnum.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __CommentTypeEnum: unique symbol;
 
 
 interface CommentTypeEnum extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<CommentTypeEnum>): boolean;
-
   /**
    * @internal **WARNING:** `__CommentTypeEnum` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -374,11 +372,6 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    */
   readonly stickyNoteType: CommentTypeEnum_STICKY_NOTE_TYPE;
   /**
-   * A sticky note.
-   */
-  readonly stickynotetype: CommentTypeEnum_STICKY_NOTE_TYPE;
-
-  /**
    * Highlighted text.
    */
   readonly HIGHLIGHT_TEXT_TYPE: CommentTypeEnum_HIGHLIGHT_TEXT_TYPE;
@@ -386,11 +379,6 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    * Highlighted text.
    */
   readonly highlightTextType: CommentTypeEnum_HIGHLIGHT_TEXT_TYPE;
-  /**
-   * Highlighted text.
-   */
-  readonly highlighttexttype: CommentTypeEnum_HIGHLIGHT_TEXT_TYPE;
-
   /**
    * Underlined text.
    */
@@ -400,11 +388,6 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    */
   readonly underlineTextType: CommentTypeEnum_UNDERLINE_TEXT_TYPE;
   /**
-   * Underlined text.
-   */
-  readonly underlinetexttype: CommentTypeEnum_UNDERLINE_TEXT_TYPE;
-
-  /**
    * Text marked with a squiggly underline.
    */
   readonly SQUIGGLY_TEXT_TYPE: CommentTypeEnum_SQUIGGLY_TEXT_TYPE;
@@ -412,11 +395,6 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    * Text marked with a squiggly underline.
    */
   readonly squigglyTextType: CommentTypeEnum_SQUIGGLY_TEXT_TYPE;
-  /**
-   * Text marked with a squiggly underline.
-   */
-  readonly squigglytexttype: CommentTypeEnum_SQUIGGLY_TEXT_TYPE;
-
   /**
    * Struck-through text.
    */
@@ -426,11 +404,6 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    */
   readonly strikethroughTextType: CommentTypeEnum_STRIKETHROUGH_TEXT_TYPE;
   /**
-   * Struck-through text.
-   */
-  readonly strikethroughtexttype: CommentTypeEnum_STRIKETHROUGH_TEXT_TYPE;
-
-  /**
    * A mark proposing replacement text.
    */
   readonly REPLACE_TEXT_TYPE: CommentTypeEnum_REPLACE_TEXT_TYPE;
@@ -438,11 +411,6 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    * A mark proposing replacement text.
    */
   readonly replaceTextType: CommentTypeEnum_REPLACE_TEXT_TYPE;
-  /**
-   * A mark proposing replacement text.
-   */
-  readonly replacetexttype: CommentTypeEnum_REPLACE_TEXT_TYPE;
-
   /**
    * A mark proposing inserted text.
    */
@@ -452,11 +420,6 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    */
   readonly insertTextType: CommentTypeEnum_INSERT_TEXT_TYPE;
   /**
-   * A mark proposing inserted text.
-   */
-  readonly inserttexttype: CommentTypeEnum_INSERT_TEXT_TYPE;
-
-  /**
    * Typewriter text.
    */
   readonly TEXT_TYPEWRITER_TYPE: CommentTypeEnum_TEXT_TYPEWRITER_TYPE;
@@ -464,11 +427,6 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    * Typewriter text.
    */
   readonly textTypewriterType: CommentTypeEnum_TEXT_TYPEWRITER_TYPE;
-  /**
-   * Typewriter text.
-   */
-  readonly texttypewritertype: CommentTypeEnum_TEXT_TYPEWRITER_TYPE;
-
   /**
    * A text box.
    */
@@ -478,11 +436,6 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    */
   readonly textBoxType: CommentTypeEnum_TEXT_BOX_TYPE;
   /**
-   * A text box.
-   */
-  readonly textboxtype: CommentTypeEnum_TEXT_BOX_TYPE;
-
-  /**
    * A freeform drawing.
    */
   readonly FREEFORM_DRAWING_TYPE: CommentTypeEnum_FREEFORM_DRAWING_TYPE;
@@ -490,11 +443,6 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    * A freeform drawing.
    */
   readonly freeformDrawingType: CommentTypeEnum_FREEFORM_DRAWING_TYPE;
-  /**
-   * A freeform drawing.
-   */
-  readonly freeformdrawingtype: CommentTypeEnum_FREEFORM_DRAWING_TYPE;
-
   /**
    * A straight line.
    */
@@ -504,11 +452,6 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    */
   readonly lineSegmentType: CommentTypeEnum_LINE_SEGMENT_TYPE;
   /**
-   * A straight line.
-   */
-  readonly linesegmenttype: CommentTypeEnum_LINE_SEGMENT_TYPE;
-
-  /**
    * An oval.
    */
   readonly OVAL_TYPE: CommentTypeEnum_OVAL_TYPE;
@@ -516,11 +459,6 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    * An oval.
    */
   readonly ovalType: CommentTypeEnum_OVAL_TYPE;
-  /**
-   * An oval.
-   */
-  readonly ovaltype: CommentTypeEnum_OVAL_TYPE;
-
   /**
    * A rectangle.
    */
@@ -530,11 +468,6 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    */
   readonly rectangleType: CommentTypeEnum_RECTANGLE_TYPE;
   /**
-   * A rectangle.
-   */
-  readonly rectangletype: CommentTypeEnum_RECTANGLE_TYPE;
-
-  /**
    * A polygon.
    */
   readonly POLYGON_TYPE: CommentTypeEnum_POLYGON_TYPE;
@@ -542,11 +475,6 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    * A polygon.
    */
   readonly polygonType: CommentTypeEnum_POLYGON_TYPE;
-  /**
-   * A polygon.
-   */
-  readonly polygontype: CommentTypeEnum_POLYGON_TYPE;
-
   /**
    * An arrow.
    */
@@ -556,11 +484,6 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    */
   readonly arrowType: CommentTypeEnum_ARROW_TYPE;
   /**
-   * An arrow.
-   */
-  readonly arrowtype: CommentTypeEnum_ARROW_TYPE;
-
-  /**
    * A text callout.
    */
   readonly TEXT_CALLOUT_TYPE: CommentTypeEnum_TEXT_CALLOUT_TYPE;
@@ -568,11 +491,6 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    * A text callout.
    */
   readonly textCalloutType: CommentTypeEnum_TEXT_CALLOUT_TYPE;
-  /**
-   * A text callout.
-   */
-  readonly textcallouttype: CommentTypeEnum_TEXT_CALLOUT_TYPE;
-
   /**
    * A stamp.
    */
@@ -582,11 +500,6 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    */
   readonly stampType: CommentTypeEnum_STAMP_TYPE;
   /**
-   * A stamp.
-   */
-  readonly stamptype: CommentTypeEnum_STAMP_TYPE;
-
-  /**
    * A series of connected line segments.
    */
   readonly CONNECTED_LINES_TYPE: CommentTypeEnum_CONNECTED_LINES_TYPE;
@@ -594,11 +507,6 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    * A series of connected line segments.
    */
   readonly connectedLinesType: CommentTypeEnum_CONNECTED_LINES_TYPE;
-  /**
-   * A series of connected line segments.
-   */
-  readonly connectedlinestype: CommentTypeEnum_CONNECTED_LINES_TYPE;
-
   /**
    * A cloud-shaped outline.
    */
@@ -608,11 +516,6 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    */
   readonly cloudType: CommentTypeEnum_CLOUD_TYPE;
   /**
-   * A cloud-shaped outline.
-   */
-  readonly cloudtype: CommentTypeEnum_CLOUD_TYPE;
-
-  /**
    * An invalid comment type.
    */
   readonly INVALID_COMMENT_TYPE: CommentTypeEnum_INVALID_COMMENT_TYPE;
@@ -620,9 +523,4 @@ export declare const CommentTypeEnum: typeof Enumeration & {
    * An invalid comment type.
    */
   readonly invalidCommentType: CommentTypeEnum_INVALID_COMMENT_TYPE;
-  /**
-   * An invalid comment type.
-   */
-  readonly invalidcommenttype: CommentTypeEnum_INVALID_COMMENT_TYPE;
-
 }

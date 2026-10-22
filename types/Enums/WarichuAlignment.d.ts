@@ -1,10 +1,11 @@
 /**
  * WarichuAlignment.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __WarichuAlignment: unique symbol;
 
 
 interface WarichuAlignment extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<WarichuAlignment>): boolean;
-
   /**
    * @internal **WARNING:** `__WarichuAlignment` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -193,11 +191,6 @@ export declare const WarichuAlignment: typeof Enumeration & {
    */
   readonly leftAlign: WarichuAlignment_LEFT_ALIGN;
   /**
-   * Aligns warichu on the left side of the text frame.
-   */
-  readonly leftalign: WarichuAlignment_LEFT_ALIGN;
-
-  /**
    * Aligns warichu in the center of the text frame.
    */
   readonly CENTER_ALIGN: WarichuAlignment_CENTER_ALIGN;
@@ -205,11 +198,6 @@ export declare const WarichuAlignment: typeof Enumeration & {
    * Aligns warichu in the center of the text frame.
    */
   readonly centerAlign: WarichuAlignment_CENTER_ALIGN;
-  /**
-   * Aligns warichu in the center of the text frame.
-   */
-  readonly centeralign: WarichuAlignment_CENTER_ALIGN;
-
   /**
    * Aligns warichu on the right side of the text frame.
    */
@@ -219,11 +207,6 @@ export declare const WarichuAlignment: typeof Enumeration & {
    */
   readonly rightAlign: WarichuAlignment_RIGHT_ALIGN;
   /**
-   * Aligns warichu on the right side of the text frame.
-   */
-  readonly rightalign: WarichuAlignment_RIGHT_ALIGN;
-
-  /**
    * Justifies warichu lines and makes all lines of equal length. 
    */
   readonly FULLY_JUSTIFIED: WarichuAlignment_FULLY_JUSTIFIED;
@@ -231,11 +214,6 @@ export declare const WarichuAlignment: typeof Enumeration & {
    * Justifies warichu lines and makes all lines of equal length. 
    */
   readonly fullyJustified: WarichuAlignment_FULLY_JUSTIFIED;
-  /**
-   * Justifies warichu lines and makes all lines of equal length. 
-   */
-  readonly fullyjustified: WarichuAlignment_FULLY_JUSTIFIED;
-
   /**
    * Justifies warichu lines and left aligns the last line.
    */
@@ -245,11 +223,6 @@ export declare const WarichuAlignment: typeof Enumeration & {
    */
   readonly leftJustified: WarichuAlignment_LEFT_JUSTIFIED;
   /**
-   * Justifies warichu lines and left aligns the last line.
-   */
-  readonly leftjustified: WarichuAlignment_LEFT_JUSTIFIED;
-
-  /**
    * Justifies warichu lines and center aligns the last line.
    */
   readonly CENTER_JUSTIFIED: WarichuAlignment_CENTER_JUSTIFIED;
@@ -258,11 +231,6 @@ export declare const WarichuAlignment: typeof Enumeration & {
    */
   readonly centerJustified: WarichuAlignment_CENTER_JUSTIFIED;
   /**
-   * Justifies warichu lines and center aligns the last line.
-   */
-  readonly centerjustified: WarichuAlignment_CENTER_JUSTIFIED;
-
-  /**
    * Justifies warichu lines and right aligns the last line.
    */
   readonly RIGHT_JUSTIFIED: WarichuAlignment_RIGHT_JUSTIFIED;
@@ -270,9 +238,4 @@ export declare const WarichuAlignment: typeof Enumeration & {
    * Justifies warichu lines and right aligns the last line.
    */
   readonly rightJustified: WarichuAlignment_RIGHT_JUSTIFIED;
-  /**
-   * Justifies warichu lines and right aligns the last line.
-   */
-  readonly rightjustified: WarichuAlignment_RIGHT_JUSTIFIED;
-
 }

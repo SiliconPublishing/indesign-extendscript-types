@@ -1,6 +1,7 @@
 /**
  * Spread.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -73,9 +74,6 @@ export interface Spread<M extends Mode = 'single'>
     IndexedDOMObject<Document, M>,
     NamableDOMObject<Document, M>,
     PageItemContainer<Spread, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'Spread';
-
   /** Resolves the proxy into the individual {@link Spread} objects it stands for. */
   getElements(): Spread<'single'>[];
 
@@ -149,7 +147,7 @@ export interface Spread<M extends Mode = 'single'>
    * @param placePoint Point to place at, in the format `[x, y]`.
    * @param autoflowing If `true`, autoflows placed text. Defaults to `false`.
    */
-  placeXML(using: XMLElement, placePoint?: MeasurementValue[], autoflowing?: boolean): Read<M, PageItem>;
+  placeXML(using: XMLElement, placePoint: MeasurementValue[], autoflowing?: boolean): Read<M, PageItem>;
 
   /**
    * Replaces the content of an XML element with content imported from a file.
@@ -197,7 +195,7 @@ export interface Spread<M extends Mode = 'single'>
    *
    * ```ts
    * const img = spread.place(file)[0];
-   * if (img && img.parent.constructorName === 'Rectangle') {
+   * if (img && img.parent instanceof Rectangle) {
    *   img.parent.fit(FitOptions.PROPORTIONALLY);
    * }
    * ```

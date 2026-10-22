@@ -1,6 +1,7 @@
 /**
  * AnchoredObjectSetting.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -35,14 +36,12 @@ import type { AnchoredRelativeTo } from './Enums/AnchoredRelativeTo';
 import type { HorizontalAlignment } from './Enums/HorizontalAlignment';
 import type { VerticalAlignment } from './Enums/VerticalAlignment';
 import type { VerticallyRelativeTo } from './Enums/VerticallyRelativeTo';
+import type { NothingEnum } from "./Enums/NothingEnum";
 
 /**
  * The settings for an anchored object.
  */
 export interface AnchoredObjectSetting<M extends Mode = 'single'> extends EventTargetDOMObject<FlexObject | Application | Document | EPSText | Polygon | GraphicLine | Rectangle | Oval | Group | TextFrame | EndnoteTextFrame | Button | FormField | SignatureField | TextBox | RadioButton | ListBox | ComboBox | CheckBox | MultiStateObject | ObjectStyle, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'AnchoredObjectSetting';
-
   /** Resolves the proxy into the individual {@link AnchoredObjectSetting} objects it stands for. */
   getElements(): AnchoredObjectSetting<'single'>[];
 
@@ -91,15 +90,15 @@ export interface AnchoredObjectSetting<M extends Mode = 'single'> extends EventT
 
   /** The horizontal (x) offset of the anchored object. */
   get anchorXoffset(): Read<M, number>;
-  set anchorXoffset(value: MeasurementValue);
+  set anchorXoffset(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** The vertical (y) offset of the anchored object. Corresponds to the space after property for above line positioning. */
   get anchorYoffset(): Read<M, number>;
-  set anchorYoffset(value: MeasurementValue);
+  set anchorYoffset(value: MeasurementValue | NothingEnum.NOTHING);
 
   /** The space above an above-line anchored object. */
   get anchorSpaceAbove(): Read<M, number>;
-  set anchorSpaceAbove(value: MeasurementValue);
+  set anchorSpaceAbove(value: MeasurementValue | NothingEnum.NOTHING);
 
   /**
    * Inserts the anchored object into specified story.

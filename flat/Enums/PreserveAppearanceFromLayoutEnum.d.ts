@@ -1,10 +1,11 @@
 /**
  * PreserveAppearanceFromLayoutEnum.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __PreserveAppearanceFromLayoutEnum: unique symbol;
 
 
 interface PreserveAppearanceFromLayoutEnum extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<PreserveAppearanceFromLayoutEnum>): boolean;
-
   /**
    * @internal **WARNING:** `__PreserveAppearanceFromLayoutEnum` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -120,11 +118,6 @@ export declare const PreserveAppearanceFromLayoutEnum: typeof Enumeration & {
    */
   readonly preserveAppearanceDefault: PreserveAppearanceFromLayoutEnum_PRESERVE_APPEARANCE_DEFAULT;
   /**
-   * Export preferences will be honoured.
-   */
-  readonly preserveappearancedefault: PreserveAppearanceFromLayoutEnum_PRESERVE_APPEARANCE_DEFAULT;
-
-  /**
    * Existing image will be used.
    */
   readonly PRESERVE_APPEARANCE_USE_EXISTING_IMAGE: PreserveAppearanceFromLayoutEnum_PRESERVE_APPEARANCE_USE_EXISTING_IMAGE;
@@ -132,11 +125,6 @@ export declare const PreserveAppearanceFromLayoutEnum: typeof Enumeration & {
    * Existing image will be used.
    */
   readonly preserveAppearanceUseExistingImage: PreserveAppearanceFromLayoutEnum_PRESERVE_APPEARANCE_USE_EXISTING_IMAGE;
-  /**
-   * Existing image will be used.
-   */
-  readonly preserveappearanceuseexistingimage: PreserveAppearanceFromLayoutEnum_PRESERVE_APPEARANCE_USE_EXISTING_IMAGE;
-
   /**
    * Container and content will both be rasterized, if possible.
    */
@@ -146,11 +134,6 @@ export declare const PreserveAppearanceFromLayoutEnum: typeof Enumeration & {
    */
   readonly preserveAppearanceRasterizeContainer: PreserveAppearanceFromLayoutEnum_PRESERVE_APPEARANCE_RASTERIZE_CONTAINER;
   /**
-   * Container and content will both be rasterized, if possible.
-   */
-  readonly preserveappearancerasterizecontainer: PreserveAppearanceFromLayoutEnum_PRESERVE_APPEARANCE_RASTERIZE_CONTAINER;
-
-  /**
    * Content will be rasterized, if possible.
    */
   readonly PRESERVE_APPEARANCE_RASTERIZE_CONTENT: PreserveAppearanceFromLayoutEnum_PRESERVE_APPEARANCE_RASTERIZE_CONTENT;
@@ -158,9 +141,4 @@ export declare const PreserveAppearanceFromLayoutEnum: typeof Enumeration & {
    * Content will be rasterized, if possible.
    */
   readonly preserveAppearanceRasterizeContent: PreserveAppearanceFromLayoutEnum_PRESERVE_APPEARANCE_RASTERIZE_CONTENT;
-  /**
-   * Content will be rasterized, if possible.
-   */
-  readonly preserveappearancerasterizecontent: PreserveAppearanceFromLayoutEnum_PRESERVE_APPEARANCE_RASTERIZE_CONTENT;
-
 }

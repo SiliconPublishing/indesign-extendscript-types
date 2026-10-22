@@ -1,6 +1,7 @@
 /**
  * Endnote.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -39,9 +40,6 @@ export interface Endnote<M extends Mode = 'single'>
   extends LabelableEventDOMObject<InsertionPoint | Story | XmlStory | Cell | Table, M>,
     IndexedDOMObject<InsertionPoint | Story | XmlStory | Cell | Table, M>,
     NamableDOMObject<InsertionPoint | Story | XmlStory | Cell | Table, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'Endnote';
-
   /** Resolves the proxy into the individual {@link Endnote} objects it stands for. */
   getElements(): Endnote<'single'>[];
 

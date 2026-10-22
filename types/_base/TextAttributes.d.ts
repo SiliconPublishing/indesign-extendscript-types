@@ -1,6 +1,7 @@
 /**
  * TextAttributes.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -92,86 +93,86 @@ import type { Tint } from '../Tint';
  * Available on the {@link Text} family, {@link Story}, {@link CharacterStyle},
  * and {@link ParagraphStyle}.
  */
-export interface TextGraphicAttributes<M extends Mode = 'single'> {
+export interface TextGraphicAttributes<M extends Mode = 'single', NSet = never> {
   /** Horizontal scaling of the glyphs, as a percentage. */
-  get horizontalScale(): Read<M, number>;
-  set horizontalScale(value: number);
+  get horizontalScale(): Read<M, number | NothingEnum.NOTHING>;
+  set horizontalScale(value: number | NSet);
 
   /** Vertical scaling of the glyphs, as a percentage. */
-  get verticalScale(): Read<M, number>;
-  set verticalScale(value: number);
+  get verticalScale(): Read<M, number | NothingEnum.NOTHING>;
+  set verticalScale(value: number | NSet);
 
   /** Skew (false-italic) angle applied to the glyphs, in degrees. */
-  get skew(): Read<M, number>;
-  set skew(value: number);
+  get skew(): Read<M, number | NothingEnum.NOTHING>;
+  set skew(value: number | NSet);
 
   /** The tint (as a percentage, 0–100) of the fill color. Use `-1` to use the inherited or overridden value instead of a specific tint. */
-  get fillTint(): Read<M, number>;
-  set fillTint(value: number);
+  get fillTint(): Read<M, number | NothingEnum.NOTHING>;
+  set fillTint(value: number | NSet);
 
   /** The tint (as a percentage, 0–100) of the stroke color. Use `-1` to use the inherited or overridden value instead of a specific tint. */
-  get strokeTint(): Read<M, number>;
-  set strokeTint(value: number);
+  get strokeTint(): Read<M, number | NothingEnum.NOTHING>;
+  set strokeTint(value: number | NSet);
 
   /** The stroke weight applied to the characters of the text. */
-  get strokeWeight(): Read<M, number>;
-  set strokeWeight(value: MeasurementValue);
+  get strokeWeight(): Read<M, number | NothingEnum.NOTHING>;
+  set strokeWeight(value: MeasurementValue | NSet);
 
   /** If true, the stroke of the characters will overprint. */
-  get overprintStroke(): Read<M, boolean>;
-  set overprintStroke(value: boolean);
+  get overprintStroke(): Read<M, boolean | NothingEnum.NOTHING>;
+  set overprintStroke(value: boolean | NSet);
 
   /** If true, the fill color of the characters will overprint. */
-  get overprintFill(): Read<M, boolean>;
-  set overprintFill(value: boolean);
+  get overprintFill(): Read<M, boolean | NothingEnum.NOTHING>;
+  set overprintFill(value: boolean | NSet);
 
   /**
    * Swatch applied to the fill of the text. Accepts a {@link Swatch}
    * (or a {@link Color}, {@link Tint}, {@link Gradient}, or {@link MixedInk})
    * or its name.
    */
-  get fillColor(): Read<M, Swatch>;
-  set fillColor(value: Swatch | string);
+  get fillColor(): Read<M, Swatch | null | NothingEnum.NOTHING>;
+  set fillColor(value: Swatch | string | NSet);
 
   /** Swatch applied to the stroke of the text. Accepts a {@link Swatch} or its name. */
-  get strokeColor(): Read<M, Swatch>;
-  set strokeColor(value: Swatch | string);
+  get strokeColor(): Read<M, Swatch | null | NothingEnum.NOTHING>;
+  set strokeColor(value: Swatch | string | NSet);
 
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the fill of the text. */
-  get gradientFillLength(): Read<M, number>;
-  set gradientFillLength(value: number);
+  get gradientFillLength(): Read<M, number | NothingEnum.NOTHING>;
+  set gradientFillLength(value: number | NSet);
 
   /** The angle of a linear gradient applied to the fill of the text. (Range: -180 to 180). */
-  get gradientFillAngle(): Read<M, number>;
-  set gradientFillAngle(value: number);
+  get gradientFillAngle(): Read<M, number | NothingEnum.NOTHING>;
+  set gradientFillAngle(value: number | NSet);
 
   /** The length (for a linear gradient) or radius (for a radial gradient) applied to the stroke of the text. */
-  get gradientStrokeLength(): Read<M, number>;
-  set gradientStrokeLength(value: number);
+  get gradientStrokeLength(): Read<M, number | NothingEnum.NOTHING>;
+  set gradientStrokeLength(value: number | NSet);
 
   /** The angle of a linear gradient applied to the stroke of the text. (Range: -180 to 180). */
-  get gradientStrokeAngle(): Read<M, number>;
-  set gradientStrokeAngle(value: number);
+  get gradientStrokeAngle(): Read<M, number | NothingEnum.NOTHING>;
+  set gradientStrokeAngle(value: number | NSet);
 
   /** The starting point (in page coordinates) of a gradient applied to the fill of the text, in the format [x, y]. */
-  get gradientFillStart(): Read<M, number[]>;
-  set gradientFillStart(value: number[]);
+  get gradientFillStart(): Read<M, number[] | NothingEnum.NOTHING>;
+  set gradientFillStart(value: number[] | NSet);
 
   /** The starting point (in page coordinates) of a gradient applied to the stroke of the text, in the format [x, y]. */
-  get gradientStrokeStart(): Read<M, number[]>;
-  set gradientStrokeStart(value: number[]);
+  get gradientStrokeStart(): Read<M, number[] | NothingEnum.NOTHING>;
+  set gradientStrokeStart(value: number[] | NSet);
 
   /** The limit of the ratio of stroke width to miter length before a miter (pointed) join becomes a bevel (squared-off) join. */
-  get miterLimit(): Read<M, number>;
-  set miterLimit(value: number);
+  get miterLimit(): Read<M, number | NothingEnum.NOTHING>;
+  set miterLimit(value: number | NSet);
 
   /** The stroke alignment applied to the text. */
-  get strokeAlignment(): Read<M, TextStrokeAlign>;
-  set strokeAlignment(value: TextStrokeAlign);
+  get strokeAlignment(): Read<M, TextStrokeAlign | NothingEnum.NOTHING>;
+  set strokeAlignment(value: TextStrokeAlign | NSet);
 
   /** The stroke join type applied to the characters of the text. */
-  get endJoin(): Read<M, OutlineJoin>;
-  set endJoin(value: OutlineJoin);
+  get endJoin(): Read<M, OutlineJoin | NothingEnum.NOTHING>;
+  set endJoin(value: OutlineJoin | NSet);
 
 }
 
@@ -197,242 +198,242 @@ export interface CharacterAttributesBase<M extends Mode = 'single', NGet = never
    * The applied font. Accepts a {@link Font} object or a font-family name as a
    * `string`; pair with {@link fontStyle} to pick a specific style.
    */
-  get appliedFont(): Read<M, Font | NObj>;
-  set appliedFont(value: Font | string | NSet);
+  get appliedFont(): Read<M, Font | NObj | string | NothingEnum.NOTHING>;
+  set appliedFont(value: Font | string | NSet | NothingEnum.NOTHING);
 
   /** The name of the font style. */
   get fontStyle(): Read<M, string | NGet>;
-  set fontStyle(value: string | NSet);
+  set fontStyle(value: string | NSet | NothingEnum.NOTHING);
 
   /** The type size. */
   get pointSize(): Read<M, number | NGet>;
-  set pointSize(value: MeasurementValue | NSet);
+  set pointSize(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /**
    * The leading. A number is explicit leading; the {@link Leading} enumerator
    * `AUTO` selects automatic leading.
    */
   get leading(): Read<M, number | Leading | NGet>;
-  set leading(value: MeasurementValue | Leading | NSet);
+  set leading(value: MeasurementValue | Leading | NSet | NothingEnum.NOTHING);
 
   /** The type of pair kerning. */
   get kerningMethod(): Read<M, KerningMethodName | NGet>;
-  set kerningMethod(value: KerningMethodName | NSet);
+  set kerningMethod(value: KerningMethodName | NSet | NothingEnum.NOTHING);
 
   /** Tracking, in thousandths of an em, applied between characters. */
   get tracking(): Read<M, number | NGet>;
-  set tracking(value: number | NSet);
+  set tracking(value: number | NSet | NothingEnum.NOTHING);
 
   /** Whether the text renders normally, as small caps, as all caps, or using the font's OpenType small-caps forms. See {@link Capitalization}. */
   get capitalization(): Read<M, Capitalization | NGet>;
-  set capitalization(value: Capitalization | NSet);
+  set capitalization(value: Capitalization | NSet | NothingEnum.NOTHING);
 
   /** The text position relative to the baseline. */
   get position(): Read<M, Position | NGet>;
-  set position(value: Position | NSet);
+  set position(value: Position | NSet | NothingEnum.NOTHING);
 
   /** If true, underlines the text. */
   get underline(): Read<M, boolean | NGet>;
-  set underline(value: boolean | NSet);
+  set underline(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, draws a strikethrough line through the text. */
   get strikeThru(): Read<M, boolean | NGet>;
-  set strikeThru(value: boolean | NSet);
+  set strikeThru(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If `true`, substitutes ligature glyphs (e.g. `fi`, `fl`) where available. */
   get ligatures(): Read<M, boolean | NGet>;
-  set ligatures(value: boolean | NSet);
+  set ligatures(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, keeps the text on the same line. */
   get noBreak(): Read<M, boolean | NGet>;
-  set noBreak(value: boolean | NSet);
+  set noBreak(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The baseline shift applied to the text. */
   get baselineShift(): Read<M, number | NGet>;
-  set baselineShift(value: MeasurementValue | NSet);
+  set baselineShift(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The figure style in OpenType fonts. */
   get otfFigureStyle(): Read<M, OTFFigureStyle | NGet>;
-  set otfFigureStyle(value: OTFFigureStyle | NSet);
+  set otfFigureStyle(value: OTFFigureStyle | NSet | NothingEnum.NOTHING);
 
   /** If true, uses ordinals in OpenType fonts. */
   get otfOrdinal(): Read<M, boolean | NGet>;
-  set otfOrdinal(value: boolean | NSet);
+  set otfOrdinal(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, uses fractions in OpenType fonts. */
   get otfFraction(): Read<M, boolean | NGet>;
-  set otfFraction(value: boolean | NSet);
+  set otfFraction(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, uses discretionary ligatures in OpenType fonts. */
   get otfDiscretionaryLigature(): Read<M, boolean | NGet>;
-  set otfDiscretionaryLigature(value: boolean | NSet);
+  set otfDiscretionaryLigature(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, uses titling forms in OpenType fonts. */
   get otfTitling(): Read<M, boolean | NGet>;
-  set otfTitling(value: boolean | NSet);
+  set otfTitling(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, uses contextual alternate forms in OpenType fonts. */
   get otfContextualAlternate(): Read<M, boolean | NGet>;
-  set otfContextualAlternate(value: boolean | NSet);
+  set otfContextualAlternate(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, uses swash forms in OpenType fonts. */
   get otfSwash(): Read<M, boolean | NGet>;
-  set otfSwash(value: boolean | NSet);
+  set otfSwash(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the underline stroke. */
-  get underlineColor(): Read<M, Swatch | NObj>;
-  set underlineColor(value: Swatch | string | NSet);
+  get underlineColor(): Read<M, Swatch | NObj | string | NothingEnum.NOTHING>;
+  set underlineColor(value: Swatch | string | NSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the underline stroke. Note: Valid when underline type is not solid. */
-  get underlineGapColor(): Read<M, Swatch | NObj>;
-  set underlineGapColor(value: Swatch | string | NSet);
+  get underlineGapColor(): Read<M, Swatch | NObj | string | NothingEnum.NOTHING>;
+  set underlineGapColor(value: Swatch | string | NSet | NothingEnum.NOTHING);
 
   /** The underline stroke tint (as a percentage). (Range: 0 to 100). */
   get underlineTint(): Read<M, number | NGet>;
-  set underlineTint(value: number | NSet);
+  set underlineTint(value: number | NSet | NothingEnum.NOTHING);
 
   /** The tint (as a percentage) of the gap color of the underline stroke. (Range: 0 to 100) Note: Valid when underline type is not solid. */
   get underlineGapTint(): Read<M, number | NGet>;
-  set underlineGapTint(value: number | NSet);
+  set underlineGapTint(value: number | NSet | NothingEnum.NOTHING);
 
   /** If true, the underline stroke color will overprint. */
   get underlineOverprint(): Read<M, boolean | NGet>;
-  set underlineOverprint(value: boolean | NSet);
+  set underlineOverprint(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, the gap color of the underline stroke will overprint. */
   get underlineGapOverprint(): Read<M, boolean | NGet>;
-  set underlineGapOverprint(value: boolean | NSet);
+  set underlineGapOverprint(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The stroke type of the underline stroke. */
-  get underlineType(): Read<M, StrokeStyle | NObj>;
-  set underlineType(value: StrokeStyle | string | NSet);
+  get underlineType(): Read<M, StrokeStyle | NObj | string | NothingEnum.NOTHING>;
+  set underlineType(value: StrokeStyle | string | NSet | NothingEnum.NOTHING);
 
   /** The amount by which to offset the underline from the text baseline. */
   get underlineOffset(): Read<M, number | NGet>;
-  set underlineOffset(value: MeasurementValue | NSet);
+  set underlineOffset(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The stroke weight of the underline stroke. */
   get underlineWeight(): Read<M, number | NGet>;
-  set underlineWeight(value: MeasurementValue | NSet);
+  set underlineWeight(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the strikethrough stroke. */
-  get strikeThroughColor(): Read<M, Swatch | NObj>;
-  set strikeThroughColor(value: Swatch | string | NSet);
+  get strikeThroughColor(): Read<M, Swatch | NObj | string | NothingEnum.NOTHING>;
+  set strikeThroughColor(value: Swatch | string | NSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the strikethrough stroke. */
-  get strikeThroughGapColor(): Read<M, Swatch | NObj>;
-  set strikeThroughGapColor(value: Swatch | string | NSet);
+  get strikeThroughGapColor(): Read<M, Swatch | NObj | string | NothingEnum.NOTHING>;
+  set strikeThroughGapColor(value: Swatch | string | NSet | NothingEnum.NOTHING);
 
   /** The tint (as a percentage) of the strikethrough stroke. (Range: 0 to 100). */
   get strikeThroughTint(): Read<M, number | NGet>;
-  set strikeThroughTint(value: number | NSet);
+  set strikeThroughTint(value: number | NSet | NothingEnum.NOTHING);
 
   /** The tint (as a percentage) of the strikethrough stroke gap color. (Range: 0 to 100) Note: Valid when strike through type is not solid. */
   get strikeThroughGapTint(): Read<M, number | NGet>;
-  set strikeThroughGapTint(value: number | NSet);
+  set strikeThroughGapTint(value: number | NSet | NothingEnum.NOTHING);
 
   /** If true, the strikethrough stroke will overprint. */
   get strikeThroughOverprint(): Read<M, boolean | NGet>;
-  set strikeThroughOverprint(value: boolean | NSet);
+  set strikeThroughOverprint(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, the gap color of the strikethrough stroke will overprint. Note: Valid when strike through type is not solid. */
   get strikeThroughGapOverprint(): Read<M, boolean | NGet>;
-  set strikeThroughGapOverprint(value: boolean | NSet);
+  set strikeThroughGapOverprint(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The stroke type of the strikethrough stroke. */
-  get strikeThroughType(): Read<M, StrokeStyle | NObj>;
-  set strikeThroughType(value: StrokeStyle | string | NSet);
+  get strikeThroughType(): Read<M, StrokeStyle | NObj | string | NothingEnum.NOTHING>;
+  set strikeThroughType(value: StrokeStyle | string | NSet | NothingEnum.NOTHING);
 
   /** The amount by which to offset the strikethrough stroke from the text baseline. */
   get strikeThroughOffset(): Read<M, number | NGet>;
-  set strikeThroughOffset(value: MeasurementValue | NSet);
+  set strikeThroughOffset(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /** The stroke weight of the strikethrough stroke. */
   get strikeThroughWeight(): Read<M, number | NGet>;
-  set strikeThroughWeight(value: MeasurementValue | NSet);
+  set strikeThroughWeight(value: MeasurementValue | NSet | NothingEnum.NOTHING);
 
   /**
    * The applied language / spelling dictionary. Accepts a
    * {@link LanguageWithVendors} or {@link Language} object, or its name.
    */
-  get appliedLanguage(): Read<M, LanguageWithVendors | Language | NGet>;
-  set appliedLanguage(value: LanguageWithVendors | Language | string | NSet);
+  get appliedLanguage(): Read<M, LanguageWithVendors | Language | NGet | null>;
+  set appliedLanguage(value: LanguageWithVendors | Language | string | NSet | NothingEnum.NOTHING);
 
   /** Value of Design Axes. */
   get designAxes(): Read<M, number[] | NGet>;
-  set designAxes(value: number[] | NSet);
+  set designAxes(value: number[] | NSet | NothingEnum.NOTHING);
 
   /** If true, use a slashed zeroes in OpenType fonts. */
   get otfSlashedZero(): Read<M, boolean | NGet>;
-  set otfSlashedZero(value: boolean | NSet);
+  set otfSlashedZero(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, use historical forms in OpenType fonts. */
   get otfHistorical(): Read<M, boolean | NGet>;
-  set otfHistorical(value: boolean | NSet);
+  set otfHistorical(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The stylistic sets to use in OpenType fonts. */
   get otfStylisticSets(): Read<M, number | NGet>;
-  set otfStylisticSets(value: number | NSet);
+  set otfStylisticSets(value: number | NSet | NothingEnum.NOTHING);
 
   /** If true, uses mark positioning in OpenType fonts. */
   get otfMark(): Read<M, boolean | NGet>;
-  set otfMark(value: boolean | NSet);
+  set otfMark(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, uses localized forms in OpenType fonts. */
   get otfLocale(): Read<M, boolean | NGet>;
-  set otfLocale(value: boolean | NSet);
+  set otfLocale(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** Which contextual glyph form — initial, medial, final, or isolated — to use for connected scripts, or `CALCULATE` to derive it automatically. See {@link PositionalForms}. */
   get positionalForm(): Read<M, PositionalForms | NGet>;
-  set positionalForm(value: PositionalForms | NSet);
+  set positionalForm(value: PositionalForms | NSet | NothingEnum.NOTHING);
 
   /** If true, use overlapping swash forms in OpenType fonts. */
   get otfOverlapSwash(): Read<M, boolean | NGet>;
-  set otfOverlapSwash(value: boolean | NSet);
+  set otfOverlapSwash(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, use stylistic alternate forms in OpenType fonts. */
   get otfStylisticAlternate(): Read<M, boolean | NGet>;
-  set otfStylisticAlternate(value: boolean | NSet);
+  set otfStylisticAlternate(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, use alternate justification forms in OpenType fonts. */
   get otfJustificationAlternate(): Read<M, boolean | NGet>;
-  set otfJustificationAlternate(value: boolean | NSet);
+  set otfJustificationAlternate(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, use stretched alternate forms in OpenType fonts. */
   get otfStretchedAlternate(): Read<M, boolean | NGet>;
-  set otfStretchedAlternate(value: boolean | NSet);
+  set otfStretchedAlternate(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** The direction of the character. */
   get characterDirection(): Read<M, CharacterDirectionOptions | NGet>;
-  set characterDirection(value: CharacterDirectionOptions | NSet);
+  set characterDirection(value: CharacterDirectionOptions | NSet | NothingEnum.NOTHING);
 
   /** The keyboard direction of the character. */
   get keyboardDirection(): Read<M, CharacterDirectionOptions | NGet>;
-  set keyboardDirection(value: CharacterDirectionOptions | NSet);
+  set keyboardDirection(value: CharacterDirectionOptions | NSet | NothingEnum.NOTHING);
 
   /** Which digit glyphs — Arabic numerals, Hindi, Farsi, or another script's digits — render numbers in the text. See {@link DigitsTypeOptions}. */
   get digitsType(): Read<M, DigitsTypeOptions | NGet>;
-  set digitsType(value: DigitsTypeOptions | NSet);
+  set digitsType(value: DigitsTypeOptions | NSet | NothingEnum.NOTHING);
 
   /** Use of Kashidas for justification. */
   get kashidas(): Read<M, KashidasOptions | NGet>;
-  set kashidas(value: KashidasOptions | NSet);
+  set kashidas(value: KashidasOptions | NSet | NothingEnum.NOTHING);
 
   /** Position of diacritical characters. */
   get diacriticPosition(): Read<M, DiacriticPositionOptions | NGet>;
-  set diacriticPosition(value: DiacriticPositionOptions | NSet);
+  set diacriticPosition(value: DiacriticPositionOptions | NSet | NothingEnum.NOTHING);
 
   /** The x (horizontal) offset for diacritic adjustment. */
   get xOffsetDiacritic(): Read<M, number | NGet>;
-  set xOffsetDiacritic(value: number | NSet);
+  set xOffsetDiacritic(value: number | NSet | NothingEnum.NOTHING);
 
   /** The y (vertical) offset for diacritic adjustment. */
   get yOffsetDiacritic(): Read<M, number | NGet>;
-  set yOffsetDiacritic(value: number | NSet);
+  set yOffsetDiacritic(value: number | NSet | NothingEnum.NOTHING);
 
   /** The alignment of small characters to the largest character in the line. */
   get characterAlignment(): Read<M, CharacterAlignment | NGet>;
-  set characterAlignment(value: CharacterAlignment | NSet);
+  set characterAlignment(value: CharacterAlignment | NSet | NothingEnum.NOTHING);
 
   /** The amount of horizontal character compression. */
   get tsume(): Read<M, number | NothingEnum.NOTHING>;
@@ -440,15 +441,15 @@ export interface CharacterAttributesBase<M extends Mode = 'single', NGet = never
 
   /** The amount of space before each character. */
   get leadingAki(): Read<M, number | NGet>;
-  set leadingAki(value: number | NSet);
+  set leadingAki(value: number | NSet | NothingEnum.NOTHING);
 
   /** The amount of space after each character. */
   get trailingAki(): Read<M, number | NGet>;
-  set trailingAki(value: number | NSet);
+  set trailingAki(value: number | NSet | NothingEnum.NOTHING);
 
   /** The rotation angle (in degrees) of individual characters. Note: The rotation is counterclockwise. */
   get characterRotation(): Read<M, number | NGet>;
-  set characterRotation(value: number | NSet);
+  set characterRotation(value: number | NSet | NothingEnum.NOTHING);
 
   /** The number of grid squares in which to arrange the text. */
   get jidori(): Read<M, number | NothingEnum.NOTHING>;
@@ -483,11 +484,11 @@ export interface CharacterAttributesBase<M extends Mode = 'single', NGet = never
   set tatechuyokoYOffset(value: number | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of kenten characters. */
-  get kentenFillColor(): Read<M, Swatch | NothingEnum.NOTHING>;
+  get kentenFillColor(): Read<M, Swatch | NothingEnum.NOTHING | null | string>;
   set kentenFillColor(value: Swatch | string | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of kenten characters. */
-  get kentenStrokeColor(): Read<M, Swatch | NothingEnum.NOTHING>;
+  get kentenStrokeColor(): Read<M, Swatch | NothingEnum.NOTHING | null | string>;
   set kentenStrokeColor(value: Swatch | string | NothingEnum.NOTHING);
 
   /** The fill tint (as a percentage) of kenten characters. (Range: 0 to 100). */
@@ -527,7 +528,7 @@ export interface CharacterAttributesBase<M extends Mode = 'single', NGet = never
   set kentenPosition(value: RubyKentenPosition | NothingEnum.NOTHING);
 
   /** The font to use for kenten characters. */
-  get kentenFont(): Read<M, Font | NothingEnum.NOTHING>;
+  get kentenFont(): Read<M, Font | NothingEnum.NOTHING | null | string>;
   set kentenFont(value: Font | string | NothingEnum.NOTHING);
 
   /** The font style of kenten characters. */
@@ -555,11 +556,11 @@ export interface CharacterAttributesBase<M extends Mode = 'single', NGet = never
   set kentenCharacterSet(value: KentenCharacterSet | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of ruby characters. */
-  get rubyFill(): Read<M, Swatch | NothingEnum.NOTHING>;
+  get rubyFill(): Read<M, Swatch | NothingEnum.NOTHING | null | string>;
   set rubyFill(value: Swatch | string | NothingEnum.NOTHING);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of ruby characters. */
-  get rubyStroke(): Read<M, Swatch | NothingEnum.NOTHING>;
+  get rubyStroke(): Read<M, Swatch | NothingEnum.NOTHING | null | string>;
   set rubyStroke(value: Swatch | string | NothingEnum.NOTHING);
 
   /** The tint (as a percentage) of the ruby fill color. (Range: 0 to 100). */
@@ -583,7 +584,7 @@ export interface CharacterAttributesBase<M extends Mode = 'single', NGet = never
   set rubyStrokeTint(value: number | NothingEnum.NOTHING);
 
   /** The font applied to ruby characters. */
-  get rubyFont(): Read<M, Font | NothingEnum.NOTHING>;
+  get rubyFont(): Read<M, Font | NothingEnum.NOTHING | null | string>;
   set rubyFont(value: Font | string | NothingEnum.NOTHING);
 
   /** The font style of ruby characters. */
@@ -680,7 +681,7 @@ export interface CharacterAttributesBase<M extends Mode = 'single', NGet = never
 
   /** If true, kerns according to proportional CJK metrics in OpenType fonts. */
   get otfProportionalMetrics(): Read<M, boolean | NGet>;
-  set otfProportionalMetrics(value: boolean | NSet);
+  set otfProportionalMetrics(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, switches hiragana fonts, which have different glyphs for horizontal and vertical. */
   get otfHVKana(): Read<M, boolean | NothingEnum.NOTHING>;
@@ -688,11 +689,11 @@ export interface CharacterAttributesBase<M extends Mode = 'single', NGet = never
 
   /** If true, applies italics to half-width alphanumerics. */
   get otfRomanItalics(): Read<M, boolean | NGet>;
-  set otfRomanItalics(value: boolean | NSet);
+  set otfRomanItalics(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, the line changes size when characters are scaled. */
   get scaleAffectsLineHeight(): Read<M, boolean | NGet>;
-  set scaleAffectsLineHeight(value: boolean | NSet);
+  set scaleAffectsLineHeight(value: boolean | NSet | NothingEnum.NOTHING);
 
   /** If true, uses grid tracking to track non-Roman characters in CJK grids. */
   get cjkGridTracking(): Read<M, boolean | NothingEnum.NOTHING>;
@@ -700,7 +701,7 @@ export interface CharacterAttributesBase<M extends Mode = 'single', NGet = never
 
   /** The glyph variant to substitute for standard glyphs. */
   get glyphForm(): Read<M, AlternateGlyphForms | NGet>;
-  set glyphForm(value: AlternateGlyphForms | NSet);
+  set glyphForm(value: AlternateGlyphForms | NSet | NothingEnum.NOTHING);
 
   /** The number of digits included in auto tcy (tate-chuu-yoko) in ruby. */
   get rubyAutoTcyDigits(): Read<M, number | NothingEnum.NOTHING>;
@@ -729,7 +730,7 @@ export interface CharacterFormatAttributes<M extends Mode = 'single'> extends Ch
    * The applied font. Accepts a {@link Font} object or a font-family name as a
    * `string`; pair with {@link fontStyle} to pick a specific style.
    */
-  get appliedFont(): Read<M, Font>;
+  get appliedFont(): Read<M, Font | string>;
   set appliedFont(value: Font | string);
 
   /** The name of the font style. */
@@ -812,11 +813,11 @@ export interface CharacterFormatAttributes<M extends Mode = 'single'> extends Ch
   set otfSwash(value: boolean);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the underline stroke. */
-  get underlineColor(): Read<M, Swatch>;
+  get underlineColor(): Read<M, Swatch | string>;
   set underlineColor(value: Swatch | string);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the underline stroke. Note: Valid when underline type is not solid. */
-  get underlineGapColor(): Read<M, Swatch>;
+  get underlineGapColor(): Read<M, Swatch | string>;
   set underlineGapColor(value: Swatch | string);
 
   /** The underline stroke tint (as a percentage). (Range: 0 to 100). */
@@ -836,7 +837,7 @@ export interface CharacterFormatAttributes<M extends Mode = 'single'> extends Ch
   set underlineGapOverprint(value: boolean);
 
   /** The stroke type of the underline stroke. */
-  get underlineType(): Read<M, StrokeStyle>;
+  get underlineType(): Read<M, StrokeStyle | string>;
   set underlineType(value: StrokeStyle | string);
 
   /** The amount by which to offset the underline from the text baseline. */
@@ -848,11 +849,11 @@ export interface CharacterFormatAttributes<M extends Mode = 'single'> extends Ch
   set underlineWeight(value: MeasurementValue);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the strikethrough stroke. */
-  get strikeThroughColor(): Read<M, Swatch>;
+  get strikeThroughColor(): Read<M, Swatch | string>;
   set strikeThroughColor(value: Swatch | string);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the gap of the strikethrough stroke. */
-  get strikeThroughGapColor(): Read<M, Swatch>;
+  get strikeThroughGapColor(): Read<M, Swatch | string>;
   set strikeThroughGapColor(value: Swatch | string);
 
   /** The tint (as a percentage) of the strikethrough stroke. (Range: 0 to 100). */
@@ -872,7 +873,7 @@ export interface CharacterFormatAttributes<M extends Mode = 'single'> extends Ch
   set strikeThroughGapOverprint(value: boolean);
 
   /** The stroke type of the strikethrough stroke. */
-  get strikeThroughType(): Read<M, StrokeStyle>;
+  get strikeThroughType(): Read<M, StrokeStyle | string>;
   set strikeThroughType(value: StrokeStyle | string);
 
   /** The amount by which to offset the strikethrough stroke from the text baseline. */
@@ -1015,11 +1016,11 @@ export interface CharacterFormatAttributes<M extends Mode = 'single'> extends Ch
   set tatechuyokoYOffset(value: number);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of kenten characters. */
-  get kentenFillColor(): Read<M, Swatch>;
+  get kentenFillColor(): Read<M, Swatch | string>;
   set kentenFillColor(value: Swatch | string);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of kenten characters. */
-  get kentenStrokeColor(): Read<M, Swatch>;
+  get kentenStrokeColor(): Read<M, Swatch | string>;
   set kentenStrokeColor(value: Swatch | string);
 
   /** The fill tint (as a percentage) of kenten characters. (Range: 0 to 100). */
@@ -1059,11 +1060,11 @@ export interface CharacterFormatAttributes<M extends Mode = 'single'> extends Ch
   set kentenPosition(value: RubyKentenPosition);
 
   /** The font to use for kenten characters. */
-  get kentenFont(): Read<M, Font>;
+  get kentenFont(): Read<M, Font | null | string>;
   set kentenFont(value: Font | string);
 
   /** The font style of kenten characters. */
-  get kentenFontStyle(): Read<M, string>;
+  get kentenFontStyle(): Read<M, string | NothingEnum.NOTHING>;
   set kentenFontStyle(value: string);
 
   /** The size (in points) of kenten characters. */
@@ -1087,11 +1088,11 @@ export interface CharacterFormatAttributes<M extends Mode = 'single'> extends Ch
   set kentenCharacterSet(value: KentenCharacterSet);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of ruby characters. */
-  get rubyFill(): Read<M, Swatch>;
+  get rubyFill(): Read<M, Swatch | string>;
   set rubyFill(value: Swatch | string);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke of ruby characters. */
-  get rubyStroke(): Read<M, Swatch>;
+  get rubyStroke(): Read<M, Swatch | string>;
   set rubyStroke(value: Swatch | string);
 
   /** The tint (as a percentage) of the ruby fill color. (Range: 0 to 100). */
@@ -1115,11 +1116,11 @@ export interface CharacterFormatAttributes<M extends Mode = 'single'> extends Ch
   set rubyStrokeTint(value: number);
 
   /** The font applied to ruby characters. */
-  get rubyFont(): Read<M, Font>;
+  get rubyFont(): Read<M, Font | null | string>;
   set rubyFont(value: Font | string);
 
   /** The font style of ruby characters. */
-  get rubyFontStyle(): Read<M, string>;
+  get rubyFontStyle(): Read<M, string | NothingEnum.NOTHING>;
   set rubyFontStyle(value: string);
 
   /** The size (in points) of ruby characters. */
@@ -1331,7 +1332,7 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   set paragraphShadingTint(value: number | NSet);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph shading. */
-  get paragraphShadingColor(): Read<M, Swatch>;
+  get paragraphShadingColor(): Read<M, Swatch | string>;
   set paragraphShadingColor(value: Swatch | string | NSet);
 
   /** If true, the paragraph border is on. */
@@ -1347,7 +1348,7 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   set paragraphBorderTint(value: number | NSet);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph stroke. */
-  get paragraphBorderColor(): Read<M, Swatch>;
+  get paragraphBorderColor(): Read<M, Swatch | string>;
   set paragraphBorderColor(value: Swatch | string | NSet);
 
   /** If true, the paragraph border gap will overprint. Note: Valid only when border type is not solid. */
@@ -1359,11 +1360,11 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   set paragraphBorderGapTint(value: number | NSet);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph border gap. Note: Valid only when the border type is not solid. */
-  get paragraphBorderGapColor(): Read<M, Swatch>;
+  get paragraphBorderGapColor(): Read<M, Swatch | string>;
   set paragraphBorderGapColor(value: Swatch | string | NSet);
 
   /** The type of the border for the paragraph. */
-  get paragraphBorderType(): Read<M, StrokeStyle>;
+  get paragraphBorderType(): Read<M, StrokeStyle | string>;
   set paragraphBorderType(value: StrokeStyle | string | NSet);
 
   /** The left line weight of the border of paragraph. */
@@ -1663,11 +1664,11 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   set ruleAboveWidth(value: RuleWidth | NSet);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule above. */
-  get ruleAboveColor(): Read<M, Swatch>;
+  get ruleAboveColor(): Read<M, Swatch | string>;
   set ruleAboveColor(value: Swatch | string | NSet);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule above. Note: Valid only when the paragraph rule above type is not solid. */
-  get ruleAboveGapColor(): Read<M, Swatch>;
+  get ruleAboveGapColor(): Read<M, Swatch | string>;
   set ruleAboveGapColor(value: Swatch | string | NSet);
 
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule. (Range: 0 to 100) Note: Valid only when the rule above type is not solid. */
@@ -1679,7 +1680,7 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   set ruleAboveGapOverprint(value: boolean | NSet);
 
   /** The stroke type of the rule above the paragraph. */
-  get ruleAboveType(): Read<M, StrokeStyle>;
+  get ruleAboveType(): Read<M, StrokeStyle | string>;
   set ruleAboveType(value: StrokeStyle | string | NSet);
 
   /** If true, applies a paragraph rule below. */
@@ -1711,11 +1712,11 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   set ruleBelowWidth(value: RuleWidth | NSet);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the paragraph rule below. */
-  get ruleBelowColor(): Read<M, Swatch>;
+  get ruleBelowColor(): Read<M, Swatch | string>;
   set ruleBelowColor(value: Swatch | string | NSet);
 
   /** The swatch (color, gradient, tint, or mixed ink) applied to the stroke gap of the paragraph rule below. Note: Valid only when the paragraph rule below type is not solid. */
-  get ruleBelowGapColor(): Read<M, Swatch>;
+  get ruleBelowGapColor(): Read<M, Swatch | string>;
   set ruleBelowGapColor(value: Swatch | string | NSet);
 
   /** The tint (as a percentage) of the stroke gap color of the paragraph rule below. (Range: 0 to 100) Note: Valid only when the paragraph rule below type is not solid. */
@@ -1723,7 +1724,7 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   set ruleBelowGapTint(value: number | NSet);
 
   /** The stroke type of the rule below the paragraph. */
-  get ruleBelowType(): Read<M, StrokeStyle>;
+  get ruleBelowType(): Read<M, StrokeStyle | string>;
   set ruleBelowType(value: StrokeStyle | string | NSet);
 
   /** If true, allows hyphenation of capitalized words. */
@@ -1907,11 +1908,11 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   set bulletsAndNumberingListType(value: ListType | NSet);
 
   /** The character style to be used for the text after string. */
-  get bulletsCharacterStyle(): Read<M, CharacterStyle>;
+  get bulletsCharacterStyle(): Read<M, CharacterStyle | string>;
   set bulletsCharacterStyle(value: CharacterStyle | string | NSet);
 
   /** The character style to be used for the number string. */
-  get numberingCharacterStyle(): Read<M, CharacterStyle>;
+  get numberingCharacterStyle(): Read<M, CharacterStyle | string>;
   set numberingCharacterStyle(value: CharacterStyle | string | NSet);
 
   /** The number string expression for numbering. */
@@ -1923,7 +1924,7 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   set bulletsTextAfter(value: string | NSet);
 
   /** The list to be part of. */
-  get appliedNumberingList(): Read<M, NumberingList>;
+  get appliedNumberingList(): Read<M, NumberingList | string>;
   set appliedNumberingList(value: NumberingList | string | NSet);
 
   /** The level of the paragraph. */

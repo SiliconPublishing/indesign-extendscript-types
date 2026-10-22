@@ -1,10 +1,11 @@
 /**
  * LockStateValues.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __LockStateValues: unique symbol;
 
 
 interface LockStateValues extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<LockStateValues>): boolean;
-
   /**
    * @internal **WARNING:** `__LockStateValues` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -193,11 +191,6 @@ export declare const LockStateValues: typeof Enumeration & {
    */
   readonly unmanagedStory: LockStateValues_UNMANAGED_STORY;
   /**
-   * The story is unmanaged.
-   */
-  readonly unmanagedstory: LockStateValues_UNMANAGED_STORY;
-
-  /**
    * The story has been checked in.
    */
   readonly CHECKED_IN_STORY: LockStateValues_CHECKED_IN_STORY;
@@ -205,11 +198,6 @@ export declare const LockStateValues: typeof Enumeration & {
    * The story has been checked in.
    */
   readonly checkedInStory: LockStateValues_CHECKED_IN_STORY;
-  /**
-   * The story has been checked in.
-   */
-  readonly checkedinstory: LockStateValues_CHECKED_IN_STORY;
-
   /**
    * The story has been checked out.
    */
@@ -219,11 +207,6 @@ export declare const LockStateValues: typeof Enumeration & {
    */
   readonly checkedOutStory: LockStateValues_CHECKED_OUT_STORY;
   /**
-   * The story has been checked out.
-   */
-  readonly checkedoutstory: LockStateValues_CHECKED_OUT_STORY;
-
-  /**
    * The story is locked.
    */
   readonly LOCKED_STORY: LockStateValues_LOCKED_STORY;
@@ -231,11 +214,6 @@ export declare const LockStateValues: typeof Enumeration & {
    * The story is locked.
    */
   readonly lockedStory: LockStateValues_LOCKED_STORY;
-  /**
-   * The story is locked.
-   */
-  readonly lockedstory: LockStateValues_LOCKED_STORY;
-
   /**
    * The story is embedded.
    */
@@ -245,11 +223,6 @@ export declare const LockStateValues: typeof Enumeration & {
    */
   readonly embeddedStory: LockStateValues_EMBEDDED_STORY;
   /**
-   * The story is embedded.
-   */
-  readonly embeddedstory: LockStateValues_EMBEDDED_STORY;
-
-  /**
    * The story file is missing.
    */
   readonly MISSING_LOCK_STATE: LockStateValues_MISSING_LOCK_STATE;
@@ -258,11 +231,6 @@ export declare const LockStateValues: typeof Enumeration & {
    */
   readonly missingLockState: LockStateValues_MISSING_LOCK_STATE;
   /**
-   * The story file is missing.
-   */
-  readonly missinglockstate: LockStateValues_MISSING_LOCK_STATE;
-
-  /**
    * The stories have a mixed lock state.
    */
   readonly MIXED_LOCK_STATE: LockStateValues_MIXED_LOCK_STATE;
@@ -270,9 +238,4 @@ export declare const LockStateValues: typeof Enumeration & {
    * The stories have a mixed lock state.
    */
   readonly mixedLockState: LockStateValues_MIXED_LOCK_STATE;
-  /**
-   * The stories have a mixed lock state.
-   */
-  readonly mixedlockstate: LockStateValues_MIXED_LOCK_STATE;
-
 }

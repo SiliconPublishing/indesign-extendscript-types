@@ -1,10 +1,11 @@
 /**
  * EndnoteFrameCreate.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __EndnoteFrameCreate: unique symbol;
 
 
 interface EndnoteFrameCreate extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<EndnoteFrameCreate>): boolean;
-
   /**
    * @internal **WARNING:** `__EndnoteFrameCreate` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -86,11 +84,6 @@ export declare const EndnoteFrameCreate: typeof Enumeration & {
    */
   readonly loadEndnotePlaceGun: EndnoteFrameCreate_LOAD_ENDNOTE_PLACE_GUN;
   /**
-   * Endnotes are loaded in placegun to be placed anywhere in document.
-   */
-  readonly loadendnoteplacegun: EndnoteFrameCreate_LOAD_ENDNOTE_PLACE_GUN;
-
-  /**
    * Creates a new page and frame for the endnotes automatically.
    */
   readonly NEW_PAGE: EndnoteFrameCreate_NEW_PAGE;
@@ -98,9 +91,4 @@ export declare const EndnoteFrameCreate: typeof Enumeration & {
    * Creates a new page and frame for the endnotes automatically.
    */
   readonly newPage: EndnoteFrameCreate_NEW_PAGE;
-  /**
-   * Creates a new page and frame for the endnotes automatically.
-   */
-  readonly newpage: EndnoteFrameCreate_NEW_PAGE;
-
 }

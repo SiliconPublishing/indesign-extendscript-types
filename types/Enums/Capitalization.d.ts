@@ -1,10 +1,11 @@
 /**
  * Capitalization.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __Capitalization: unique symbol;
 
 
 interface Capitalization extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<Capitalization>): boolean;
-
   /**
    * @internal **WARNING:** `__Capitalization` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -143,11 +141,6 @@ export declare const Capitalization: typeof Enumeration & {
    */
   readonly smallCaps: Capitalization_SMALL_CAPS;
   /**
-   * Use small caps for lowercase letters.
-   */
-  readonly smallcaps: Capitalization_SMALL_CAPS;
-
-  /**
    * Use all uppercase letters.
    */
   readonly ALL_CAPS: Capitalization_ALL_CAPS;
@@ -155,11 +148,6 @@ export declare const Capitalization: typeof Enumeration & {
    * Use all uppercase letters.
    */
   readonly allCaps: Capitalization_ALL_CAPS;
-  /**
-   * Use all uppercase letters.
-   */
-  readonly allcaps: Capitalization_ALL_CAPS;
-
   /**
    * Use OpenType small caps.
    */
@@ -169,11 +157,6 @@ export declare const Capitalization: typeof Enumeration & {
    */
   readonly capToSmallCap: Capitalization_CAP_TO_SMALL_CAP;
   /**
-   * Use OpenType small caps.
-   */
-  readonly captosmallcap: Capitalization_CAP_TO_SMALL_CAP;
-
-  /**
    * Use all lowercase letters.
    */
   readonly LOWER_CASE: Capitalization_LOWER_CASE;
@@ -181,9 +164,4 @@ export declare const Capitalization: typeof Enumeration & {
    * Use all lowercase letters.
    */
   readonly lowerCase: Capitalization_LOWER_CASE;
-  /**
-   * Use all lowercase letters.
-   */
-  readonly lowercase: Capitalization_LOWER_CASE;
-
 }

@@ -1,10 +1,11 @@
 /**
  * PagePositions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __PagePositions: unique symbol;
 
 
 interface PagePositions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<PagePositions>): boolean;
-
   /**
    * @internal **WARNING:** `__PagePositions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const PagePositions: typeof Enumeration & {
    */
   readonly upperLeft: PagePositions_UPPER_LEFT;
   /**
-   * Places the page in the upper left corner.
-   */
-  readonly upperleft: PagePositions_UPPER_LEFT;
-
-  /**
    * Centers the page horizontally.
    */
   readonly CENTER_HORIZONTALLY: PagePositions_CENTER_HORIZONTALLY;
@@ -131,11 +124,6 @@ export declare const PagePositions: typeof Enumeration & {
    */
   readonly centerHorizontally: PagePositions_CENTER_HORIZONTALLY;
   /**
-   * Centers the page horizontally.
-   */
-  readonly centerhorizontally: PagePositions_CENTER_HORIZONTALLY;
-
-  /**
    * Centers the page vertically.
    */
   readonly CENTER_VERTICALLY: PagePositions_CENTER_VERTICALLY;
@@ -143,11 +131,6 @@ export declare const PagePositions: typeof Enumeration & {
    * Centers the page vertically.
    */
   readonly centerVertically: PagePositions_CENTER_VERTICALLY;
-  /**
-   * Centers the page vertically.
-   */
-  readonly centervertically: PagePositions_CENTER_VERTICALLY;
-
   /**
    * Centers the page horizontally and vertically.
    */

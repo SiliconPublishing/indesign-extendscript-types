@@ -1,10 +1,11 @@
 /**
  * GIFOptionsPalette.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __GIFOptionsPalette: unique symbol;
 
 
 interface GIFOptionsPalette extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<GIFOptionsPalette>): boolean;
-
   /**
    * @internal **WARNING:** `__GIFOptionsPalette` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const GIFOptionsPalette: typeof Enumeration & {
    */
   readonly adaptivePalette: GIFOptionsPalette_ADAPTIVE_PALETTE;
   /**
-   * Uses the adaptive (no dither) palette.
-   */
-  readonly adaptivepalette: GIFOptionsPalette_ADAPTIVE_PALETTE;
-
-  /**
    * Uses the Macintosh palette.
    */
   readonly MACINTOSH_PALETTE: GIFOptionsPalette_MACINTOSH_PALETTE;
@@ -130,11 +123,6 @@ export declare const GIFOptionsPalette: typeof Enumeration & {
    * Uses the Macintosh palette.
    */
   readonly macintoshPalette: GIFOptionsPalette_MACINTOSH_PALETTE;
-  /**
-   * Uses the Macintosh palette.
-   */
-  readonly macintoshpalette: GIFOptionsPalette_MACINTOSH_PALETTE;
-
   /**
    * Uses the Web palette.
    */
@@ -144,11 +132,6 @@ export declare const GIFOptionsPalette: typeof Enumeration & {
    */
   readonly webPalette: GIFOptionsPalette_WEB_PALETTE;
   /**
-   * Uses the Web palette.
-   */
-  readonly webpalette: GIFOptionsPalette_WEB_PALETTE;
-
-  /**
    * Uses the Windows palette.
    */
   readonly WINDOWS_PALETTE: GIFOptionsPalette_WINDOWS_PALETTE;
@@ -156,9 +139,4 @@ export declare const GIFOptionsPalette: typeof Enumeration & {
    * Uses the Windows palette.
    */
   readonly windowsPalette: GIFOptionsPalette_WINDOWS_PALETTE;
-  /**
-   * Uses the Windows palette.
-   */
-  readonly windowspalette: GIFOptionsPalette_WINDOWS_PALETTE;
-
 }

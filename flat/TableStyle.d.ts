@@ -1,6 +1,7 @@
 /**
  * TableStyle.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -16,20 +17,21 @@ import type { CellStyle } from './CellStyle';
 import type { Table } from './Table';
 import type { TableStyles } from './TableStyles';
 import type { TableCaptionPositionOptions } from './Enums/TableCaptionPositionOptions';
-import type { Event } from './Event';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
+import type { Event } from './Event';
 import type { FilePath } from './_base/Types';
-import type { InDesignEventMap } from './_base/Events';
-import type { MeasurementValue } from './_base/Types';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+import type { MeasurementValue } from './_base/Types';
 import type { StrokeOrderTypes } from './Enums/StrokeOrderTypes';
 import type { StrokeStyle } from './StrokeStyle';
 import type { Swatch } from './Swatch';
+
 /**
  * A named table style definition, held in a document's or the application's {@link TableStyles} collection (optionally nested inside a {@link TableStyleGroup}).
  *
@@ -37,50 +39,6 @@ import type { Swatch } from './Swatch';
  * but as a reusable named definition rather than formatting applied to one table.
  */
 export interface TableStyle {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: Document | Application | TableStyleGroup;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<TableStyle, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<TableStyle, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -135,6 +93,45 @@ export interface TableStyle {
    * Gets the label value associated with the specified key.
    */
   extractLabel(key: string): string;
+  /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: Document | Application | TableStyleGroup;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<TableStyle, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<TableStyle, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * The index of the object within its containing parent.
    */
@@ -288,7 +285,7 @@ export interface TableStyle {
   set startRowStrokeCount(value: number);
   /** The color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the first alternating row strokes group. Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeColor(): Swatch;
-  set startRowStrokeColor(value: Swatch);
+  set startRowStrokeColor(value: Swatch | string);
   /** The stroke weight of row borders in the first alternating row strokes group. Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeWeight(): number;
   set startRowStrokeWeight(value: MeasurementValue);
@@ -303,7 +300,7 @@ export interface TableStyle {
   set startRowStrokeGapOverprint(value: boolean);
   /** The stroke gap color of row borders in the first alternating row strokes group, specified as a swatch (color, gradient, tint, or mixed ink). Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeGapColor(): Swatch;
-  set startRowStrokeGapColor(value: Swatch);
+  set startRowStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of row borders in the first alternating rows group. (Range: 0 to 100) Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeGapTint(): number;
   set startRowStrokeGapTint(value: number);
@@ -315,7 +312,7 @@ export interface TableStyle {
   set endRowStrokeCount(value: number);
   /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the second alternating row strokes group. Note: Valid when end row stroke count is 1 or greater. */
   get endRowStrokeColor(): Swatch;
-  set endRowStrokeColor(value: Swatch);
+  set endRowStrokeColor(value: Swatch | string);
   /** The stroke weight of row borders in the second alternating row strokes group. Note: Valid when end row stroke count is 1 or greater. */
   get endRowStrokeWeight(): number;
   set endRowStrokeWeight(value: MeasurementValue);
@@ -330,7 +327,7 @@ export interface TableStyle {
   set endRowStrokeOverprint(value: boolean);
   /** The gap color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the second alternating rows group. Note: Valid when end row stroke count is 1 or greater. */
   get endRowStrokeGapColor(): Swatch;
-  set endRowStrokeGapColor(value: Swatch);
+  set endRowStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of rows in the second alternating strokes group. (Range: 0 to 100) Note: Valid when end row stroke count is 1 or greater and end row stroke type is not solid. */
   get endRowStrokeGapTint(): number;
   set endRowStrokeGapTint(value: number);
@@ -348,7 +345,7 @@ export interface TableStyle {
   set startColumnStrokeCount(value: number);
   /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the first alternating column strokes group. */
   get startColumnStrokeColor(): Swatch;
-  set startColumnStrokeColor(value: Swatch);
+  set startColumnStrokeColor(value: Swatch | string);
   /** The stroke weight of column borders in the first alternating column strokes group. Note: Valid when start column stroke count is 1 or greater. */
   get startColumnStrokeWeight(): number;
   set startColumnStrokeWeight(value: MeasurementValue);
@@ -363,7 +360,7 @@ export interface TableStyle {
   set startColumnStrokeOverprint(value: boolean);
   /** The stroke gap color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the first alternating column strokes group. Note: Valid when start column stroke count is 1 or greater. */
   get startColumnStrokeGapColor(): Swatch;
-  set startColumnStrokeGapColor(value: Swatch);
+  set startColumnStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of column borders in the first alternating column strokes group. (Range: 0 to 100) Note: Valid when start column stroke count is 1 or greater. */
   get startColumnStrokeGapTint(): number;
   set startColumnStrokeGapTint(value: number);
@@ -375,7 +372,7 @@ export interface TableStyle {
   set endColumnStrokeCount(value: number);
   /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeColor(): Swatch;
-  set endColumnStrokeColor(value: Swatch);
+  set endColumnStrokeColor(value: Swatch | string);
   /** The stroke weight of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeWeight(): number;
   set endColumnStrokeWeight(value: MeasurementValue);
@@ -390,7 +387,7 @@ export interface TableStyle {
   set endColumnStrokeOverprint(value: boolean);
   /** The stroke gap color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeGapColor(): Swatch;
-  set endColumnStrokeGapColor(value: Swatch);
+  set endColumnStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of column borders in the second alternating column strokes group. (Range: 0 to 100) Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeGapTint(): number;
   set endColumnStrokeGapTint(value: number);
@@ -408,7 +405,7 @@ export interface TableStyle {
   set skipLastAlternatingFillRows(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of rows in the first alternating fills group. Note: Valid when alternating fills are defined for table rows. */
   get startRowFillColor(): Swatch;
-  set startRowFillColor(value: Swatch);
+  set startRowFillColor(value: Swatch | string);
   /** The number of rows in the first alternating fills group. Note: Valid when alternating fills are defined for table rows. */
   get startRowFillCount(): number;
   set startRowFillCount(value: number);
@@ -423,7 +420,7 @@ export interface TableStyle {
   set endRowFillCount(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of rows in the second alternating fills group. Note: Valid when alternating fills are defined for table rows. */
   get endRowFillColor(): Swatch;
-  set endRowFillColor(value: Swatch);
+  set endRowFillColor(value: Swatch | string);
   /** The tint (as a percentage) of the rows in the second alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table rows. */
   get endRowFillTint(): number;
   set endRowFillTint(value: number);
@@ -441,7 +438,7 @@ export interface TableStyle {
   set startColumnFillCount(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of columns in the first alternating fills group. Note: Valid when alternating fills are defined for table columns. */
   get startColumnFillColor(): Swatch;
-  set startColumnFillColor(value: Swatch);
+  set startColumnFillColor(value: Swatch | string);
   /** The tint (as a percentage) of the columns in the first alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table columns. */
   get startColumnFillTint(): number;
   set startColumnFillTint(value: number);
@@ -453,7 +450,7 @@ export interface TableStyle {
   set endColumnFillCount(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of columns in the second alternating fill group. Note: Valid when alternating fills are defined for table columns. */
   get endColumnFillColor(): Swatch;
-  set endColumnFillColor(value: Swatch);
+  set endColumnFillColor(value: Swatch | string);
   /** The tint (as a percentage) of the columns in the second alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table columns. */
   get endColumnFillTint(): number;
   set endColumnFillTint(value: number);
@@ -473,27 +470,25 @@ export interface TableStyle {
   get rightColumnRegionSameAsBodyRegion(): boolean;
   set rightColumnRegionSameAsBodyRegion(value: boolean);
   /** The {@link CellStyle} applied to cells in the header region. */
-  get headerRegionCellStyle(): CellStyle;
+  get headerRegionCellStyle(): CellStyle | null;
   set headerRegionCellStyle(value: CellStyle | string);
   /** The {@link CellStyle} applied to cells in the footer region. */
-  get footerRegionCellStyle(): CellStyle;
+  get footerRegionCellStyle(): CellStyle | null;
   set footerRegionCellStyle(value: CellStyle | string);
   /** The {@link CellStyle} applied to cells in the left column region. */
-  get leftColumnRegionCellStyle(): CellStyle;
+  get leftColumnRegionCellStyle(): CellStyle | null;
   set leftColumnRegionCellStyle(value: CellStyle | string);
   /** The {@link CellStyle} applied to cells in the right column region. */
-  get rightColumnRegionCellStyle(): CellStyle;
+  get rightColumnRegionCellStyle(): CellStyle | null;
   set rightColumnRegionCellStyle(value: CellStyle | string);
   /** The {@link CellStyle} applied to cells in the body region. */
   get bodyRegionCellStyle(): CellStyle;
   set bodyRegionCellStyle(value: CellStyle | string);
-  /** The object's DOM class name. */
-  readonly constructorName: 'TableStyle';
   /** Resolves the proxy into the individual {@link TableStyle} objects it stands for. */
   getElements(): TableStyle[];
   // ---- Caption and header columns --------------------------------------------
   // Absent from the InDesign 2026 object-model dictionary; modelled from the
-  // live UXP runtime. Reading either on a style that does not define it throws
+  // live UXP runtime (not yet re-measured in ExtendScript). Reading either on a style that does not define it throws
   // `This attribute is not defined for table styles`.
 
   /** How many paragraphs of the caption story the style formats. */
@@ -524,60 +519,13 @@ export interface TableStyle {
   move(to: LocationOptions, reference?: StyleMoveReference): TableStyle;
 }
 
-
 /**
- * The broadcast proxy for {@link TableStyle} — what `everyItem()` returns.
+ * A named table style definition, held in a document's or the application's {@link TableStyles} collection (optionally nested inside a {@link TableStyleGroup}).
  *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link TableStyle} there.
+ * Stores the same border, inset and alternating-fill attributes a live {@link Table} carries,
+ * but as a reusable named definition rather than formatting applied to one table.
  */
 export interface TableStylePlural {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (Document | Application | TableStyleGroup)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<TableStylePlural, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<TableStylePlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -632,6 +580,45 @@ export interface TableStylePlural {
    * Gets the label value associated with the specified key.
    */
   extractLabel(key: string): (string)[];
+  /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (Document | Application | TableStyleGroup)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<TableStylePlural, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<TableStylePlural, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * The index of the object within its containing parent.
    */
@@ -785,7 +772,7 @@ export interface TableStylePlural {
   set startRowStrokeCount(value: number);
   /** The color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the first alternating row strokes group. Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeColor(): (Swatch)[];
-  set startRowStrokeColor(value: Swatch);
+  set startRowStrokeColor(value: Swatch | string);
   /** The stroke weight of row borders in the first alternating row strokes group. Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeWeight(): (number)[];
   set startRowStrokeWeight(value: MeasurementValue);
@@ -800,7 +787,7 @@ export interface TableStylePlural {
   set startRowStrokeGapOverprint(value: boolean);
   /** The stroke gap color of row borders in the first alternating row strokes group, specified as a swatch (color, gradient, tint, or mixed ink). Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeGapColor(): (Swatch)[];
-  set startRowStrokeGapColor(value: Swatch);
+  set startRowStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of row borders in the first alternating rows group. (Range: 0 to 100) Note: Valid when start row stroke count is 1 or greater. */
   get startRowStrokeGapTint(): (number)[];
   set startRowStrokeGapTint(value: number);
@@ -812,7 +799,7 @@ export interface TableStylePlural {
   set endRowStrokeCount(value: number);
   /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the second alternating row strokes group. Note: Valid when end row stroke count is 1 or greater. */
   get endRowStrokeColor(): (Swatch)[];
-  set endRowStrokeColor(value: Swatch);
+  set endRowStrokeColor(value: Swatch | string);
   /** The stroke weight of row borders in the second alternating row strokes group. Note: Valid when end row stroke count is 1 or greater. */
   get endRowStrokeWeight(): (number)[];
   set endRowStrokeWeight(value: MeasurementValue);
@@ -827,7 +814,7 @@ export interface TableStylePlural {
   set endRowStrokeOverprint(value: boolean);
   /** The gap color, specified as a swatch (color, gradient, tint, or mixed ink), of row borders in the second alternating rows group. Note: Valid when end row stroke count is 1 or greater. */
   get endRowStrokeGapColor(): (Swatch)[];
-  set endRowStrokeGapColor(value: Swatch);
+  set endRowStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of rows in the second alternating strokes group. (Range: 0 to 100) Note: Valid when end row stroke count is 1 or greater and end row stroke type is not solid. */
   get endRowStrokeGapTint(): (number)[];
   set endRowStrokeGapTint(value: number);
@@ -845,7 +832,7 @@ export interface TableStylePlural {
   set startColumnStrokeCount(value: number);
   /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the first alternating column strokes group. */
   get startColumnStrokeColor(): (Swatch)[];
-  set startColumnStrokeColor(value: Swatch);
+  set startColumnStrokeColor(value: Swatch | string);
   /** The stroke weight of column borders in the first alternating column strokes group. Note: Valid when start column stroke count is 1 or greater. */
   get startColumnStrokeWeight(): (number)[];
   set startColumnStrokeWeight(value: MeasurementValue);
@@ -860,7 +847,7 @@ export interface TableStylePlural {
   set startColumnStrokeOverprint(value: boolean);
   /** The stroke gap color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the first alternating column strokes group. Note: Valid when start column stroke count is 1 or greater. */
   get startColumnStrokeGapColor(): (Swatch)[];
-  set startColumnStrokeGapColor(value: Swatch);
+  set startColumnStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of column borders in the first alternating column strokes group. (Range: 0 to 100) Note: Valid when start column stroke count is 1 or greater. */
   get startColumnStrokeGapTint(): (number)[];
   set startColumnStrokeGapTint(value: number);
@@ -872,7 +859,7 @@ export interface TableStylePlural {
   set endColumnStrokeCount(value: number);
   /** The stroke color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeColor(): (Swatch)[];
-  set endColumnStrokeColor(value: Swatch);
+  set endColumnStrokeColor(value: Swatch | string);
   /** The stroke weight of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeWeight(): (number)[];
   set endColumnStrokeWeight(value: MeasurementValue);
@@ -887,7 +874,7 @@ export interface TableStylePlural {
   set endColumnStrokeOverprint(value: boolean);
   /** The stroke gap color, specified as a swatch (color, gradient, tint, or mixed ink), of column borders in the second alternating column strokes group. Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeGapColor(): (Swatch)[];
-  set endColumnStrokeGapColor(value: Swatch);
+  set endColumnStrokeGapColor(value: Swatch | string);
   /** The tint (as a percentage) of the gap color of column borders in the second alternating column strokes group. (Range: 0 to 100) Note: Valid when end column stroke count is 1 or greater. */
   get endColumnStrokeGapTint(): (number)[];
   set endColumnStrokeGapTint(value: number);
@@ -905,7 +892,7 @@ export interface TableStylePlural {
   set skipLastAlternatingFillRows(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of rows in the first alternating fills group. Note: Valid when alternating fills are defined for table rows. */
   get startRowFillColor(): (Swatch)[];
-  set startRowFillColor(value: Swatch);
+  set startRowFillColor(value: Swatch | string);
   /** The number of rows in the first alternating fills group. Note: Valid when alternating fills are defined for table rows. */
   get startRowFillCount(): (number)[];
   set startRowFillCount(value: number);
@@ -920,7 +907,7 @@ export interface TableStylePlural {
   set endRowFillCount(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of rows in the second alternating fills group. Note: Valid when alternating fills are defined for table rows. */
   get endRowFillColor(): (Swatch)[];
-  set endRowFillColor(value: Swatch);
+  set endRowFillColor(value: Swatch | string);
   /** The tint (as a percentage) of the rows in the second alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table rows. */
   get endRowFillTint(): (number)[];
   set endRowFillTint(value: number);
@@ -938,7 +925,7 @@ export interface TableStylePlural {
   set startColumnFillCount(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of columns in the first alternating fills group. Note: Valid when alternating fills are defined for table columns. */
   get startColumnFillColor(): (Swatch)[];
-  set startColumnFillColor(value: Swatch);
+  set startColumnFillColor(value: Swatch | string);
   /** The tint (as a percentage) of the columns in the first alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table columns. */
   get startColumnFillTint(): (number)[];
   set startColumnFillTint(value: number);
@@ -950,7 +937,7 @@ export interface TableStylePlural {
   set endColumnFillCount(value: number);
   /** The fill color, specified as a swatch (color, gradient, tint, or mixed ink), of columns in the second alternating fill group. Note: Valid when alternating fills are defined for table columns. */
   get endColumnFillColor(): (Swatch)[];
-  set endColumnFillColor(value: Swatch);
+  set endColumnFillColor(value: Swatch | string);
   /** The tint (as a percentage) of the columns in the second alternating fills group. (Range: 0 to 100) Note: Valid when alternating fills are defined for table columns. */
   get endColumnFillTint(): (number)[];
   set endColumnFillTint(value: number);
@@ -970,27 +957,25 @@ export interface TableStylePlural {
   get rightColumnRegionSameAsBodyRegion(): (boolean)[];
   set rightColumnRegionSameAsBodyRegion(value: boolean);
   /** The {@link CellStyle} applied to cells in the header region. */
-  get headerRegionCellStyle(): (CellStyle)[];
+  get headerRegionCellStyle(): (CellStyle | null)[];
   set headerRegionCellStyle(value: CellStyle | string);
   /** The {@link CellStyle} applied to cells in the footer region. */
-  get footerRegionCellStyle(): (CellStyle)[];
+  get footerRegionCellStyle(): (CellStyle | null)[];
   set footerRegionCellStyle(value: CellStyle | string);
   /** The {@link CellStyle} applied to cells in the left column region. */
-  get leftColumnRegionCellStyle(): (CellStyle)[];
+  get leftColumnRegionCellStyle(): (CellStyle | null)[];
   set leftColumnRegionCellStyle(value: CellStyle | string);
   /** The {@link CellStyle} applied to cells in the right column region. */
-  get rightColumnRegionCellStyle(): (CellStyle)[];
+  get rightColumnRegionCellStyle(): (CellStyle | null)[];
   set rightColumnRegionCellStyle(value: CellStyle | string);
   /** The {@link CellStyle} applied to cells in the body region. */
   get bodyRegionCellStyle(): (CellStyle)[];
   set bodyRegionCellStyle(value: CellStyle | string);
-  /** The object's DOM class name. */
-  readonly constructorName: 'TableStyle';
   /** Resolves the proxy into the individual {@link TableStyle} objects it stands for. */
   getElements(): TableStyle[];
   // ---- Caption and header columns --------------------------------------------
   // Absent from the InDesign 2026 object-model dictionary; modelled from the
-  // live UXP runtime. Reading either on a style that does not define it throws
+  // live UXP runtime (not yet re-measured in ExtendScript). Reading either on a style that does not define it throws
   // `This attribute is not defined for table styles`.
 
   /** How many paragraphs of the caption story the style formats. */

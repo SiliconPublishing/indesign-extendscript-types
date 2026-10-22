@@ -1,0 +1,126 @@
+{
+  "$comment": "Comparer findings that are known and deliberate. Each entry matches findings by kind and regular expressions on class, member and detail, and must say why. `probe` names the test/probes check that measured it, where one does; entries without one rest on the reason alone and are candidates for a probe.",
+  "informational": [
+    "runtime-roundtrip",
+    "runtime-crash"
+  ],
+  "entries": [
+    {
+      "kind": "param-type",
+      "member": "^create\\w*QRCode$",
+      "detail": "^withProperties: .*also allows array$",
+      "reason": "The dictionary types withProperties as Array of Strings; it takes an object of properties, as every withProperties does.",
+      "probe": "methods: createPlainTextQRCode() withProperties as an object"
+    },
+    {
+      "kind": "param-type",
+      "class": "^(Characters|InsertionPoints|Lines|Paragraphs|TextColumns|TextStyleRanges|Texts|Words)$",
+      "member": "^itemByRange$",
+      "detail": "also allows string$",
+      "reason": "Text objects have no names, so a name bound has nothing to match; the dictionary copies the generic collection signature.",
+      "probe": "allowlist: words.itemByRange() with name strings throws"
+    },
+    {
+      "kind": "param-type",
+      "member": "^(packageForPrint|generateIDMLSchema|unpackageUCF|packageUCF|exportFolioToDirectory|unembed)$",
+      "detail": "declared Folder \\| string.*also allows File$",
+      "reason": "Folder destinations: the dictionary types them as File; they take a Folder or a path string.",
+      "probe": "methods: packageForPrint() to a Folder / path string; allowlist: generateIDMLSchema() to a Folder"
+    },
+    {
+      "kind": "param-type",
+      "class": "^EPubExportPreviewAppPreference$",
+      "member": "^getApplicationAtIndex$",
+      "reason": "The dictionary lists Boolean for an index parameter, a dictionary error.",
+      "probe": "quirks: EPubExportPreviewAppPreference.getApplicationAtIndex takes a number"
+    },
+    {
+      "kind": "params",
+      "class": "^(Movie|Sound)$",
+      "member": "^duplicate$",
+      "reason": "Movie and Sound inherit PageItem.duplicate(to, by); the dictionary lists a parameterless override.",
+      "probe": "allowlist: movie.duplicate(to, by) / sound.duplicate(to, by)"
+    },
+    {
+      "kind": "params",
+      "class": "^SVGs$",
+      "member": "^add$",
+      "reason": "SVGs.add takes the page-item add(layer, at, reference, withProperties); the dictionary lists withProperties only.",
+      "probe": "allowlist: svgs.add(layer, at, reference, withProperties)"
+    },
+    {
+      "kind": "params",
+      "class": "^(Tables|TextVariableInstances)$",
+      "member": "^add$",
+      "detail": "declared \\(at, reference, withProperties\\); dictionary \\(to, reference, withProperties\\)",
+      "reason": "Same parameters; upstream names the first one `at` instead of the dictionary's `to`.",
+      "probe": "styles-and-params: tables.add() first parameter is `to`, a LocationOptions"
+    },
+    {
+      "kind": "read-type",
+      "member": "^(filePath|scriptsFolder|temporaryFolder)$",
+      "detail": "declared Folder; dictionary also allows File$",
+      "reason": "Folder-valued: the dictionary says File; InDesign returns a Folder.",
+      "probe": "files: filePath is a Folder; scriptsFolder is a Folder"
+    },
+    {
+      "kind": "write-type",
+      "class": "^GeneralPreference$",
+      "member": "^temporaryFolder$",
+      "reason": "Folder-valued: the dictionary says File; the setter takes a Folder or a path.",
+      "probe": "quirks: GeneralPreference.temporaryFolder reads a Folder / takes the Folder back / takes a path string"
+    },
+    {
+      "kind": "(read|write)-type",
+      "class": "^(Cell|Column|Row)$",
+      "member": "^contents$",
+      "detail": "class:PageItems",
+      "reason": "The dictionary lists the PageItems collection as a cell's contents; a graphic cell reads back its page item (a Rectangle), which is declared.",
+      "probe": "allowlist: a graphic cell reads back its page item"
+    },
+    {
+      "kind": "(read|write)-type",
+      "class": "^Section$",
+      "member": "^pageNumberStyle$",
+      "detail": "enum:PageNumberStyle$",
+      "reason": "Upstream declares NumberingStyle; the value read back (ARABIC) exists in both enumerations.",
+      "probe": "methods: Section.pageNumberStyle readback"
+    },
+    {
+      "kind": "write-type",
+      "member": "^(kentenFontStyle|rubyFontStyle)$",
+      "detail": "also allows enum:NothingEnum$",
+      "reason": "Text objects reject NothingEnum.NOTHING; only styles and find/change criteria can unset.",
+      "probe": "methods: NothingEnum on a text attribute"
+    },
+    {
+      "kind": "runtime-readonly",
+      "class": "^ClippingPathSettings$",
+      "reason": "Read-only while clippingType is NONE (the fixture's state), writable once a clipping path applies. State, not type.",
+      "probe": "allowlist: ClippingPathSettings writable with / read-only without a clipping path"
+    },
+    {
+      "kind": "lib-missing",
+      "class": "^(Array|Date)$",
+      "member": "^__\\w+__$",
+      "reason": "Engine internals reflection exposes (__120__, __usdst__); not API."
+    },
+    {
+      "kind": "lib-unreflected",
+      "class": "^BridgeTalk$",
+      "member": "^on(Received|Result|Error|Timeout)$",
+      "reason": "Callback properties: reflection lists them only once assigned.",
+      "probe": "allowlist: BridgeTalk.onResult is reflected once assigned"
+    },
+    {
+      "kind": "lib-global",
+      "member": "^(app|resolve)$",
+      "reason": "Declared by types/globals.d.ts, with the DOM."
+    },
+    {
+      "kind": "lib-global",
+      "member": "^globalThis$",
+      "reason": "TypeScript's own intrinsic; not declared by lib/ and not usable in ExtendScript."
+    }
+  ]
+}

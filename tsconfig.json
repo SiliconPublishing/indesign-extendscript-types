@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "noLib": true,
+    "target": "es5",
+    "module": "none",
+    "ignoreDeprecations": "5.0",
+    "strict": true,
+    "noEmit": true,
+    "types": []
+  },
+  "files": ["lib/global.d.ts", "lib/ScriptUI.d.ts", "types/globals.d.ts"],
+  "include": ["test/typecheck/**/*.ts"]
+}

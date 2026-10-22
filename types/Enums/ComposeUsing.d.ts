@@ -1,10 +1,11 @@
 /**
  * ComposeUsing.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ComposeUsing: unique symbol;
 
 
 interface ComposeUsing extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ComposeUsing>): boolean;
-
   /**
    * @internal **WARNING:** `__ComposeUsing` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const ComposeUsing: typeof Enumeration & {
    */
   readonly useUserDictionary: ComposeUsing_USE_USER_DICTIONARY;
   /**
-   * Uses the list stored in the external user dictionary.
-   */
-  readonly useuserdictionary: ComposeUsing_USE_USER_DICTIONARY;
-
-  /**
    * Uses the list stored in the document.
    */
   readonly USE_DOCUMENT: ComposeUsing_USE_DOCUMENT;
@@ -114,11 +107,6 @@ export declare const ComposeUsing: typeof Enumeration & {
    * Uses the list stored in the document.
    */
   readonly useDocument: ComposeUsing_USE_DOCUMENT;
-  /**
-   * Uses the list stored in the document.
-   */
-  readonly usedocument: ComposeUsing_USE_DOCUMENT;
-
   /**
    * Uses the lists stored in both the document and the user dictionary.
    */

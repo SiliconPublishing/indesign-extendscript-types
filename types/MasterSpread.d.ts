@@ -1,6 +1,7 @@
 /**
  * MasterSpread.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -79,9 +80,6 @@ export interface MasterSpread<M extends Mode = 'single'>
     FormFieldContainer<MasterSpread, M>,
     EndnoteFrameContainer<MasterSpread, M>,
     FlexObjectContainer<MasterSpread, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'MasterSpread';
-
   /** Resolves the proxy into the individual {@link MasterSpread} objects it stands for. */
   getElements(): MasterSpread<'single'>[];
 
@@ -108,7 +106,7 @@ export interface MasterSpread<M extends Mode = 'single'>
    * `0`–`255`), a named {@link UIColors} value, or a {@link PageColorOptions} value.
    */
   get pageColor(): Read<M, [number, number, number] | UIColors | PageColorOptions>;
-  set pageColor(value: [number, number, number] | UIColors | PageColorOptions);
+  set pageColor(value: [number, number, number] | UIColors | PageColorOptions | NothingEnum.NOTHING);
 
   /** The prefix of the master spread's display name (for example `'A'` in `'A-Master'`). */
   get namePrefix(): Read<M, string>;
@@ -123,7 +121,7 @@ export interface MasterSpread<M extends Mode = 'single'>
   set showMasterItems(value: boolean);
 
   /** The parent {@link MasterSpread} this one is based on. Assign a master spread or its name; assign {@link NothingEnum.NOTHING} to remove it. */
-  get appliedMaster(): Read<M, MasterSpread>;
+  get appliedMaster(): Read<M, MasterSpread | null>;
   set appliedMaster(value: MasterSpread | string | NothingEnum);
 
   /**
@@ -131,8 +129,8 @@ export interface MasterSpread<M extends Mode = 'single'>
    * master spread. Assign a page item or its name; assign
    * {@link NothingEnum.NOTHING} to clear it.
    */
-  get primaryTextFrame(): Read<M, PageItem>;
-  set primaryTextFrame(value: PageItem | string | NothingEnum);
+  get primaryTextFrame(): Read<M, PageItem | null>;
+  set primaryTextFrame(value: PageItem | string);
 
   /** The IDML component name of the master spread. */
   get idmlComponentName(): Read<M, string>;
@@ -165,7 +163,7 @@ export interface MasterSpread<M extends Mode = 'single'>
    *
    * ```ts
    * const img = master.place(file)[0];
-   * if (img && img.parent.constructorName === 'Rectangle') {
+   * if (img && img.parent instanceof Rectangle) {
    *   img.parent.fit(FitOptions.PROPORTIONALLY);
    * }
    * ```

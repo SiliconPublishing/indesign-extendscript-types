@@ -1,10 +1,11 @@
 /**
  * BehaviorEvents.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __BehaviorEvents: unique symbol;
 
 
 interface BehaviorEvents extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<BehaviorEvents>): boolean;
-
   /**
    * @internal **WARNING:** `__BehaviorEvents` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -150,11 +148,6 @@ export declare const BehaviorEvents: typeof Enumeration & {
    */
   readonly mouseUp: BehaviorEvents_MOUSE_UP;
   /**
-   * Triggers the behavior when the mouse is released after a click.
-   */
-  readonly mouseup: BehaviorEvents_MOUSE_UP;
-
-  /**
    * Triggers the behavior when the mouse button is clicked (without being released). 
    */
   readonly MOUSE_DOWN: BehaviorEvents_MOUSE_DOWN;
@@ -162,11 +155,6 @@ export declare const BehaviorEvents: typeof Enumeration & {
    * Triggers the behavior when the mouse button is clicked (without being released). 
    */
   readonly mouseDown: BehaviorEvents_MOUSE_DOWN;
-  /**
-   * Triggers the behavior when the mouse button is clicked (without being released). 
-   */
-  readonly mousedown: BehaviorEvents_MOUSE_DOWN;
-
   /**
    * Triggers the behavior when the mouse pointer enters the area defined by the bounding box of the object.
    */
@@ -176,11 +164,6 @@ export declare const BehaviorEvents: typeof Enumeration & {
    */
   readonly mouseEnter: BehaviorEvents_MOUSE_ENTER;
   /**
-   * Triggers the behavior when the mouse pointer enters the area defined by the bounding box of the object.
-   */
-  readonly mouseenter: BehaviorEvents_MOUSE_ENTER;
-
-  /**
    * Triggers the behavior when the mouse pointer exits the area defined by the bounding box of the object.
    */
   readonly MOUSE_EXIT: BehaviorEvents_MOUSE_EXIT;
@@ -188,11 +171,6 @@ export declare const BehaviorEvents: typeof Enumeration & {
    * Triggers the behavior when the mouse pointer exits the area defined by the bounding box of the object.
    */
   readonly mouseExit: BehaviorEvents_MOUSE_EXIT;
-  /**
-   * Triggers the behavior when the mouse pointer exits the area defined by the bounding box of the object.
-   */
-  readonly mouseexit: BehaviorEvents_MOUSE_EXIT;
-
   /**
    * Triggers the behavior when the object receives focus, either through a mouse action or by pressing the Tab key.
    */
@@ -202,11 +180,6 @@ export declare const BehaviorEvents: typeof Enumeration & {
    */
   readonly onFocus: BehaviorEvents_ON_FOCUS;
   /**
-   * Triggers the behavior when the object receives focus, either through a mouse action or by pressing the Tab key.
-   */
-  readonly onfocus: BehaviorEvents_ON_FOCUS;
-
-  /**
    * Triggers the behavior when the focus moves to a different interactive object.
    */
   readonly ON_BLUR: BehaviorEvents_ON_BLUR;
@@ -214,9 +187,4 @@ export declare const BehaviorEvents: typeof Enumeration & {
    * Triggers the behavior when the focus moves to a different interactive object.
    */
   readonly onBlur: BehaviorEvents_ON_BLUR;
-  /**
-   * Triggers the behavior when the focus moves to a different interactive object.
-   */
-  readonly onblur: BehaviorEvents_ON_BLUR;
-
 }

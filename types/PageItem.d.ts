@@ -1,6 +1,7 @@
 /**
  * PageItem.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -84,9 +85,6 @@ export interface PageItem<
     DeepPageItemHolder<M>,
     FlexObjectContainer<TChildParent, M>,
     PlacedGraphicContainer<TChildParent, M> {
-  /** The object's DOM class name — reports the specific kind, such as `'Rectangle'` when the object is a {@link Rectangle}. */
-  readonly constructorName: 'PageItem' | 'Button' | 'CheckBox' | 'ComboBox' | 'EPS' | 'EPSText' | 'EndnoteTextFrame' | 'FlexObject' | 'FormField' | 'Graphic' | 'GraphicLine' | 'Group' | 'HtmlItem' | 'Image' | 'ImportedPage' | 'ListBox' | 'MediaItem' | 'Movie' | 'MultiStateObject' | 'Oval' | 'PDF' | 'PICT' | 'Polygon' | 'RadioButton' | 'Rectangle' | 'SVG' | 'SignatureField' | 'Sound' | 'SplineItem' | 'TextBox' | 'TextFrame' | 'WMF';
-
   /** Resolves the proxy into the individual {@link PageItem}s it stands for. */
   getElements(): PageItem<TParent, TChildParent, 'single'>[];
 
@@ -129,7 +127,7 @@ export interface PageItem<
   readonly preferences: Preferences;
 
   /** The {@link XMLElement} this item is tagged with in the document's XML structure, if any. */
-  readonly associatedXMLElement: Read<M, XMLItem>;
+  readonly associatedXMLElement: Read<M, XMLItem | null>;
 
   /** The {@link Page} this item appears on, or an unresolved proxy if it is on the pasteboard (check `.isValid`). */
   readonly parentPage: Read<M, Page>;
@@ -144,7 +142,7 @@ export interface PageItem<
   readonly overridden: Read<M, boolean>;
 
   /** The master-page object this overridden item derives from, if any. */
-  readonly overriddenMasterPageItem: Read<M, PageItem | Guide | Graphic | Movie | Sound>;
+  readonly overriddenMasterPageItem: Read<M, PageItem | Guide | Graphic | Movie | Sound | null>;
 
   /** Whether this master-page item may be overridden on document pages. */
   get allowOverrides(): Read<M, boolean>;
@@ -171,7 +169,7 @@ export interface PageItem<
   set itemLayer(value: Layer | string);
 
   /** The {@link ObjectStyle} applied to the item. Assign a style object or its name. */
-  get appliedObjectStyle(): Read<M, ObjectStyle>;
+  get appliedObjectStyle(): Read<M, ObjectStyle | null>;
   set appliedObjectStyle(value: ObjectStyle | string);
 
   /** Whether the item is locked against selection and editing. */
@@ -331,7 +329,7 @@ export interface PageItem<
  * A page item InDesign reports as a plain {@link PageItem} rather than as a rectangle, text
  * frame, group or any other specific kind.
  *
- * Handle it in the `'PageItem'` case of a `constructorName` check. Only the members every page
+ * Handle it in the `'PageItem'` branch of an `instanceof` check. Only the members every page
  * item has — geometry, transform, fill and stroke — are available on it.
  */
 export interface PlainPageItem<
@@ -339,7 +337,5 @@ export interface PlainPageItem<
   TChildParent = PageItemParent,
   M extends Mode = 'single',
 > extends PageItem<TParent, TChildParent, M> {
-  /** Always `'PageItem'` — this is the generic case, by construction. */
-  readonly constructorName: 'PageItem';
 }
 

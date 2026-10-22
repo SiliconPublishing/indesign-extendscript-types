@@ -1,6 +1,7 @@
 /**
  * Guide.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -23,16 +24,17 @@ import type { Spread } from './Spread';
 import type { TransformationMatrix } from './TransformationMatrix';
 import type { TransformOrigin } from './_base/PageItemMixins';
 import type { MeasurementValue } from './_base/Types';
-import type { Event } from './Event';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
+import type { Event } from './Event';
 import type { FilePath } from './_base/Types';
-import type { InDesignEventMap } from './_base/Events';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+
 /**
  * A non-printing ruler guide used to align page items and establish layout grids.
  *
@@ -43,50 +45,6 @@ import type { PropertiesSetter } from './_base/Properties';
  * overridden on document pages.
  */
 export interface Guide {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: Spread | Page | MasterSpread;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<Guide, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<Guide, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -146,12 +104,49 @@ export interface Guide {
    */
   readonly index: number;
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: Spread | Page | MasterSpread;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<Guide, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<Guide, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */
   get name(): string;
   set name(value: string);
-  /** The object's DOM class name. */
-  readonly constructorName: 'Guide';
   /** Resolves the proxy into the individual {@link Guide} objects it stands for. */
   getElements(): Guide[];
   /** The unique numeric ID of the guide within its document. Stable for the guide's lifetime, unlike {@link index}. */
@@ -162,7 +157,7 @@ export interface Guide {
    */
   readonly overridden: boolean;
   /** The master-page object this overridden guide derives from, if any. */
-  readonly overriddenMasterPageItem: PageItem | Guide | Graphic | Movie | Sound;
+  readonly overriddenMasterPageItem: PageItem | Guide | Graphic | Movie | Sound | null;
   /** The {@link Page} this guide appears on, or an unresolved proxy if it is on a spread with no page context. */
   readonly parentPage: Page;
   /** Whether this master-page guide may be overridden on document pages. */
@@ -194,7 +189,7 @@ export interface Guide {
   set locked(value: boolean);
   /** The {@link Layer} the guide is on. */
   get itemLayer(): Layer;
-  set itemLayer(value: Layer);
+  set itemLayer(value: Layer | string);
   /** Whether this is a ruler guide or a Liquid Layout guide. */
   get guideType(): GuideTypeOptions;
   set guideType(value: GuideTypeOptions);
@@ -244,60 +239,16 @@ export interface Guide {
   select(existingSelection?: SelectionOptions): void;
 }
 
-
 /**
- * The broadcast proxy for {@link Guide} — what `everyItem()` returns.
+ * A non-printing ruler guide used to align page items and establish layout grids.
  *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link Guide} there.
+ * A plain named DOM object parented to a {@link Spread}, {@link Page}, or
+ * {@link MasterSpread} — not a page item, so it carries no fill/stroke and only
+ * a minimal transform surface ({@link move}, {@link duplicate}, {@link resolve}).
+ * Like any master-page object, a guide placed on a {@link MasterSpread} can be
+ * overridden on document pages.
  */
 export interface GuidePlural {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (Spread | Page | MasterSpread)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<GuidePlural, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<GuidePlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -357,12 +308,49 @@ export interface GuidePlural {
    */
   readonly index: (number)[];
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (Spread | Page | MasterSpread)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<GuidePlural, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<GuidePlural, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */
   get name(): (string)[];
   set name(value: string);
-  /** The object's DOM class name. */
-  readonly constructorName: 'Guide';
   /** Resolves the proxy into the individual {@link Guide} objects it stands for. */
   getElements(): Guide[];
   /** The unique numeric ID of the guide within its document. Stable for the guide's lifetime, unlike {@link index}. */
@@ -373,7 +361,7 @@ export interface GuidePlural {
    */
   readonly overridden: (boolean)[];
   /** The master-page object this overridden guide derives from, if any. */
-  readonly overriddenMasterPageItem: (PageItem | Guide | Graphic | Movie | Sound)[];
+  readonly overriddenMasterPageItem: (PageItem | Guide | Graphic | Movie | Sound | null)[];
   /** The {@link Page} this guide appears on, or an unresolved proxy if it is on a spread with no page context. */
   readonly parentPage: (Page)[];
   /** Whether this master-page guide may be overridden on document pages. */
@@ -405,7 +393,7 @@ export interface GuidePlural {
   set locked(value: boolean);
   /** The {@link Layer} the guide is on. */
   get itemLayer(): (Layer)[];
-  set itemLayer(value: Layer);
+  set itemLayer(value: Layer | string);
   /** Whether this is a ruler guide or a Liquid Layout guide. */
   get guideType(): (GuideTypeOptions)[];
   set guideType(value: GuideTypeOptions);

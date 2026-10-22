@@ -1,10 +1,11 @@
 /**
  * Position.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __Position: unique symbol;
 
 
 interface Position extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<Position>): boolean;
-
   /**
    * @internal **WARNING:** `__Position` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -195,11 +193,6 @@ export declare const Position: typeof Enumeration & {
    */
   readonly otSuperscript: Position_OT_SUPERSCRIPT;
   /**
-   * For OpenType fonts, uses--if available--raised glyphs that are sized correctly relative to the surrounding characters.
-   */
-  readonly otsuperscript: Position_OT_SUPERSCRIPT;
-
-  /**
    * For OpenType fonts, uses--if available--lowered glyphs that are sized correctly relative to the surrounding characters.
    */
   readonly OT_SUBSCRIPT: Position_OT_SUBSCRIPT;
@@ -207,11 +200,6 @@ export declare const Position: typeof Enumeration & {
    * For OpenType fonts, uses--if available--lowered glyphs that are sized correctly relative to the surrounding characters.
    */
   readonly otSubscript: Position_OT_SUBSCRIPT;
-  /**
-   * For OpenType fonts, uses--if available--lowered glyphs that are sized correctly relative to the surrounding characters.
-   */
-  readonly otsubscript: Position_OT_SUBSCRIPT;
-
   /**
    * For OpenType fonts, shrinks the text but keeps the top of the characters aligned with the top of the main text. Note: Valid only for numeric characters.
    */
@@ -221,11 +209,6 @@ export declare const Position: typeof Enumeration & {
    */
   readonly otNumerator: Position_OT_NUMERATOR;
   /**
-   * For OpenType fonts, shrinks the text but keeps the top of the characters aligned with the top of the main text. Note: Valid only for numeric characters.
-   */
-  readonly otnumerator: Position_OT_NUMERATOR;
-
-  /**
    * For OpenType fonts, shrinks the text but keeps text on the main text baseline. Note: Valid only for numeric characters.
    */
   readonly OT_DENOMINATOR: Position_OT_DENOMINATOR;
@@ -233,9 +216,4 @@ export declare const Position: typeof Enumeration & {
    * For OpenType fonts, shrinks the text but keeps text on the main text baseline. Note: Valid only for numeric characters.
    */
   readonly otDenominator: Position_OT_DENOMINATOR;
-  /**
-   * For OpenType fonts, shrinks the text but keeps text on the main text baseline. Note: Valid only for numeric characters.
-   */
-  readonly otdenominator: Position_OT_DENOMINATOR;
-
 }

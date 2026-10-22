@@ -1,10 +1,11 @@
 /**
  * AnimationEaseOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __AnimationEaseOptions: unique symbol;
 
 
 interface AnimationEaseOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<AnimationEaseOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__AnimationEaseOptions` is a phantom type for compiler strictness only.
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -136,11 +134,6 @@ export declare const AnimationEaseOptions: typeof Enumeration & {
    */
   readonly noEase: AnimationEaseOptions_NO_EASE;
   /**
-   * No easing; the animation plays at a constant speed.
-   */
-  readonly noease: AnimationEaseOptions_NO_EASE;
-
-  /**
    * Eases in: the animation starts slowly and accelerates.
    */
   readonly EASE_IN: AnimationEaseOptions_EASE_IN;
@@ -148,11 +141,6 @@ export declare const AnimationEaseOptions: typeof Enumeration & {
    * Eases in: the animation starts slowly and accelerates.
    */
   readonly easeIn: AnimationEaseOptions_EASE_IN;
-  /**
-   * Eases in: the animation starts slowly and accelerates.
-   */
-  readonly easein: AnimationEaseOptions_EASE_IN;
-
   /**
    * Eases out: the animation decelerates toward the end.
    */
@@ -162,11 +150,6 @@ export declare const AnimationEaseOptions: typeof Enumeration & {
    */
   readonly easeOut: AnimationEaseOptions_EASE_OUT;
   /**
-   * Eases out: the animation decelerates toward the end.
-   */
-  readonly easeout: AnimationEaseOptions_EASE_OUT;
-
-  /**
    * Eases in and out: the animation accelerates from the start and decelerates toward the end.
    */
   readonly EASE_IN_OUT: AnimationEaseOptions_EASE_IN_OUT;
@@ -175,11 +158,6 @@ export declare const AnimationEaseOptions: typeof Enumeration & {
    */
   readonly easeInOut: AnimationEaseOptions_EASE_IN_OUT;
   /**
-   * Eases in and out: the animation accelerates from the start and decelerates toward the end.
-   */
-  readonly easeinout: AnimationEaseOptions_EASE_IN_OUT;
-
-  /**
    * A custom ease curve, read-only — set via the motion path editor in the InDesign UI rather than the DOM.
    */
   readonly CUSTOM_EASE: AnimationEaseOptions_CUSTOM_EASE;
@@ -187,9 +165,4 @@ export declare const AnimationEaseOptions: typeof Enumeration & {
    * A custom ease curve, read-only — set via the motion path editor in the InDesign UI rather than the DOM.
    */
   readonly customEase: AnimationEaseOptions_CUSTOM_EASE;
-  /**
-   * A custom ease curve, read-only — set via the motion path editor in the InDesign UI rather than the DOM.
-   */
-  readonly customease: AnimationEaseOptions_CUSTOM_EASE;
-
 }

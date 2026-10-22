@@ -1,10 +1,11 @@
 /**
  * FootnoteFirstBaseline.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __FootnoteFirstBaseline: unique symbol;
 
 
 interface FootnoteFirstBaseline extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<FootnoteFirstBaseline>): boolean;
-
   /**
    * @internal **WARNING:** `__FootnoteFirstBaseline` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -150,11 +148,6 @@ export declare const FootnoteFirstBaseline: typeof Enumeration & {
    */
   readonly ascentOffset: FootnoteFirstBaseline_ASCENT_OFFSET;
   /**
-   * The tallest character in the font falls below the top of the footnote container.
-   */
-  readonly ascentoffset: FootnoteFirstBaseline_ASCENT_OFFSET;
-
-  /**
    * The tops of upper case letters touch the top of the footnote container.
    */
   readonly CAP_HEIGHT: FootnoteFirstBaseline_CAP_HEIGHT;
@@ -162,11 +155,6 @@ export declare const FootnoteFirstBaseline: typeof Enumeration & {
    * The tops of upper case letters touch the top of the footnote container.
    */
   readonly capHeight: FootnoteFirstBaseline_CAP_HEIGHT;
-  /**
-   * The tops of upper case letters touch the top of the footnote container.
-   */
-  readonly capheight: FootnoteFirstBaseline_CAP_HEIGHT;
-
   /**
    * The leading value of the text defines the distance between the baseline of the text and the top of the footnote container.
    */
@@ -176,11 +164,6 @@ export declare const FootnoteFirstBaseline: typeof Enumeration & {
    */
   readonly leadingOffset: FootnoteFirstBaseline_LEADING_OFFSET;
   /**
-   * The leading value of the text defines the distance between the baseline of the text and the top of the footnote container.
-   */
-  readonly leadingoffset: FootnoteFirstBaseline_LEADING_OFFSET;
-
-  /**
    * The em box height of the text defines the distance between the baseline of the text and the top of the footnote container.
    */
   readonly EMBOX_HEIGHT: FootnoteFirstBaseline_EMBOX_HEIGHT;
@@ -188,11 +171,6 @@ export declare const FootnoteFirstBaseline: typeof Enumeration & {
    * The em box height of the text defines the distance between the baseline of the text and the top of the footnote container.
    */
   readonly emboxHeight: FootnoteFirstBaseline_EMBOX_HEIGHT;
-  /**
-   * The em box height of the text defines the distance between the baseline of the text and the top of the footnote container.
-   */
-  readonly emboxheight: FootnoteFirstBaseline_EMBOX_HEIGHT;
-
   /**
    * The tops of lower case letters without ascents, such as x, touch the top of the footnote container.
    */
@@ -202,11 +180,6 @@ export declare const FootnoteFirstBaseline: typeof Enumeration & {
    */
   readonly xHeight: FootnoteFirstBaseline_X_HEIGHT;
   /**
-   * The tops of lower case letters without ascents, such as x, touch the top of the footnote container.
-   */
-  readonly xheight: FootnoteFirstBaseline_X_HEIGHT;
-
-  /**
    * The footnote minimum first baseline offset value defines the distance between the baseline of the text and the top of the footnote container.
    */
   readonly FIXED_HEIGHT: FootnoteFirstBaseline_FIXED_HEIGHT;
@@ -214,9 +187,4 @@ export declare const FootnoteFirstBaseline: typeof Enumeration & {
    * The footnote minimum first baseline offset value defines the distance between the baseline of the text and the top of the footnote container.
    */
   readonly fixedHeight: FootnoteFirstBaseline_FIXED_HEIGHT;
-  /**
-   * The footnote minimum first baseline offset value defines the distance between the baseline of the text and the top of the footnote container.
-   */
-  readonly fixedheight: FootnoteFirstBaseline_FIXED_HEIGHT;
-
 }

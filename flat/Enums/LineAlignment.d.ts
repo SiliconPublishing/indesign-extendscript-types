@@ -1,10 +1,11 @@
 /**
  * LineAlignment.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __LineAlignment: unique symbol;
 
 
 interface LineAlignment extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<LineAlignment>): boolean;
-
   /**
    * @internal **WARNING:** `__LineAlignment` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -166,11 +164,6 @@ export declare const LineAlignment: typeof Enumeration & {
    */
   readonly leftOrTopLineAlign: LineAlignment_LEFT_OR_TOP_LINE_ALIGN;
   /**
-   * Left aligns horizontal text or top aligns vertical text. 
-   */
-  readonly leftortoplinealign: LineAlignment_LEFT_OR_TOP_LINE_ALIGN;
-
-  /**
    * Center aligns the text. 
    */
   readonly CENTER_LINE_ALIGN: LineAlignment_CENTER_LINE_ALIGN;
@@ -178,11 +171,6 @@ export declare const LineAlignment: typeof Enumeration & {
    * Center aligns the text. 
    */
   readonly centerLineAlign: LineAlignment_CENTER_LINE_ALIGN;
-  /**
-   * Center aligns the text. 
-   */
-  readonly centerlinealign: LineAlignment_CENTER_LINE_ALIGN;
-
   /**
    * Right aligns horizontal text or bottom aligns vertical text.
    */
@@ -192,11 +180,6 @@ export declare const LineAlignment: typeof Enumeration & {
    */
   readonly rightOrBottomLineAlign: LineAlignment_RIGHT_OR_BOTTOM_LINE_ALIGN;
   /**
-   * Right aligns horizontal text or bottom aligns vertical text.
-   */
-  readonly rightorbottomlinealign: LineAlignment_RIGHT_OR_BOTTOM_LINE_ALIGN;
-
-  /**
    * Justifies horizontal text on both the right and left and left aligns the last line or justifies vertical text on both the top and bottom and top aligns the last line.
    */
   readonly LEFT_OR_TOP_LINE_JUSTIFY: LineAlignment_LEFT_OR_TOP_LINE_JUSTIFY;
@@ -204,11 +187,6 @@ export declare const LineAlignment: typeof Enumeration & {
    * Justifies horizontal text on both the right and left and left aligns the last line or justifies vertical text on both the top and bottom and top aligns the last line.
    */
   readonly leftOrTopLineJustify: LineAlignment_LEFT_OR_TOP_LINE_JUSTIFY;
-  /**
-   * Justifies horizontal text on both the right and left and left aligns the last line or justifies vertical text on both the top and bottom and top aligns the last line.
-   */
-  readonly leftortoplinejustify: LineAlignment_LEFT_OR_TOP_LINE_JUSTIFY;
-
   /**
    * Justifies horizontal text on both the right and left and center aligns the last line or justifies vertical text on both the top and bottom and center aligns the last line.
    */
@@ -218,11 +196,6 @@ export declare const LineAlignment: typeof Enumeration & {
    */
   readonly centerLineJustify: LineAlignment_CENTER_LINE_JUSTIFY;
   /**
-   * Justifies horizontal text on both the right and left and center aligns the last line or justifies vertical text on both the top and bottom and center aligns the last line.
-   */
-  readonly centerlinejustify: LineAlignment_CENTER_LINE_JUSTIFY;
-
-  /**
    * Justifies horizontal text on both the right and left and right aligns the last line or justifies vertical text on both the top and bottom and bottom aligns the last line.
    */
   readonly RIGHT_OR_BOTTOM_LINE_JUSTIFY: LineAlignment_RIGHT_OR_BOTTOM_LINE_JUSTIFY;
@@ -231,11 +204,6 @@ export declare const LineAlignment: typeof Enumeration & {
    */
   readonly rightOrBottomLineJustify: LineAlignment_RIGHT_OR_BOTTOM_LINE_JUSTIFY;
   /**
-   * Justifies horizontal text on both the right and left and right aligns the last line or justifies vertical text on both the top and bottom and bottom aligns the last line.
-   */
-  readonly rightorbottomlinejustify: LineAlignment_RIGHT_OR_BOTTOM_LINE_JUSTIFY;
-
-  /**
    * Justifies horizontal text on both the right and left or justifies vertical text on both the top and bottom and gives all lines a uniform length.
    */
   readonly FULL_LINE_JUSTIFY: LineAlignment_FULL_LINE_JUSTIFY;
@@ -243,9 +211,4 @@ export declare const LineAlignment: typeof Enumeration & {
    * Justifies horizontal text on both the right and left or justifies vertical text on both the top and bottom and gives all lines a uniform length.
    */
   readonly fullLineJustify: LineAlignment_FULL_LINE_JUSTIFY;
-  /**
-   * Justifies horizontal text on both the right and left or justifies vertical text on both the top and bottom and gives all lines a uniform length.
-   */
-  readonly fulllinejustify: LineAlignment_FULL_LINE_JUSTIFY;
-
 }

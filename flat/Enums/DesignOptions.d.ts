@@ -1,10 +1,11 @@
 /**
  * DesignOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __DesignOptions: unique symbol;
 
 
 interface DesignOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<DesignOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__DesignOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const DesignOptions: typeof Enumeration & {
    */
   readonly fromCurrentAppearance: DesignOptions_FROM_CURRENT_APPEARANCE;
   /**
-   * Uses the current object's properties as the starting appearance of the animation at runtime.
-   */
-  readonly fromcurrentappearance: DesignOptions_FROM_CURRENT_APPEARANCE;
-
-  /**
    * Uses the current object's properties as the end appearance of the animation at runtime.
    */
   readonly TO_CURRENT_APPEARANCE: DesignOptions_TO_CURRENT_APPEARANCE;
@@ -115,11 +108,6 @@ export declare const DesignOptions: typeof Enumeration & {
    */
   readonly toCurrentAppearance: DesignOptions_TO_CURRENT_APPEARANCE;
   /**
-   * Uses the current object's properties as the end appearance of the animation at runtime.
-   */
-  readonly tocurrentappearance: DesignOptions_TO_CURRENT_APPEARANCE;
-
-  /**
    * Uses the current object's properties as the starting appearance, and current position as the end location of the animation at runtime.
    */
   readonly TO_CURRENT_LOCATION: DesignOptions_TO_CURRENT_LOCATION;
@@ -127,9 +115,4 @@ export declare const DesignOptions: typeof Enumeration & {
    * Uses the current object's properties as the starting appearance, and current position as the end location of the animation at runtime.
    */
   readonly toCurrentLocation: DesignOptions_TO_CURRENT_LOCATION;
-  /**
-   * Uses the current object's properties as the starting appearance, and current position as the end location of the animation at runtime.
-   */
-  readonly tocurrentlocation: DesignOptions_TO_CURRENT_LOCATION;
-
 }

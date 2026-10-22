@@ -1,10 +1,11 @@
 /**
  * MoviePlayOperations.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __MoviePlayOperations: unique symbol;
 
 
 interface MoviePlayOperations extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<MoviePlayOperations>): boolean;
-
   /**
    * @internal **WARNING:** `__MoviePlayOperations` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -156,11 +154,6 @@ export declare const MoviePlayOperations: typeof Enumeration & {
    */
   readonly playFromNavigationPoint: MoviePlayOperations_PLAY_FROM_NAVIGATION_POINT;
   /**
-   * Starts playback from the specified navigation point.
-   */
-  readonly playfromnavigationpoint: MoviePlayOperations_PLAY_FROM_NAVIGATION_POINT;
-
-  /**
    * Stops playback.
    */
   readonly STOP: MoviePlayOperations_STOP;
@@ -195,9 +188,4 @@ export declare const MoviePlayOperations: typeof Enumeration & {
    * Stops all playback (SWF only).
    */
   readonly stopAll: MoviePlayOperations_STOP_ALL;
-  /**
-   * Stops all playback (SWF only).
-   */
-  readonly stopall: MoviePlayOperations_STOP_ALL;
-
 }

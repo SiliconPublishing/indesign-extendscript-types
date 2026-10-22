@@ -1,10 +1,11 @@
 /**
  * RubyAlignments.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __RubyAlignments: unique symbol;
 
 
 interface RubyAlignments extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<RubyAlignments>): boolean;
-
   /**
    * @internal **WARNING:** `__RubyAlignments` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -166,11 +164,6 @@ export declare const RubyAlignments: typeof Enumeration & {
    */
   readonly rubyLeft: RubyAlignments_RUBY_LEFT;
   /**
-   * Aligns ruby with the left-most character in the parent text.
-   */
-  readonly rubyleft: RubyAlignments_RUBY_LEFT;
-
-  /**
    * Centers ruby relative to the parent text.
    */
   readonly RUBY_CENTER: RubyAlignments_RUBY_CENTER;
@@ -178,11 +171,6 @@ export declare const RubyAlignments: typeof Enumeration & {
    * Centers ruby relative to the parent text.
    */
   readonly rubyCenter: RubyAlignments_RUBY_CENTER;
-  /**
-   * Centers ruby relative to the parent text.
-   */
-  readonly rubycenter: RubyAlignments_RUBY_CENTER;
-
   /**
    * Aligns ruby with the right-most character in the parent text.
    */
@@ -192,11 +180,6 @@ export declare const RubyAlignments: typeof Enumeration & {
    */
   readonly rubyRight: RubyAlignments_RUBY_RIGHT;
   /**
-   * Aligns ruby with the right-most character in the parent text.
-   */
-  readonly rubyright: RubyAlignments_RUBY_RIGHT;
-
-  /**
    * Justifies ruby across the parent text.
    */
   readonly RUBY_FULL_JUSTIFY: RubyAlignments_RUBY_FULL_JUSTIFY;
@@ -205,23 +188,9 @@ export declare const RubyAlignments: typeof Enumeration & {
    */
   readonly rubyFullJustify: RubyAlignments_RUBY_FULL_JUSTIFY;
   /**
-   * Justifies ruby across the parent text.
-   */
-  readonly rubyfulljustify: RubyAlignments_RUBY_FULL_JUSTIFY;
-
-  /**
    * Ruby JIS.
    */
   readonly RUBY_JIS: RubyAlignments_RUBY_JIS;
-  /**
-   * Ruby JIS.
-   */
-  readonly rubyJis: RubyAlignments_RUBY_JIS;
-  /**
-   * Ruby JIS.
-   */
-  readonly rubyjis: RubyAlignments_RUBY_JIS;
-
   /**
    * Ruby equal aki.
    */
@@ -231,11 +200,6 @@ export declare const RubyAlignments: typeof Enumeration & {
    */
   readonly rubyEqualAki: RubyAlignments_RUBY_EQUAL_AKI;
   /**
-   * Ruby equal aki.
-   */
-  readonly rubyequalaki: RubyAlignments_RUBY_EQUAL_AKI;
-
-  /**
    * Ruby 1 aki.
    */
   readonly RUBY_1_AKI: RubyAlignments_RUBY_1_AKI;
@@ -243,9 +207,4 @@ export declare const RubyAlignments: typeof Enumeration & {
    * Ruby 1 aki.
    */
   readonly ruby1Aki: RubyAlignments_RUBY_1_AKI;
-  /**
-   * Ruby 1 aki.
-   */
-  readonly ruby1aki: RubyAlignments_RUBY_1_AKI;
-
 }

@@ -1,6 +1,7 @@
 /**
  * indesign.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -16,7 +17,7 @@ export * from './_base/Enums';
 // a {@link} that points at a non-export renders as inert text in the hover popup.
 export * from './_base/Mixins';
 export * from './_base/Parents';
-export * from './Enums';
+export * from './Enums/index';
 
 export * from './AdjustLayoutPreference';
 export * from './AlignDistributePreference';
@@ -683,3 +684,4 @@ export * from './XMLTags';
 export * from './XMLViewPreference';
 export * from './XmlStories';
 export * from './XmlStory';
+export * from "./HTTPLinkPreferences";

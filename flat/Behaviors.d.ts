@@ -1,6 +1,7 @@
 /**
  * Behaviors.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -13,17 +14,19 @@ import type { Behavior } from './Behavior';
 import type { AnyBehavior } from './_base/Unions';
 import type { BehaviorEvents } from './Enums/BehaviorEvents';
 import type { GotoURLBehavior } from './GotoURLBehavior';
-import type { BehaviorParent } from './_base/Parents';
-import type { Event } from './Event';
+import type { NothingEnum } from './Enums/NothingEnum';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
+import type { Event } from './Event';
 import type { FilePath } from './_base/Types';
-import type { InDesignEventMap } from './_base/Events';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+import type { BehaviorParent } from './_base/Parents';
+
 /**
  * A collection of {@link Behavior} objects attached to interactive elements.
  * Behaviors define the specific actions (e.g., page navigation, media control)
@@ -33,7 +36,14 @@ import type { PropertiesSetter } from './_base/Properties';
  */
 export interface Behaviors {
   /** The number of objects in the collection. */
-  readonly length: number;
+      readonly length: number | NothingEnum.NOTHING;
+      /**
+       * The object at the given position: `doc.pages[0]`. Out of range gives an invalid object, not
+       * `undefined` (check `isValid`).
+       */
+      readonly [index: number]: AnyBehavior;
+      /** Reflection on the collection. */
+      readonly reflect: Reflection;
   /** Displays the number of elements in the Collection. */
   count(): number;
   /**
@@ -53,15 +63,14 @@ export interface Behaviors {
    *
    * * The two bounds are resolved independently, so they can be of different kinds — an index
    * for one end and an object for the other, as in `itemByRange(0, lastRect)`.
-   * * **Names are not accepted**, unlike {@link item}. A string bound throws, even though the
-   * dictionary lists one.
-   * * Like `everyItem()`, this returns a plural proxy. Operations applied to this proxy are broadcast directly within the native C++ engine for maximum performance.
+   * * Names are accepted, as with {@link item}: `layers.itemByRange('Top', 'Bottom')`.
+   * * Like `everyItem()`, this returns a plural proxy. Operations applied to this proxy are broadcast directly within the native engine for maximum performance.
    * * To convert this proxy into a standard JavaScript array of individual objects, call `.getElements()` on the result.
    * @param from The object or index at the beginning of the range.
    * @param to The object or index at the end of the range.
    * @returns A plural proxy representing the items in the resolved range.
    */
-  itemByRange(from: number | Behavior, to: number | Behavior): BehaviorsPlural;
+  itemByRange(from: number | string | Behavior, to: number | string | Behavior): BehaviorsPlural;
   /**
    * Returns the first object in the collection.
    * * This method tends to be slower than accessing the first item directly via `.item(0)`.
@@ -110,8 +119,8 @@ export interface Behaviors {
   everyItem(): BehaviorsPlural;
   /** Generates a string which, if executed, will return the Collection. */
   toSource(): string;
-  /** The collection's specifier string — the same value as `toSpecifier()`, not a human-readable description. */
-  toString(): string;
+  /** `"[object CollectionName]"`, such as `"[object Pages]"`. */
+      toString(): string;
   /** * Returns the object with the specified ID.
    * * If the item does not exist, it returns an unresolved proxy (check `.isValid`).
    * @param id The unique ID.
@@ -122,8 +131,6 @@ export interface Behaviors {
    * @param name The name of the item.
    */
   itemByName(name: string): AnyBehavior;
-  /** The object's DOM class name. */
-  readonly constructorName: 'Behaviors';
 }
 
 /**
@@ -134,50 +141,6 @@ export interface Behaviors {
  * each reported as its own specific kind.
  */
 export interface BehaviorsPlural {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (BehaviorParent)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<BehaviorsPlural, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<BehaviorsPlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -233,11 +196,48 @@ export interface BehaviorsPlural {
    */
   extractLabel(key: string): (string)[];
   /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (BehaviorParent)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<BehaviorsPlural, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<BehaviorsPlural, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
+  /**
    * The index of the object within its containing parent.
    */
   readonly index: (number)[];
-  /** The object's DOM class name — reports the specific kind, such as `'GotoURLBehavior'` when the object is a {@link GotoURLBehavior}. */
-  readonly constructorName: 'Behavior' | 'AnimationBehavior' | 'ClearFormBehavior' | 'GotoAnchorBehavior' | 'GotoFirstPageBehavior' | 'GotoLastPageBehavior' | 'GotoNextPageBehavior' | 'GotoNextStateBehavior' | 'GotoNextViewBehavior' | 'GotoPageBehavior' | 'GotoPreviousPageBehavior' | 'GotoPreviousStateBehavior' | 'GotoPreviousViewBehavior' | 'GotoStateBehavior' | 'GotoURLBehavior' | 'MovieBehavior' | 'OpenFileBehavior' | 'PrintFormBehavior' | 'ShowHideFieldsBehavior' | 'SoundBehavior' | 'SubmitFormBehavior' | 'ViewZoomBehavior';
   /** The name of the behavior. */
   readonly name: (string)[];
   /** The unique ID of the behavior. */
@@ -253,5 +253,4 @@ export interface BehaviorsPlural {
   /** Resolves the proxy into the individual behaviors, each at its concrete class. */
   getElements(): AnyBehavior[];
 }
-
 

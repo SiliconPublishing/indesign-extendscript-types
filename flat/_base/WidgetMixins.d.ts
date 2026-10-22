@@ -1,6 +1,7 @@
 /**
  * WidgetMixins.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -108,6 +109,7 @@ export interface NumericEditboxSurface<M extends Mode = 'single'> {
   get editValue(): Read<M, number>;
   set editValue(value: number);
 }
+
 /**
  * The shared numeric-combobox surface: a {@link NumericEditboxSurface} plus
  * the dropdown item list.
@@ -152,14 +154,9 @@ export interface NumericComboboxSurface {
   set stringList(value: string[]);
 }
 
-
 /**
- * The broadcast proxy for {@link NumericComboboxSurface} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link NumericComboboxSurface} there.
+ * The shared numeric-combobox surface: a {@link NumericEditboxSurface} plus
+ * the dropdown item list.
  */
 export interface NumericComboboxSurfacePlural {
   /**

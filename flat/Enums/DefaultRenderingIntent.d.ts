@@ -1,10 +1,11 @@
 /**
  * DefaultRenderingIntent.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 import type { RenderingIntent } from './RenderingIntent';
 
 
@@ -19,9 +20,6 @@ declare const __DefaultRenderingIntent: unique symbol;
 
 
 interface DefaultRenderingIntent extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<DefaultRenderingIntent>): boolean;
-
   /**
    * @internal **WARNING:** `__DefaultRenderingIntent` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -162,16 +160,6 @@ export declare const DefaultRenderingIntent: typeof Enumeration & {
    */
   readonly relativeColorimetric: DefaultRenderingIntent_RELATIVE_COLORIMETRIC;
   /**
-   * Compares the extreme highlight of the source color space to that of the destination color
-   * space and shifts all colors accordingly.
-   *
-   * Out-of-gamut colors are shifted to the closest reproducible color in the destination
-   * color space. Note: Preserves more of the original colors in an image than perceptual
-   * rendering intent does.
-   */
-  readonly relativecolorimetric: DefaultRenderingIntent_RELATIVE_COLORIMETRIC;
-
-  /**
    * Aims to maintain color accuracy at the expense of color relationships and is suitable for
    * proofing to simulate the output of a particular device.
    *
@@ -187,13 +175,4 @@ export declare const DefaultRenderingIntent: typeof Enumeration & {
    * out-of-gamut colors.
    */
   readonly absoluteColorimetric: DefaultRenderingIntent_ABSOLUTE_COLORIMETRIC;
-  /**
-   * Aims to maintain color accuracy at the expense of color relationships and is suitable for
-   * proofing to simulate the output of a particular device.
-   *
-   * Note: Leaves colors that fall inside the destination gamut unchanged and clips
-   * out-of-gamut colors.
-   */
-  readonly absolutecolorimetric: DefaultRenderingIntent_ABSOLUTE_COLORIMETRIC;
-
 }

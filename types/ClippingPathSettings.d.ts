@@ -1,6 +1,7 @@
 /**
  * ClippingPathSettings.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -24,9 +25,6 @@ import type { ClippingPathType } from './Enums/ClippingPathType';
  * be detected from the image's own edges — see {@link clippingType}.
  */
 export interface ClippingPathSettings<M extends Mode = 'single'> extends EventTargetDOMObject<Image | EPS | WMF | PICT | PDF | ImportedPage, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'ClippingPathSettings';
-
   /** Resolves the proxy into the individual {@link ClippingPathSettings} objects it stands for. */
   getElements(): ClippingPathSettings<'single'>[];
 

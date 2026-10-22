@@ -1,6 +1,7 @@
 /**
  * ChangeObjectPreference.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -49,26 +50,32 @@ import type { UIColors } from './Enums/UIColors';
 import type { VerticalJustification } from './Enums/VerticalJustification';
 import type { VerticallyRelativeTo } from './Enums/VerticallyRelativeTo';
 import type { ObjectStyle } from './ObjectStyle';
-import type { Event } from './Event';
-import type { EventHandler } from './_base/Events';
-import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
-import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { FilePath } from './_base/Types';
-import type { InDesignEventMap } from './_base/Events';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
+import type { EventHandler } from './_base/Events';
+import type { EventListener } from './EventListener';
+import type { EventString } from './_base/Events';
+import type { Event } from './Event';
+import type { FilePath } from './_base/Types';
+
 /**
  * The formatting to apply to objects found by a find/change object operation, set via
  * {@link Application.changeObjectPreferences} and used by {@link Application.changeObject}.
  */
 export interface ChangeObjectPreference {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -86,15 +93,6 @@ export interface ChangeObjectPreference {
    */
   set properties(value: PropertiesSetter<ChangeObjectPreference, 'single'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -104,10 +102,9 @@ export interface ChangeObjectPreference {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -148,8 +145,6 @@ export interface ChangeObjectPreference {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The object's DOM class name. */
-  readonly constructorName: 'ChangeObjectPreference';
   /** Resolves the proxy into the individual {@link ChangeObjectPreference} objects it stands for. */
   getElements(): ChangeObjectPreference[];
   /** The transparency settings to apply. */
@@ -190,10 +185,10 @@ export interface ChangeObjectPreference {
   set footnotesSpanAcrossColumns(value: boolean | NothingEnum.NOTHING);
   /** Minimum Spacing Before First Footnote. */
   get footnotesMinimumSpacing(): number | NothingEnum.NOTHING;
-  set footnotesMinimumSpacing(value: number | NothingEnum.NOTHING);
+  set footnotesMinimumSpacing(value: number | NothingEnum.NOTHING | string);
   /** Space between footnotes. */
   get footnotesSpaceBetween(): number | NothingEnum.NOTHING;
-  set footnotesSpaceBetween(value: number | NothingEnum.NOTHING);
+  set footnotesSpaceBetween(value: number | NothingEnum.NOTHING | string);
   /** The applied object style(s). */
   get appliedObjectStyles(): string | NothingEnum.NOTHING;
   set appliedObjectStyles(value: string | NothingEnum.NOTHING | null | ObjectStyle);
@@ -268,10 +263,10 @@ export interface ChangeObjectPreference {
   set textColumnCount(value: number | NothingEnum.NOTHING);
   /** The space between columns in the text frame. */
   get textColumnGutter(): number | NothingEnum.NOTHING;
-  set textColumnGutter(value: number | NothingEnum.NOTHING);
+  set textColumnGutter(value: number | NothingEnum.NOTHING | string);
   /** The column width of the columns in the text frame. */
   get textColumnFixedWidth(): number | NothingEnum.NOTHING;
-  set textColumnFixedWidth(value: number | NothingEnum.NOTHING);
+  set textColumnFixedWidth(value: number | NothingEnum.NOTHING | string);
   /** If true, maintains column width when the text frame is resized. If false, causes columns to resize when the text frame is resized. Note: When true, resizing the frame can change the number of columns in the frame. */
   get useFixedColumnWidth(): boolean | NothingEnum.NOTHING;
   set useFixedColumnWidth(value: boolean | NothingEnum.NOTHING);
@@ -283,13 +278,13 @@ export interface ChangeObjectPreference {
   set firstBaselineOffset(value: FirstBaseline | NothingEnum.NOTHING);
   /** The minimum distance between the baseline of the text and the top inset of the text frame or cell. */
   get minimumFirstBaselineOffset(): number | NothingEnum.NOTHING;
-  set minimumFirstBaselineOffset(value: number | NothingEnum.NOTHING);
+  set minimumFirstBaselineOffset(value: number | NothingEnum.NOTHING | string);
   /** The vertical alignment of the text content. */
   get verticalJustification(): VerticalJustification | NothingEnum.NOTHING;
   set verticalJustification(value: VerticalJustification | NothingEnum.NOTHING);
   /** The maximum amount of vertical space between two paragraphs. Note: Valid only when vertical justification is justified; the specified amount is applied in addition to the space before or space after values defined for the paragraph. */
   get verticalThreshold(): number | NothingEnum.NOTHING;
-  set verticalThreshold(value: number | NothingEnum.NOTHING);
+  set verticalThreshold(value: number | NothingEnum.NOTHING | string);
   /** If true, ignores text wrap settings for drawn or placed objects in the text frame. */
   get ignoreWrap(): boolean | NothingEnum.NOTHING;
   set ignoreWrap(value: boolean | NothingEnum.NOTHING);
@@ -298,13 +293,13 @@ export interface ChangeObjectPreference {
   set useCustomBaselineFrameGrid(value: boolean | NothingEnum.NOTHING);
   /** The amount to offset the baseline grid. */
   get startingOffsetForBaselineFrameGrid(): number | NothingEnum.NOTHING;
-  set startingOffsetForBaselineFrameGrid(value: number | NothingEnum.NOTHING);
+  set startingOffsetForBaselineFrameGrid(value: number | NothingEnum.NOTHING | string);
   /** The location (top of page, top margin, top of frame, or frame inset) on which to base the custom baseline grid. */
   get baselineFrameGridRelativeOption(): BaselineFrameGridRelativeOption | NothingEnum.NOTHING;
   set baselineFrameGridRelativeOption(value: BaselineFrameGridRelativeOption | NothingEnum.NOTHING);
   /** The distance between grid lines. */
   get baselineFrameGridIncrement(): number | NothingEnum.NOTHING;
-  set baselineFrameGridIncrement(value: number | NothingEnum.NOTHING);
+  set baselineFrameGridIncrement(value: number | NothingEnum.NOTHING | string);
   /** The grid line color, specified either as an array of three doubles, each in the range 0 to 255 and representing R, G, and B values, or as a UI color. */
   get baselineFrameGridColor(): number[] | UIColors | NothingEnum.NOTHING;
   set baselineFrameGridColor(value: number[] | UIColors | NothingEnum.NOTHING);
@@ -507,21 +502,21 @@ export interface ChangeObjectPreference {
   actualText(): string;
 }
 
-
 /**
- * The broadcast proxy for {@link ChangeObjectPreference} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link ChangeObjectPreference} there.
+ * The formatting to apply to objects found by a find/change object operation, set via
+ * {@link Application.changeObjectPreferences} and used by {@link Application.changeObject}.
  */
 export interface ChangeObjectPreferencePlural {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -539,15 +534,6 @@ export interface ChangeObjectPreferencePlural {
    */
   set properties(value: PropertiesSetter<ChangeObjectPreferencePlural, 'plural'>);
   /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
   toSource(): string;
@@ -557,10 +543,9 @@ export interface ChangeObjectPreferencePlural {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -601,8 +586,6 @@ export interface ChangeObjectPreferencePlural {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The object's DOM class name. */
-  readonly constructorName: 'ChangeObjectPreference';
   /** Resolves the proxy into the individual {@link ChangeObjectPreference} objects it stands for. */
   getElements(): ChangeObjectPreference[];
   /** The transparency settings to apply. */
@@ -643,10 +626,10 @@ export interface ChangeObjectPreferencePlural {
   set footnotesSpanAcrossColumns(value: boolean | NothingEnum.NOTHING);
   /** Minimum Spacing Before First Footnote. */
   get footnotesMinimumSpacing(): (number | NothingEnum.NOTHING)[];
-  set footnotesMinimumSpacing(value: number | NothingEnum.NOTHING);
+  set footnotesMinimumSpacing(value: number | NothingEnum.NOTHING | string);
   /** Space between footnotes. */
   get footnotesSpaceBetween(): (number | NothingEnum.NOTHING)[];
-  set footnotesSpaceBetween(value: number | NothingEnum.NOTHING);
+  set footnotesSpaceBetween(value: number | NothingEnum.NOTHING | string);
   /** The applied object style(s). */
   get appliedObjectStyles(): (string | NothingEnum.NOTHING)[];
   set appliedObjectStyles(value: string | NothingEnum.NOTHING | null | ObjectStyle);
@@ -721,10 +704,10 @@ export interface ChangeObjectPreferencePlural {
   set textColumnCount(value: number | NothingEnum.NOTHING);
   /** The space between columns in the text frame. */
   get textColumnGutter(): (number | NothingEnum.NOTHING)[];
-  set textColumnGutter(value: number | NothingEnum.NOTHING);
+  set textColumnGutter(value: number | NothingEnum.NOTHING | string);
   /** The column width of the columns in the text frame. */
   get textColumnFixedWidth(): (number | NothingEnum.NOTHING)[];
-  set textColumnFixedWidth(value: number | NothingEnum.NOTHING);
+  set textColumnFixedWidth(value: number | NothingEnum.NOTHING | string);
   /** If true, maintains column width when the text frame is resized. If false, causes columns to resize when the text frame is resized. Note: When true, resizing the frame can change the number of columns in the frame. */
   get useFixedColumnWidth(): (boolean | NothingEnum.NOTHING)[];
   set useFixedColumnWidth(value: boolean | NothingEnum.NOTHING);
@@ -736,13 +719,13 @@ export interface ChangeObjectPreferencePlural {
   set firstBaselineOffset(value: FirstBaseline | NothingEnum.NOTHING);
   /** The minimum distance between the baseline of the text and the top inset of the text frame or cell. */
   get minimumFirstBaselineOffset(): (number | NothingEnum.NOTHING)[];
-  set minimumFirstBaselineOffset(value: number | NothingEnum.NOTHING);
+  set minimumFirstBaselineOffset(value: number | NothingEnum.NOTHING | string);
   /** The vertical alignment of the text content. */
   get verticalJustification(): (VerticalJustification | NothingEnum.NOTHING)[];
   set verticalJustification(value: VerticalJustification | NothingEnum.NOTHING);
   /** The maximum amount of vertical space between two paragraphs. Note: Valid only when vertical justification is justified; the specified amount is applied in addition to the space before or space after values defined for the paragraph. */
   get verticalThreshold(): (number | NothingEnum.NOTHING)[];
-  set verticalThreshold(value: number | NothingEnum.NOTHING);
+  set verticalThreshold(value: number | NothingEnum.NOTHING | string);
   /** If true, ignores text wrap settings for drawn or placed objects in the text frame. */
   get ignoreWrap(): (boolean | NothingEnum.NOTHING)[];
   set ignoreWrap(value: boolean | NothingEnum.NOTHING);
@@ -751,13 +734,13 @@ export interface ChangeObjectPreferencePlural {
   set useCustomBaselineFrameGrid(value: boolean | NothingEnum.NOTHING);
   /** The amount to offset the baseline grid. */
   get startingOffsetForBaselineFrameGrid(): (number | NothingEnum.NOTHING)[];
-  set startingOffsetForBaselineFrameGrid(value: number | NothingEnum.NOTHING);
+  set startingOffsetForBaselineFrameGrid(value: number | NothingEnum.NOTHING | string);
   /** The location (top of page, top margin, top of frame, or frame inset) on which to base the custom baseline grid. */
   get baselineFrameGridRelativeOption(): (BaselineFrameGridRelativeOption | NothingEnum.NOTHING)[];
   set baselineFrameGridRelativeOption(value: BaselineFrameGridRelativeOption | NothingEnum.NOTHING);
   /** The distance between grid lines. */
   get baselineFrameGridIncrement(): (number | NothingEnum.NOTHING)[];
-  set baselineFrameGridIncrement(value: number | NothingEnum.NOTHING);
+  set baselineFrameGridIncrement(value: number | NothingEnum.NOTHING | string);
   /** The grid line color, specified either as an array of three doubles, each in the range 0 to 255 and representing R, G, and B values, or as a UI color. */
   get baselineFrameGridColor(): (number[] | UIColors | NothingEnum.NOTHING)[];
   set baselineFrameGridColor(value: number[] | UIColors | NothingEnum.NOTHING);

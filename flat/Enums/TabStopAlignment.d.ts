@@ -1,10 +1,11 @@
 /**
  * TabStopAlignment.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __TabStopAlignment: unique symbol;
 
 
 interface TabStopAlignment extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<TabStopAlignment>): boolean;
-
   /**
    * @internal **WARNING:** `__TabStopAlignment` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -120,11 +118,6 @@ export declare const TabStopAlignment: typeof Enumeration & {
    */
   readonly leftAlign: TabStopAlignment_LEFT_ALIGN;
   /**
-   * Left-aligns text at the tab stop.
-   */
-  readonly leftalign: TabStopAlignment_LEFT_ALIGN;
-
-  /**
    * Center-aligns text at the tab stop.
    */
   readonly CENTER_ALIGN: TabStopAlignment_CENTER_ALIGN;
@@ -132,11 +125,6 @@ export declare const TabStopAlignment: typeof Enumeration & {
    * Center-aligns text at the tab stop.
    */
   readonly centerAlign: TabStopAlignment_CENTER_ALIGN;
-  /**
-   * Center-aligns text at the tab stop.
-   */
-  readonly centeralign: TabStopAlignment_CENTER_ALIGN;
-
   /**
    * Right-aligns text at the tab stop.
    */
@@ -146,11 +134,6 @@ export declare const TabStopAlignment: typeof Enumeration & {
    */
   readonly rightAlign: TabStopAlignment_RIGHT_ALIGN;
   /**
-   * Right-aligns text at the tab stop.
-   */
-  readonly rightalign: TabStopAlignment_RIGHT_ALIGN;
-
-  /**
    * Aligns the specified character with the tab stop.
    */
   readonly CHARACTER_ALIGN: TabStopAlignment_CHARACTER_ALIGN;
@@ -158,9 +141,4 @@ export declare const TabStopAlignment: typeof Enumeration & {
    * Aligns the specified character with the tab stop.
    */
   readonly characterAlign: TabStopAlignment_CHARACTER_ALIGN;
-  /**
-   * Aligns the specified character with the tab stop.
-   */
-  readonly characteralign: TabStopAlignment_CHARACTER_ALIGN;
-
 }

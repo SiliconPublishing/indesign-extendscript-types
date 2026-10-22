@@ -1,10 +1,11 @@
 /**
  * AlignOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __AlignOptions: unique symbol;
 
 
 interface AlignOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<AlignOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__AlignOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -150,11 +148,6 @@ export declare const AlignOptions: typeof Enumeration & {
    */
   readonly leftEdges: AlignOptions_LEFT_EDGES;
   /**
-   * Align the left edges of the objects.
-   */
-  readonly leftedges: AlignOptions_LEFT_EDGES;
-
-  /**
    * Align the top edges of the objects.
    */
   readonly TOP_EDGES: AlignOptions_TOP_EDGES;
@@ -162,11 +155,6 @@ export declare const AlignOptions: typeof Enumeration & {
    * Align the top edges of the objects.
    */
   readonly topEdges: AlignOptions_TOP_EDGES;
-  /**
-   * Align the top edges of the objects.
-   */
-  readonly topedges: AlignOptions_TOP_EDGES;
-
   /**
    * Align the right edges of the objects.
    */
@@ -176,11 +164,6 @@ export declare const AlignOptions: typeof Enumeration & {
    */
   readonly rightEdges: AlignOptions_RIGHT_EDGES;
   /**
-   * Align the right edges of the objects.
-   */
-  readonly rightedges: AlignOptions_RIGHT_EDGES;
-
-  /**
    * Align the bottom edges of the objects.
    */
   readonly BOTTOM_EDGES: AlignOptions_BOTTOM_EDGES;
@@ -188,11 +171,6 @@ export declare const AlignOptions: typeof Enumeration & {
    * Align the bottom edges of the objects.
    */
   readonly bottomEdges: AlignOptions_BOTTOM_EDGES;
-  /**
-   * Align the bottom edges of the objects.
-   */
-  readonly bottomedges: AlignOptions_BOTTOM_EDGES;
-
   /**
    * Align the horizontal centers of the objects.
    */
@@ -202,11 +180,6 @@ export declare const AlignOptions: typeof Enumeration & {
    */
   readonly horizontalCenters: AlignOptions_HORIZONTAL_CENTERS;
   /**
-   * Align the horizontal centers of the objects.
-   */
-  readonly horizontalcenters: AlignOptions_HORIZONTAL_CENTERS;
-
-  /**
    * Align the vertical centers of the objects.
    */
   readonly VERTICAL_CENTERS: AlignOptions_VERTICAL_CENTERS;
@@ -214,9 +187,4 @@ export declare const AlignOptions: typeof Enumeration & {
    * Align the vertical centers of the objects.
    */
   readonly verticalCenters: AlignOptions_VERTICAL_CENTERS;
-  /**
-   * Align the vertical centers of the objects.
-   */
-  readonly verticalcenters: AlignOptions_VERTICAL_CENTERS;
-
 }

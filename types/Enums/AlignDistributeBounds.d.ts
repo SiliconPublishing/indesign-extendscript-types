@@ -1,10 +1,11 @@
 /**
  * AlignDistributeBounds.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __AlignDistributeBounds: unique symbol;
 
 
 interface AlignDistributeBounds extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<AlignDistributeBounds>): boolean;
-
   /**
    * @internal **WARNING:** `__AlignDistributeBounds` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -150,11 +148,6 @@ export declare const AlignDistributeBounds: typeof Enumeration & {
    */
   readonly itemBounds: AlignDistributeBounds_ITEM_BOUNDS;
   /**
-   * Align or distribute to the bounds of the objects.
-   */
-  readonly itembounds: AlignDistributeBounds_ITEM_BOUNDS;
-
-  /**
    * Align or distribute to the bounds of the page.
    */
   readonly PAGE_BOUNDS: AlignDistributeBounds_PAGE_BOUNDS;
@@ -162,11 +155,6 @@ export declare const AlignDistributeBounds: typeof Enumeration & {
    * Align or distribute to the bounds of the page.
    */
   readonly pageBounds: AlignDistributeBounds_PAGE_BOUNDS;
-  /**
-   * Align or distribute to the bounds of the page.
-   */
-  readonly pagebounds: AlignDistributeBounds_PAGE_BOUNDS;
-
   /**
    * Align or distribute to the margins of the page.
    */
@@ -176,11 +164,6 @@ export declare const AlignDistributeBounds: typeof Enumeration & {
    */
   readonly marginBounds: AlignDistributeBounds_MARGIN_BOUNDS;
   /**
-   * Align or distribute to the margins of the page.
-   */
-  readonly marginbounds: AlignDistributeBounds_MARGIN_BOUNDS;
-
-  /**
    * Align or distribute to the bounds of the spread.
    */
   readonly SPREAD_BOUNDS: AlignDistributeBounds_SPREAD_BOUNDS;
@@ -188,11 +171,6 @@ export declare const AlignDistributeBounds: typeof Enumeration & {
    * Align or distribute to the bounds of the spread.
    */
   readonly spreadBounds: AlignDistributeBounds_SPREAD_BOUNDS;
-  /**
-   * Align or distribute to the bounds of the spread.
-   */
-  readonly spreadbounds: AlignDistributeBounds_SPREAD_BOUNDS;
-
   /**
    * Align or distribute to the bounds of the bleed.
    */
@@ -202,11 +180,6 @@ export declare const AlignDistributeBounds: typeof Enumeration & {
    */
   readonly bleedBounds: AlignDistributeBounds_BLEED_BOUNDS;
   /**
-   * Align or distribute to the bounds of the bleed.
-   */
-  readonly bleedbounds: AlignDistributeBounds_BLEED_BOUNDS;
-
-  /**
    * Align or distribute to a key object.
    */
   readonly KEY_OBJECT: AlignDistributeBounds_KEY_OBJECT;
@@ -214,9 +187,4 @@ export declare const AlignDistributeBounds: typeof Enumeration & {
    * Align or distribute to a key object.
    */
   readonly keyObject: AlignDistributeBounds_KEY_OBJECT;
-  /**
-   * Align or distribute to a key object.
-   */
-  readonly keyobject: AlignDistributeBounds_KEY_OBJECT;
-
 }

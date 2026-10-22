@@ -1,10 +1,11 @@
 /**
  * ChapterNumberSources.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ChapterNumberSources: unique symbol;
 
 
 interface ChapterNumberSources extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ChapterNumberSources>): boolean;
-
   /**
    * @internal **WARNING:** `__ChapterNumberSources` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -104,11 +102,6 @@ export declare const ChapterNumberSources: typeof Enumeration & {
    */
   readonly userDefined: ChapterNumberSources_USER_DEFINED;
   /**
-   * User-defined chapter number.
-   */
-  readonly userdefined: ChapterNumberSources_USER_DEFINED;
-
-  /**
    * Continue chapter number from previous document.
    */
   readonly CONTINUE_FROM_PREVIOUS_DOCUMENT: ChapterNumberSources_CONTINUE_FROM_PREVIOUS_DOCUMENT;
@@ -117,11 +110,6 @@ export declare const ChapterNumberSources: typeof Enumeration & {
    */
   readonly continueFromPreviousDocument: ChapterNumberSources_CONTINUE_FROM_PREVIOUS_DOCUMENT;
   /**
-   * Continue chapter number from previous document.
-   */
-  readonly continuefrompreviousdocument: ChapterNumberSources_CONTINUE_FROM_PREVIOUS_DOCUMENT;
-
-  /**
    * Chapter number same as previous document.
    */
   readonly SAME_AS_PREVIOUS_DOCUMENT: ChapterNumberSources_SAME_AS_PREVIOUS_DOCUMENT;
@@ -129,9 +117,4 @@ export declare const ChapterNumberSources: typeof Enumeration & {
    * Chapter number same as previous document.
    */
   readonly sameAsPreviousDocument: ChapterNumberSources_SAME_AS_PREVIOUS_DOCUMENT;
-  /**
-   * Chapter number same as previous document.
-   */
-  readonly sameaspreviousdocument: ChapterNumberSources_SAME_AS_PREVIOUS_DOCUMENT;
-
 }

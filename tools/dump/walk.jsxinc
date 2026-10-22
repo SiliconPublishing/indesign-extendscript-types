@@ -1,0 +1,152 @@
+// Shared by the runtime samplers (runtime.jsx, writes.jsx): crash logging, value atoms, and a
+// bounded breadth-first walk over the DOM.
+
+var PER_CLASS = 3;        // instances visited per class
+var PER_COLLECTION = 3;   // items sampled per collection
+var TIME_LIMIT = 240000;  // ms
+
+// "<scratch folder>|<JSON array of Class.prop keys not to touch>" -> { dir, blocked }. Before each
+// risky step the key is appended to <scratch>/progress.log, so dump/runtime.mjs can blocklist the
+// key that crashed InDesign and run again.
+function parseSamplerArg(arg) {
+    var bar = arg.indexOf('|');
+    var dir = arg.substr(0, bar);
+    var list = eval(arg.substr(bar + 1));
+    var blocked = {};
+    for (var i = 0; i < list.length; i++) blocked[list[i]] = true;
+    new Folder(dir).create();
+    var log = new File(dir + '/progress.log');
+    log.lineFeed = 'Unix';
+    log.open('w');
+    log.close();
+    return {
+        dir: dir,
+        blocked: blocked,
+        progress: function (key) {
+            log.open('a');
+            log.writeln(key);
+            log.close();
+        },
+    };
+}
+
+// Values: number, string, boolean, null, undefined, array<...>, enum:<value>:<NAME>, File, Folder,
+// Function, <DOM class name>.
+function atomOf(v) {
+    if (v === null) return 'null';
+    var t = typeof v;
+    if (t === 'undefined' || t === 'number' || t === 'string' || t === 'boolean') return t;
+    if (t === 'function') return 'Function';
+    if (v instanceof Array) {
+        var inner = {};
+        for (var i = 0; i < v.length && i < 3; i++) inner[atomOf(v[i])] = true;
+        var names = [];
+        for (var k in inner) names.push(k);
+        names.sort();
+        return 'array<' + names.join('|') + '>';
+    }
+    var ctor;
+    try { ctor = v.constructor.name; } catch (e) { ctor = 'object'; }
+    if (ctor === 'Enumerator') return 'enum:' + Number(v) + ':' + String(v);
+    return ctor || 'object';
+}
+
+function isCollection(v) {
+    try { return typeof v.everyItem === 'function' && typeof v.length === 'number'; } catch (e) { return false; }
+}
+
+// Visits up to PER_CLASS objects of each class reachable from roots, after visiting every root
+// itself whatever its class's count (the fixture registers what it made as roots, so that a
+// table or a footnote is reached even when three other stories used up Story's quota).
+// visit(obj, cls) is called for each non-collection object and returns the values to explore
+// further (an array). For a fragile root, visit(null, cls, get) is called instead: get() returns a
+// fresh reference, and the property list must come from the dictionary, not the object.
+// Returns { classes: [...], timedOut }.
+function walkDom(roots, visit, progress, blocked) {
+    blocked = blocked || {};
+    var start = new Date().getTime();
+    var seen = {}, queued = {}, queue = [];
+    var timedOut = false;
+
+    function enqueue(v) {
+        // typeof itself throws on a DOM reference a write has invalidated.
+        try { if (v === null || typeof v !== 'object') return; } catch (e) { return; }
+        if (v instanceof Array) {
+            for (var j = 0; j < v.length && j < 2; j++) enqueue(v[j]);
+            return;
+        }
+        var c;
+        try { c = v.constructor.name; } catch (e) { return; }
+        if (!c || c === 'Enumerator' || c === 'File' || c === 'Folder' || c === 'Object' || c === 'Date') return;
+        if ((queued[c] || 0) >= PER_CLASS) return;
+        queued[c] = (queued[c] || 0) + 1;
+        queue.push(v);
+    }
+    var forced = [];
+    var fragile = [];
+    for (var r = 0; r < roots.length; r++) {
+        var rv = roots[r];
+        if (typeof rv === 'function') {
+            // fixture's rootLater(): some objects (export tag maps, graphic layers) turn invalid
+            // once their constructor or reflect is read, so they are visited through the getter.
+            try {
+                var probe = rv();
+                if (probe) fragile.push({ get: rv, cls: probe.constructor.name });
+            } catch (e) {}
+            continue;
+        }
+        if (rv === null || rv === undefined || typeof rv !== 'object') continue;
+        if (rv instanceof Array) { for (var ri = 0; ri < rv.length; ri++) forced.push(rv[ri]); }
+        else forced.push(rv);
+    }
+    queue = forced.concat(queue);
+    var forcedLeft = forced.length;
+
+    while (queue.length) {
+        if (new Date().getTime() - start > TIME_LIMIT) { timedOut = true; break; }
+        var obj = queue.shift();
+        var isRoot = forcedLeft > 0;
+        if (isRoot) forcedLeft--;
+        var cls;
+        try { cls = obj.constructor.name; } catch (e) { continue; }
+        // A reference kept since creation can go stale while the object lives on (a style's
+        // export tag map, a graphic layer); look it up again by its specifier.
+        try {
+            if (obj.isValid === false) {
+                var again = null;
+                try { again = resolve(obj.toSpecifier()); } catch (e) {}
+                if (!again || again.isValid === false) continue;
+                obj = again;
+            }
+        } catch (e) {}
+        if (!isRoot && (seen[cls] || 0) >= PER_CLASS) continue;
+        seen[cls] = (seen[cls] || 0) + 1;
+        if (isCollection(obj)) {
+            if (blocked[cls + '[]']) continue;
+            progress(cls + '[]');
+            var n = obj.length;
+            // An empty collection says nothing; do not let it use up the class's quota, or the
+            // populated tables/footnotes/cells further along are never reached.
+            if (n === 0) {
+                seen[cls]--;
+                if (!isRoot) queued[cls]--;
+                continue;
+            }
+            var picks = n > 0 ? [0, n - 1, Math.floor(n / 2)] : [];
+            for (var p = 0; p < picks.length && p < PER_COLLECTION; p++) {
+                try { enqueue(obj[picks[p]]); } catch (e) {}
+            }
+            continue;
+        }
+        var next = visit(obj, cls) || [];
+        for (var k = 0; k < next.length; k++) enqueue(next[k]);
+    }
+    for (var f = 0; f < fragile.length; f++) {
+        progress(fragile[f].cls + '<fragile>');
+        visit(null, fragile[f].cls, fragile[f].get);
+        seen[fragile[f].cls] = (seen[fragile[f].cls] || 0) + 1;
+    }
+    var classes = [];
+    for (var c2 in seen) classes.push(c2);
+    return { classes: classes.sort(), timedOut: timedOut };
+}

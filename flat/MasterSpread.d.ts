@@ -1,6 +1,7 @@
 /**
  * MasterSpread.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -60,16 +61,17 @@ import type { SignatureFields } from './SignatureFields';
 import type { SplineItems } from './SplineItems';
 import type { TextBoxes } from './TextBoxes';
 import type { TextFrames } from './TextFrames';
-import type { AnyGraphic } from './_base/Unions';
-import type { Event } from './Event';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
 import type { EventHandler } from './_base/Events';
 import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
 import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { InDesignEventMap } from './_base/Events';
+import type { Event } from './Event';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+import type { AnyGraphic } from './_base/Unions';
+
 /**
  * A master spread: a reusable template spread whose page items propagate to
  * every {@link Page} it is applied to.
@@ -79,50 +81,6 @@ import type { PropertiesSetter } from './_base/Properties';
  * master can be based on another master).
  */
 export interface MasterSpread {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: Document;
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): PropertiesGetter<MasterSpread, 'single'>;
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<MasterSpread, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -181,6 +139,45 @@ export interface MasterSpread {
    * The index of the object within its containing parent.
    */
   readonly index: number;
+  /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: Document;
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): PropertiesGetter<MasterSpread, 'single'>;
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<MasterSpread, 'single'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /** The object's name. Derived by InDesign and not assignable. */
   readonly name: string;
   /** All {@link PageItems} in this container regardless of type — the general-purpose iterator for mixed content. */
@@ -225,8 +222,6 @@ export interface MasterSpread {
   readonly signatureFields: SignatureFields<MasterSpread>;
   /** {@link FlexObjects} directly in this container. */
   readonly flexObjects: FlexObjects<MasterSpread>;
-  /** The object's DOM class name. */
-  readonly constructorName: 'MasterSpread';
   /** Resolves the proxy into the individual {@link MasterSpread} objects it stands for. */
   getElements(): MasterSpread[];
   /** The unique numeric ID of the master spread within its document. Stable across reordering, unlike {@link index}. */
@@ -246,7 +241,7 @@ export interface MasterSpread {
    * `0`–`255`), a named {@link UIColors} value, or a {@link PageColorOptions} value.
    */
   get pageColor(): [number, number, number] | UIColors | PageColorOptions;
-  set pageColor(value: [number, number, number] | UIColors | PageColorOptions);
+  set pageColor(value: [number, number, number] | UIColors | PageColorOptions | NothingEnum.NOTHING);
   /** The prefix of the master spread's display name (for example `'A'` in `'A-Master'`). */
   get namePrefix(): string;
   set namePrefix(value: string);
@@ -257,15 +252,15 @@ export interface MasterSpread {
   get showMasterItems(): boolean;
   set showMasterItems(value: boolean);
   /** The parent {@link MasterSpread} this one is based on. Assign a master spread or its name; assign {@link NothingEnum.NOTHING} to remove it. */
-  get appliedMaster(): MasterSpread;
+  get appliedMaster(): MasterSpread | null;
   set appliedMaster(value: MasterSpread | string | NothingEnum);
   /**
    * The text frame (or text-on-path spline) through which text flows on this
    * master spread. Assign a page item or its name; assign
    * {@link NothingEnum.NOTHING} to clear it.
    */
-  get primaryTextFrame(): PageItem;
-  set primaryTextFrame(value: PageItem | string | NothingEnum);
+  get primaryTextFrame(): PageItem | null;
+  set primaryTextFrame(value: PageItem | string);
   /** The IDML component name of the master spread. */
   get idmlComponentName(): string;
   set idmlComponentName(value: string);
@@ -294,7 +289,7 @@ export interface MasterSpread {
    *
    * ```ts
    * const img = master.place(file)[0];
-   * if (img && img.parent.constructorName === 'Rectangle') {
+   * if (img && img.parent instanceof Rectangle) {
    *   img.parent.fit(FitOptions.PROPORTIONALLY);
    * }
    * ```
@@ -379,60 +374,15 @@ export interface MasterSpread {
   contentPlace(pageItems: PageItem | PageItem[], linkPageItems?: boolean, linkStories?: boolean, mapStyles?: boolean, placePoint?: MeasurementValue[], destinationLayer?: Layer, showingOptions?: boolean): PageItem[];
 }
 
-
 /**
- * The broadcast proxy for {@link MasterSpread} — what `everyItem()` returns.
+ * A master spread: a reusable template spread whose page items propagate to
+ * every {@link Page} it is applied to.
  *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link MasterSpread} there.
+ * Adds the split display name (`namePrefix`/`baseName`), the primary text
+ * frame for master-page text threading, and the applied-master chain (a
+ * master can be based on another master).
  */
 export interface MasterSpreadPlural {
-  /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
-  /**
-   * The immediate parent object of this element in the InDesign DOM hierarchy.
-   */
-  readonly parent: (Document)[];
-  /**
-   * A snapshot of every editable property on this object.
-   *
-   * Reads its full state in one call rather than property-by-property.
-   */
-  get properties(): (PropertiesGetter<MasterSpreadPlural, 'plural'>)[];
-  /**
-   * Sets multiple properties at once from an object literal, in a single call
-   * to the native InDesign engine — much faster than assigning each property
-   * individually.
-   */
-  set properties(value: PropertiesSetter<MasterSpreadPlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-  /**
-   * Generates a string which, if executed, will return the InDesign object referenced.
-   */
-  toSource(): string;
-  /**
-   * Generates the specifier string stringently mapping the path
-   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
-   */
-  toSpecifier(): string;
-  /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
   /**
    * A collection of events
    */
@@ -491,6 +441,45 @@ export interface MasterSpreadPlural {
    * The index of the object within its containing parent.
    */
   readonly index: (number)[];
+  /**
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
+  /**
+   * The immediate parent object of this element in the InDesign DOM hierarchy.
+   */
+  readonly parent: (Document)[];
+  /**
+   * A snapshot of every editable property on this object.
+   *
+   * Reads its full state in one call rather than property-by-property.
+   */
+  get properties(): (PropertiesGetter<MasterSpreadPlural, 'plural'>)[];
+  /**
+   * Sets multiple properties at once from an object literal, in a single call
+   * to the native InDesign engine — much faster than assigning each property
+   * individually.
+   */
+  set properties(value: PropertiesSetter<MasterSpreadPlural, 'plural'>);
+  /**
+   * Generates a string which, if executed, will return the InDesign object referenced.
+   */
+  toSource(): string;
+  /**
+   * Generates the specifier string stringently mapping the path
+   * to this object within the InDesign DOM hierarchy (e.g., `/document[@id=1]/rectangle[@id=242]`).
+   */
+  toSpecifier(): string;
+  /**
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /** The object's name. Derived by InDesign and not assignable. */
   readonly name: (string)[];
   /** All {@link PageItems} in this container regardless of type — the general-purpose iterator for mixed content. */
@@ -535,8 +524,6 @@ export interface MasterSpreadPlural {
   readonly signatureFields: SignatureFields<MasterSpread>;
   /** {@link FlexObjects} directly in this container. */
   readonly flexObjects: FlexObjects<MasterSpread>;
-  /** The object's DOM class name. */
-  readonly constructorName: 'MasterSpread';
   /** Resolves the proxy into the individual {@link MasterSpread} objects it stands for. */
   getElements(): MasterSpread[];
   /** The unique numeric ID of the master spread within its document. Stable across reordering, unlike {@link index}. */
@@ -556,7 +543,7 @@ export interface MasterSpreadPlural {
    * `0`–`255`), a named {@link UIColors} value, or a {@link PageColorOptions} value.
    */
   get pageColor(): ([number, number, number] | UIColors | PageColorOptions)[];
-  set pageColor(value: [number, number, number] | UIColors | PageColorOptions);
+  set pageColor(value: [number, number, number] | UIColors | PageColorOptions | NothingEnum.NOTHING);
   /** The prefix of the master spread's display name (for example `'A'` in `'A-Master'`). */
   get namePrefix(): (string)[];
   set namePrefix(value: string);
@@ -567,15 +554,15 @@ export interface MasterSpreadPlural {
   get showMasterItems(): (boolean)[];
   set showMasterItems(value: boolean);
   /** The parent {@link MasterSpread} this one is based on. Assign a master spread or its name; assign {@link NothingEnum.NOTHING} to remove it. */
-  get appliedMaster(): (MasterSpread)[];
+  get appliedMaster(): (MasterSpread | null)[];
   set appliedMaster(value: MasterSpread | string | NothingEnum);
   /**
    * The text frame (or text-on-path spline) through which text flows on this
    * master spread. Assign a page item or its name; assign
    * {@link NothingEnum.NOTHING} to clear it.
    */
-  get primaryTextFrame(): (PageItem)[];
-  set primaryTextFrame(value: PageItem | string | NothingEnum);
+  get primaryTextFrame(): (PageItem | null)[];
+  set primaryTextFrame(value: PageItem | string);
   /** The IDML component name of the master spread. */
   get idmlComponentName(): (string)[];
   set idmlComponentName(value: string);
@@ -604,7 +591,7 @@ export interface MasterSpreadPlural {
    *
    * ```ts
    * const img = master.place(file)[0];
-   * if (img && img.parent.constructorName === 'Rectangle') {
+   * if (img && img.parent instanceof Rectangle) {
    *   img.parent.fit(FitOptions.PROPORTIONALLY);
    * }
    * ```

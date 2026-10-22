@@ -1,10 +1,11 @@
 /**
  * HyperlinkDestinationPageSetting.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __HyperlinkDestinationPageSetting: unique symbol;
 
 
 interface HyperlinkDestinationPageSetting extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<HyperlinkDestinationPageSetting>): boolean;
-
   /**
    * @internal **WARNING:** `__HyperlinkDestinationPageSetting` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -179,11 +177,6 @@ export declare const HyperlinkDestinationPageSetting: typeof Enumeration & {
    */
   readonly fitView: HyperlinkDestinationPageSetting_FIT_VIEW;
   /**
-   * Displays the visible portion of the destination page as the destination.
-   */
-  readonly fitview: HyperlinkDestinationPageSetting_FIT_VIEW;
-
-  /**
    * Fits the entire destination page in the document window. Note: The magnification changes automatically when the window is resized.
    */
   readonly FIT_WINDOW: HyperlinkDestinationPageSetting_FIT_WINDOW;
@@ -191,11 +184,6 @@ export declare const HyperlinkDestinationPageSetting: typeof Enumeration & {
    * Fits the entire destination page in the document window. Note: The magnification changes automatically when the window is resized.
    */
   readonly fitWindow: HyperlinkDestinationPageSetting_FIT_WINDOW;
-  /**
-   * Fits the entire destination page in the document window. Note: The magnification changes automatically when the window is resized.
-   */
-  readonly fitwindow: HyperlinkDestinationPageSetting_FIT_WINDOW;
-
   /**
    * Fits the destination page to the width of the window; may obscure the lower portion of the page. Note: The magnification changes automatically when the window is resized horizontally.
    */
@@ -205,11 +193,6 @@ export declare const HyperlinkDestinationPageSetting: typeof Enumeration & {
    */
   readonly fitWidth: HyperlinkDestinationPageSetting_FIT_WIDTH;
   /**
-   * Fits the destination page to the width of the window; may obscure the lower portion of the page. Note: The magnification changes automatically when the window is resized horizontally.
-   */
-  readonly fitwidth: HyperlinkDestinationPageSetting_FIT_WIDTH;
-
-  /**
    * Fits the destination page to the window height; may obscure the right side the page. Note: The magnification changes automatically when the window is resized vertically.
    */
   readonly FIT_HEIGHT: HyperlinkDestinationPageSetting_FIT_HEIGHT;
@@ -217,11 +200,6 @@ export declare const HyperlinkDestinationPageSetting: typeof Enumeration & {
    * Fits the destination page to the window height; may obscure the right side the page. Note: The magnification changes automatically when the window is resized vertically.
    */
   readonly fitHeight: HyperlinkDestinationPageSetting_FIT_HEIGHT;
-  /**
-   * Fits the destination page to the window height; may obscure the right side the page. Note: The magnification changes automatically when the window is resized vertically.
-   */
-  readonly fitheight: HyperlinkDestinationPageSetting_FIT_HEIGHT;
-
   /**
    * Fits the text area of the destination page to the window width; obscures page
    * margins and may obscure the lower portion of the page. Note: The magnification
@@ -235,13 +213,6 @@ export declare const HyperlinkDestinationPageSetting: typeof Enumeration & {
    */
   readonly fitVisible: HyperlinkDestinationPageSetting_FIT_VISIBLE;
   /**
-   * Fits the text area of the destination page to the window width; obscures page
-   * margins and may obscure the lower portion of the page. Note: The magnification
-   * changes automatically when the window is resized horizontally.
-   */
-  readonly fitvisible: HyperlinkDestinationPageSetting_FIT_VISIBLE;
-
-  /**
    * The destination page is displayed at the same zoom percent as the previously displayed page. Note: The magnification changes automatically when the window is resized.
    */
   readonly INHERIT_ZOOM: HyperlinkDestinationPageSetting_INHERIT_ZOOM;
@@ -249,9 +220,4 @@ export declare const HyperlinkDestinationPageSetting: typeof Enumeration & {
    * The destination page is displayed at the same zoom percent as the previously displayed page. Note: The magnification changes automatically when the window is resized.
    */
   readonly inheritZoom: HyperlinkDestinationPageSetting_INHERIT_ZOOM;
-  /**
-   * The destination page is displayed at the same zoom percent as the previously displayed page. Note: The magnification changes automatically when the window is resized.
-   */
-  readonly inheritzoom: HyperlinkDestinationPageSetting_INHERIT_ZOOM;
-
 }

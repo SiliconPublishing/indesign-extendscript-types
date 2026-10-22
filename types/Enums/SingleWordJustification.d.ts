@@ -1,10 +1,11 @@
 /**
  * SingleWordJustification.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __SingleWordJustification: unique symbol;
 
 
 interface SingleWordJustification extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<SingleWordJustification>): boolean;
-
   /**
    * @internal **WARNING:** `__SingleWordJustification` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const SingleWordJustification: typeof Enumeration & {
    */
   readonly leftAlign: SingleWordJustification_LEFT_ALIGN;
   /**
-   * Left aligns the word.
-   */
-  readonly leftalign: SingleWordJustification_LEFT_ALIGN;
-
-  /**
    * Center aligns the word.
    */
   readonly CENTER_ALIGN: SingleWordJustification_CENTER_ALIGN;
@@ -130,11 +123,6 @@ export declare const SingleWordJustification: typeof Enumeration & {
    * Center aligns the word.
    */
   readonly centerAlign: SingleWordJustification_CENTER_ALIGN;
-  /**
-   * Center aligns the word.
-   */
-  readonly centeralign: SingleWordJustification_CENTER_ALIGN;
-
   /**
    * Right aligns the word.
    */
@@ -144,11 +132,6 @@ export declare const SingleWordJustification: typeof Enumeration & {
    */
   readonly rightAlign: SingleWordJustification_RIGHT_ALIGN;
   /**
-   * Right aligns the word.
-   */
-  readonly rightalign: SingleWordJustification_RIGHT_ALIGN;
-
-  /**
    * Fully justifies the word.
    */
   readonly FULLY_JUSTIFIED: SingleWordJustification_FULLY_JUSTIFIED;
@@ -156,9 +139,4 @@ export declare const SingleWordJustification: typeof Enumeration & {
    * Fully justifies the word.
    */
   readonly fullyJustified: SingleWordJustification_FULLY_JUSTIFIED;
-  /**
-   * Fully justifies the word.
-   */
-  readonly fullyjustified: SingleWordJustification_FULLY_JUSTIFIED;
-
 }

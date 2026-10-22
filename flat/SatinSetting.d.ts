@@ -1,6 +1,7 @@
 /**
  * SatinSetting.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -14,51 +15,49 @@ import type { Swatch } from './Swatch';
 import type { TransparencySetting } from './TransparencySetting';
 import type { BlendMode } from './Enums/BlendMode';
 import type { FindChangeSatinSetting } from './FindChangeSatinSetting';
-import type { Event } from './Event';
-import type { EventHandler } from './_base/Events';
-import type { EventListener } from './EventListener';
-import type { EventListeners } from './EventListeners';
-import type { EventString } from './_base/Events';
-import type { Events } from './Events';
-import type { FilePath } from './_base/Types';
-import type { InDesignEventMap } from './_base/Events';
+import type { NothingEnum } from "./Enums/NothingEnum";
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+import type { Events } from './Events';
+import type { EventListeners } from './EventListeners';
+import type { InDesignEventMap } from './_base/Events';
+import type { EventHandler } from './_base/Events';
+import type { EventListener } from './EventListener';
+import type { EventString } from './_base/Events';
+import type { Event } from './Event';
+import type { FilePath } from './_base/Types';
+
 /**
  * Settings for the satin effect, which applies interior shading with a wavy,
  * satin-like appearance based on the object's shape.
  */
-export interface SatinSetting {
+export interface SatinSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
-  readonly parent: TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting;
+  readonly parent: TParent;
   /**
    * A snapshot of every editable property on this object.
    *
    * Reads its full state in one call rather than property-by-property.
    */
-  get properties(): PropertiesGetter<SatinSetting, 'single'>;
+  get properties(): PropertiesGetter<SatinSetting<TParent>, 'single'>;
   /**
    * Sets multiple properties at once from an object literal, in a single call
    * to the native InDesign engine — much faster than assigning each property
    * individually.
    */
-  set properties(value: PropertiesSetter<SatinSetting, 'single'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
+  set properties(value: PropertiesSetter<SatinSetting<TParent>, 'single'>);
   /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
@@ -69,10 +68,9 @@ export interface SatinSetting {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -113,86 +111,75 @@ export interface SatinSetting {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The object's DOM class name — reports the specific kind, such as `'FindChangeSatinSetting'` when the object is a {@link FindChangeSatinSetting}. */
-  readonly constructorName: 'SatinSetting' | 'FindChangeSatinSetting';
   /** Resolves the proxy into the individual {@link SatinSetting} objects it stands for. */
-  getElements(): SatinSetting[];
+  getElements(): SatinSetting<TParent>[];
   /** If true, applies the satin effect. */
-  get applied(): boolean;
-  set applied(value: boolean);
+  get applied(): boolean | NothingEnum.NOTHING;
+  set applied(value: boolean | never);
   /**
    * The color applied to the satin effect, specified as a swatch (color, gradient, tint, or
    * mixed ink), a color library color, a hex value, or as an array of color values.
    *
    * The color mode dictates the array values: for RGB, specify three values, each in the
    * range 0 to 255, in the format [R,G,B]; for CMYK, specify four values, each as a
-   * percentage and each in the range 0 to 100, in the format [C,'single',Y,K]; for LAB, specify
+   * percentage and each in the range 0 to 100, in the format [C,M,Y,K]; for LAB, specify
    * three values in the format [L,A,B], with L in the range 0 to 100 and A and B in the range
    * -128 to 127; for HSB, specify three colors in the format [H,S,B], with H in the range 0
    * to 360 and S and B as percentages in the range 0 to 100.
    */
-  get effectColor(): Swatch;
-  set effectColor(value: Swatch);
+  get effectColor(): Swatch | NothingEnum.NOTHING;
+  set effectColor(value: Swatch | string | never);
   /** The blending mode for the satin effect. */
-  get blendMode(): BlendMode;
-  set blendMode(value: BlendMode);
+  get blendMode(): BlendMode | NothingEnum.NOTHING;
+  set blendMode(value: BlendMode | never);
   /** The opacity of the satin effect (as a percentage). (Range: 0 to 100). */
-  get opacity(): number;
-  set opacity(value: number);
+  get opacity(): number | NothingEnum.NOTHING;
+  set opacity(value: number | never);
   /** The light angle of the satin effect. (Range: -360 to 360). */
-  get angle(): number;
-  set angle(value: number);
+  get angle(): number | NothingEnum.NOTHING;
+  set angle(value: number | never);
   /** The distance (in pixels) from the SatinSetting to the satin effect. */
-  get distance(): number;
-  set distance(value: MeasurementValue);
+  get distance(): number | NothingEnum.NOTHING;
+  set distance(value: MeasurementValue | never);
   /** The width (in pixels) of the satin effect. */
-  get size(): number;
-  set size(value: MeasurementValue);
+  get size(): number | NothingEnum.NOTHING;
+  set size(value: MeasurementValue | never);
   /** If true, inverts the satin effect. */
-  get invertEffect(): boolean;
-  set invertEffect(value: boolean);
+  get invertEffect(): boolean | NothingEnum.NOTHING;
+  set invertEffect(value: boolean | never);
 }
 
-
 /**
- * The broadcast proxy for {@link SatinSetting} — what `everyItem()` returns.
- *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link SatinSetting} there.
+ * Settings for the satin effect, which applies interior shading with a wavy,
+ * satin-like appearance based on the object's shape.
  */
-export interface SatinSettingPlural {
+export interface SatinSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
-  readonly parent: (TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting)[];
+  readonly parent: (TParent)[];
   /**
    * A snapshot of every editable property on this object.
    *
    * Reads its full state in one call rather than property-by-property.
    */
-  get properties(): (PropertiesGetter<SatinSettingPlural, 'plural'>)[];
+  get properties(): (PropertiesGetter<SatinSettingPlural<TParent>, 'plural'>)[];
   /**
    * Sets multiple properties at once from an object literal, in a single call
    * to the native InDesign engine — much faster than assigning each property
    * individually.
    */
-  set properties(value: PropertiesSetter<SatinSettingPlural, 'plural'>);
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
+  set properties(value: PropertiesSetter<SatinSettingPlural<TParent>, 'plural'>);
   /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
@@ -203,10 +190,9 @@ export interface SatinSettingPlural {
    */
   toSpecifier(): string;
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
   /**
    * A collection of events
    */
@@ -247,42 +233,40 @@ export interface SatinSettingPlural {
     handler: ((event: Event) => void) | FilePath,
     captures?: boolean,
   ): boolean;
-  /** The object's DOM class name — reports the specific kind, such as `'FindChangeSatinSetting'` when the object is a {@link FindChangeSatinSetting}. */
-  readonly constructorName: 'SatinSetting' | 'FindChangeSatinSetting';
   /** Resolves the proxy into the individual {@link SatinSetting} objects it stands for. */
-  getElements(): SatinSetting[];
+  getElements(): SatinSetting<TParent>[];
   /** If true, applies the satin effect. */
-  get applied(): (boolean)[];
-  set applied(value: boolean);
+  get applied(): (boolean | NothingEnum.NOTHING)[];
+  set applied(value: boolean | never);
   /**
    * The color applied to the satin effect, specified as a swatch (color, gradient, tint, or
    * mixed ink), a color library color, a hex value, or as an array of color values.
    *
    * The color mode dictates the array values: for RGB, specify three values, each in the
    * range 0 to 255, in the format [R,G,B]; for CMYK, specify four values, each as a
-   * percentage and each in the range 0 to 100, in the format [C,'plural',Y,K]; for LAB, specify
+   * percentage and each in the range 0 to 100, in the format [C,M,Y,K]; for LAB, specify
    * three values in the format [L,A,B], with L in the range 0 to 100 and A and B in the range
    * -128 to 127; for HSB, specify three colors in the format [H,S,B], with H in the range 0
    * to 360 and S and B as percentages in the range 0 to 100.
    */
-  get effectColor(): (Swatch)[];
-  set effectColor(value: Swatch);
+  get effectColor(): (Swatch | NothingEnum.NOTHING)[];
+  set effectColor(value: Swatch | string | never);
   /** The blending mode for the satin effect. */
-  get blendMode(): (BlendMode)[];
-  set blendMode(value: BlendMode);
+  get blendMode(): (BlendMode | NothingEnum.NOTHING)[];
+  set blendMode(value: BlendMode | never);
   /** The opacity of the satin effect (as a percentage). (Range: 0 to 100). */
-  get opacity(): (number)[];
-  set opacity(value: number);
+  get opacity(): (number | NothingEnum.NOTHING)[];
+  set opacity(value: number | never);
   /** The light angle of the satin effect. (Range: -360 to 360). */
-  get angle(): (number)[];
-  set angle(value: number);
+  get angle(): (number | NothingEnum.NOTHING)[];
+  set angle(value: number | never);
   /** The distance (in pixels) from the SatinSetting to the satin effect. */
-  get distance(): (number)[];
-  set distance(value: MeasurementValue);
+  get distance(): (number | NothingEnum.NOTHING)[];
+  set distance(value: MeasurementValue | never);
   /** The width (in pixels) of the satin effect. */
-  get size(): (number)[];
-  set size(value: MeasurementValue);
+  get size(): (number | NothingEnum.NOTHING)[];
+  set size(value: MeasurementValue | never);
   /** If true, inverts the satin effect. */
-  get invertEffect(): (boolean)[];
-  set invertEffect(value: boolean);
+  get invertEffect(): (boolean | NothingEnum.NOTHING)[];
+  set invertEffect(value: boolean | never);
 }

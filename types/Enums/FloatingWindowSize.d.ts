@@ -1,10 +1,11 @@
 /**
  * FloatingWindowSize.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __FloatingWindowSize: unique symbol;
 
 
 interface FloatingWindowSize extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<FloatingWindowSize>): boolean;
-
   /**
    * @internal **WARNING:** `__FloatingWindowSize` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -182,11 +180,6 @@ export declare const FloatingWindowSize: typeof Enumeration & {
    */
   readonly oneFifth: FloatingWindowSize_ONE_FIFTH;
   /**
-   * The floating window is one fifth the length and height of the movie's original display size.
-   */
-  readonly onefifth: FloatingWindowSize_ONE_FIFTH;
-
-  /**
    * The floating window is one fourth the length and height of the movie's original display size.
    */
   readonly ONE_FOURTH: FloatingWindowSize_ONE_FOURTH;
@@ -195,11 +188,6 @@ export declare const FloatingWindowSize: typeof Enumeration & {
    */
   readonly oneFourth: FloatingWindowSize_ONE_FOURTH;
   /**
-   * The floating window is one fourth the length and height of the movie's original display size.
-   */
-  readonly onefourth: FloatingWindowSize_ONE_FOURTH;
-
-  /**
    * The floating window is one half the length and height of the movie's original display size.
    */
   readonly ONE_HALF: FloatingWindowSize_ONE_HALF;
@@ -207,11 +195,6 @@ export declare const FloatingWindowSize: typeof Enumeration & {
    * The floating window is one half the length and height of the movie's original display size.
    */
   readonly oneHalf: FloatingWindowSize_ONE_HALF;
-  /**
-   * The floating window is one half the length and height of the movie's original display size.
-   */
-  readonly onehalf: FloatingWindowSize_ONE_HALF;
-
   /**
    * The floating window is the movie's original display size.
    */

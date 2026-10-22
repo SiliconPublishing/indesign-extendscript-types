@@ -1,6 +1,7 @@
 /**
  * StaticTexts.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -18,9 +19,6 @@ import type { Dialog } from './Dialog';
  */
 export interface StaticTexts
   extends BaseCollection<StaticText, StaticText, StaticText<'plural'>>, IdCollection<StaticText> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'StaticTexts';
-
   /**
    * Creates and adds a new static text control to the dialog.
    * @param withProperties Initial values for properties of the new control.

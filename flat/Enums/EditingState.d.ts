@@ -1,10 +1,11 @@
 /**
  * EditingState.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __EditingState: unique symbol;
 
 
 interface EditingState extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<EditingState>): boolean;
-
   /**
    * @internal **WARNING:** `__EditingState` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -150,11 +148,6 @@ export declare const EditingState: typeof Enumeration & {
    */
   readonly editingUnknown: EditingState_EDITING_UNKNOWN;
   /**
-   * The editing status is not known.
-   */
-  readonly editingunknown: EditingState_EDITING_UNKNOWN;
-
-  /**
    * The file is not currently in use and is not locked.
    */
   readonly EDITING_NOWHERE: EditingState_EDITING_NOWHERE;
@@ -162,11 +155,6 @@ export declare const EditingState: typeof Enumeration & {
    * The file is not currently in use and is not locked.
    */
   readonly editingNowhere: EditingState_EDITING_NOWHERE;
-  /**
-   * The file is not currently in use and is not locked.
-   */
-  readonly editingnowhere: EditingState_EDITING_NOWHERE;
-
   /**
    * Lock held but not usable.
    */
@@ -176,11 +164,6 @@ export declare const EditingState: typeof Enumeration & {
    */
   readonly editingRemotely: EditingState_EDITING_REMOTELY;
   /**
-   * Lock held but not usable.
-   */
-  readonly editingremotely: EditingState_EDITING_REMOTELY;
-
-  /**
    * The file has been modified locally and not locked.
    */
   readonly EDITING_LOCALLY: EditingState_EDITING_LOCALLY;
@@ -188,11 +171,6 @@ export declare const EditingState: typeof Enumeration & {
    * The file has been modified locally and not locked.
    */
   readonly editingLocally: EditingState_EDITING_LOCALLY;
-  /**
-   * The file has been modified locally and not locked.
-   */
-  readonly editinglocally: EditingState_EDITING_LOCALLY;
-
   /**
    * The file has been locked locally and may be modified.
    */
@@ -202,11 +180,6 @@ export declare const EditingState: typeof Enumeration & {
    */
   readonly editingLocallyLocked: EditingState_EDITING_LOCALLY_LOCKED;
   /**
-   * The file has been locked locally and may be modified.
-   */
-  readonly editinglocallylocked: EditingState_EDITING_LOCALLY_LOCKED;
-
-  /**
    * The file was modified locally or remotely while it was locked and therefore two versions exist.
    */
   readonly EDITING_CONFLICT: EditingState_EDITING_CONFLICT;
@@ -214,9 +187,4 @@ export declare const EditingState: typeof Enumeration & {
    * The file was modified locally or remotely while it was locked and therefore two versions exist.
    */
   readonly editingConflict: EditingState_EDITING_CONFLICT;
-  /**
-   * The file was modified locally or remotely while it was locked and therefore two versions exist.
-   */
-  readonly editingconflict: EditingState_EDITING_CONFLICT;
-
 }

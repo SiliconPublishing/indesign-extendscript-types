@@ -1,10 +1,11 @@
 /**
  * ChangebarLocations.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ChangebarLocations: unique symbol;
 
 
 interface ChangebarLocations extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ChangebarLocations>): boolean;
-
   /**
    * @internal **WARNING:** `__ChangebarLocations` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -86,11 +84,6 @@ export declare const ChangebarLocations: typeof Enumeration & {
    */
   readonly leftAlign: ChangebarLocations_LEFT_ALIGN;
   /**
-   * Change bars are in the left margin.
-   */
-  readonly leftalign: ChangebarLocations_LEFT_ALIGN;
-
-  /**
    * Change bars are in the right margin.
    */
   readonly RIGHT_ALIGN: ChangebarLocations_RIGHT_ALIGN;
@@ -98,9 +91,4 @@ export declare const ChangebarLocations: typeof Enumeration & {
    * Change bars are in the right margin.
    */
   readonly rightAlign: ChangebarLocations_RIGHT_ALIGN;
-  /**
-   * Change bars are in the right margin.
-   */
-  readonly rightalign: ChangebarLocations_RIGHT_ALIGN;
-
 }

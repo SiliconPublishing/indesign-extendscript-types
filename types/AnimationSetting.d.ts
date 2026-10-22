@@ -1,6 +1,7 @@
 /**
  * AnimationSetting.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -15,6 +16,15 @@ import type { DesignOptions } from './Enums/DesignOptions';
 import type { NothingEnum } from './Enums/NothingEnum';
 
 /** A single point on an {@link AnimationSetting} motion path: a 2D anchor with its Bezier direction handles. */
+/**
+ * A motion path as ExtendScript reads and writes it: `[pathPoints, pathOpen]`, each point being
+ * `[anchor, leftDirection, rightDirection]`, each of those `[x, y]`.
+ */
+export type AnimationMotionPath = [
+  pathPointArray: [anchor: [number, number], leftDirection: [number, number], rightDirection: [number, number]][],
+  pathOpen: boolean,
+];
+
 export interface AnimationPathPoint<M extends Mode = 'single'> {
   /** Resolves the proxy into the individual {@link AnimationPathPoint} objects it stands for. */
   getElements(): AnimationPathPoint<'single'>[];
@@ -49,9 +59,6 @@ export interface AnimationKeyFrame<M extends Mode = 'single'> {
  * rotation, and scale.
  */
 export interface AnimationSetting<M extends Mode = 'single'> extends EventTargetDOMObject<PageItemUnion | FormField, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'AnimationSetting';
-
   /** Resolves the proxy into the individual {@link AnimationSetting}s it stands for. */
   getElements(): AnimationSetting<'single'>[];
 
@@ -71,8 +78,8 @@ export interface AnimationSetting<M extends Mode = 'single'> extends EventTarget
   set duration(value: number);
 
   /** The list of motion path points for this animation. */
-  get motionPathPoints(): Read<M, { pathPointArray: AnimationPathPoint[]; pathOpen: boolean }>;
-  set motionPathPoints(value: { pathPointArray: AnimationPathPoint[]; pathOpen: boolean });
+  get motionPathPoints(): Read<M, AnimationMotionPath>;
+  set motionPathPoints(value: AnimationMotionPath);
 
   /** The list of motion path points and key frames for this animation. */
   get motionPath(): Read<M, { keyFrame: number; pathPoint: AnimationPathPoint }[]>;

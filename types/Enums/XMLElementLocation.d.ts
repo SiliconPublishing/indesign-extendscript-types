@@ -1,10 +1,11 @@
 /**
  * XMLElementLocation.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __XMLElementLocation: unique symbol;
 
 
 interface XMLElementLocation extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<XMLElementLocation>): boolean;
-
   /**
    * @internal **WARNING:** `__XMLElementLocation` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -86,11 +84,6 @@ export declare const XMLElementLocation: typeof Enumeration & {
    */
   readonly elementStart: XMLElementLocation_ELEMENT_START;
   /**
-   * Locates the element at the beginning of the containing object.
-   */
-  readonly elementstart: XMLElementLocation_ELEMENT_START;
-
-  /**
    * Locates the element at the end of the containing object.
    */
   readonly ELEMENT_END: XMLElementLocation_ELEMENT_END;
@@ -98,9 +91,4 @@ export declare const XMLElementLocation: typeof Enumeration & {
    * Locates the element at the end of the containing object.
    */
   readonly elementEnd: XMLElementLocation_ELEMENT_END;
-  /**
-   * Locates the element at the end of the containing object.
-   */
-  readonly elementend: XMLElementLocation_ELEMENT_END;
-
 }

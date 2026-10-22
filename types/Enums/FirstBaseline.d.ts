@@ -1,10 +1,11 @@
 /**
  * FirstBaseline.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __FirstBaseline: unique symbol;
 
 
 interface FirstBaseline extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<FirstBaseline>): boolean;
-
   /**
    * @internal **WARNING:** `__FirstBaseline` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -150,11 +148,6 @@ export declare const FirstBaseline: typeof Enumeration & {
    */
   readonly ascentOffset: FirstBaseline_ASCENT_OFFSET;
   /**
-   * The tallest character in the font falls below the top inset of the object.
-   */
-  readonly ascentoffset: FirstBaseline_ASCENT_OFFSET;
-
-  /**
    * The tops of upper case letters touch the top inset of the object.
    */
   readonly CAP_HEIGHT: FirstBaseline_CAP_HEIGHT;
@@ -162,11 +155,6 @@ export declare const FirstBaseline: typeof Enumeration & {
    * The tops of upper case letters touch the top inset of the object.
    */
   readonly capHeight: FirstBaseline_CAP_HEIGHT;
-  /**
-   * The tops of upper case letters touch the top inset of the object.
-   */
-  readonly capheight: FirstBaseline_CAP_HEIGHT;
-
   /**
    * The text leading value defines the distance between the baseline of the text and the top inset of the object.
    */
@@ -176,11 +164,6 @@ export declare const FirstBaseline: typeof Enumeration & {
    */
   readonly leadingOffset: FirstBaseline_LEADING_OFFSET;
   /**
-   * The text leading value defines the distance between the baseline of the text and the top inset of the object.
-   */
-  readonly leadingoffset: FirstBaseline_LEADING_OFFSET;
-
-  /**
    * The text em box height is the distance between the baseline of the text and the top inset of the object.
    */
   readonly EMBOX_HEIGHT: FirstBaseline_EMBOX_HEIGHT;
@@ -188,11 +171,6 @@ export declare const FirstBaseline: typeof Enumeration & {
    * The text em box height is the distance between the baseline of the text and the top inset of the object.
    */
   readonly emboxHeight: FirstBaseline_EMBOX_HEIGHT;
-  /**
-   * The text em box height is the distance between the baseline of the text and the top inset of the object.
-   */
-  readonly emboxheight: FirstBaseline_EMBOX_HEIGHT;
-
   /**
    * The tops of lower case letters touch the top inset of the object.
    */
@@ -202,11 +180,6 @@ export declare const FirstBaseline: typeof Enumeration & {
    */
   readonly xHeight: FirstBaseline_X_HEIGHT;
   /**
-   * The tops of lower case letters touch the top inset of the object.
-   */
-  readonly xheight: FirstBaseline_X_HEIGHT;
-
-  /**
    * Uses the value specified for minimum first baseline offset as the distance between the baseline of the text and the top inset of the object.
    */
   readonly FIXED_HEIGHT: FirstBaseline_FIXED_HEIGHT;
@@ -214,9 +187,4 @@ export declare const FirstBaseline: typeof Enumeration & {
    * Uses the value specified for minimum first baseline offset as the distance between the baseline of the text and the top inset of the object.
    */
   readonly fixedHeight: FirstBaseline_FIXED_HEIGHT;
-  /**
-   * Uses the value specified for minimum first baseline offset as the distance between the baseline of the text and the top inset of the object.
-   */
-  readonly fixedheight: FirstBaseline_FIXED_HEIGHT;
-
 }

@@ -1,35 +1,25 @@
 {
-  "name": "indesign-uxp-types",
-  "version": "1.0.0",
-  "description": "TypeScript declarations for the Adobe InDesign UXP scripting DOM — the `indesign` module.",
-  "author": "Vlad Vladila (Krommatine Systems)",
+  "name": "indesign-extendscript-types",
+  "version": "0.1.0",
+  "description": "TypeScript declarations for the Adobe InDesign ExtendScript DOM, converted from indesign-uxp-types and measured against InDesign.",
+  "author": "Jeremiah Lynn",
   "license": "MIT",
-  "homepage": "https://github.com/vamitul/indesign-uxp-types#readme",
+  "homepage": "https://github.com/SiliconPublishing/indesign-extendscript-types#readme",
   "bugs": {
-    "url": "https://github.com/vamitul/indesign-uxp-types/issues"
+    "url": "https://github.com/SiliconPublishing/indesign-extendscript-types/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vamitul/indesign-uxp-types.git"
+    "url": "git+https://github.com/SiliconPublishing/indesign-extendscript-types.git"
   },
-  "funding": [
-    {
-      "type": "github",
-      "url": "https://github.com/sponsors/vamitul"
-    },
-    {
-      "type": "buymeacoffee",
-      "url": "https://buymeacoffee.com/vamitul"
-    }
-  ],
   "keywords": [
     "indesign",
     "adobe",
-    "uxp",
+    "extendscript",
+    "jsx",
     "typescript",
     "types",
-    "scripting",
-    "plugin"
+    "scripting"
   ],
   "types": "./index.d.ts",
   "exports": {
@@ -39,37 +29,40 @@
     "./authored": {
       "types": "./authored.d.ts"
     },
-    "./flat": {
-      "types": "./flat/module.d.ts"
-    },
-    "./types": {
-      "types": "./types/module.d.ts"
-    },
     "./package.json": "./package.json"
   },
   "typesVersions": {
     "*": {
       "authored": [
         "./authored.d.ts"
-      ],
-      "flat": [
-        "./flat/module.d.ts"
-      ],
-      "types": [
-        "./types/module.d.ts"
       ]
     }
   },
   "files": [
     "index.d.ts",
     "authored.d.ts",
+    "lib/",
     "types/",
     "flat/",
     "README.md",
     "LICENSE",
     "CHANGELOG.md"
   ],
-  "peerDependencies": {
-    "@adobe/cc-ext-uxp-types": ">=7.3.1"
+  "devDependencies": {
+    "fast-xml-parser": "^5.11.2",
+    "ts-morph": "^28.0.0",
+    "typescript": "5.9"
+  },
+  "scripts": {
+    "dump": "node tools/dump/index.mjs",
+    "dump:runtime": "node tools/dump/runtime.mjs",
+    "dump:writes": "node tools/dump/runtime.mjs --writes",
+    "codemod": "node tools/codemod/index.mjs",
+    "build": "node tools/codemod/index.mjs",
+    "compare": "node tools/compare/index.mjs --json reports/findings.json",
+    "test": "node test/run.mjs",
+    "test:live": "node test/run.mjs --live",
+    "report": "node tools/report.mjs",
+    "verify:flatten": "node tools/flatten/verify.mjs"
   }
 }

@@ -1,6 +1,7 @@
 /**
  * DomObjects.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -22,25 +23,27 @@ import type { Document } from '../Document';
 /**
  * Every InDesign DOM object provides these members: whether it still exists
  * ({@link isValid}), its parent in the object hierarchy, bulk property
- * read/write via {@link properties}, and identity comparison via {@link equals}.
+ * read/write via {@link properties}, and {@link reflect}.
+ *
+ * Two references to the same DOM object compare equal with `===`.
  */
 export interface InDesignDOMObject<Parent, M extends Mode = 'single'> {
   /**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns `false` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+       * Indicates whether the underlying InDesign DOM object still exists and is valid.
+       * Returns `false` if the object has been deleted, closed, or invalidated.
+       */
+      readonly isValid: boolean;
+
+      /**
+       * Reflection on this object: its class name and its properties and methods, as the scripting
+       * dictionary describes them.
+       */
+      readonly reflect: Reflection;
 
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
   readonly parent: Read<M, Parent>;
-
-  /**
-   * The class name or constructor name of the object as a string (e.g., "Document", "Rectangle").
-   */
-  readonly constructorName: string;
-
   /**
    * A snapshot of every editable property on this object.
    *
@@ -54,18 +57,6 @@ export interface InDesignDOMObject<Parent, M extends Mode = 'single'> {
    * individually.
    */
   set properties(value: PropertiesSetter<this, M>);
-
-  /**
-   * Compares this object with another object to determine if they refer to the
-   * exact same underlying InDesign DOM element.
-   *
-   * Use this instead of `==` or `===`: every property read mints a fresh
-   * object, so two references to the same element still compare unequal by
-   * reference.
-   */
-  equals(otherObject: any): boolean;
-
-
   /**
    * Generates a string which, if executed, will return the InDesign object referenced.
    */
@@ -78,10 +69,9 @@ export interface InDesignDOMObject<Parent, M extends Mode = 'single'> {
   toSpecifier(): string;
 
   /**
-   * The object's specifier string — the same value as {@link toSpecifier}, not a
-   * human-readable description.
-   */
-  toString(): string;
+       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+       */
+      toString(): string;
 }
 
 /* ---- Traits ----------------------------------------------------------------

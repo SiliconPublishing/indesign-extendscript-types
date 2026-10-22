@@ -1,6 +1,7 @@
 /**
  * TabStops.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -17,9 +18,6 @@ import type { ParagraphStyle } from './ParagraphStyle';
  * @collection TabStop
  */
 export interface TabStops extends BaseCollection<TabStop, TabStop, TabStop<'plural'>> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'TabStops';
-
   /**
    * Adds a new tab stop to the collection.
    * @param withProperties Initial values for properties of the new tab stop. Typically includes `position`, `alignment`, and `leader`.

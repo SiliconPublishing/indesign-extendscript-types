@@ -1,10 +1,11 @@
 /**
  * CrossReferenceType.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __CrossReferenceType: unique symbol;
 
 
 interface CrossReferenceType extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<CrossReferenceType>): boolean;
-
   /**
    * @internal **WARNING:** `__CrossReferenceType` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -182,11 +180,6 @@ export declare const CrossReferenceType: typeof Enumeration & {
    */
   readonly seeOrAlsoBracket: CrossReferenceType_SEE_OR_ALSO_BRACKET;
   /**
-   * Inserts 'See also' in front of the referenced topic if the topic has an associated page reference; inserts 'See' if the topic does not have a page reference.
-   */
-  readonly seeoralsobracket: CrossReferenceType_SEE_OR_ALSO_BRACKET;
-
-  /**
    * Inserts 'See' in front of the referenced topic.
    */
   readonly SEE: CrossReferenceType_SEE;
@@ -204,11 +197,6 @@ export declare const CrossReferenceType: typeof Enumeration & {
    */
   readonly seeAlso: CrossReferenceType_SEE_ALSO;
   /**
-   * Inserts 'See also' in front of the referenced topic.
-   */
-  readonly seealso: CrossReferenceType_SEE_ALSO;
-
-  /**
    * Inserts 'See herein' in front of the referenced topic.
    */
   readonly SEE_HEREIN: CrossReferenceType_SEE_HEREIN;
@@ -216,11 +204,6 @@ export declare const CrossReferenceType: typeof Enumeration & {
    * Inserts 'See herein' in front of the referenced topic.
    */
   readonly seeHerein: CrossReferenceType_SEE_HEREIN;
-  /**
-   * Inserts 'See herein' in front of the referenced topic.
-   */
-  readonly seeherein: CrossReferenceType_SEE_HEREIN;
-
   /**
    * Inserts 'See also herein' in front of the referenced topic.
    */
@@ -230,11 +213,6 @@ export declare const CrossReferenceType: typeof Enumeration & {
    */
   readonly seeAlsoHerein: CrossReferenceType_SEE_ALSO_HEREIN;
   /**
-   * Inserts 'See also herein' in front of the referenced topic.
-   */
-  readonly seealsoherein: CrossReferenceType_SEE_ALSO_HEREIN;
-
-  /**
    * Inserts the specified string in front of the referenced topic.
    */
   readonly CUSTOM_CROSS_REFERENCE: CrossReferenceType_CUSTOM_CROSS_REFERENCE;
@@ -242,11 +220,6 @@ export declare const CrossReferenceType: typeof Enumeration & {
    * Inserts the specified string in front of the referenced topic.
    */
   readonly customCrossReference: CrossReferenceType_CUSTOM_CROSS_REFERENCE;
-  /**
-   * Inserts the specified string in front of the referenced topic.
-   */
-  readonly customcrossreference: CrossReferenceType_CUSTOM_CROSS_REFERENCE;
-
   /**
    * Inserts the specified string and the specified before cross reference separator in front of the referenced topic. If no before cross reference separator is specified, inserts a space.
    */
@@ -256,11 +229,6 @@ export declare const CrossReferenceType: typeof Enumeration & {
    */
   readonly customCrossReferenceBefore: CrossReferenceType_CUSTOM_CROSS_REFERENCE_BEFORE;
   /**
-   * Inserts the specified string and the specified before cross reference separator in front of the referenced topic. If no before cross reference separator is specified, inserts a space.
-   */
-  readonly customcrossreferencebefore: CrossReferenceType_CUSTOM_CROSS_REFERENCE_BEFORE;
-
-  /**
    * Inserts the specified following topic separator and the specified string after the referenced topic. If no following topic separator is specified, inserts a space.
    */
   readonly CUSTOM_CROSS_REFERENCE_AFTER: CrossReferenceType_CUSTOM_CROSS_REFERENCE_AFTER;
@@ -268,9 +236,4 @@ export declare const CrossReferenceType: typeof Enumeration & {
    * Inserts the specified following topic separator and the specified string after the referenced topic. If no following topic separator is specified, inserts a space.
    */
   readonly customCrossReferenceAfter: CrossReferenceType_CUSTOM_CROSS_REFERENCE_AFTER;
-  /**
-   * Inserts the specified following topic separator and the specified string after the referenced topic. If no following topic separator is specified, inserts a space.
-   */
-  readonly customcrossreferenceafter: CrossReferenceType_CUSTOM_CROSS_REFERENCE_AFTER;
-
 }

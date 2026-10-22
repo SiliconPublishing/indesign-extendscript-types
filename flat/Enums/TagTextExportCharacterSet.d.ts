@@ -1,10 +1,11 @@
 /**
  * TagTextExportCharacterSet.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __TagTextExportCharacterSet: unique symbol;
 
 
 interface TagTextExportCharacterSet extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<TagTextExportCharacterSet>): boolean;
-
   /**
    * @internal **WARNING:** `__TagTextExportCharacterSet` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -269,15 +267,6 @@ export declare const TagTextExportCharacterSet: typeof Enumeration & {
    */
   readonly SHIFT_JIS: TagTextExportCharacterSet_SHIFT_JIS;
   /**
-   * The Shift-JIS character set.
-   */
-  readonly shiftJis: TagTextExportCharacterSet_SHIFT_JIS;
-  /**
-   * The Shift-JIS character set.
-   */
-  readonly shiftjis: TagTextExportCharacterSet_SHIFT_JIS;
-
-  /**
    * Uses GB18030 encoding.
    */
   readonly GB18030: TagTextExportCharacterSet_GB18030;
@@ -304,49 +293,17 @@ export declare const TagTextExportCharacterSet: typeof Enumeration & {
    */
   readonly chineseBig5: TagTextExportCharacterSet_CHINESE_BIG_5;
   /**
-   * The Chinese Big 5 character set.
-   */
-  readonly chinesebig5: TagTextExportCharacterSet_CHINESE_BIG_5;
-
-  /**
    * The Central European (ISO) character set.
    */
   readonly CENTRALEUROPEAN_ISO: TagTextExportCharacterSet_CENTRALEUROPEAN_ISO;
-  /**
-   * The Central European (ISO) character set.
-   */
-  readonly centraleuropeanIso: TagTextExportCharacterSet_CENTRALEUROPEAN_ISO;
-  /**
-   * The Central European (ISO) character set.
-   */
-  readonly centraleuropeaniso: TagTextExportCharacterSet_CENTRALEUROPEAN_ISO;
-
   /**
    * The Cyrillic (ISO) character set.
    */
   readonly CYRILLIC_ISO: TagTextExportCharacterSet_CYRILLIC_ISO;
   /**
-   * The Cyrillic (ISO) character set.
-   */
-  readonly cyrillicIso: TagTextExportCharacterSet_CYRILLIC_ISO;
-  /**
-   * The Cyrillic (ISO) character set.
-   */
-  readonly cyrilliciso: TagTextExportCharacterSet_CYRILLIC_ISO;
-
-  /**
    * The Greek (ISO) character set.
    */
   readonly GREEK_ISO: TagTextExportCharacterSet_GREEK_ISO;
-  /**
-   * The Greek (ISO) character set.
-   */
-  readonly greekIso: TagTextExportCharacterSet_GREEK_ISO;
-  /**
-   * The Greek (ISO) character set.
-   */
-  readonly greekiso: TagTextExportCharacterSet_GREEK_ISO;
-
   /**
    * The Windows Arabic character set.
    */
@@ -356,11 +313,6 @@ export declare const TagTextExportCharacterSet: typeof Enumeration & {
    */
   readonly windowsArabic: TagTextExportCharacterSet_WINDOWS_ARABIC;
   /**
-   * The Windows Arabic character set.
-   */
-  readonly windowsarabic: TagTextExportCharacterSet_WINDOWS_ARABIC;
-
-  /**
    * The Windows Hebrew character set.
    */
   readonly WINDOWS_HEBREW: TagTextExportCharacterSet_WINDOWS_HEBREW;
@@ -368,9 +320,4 @@ export declare const TagTextExportCharacterSet: typeof Enumeration & {
    * The Windows Hebrew character set.
    */
   readonly windowsHebrew: TagTextExportCharacterSet_WINDOWS_HEBREW;
-  /**
-   * The Windows Hebrew character set.
-   */
-  readonly windowshebrew: TagTextExportCharacterSet_WINDOWS_HEBREW;
-
 }

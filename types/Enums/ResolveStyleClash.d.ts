@@ -1,10 +1,11 @@
 /**
  * ResolveStyleClash.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ResolveStyleClash: unique symbol;
 
 
 interface ResolveStyleClash extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ResolveStyleClash>): boolean;
-
   /**
    * @internal **WARNING:** `__ResolveStyleClash` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const ResolveStyleClash: typeof Enumeration & {
    */
   readonly resolveClashUseExisting: ResolveStyleClash_RESOLVE_CLASH_USE_EXISTING;
   /**
-   * Uses the existing style.
-   */
-  readonly resolveclashuseexisting: ResolveStyleClash_RESOLVE_CLASH_USE_EXISTING;
-
-  /**
    * Automatically renames the new style.
    */
   readonly RESOLVE_CLASH_AUTO_RENAME: ResolveStyleClash_RESOLVE_CLASH_AUTO_RENAME;
@@ -115,11 +108,6 @@ export declare const ResolveStyleClash: typeof Enumeration & {
    */
   readonly resolveClashAutoRename: ResolveStyleClash_RESOLVE_CLASH_AUTO_RENAME;
   /**
-   * Automatically renames the new style.
-   */
-  readonly resolveclashautorename: ResolveStyleClash_RESOLVE_CLASH_AUTO_RENAME;
-
-  /**
    * Uses the new style.
    */
   readonly RESOLVE_CLASH_USE_NEW: ResolveStyleClash_RESOLVE_CLASH_USE_NEW;
@@ -127,9 +115,4 @@ export declare const ResolveStyleClash: typeof Enumeration & {
    * Uses the new style.
    */
   readonly resolveClashUseNew: ResolveStyleClash_RESOLVE_CLASH_USE_NEW;
-  /**
-   * Uses the new style.
-   */
-  readonly resolveclashusenew: ResolveStyleClash_RESOLVE_CLASH_USE_NEW;
-
 }

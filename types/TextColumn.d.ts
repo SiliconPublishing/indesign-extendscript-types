@@ -1,6 +1,7 @@
 /**
  * TextColumn.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -72,9 +73,6 @@ import type { XMLItem } from './XMLItem';
  * or per frame in a story threaded across frames.
  */
 export interface TextColumn<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'TextColumn';
-
   /** Resolves the proxy into the individual {@link TextColumn} objects it stands for. */
   getElements(): TextColumn<TParent, 'single'>[];
 }

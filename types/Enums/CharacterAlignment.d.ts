@@ -1,10 +1,11 @@
 /**
  * CharacterAlignment.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __CharacterAlignment: unique symbol;
 
 
 interface CharacterAlignment extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<CharacterAlignment>): boolean;
-
   /**
    * @internal **WARNING:** `__CharacterAlignment` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -150,11 +148,6 @@ export declare const CharacterAlignment: typeof Enumeration & {
    */
   readonly alignBaseline: CharacterAlignment_ALIGN_BASELINE;
   /**
-   * Aligns small characters in a line to the large character.
-   */
-  readonly alignbaseline: CharacterAlignment_ALIGN_BASELINE;
-
-  /**
    * Aligns small characters in horizontal text to the top of the em box of large characters. In vertical text, aligns characters to the right of the em box.
    */
   readonly ALIGN_EM_TOP: CharacterAlignment_ALIGN_EM_TOP;
@@ -162,11 +155,6 @@ export declare const CharacterAlignment: typeof Enumeration & {
    * Aligns small characters in horizontal text to the top of the em box of large characters. In vertical text, aligns characters to the right of the em box.
    */
   readonly alignEmTop: CharacterAlignment_ALIGN_EM_TOP;
-  /**
-   * Aligns small characters in horizontal text to the top of the em box of large characters. In vertical text, aligns characters to the right of the em box.
-   */
-  readonly alignemtop: CharacterAlignment_ALIGN_EM_TOP;
-
   /**
    * Aligns small characters to the center of the em box of large characters.
    */
@@ -176,11 +164,6 @@ export declare const CharacterAlignment: typeof Enumeration & {
    */
   readonly alignEmCenter: CharacterAlignment_ALIGN_EM_CENTER;
   /**
-   * Aligns small characters to the center of the em box of large characters.
-   */
-  readonly alignemcenter: CharacterAlignment_ALIGN_EM_CENTER;
-
-  /**
    * Aligns small characters in horizontal text to the bottom of the em box of large characters. In vertical text, aligns characters to the left of the em box.
    */
   readonly ALIGN_EM_BOTTOM: CharacterAlignment_ALIGN_EM_BOTTOM;
@@ -189,34 +172,11 @@ export declare const CharacterAlignment: typeof Enumeration & {
    */
   readonly alignEmBottom: CharacterAlignment_ALIGN_EM_BOTTOM;
   /**
-   * Aligns small characters in horizontal text to the bottom of the em box of large characters. In vertical text, aligns characters to the left of the em box.
-   */
-  readonly alignembottom: CharacterAlignment_ALIGN_EM_BOTTOM;
-
-  /**
    * Aligns small characters in horizontal text to the top of the ICF of large characters. In vertical text, aligns characters to the right of the ICF.
    */
   readonly ALIGN_ICF_TOP: CharacterAlignment_ALIGN_ICF_TOP;
   /**
-   * Aligns small characters in horizontal text to the top of the ICF of large characters. In vertical text, aligns characters to the right of the ICF.
-   */
-  readonly alignIcfTop: CharacterAlignment_ALIGN_ICF_TOP;
-  /**
-   * Aligns small characters in horizontal text to the top of the ICF of large characters. In vertical text, aligns characters to the right of the ICF.
-   */
-  readonly alignicftop: CharacterAlignment_ALIGN_ICF_TOP;
-
-  /**
    * Aligns small characters in horizontal text to the bottom of the ICF of large characters. In vertical text, aligns characters to the left of the ICF.
    */
   readonly ALIGN_ICF_BOTTOM: CharacterAlignment_ALIGN_ICF_BOTTOM;
-  /**
-   * Aligns small characters in horizontal text to the bottom of the ICF of large characters. In vertical text, aligns characters to the left of the ICF.
-   */
-  readonly alignIcfBottom: CharacterAlignment_ALIGN_ICF_BOTTOM;
-  /**
-   * Aligns small characters in horizontal text to the bottom of the ICF of large characters. In vertical text, aligns characters to the left of the ICF.
-   */
-  readonly alignicfbottom: CharacterAlignment_ALIGN_ICF_BOTTOM;
-
 }

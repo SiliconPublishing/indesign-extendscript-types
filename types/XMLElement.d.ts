@@ -1,6 +1,7 @@
 /**
  * XMLElement.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -69,9 +70,6 @@ import type { FilePath, MeasurementValue } from './_base/Types';
  * processing instructions.
  */
 export interface XMLElement<M extends Mode = 'single'> extends XMLItem<M>{
-  /** The object's DOM class name. */
-  readonly constructorName: 'XMLElement';
-
   /** Resolves the proxy into the individual {@link XMLElement} objects it stands for. */
   getElements(): XMLElement<'single'>[];
 
@@ -160,7 +158,13 @@ export interface XMLElement<M extends Mode = 'single'> extends XMLItem<M>{
   get markupTag(): Read<M, XMLTag>;
   set markupTag(value: XMLTag | string);
 
-  /** The text content of the element. */
+  /**
+   * The text content of the element.
+   *
+   * **Crashes InDesign 21.6**: assigning `NothingEnum.NOTHING` on a XMLElement takes InDesign down (measured).
+   *
+   * **Crashes InDesign 21.6**: assigning it the value it reads back on a XMLElement takes InDesign down (measured).
+   */
   get contents(): Read<M, string | SpecialCharacters>;
   set contents(value: string | SpecialCharacters);
 

@@ -1,6 +1,7 @@
 /**
  * InnerGlowSetting.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -16,33 +17,31 @@ import type { BlendMode } from './Enums/BlendMode';
 import type { GlowTechnique } from './Enums/GlowTechnique';
 import type { InnerGlowSource } from './Enums/InnerGlowSource';
 import type { FindChangeInnerGlowSetting } from './FindChangeInnerGlowSetting';
+import type { NothingEnum } from "./Enums/NothingEnum";
 
 /**
  * Settings for the inner-glow effect — a glow that radiates inward from the edges
  * of the object or text it's applied to.
  */
-export interface InnerGlowSetting<M extends Mode = 'single'> extends EventTargetDOMObject<TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, M> {
-  /** The object's DOM class name — reports the specific kind, such as `'FindChangeInnerGlowSetting'` when the object is a {@link FindChangeInnerGlowSetting}. */
-  readonly constructorName: 'InnerGlowSetting' | 'FindChangeInnerGlowSetting';
-
+export interface InnerGlowSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M> {
   /** Resolves the proxy into the individual {@link InnerGlowSetting} objects it stands for. */
-  getElements(): InnerGlowSetting<'single'>[];
+  getElements(): InnerGlowSetting<'single', TParent>[];
 
   /** If true, the inner glow effect is applied. */
-  get applied(): Read<M, boolean>;
-  set applied(value: boolean);
+  get applied(): Read<M, boolean | NothingEnum.NOTHING>;
+  set applied(value: boolean | NSet);
 
   /** The blending mode for the inner glow effect. */
-  get blendMode(): Read<M, BlendMode>;
-  set blendMode(value: BlendMode);
+  get blendMode(): Read<M, BlendMode | NothingEnum.NOTHING>;
+  set blendMode(value: BlendMode | NSet);
 
   /** The opacity of the inner glow (as a percentage). (Range: 0 to 100). */
-  get opacity(): Read<M, number>;
-  set opacity(value: number);
+  get opacity(): Read<M, number | NothingEnum.NOTHING>;
+  set opacity(value: number | NSet);
 
   /** The amount (as a percentage) of noise applied to the inner glow. (Range: 0 to 100). */
-  get noise(): Read<M, number>;
-  set noise(value: number);
+  get noise(): Read<M, number | NothingEnum.NOTHING>;
+  set noise(value: number | NSet);
 
   /**
    * The color applied to the inner glow, specified as a swatch (color, gradient, tint, or
@@ -54,22 +53,22 @@ export interface InnerGlowSetting<M extends Mode = 'single'> extends EventTarget
    * three values in the format [L,A,B], with L in the range 0 to 100 and A and B in the range
    * -128 to 127.
    */
-  get effectColor(): Read<M, Swatch>;
-  set effectColor(value: Swatch);
+  get effectColor(): Read<M, Swatch | NothingEnum.NOTHING>;
+  set effectColor(value: Swatch | string | NSet);
 
   /** Whether the glow's edge is soft or precise. See {@link GlowTechnique}. */
-  get technique(): Read<M, GlowTechnique>;
-  set technique(value: GlowTechnique);
+  get technique(): Read<M, GlowTechnique | NothingEnum.NOTHING>;
+  set technique(value: GlowTechnique | NSet);
 
   /** The amount of spread (as a percentage of the inner glow size). (Range: 0 to 100). */
-  get spread(): Read<M, number>;
-  set spread(value: number);
+  get spread(): Read<M, number | NothingEnum.NOTHING>;
+  set spread(value: number | NSet);
 
   /** The size of the inner glow. */
-  get size(): Read<M, number>;
-  set size(value: MeasurementValue);
+  get size(): Read<M, number | NothingEnum.NOTHING>;
+  set size(value: MeasurementValue | NSet);
 
   /** Whether the glow radiates from the object's center or from its edge. See {@link InnerGlowSource}. */
-  get source(): Read<M, InnerGlowSource>;
-  set source(value: InnerGlowSource);
+  get source(): Read<M, InnerGlowSource | NothingEnum.NOTHING>;
+  set source(value: InnerGlowSource | NSet);
 }

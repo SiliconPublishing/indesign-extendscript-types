@@ -1,10 +1,11 @@
 /**
  * GridAlignment.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __GridAlignment: unique symbol;
 
 
 interface GridAlignment extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<GridAlignment>): boolean;
-
   /**
    * @internal **WARNING:** `__GridAlignment` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -175,11 +173,6 @@ export declare const GridAlignment: typeof Enumeration & {
    */
   readonly alignBaseline: GridAlignment_ALIGN_BASELINE;
   /**
-   * Aligns the text baseline to the grid.
-   */
-  readonly alignbaseline: GridAlignment_ALIGN_BASELINE;
-
-  /**
    * Aligns the top of the em box to the grid. 
    */
   readonly ALIGN_EM_TOP: GridAlignment_ALIGN_EM_TOP;
@@ -187,11 +180,6 @@ export declare const GridAlignment: typeof Enumeration & {
    * Aligns the top of the em box to the grid. 
    */
   readonly alignEmTop: GridAlignment_ALIGN_EM_TOP;
-  /**
-   * Aligns the top of the em box to the grid. 
-   */
-  readonly alignemtop: GridAlignment_ALIGN_EM_TOP;
-
   /**
    * Aligns the center of the em box to the grid.
    */
@@ -201,11 +189,6 @@ export declare const GridAlignment: typeof Enumeration & {
    */
   readonly alignEmCenter: GridAlignment_ALIGN_EM_CENTER;
   /**
-   * Aligns the center of the em box to the grid.
-   */
-  readonly alignemcenter: GridAlignment_ALIGN_EM_CENTER;
-
-  /**
    * Aligns the bottom of the em box to the grid.
    */
   readonly ALIGN_EM_BOTTOM: GridAlignment_ALIGN_EM_BOTTOM;
@@ -214,34 +197,11 @@ export declare const GridAlignment: typeof Enumeration & {
    */
   readonly alignEmBottom: GridAlignment_ALIGN_EM_BOTTOM;
   /**
-   * Aligns the bottom of the em box to the grid.
-   */
-  readonly alignembottom: GridAlignment_ALIGN_EM_BOTTOM;
-
-  /**
    * Aligns the top of the ICF box to the grid. 
    */
   readonly ALIGN_ICF_TOP: GridAlignment_ALIGN_ICF_TOP;
   /**
-   * Aligns the top of the ICF box to the grid. 
-   */
-  readonly alignIcfTop: GridAlignment_ALIGN_ICF_TOP;
-  /**
-   * Aligns the top of the ICF box to the grid. 
-   */
-  readonly alignicftop: GridAlignment_ALIGN_ICF_TOP;
-
-  /**
    * Aligns the bottom of the ICF box to the grid.
    */
   readonly ALIGN_ICF_BOTTOM: GridAlignment_ALIGN_ICF_BOTTOM;
-  /**
-   * Aligns the bottom of the ICF box to the grid.
-   */
-  readonly alignIcfBottom: GridAlignment_ALIGN_ICF_BOTTOM;
-  /**
-   * Aligns the bottom of the ICF box to the grid.
-   */
-  readonly alignicfbottom: GridAlignment_ALIGN_ICF_BOTTOM;
-
 }

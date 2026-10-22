@@ -1,10 +1,11 @@
 /**
  * ArrowHeadAlignmentEnum.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ArrowHeadAlignmentEnum: unique symbol;
 
 
 interface ArrowHeadAlignmentEnum extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ArrowHeadAlignmentEnum>): boolean;
-
   /**
    * @internal **WARNING:** `__ArrowHeadAlignmentEnum` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -86,11 +84,6 @@ export declare const ArrowHeadAlignmentEnum: typeof Enumeration & {
    */
   readonly insidePath: ArrowHeadAlignmentEnum_INSIDE_PATH;
   /**
-   * The arrowhead is inside the path; path geometry changes to accommodate the arrowhead.
-   */
-  readonly insidepath: ArrowHeadAlignmentEnum_INSIDE_PATH;
-
-  /**
    * The arrowhead is outside the path; path geometry is unaffected.
    */
   readonly OUTSIDE_PATH: ArrowHeadAlignmentEnum_OUTSIDE_PATH;
@@ -98,9 +91,4 @@ export declare const ArrowHeadAlignmentEnum: typeof Enumeration & {
    * The arrowhead is outside the path; path geometry is unaffected.
    */
   readonly outsidePath: ArrowHeadAlignmentEnum_OUTSIDE_PATH;
-  /**
-   * The arrowhead is outside the path; path geometry is unaffected.
-   */
-  readonly outsidepath: ArrowHeadAlignmentEnum_OUTSIDE_PATH;
-
 }

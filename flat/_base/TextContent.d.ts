@@ -1,6 +1,7 @@
 /**
  * TextContent.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -147,6 +148,7 @@ export interface TextEmbeddedContent<M extends Mode = 'single'> {
   /** {@link Tables} anchored in this text. */
   readonly tables: Tables;
 }
+
 /**
  * The surface of a text *range* — a run of the flow rather than the thing that
  * holds it.
@@ -260,14 +262,13 @@ export interface TextRangeContent<TChildParent = TextParent> {
   convertBulletsAndNumberingToText(): void;
 }
 
-
 /**
- * The broadcast proxy for {@link TextRangeContent} — what `everyItem()` returns.
+ * The surface of a text *range* — a run of the flow rather than the thing that
+ * holds it.
  *
- * Reads come back as arrays, one entry per item; a write is applied to every
- * item at once inside InDesign's own engine.
- *
- * Not a class in the InDesign DOM — look up {@link TextRangeContent} there.
+ * Applying a style, changing case, or clearing overrides addresses a span of
+ * characters, which is why a {@link TextFrame} (a container) does not have
+ * these members while a {@link Paragraph} (a range) does.
  */
 export interface TextRangeContentPlural<TChildParent = TextParent> {
   /** A collection of text objects. */

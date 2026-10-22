@@ -1,10 +1,11 @@
 /**
  * FlexDirection.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __FlexDirection: unique symbol;
 
 
 interface FlexDirection extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<FlexDirection>): boolean;
-
   /**
    * @internal **WARNING:** `__FlexDirection` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const FlexDirection: typeof Enumeration & {
    */
   readonly flexRow: FlexDirection_FLEX_ROW;
   /**
-   * Row direction.
-   */
-  readonly flexrow: FlexDirection_FLEX_ROW;
-
-  /**
    * Row reverse direction.
    */
   readonly FLEX_ROW_REVERSE: FlexDirection_FLEX_ROW_REVERSE;
@@ -130,11 +123,6 @@ export declare const FlexDirection: typeof Enumeration & {
    * Row reverse direction.
    */
   readonly flexRowReverse: FlexDirection_FLEX_ROW_REVERSE;
-  /**
-   * Row reverse direction.
-   */
-  readonly flexrowreverse: FlexDirection_FLEX_ROW_REVERSE;
-
   /**
    * Column direction.
    */
@@ -144,11 +132,6 @@ export declare const FlexDirection: typeof Enumeration & {
    */
   readonly flexColumn: FlexDirection_FLEX_COLUMN;
   /**
-   * Column direction.
-   */
-  readonly flexcolumn: FlexDirection_FLEX_COLUMN;
-
-  /**
    * Column reverse direction.
    */
   readonly FLEX_COLUMN_REVERSE: FlexDirection_FLEX_COLUMN_REVERSE;
@@ -156,9 +139,4 @@ export declare const FlexDirection: typeof Enumeration & {
    * Column reverse direction.
    */
   readonly flexColumnReverse: FlexDirection_FLEX_COLUMN_REVERSE;
-  /**
-   * Column reverse direction.
-   */
-  readonly flexcolumnreverse: FlexDirection_FLEX_COLUMN_REVERSE;
-
 }

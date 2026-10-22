@@ -1,10 +1,11 @@
 /**
  * RenderingIntent.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __RenderingIntent: unique symbol;
 
 
 interface RenderingIntent extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<RenderingIntent>): boolean;
-
   /**
    * @internal **WARNING:** `__RenderingIntent` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -135,11 +133,6 @@ export declare const RenderingIntent: typeof Enumeration & {
    */
   readonly useColorSettings: RenderingIntent_USE_COLOR_SETTINGS;
   /**
-   * Uses the current color settings.
-   */
-  readonly usecolorsettings: RenderingIntent_USE_COLOR_SETTINGS;
-
-  /**
    * Preserves the visual relationship between colors at the expense of actual color values; most suitable for photographic images with high percentages of out-of-gamut colors.
    */
   readonly PERCEPTUAL: RenderingIntent_PERCEPTUAL;
@@ -170,13 +163,6 @@ export declare const RenderingIntent: typeof Enumeration & {
    */
   readonly relativeColorimetric: RenderingIntent_RELATIVE_COLORIMETRIC;
   /**
-   * Compares the extreme highlight of the source color space to that of the
-   * destination color space and shifts all colors accordingly; out-of-gamut colors
-   * are shifted to the closest reproducible color in the destination color space.
-   */
-  readonly relativecolorimetric: RenderingIntent_RELATIVE_COLORIMETRIC;
-
-  /**
    * Maintains color accuracy at the expense of preserving relationships between colors; most suitable for previewing how paper color affects printed colors. 
    */
   readonly ABSOLUTE_COLORIMETRIC: RenderingIntent_ABSOLUTE_COLORIMETRIC;
@@ -184,9 +170,4 @@ export declare const RenderingIntent: typeof Enumeration & {
    * Maintains color accuracy at the expense of preserving relationships between colors; most suitable for previewing how paper color affects printed colors. 
    */
   readonly absoluteColorimetric: RenderingIntent_ABSOLUTE_COLORIMETRIC;
-  /**
-   * Maintains color accuracy at the expense of preserving relationships between colors; most suitable for previewing how paper color affects printed colors. 
-   */
-  readonly absolutecolorimetric: RenderingIntent_ABSOLUTE_COLORIMETRIC;
-
 }

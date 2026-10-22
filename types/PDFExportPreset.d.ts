@@ -1,6 +1,7 @@
 /**
  * PDFExportPreset.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -35,14 +36,11 @@ export interface PDFExportPreset<M extends Mode = 'single'>
   extends EventTargetDOMObject<Application, M>,
     IndexedDOMObject<Application, M>,
     NamableDOMObject<Application, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'PDFExportPreset';
-
   /** Resolves the proxy into the individual {@link PDFExportPreset} objects it stands for. */
   getElements(): PDFExportPreset<'single'>[];
 
   /** The full path to the PDF export preset file, including its name. */
-  readonly fullName: Read<M, Promise<File>>;
+  readonly fullName: Read<M, File>;
 
   /** The effective destination color profile actually used on export. */
   readonly effectivePDFDestinationProfile: Read<M, PDFProfileSelector | string>;

@@ -1,6 +1,7 @@
 /**
  * ScriptPreference.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -17,22 +18,19 @@ import type { UserInteractionLevels } from './Enums/UserInteractionLevels';
  * measurement units, and whether the screen redraws during execution.
  */
 export interface ScriptPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'ScriptPreference';
-
   /** Resolves the proxy into the individual {@link ScriptPreference} objects it stands for. */
   getElements(): ScriptPreference<'single'>[];
 
   /** The path to the Scripts folder for the application. */
-  readonly scriptsFolder: Read<M, Promise<Folder>>;
+  readonly scriptsFolder: Read<M, Folder>;
 
   /**
    * Every script in the Scripts folder, as `[id, file]` pairs.
    *
    * The id is colon-delimited, e.g. `Application:Community:Scripts Panel:BreakTextThread.jsx`.
-   * `await` the second element to reach the {@link File}.
+   * The second element is the {@link File}.
    */
-  readonly scriptsList: Read<M, [string, Promise<File>][]>;
+  readonly scriptsList: Read<M, [string, File][]>;
 
   /** The version of the scripting environment. */
   get version(): Read<M, string>;

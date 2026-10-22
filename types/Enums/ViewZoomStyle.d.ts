@@ -1,10 +1,11 @@
 /**
  * ViewZoomStyle.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ViewZoomStyle: unique symbol;
 
 
 interface ViewZoomStyle extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ViewZoomStyle>): boolean;
-
   /**
    * @internal **WARNING:** `__ViewZoomStyle` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -216,11 +214,6 @@ export declare const ViewZoomStyle: typeof Enumeration & {
    */
   readonly fullScreen: ViewZoomStyle_FULL_SCREEN;
   /**
-   * Fills the screen with the page; hides the toolbar, command bar, menu bar, and window controls. 
-   */
-  readonly fullscreen: ViewZoomStyle_FULL_SCREEN;
-
-  /**
    * Magnifies the view to the next preset percentage.
    */
   readonly ZOOM_IN: ViewZoomStyle_ZOOM_IN;
@@ -228,11 +221,6 @@ export declare const ViewZoomStyle: typeof Enumeration & {
    * Magnifies the view to the next preset percentage.
    */
   readonly zoomIn: ViewZoomStyle_ZOOM_IN;
-  /**
-   * Magnifies the view to the next preset percentage.
-   */
-  readonly zoomin: ViewZoomStyle_ZOOM_IN;
-
   /**
    * Reduces the view to the previous preset percentage.
    */
@@ -242,11 +230,6 @@ export declare const ViewZoomStyle: typeof Enumeration & {
    */
   readonly zoomOut: ViewZoomStyle_ZOOM_OUT;
   /**
-   * Reduces the view to the previous preset percentage.
-   */
-  readonly zoomout: ViewZoomStyle_ZOOM_OUT;
-
-  /**
    * Fits the entire page in the window. 
    */
   readonly FIT_PAGE: ViewZoomStyle_FIT_PAGE;
@@ -254,11 +237,6 @@ export declare const ViewZoomStyle: typeof Enumeration & {
    * Fits the entire page in the window. 
    */
   readonly fitPage: ViewZoomStyle_FIT_PAGE;
-  /**
-   * Fits the entire page in the window. 
-   */
-  readonly fitpage: ViewZoomStyle_FIT_PAGE;
-
   /**
    * Displays the page at 100% magnification.
    */
@@ -268,11 +246,6 @@ export declare const ViewZoomStyle: typeof Enumeration & {
    */
   readonly actualSize: ViewZoomStyle_ACTUAL_SIZE;
   /**
-   * Displays the page at 100% magnification.
-   */
-  readonly actualsize: ViewZoomStyle_ACTUAL_SIZE;
-
-  /**
    * Fits the page to the width of the window; may obscure the lower portion of the page.
    */
   readonly FIT_WIDTH: ViewZoomStyle_FIT_WIDTH;
@@ -280,11 +253,6 @@ export declare const ViewZoomStyle: typeof Enumeration & {
    * Fits the page to the width of the window; may obscure the lower portion of the page.
    */
   readonly fitWidth: ViewZoomStyle_FIT_WIDTH;
-  /**
-   * Fits the page to the width of the window; may obscure the lower portion of the page.
-   */
-  readonly fitwidth: ViewZoomStyle_FIT_WIDTH;
-
   /**
    * Fits the the text area of the page to the window width; obscures page margins and may obscure the lower portion of the page.
    */
@@ -294,11 +262,6 @@ export declare const ViewZoomStyle: typeof Enumeration & {
    */
   readonly fitVisible: ViewZoomStyle_FIT_VISIBLE;
   /**
-   * Fits the the text area of the page to the window width; obscures page margins and may obscure the lower portion of the page.
-   */
-  readonly fitvisible: ViewZoomStyle_FIT_VISIBLE;
-
-  /**
    * Displays one page in the document pane at a time.
    */
   readonly SINGLE_PAGE: ViewZoomStyle_SINGLE_PAGE;
@@ -306,11 +269,6 @@ export declare const ViewZoomStyle: typeof Enumeration & {
    * Displays one page in the document pane at a time.
    */
   readonly singlePage: ViewZoomStyle_SINGLE_PAGE;
-  /**
-   * Displays one page in the document pane at a time.
-   */
-  readonly singlepage: ViewZoomStyle_SINGLE_PAGE;
-
   /**
    * Arranges the pages in a continuous vertical column that is one page wide.
    */
@@ -320,11 +278,6 @@ export declare const ViewZoomStyle: typeof Enumeration & {
    */
   readonly oneColumn: ViewZoomStyle_ONE_COLUMN;
   /**
-   * Arranges the pages in a continuous vertical column that is one page wide.
-   */
-  readonly onecolumn: ViewZoomStyle_ONE_COLUMN;
-
-  /**
    * Arranges the pages side by side in a continuous vertical column that is two pages wide.
    */
   readonly TWO_COLUMN: ViewZoomStyle_TWO_COLUMN;
@@ -332,9 +285,4 @@ export declare const ViewZoomStyle: typeof Enumeration & {
    * Arranges the pages side by side in a continuous vertical column that is two pages wide.
    */
   readonly twoColumn: ViewZoomStyle_TWO_COLUMN;
-  /**
-   * Arranges the pages side by side in a continuous vertical column that is two pages wide.
-   */
-  readonly twocolumn: ViewZoomStyle_TWO_COLUMN;
-
 }

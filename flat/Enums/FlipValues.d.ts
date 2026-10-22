@@ -1,10 +1,11 @@
 /**
  * FlipValues.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __FlipValues: unique symbol;
 
 
 interface FlipValues extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<FlipValues>): boolean;
-
   /**
    * @internal **WARNING:** `__FlipValues` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const FlipValues: typeof Enumeration & {
    */
   readonly notFlipped: FlipValues_NOT_FLIPPED;
   /**
-   * No flip effect applied.
-   */
-  readonly notflipped: FlipValues_NOT_FLIPPED;
-
-  /**
    * Flips the text across the path.
    */
   readonly FLIPPED: FlipValues_FLIPPED;
@@ -123,9 +116,4 @@ export declare const FlipValues: typeof Enumeration & {
    * Undefined flip effect.
    */
   readonly undefinedFlipValue: FlipValues_UNDEFINED_FLIP_VALUE;
-  /**
-   * Undefined flip effect.
-   */
-  readonly undefinedflipvalue: FlipValues_UNDEFINED_FLIP_VALUE;
-
 }

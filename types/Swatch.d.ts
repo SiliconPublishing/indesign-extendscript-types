@@ -1,6 +1,7 @@
 /**
  * Swatch.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -24,9 +25,6 @@ export interface Swatch<M extends Mode = 'single'>
   extends LabelableEventDOMObject<SwatchParent, M>,
     IndexedDOMObject<SwatchParent, M>,
     NamableDOMObject<SwatchParent, M> {
-  /** The object's DOM class name — reports the specific kind, such as `'Color'` when the object is a {@link Color}. */
-  readonly constructorName: 'Swatch' | 'Color' | 'Gradient' | 'MixedInk' | 'MixedInkGroup' | 'Tint';
-
   /** Resolves the proxy into the individual {@link Swatch} objects it stands for. */
   getElements(): Swatch<'single'>[];
 
@@ -34,7 +32,7 @@ export interface Swatch<M extends Mode = 'single'>
   readonly id: Read<M, number>;
 
   /** The {@link ColorGroup} the swatch belongs to, if any. */
-  readonly parentColorGroup: Read<M, ColorGroup>;
+  readonly parentColorGroup: Read<M, ColorGroup | null>;
 
   /**
    * Deletes the swatch.
@@ -53,11 +51,9 @@ export interface Swatch<M extends Mode = 'single'>
  * A swatch InDesign reports as a plain {@link Swatch} rather than as a colour, tint, gradient
  * or mixed ink. `[None]` is the everyday example.
  *
- * Handle it in the `'Swatch'` case of a `constructorName` check. Only the members every swatch
+ * Handle it in the `'Swatch'` branch of an `instanceof` check. Only the members every swatch
  * has — its name, its id, and removal — are available on it.
  */
 export interface PlainSwatch<M extends Mode = 'single'> extends Swatch<M> {
-  /** Always `'Swatch'` — this is the generic case, by construction. */
-  readonly constructorName: 'Swatch';
 }
 

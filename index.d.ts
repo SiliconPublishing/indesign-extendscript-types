@@ -1,15 +1,18 @@
 /**
- * indesign-uxp-types — TypeScript declarations for the Adobe InDesign UXP scripting DOM.
+ * indesign-extendscript-types — TypeScript declarations for Adobe InDesign ExtendScript (.jsx).
  *
- * This entry declares the `indesign` module from the flattened tree: the same API as the
- * authored one, with readable tooltips. Enable it in tsconfig.json:
+ * Declares the ExtendScript global scope: the ES3 core library (lib/: $, File, Folder, BridgeTalk,
+ * XML, Socket, UnitValue, Reflection, ScriptUI, ...) and InDesign's DOM (`app`, every class and
+ * enumeration), from the flattened tree: the same API as the authored one, with readable tooltips.
  *
- *     "types": ["indesign-uxp-types"]
+ * In tsconfig.json — no other lib, since ExtendScript is ES3:
  *
- * For the authored, fully generic tree use `"types": ["indesign-uxp-types/authored"]`
+ *     "noLib": true,
+ *     "types": ["indesign-extendscript-types"]
+ *
+ * For the authored, fully generic tree use `"types": ["indesign-extendscript-types/authored"]`
  * instead — never both.
  */
-/// <reference types="@adobe/cc-ext-uxp-types/uxp" />
-declare module 'indesign' {
-  export * from 'indesign-uxp-types/flat';
-}
+/// <reference path="./lib/global.d.ts" />
+/// <reference path="./lib/ScriptUI.d.ts" />
+/// <reference path="./flat/globals.d.ts" />

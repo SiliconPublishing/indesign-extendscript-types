@@ -1,10 +1,11 @@
 /**
  * LineSpacingType.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __LineSpacingType: unique symbol;
 
 
 interface LineSpacingType extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<LineSpacingType>): boolean;
-
   /**
    * @internal **WARNING:** `__LineSpacingType` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -120,11 +118,6 @@ export declare const LineSpacingType: typeof Enumeration & {
    */
   readonly singleSpace: LineSpacingType_SINGLE_SPACE;
   /**
-   * Single line spacing.
-   */
-  readonly singlespace: LineSpacingType_SINGLE_SPACE;
-
-  /**
    * One-and-a-half line spacing.
    */
   readonly ONE_AND_HALF_SPACE: LineSpacingType_ONE_AND_HALF_SPACE;
@@ -132,11 +125,6 @@ export declare const LineSpacingType: typeof Enumeration & {
    * One-and-a-half line spacing.
    */
   readonly oneAndHalfSpace: LineSpacingType_ONE_AND_HALF_SPACE;
-  /**
-   * One-and-a-half line spacing.
-   */
-  readonly oneandhalfspace: LineSpacingType_ONE_AND_HALF_SPACE;
-
   /**
    * Double line spacing.
    */
@@ -146,11 +134,6 @@ export declare const LineSpacingType: typeof Enumeration & {
    */
   readonly doubleSpace: LineSpacingType_DOUBLE_SPACE;
   /**
-   * Double line spacing.
-   */
-  readonly doublespace: LineSpacingType_DOUBLE_SPACE;
-
-  /**
    * Triple line spacing.
    */
   readonly TRIPLE_SPACE: LineSpacingType_TRIPLE_SPACE;
@@ -158,9 +141,4 @@ export declare const LineSpacingType: typeof Enumeration & {
    * Triple line spacing.
    */
   readonly tripleSpace: LineSpacingType_TRIPLE_SPACE;
-  /**
-   * Triple line spacing.
-   */
-  readonly triplespace: LineSpacingType_TRIPLE_SPACE;
-
 }

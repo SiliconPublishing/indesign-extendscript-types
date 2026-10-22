@@ -1,10 +1,11 @@
 /**
  * TaskAlertType.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __TaskAlertType: unique symbol;
 
 
 interface TaskAlertType extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<TaskAlertType>): boolean;
-
   /**
    * @internal **WARNING:** `__TaskAlertType` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const TaskAlertType: typeof Enumeration & {
    */
   readonly taskInformation: TaskAlertType_TASK_INFORMATION;
   /**
-   * Information message.
-   */
-  readonly taskinformation: TaskAlertType_TASK_INFORMATION;
-
-  /**
    * Warning message.
    */
   readonly TASK_WARNING: TaskAlertType_TASK_WARNING;
@@ -115,11 +108,6 @@ export declare const TaskAlertType: typeof Enumeration & {
    */
   readonly taskWarning: TaskAlertType_TASK_WARNING;
   /**
-   * Warning message.
-   */
-  readonly taskwarning: TaskAlertType_TASK_WARNING;
-
-  /**
    * Error message.
    */
   readonly TASK_ERROR: TaskAlertType_TASK_ERROR;
@@ -127,9 +115,4 @@ export declare const TaskAlertType: typeof Enumeration & {
    * Error message.
    */
   readonly taskError: TaskAlertType_TASK_ERROR;
-  /**
-   * Error message.
-   */
-  readonly taskerror: TaskAlertType_TASK_ERROR;
-
 }

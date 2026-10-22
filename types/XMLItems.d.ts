@@ -1,6 +1,7 @@
 /**
  * XMLItems.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
@@ -16,6 +17,4 @@ import type { XMLItem } from './XMLItem';
  */
 export interface XMLItems
   extends BaseCollection<XMLItem, XMLItem, XMLItem<'plural'>>, IdCollection<XMLItem> {
-  /** The object's DOM class name. */
-  readonly constructorName: 'XMLItems';
 }

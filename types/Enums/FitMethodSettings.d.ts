@@ -1,10 +1,11 @@
 /**
  * FitMethodSettings.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __FitMethodSettings: unique symbol;
 
 
 interface FitMethodSettings extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<FitMethodSettings>): boolean;
-
   /**
    * @internal **WARNING:** `__FitMethodSettings` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -102,11 +100,6 @@ export declare const FitMethodSettings: typeof Enumeration & {
    */
   readonly fitPredefinedSettings: FitMethodSettings_FIT_PREDEFINED_SETTINGS;
   /**
-   * Fit to predefined settings.
-   */
-  readonly fitpredefinedsettings: FitMethodSettings_FIT_PREDEFINED_SETTINGS;
-
-  /**
    * Fit to given width and height.
    */
   readonly FIT_GIVEN_WIDTH_AND_HEIGHT: FitMethodSettings_FIT_GIVEN_WIDTH_AND_HEIGHT;
@@ -115,11 +108,6 @@ export declare const FitMethodSettings: typeof Enumeration & {
    */
   readonly fitGivenWidthAndHeight: FitMethodSettings_FIT_GIVEN_WIDTH_AND_HEIGHT;
   /**
-   * Fit to given width and height.
-   */
-  readonly fitgivenwidthandheight: FitMethodSettings_FIT_GIVEN_WIDTH_AND_HEIGHT;
-
-  /**
    * Fit to given scale percentage.
    */
   readonly FIT_GIVEN_SCALE_PERCENTAGE: FitMethodSettings_FIT_GIVEN_SCALE_PERCENTAGE;
@@ -127,9 +115,4 @@ export declare const FitMethodSettings: typeof Enumeration & {
    * Fit to given scale percentage.
    */
   readonly fitGivenScalePercentage: FitMethodSettings_FIT_GIVEN_SCALE_PERCENTAGE;
-  /**
-   * Fit to given scale percentage.
-   */
-  readonly fitgivenscalepercentage: FitMethodSettings_FIT_GIVEN_SCALE_PERCENTAGE;
-
 }

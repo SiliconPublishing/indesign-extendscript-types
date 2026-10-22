@@ -1,10 +1,11 @@
 /**
  * TextWrapSideOptions.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __TextWrapSideOptions: unique symbol;
 
 
 interface TextWrapSideOptions extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<TextWrapSideOptions>): boolean;
-
   /**
    * @internal **WARNING:** `__TextWrapSideOptions` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -150,11 +148,6 @@ export declare const TextWrapSideOptions: typeof Enumeration & {
    */
   readonly bothSides: TextWrapSideOptions_BOTH_SIDES;
   /**
-   * Both sides text wrap.
-   */
-  readonly bothsides: TextWrapSideOptions_BOTH_SIDES;
-
-  /**
    * Left side text wrap.
    */
   readonly LEFT_SIDE: TextWrapSideOptions_LEFT_SIDE;
@@ -162,11 +155,6 @@ export declare const TextWrapSideOptions: typeof Enumeration & {
    * Left side text wrap.
    */
   readonly leftSide: TextWrapSideOptions_LEFT_SIDE;
-  /**
-   * Left side text wrap.
-   */
-  readonly leftside: TextWrapSideOptions_LEFT_SIDE;
-
   /**
    * Right side text wrap.
    */
@@ -176,11 +164,6 @@ export declare const TextWrapSideOptions: typeof Enumeration & {
    */
   readonly rightSide: TextWrapSideOptions_RIGHT_SIDE;
   /**
-   * Right side text wrap.
-   */
-  readonly rightside: TextWrapSideOptions_RIGHT_SIDE;
-
-  /**
    * Binding side text wrap.
    */
   readonly SIDE_TOWARDS_SPINE: TextWrapSideOptions_SIDE_TOWARDS_SPINE;
@@ -188,11 +171,6 @@ export declare const TextWrapSideOptions: typeof Enumeration & {
    * Binding side text wrap.
    */
   readonly sideTowardsSpine: TextWrapSideOptions_SIDE_TOWARDS_SPINE;
-  /**
-   * Binding side text wrap.
-   */
-  readonly sidetowardsspine: TextWrapSideOptions_SIDE_TOWARDS_SPINE;
-
   /**
    * Away from binding side text wrap.
    */
@@ -202,11 +180,6 @@ export declare const TextWrapSideOptions: typeof Enumeration & {
    */
   readonly sideAwayFromSpine: TextWrapSideOptions_SIDE_AWAY_FROM_SPINE;
   /**
-   * Away from binding side text wrap.
-   */
-  readonly sideawayfromspine: TextWrapSideOptions_SIDE_AWAY_FROM_SPINE;
-
-  /**
    * Largest side text wrap.
    */
   readonly LARGEST_AREA: TextWrapSideOptions_LARGEST_AREA;
@@ -214,9 +187,4 @@ export declare const TextWrapSideOptions: typeof Enumeration & {
    * Largest side text wrap.
    */
   readonly largestArea: TextWrapSideOptions_LARGEST_AREA;
-  /**
-   * Largest side text wrap.
-   */
-  readonly largestarea: TextWrapSideOptions_LARGEST_AREA;
-
 }

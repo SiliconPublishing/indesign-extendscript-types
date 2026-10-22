@@ -1,10 +1,11 @@
 /**
  * RuleWidth.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __RuleWidth: unique symbol;
 
 
 interface RuleWidth extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<RuleWidth>): boolean;
-
   /**
    * @internal **WARNING:** `__RuleWidth` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -86,11 +84,6 @@ export declare const RuleWidth: typeof Enumeration & {
    */
   readonly textWidth: RuleWidth_TEXT_WIDTH;
   /**
-   * Makes the paragraph rule above the width of the first line of text in the paragraph.
-   */
-  readonly textwidth: RuleWidth_TEXT_WIDTH;
-
-  /**
    * Makes the rule the width of the column.
    */
   readonly COLUMN_WIDTH: RuleWidth_COLUMN_WIDTH;
@@ -98,9 +91,4 @@ export declare const RuleWidth: typeof Enumeration & {
    * Makes the rule the width of the column.
    */
   readonly columnWidth: RuleWidth_COLUMN_WIDTH;
-  /**
-   * Makes the rule the width of the column.
-   */
-  readonly columnwidth: RuleWidth_COLUMN_WIDTH;
-
 }

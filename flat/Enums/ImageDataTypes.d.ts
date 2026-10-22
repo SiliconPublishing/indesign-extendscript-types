@@ -1,10 +1,11 @@
 /**
  * ImageDataTypes.d.ts — indesign-uxp-types
- * Adobe InDesign 2026 (21.x) UXP scripting DOM declarations.
+ * Adobe InDesign 2026 (21.x) ExtendScript DOM declarations,
+ * converted from indesign-uxp-types by tools/codemod.
  * Version: 1.0.0 · Updated: 2026-09-29
  * Author: Vlad Vladila (Krommatine Systems) · https://github.com/vamitul/indesign-uxp-types
  */
-import type { EnumComparand, Enumeration, Enumerator, __val} from "../_base/Enums";
+import type { Enumeration, Enumerator, __val} from "../_base/Enums";
 
 
 
@@ -18,9 +19,6 @@ declare const __ImageDataTypes: unique symbol;
 
 
 interface ImageDataTypes extends Enumerator {
-  /** True when `other` is this same enumerator. Enumerators are objects — `===` is always false. */
-  equals(other: EnumComparand<ImageDataTypes>): boolean;
-
   /**
    * @internal **WARNING:** `__ImageDataTypes` is a phantom type for compiler strictness only. 
    * It DOES NOT exist at runtime. Do not evaluate it in your logic.
@@ -118,11 +116,6 @@ export declare const ImageDataTypes: typeof Enumeration & {
    */
   readonly allImageData: ImageDataTypes_ALL_IMAGE_DATA;
   /**
-   * Sends full-resolution data.
-   */
-  readonly allimagedata: ImageDataTypes_ALL_IMAGE_DATA;
-
-  /**
    * Sends just enough data to print graphics at the best possible resolution for the output device.
    */
   readonly OPTIMIZED_SUBSAMPLING: ImageDataTypes_OPTIMIZED_SUBSAMPLING;
@@ -131,11 +124,6 @@ export declare const ImageDataTypes: typeof Enumeration & {
    */
   readonly optimizedSubsampling: ImageDataTypes_OPTIMIZED_SUBSAMPLING;
   /**
-   * Sends just enough data to print graphics at the best possible resolution for the output device.
-   */
-  readonly optimizedsubsampling: ImageDataTypes_OPTIMIZED_SUBSAMPLING;
-
-  /**
    * Sends screen-resolution versions (72 dpi) of placed bitmap images.
    */
   readonly PROXY_IMAGE_DATA: ImageDataTypes_PROXY_IMAGE_DATA;
@@ -143,11 +131,6 @@ export declare const ImageDataTypes: typeof Enumeration & {
    * Sends screen-resolution versions (72 dpi) of placed bitmap images.
    */
   readonly proxyImageData: ImageDataTypes_PROXY_IMAGE_DATA;
-  /**
-   * Sends screen-resolution versions (72 dpi) of placed bitmap images.
-   */
-  readonly proxyimagedata: ImageDataTypes_PROXY_IMAGE_DATA;
-
   /**
    * Prints graphics frames with crossbars in place of graphics.
    */
