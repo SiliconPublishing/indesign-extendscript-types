@@ -16,6 +16,8 @@
 //   - Not flattened: interfaces without heritage, interfaces with a type parameter that has no
 //     default (building blocks such as InDesignDOMObject<Parent, M>), and enumerations.
 //   - Other declarations are untouched.
+//   - Hooks (InDesignPlugins.X<M>, InDesignEdition.X<…>) stay bases: a plugin hook with the mode
+//     fixed, an edition hook renamed per variant (InDesignEdition.X<TParent> / XPlural<TParent>).
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -35,8 +37,9 @@ function walk(dir) {
 
 const parse = (path, text) => ts.createSourceFile(path, text, ts.ScriptTarget.Latest, true);
 
-// Plugin extension points (tools/codemod/plugin-hooks.mjs): bases that stay as bases.
-const isHook = (h, sf) => h.expression.getText(sf).startsWith('InDesignPlugins.');
+// Plugin extension points (tools/codemod/plugin-hooks.mjs) and edition hooks
+// (tools/codemod/editions.mjs): bases that stay as bases.
+const isHook = (h, sf) => /^InDesign(Plugins|Edition)\./.test(h.expression.getText(sf));
 
 // Interface name -> its type parameters' default texts, to spell `X<Default>` as `X`, as upstream does.
 let DEFAULTS = new Map();
@@ -330,7 +333,11 @@ export function flatten(inDir, outDir) {
                     }
                 }
                 const body = renderMembers(entries, flattened, new Map([['this', `${iname}${paramUse}`]]));
-                const hookText = hooks.map((h) => h.getText(f.sf).replace(/<M>$/, mode ? `<'${mode}'>` : '<M>'));
+                // An edition hook is per variant (InDesignEdition.X / XPlural, with the kept
+                // parameters), since each edition file extends the variant's flattened part.
+                const hookText = hooks.map((h) =>
+                    h.expression.getText(f.sf).startsWith('InDesignEdition.') ? `InDesignEdition.${iname}${paramUse}` : h.getText(f.sf).replace(/<M>$/, mode ? `<'${mode}'>` : '<M>'),
+                );
                 blocks.push(`${mode === 'plural' && docs ? `${rewriteDocs(docs, flattened)}\n` : ''}export interface ${iname}${paramDecl}${hookText.length ? ` extends ${hookText.join(', ')}` : ''} {${body}\n}`);
             }
             const start = decl.getStart(f.sf);

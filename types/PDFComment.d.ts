@@ -41,7 +41,7 @@ export interface PDFCommentPathPoint<M extends Mode = 'single'> {
 export interface PDFComment<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document, M>,
     IndexedDOMObject<Document, M>,
-    NamableDOMObject<Document, M>, InDesignPlugins.PDFComment<M> {
+    NamableDOMObject<Document, M>, InDesignEdition.PDFComment<M>, InDesignPlugins.PDFComment<M> {
   /** Resolves the proxy into the individual {@link PDFComment}s it stands for. */
   getElements(): PDFComment<'single'>[];
 

@@ -20,7 +20,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection EndnoteRange
  */
-export interface EndnoteRanges extends InDesignPlugins.EndnoteRanges {
+export interface EndnoteRanges extends InDesignEdition.EndnoteRanges, InDesignPlugins.EndnoteRanges {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

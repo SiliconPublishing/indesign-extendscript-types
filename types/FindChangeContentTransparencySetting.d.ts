@@ -24,7 +24,7 @@ import type { Preferences } from './Preferences';
 /**
  * The content-transparency criteria used in a find/change object operation.
  */
-export interface FindChangeContentTransparencySetting<M extends Mode = 'single'> extends EventTargetDOMObject<FindObjectPreference | ChangeObjectPreference, M>, InDesignPlugins.FindChangeContentTransparencySetting<M> {
+export interface FindChangeContentTransparencySetting<M extends Mode = 'single'> extends EventTargetDOMObject<FindObjectPreference | ChangeObjectPreference, M>, InDesignEdition.FindChangeContentTransparencySetting<M>, InDesignPlugins.FindChangeContentTransparencySetting<M> {
   /** Resolves the proxy into the individual {@link FindChangeContentTransparencySetting} objects it stands for. */
   getElements(): FindChangeContentTransparencySetting<'single'>[];
 

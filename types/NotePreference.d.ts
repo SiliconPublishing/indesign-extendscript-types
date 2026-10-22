@@ -16,7 +16,7 @@ import type { NoteColorChoices } from './Enums/NoteColorChoices';
  * Settings for how notes are colored, and how their content is treated by
  * Find/Change and Spell Check.
  */
-export interface NotePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.NotePreference<M> {
+export interface NotePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.NotePreference<M>, InDesignPlugins.NotePreference<M> {
   /** Resolves the proxy into the individual {@link NotePreference} objects it stands for. */
   getElements(): NotePreference<'single'>[];
 

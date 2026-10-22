@@ -27,7 +27,7 @@ import type { PageItemAddReference } from './_base/Collections';
  *
  * @collection TextFrame
  */
-export interface TextFrames<TParent = PageItemParent> extends InDesignPlugins.TextFrames {
+export interface TextFrames<TParent = PageItemParent> extends InDesignEdition.TextFrames<TParent>, InDesignPlugins.TextFrames {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

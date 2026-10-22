@@ -17,7 +17,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Widget
  */
-export interface Widgets extends InDesignPlugins.Widgets {
+export interface Widgets extends InDesignEdition.Widgets, InDesignPlugins.Widgets {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

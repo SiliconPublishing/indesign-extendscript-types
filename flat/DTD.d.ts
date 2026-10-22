@@ -12,6 +12,7 @@ import type { XMLTag } from './XMLTag';
 import type { SpecialCharacters } from './Enums/SpecialCharacters';
 import type { SelectionOptions } from './Enums/SelectionOptions';
 import type { XMLItem } from "./XMLItem";
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -27,7 +28,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * The document type declaration governing XML validation and the tag
  * structure of a document's XML view.
  */
-export interface DTD extends InDesignPlugins.DTD<'single'> {
+export interface DTD extends InDesignEdition.DTD, InDesignPlugins.DTD<'single'> {
   /**
    * A collection of events
    */
@@ -126,11 +127,6 @@ export interface DTD extends InDesignPlugins.DTD<'single'> {
   set rootTag(value: XMLTag);
   /** Deletes the DTD. */
   remove(): void;
-  /**
-   * Selects the object.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(existingSelection?: SelectionOptions): void;
   // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
 
   /**
@@ -144,7 +140,7 @@ export interface DTD extends InDesignPlugins.DTD<'single'> {
  * The document type declaration governing XML validation and the tag
  * structure of a document's XML view.
  */
-export interface DTDPlural extends InDesignPlugins.DTD<'plural'> {
+export interface DTDPlural extends InDesignEdition.DTDPlural, InDesignPlugins.DTD<'plural'> {
   /**
    * A collection of events
    */
@@ -243,11 +239,6 @@ export interface DTDPlural extends InDesignPlugins.DTD<'plural'> {
   set rootTag(value: XMLTag);
   /** Deletes the DTD. */
   remove(): (void)[];
-  /**
-   * Selects the object.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(existingSelection?: SelectionOptions): (void)[];
   // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
 
   /**
@@ -255,4 +246,39 @@ export interface DTDPlural extends InDesignPlugins.DTD<'plural'> {
    * Generated from the InDesign 21.6 scripting dictionary.
    */
   duplicate(): (XMLItem)[];
+}
+/** DTD's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DTDDesktop {
+  /**
+   * Selects the object.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(existingSelection?: SelectionOptions): void;
+}
+
+/** DTD's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DTDDesktopPlural {
+  /**
+   * Selects the object.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(existingSelection?: SelectionOptions): (void)[];
+}
+
+/** DTD's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DTDServer {
+}
+
+/** DTD's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DTDServerPlural {
+}
+
+/** DTD's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DTDPortable {
+}
+
+/** DTD's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DTDPortablePlural {
 }

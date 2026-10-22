@@ -9,6 +9,7 @@ import type { Mode, Read } from './_base/Types';
 import type { LabelableEventDOMObject, IndexedDOMObject, ReadonlyNamedDOMObject } from './_base/DomObjects';
 import type { Application } from './Application';
 import type { Language } from './Language';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A language definition that exposes the available hyphenation, spelling, and
@@ -20,16 +21,13 @@ import type { Language } from './Language';
 export interface LanguageWithVendors<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Application, M>,
     IndexedDOMObject<Application, M>,
-    ReadonlyNamedDOMObject<Application, M>, InDesignPlugins.LanguageWithVendors<M> {
+    ReadonlyNamedDOMObject<Application, M>, InDesignEdition.LanguageWithVendors<M>, InDesignPlugins.LanguageWithVendors<M> {
   /** Resolves the proxy into the individual {@link LanguageWithVendors} objects it stands for. */
   getElements(): LanguageWithVendors<'single'>[];
 
 
   /** The unique numeric ID of the language within its session. */
   readonly id: Read<M, number>;
-  /** The untranslated (English) name of the language. */
-  readonly untranslatedName: Read<M, string>;
-
   /** The full name of the language's ICU locale, used by ICU-based text services. */
   readonly icuLocaleName: Read<M, string>;
 
@@ -75,3 +73,15 @@ export interface LanguageWithVendors<M extends Mode = 'single'>
    */
   removeDictionaryPath(filePath: string): Read<M, string>;
 }
+/** LanguageWithVendors's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface LanguageWithVendorsDesktop<M extends Mode = 'single'> extends EditionPart {
+  /** The untranslated (English) name of the language.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly untranslatedName: Read<M, string>;
+}
+
+/** LanguageWithVendors's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface LanguageWithVendorsServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** LanguageWithVendors's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface LanguageWithVendorsPortable<M extends Mode = 'single'> extends EditionPart {}

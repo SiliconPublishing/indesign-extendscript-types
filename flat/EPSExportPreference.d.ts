@@ -31,7 +31,7 @@ import type { FilePath } from './_base/Types';
 /**
  * EPS export preferences.
  */
-export interface EPSExportPreference extends InDesignPlugins.EPSExportPreference<'single'> {
+export interface EPSExportPreference extends InDesignEdition.EPSExportPreference, InDesignPlugins.EPSExportPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -172,7 +172,7 @@ export interface EPSExportPreference extends InDesignPlugins.EPSExportPreference
 /**
  * EPS export preferences.
  */
-export interface EPSExportPreferencePlural extends InDesignPlugins.EPSExportPreference<'plural'> {
+export interface EPSExportPreferencePlural extends InDesignEdition.EPSExportPreferencePlural, InDesignPlugins.EPSExportPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

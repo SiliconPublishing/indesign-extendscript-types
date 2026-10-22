@@ -29,6 +29,9 @@ export function runExtendScriptFile(path, opts) {
     return runExtendScript(inlineIncludes(readFileSync(path, 'utf8'), dirname(resolve(path))), opts);
 }
 
+/** The AppleScript target for an app: InDesign Server's dictionary only loads when addressed by bundle id. */
+export const appTarget = (app) => (/server/i.test(app) ? 'application id "com.adobe.InDesignServer"' : `application "${app}"`);
+
 export function runExtendScript(source, { app = 'Adobe InDesign 2026', arg = null, timeoutSec = 600 } = {}) {
     const dir = mkdtempSync(join(tmpdir(), 'idx-'));
     const outPath = join(dir, 'out.json');
@@ -50,7 +53,7 @@ export function runExtendScript(source, { app = 'Adobe InDesign 2026', arg = nul
     ].join('\n');
     writeFileSync(scriptPath, wrapped, 'utf8');
     const as = `with timeout of ${timeoutSec} seconds
-tell application "${app}" to do script (POSIX file "${scriptPath}") language javascript
+tell ${appTarget(app)} to do script (POSIX file "${scriptPath}") language javascript
 end timeout`;
     execFileSync('osascript', ['-e', as], { stdio: ['ignore', 'ignore', 'pipe'], timeout: (timeoutSec + 30) * 1000 });
     if (!existsSync(outPath)) throw new Error('script produced no output');

@@ -13,7 +13,7 @@ import type { LayoutWindow } from './LayoutWindow';
 /**
  * An event dispatched when the value of a property changes on its target.
  */
-export interface MutationEvent<M extends Mode = 'single'> extends Event<M>, InDesignPlugins.MutationEvent<M>{
+export interface MutationEvent<M extends Mode = 'single'> extends Event<M>, InDesignEdition.MutationEvent<M>, InDesignPlugins.MutationEvent<M>{
   /** Resolves the proxy into the individual {@link MutationEvent} objects it stands for. */
   getElements(): MutationEvent<'single'>[];
 

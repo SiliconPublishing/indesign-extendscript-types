@@ -22,7 +22,7 @@ import type { FilePath } from './_base/Types';
 /**
  * GPU performance settings for the application.
  */
-export interface GpuPerformancePreference extends InDesignPlugins.GpuPerformancePreference<'single'> {
+export interface GpuPerformancePreference extends InDesignEdition.GpuPerformancePreference, InDesignPlugins.GpuPerformancePreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -115,7 +115,7 @@ export interface GpuPerformancePreference extends InDesignPlugins.GpuPerformance
 /**
  * GPU performance settings for the application.
  */
-export interface GpuPerformancePreferencePlural extends InDesignPlugins.GpuPerformancePreference<'plural'> {
+export interface GpuPerformancePreferencePlural extends InDesignEdition.GpuPerformancePreferencePlural, InDesignPlugins.GpuPerformancePreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

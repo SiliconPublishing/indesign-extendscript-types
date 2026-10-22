@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Transparency preferences.
  */
-export interface TransparencyPreference extends InDesignPlugins.TransparencyPreference<'single'> {
+export interface TransparencyPreference extends InDesignEdition.TransparencyPreference, InDesignPlugins.TransparencyPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -119,7 +119,7 @@ export interface TransparencyPreference extends InDesignPlugins.TransparencyPref
 /**
  * Transparency preferences.
  */
-export interface TransparencyPreferencePlural extends InDesignPlugins.TransparencyPreference<'plural'> {
+export interface TransparencyPreferencePlural extends InDesignEdition.TransparencyPreferencePlural, InDesignPlugins.TransparencyPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

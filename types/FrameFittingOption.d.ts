@@ -21,7 +21,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
 /**
  * Options for fitting placed or pasted content in a frame.
  */
-export interface FrameFittingOption<M extends Mode = 'single'> extends EventTargetDOMObject<ObjectStyle | Oval | Rectangle | Polygon | Application | Document, M>, InDesignPlugins.FrameFittingOption<M> {
+export interface FrameFittingOption<M extends Mode = 'single'> extends EventTargetDOMObject<ObjectStyle | Oval | Rectangle | Polygon | Application | Document, M>, InDesignEdition.FrameFittingOption<M>, InDesignPlugins.FrameFittingOption<M> {
   /** Resolves the proxy into the individual {@link FrameFittingOption} objects it stands for. */
   getElements(): FrameFittingOption<'single'>[];
 

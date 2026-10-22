@@ -22,7 +22,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Grid printing and exporting preferences.
  */
-export interface GridPrintingPreference extends InDesignPlugins.GridPrintingPreference<'single'> {
+export interface GridPrintingPreference extends InDesignEdition.GridPrintingPreference, InDesignPlugins.GridPrintingPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -127,7 +127,7 @@ export interface GridPrintingPreference extends InDesignPlugins.GridPrintingPref
 /**
  * Grid printing and exporting preferences.
  */
-export interface GridPrintingPreferencePlural extends InDesignPlugins.GridPrintingPreference<'plural'> {
+export interface GridPrintingPreferencePlural extends InDesignEdition.GridPrintingPreferencePlural, InDesignPlugins.GridPrintingPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

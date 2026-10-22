@@ -16,7 +16,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection ValidationError
  */
-export interface ValidationErrors extends InDesignPlugins.ValidationErrors {
+export interface ValidationErrors extends InDesignEdition.ValidationErrors, InDesignPlugins.ValidationErrors {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

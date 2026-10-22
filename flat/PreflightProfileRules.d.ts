@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection PreflightProfileRule
  */
-export interface PreflightProfileRules extends InDesignPlugins.PreflightProfileRules {
+export interface PreflightProfileRules extends InDesignEdition.PreflightProfileRules, InDesignPlugins.PreflightProfileRules {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

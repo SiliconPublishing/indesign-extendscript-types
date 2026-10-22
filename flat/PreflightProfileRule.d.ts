@@ -27,7 +27,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A {@link PreflightRule} activated within a {@link PreflightProfile}, carrying
  * its severity {@link flag} and any rule-specific {@link ruleDataObjects}.
  */
-export interface PreflightProfileRule extends InDesignPlugins.PreflightProfileRule<'single'> {
+export interface PreflightProfileRule extends InDesignEdition.PreflightProfileRule, InDesignPlugins.PreflightProfileRule<'single'> {
   /**
    * A collection of events
    */
@@ -146,7 +146,7 @@ export interface PreflightProfileRule extends InDesignPlugins.PreflightProfileRu
  * A {@link PreflightRule} activated within a {@link PreflightProfile}, carrying
  * its severity {@link flag} and any rule-specific {@link ruleDataObjects}.
  */
-export interface PreflightProfileRulePlural extends InDesignPlugins.PreflightProfileRule<'plural'> {
+export interface PreflightProfileRulePlural extends InDesignEdition.PreflightProfileRulePlural, InDesignPlugins.PreflightProfileRule<'plural'> {
   /**
    * A collection of events
    */

@@ -34,12 +34,16 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { GraphicDesktop } from "./Graphic";
+import type { GraphicServer } from "./Graphic";
+import type { GraphicPortable } from "./Graphic";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A placed SVG (Scalable Vector Graphics) graphic. See {@link Graphic} for the
  * shared placed-graphic surface.
  */
-export interface SVG<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignPlugins.SVG<M> {
+export interface SVG<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignEdition.SVG<TParent, M>, InDesignPlugins.SVG<M> {
   /** Resolves the proxy into the individual {@link SVG} objects it stands for. */
   getElements(): SVG<TParent, 'single'>[];
 
@@ -56,3 +60,11 @@ export interface SVG<TParent = PageItemParent, M extends Mode = 'single'> extend
    */
   resync(resyncData: string): Read<M, void>;
 }
+/** SVG's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface SVGDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicDesktop<TParent, M> {}
+
+/** SVG's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface SVGServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicServer<TParent, M> {}
+
+/** SVG's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface SVGPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicPortable<TParent, M> {}

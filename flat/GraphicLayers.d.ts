@@ -21,7 +21,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection GraphicLayer
  */
-export interface GraphicLayers extends InDesignPlugins.GraphicLayers {
+export interface GraphicLayers extends InDesignEdition.GraphicLayers, InDesignPlugins.GraphicLayers {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -42,7 +42,7 @@ import type { PropertiesSetter } from './_base/Properties';
  *
  * @collection TextVariableInstance
  */
-export interface TextVariableInstances extends InDesignPlugins.TextVariableInstances {
+export interface TextVariableInstances extends InDesignEdition.TextVariableInstances, InDesignPlugins.TextVariableInstances {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

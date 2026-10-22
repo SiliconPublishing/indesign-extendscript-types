@@ -11,6 +11,8 @@ import type { DataMergeTextPlaceholder } from './DataMergeTextPlaceholder';
 import type { DataMergeField } from './DataMergeField';
 import type { Story } from './Story';
 import type { InsertionPoint } from './InsertionPoint';
+import type { EditionPart } from "./_base/Editions";
+import type { Read } from "./_base/Types";
 
 /**
  * A collection of {@link DataMergeTextPlaceholder} objects. These placeholders
@@ -19,7 +21,7 @@ import type { InsertionPoint } from './InsertionPoint';
  *
  * @collection DataMergeTextPlaceholder
  */
-export interface DataMergeTextPlaceholders extends BaseCollection<DataMergeTextPlaceholder, DataMergeTextPlaceholder, DataMergeTextPlaceholder<'plural'>>, InDesignPlugins.DataMergeTextPlaceholders {
+export interface DataMergeTextPlaceholders extends BaseCollection<DataMergeTextPlaceholder, DataMergeTextPlaceholder, DataMergeTextPlaceholder<'plural'>>, InDesignEdition.DataMergeTextPlaceholders, InDesignPlugins.DataMergeTextPlaceholders {
   /**
    * Creates a new data merge text placeholder.
    *
@@ -35,3 +37,19 @@ export interface DataMergeTextPlaceholders extends BaseCollection<DataMergeTextP
     withProperties?: PropertiesSetter<DataMergeTextPlaceholder>,
   ): DataMergeTextPlaceholder;
 }
+/** DataMergeTextPlaceholders's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeTextPlaceholdersDesktop extends EditionPart {}
+
+/** DataMergeTextPlaceholders's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeTextPlaceholdersServer extends EditionPart {
+  /**
+   * Returns the DataMergeTextPlaceholder with the specified name.
+   * InDesign Server only.
+   * @param name The name.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  itemByName(name: string): DataMergeTextPlaceholder;
+}
+
+/** DataMergeTextPlaceholders's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DataMergeTextPlaceholdersPortable extends EditionPart {}

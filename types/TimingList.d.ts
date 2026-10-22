@@ -19,7 +19,7 @@ import type { TimingGroup } from './TimingGroup';
  */
 export interface TimingList<M extends Mode = 'single'>
   extends EventTargetDOMObject<TimingSetting, M>,
-    IndexedDOMObject<TimingSetting, M>, InDesignPlugins.TimingList<M> {
+    IndexedDOMObject<TimingSetting, M>, InDesignEdition.TimingList<M>, InDesignPlugins.TimingList<M> {
   /** Resolves the proxy into the individual {@link TimingList} objects it stands for. */
   getElements(): TimingList<'single'>[];
 

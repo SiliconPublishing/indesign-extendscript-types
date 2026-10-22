@@ -33,7 +33,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
 /**
  * The bullet character used by a paragraph's bulleted list.
  */
-export interface Bullet<M extends Mode = 'single'> extends EventTargetDOMObject<TextDefault | ParagraphStyle | Text | InsertionPoint | TextStyleRange | Paragraph | TextColumn | Line | Word | Character | Story | XmlStory | FindTextPreference | ChangeTextPreference | FindGrepPreference | ChangeGrepPreference | FindTransliteratePreference | ChangeTransliteratePreference, M>, InDesignPlugins.Bullet<M> {
+export interface Bullet<M extends Mode = 'single'> extends EventTargetDOMObject<TextDefault | ParagraphStyle | Text | InsertionPoint | TextStyleRange | Paragraph | TextColumn | Line | Word | Character | Story | XmlStory | FindTextPreference | ChangeTextPreference | FindGrepPreference | ChangeGrepPreference | FindTransliteratePreference | ChangeTransliteratePreference, M>, InDesignEdition.Bullet<M>, InDesignPlugins.Bullet<M> {
   /** Resolves the proxy into the individual {@link Bullet} objects it stands for. */
   getElements(): Bullet<'single'>[];
 

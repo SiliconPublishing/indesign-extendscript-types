@@ -20,5 +20,5 @@ import type { PDFComment } from './PDFComment';
  * @collection Reply
  */
 export interface Replies
-  extends BaseCollection<Reply, Reply, Reply<'plural'>>, IdCollection<Reply>, NamedCollection<Reply>, InDesignPlugins.Replies {
+  extends BaseCollection<Reply, Reply, Reply<'plural'>>, IdCollection<Reply>, NamedCollection<Reply>, InDesignEdition.Replies, InDesignPlugins.Replies {
 }

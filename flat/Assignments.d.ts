@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Assignment
  */
-export interface Assignments extends InDesignPlugins.Assignments {
+export interface Assignments extends InDesignEdition.Assignments, InDesignPlugins.Assignments {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

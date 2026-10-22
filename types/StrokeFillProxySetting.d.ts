@@ -15,7 +15,7 @@ import type { StrokeFillTargetOptions } from './Enums/StrokeFillTargetOptions';
 /**
  * Stroke/fill proxy settings.
  */
-export interface StrokeFillProxySetting<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.StrokeFillProxySetting<M> {
+export interface StrokeFillProxySetting<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.StrokeFillProxySetting<M>, InDesignPlugins.StrokeFillProxySetting<M> {
   /** Resolves the proxy into the individual {@link StrokeFillProxySetting} objects it stands for. */
   getElements(): StrokeFillProxySetting<'single'>[];
 

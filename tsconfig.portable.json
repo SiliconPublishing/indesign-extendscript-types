@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "files": [
+    "lib/global.d.ts",
+    "flat/editions/portable.d.ts"
+  ],
+  "include": [
+    "test/typecheck/portable/*.ts"
+  ]
+}

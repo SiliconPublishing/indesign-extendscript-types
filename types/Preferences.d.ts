@@ -14,5 +14,5 @@ import type { Preference } from './Preference';
  *
  * @collection Preference
  */
-export interface Preferences extends BaseCollection<Preference, Preference, Preference<'plural'>>, InDesignPlugins.Preferences {
+export interface Preferences extends BaseCollection<Preference, Preference, Preference<'plural'>>, InDesignEdition.Preferences, InDesignPlugins.Preferences {
 }

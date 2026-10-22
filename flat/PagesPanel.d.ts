@@ -30,7 +30,7 @@ import type { Application } from './Application';
  * it affects the document. Add, move, or delete pages through
  * {@link Document.pages} and {@link Document.masterSpreads}.
  */
-export interface PagesPanel extends InDesignPlugins.PagesPanel<'single'> {
+export interface PagesPanel extends InDesignEdition.PagesPanel, InDesignPlugins.PagesPanel<'single'> {
   /**
    * A collection of events
    */
@@ -163,7 +163,7 @@ export interface PagesPanel extends InDesignPlugins.PagesPanel<'single'> {
  * it affects the document. Add, move, or delete pages through
  * {@link Document.pages} and {@link Document.masterSpreads}.
  */
-export interface PagesPanelPlural extends InDesignPlugins.PagesPanel<'plural'> {
+export interface PagesPanelPlural extends InDesignEdition.PagesPanelPlural, InDesignPlugins.PagesPanel<'plural'> {
   /**
    * A collection of events
    */

@@ -26,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
  *
  * @collection Page
  */
-export interface Pages<TParent = Spread | MasterSpread> extends InDesignPlugins.Pages {
+export interface Pages<TParent = Spread | MasterSpread> extends InDesignEdition.Pages<TParent>, InDesignPlugins.Pages {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

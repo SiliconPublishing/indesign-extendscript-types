@@ -67,11 +67,23 @@ import type { TextPath } from './TextPath';
 import type { TextVariableInstances } from './TextVariableInstances';
 import type { Tint } from './Tint';
 import type { XMLItem } from './XMLItem';
+import type { TextDesktop } from "./Text";
+import type { TextServer } from "./Text";
+import type { TextPortable } from "./Text";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A single word in a text range.
  */
-export interface Word<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M>, InDesignPlugins.Word<M> {
+export interface Word<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M>, InDesignEdition.Word<TParent, M>, InDesignPlugins.Word<M> {
   /** Resolves the proxy into the individual {@link Word} objects it stands for. */
   getElements(): Word<TParent, 'single'>[];
 }
+/** Word's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface WordDesktop<TParent = TextParent, M extends Mode = 'single'> extends EditionPart, TextDesktop<TParent, M> {}
+
+/** Word's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface WordServer<TParent = TextParent, M extends Mode = 'single'> extends EditionPart, TextServer<TParent, M> {}
+
+/** Word's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface WordPortable<TParent = TextParent, M extends Mode = 'single'> extends EditionPart, TextPortable<TParent, M> {}

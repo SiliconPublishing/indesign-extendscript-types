@@ -26,7 +26,7 @@ import type { PageItemAddReference } from './_base/Collections';
  *
  * @collection ListBox
  */
-export interface ListBoxes<TParent = PageItemParent> extends InDesignPlugins.ListBoxes {
+export interface ListBoxes<TParent = PageItemParent> extends InDesignEdition.ListBoxes<TParent>, InDesignPlugins.ListBoxes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

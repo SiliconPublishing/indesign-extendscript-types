@@ -29,7 +29,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A mapping from an XML tag to a paragraph, character, table, or cell style,
  * used when importing tagged XML into a document.
  */
-export interface XMLImportMap extends InDesignPlugins.XMLImportMap<'single'> {
+export interface XMLImportMap extends InDesignEdition.XMLImportMap, InDesignPlugins.XMLImportMap<'single'> {
   /**
    * A collection of events
    */
@@ -128,7 +128,7 @@ export interface XMLImportMap extends InDesignPlugins.XMLImportMap<'single'> {
  * A mapping from an XML tag to a paragraph, character, table, or cell style,
  * used when importing tagged XML into a document.
  */
-export interface XMLImportMapPlural extends InDesignPlugins.XMLImportMap<'plural'> {
+export interface XMLImportMapPlural extends InDesignEdition.XMLImportMapPlural, InDesignPlugins.XMLImportMap<'plural'> {
   /**
    * A collection of events
    */

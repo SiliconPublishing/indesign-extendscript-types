@@ -26,5 +26,5 @@ export interface Spreads
     BaseCollection<Spread, Spread, Spread<'plural'>>,
     IdCollection<Spread>,
     NamedCollection<Spread>,
-    AddableStructureCollection<Spread, Spread | Document>, InDesignPlugins.Spreads {
+    AddableStructureCollection<Spread, Spread | Document>, InDesignEdition.Spreads, InDesignPlugins.Spreads {
 }

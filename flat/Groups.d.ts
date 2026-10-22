@@ -27,7 +27,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Group
  */
-export interface Groups<TParent = PageItemParent> extends InDesignPlugins.Groups {
+export interface Groups<TParent = PageItemParent> extends InDesignEdition.Groups<TParent>, InDesignPlugins.Groups {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

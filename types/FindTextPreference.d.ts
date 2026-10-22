@@ -68,7 +68,7 @@ import type { ParagraphStyle } from './ParagraphStyle';
  * The content and formatting criteria a text search matches against, set via
  * {@link Application.findTextPreferences} and used by {@link Application.findText}.
  */
-export interface FindTextPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.FindTextPreference<M> {
+export interface FindTextPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.FindTextPreference<M>, InDesignPlugins.FindTextPreference<M> {
   /** Resolves the proxy into the individual {@link FindTextPreference} objects it stands for. */
   getElements(): FindTextPreference<'single'>[];
 

@@ -17,7 +17,7 @@ import type { TaskAlertType } from './Enums/TaskAlertType';
  */
 export interface BackgroundTask<M extends Mode = 'single'>
   extends EventTargetDOMObject<Application, M>,
-    IndexedDOMObject<Application, M>, InDesignPlugins.BackgroundTask<M> {
+    IndexedDOMObject<Application, M>, InDesignEdition.BackgroundTask<M>, InDesignPlugins.BackgroundTask<M> {
   /** Resolves the proxy into the individual {@link BackgroundTask} objects it stands for. */
   getElements(): BackgroundTask<'single'>[];
 

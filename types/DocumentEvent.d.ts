@@ -12,12 +12,13 @@ import type { File } from './_base/Types';
 import type { UserInteractionLevels } from './Enums/UserInteractionLevels';
 import type { Document } from './Document';
 import type { LayoutWindow } from './LayoutWindow';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * An event dispatched during a document lifecycle transition — creation,
  * opening, saving, reverting, or closing.
  */
-export interface DocumentEvent<M extends Mode = 'single'> extends Event<M>, InDesignPlugins.DocumentEvent<M>{
+export interface DocumentEvent<M extends Mode = 'single'> extends Event<M>, InDesignEdition.DocumentEvent<M>, InDesignPlugins.DocumentEvent<M>{
   /** Resolves the proxy into the individual {@link DocumentEvent} objects it stands for. */
   getElements(): DocumentEvent<'single'>[];
 
@@ -25,8 +26,21 @@ export interface DocumentEvent<M extends Mode = 'single'> extends Event<M>, InDe
 
   /** The full path to the document, including its name. */
   readonly fullName: Read<M, File>;
-
-  /** Controls the display of dialogs and alerts while this event's handler runs. */
+}
+/** DocumentEvent's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DocumentEventDesktop<M extends Mode = 'single'> extends EditionPart {
+  /** Controls the display of dialogs and alerts while this event's handler runs.
+   * Desktop only: InDesign Server 21.6 does not have it. */
   get userInteractionLevel(): Read<M, UserInteractionLevels>;
+
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
   set userInteractionLevel(value: UserInteractionLevels);
 }
+
+/** DocumentEvent's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DocumentEventServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** DocumentEvent's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DocumentEventPortable<M extends Mode = 'single'> extends EditionPart {}

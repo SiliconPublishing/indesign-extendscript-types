@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Tagged text import preferences.
  */
-export interface TaggedTextImportPreference extends InDesignPlugins.TaggedTextImportPreference<'single'> {
+export interface TaggedTextImportPreference extends InDesignEdition.TaggedTextImportPreference, InDesignPlugins.TaggedTextImportPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -119,7 +119,7 @@ export interface TaggedTextImportPreference extends InDesignPlugins.TaggedTextIm
 /**
  * Tagged text import preferences.
  */
-export interface TaggedTextImportPreferencePlural extends InDesignPlugins.TaggedTextImportPreference<'plural'> {
+export interface TaggedTextImportPreferencePlural extends InDesignEdition.TaggedTextImportPreferencePlural, InDesignPlugins.TaggedTextImportPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

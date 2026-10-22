@@ -23,5 +23,5 @@ export interface XmlStories
   extends
     BaseCollection<XmlStory, XmlStory, XmlStory<'plural'>>,
     IdCollection<XmlStory>,
-    NamedCollection<XmlStory>, InDesignPlugins.XmlStories {
+    NamedCollection<XmlStory>, InDesignEdition.XmlStories, InDesignPlugins.XmlStories {
 }

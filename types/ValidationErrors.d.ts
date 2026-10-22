@@ -14,5 +14,5 @@ import type { ValidationError } from './ValidationError';
  *
  * @collection ValidationError
  */
-export interface ValidationErrors extends BaseCollection<ValidationError, ValidationError, ValidationError<'plural'>>, InDesignPlugins.ValidationErrors {
+export interface ValidationErrors extends BaseCollection<ValidationError, ValidationError, ValidationError<'plural'>>, InDesignEdition.ValidationErrors, InDesignPlugins.ValidationErrors {
 }

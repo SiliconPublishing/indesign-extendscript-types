@@ -28,5 +28,5 @@ export interface Sounds<TParent = PageItemParent>
     BaseCollection<Sound<TParent>, Sound, Sound<TParent, 'plural'>>,
     IdCollection<Sound<TParent>>,
     NamedCollection<Sound<TParent>>,
-    AddablePageItemCollection<Sound<TParent>, Sound>, InDesignPlugins.Sounds {
+    AddablePageItemCollection<Sound<TParent>, Sound>, InDesignEdition.Sounds<TParent>, InDesignPlugins.Sounds {
 }

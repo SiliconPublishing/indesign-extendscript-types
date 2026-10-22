@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection MeasurementCombobox
  */
-export interface MeasurementComboboxes extends InDesignPlugins.MeasurementComboboxes {
+export interface MeasurementComboboxes extends InDesignEdition.MeasurementComboboxes, InDesignPlugins.MeasurementComboboxes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

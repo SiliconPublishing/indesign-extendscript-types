@@ -12,7 +12,7 @@ import type { Application } from './Application';
 /**
  * Auto-correct preferences.
  */
-export interface AutoCorrectPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.AutoCorrectPreference<M> {
+export interface AutoCorrectPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.AutoCorrectPreference<M>, InDesignPlugins.AutoCorrectPreference<M> {
   /** Resolves the proxy into the individual {@link AutoCorrectPreference} objects it stands for. */
   getElements(): AutoCorrectPreference<'single'>[];
 

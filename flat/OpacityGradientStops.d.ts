@@ -18,7 +18,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection OpacityGradientStop
  */
-export interface OpacityGradientStops extends InDesignPlugins.OpacityGradientStops {
+export interface OpacityGradientStops extends InDesignEdition.OpacityGradientStops, InDesignPlugins.OpacityGradientStops {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

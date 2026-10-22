@@ -15,7 +15,7 @@ import type { Submenu } from './Submenu';
  * A visual divider line between groups of {@link MenuItem}s in a {@link Menu}
  * or {@link Submenu}.
  */
-export interface MenuSeparator<M extends Mode = 'single'> extends MenuElement<M>, InDesignPlugins.MenuSeparator<M>{
+export interface MenuSeparator<M extends Mode = 'single'> extends MenuElement<M>, InDesignEdition.MenuSeparator<M>, InDesignPlugins.MenuSeparator<M>{
   /** Resolves the proxy into the individual {@link MenuSeparator} objects it stands for. */
   getElements(): MenuSeparator<'single'>[];
 

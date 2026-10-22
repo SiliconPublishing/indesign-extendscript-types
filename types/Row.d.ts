@@ -20,6 +20,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
 import type { Text } from './Text';
 import type { FirstBaseline } from './Enums/FirstBaseline';
 import type { RowTypes } from './Enums/RowTypes';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A single row of a {@link Table}, spanning every column.
@@ -33,7 +34,7 @@ export interface Row<M extends Mode = 'single'>
   extends EventTargetDOMObject<Table, M>,
     IndexedDOMObject<Table, M>,
     TableGeometry<M>,
-    TableCellAttributes<M>, InDesignPlugins.Row<M>{
+    TableCellAttributes<M>, InDesignEdition.Row<M>, InDesignPlugins.Row<M>{
   /** Resolves the proxy into the individual {@link Row} objects it stands for. */
   getElements(): Row<'single'>[];
 
@@ -201,10 +202,19 @@ export interface Row<M extends Mode = 'single'>
    * @param thru The last row in the range, given as a {@link Cell}, {@link Column}, or {@link Row}.
    */
   redistribute(using: HorizontalOrVertical, thru?: Cell | Column | Row): Read<M, void>;
-
+}
+/** Row's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface RowDesktop<M extends Mode = 'single'> extends EditionPart {
   /**
    * Selects the row in the active document window.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
    */
   select(existingSelection?: SelectionOptions): Read<M, void>;
 }
+
+/** Row's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface RowServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** Row's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface RowPortable<M extends Mode = 'single'> extends EditionPart {}

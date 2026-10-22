@@ -28,7 +28,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A {@link BehaviorParent form field} performs the behavior in response to a
  * triggering {@link BehaviorEvents event} such as a click or rollover.
  */
-export interface Behavior extends InDesignPlugins.Behavior<'single'> {
+export interface Behavior extends InDesignEdition.Behavior, InDesignPlugins.Behavior<'single'> {
   /**
    * A collection of events
    */
@@ -149,7 +149,7 @@ export interface Behavior extends InDesignPlugins.Behavior<'single'> {
  * A {@link BehaviorParent form field} performs the behavior in response to a
  * triggering {@link BehaviorEvents event} such as a click or rollover.
  */
-export interface BehaviorPlural extends InDesignPlugins.Behavior<'plural'> {
+export interface BehaviorPlural extends InDesignEdition.BehaviorPlural, InDesignPlugins.Behavior<'plural'> {
   /**
    * A collection of events
    */

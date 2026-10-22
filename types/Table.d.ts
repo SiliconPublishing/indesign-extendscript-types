@@ -72,6 +72,7 @@ import type { AnyGraphic, AnyPageItem } from './_base/Unions';
 import type { Column } from './Column';
 import type { Row } from './Row';
 import type { TableCaptionPositionOptions } from './Enums/TableCaptionPositionOptions';
+import type { EditionPart } from "./_base/Editions";
 
 /** Any object a {@link Table} can anchor into: a text-flow-bearing object or another table's cell. */
 export type TableParent =
@@ -90,7 +91,7 @@ export type TableParent =
 export interface Table<M extends Mode = 'single'>
   extends LabelableEventDOMObject<TableParent, M>,
     IndexedDOMObject<TableParent, M>,
-    TableFormatAttributes<M>, InDesignPlugins.Table<M>{
+    TableFormatAttributes<M>, InDesignEdition.Table<M>, InDesignPlugins.Table<M>{
   /** Resolves the proxy into the individual {@link Table} objects it stands for. */
   getElements(): Table<'single'>[];
 
@@ -368,10 +369,19 @@ export interface Table<M extends Mode = 'single'>
 
   /** Converts any bullets or numbering in the table's cells into literal text. */
   convertBulletsAndNumberingToText(): Read<M, void>;
-
+}
+/** Table's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface TableDesktop<M extends Mode = 'single'> extends EditionPart {
   /**
    * Selects the table in the active document window.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
    */
   select(existingSelection?: SelectionOptions): Read<M, void>;
 }
+
+/** Table's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface TableServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** Table's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface TablePortable<M extends Mode = 'single'> extends EditionPart {}

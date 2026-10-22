@@ -28,7 +28,7 @@ import type { SwatchParent } from './_base/Parents';
  * A mixed ink group — a template of component inks and incremental steps used
  * to generate a family of {@link MixedInk} swatches at once.
  */
-export interface MixedInkGroup extends InDesignPlugins.MixedInkGroup<'single'> {
+export interface MixedInkGroup extends InDesignEdition.MixedInkGroup, InDesignPlugins.MixedInkGroup<'single'> {
   /**
    * A collection of events
    */
@@ -157,7 +157,7 @@ export interface MixedInkGroup extends InDesignPlugins.MixedInkGroup<'single'> {
  * A mixed ink group — a template of component inks and incremental steps used
  * to generate a family of {@link MixedInk} swatches at once.
  */
-export interface MixedInkGroupPlural extends InDesignPlugins.MixedInkGroup<'plural'> {
+export interface MixedInkGroupPlural extends InDesignEdition.MixedInkGroupPlural, InDesignPlugins.MixedInkGroup<'plural'> {
   /**
    * A collection of events
    */

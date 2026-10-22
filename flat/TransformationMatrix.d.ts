@@ -24,7 +24,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * method (`scaleMatrix`, `rotateMatrix`, `catenateMatrix`, ...) returns a new
  * {@link TransformationMatrix} rather than mutating the receiver.
  */
-export interface TransformationMatrix extends InDesignPlugins.TransformationMatrix<'single'> {
+export interface TransformationMatrix extends InDesignEdition.TransformationMatrix, InDesignPlugins.TransformationMatrix<'single'> {
   /**
    * A collection of events
    */
@@ -172,7 +172,7 @@ export interface TransformationMatrix extends InDesignPlugins.TransformationMatr
  * method (`scaleMatrix`, `rotateMatrix`, `catenateMatrix`, ...) returns a new
  * {@link TransformationMatrix} rather than mutating the receiver.
  */
-export interface TransformationMatrixPlural extends InDesignPlugins.TransformationMatrix<'plural'> {
+export interface TransformationMatrixPlural extends InDesignEdition.TransformationMatrixPlural, InDesignPlugins.TransformationMatrix<'plural'> {
   /**
    * A collection of events
    */

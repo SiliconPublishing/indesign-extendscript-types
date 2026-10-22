@@ -22,5 +22,5 @@ export interface MenuActions
   extends
     BaseCollection<MenuAction, MenuAction, MenuAction<'plural'>>,
     IdCollection<MenuAction>,
-    NamedCollection<MenuAction>, InDesignPlugins.MenuActions {
+    NamedCollection<MenuAction>, InDesignEdition.MenuActions, InDesignPlugins.MenuActions {
 }

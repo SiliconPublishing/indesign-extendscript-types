@@ -39,7 +39,7 @@ import type { Word } from './Word';
 export interface Endnote<M extends Mode = 'single'>
   extends LabelableEventDOMObject<InsertionPoint | Story | XmlStory | Cell | Table, M>,
     IndexedDOMObject<InsertionPoint | Story | XmlStory | Cell | Table, M>,
-    NamableDOMObject<InsertionPoint | Story | XmlStory | Cell | Table, M>, InDesignPlugins.Endnote<M> {
+    NamableDOMObject<InsertionPoint | Story | XmlStory | Cell | Table, M>, InDesignEdition.Endnote<M>, InDesignPlugins.Endnote<M> {
   /** Resolves the proxy into the individual {@link Endnote} objects it stands for. */
   getElements(): Endnote<'single'>[];
 

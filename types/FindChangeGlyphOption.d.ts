@@ -12,7 +12,7 @@ import type { Application } from './Application';
 /**
  * Options controlling a glyph find/change operation.
  */
-export interface FindChangeGlyphOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.FindChangeGlyphOption<M> {
+export interface FindChangeGlyphOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.FindChangeGlyphOption<M>, InDesignPlugins.FindChangeGlyphOption<M> {
   /** Resolves the proxy into the individual {@link FindChangeGlyphOption} objects it stands for. */
   getElements(): FindChangeGlyphOption<'single'>[];
 

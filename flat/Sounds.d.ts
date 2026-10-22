@@ -27,7 +27,7 @@ import type { PageItemAddReference } from './_base/Collections';
  *
  * @collection Sound
  */
-export interface Sounds<TParent = PageItemParent> extends InDesignPlugins.Sounds {
+export interface Sounds<TParent = PageItemParent> extends InDesignEdition.Sounds<TParent>, InDesignPlugins.Sounds {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

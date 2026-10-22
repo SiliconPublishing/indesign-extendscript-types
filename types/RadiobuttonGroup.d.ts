@@ -14,7 +14,7 @@ import type { RadiobuttonControl } from './RadiobuttonControl';
 /**
  * A bordered group of mutually-exclusive {@link RadiobuttonControl}s.
  */
-export interface RadiobuttonGroup<M extends Mode = 'single'> extends Widget<M>, InDesignPlugins.RadiobuttonGroup<M>{
+export interface RadiobuttonGroup<M extends Mode = 'single'> extends Widget<M>, InDesignEdition.RadiobuttonGroup<M>, InDesignPlugins.RadiobuttonGroup<M>{
   /** Resolves the proxy into the individual {@link RadiobuttonGroup} objects it stands for. */
   getElements(): RadiobuttonGroup<'single'>[];
 

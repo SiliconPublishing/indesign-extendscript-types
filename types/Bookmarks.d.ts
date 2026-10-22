@@ -28,7 +28,7 @@ export interface Bookmarks
   extends
     BaseCollection<Bookmark, Bookmark, Bookmark<'plural'>>,
     IdCollection<Bookmark>,
-    NamedCollection<Bookmark>, InDesignPlugins.Bookmarks {
+    NamedCollection<Bookmark>, InDesignEdition.Bookmarks, InDesignPlugins.Bookmarks {
   /**
    * Creates a new bookmark pointing to a specific destination.
    *

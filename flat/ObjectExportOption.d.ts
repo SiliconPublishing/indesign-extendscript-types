@@ -46,7 +46,7 @@ import type { FilePath } from './_base/Types';
  * role, alt text, actual text), and how it converts to an image (format,
  * resolution, quality) when it can't export as native markup.
  */
-export interface ObjectExportOption extends InDesignPlugins.ObjectExportOption<'single'> {
+export interface ObjectExportOption extends InDesignEdition.ObjectExportOption, InDesignPlugins.ObjectExportOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -231,7 +231,7 @@ export interface ObjectExportOption extends InDesignPlugins.ObjectExportOption<'
  * role, alt text, actual text), and how it converts to an image (format,
  * resolution, quality) when it can't export as native markup.
  */
-export interface ObjectExportOptionPlural extends InDesignPlugins.ObjectExportOption<'plural'> {
+export interface ObjectExportOptionPlural extends InDesignEdition.ObjectExportOptionPlural, InDesignPlugins.ObjectExportOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

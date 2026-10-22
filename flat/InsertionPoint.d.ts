@@ -70,6 +70,10 @@ import type { TextPath } from './TextPath';
 import type { TextVariableInstances } from './TextVariableInstances';
 import type { Tint } from './Tint';
 import type { XMLItem } from './XMLItem';
+import type { TextDesktop } from "./Text";
+import type { TextServer } from "./Text";
+import type { TextPortable } from "./Text";
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -147,17 +151,17 @@ import type { Character } from './Character';
 import type { PageItems } from './PageItems';
 import type { AnyGraphic } from './_base/Unions';
 import type { AnyPageItem } from './_base/Unions';
-import type { ColorSpace } from './Enums/ColorSpace';
-import type { StyleType } from './Enums/StyleType';
 import type { XMLElement } from './XMLElement';
 import type { LocationOptions } from './Enums/LocationOptions';
 import type { TextDuplicateReference } from './Text';
-import type { PageItemUnion } from './_base/Unions';
 import type { RangeSortOrder } from './Enums/RangeSortOrder';
 import type { HyperlinkTextSource } from './HyperlinkTextSource';
 import type { ExportFormat } from './Enums/ExportFormat';
 import type { PDFExportPreset } from './PDFExportPreset';
 import type { SelectionOptions } from './Enums/SelectionOptions';
+import type { PageItemUnion } from './_base/Unions';
+import type { ColorSpace } from './Enums/ColorSpace';
+import type { StyleType } from './Enums/StyleType';
 
 /**
  * A zero-width position between two characters — the target of text-insertion
@@ -167,7 +171,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
  * {@link endnotes} collection and the endnote/text-fragment creation methods
  * below.
  */
-export interface InsertionPoint<TParent = TextParent> extends InDesignPlugins.InsertionPoint<'single'> {
+export interface InsertionPoint<TParent = TextParent> extends InDesignEdition.InsertionPoint<TParent>, InDesignPlugins.InsertionPoint<'single'> {
   /**
    * A collection of events
    */
@@ -832,9 +836,6 @@ export interface InsertionPoint<TParent = TextParent> extends InDesignPlugins.In
   /** Paragraph kashida width. 0 is none, 1 is short, 2 is medium, 3 is long */
   get paragraphKashidaWidth(): number;
   set paragraphKashidaWidth(value: number | never);
-  /** If true, aligns the baseline of the text to the baseline grid. */
-  get alignToBaseline(): boolean;
-  set alignToBaseline(value: boolean | never);
   /** First-line indent, relative to {@link leftIndent}. Negative values hang. */
   get firstLineIndent(): number;
   set firstLineIndent(value: MeasurementValue | never);
@@ -1414,26 +1415,6 @@ export interface InsertionPoint<TParent = TextParent> extends InDesignPlugins.In
    */
   get contents(): string | SpecialCharacters;
   set contents(value: string | SpecialCharacters);
-  /**
-   * Creates a thumbnail image of the range as it would render, independent of
-   * its currently applied style.
-   * @param space The color space to render swatches in.
-   * @param to Destination path for the generated image.
-   */
-  createThumbnailWithProperties(previewText: string, pointSize: number, space: ColorSpace, colorValue: number[], to: FilePath): boolean;
-  /**
-   * Whether the range has local formatting overrides on top of its applied style.
-   * @param charStyleAsOverride If `true`, treats an applied {@link CharacterStyle} itself as an override. Defaults to `true`.
-   */
-  textHasOverrides(charOrParaStyle: StyleType, charStyleAsOverride?: boolean): boolean;
-  /**
-   * Creates a thumbnail image of the range using its applied style and any
-   * local overrides.
-   * @param space The color space to render swatches in.
-   * @param to Destination path for the generated image.
-   * @param charOrParaStyle Which applied style (character or paragraph) to render with.
-   */
-  createStyleThumbnailWithProperties(previewText: string, pointSize: number, space: ColorSpace, colorValue: number[], to: FilePath, charOrParaStyle: StyleType): boolean;
   /** Tags the range's parent story using the default tags from XML preferences. */
   autoTag(): void;
   /** Associates the range with an XML element while preserving its existing content. @param using The XML element to associate. */
@@ -1478,13 +1459,6 @@ export interface InsertionPoint<TParent = TextParent> extends InDesignPlugins.In
    * @param reference Required when `to` is {@link LocationOptions.BEFORE} or {@link LocationOptions.AFTER} — see {@link TextDuplicateReference}.
    */
   move(to: LocationOptions, reference?: TextDuplicateReference): Text;
-  /**
-   * Places a file into the range, replacing its content.
-   * @param fileName Path to the asset to place.
-   * @param showingOptions If `true`, shows the format's import-options dialog. Defaults to `false`.
-   * @param withProperties Initial property values for the placed object(s).
-   */
-  place(fileName: FilePath, showingOptions?: boolean, withProperties?: object): PageItemUnion[];
   /** Converts the range to a {@link Note}. */
   convertToNote(): Note;
   /**
@@ -1525,29 +1499,10 @@ export interface InsertionPoint<TParent = TextParent> extends InDesignPlugins.In
     withProperties?: object,
   ): void;
   /**
-   * Exports the range to a file.
-   * @param format An {@link ExportFormat} or a matching file-type extension string.
-   * @param to Destination path.
-   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
-   * @param using An export preset such as a {@link PDFExportPreset}.
-   */
-  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): void;
-  /**
-   * Exports the range to a file on a background thread, returning the running {@link BackgroundTask}.
-   * @param format An {@link ExportFormat} or a matching file-type extension string.
-   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
-   */
-  asynchronousExportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): BackgroundTask;
-  /**
    * Applies one or more {@link Condition}s to the range.
    * @param removeExisting If `true`, removes conditions already applied before applying the new ones. Defaults to `false`.
    */
   applyConditions(using: Condition | Condition[], removeExisting?: boolean): void;
-  /**
-   * Selects the range in the active document window.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(existingSelection?: SelectionOptions): void;
   /**
    * The type of pair kerning. Unlike every other text object, an insertion point also reports
    * `'Manual'` — the state it enters when {@link kerningValue} is set by hand.
@@ -1579,7 +1534,7 @@ export interface InsertionPoint<TParent = TextParent> extends InDesignPlugins.In
  * {@link endnotes} collection and the endnote/text-fragment creation methods
  * below.
  */
-export interface InsertionPointPlural<TParent = TextParent> extends InDesignPlugins.InsertionPoint<'plural'> {
+export interface InsertionPointPlural<TParent = TextParent> extends InDesignEdition.InsertionPointPlural<TParent>, InDesignPlugins.InsertionPoint<'plural'> {
   /**
    * A collection of events
    */
@@ -2244,9 +2199,6 @@ export interface InsertionPointPlural<TParent = TextParent> extends InDesignPlug
   /** Paragraph kashida width. 0 is none, 1 is short, 2 is medium, 3 is long */
   get paragraphKashidaWidth(): (number)[];
   set paragraphKashidaWidth(value: number | never);
-  /** If true, aligns the baseline of the text to the baseline grid. */
-  get alignToBaseline(): (boolean)[];
-  set alignToBaseline(value: boolean | never);
   /** First-line indent, relative to {@link leftIndent}. Negative values hang. */
   get firstLineIndent(): (number)[];
   set firstLineIndent(value: MeasurementValue | never);
@@ -2826,26 +2778,6 @@ export interface InsertionPointPlural<TParent = TextParent> extends InDesignPlug
    */
   get contents(): (string | SpecialCharacters)[];
   set contents(value: string | SpecialCharacters);
-  /**
-   * Creates a thumbnail image of the range as it would render, independent of
-   * its currently applied style.
-   * @param space The color space to render swatches in.
-   * @param to Destination path for the generated image.
-   */
-  createThumbnailWithProperties(previewText: string, pointSize: number, space: ColorSpace, colorValue: number[], to: FilePath): (boolean)[];
-  /**
-   * Whether the range has local formatting overrides on top of its applied style.
-   * @param charStyleAsOverride If `true`, treats an applied {@link CharacterStyle} itself as an override. Defaults to `true`.
-   */
-  textHasOverrides(charOrParaStyle: StyleType, charStyleAsOverride?: boolean): (boolean)[];
-  /**
-   * Creates a thumbnail image of the range using its applied style and any
-   * local overrides.
-   * @param space The color space to render swatches in.
-   * @param to Destination path for the generated image.
-   * @param charOrParaStyle Which applied style (character or paragraph) to render with.
-   */
-  createStyleThumbnailWithProperties(previewText: string, pointSize: number, space: ColorSpace, colorValue: number[], to: FilePath, charOrParaStyle: StyleType): (boolean)[];
   /** Tags the range's parent story using the default tags from XML preferences. */
   autoTag(): (void)[];
   /** Associates the range with an XML element while preserving its existing content. @param using The XML element to associate. */
@@ -2890,13 +2822,6 @@ export interface InsertionPointPlural<TParent = TextParent> extends InDesignPlug
    * @param reference Required when `to` is {@link LocationOptions.BEFORE} or {@link LocationOptions.AFTER} — see {@link TextDuplicateReference}.
    */
   move(to: LocationOptions, reference?: TextDuplicateReference): (Text)[];
-  /**
-   * Places a file into the range, replacing its content.
-   * @param fileName Path to the asset to place.
-   * @param showingOptions If `true`, shows the format's import-options dialog. Defaults to `false`.
-   * @param withProperties Initial property values for the placed object(s).
-   */
-  place(fileName: FilePath, showingOptions?: boolean, withProperties?: object): (PageItemUnion[])[];
   /** Converts the range to a {@link Note}. */
   convertToNote(): (Note)[];
   /**
@@ -2937,29 +2862,10 @@ export interface InsertionPointPlural<TParent = TextParent> extends InDesignPlug
     withProperties?: object,
   ): void;
   /**
-   * Exports the range to a file.
-   * @param format An {@link ExportFormat} or a matching file-type extension string.
-   * @param to Destination path.
-   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
-   * @param using An export preset such as a {@link PDFExportPreset}.
-   */
-  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (void)[];
-  /**
-   * Exports the range to a file on a background thread, returning the running {@link BackgroundTask}.
-   * @param format An {@link ExportFormat} or a matching file-type extension string.
-   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
-   */
-  asynchronousExportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (BackgroundTask)[];
-  /**
    * Applies one or more {@link Condition}s to the range.
    * @param removeExisting If `true`, removes conditions already applied before applying the new ones. Defaults to `false`.
    */
   applyConditions(using: Condition | Condition[], removeExisting?: boolean): (void)[];
-  /**
-   * Selects the range in the active document window.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(existingSelection?: SelectionOptions): (void)[];
   /**
    * The type of pair kerning. Unlike every other text object, an insertion point also reports
    * `'Manual'` — the state it enters when {@link kerningValue} is set by hand.
@@ -2981,4 +2887,203 @@ export interface InsertionPointPlural<TParent = TextParent> extends InDesignPlug
    * @param name Tag name used as the link's key.
    */
   createTextFragmentLink(linkResourceURI: string, name?: string): (Link)[];
+}
+/** InsertionPoint's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface InsertionPointDesktop<TParent = TextParent> {
+  /** If true, aligns the baseline of the text to the baseline grid.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get alignToBaseline(): boolean;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set alignToBaseline(value: boolean | never);
+  /**
+   * Exports the range to a file.
+   * InDesign Server 21.6 takes `exportFile(format, to, using?, versionComments?, forceSave?)` instead.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
+   * @param using An export preset such as a {@link PDFExportPreset}.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): void;
+  /**
+   * Exports the range to a file on a background thread, returning the running {@link BackgroundTask}.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
+   */
+  asynchronousExportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): BackgroundTask;
+  /**
+   * Selects the range in the active document window.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(existingSelection?: SelectionOptions): void;
+  /**
+   * Places a file into the range, replacing its content.
+   * InDesign Server 21.6 takes `place(fileName, withProperties?)` instead.
+   * @param fileName Path to the asset to place.
+   * @param showingOptions If `true`, shows the format's import-options dialog. Defaults to `false`.
+   * @param withProperties Initial property values for the placed object(s).
+   */
+  place(fileName: FilePath, showingOptions?: boolean, withProperties?: object): PageItemUnion[];
+  /**
+   * Creates a thumbnail image of the range as it would render, independent of
+   * its currently applied style.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param space The color space to render swatches in.
+   * @param to Destination path for the generated image.
+   */
+  createThumbnailWithProperties(previewText: string, pointSize: number, space: ColorSpace, colorValue: number[], to: FilePath): boolean;
+  /**
+   * Whether the range has local formatting overrides on top of its applied style.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param charStyleAsOverride If `true`, treats an applied {@link CharacterStyle} itself as an override. Defaults to `true`.
+   */
+  textHasOverrides(charOrParaStyle: StyleType, charStyleAsOverride?: boolean): boolean;
+  /**
+   * Creates a thumbnail image of the range using its applied style and any
+   * local overrides.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param space The color space to render swatches in.
+   * @param to Destination path for the generated image.
+   * @param charOrParaStyle Which applied style (character or paragraph) to render with.
+   */
+  createStyleThumbnailWithProperties(previewText: string, pointSize: number, space: ColorSpace, colorValue: number[], to: FilePath, charOrParaStyle: StyleType): boolean;
+}
+
+/** InsertionPoint's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface InsertionPointDesktopPlural<TParent = TextParent> {
+  /** If true, aligns the baseline of the text to the baseline grid.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get alignToBaseline(): (boolean)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set alignToBaseline(value: boolean | never);
+  /**
+   * Exports the range to a file.
+   * InDesign Server 21.6 takes `exportFile(format, to, using?, versionComments?, forceSave?)` instead.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
+   * @param using An export preset such as a {@link PDFExportPreset}.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (void)[];
+  /**
+   * Exports the range to a file on a background thread, returning the running {@link BackgroundTask}.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
+   */
+  asynchronousExportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (BackgroundTask)[];
+  /**
+   * Selects the range in the active document window.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(existingSelection?: SelectionOptions): (void)[];
+  /**
+   * Places a file into the range, replacing its content.
+   * InDesign Server 21.6 takes `place(fileName, withProperties?)` instead.
+   * @param fileName Path to the asset to place.
+   * @param showingOptions If `true`, shows the format's import-options dialog. Defaults to `false`.
+   * @param withProperties Initial property values for the placed object(s).
+   */
+  place(fileName: FilePath, showingOptions?: boolean, withProperties?: object): (PageItemUnion[])[];
+  /**
+   * Creates a thumbnail image of the range as it would render, independent of
+   * its currently applied style.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param space The color space to render swatches in.
+   * @param to Destination path for the generated image.
+   */
+  createThumbnailWithProperties(previewText: string, pointSize: number, space: ColorSpace, colorValue: number[], to: FilePath): (boolean)[];
+  /**
+   * Whether the range has local formatting overrides on top of its applied style.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param charStyleAsOverride If `true`, treats an applied {@link CharacterStyle} itself as an override. Defaults to `true`.
+   */
+  textHasOverrides(charOrParaStyle: StyleType, charStyleAsOverride?: boolean): (boolean)[];
+  /**
+   * Creates a thumbnail image of the range using its applied style and any
+   * local overrides.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param space The color space to render swatches in.
+   * @param to Destination path for the generated image.
+   * @param charOrParaStyle Which applied style (character or paragraph) to render with.
+   */
+  createStyleThumbnailWithProperties(previewText: string, pointSize: number, space: ColorSpace, colorValue: number[], to: FilePath, charOrParaStyle: StyleType): (boolean)[];
+}
+
+/** InsertionPoint's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface InsertionPointServer<TParent = TextParent> {
+  /**
+   * Exports the range to a file.
+   * InDesign desktop 21.6 takes `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)` instead.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   * @param using An export preset such as a {@link PDFExportPreset}.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): void;
+  /**
+   * Places a file into the range, replacing its content.
+   * InDesign desktop 21.6 takes `place(fileName, showingOptions?, withProperties?)` instead.
+   * @param fileName Path to the asset to place.
+   * @param withProperties Initial property values for the placed object(s).
+   */
+  place(fileName: FilePath, withProperties?: object): PageItemUnion[];
+}
+
+/** InsertionPoint's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface InsertionPointServerPlural<TParent = TextParent> {
+  /**
+   * Exports the range to a file.
+   * InDesign desktop 21.6 takes `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)` instead.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   * @param using An export preset such as a {@link PDFExportPreset}.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (void)[];
+  /**
+   * Places a file into the range, replacing its content.
+   * InDesign desktop 21.6 takes `place(fileName, showingOptions?, withProperties?)` instead.
+   * @param fileName Path to the asset to place.
+   * @param withProperties Initial property values for the placed object(s).
+   */
+  place(fileName: FilePath, withProperties?: object): (PageItemUnion[])[];
+}
+
+/** InsertionPoint's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface InsertionPointPortable<TParent = TextParent> {
+  /**
+   * Exports the range to a file.
+   * Portable form: the editions' parameters differ after these (desktop `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)`, InDesign Server `exportFile(format, to, using?, versionComments?, forceSave?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath): void;
+  /**
+   * Places a file into the range, replacing its content.
+   * Portable form: the editions' parameters differ after these (desktop `place(fileName, showingOptions?, withProperties?)`, InDesign Server `place(fileName, withProperties?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param fileName Path to the asset to place.
+   */
+  place(fileName: FilePath): PageItemUnion[];
+}
+
+/** InsertionPoint's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface InsertionPointPortablePlural<TParent = TextParent> {
+  /**
+   * Exports the range to a file.
+   * Portable form: the editions' parameters differ after these (desktop `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)`, InDesign Server `exportFile(format, to, using?, versionComments?, forceSave?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath): (void)[];
+  /**
+   * Places a file into the range, replacing its content.
+   * Portable form: the editions' parameters differ after these (desktop `place(fileName, showingOptions?, withProperties?)`, InDesign Server `place(fileName, withProperties?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param fileName Path to the asset to place.
+   */
+  place(fileName: FilePath): (PageItemUnion[])[];
 }

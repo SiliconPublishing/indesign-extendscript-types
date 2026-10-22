@@ -15,5 +15,5 @@ import type { Event } from './Event';
  *
  * @collection Event
  */
-export interface Events extends BaseCollection<Event, Event, Event<'plural'>>, IdCollection<Event>, InDesignPlugins.Events {
+export interface Events extends BaseCollection<Event, Event, Event<'plural'>>, IdCollection<Event>, InDesignEdition.Events, InDesignPlugins.Events {
 }

@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Ruler-guide and margin/column-guide color, snap, and lock defaults.
  */
-export interface GuidePreference extends InDesignPlugins.GuidePreference<'single'> {
+export interface GuidePreference extends InDesignEdition.GuidePreference, InDesignPlugins.GuidePreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -128,7 +128,7 @@ export interface GuidePreference extends InDesignPlugins.GuidePreference<'single
 /**
  * Ruler-guide and margin/column-guide color, snap, and lock defaults.
  */
-export interface GuidePreferencePlural extends InDesignPlugins.GuidePreference<'plural'> {
+export interface GuidePreferencePlural extends InDesignEdition.GuidePreferencePlural, InDesignPlugins.GuidePreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

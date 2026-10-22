@@ -20,7 +20,7 @@ import type { Article } from './Article';
  * @collection ArticleMember
  */
 export interface ArticleMembers
-  extends BaseCollection<ArticleMember, ArticleMember, ArticleMember<'plural'>>, IdCollection<ArticleMember>, InDesignPlugins.ArticleMembers {
+  extends BaseCollection<ArticleMember, ArticleMember, ArticleMember<'plural'>>, IdCollection<ArticleMember>, InDesignEdition.ArticleMembers, InDesignPlugins.ArticleMembers {
   /**
    * Adds a page item to the article as a new {@link ArticleMember}.
    *

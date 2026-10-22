@@ -22,7 +22,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A named auto-correct word-pair table.
  */
-export interface AutoCorrectTable extends InDesignPlugins.AutoCorrectTable<'single'> {
+export interface AutoCorrectTable extends InDesignEdition.AutoCorrectTable, InDesignPlugins.AutoCorrectTable<'single'> {
   /**
    * A collection of events
    */
@@ -118,7 +118,7 @@ export interface AutoCorrectTable extends InDesignPlugins.AutoCorrectTable<'sing
 /**
  * A named auto-correct word-pair table.
  */
-export interface AutoCorrectTablePlural extends InDesignPlugins.AutoCorrectTable<'plural'> {
+export interface AutoCorrectTablePlural extends InDesignEdition.AutoCorrectTablePlural, InDesignPlugins.AutoCorrectTable<'plural'> {
   /**
    * A collection of events
    */

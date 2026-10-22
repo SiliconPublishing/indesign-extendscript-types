@@ -57,6 +57,7 @@ import type { PlaceGun } from '../PlaceGun';
 import type { Snippet } from '../Snippet';
 import type { State } from '../State';
 import type { XMLElement } from '../XMLElement';
+import type { EditionPart } from "./Editions";
 
 /**
  * The one accessor every container has: all {@link PageItems} in it regardless of
@@ -417,16 +418,28 @@ export interface TransformableItem<M extends Mode = 'single'> {
    * @param opposingCorners Two opposing corners, each an `[x, y]` point.
    */
   reframe(inCoordinateSpace: BoundsSpecifier, opposingCorners: Array<[number, number]>): Read<M, void>;
-
-  /** Repeats the last single transform applied to any object on this item. */
+}
+/** TransformableItem's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface TransformableItemDesktop<M extends Mode = 'single'> extends EditionPart {
+  /** Repeats the last single transform applied to any object on this item.
+   * Desktop only: InDesign Server 21.6 does not have it. */
   transformAgain(): Read<M, string[]>;
 
-  /** Repeats the last transform *sequence* applied to any object (or group) on this item. */
+  /** Repeats the last transform *sequence* applied to any object (or group) on this item.
+   * Desktop only: InDesign Server 21.6 does not have it. */
   transformSequenceAgain(): Read<M, string[]>;
 
-  /** Like {@link transformAgain}, but repeats the last transform applied to any *page item* specifically. */
+  /** Like {@link transformAgain}, but repeats the last transform applied to any *page item* specifically.
+   * Desktop only: InDesign Server 21.6 does not have it. */
   transformAgainIndividually(): Read<M, string[]>;
 
-  /** Like {@link transformSequenceAgain}, but applied individually to each targeted item. */
+  /** Like {@link transformSequenceAgain}, but applied individually to each targeted item.
+   * Desktop only: InDesign Server 21.6 does not have it. */
   transformSequenceAgainIndividually(): Read<M, string[]>;
 }
+
+/** TransformableItem's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface TransformableItemServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** TransformableItem's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface TransformableItemPortable<M extends Mode = 'single'> extends EditionPart {}

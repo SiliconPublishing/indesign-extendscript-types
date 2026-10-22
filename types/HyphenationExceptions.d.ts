@@ -18,5 +18,5 @@ import type { HyphenationException } from './HyphenationException';
 export interface HyphenationExceptions
   extends
     BaseCollection<HyphenationException, HyphenationException, HyphenationException<'plural'>>,
-    NamedCollection<HyphenationException>, InDesignPlugins.HyphenationExceptions {
+    NamedCollection<HyphenationException>, InDesignEdition.HyphenationExceptions, InDesignPlugins.HyphenationExceptions {
 }

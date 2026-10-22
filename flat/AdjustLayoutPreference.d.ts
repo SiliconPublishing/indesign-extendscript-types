@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
  * Settings for Layout Adjustment — how page items, margins, and text resize
  * automatically when the page size, orientation, or margins change.
  */
-export interface AdjustLayoutPreference extends InDesignPlugins.AdjustLayoutPreference<'single'> {
+export interface AdjustLayoutPreference extends InDesignEdition.AdjustLayoutPreference, InDesignPlugins.AdjustLayoutPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -132,7 +132,7 @@ export interface AdjustLayoutPreference extends InDesignPlugins.AdjustLayoutPref
  * Settings for Layout Adjustment — how page items, margins, and text resize
  * automatically when the page size, orientation, or margins change.
  */
-export interface AdjustLayoutPreferencePlural extends InDesignPlugins.AdjustLayoutPreference<'plural'> {
+export interface AdjustLayoutPreferencePlural extends InDesignEdition.AdjustLayoutPreferencePlural, InDesignPlugins.AdjustLayoutPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

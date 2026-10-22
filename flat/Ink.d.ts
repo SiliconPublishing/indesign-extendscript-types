@@ -26,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A separations ink — process or spot — available to build {@link MixedInk}
  * and {@link MixedInkGroup} swatches and to control trapping and printing.
  */
-export interface Ink extends InDesignPlugins.Ink<'single'> {
+export interface Ink extends InDesignEdition.Ink, InDesignPlugins.Ink<'single'> {
   /**
    * A collection of events
    */
@@ -164,7 +164,7 @@ export interface Ink extends InDesignPlugins.Ink<'single'> {
  * A separations ink — process or spot — available to build {@link MixedInk}
  * and {@link MixedInkGroup} swatches and to control trapping and printing.
  */
-export interface InkPlural extends InDesignPlugins.Ink<'plural'> {
+export interface InkPlural extends InDesignEdition.InkPlural, InDesignPlugins.Ink<'plural'> {
   /**
    * A collection of events
    */

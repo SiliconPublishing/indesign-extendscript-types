@@ -23,5 +23,5 @@ export interface Endnotes
   extends
     BaseCollection<Endnote, Endnote, Endnote<'plural'>>,
     IdCollection<Endnote>,
-    NamedCollection<Endnote>, InDesignPlugins.Endnotes {
+    NamedCollection<Endnote>, InDesignEdition.Endnotes, InDesignPlugins.Endnotes {
 }

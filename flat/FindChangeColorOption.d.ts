@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Find/change color options.
  */
-export interface FindChangeColorOption extends InDesignPlugins.FindChangeColorOption<'single'> {
+export interface FindChangeColorOption extends InDesignEdition.FindChangeColorOption, InDesignPlugins.FindChangeColorOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -128,7 +128,7 @@ export interface FindChangeColorOption extends InDesignPlugins.FindChangeColorOp
 /**
  * Find/change color options.
  */
-export interface FindChangeColorOptionPlural extends InDesignPlugins.FindChangeColorOption<'plural'> {
+export interface FindChangeColorOptionPlural extends InDesignEdition.FindChangeColorOptionPlural, InDesignPlugins.FindChangeColorOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

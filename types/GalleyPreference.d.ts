@@ -18,7 +18,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
 /**
  * Galley preferences.
  */
-export interface GalleyPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.GalleyPreference<M> {
+export interface GalleyPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignEdition.GalleyPreference<M>, InDesignPlugins.GalleyPreference<M> {
   /** Resolves the proxy into the individual {@link GalleyPreference} objects it stands for. */
   getElements(): GalleyPreference<'single'>[];
 

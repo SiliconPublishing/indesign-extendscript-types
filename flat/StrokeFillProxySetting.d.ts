@@ -25,7 +25,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Stroke/fill proxy settings.
  */
-export interface StrokeFillProxySetting extends InDesignPlugins.StrokeFillProxySetting<'single'> {
+export interface StrokeFillProxySetting extends InDesignEdition.StrokeFillProxySetting, InDesignPlugins.StrokeFillProxySetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -124,7 +124,7 @@ export interface StrokeFillProxySetting extends InDesignPlugins.StrokeFillProxyS
 /**
  * Stroke/fill proxy settings.
  */
-export interface StrokeFillProxySettingPlural extends InDesignPlugins.StrokeFillProxySetting<'plural'> {
+export interface StrokeFillProxySettingPlural extends InDesignEdition.StrokeFillProxySettingPlural, InDesignPlugins.StrokeFillProxySetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

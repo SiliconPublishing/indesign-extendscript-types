@@ -24,7 +24,7 @@ export interface DashedStrokeStyles
   extends
     BaseCollection<DashedStrokeStyle, DashedStrokeStyle, DashedStrokeStyle<'plural'>>,
     IdCollection<DashedStrokeStyle>,
-    NamedCollection<DashedStrokeStyle>, InDesignPlugins.DashedStrokeStyles {
+    NamedCollection<DashedStrokeStyle>, InDesignEdition.DashedStrokeStyles, InDesignPlugins.DashedStrokeStyles {
   /**
    * Creates a new dashed stroke style.
    *

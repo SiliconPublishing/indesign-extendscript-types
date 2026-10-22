@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Tagged PDF preferences.
  */
-export interface TaggedPDFPreference extends InDesignPlugins.TaggedPDFPreference<'single'> {
+export interface TaggedPDFPreference extends InDesignEdition.TaggedPDFPreference, InDesignPlugins.TaggedPDFPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -113,7 +113,7 @@ export interface TaggedPDFPreference extends InDesignPlugins.TaggedPDFPreference
 /**
  * Tagged PDF preferences.
  */
-export interface TaggedPDFPreferencePlural extends InDesignPlugins.TaggedPDFPreference<'plural'> {
+export interface TaggedPDFPreferencePlural extends InDesignEdition.TaggedPDFPreferencePlural, InDesignPlugins.TaggedPDFPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

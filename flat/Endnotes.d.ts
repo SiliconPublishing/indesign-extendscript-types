@@ -21,7 +21,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Endnote
  */
-export interface Endnotes extends InDesignPlugins.Endnotes {
+export interface Endnotes extends InDesignEdition.Endnotes, InDesignPlugins.Endnotes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

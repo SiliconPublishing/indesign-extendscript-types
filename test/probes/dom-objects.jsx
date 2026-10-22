@@ -30,12 +30,12 @@ function main() {
     probe('everyItem() constructor is the item class', function () { return doc.pages.everyItem().constructor.name; }, 'Page');
     probe('properties reads an object', function () { return typeof page.properties; }, 'object');
     probe('reflect is a read-only key on every object', function () { var o = {}; o.reflect = 1; }, didThrow);
-    probe('ScriptUI owns the Window global', function () {
+    desktopProbe('ScriptUI owns the Window global', function () {
         var w = new Window('palette', 'probe');
         var r = w.reflect.name;
         w.close();
         return r;
     }, 'Window');
-    probe('the Window global also carries DOM event names', function () { return Window.AFTER_ACTIVATE; }, 'afterActivate');
+    desktopProbe('the Window global also carries DOM event names', function () { return Window.AFTER_ACTIVATE; }, 'afterActivate');
     return finish();
 }

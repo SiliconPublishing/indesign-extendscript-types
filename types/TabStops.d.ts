@@ -17,7 +17,7 @@ import type { ParagraphStyle } from './ParagraphStyle';
  *
  * @collection TabStop
  */
-export interface TabStops extends BaseCollection<TabStop, TabStop, TabStop<'plural'>>, InDesignPlugins.TabStops {
+export interface TabStops extends BaseCollection<TabStop, TabStop, TabStop<'plural'>>, InDesignEdition.TabStops, InDesignPlugins.TabStops {
   /**
    * Adds a new tab stop to the collection.
    * @param withProperties Initial values for properties of the new tab stop. Typically includes `position`, `alignment`, and `leader`.

@@ -11,5 +11,5 @@ import type { DisplaySetting } from './DisplaySetting';
 /**
  * The collection of built-in display performance settings ({@link DisplaySetting}).
  */
-export interface DisplaySettings extends BaseCollection<DisplaySetting, DisplaySetting, DisplaySetting<'plural'>>, InDesignPlugins.DisplaySettings {
+export interface DisplaySettings extends BaseCollection<DisplaySetting, DisplaySetting, DisplaySetting<'plural'>>, InDesignEdition.DisplaySettings, InDesignPlugins.DisplaySettings {
 }

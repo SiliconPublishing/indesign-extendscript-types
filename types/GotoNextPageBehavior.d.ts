@@ -14,7 +14,7 @@ import type { BehaviorEvents } from './Enums/BehaviorEvents';
 /**
  * A behavior that jumps to the next page of the document.
  */
-export interface GotoNextPageBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignPlugins.GotoNextPageBehavior<M>{
+export interface GotoNextPageBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignEdition.GotoNextPageBehavior<M>, InDesignPlugins.GotoNextPageBehavior<M>{
   /** Resolves the proxy into the individual {@link GotoNextPageBehavior} objects it stands for. */
   getElements(): GotoNextPageBehavior<'single'>[];
 

@@ -11,7 +11,7 @@ import type { Widget } from './Widget';
 /**
  * A standalone checkbox control with an adjoining text label.
  */
-export interface CheckboxControl<M extends Mode = 'single'> extends Widget<M>, InDesignPlugins.CheckboxControl<M>{
+export interface CheckboxControl<M extends Mode = 'single'> extends Widget<M>, InDesignEdition.CheckboxControl<M>, InDesignPlugins.CheckboxControl<M>{
   /** Resolves the proxy into the individual {@link CheckboxControl} objects it stands for. */
   getElements(): CheckboxControl<'single'>[];
 

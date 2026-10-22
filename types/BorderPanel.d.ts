@@ -13,7 +13,7 @@ import type { DialogColumns } from './DialogColumns';
 /**
  * A bordered panel that can hold any number and type of controls.
  */
-export interface BorderPanel<M extends Mode = 'single'> extends Widget<M>, WidgetContainer<M>, InDesignPlugins.BorderPanel<M>{
+export interface BorderPanel<M extends Mode = 'single'> extends Widget<M>, WidgetContainer<M>, InDesignEdition.BorderPanel<M>, InDesignPlugins.BorderPanel<M>{
   /** Resolves the proxy into the individual {@link BorderPanel} objects it stands for. */
   getElements(): BorderPanel<'single'>[];
 

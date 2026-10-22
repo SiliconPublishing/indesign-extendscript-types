@@ -34,12 +34,16 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { PageItemDesktop } from "./PageItem";
+import type { PageItemServer } from "./PageItem";
+import type { PageItemPortable } from "./PageItem";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * An imported graphic in any graphic file format (including vector, metafile,
  * and bitmap formats).
  */
-export interface Graphic<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, PageItemParent, M>, InDesignPlugins.Graphic<M> {
+export interface Graphic<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, PageItemParent, M>, InDesignEdition.Graphic<TParent, M>, InDesignPlugins.Graphic<M> {
   /** Resolves the proxy into the individual {@link Graphic} objects it stands for. */
   getElements(): Graphic<TParent, 'single'>[];
 
@@ -55,6 +59,14 @@ export interface Graphic<TParent = PageItemParent, M extends Mode = 'single'> ex
    */
   exportForWeb(to: FilePath): Read<M, string[]>;
 }
+/** Graphic's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface GraphicDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemDesktop<TParent, PageItemParent, M> {}
+
+/** Graphic's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface GraphicServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemServer<TParent, PageItemParent, M> {}
+
+/** Graphic's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface GraphicPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemPortable<TParent, PageItemParent, M> {}
 
 /**
  * A placed graphic InDesign reports as a plain {@link Graphic} rather than as an image, EPS,
@@ -68,4 +80,12 @@ export interface PlainGraphic<
   M extends Mode = 'single',
 > extends Graphic<TParent, M> {
 }
+/** PlainGraphic's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface PlainGraphicDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicDesktop<TParent, M> {}
+
+/** PlainGraphic's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface PlainGraphicServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicServer<TParent, M> {}
+
+/** PlainGraphic's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface PlainGraphicPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicPortable<TParent, M> {}
 

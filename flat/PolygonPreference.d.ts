@@ -22,7 +22,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Default settings to use when creating a polygon.
  */
-export interface PolygonPreference extends InDesignPlugins.PolygonPreference<'single'> {
+export interface PolygonPreference extends InDesignEdition.PolygonPreference, InDesignPlugins.PolygonPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -115,7 +115,7 @@ export interface PolygonPreference extends InDesignPlugins.PolygonPreference<'si
 /**
  * Default settings to use when creating a polygon.
  */
-export interface PolygonPreferencePlural extends InDesignPlugins.PolygonPreference<'plural'> {
+export interface PolygonPreferencePlural extends InDesignEdition.PolygonPreferencePlural, InDesignPlugins.PolygonPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

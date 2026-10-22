@@ -9,6 +9,7 @@ import type { Mode, Read } from './_base/Types';
 import type { EventTargetDOMObject, IndexedDOMObject } from './_base/DomObjects';
 import type { GraphicLayerParent } from './_base/Parents';
 import type { GraphicLayers } from './GraphicLayers';
+import type { Document } from "./Document";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -23,7 +24,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A single layer of an imported layered graphic (PSD, AI, PDF).
  */
-export interface GraphicLayer extends InDesignPlugins.GraphicLayer<'single'> {
+export interface GraphicLayer extends InDesignEdition.GraphicLayer, InDesignPlugins.GraphicLayer<'single'> {
   /**
    * A collection of events
    */
@@ -77,7 +78,7 @@ export interface GraphicLayer extends InDesignPlugins.GraphicLayer<'single'> {
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
-  readonly parent: GraphicLayerParent;
+  readonly parent: GraphicLayerParent | Document;
   /**
    * A snapshot of every editable property on this object.
    *
@@ -114,40 +115,40 @@ export interface GraphicLayer extends InDesignPlugins.GraphicLayer<'single'> {
   /** The name of the GraphicLayer. */
   readonly name: string;
   /** The layer's visibility as stored in the original source file. */
-  readonly originalVisibility: boolean;
+  readonly originalVisibility: boolean | undefined;
   /** If `true`, this layer is a color-separator layer. */
-  readonly separatorLayer: boolean;
+  readonly separatorLayer: boolean | undefined;
   /** If `true`, this layer is an adjustment layer. */
-  readonly adjustmentLayer: boolean;
+  readonly adjustmentLayer: boolean | undefined;
   /** If `true`, this layer is an effects (FX) layer. */
-  readonly fxLayer: boolean;
+  readonly fxLayer: boolean | undefined;
   /** If `true`, this layer is locked in the source file. */
-  readonly locked: boolean;
+  readonly locked: boolean | undefined;
   /** If `true`, this layer is a section-divider layer. */
-  readonly sectionDividerLayer: boolean;
+  readonly sectionDividerLayer: boolean | undefined;
   /** If `true`, the source file defines a screen (view) visibility state for this layer. */
-  readonly hasViewState: boolean;
+  readonly hasViewState: boolean | undefined;
   /** The layer's screen (view) visibility, when {@link hasViewState} is `true`. */
-  readonly viewState: boolean;
+  readonly viewState: boolean | undefined;
   /** If `true`, the source file defines an export visibility state for this layer. */
-  readonly hasExportState: boolean;
+  readonly hasExportState: boolean | undefined;
   /** The layer's export visibility, when {@link hasExportState} is `true`. */
-  readonly exportState: boolean;
+  readonly exportState: boolean | undefined;
   /** If `true`, the source file defines a print visibility state for this layer. */
-  readonly hasPrintState: boolean;
+  readonly hasPrintState: boolean | undefined;
   /** The layer's print visibility, when {@link hasPrintState} is `true`. */
-  readonly printState: boolean;
+  readonly printState: boolean | undefined;
   /** Nested sub-layers, for layer groups. */
-  readonly graphicLayers: GraphicLayers;
+  readonly graphicLayers: GraphicLayers | undefined;
   /** The layer's current, script-controllable visibility in the placed graphic. */
-  get currentVisibility(): boolean;
+  get currentVisibility(): boolean | undefined;
   set currentVisibility(value: boolean);
 }
 
 /**
  * A single layer of an imported layered graphic (PSD, AI, PDF).
  */
-export interface GraphicLayerPlural extends InDesignPlugins.GraphicLayer<'plural'> {
+export interface GraphicLayerPlural extends InDesignEdition.GraphicLayerPlural, InDesignPlugins.GraphicLayer<'plural'> {
   /**
    * A collection of events
    */
@@ -201,7 +202,7 @@ export interface GraphicLayerPlural extends InDesignPlugins.GraphicLayer<'plural
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
-  readonly parent: (GraphicLayerParent)[];
+  readonly parent: (GraphicLayerParent | Document)[];
   /**
    * A snapshot of every editable property on this object.
    *
@@ -238,32 +239,32 @@ export interface GraphicLayerPlural extends InDesignPlugins.GraphicLayer<'plural
   /** The name of the GraphicLayer. */
   readonly name: (string)[];
   /** The layer's visibility as stored in the original source file. */
-  readonly originalVisibility: (boolean)[];
+  readonly originalVisibility: (boolean | undefined)[];
   /** If `true`, this layer is a color-separator layer. */
-  readonly separatorLayer: (boolean)[];
+  readonly separatorLayer: (boolean | undefined)[];
   /** If `true`, this layer is an adjustment layer. */
-  readonly adjustmentLayer: (boolean)[];
+  readonly adjustmentLayer: (boolean | undefined)[];
   /** If `true`, this layer is an effects (FX) layer. */
-  readonly fxLayer: (boolean)[];
+  readonly fxLayer: (boolean | undefined)[];
   /** If `true`, this layer is locked in the source file. */
-  readonly locked: (boolean)[];
+  readonly locked: (boolean | undefined)[];
   /** If `true`, this layer is a section-divider layer. */
-  readonly sectionDividerLayer: (boolean)[];
+  readonly sectionDividerLayer: (boolean | undefined)[];
   /** If `true`, the source file defines a screen (view) visibility state for this layer. */
-  readonly hasViewState: (boolean)[];
+  readonly hasViewState: (boolean | undefined)[];
   /** The layer's screen (view) visibility, when {@link hasViewState} is `true`. */
-  readonly viewState: (boolean)[];
+  readonly viewState: (boolean | undefined)[];
   /** If `true`, the source file defines an export visibility state for this layer. */
-  readonly hasExportState: (boolean)[];
+  readonly hasExportState: (boolean | undefined)[];
   /** The layer's export visibility, when {@link hasExportState} is `true`. */
-  readonly exportState: (boolean)[];
+  readonly exportState: (boolean | undefined)[];
   /** If `true`, the source file defines a print visibility state for this layer. */
-  readonly hasPrintState: (boolean)[];
+  readonly hasPrintState: (boolean | undefined)[];
   /** The layer's print visibility, when {@link hasPrintState} is `true`. */
-  readonly printState: (boolean)[];
+  readonly printState: (boolean | undefined)[];
   /** Nested sub-layers, for layer groups. */
-  readonly graphicLayers: GraphicLayers;
+  readonly graphicLayers: GraphicLayers | undefined;
   /** The layer's current, script-controllable visibility in the placed graphic. */
-  get currentVisibility(): (boolean)[];
+  get currentVisibility(): (boolean | undefined)[];
   set currentVisibility(value: boolean);
 }

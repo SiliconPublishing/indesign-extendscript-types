@@ -23,7 +23,7 @@ import type { WidgetParent } from './_base/Parents';
 /**
  * An editable dropdown for high-precision numeric values.
  */
-export interface RealCombobox extends InDesignPlugins.RealCombobox<'single'> {
+export interface RealCombobox extends InDesignEdition.RealCombobox, InDesignPlugins.RealCombobox<'single'> {
   /**
    * A collection of events
    */
@@ -159,7 +159,7 @@ export interface RealCombobox extends InDesignPlugins.RealCombobox<'single'> {
 /**
  * An editable dropdown for high-precision numeric values.
  */
-export interface RealComboboxPlural extends InDesignPlugins.RealCombobox<'plural'> {
+export interface RealComboboxPlural extends InDesignEdition.RealComboboxPlural, InDesignPlugins.RealCombobox<'plural'> {
   /**
    * A collection of events
    */

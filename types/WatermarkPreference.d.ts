@@ -17,7 +17,7 @@ import type { WatermarkVerticalPositionEnum } from './Enums/WatermarkVerticalPos
  * The watermark drawn over a document's pages — its text, font, colour, opacity,
  * rotation, and where it sits on the page.
  */
-export interface WatermarkPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.WatermarkPreference<M> {
+export interface WatermarkPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignEdition.WatermarkPreference<M>, InDesignPlugins.WatermarkPreference<M> {
   /** Resolves the proxy into the individual {@link WatermarkPreference} objects it stands for. */
   getElements(): WatermarkPreference<'single'>[];
 

@@ -26,7 +26,7 @@ export interface ConditionSets
   extends
     BaseCollection<ConditionSet, ConditionSet, ConditionSet<'plural'>>,
     IdCollection<ConditionSet>,
-    NamedCollection<ConditionSet>, InDesignPlugins.ConditionSets {
+    NamedCollection<ConditionSet>, InDesignEdition.ConditionSets, InDesignPlugins.ConditionSets {
   /**
    * Creates a new {@link ConditionSet} by capturing the current visibility
    * states of all {@link Condition} objects in the document.

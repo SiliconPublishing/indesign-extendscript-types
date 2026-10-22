@@ -20,6 +20,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
 import type { Text } from './Text';
 import type { FirstBaseline } from './Enums/FirstBaseline';
 import type { RowTypes } from './Enums/RowTypes';
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -46,7 +47,7 @@ import type { VerticalJustification } from './Enums/VerticalJustification';
  * {@link Column}; the inner-gridline stroke properties are unique to a
  * multi-cell range like this one.
  */
-export interface Row extends InDesignPlugins.Row<'single'> {
+export interface Row extends InDesignEdition.Row, InDesignPlugins.Row<'single'> {
   /**
    * A collection of events
    */
@@ -525,11 +526,6 @@ export interface Row extends InDesignPlugins.Row<'single'> {
    * @param thru The last row in the range, given as a {@link Cell}, {@link Column}, or {@link Row}.
    */
   redistribute(using: HorizontalOrVertical, thru?: Cell | Column | Row): void;
-  /**
-   * Selects the row in the active document window.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(existingSelection?: SelectionOptions): void;
 }
 
 /**
@@ -540,7 +536,7 @@ export interface Row extends InDesignPlugins.Row<'single'> {
  * {@link Column}; the inner-gridline stroke properties are unique to a
  * multi-cell range like this one.
  */
-export interface RowPlural extends InDesignPlugins.Row<'plural'> {
+export interface RowPlural extends InDesignEdition.RowPlural, InDesignPlugins.Row<'plural'> {
   /**
    * A collection of events
    */
@@ -1019,9 +1015,39 @@ export interface RowPlural extends InDesignPlugins.Row<'plural'> {
    * @param thru The last row in the range, given as a {@link Cell}, {@link Column}, or {@link Row}.
    */
   redistribute(using: HorizontalOrVertical, thru?: Cell | Column | Row): (void)[];
+}
+/** Row's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface RowDesktop {
   /**
    * Selects the row in the active document window.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(existingSelection?: SelectionOptions): void;
+}
+
+/** Row's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface RowDesktopPlural {
+  /**
+   * Selects the row in the active document window.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
    */
   select(existingSelection?: SelectionOptions): (void)[];
+}
+
+/** Row's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface RowServer {
+}
+
+/** Row's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface RowServerPlural {
+}
+
+/** Row's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface RowPortable {
+}
+
+/** Row's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface RowPortablePlural {
 }

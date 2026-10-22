@@ -18,7 +18,7 @@ import type { MenuSeparators } from './MenuSeparators';
  */
 export interface Menu<M extends Mode = 'single'>
   extends EventTargetDOMObject<Application, M>,
-    IndexedDOMObject<Application, M>, InDesignPlugins.Menu<M> {
+    IndexedDOMObject<Application, M>, InDesignEdition.Menu<M>, InDesignPlugins.Menu<M> {
   /** Resolves the proxy into the individual {@link Menu} objects it stands for. */
   getElements(): Menu<'single'>[];
 

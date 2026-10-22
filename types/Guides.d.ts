@@ -22,7 +22,7 @@ import type { Guide } from './Guide';
  * @collection Guide
  */
 export interface Guides
-  extends BaseCollection<Guide, Guide, Guide<'plural'>>, IdCollection<Guide>, NamedCollection<Guide>, InDesignPlugins.Guides {
+  extends BaseCollection<Guide, Guide, Guide<'plural'>>, IdCollection<Guide>, NamedCollection<Guide>, InDesignEdition.Guides, InDesignPlugins.Guides {
   /**
    * Creates a new guide from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link Guide}.

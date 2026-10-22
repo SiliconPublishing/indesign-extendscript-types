@@ -16,7 +16,7 @@ import type { JpegColorSpaceEnum } from './Enums/JpegColorSpaceEnum';
 /**
  * JPEG export preferences.
  */
-export interface JPEGExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.JPEGExportPreference<M> {
+export interface JPEGExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.JPEGExportPreference<M>, InDesignPlugins.JPEGExportPreference<M> {
   /** Resolves the proxy into the individual {@link JPEGExportPreference} objects it stands for. */
   getElements(): JPEGExportPreference<'single'>[];
 

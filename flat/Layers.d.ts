@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Layer
  */
-export interface Layers extends InDesignPlugins.Layers {
+export interface Layers extends InDesignEdition.Layers, InDesignPlugins.Layers {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

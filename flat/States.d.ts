@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection State
  */
-export interface States extends InDesignPlugins.States {
+export interface States extends InDesignEdition.States, InDesignPlugins.States {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

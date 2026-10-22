@@ -21,12 +21,14 @@ import type { NothingEnum } from "./Enums/NothingEnum";
 /**
  * Drop shadow settings.
  */
-export interface DropShadowSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M>, InDesignPlugins.DropShadowSetting<M> {
+export interface DropShadowSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M>, InDesignEdition.DropShadowSetting<M, TParent, NSet>, InDesignPlugins.DropShadowSetting<M> {
   /** Resolves the proxy into the individual {@link DropShadowSetting} objects it stands for. */
   getElements(): DropShadowSetting<'single', TParent>[];
 
   /**
    * The distance between the item and its shadow.
+   *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
    *
    * **Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
    */
@@ -35,6 +37,8 @@ export interface DropShadowSetting<M extends Mode = 'single', TParent = Transpar
 
   /**
    * The angle at which the shadow is thrown.
+   *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
    *
    * **Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
    */

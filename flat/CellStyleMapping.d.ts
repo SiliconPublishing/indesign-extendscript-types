@@ -24,7 +24,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A rule mapping a cell style name in imported content to a cell style in this
  * document, applied when placing a Microsoft Excel spreadsheet.
  */
-export interface CellStyleMapping extends InDesignPlugins.CellStyleMapping<'single'> {
+export interface CellStyleMapping extends InDesignEdition.CellStyleMapping, InDesignPlugins.CellStyleMapping<'single'> {
   /**
    * A collection of events
    */
@@ -127,7 +127,7 @@ export interface CellStyleMapping extends InDesignPlugins.CellStyleMapping<'sing
  * A rule mapping a cell style name in imported content to a cell style in this
  * document, applied when placing a Microsoft Excel spreadsheet.
  */
-export interface CellStyleMappingPlural extends InDesignPlugins.CellStyleMapping<'plural'> {
+export interface CellStyleMappingPlural extends InDesignEdition.CellStyleMappingPlural, InDesignPlugins.CellStyleMapping<'plural'> {
   /**
    * A collection of events
    */

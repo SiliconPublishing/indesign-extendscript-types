@@ -16,7 +16,7 @@ import type { ColorGroup } from './ColorGroup';
  * A mixed ink group — a template of component inks and incremental steps used
  * to generate a family of {@link MixedInk} swatches at once.
  */
-export interface MixedInkGroup<M extends Mode = 'single'> extends Swatch<M>, InDesignPlugins.MixedInkGroup<M>{
+export interface MixedInkGroup<M extends Mode = 'single'> extends Swatch<M>, InDesignEdition.MixedInkGroup<M>, InDesignPlugins.MixedInkGroup<M>{
   /** Resolves the proxy into the individual {@link MixedInkGroup} objects it stands for. */
   getElements(): MixedInkGroup<'single'>[];
 

@@ -36,12 +36,16 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { MediaItemDesktop } from "./MediaItem";
+import type { MediaItemServer } from "./MediaItem";
+import type { MediaItemPortable } from "./MediaItem";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A placed sound clip (legacy PDF interactive media). See {@link MediaItem}
  * for the shared media-item surface.
  */
-export interface Sound<TParent = PageItemParent, M extends Mode = 'single'> extends MediaItem<TParent, M>, InDesignPlugins.Sound<M> {
+export interface Sound<TParent = PageItemParent, M extends Mode = 'single'> extends MediaItem<TParent, M>, InDesignEdition.Sound<TParent, M>, InDesignPlugins.Sound<M> {
   /** Resolves the proxy into the individual {@link Sound} objects it stands for. */
   getElements(): Sound<TParent, 'single'>[];
 
@@ -105,3 +109,11 @@ export interface Sound<TParent = PageItemParent, M extends Mode = 'single'> exte
   /** Sends the sound back one level within its layer. */
   sendBackward(): Read<M, void>;
 }
+/** Sound's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface SoundDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, MediaItemDesktop<TParent, M> {}
+
+/** Sound's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface SoundServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, MediaItemServer<TParent, M> {}
+
+/** Sound's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface SoundPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, MediaItemPortable<TParent, M> {}

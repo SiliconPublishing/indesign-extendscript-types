@@ -29,7 +29,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * nestable inside a document's or the application's
  * {@link ObjectStyleGroups} collection (or another group).
  */
-export interface ObjectStyleGroup extends InDesignPlugins.ObjectStyleGroup<'single'> {
+export interface ObjectStyleGroup extends InDesignEdition.ObjectStyleGroup, InDesignPlugins.ObjectStyleGroup<'single'> {
   /**
    * A collection of events
    */
@@ -162,7 +162,7 @@ export interface ObjectStyleGroup extends InDesignPlugins.ObjectStyleGroup<'sing
  * nestable inside a document's or the application's
  * {@link ObjectStyleGroups} collection (or another group).
  */
-export interface ObjectStyleGroupPlural extends InDesignPlugins.ObjectStyleGroup<'plural'> {
+export interface ObjectStyleGroupPlural extends InDesignEdition.ObjectStyleGroupPlural, InDesignPlugins.ObjectStyleGroup<'plural'> {
   /**
    * A collection of events
    */

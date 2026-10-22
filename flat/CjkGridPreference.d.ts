@@ -25,7 +25,7 @@ import type { FilePath } from './_base/Types';
  * displayed — grid color, snap-to-grid, the zoom level below which grids hide,
  * and per-cell coloring.
  */
-export interface CjkGridPreference extends InDesignPlugins.CjkGridPreference<'single'> {
+export interface CjkGridPreference extends InDesignEdition.CjkGridPreference, InDesignPlugins.CjkGridPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -144,7 +144,7 @@ export interface CjkGridPreference extends InDesignPlugins.CjkGridPreference<'si
  * displayed — grid color, snap-to-grid, the zoom level below which grids hide,
  * and per-cell coloring.
  */
-export interface CjkGridPreferencePlural extends InDesignPlugins.CjkGridPreference<'plural'> {
+export interface CjkGridPreferencePlural extends InDesignEdition.CjkGridPreferencePlural, InDesignPlugins.CjkGridPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

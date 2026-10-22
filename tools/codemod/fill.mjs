@@ -13,7 +13,7 @@ import { ensureImport } from './util.mjs';
 const NUMBER_WORDS = /^(Long Long Integer|Long Integer|Short Integer|Real|Integer|Number)s?$/;
 
 /** A dictionary type as TypeScript text, plus the DOM names it refers to (to import). */
-function tsType(t, dict, { write = false } = {}) {
+export function tsType(t, dict, { write = false } = {}) {
     const refs = new Set();
     const one = (name) => {
         switch (name) {
@@ -65,7 +65,7 @@ const doc = (desc, extra = []) => {
     return `  /**\n   * ${lines.join('\n   * ')}\n   */`;
 };
 
-function memberTexts(cls, members, dict, ver) {
+export function memberTexts(cls, members, dict, ver) {
     const refs = new Set(['Read']);
     const out = [];
     const mark = `Generated from the InDesign ${ver} scripting dictionary.`;
@@ -100,7 +100,7 @@ function memberTexts(cls, members, dict, ver) {
     return { text: out.join('\n\n'), refs };
 }
 
-function importRefs(sf, refs, src, dict) {
+export function importRefs(sf, refs, src, dict) {
     for (const r of refs) {
         if (['Read', 'Mode', 'File', 'Folder', 'FilePath'].includes(r)) ensureImport(sf, r, '_base/Types', src);
         else if (dict[r]?.kind === 'enum') ensureImport(sf, r, `Enums/${r}`, src);
@@ -124,19 +124,27 @@ function enumFile(e, aliases, ver) {
     return lines.join('\n\n') + '\n';
 }
 
-function aliasesFor(name, aliases) {
+export function aliasesFor(name, aliases) {
     const parts = name.toLowerCase().split('_');
     const camel = parts[0] + parts.slice(1).map((p) => p.charAt(0).toUpperCase() + p.slice(1)).join('');
     return [camel, parts.join('')].filter((a, i, all) => a !== name && aliases.includes(a) && all.indexOf(a) === i);
 }
 
-/** Members a generated class gets from its base and must not redeclare. */
-const BASE_MEMBERS = new Set(['isValid', 'parent', 'properties', 'toSource', 'toSpecifier', 'getElements', 'events', 'eventListeners', 'addEventListener', 'removeEventListener', 'label', 'insertLabel', 'extractLabel', 'index', 'name']);
+/** Members a generated collection gets from the base collection interfaces. */
+const COLLECTION_MEMBERS = new Set(['length', 'count', 'item', '[]', 'itemByRange', 'firstItem', 'lastItem', 'middleItem', 'previousItem', 'nextItem', 'anyItem', 'everyItem', 'toSource', 'itemByName', 'itemByID', 'getElements']);
 
-export function fillFromDictionary(project, src, root, snapshot) {
+/** Members a generated class gets from its base and must not redeclare. */
+const BASE_MEMBERS = new Set(['isValid', 'parent', 'properties', 'toSource', 'toSpecifier', 'getElements', 'events', 'eventListeners', 'addEventListener', 'removeEventListener']);
+
+/**
+ * wholeOnly: only classes and enumerations the tree lacks entirely (InDesign Server's own; its
+ * members and enumerators go to the edition parts, tools/codemod/editions.mjs). label names the
+ * product in the "Generated from" notes.
+ */
+export function fillFromDictionary(project, src, root, snapshot, { wholeOnly = false, label = 'InDesign' } = {}) {
     const raw = JSON.parse(readFileSync(join(root, snapshot, 'dictionary.json'), 'utf8'));
     const dict = raw.classes;
-    const ver = raw.version.split('.').slice(0, 2).join('.');
+    const ver = `${label === 'InDesign' ? '' : label.replace(/^InDesign /, '') + ' '}${raw.version.split('.').slice(0, 2).join('.')}`;
     const aliases = JSON.parse(readFileSync(join(root, snapshot, 'enum-aliases.json'), 'utf8'));
     const barrel = project.getSourceFileOrThrow(join(src, 'indesign.d.ts'));
     const enumBarrel = project.getSourceFileOrThrow(join(src, 'Enums/index.d.ts'));
@@ -149,6 +157,24 @@ export function fillFromDictionary(project, src, root, snapshot) {
             project.createSourceFile(join(src, `Enums/${c.name}.d.ts`), enumFile(c, aliases[c.name] ?? [], ver));
             enumBarrel.addExportDeclaration({ moduleSpecifier: `./${c.name}` });
             added.enums.push(c.name);
+        } else if (!project.getSourceFile(join(src, `${c.name}.d.ts`)) && c.methods.some((m) => m.name === 'everyItem')) {
+            // A collection: the base collection interfaces carry item(), everyItem(), [] and the rest.
+            const element = c.methods.find((m) => m.name === 'item' || m.name === '[]')?.returns.name;
+            const bases = [`BaseCollection<${element}, ${element}, ${element}<'plural'>>`];
+            if (c.methods.some((m) => m.name === 'itemByName')) bases.push(`NamedCollection<${element}>`);
+            if (c.methods.some((m) => m.name === 'itemByID')) bases.push(`IdCollection<${element}>`);
+            const members = { props: c.props.filter((p) => !COLLECTION_MEMBERS.has(p.name)), methods: c.methods.filter((m) => !COLLECTION_MEMBERS.has(m.name)) };
+            const body = memberTexts(c, members, dict, ver);
+            const sf = project.createSourceFile(
+                join(src, `${c.name}.d.ts`),
+                `/**\n * ${c.name}.d.ts — generated from the InDesign ${ver} scripting dictionary by tools/codemod/fill.mjs.\n */\n\n` +
+                    `/**\n * ${c.desc}\n */\nexport interface ${c.name} extends ${bases.join(', ')} {\n${body.text.replace(/Read<M, (.*)>;$/gm, '$1;')}\n}\n`,
+            );
+            body.refs.delete('Read');
+            importRefs(sf, new Set([...body.refs, element]), src, dict);
+            for (const b of ['BaseCollection', 'NamedCollection', 'IdCollection']) if (bases.some((x) => x.startsWith(b))) ensureImport(sf, b, '_base/Collections', src);
+            barrel.addExportDeclaration({ moduleSpecifier: `./${c.name}` });
+            added.classes.push(c.name);
         } else if (!project.getSourceFile(join(src, `${c.name}.d.ts`))) {
             const parentProp = c.props.find((p) => p.name === 'parent');
             const evented = c.methods.some((m) => m.name === 'addEventListener');
@@ -167,6 +193,8 @@ export function fillFromDictionary(project, src, root, snapshot) {
             added.classes.push(c.name);
         }
     }
+
+    if (wholeOnly) return added;
 
     // Members of existing classes: compare against the class's resolved members (own + bases).
     // All type queries first; editing a file invalidates the checker for every later query.

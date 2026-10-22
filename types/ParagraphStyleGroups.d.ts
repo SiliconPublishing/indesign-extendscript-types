@@ -24,7 +24,7 @@ export interface ParagraphStyleGroups
   extends
     BaseCollection<ParagraphStyleGroup, ParagraphStyleGroup, ParagraphStyleGroup<'plural'>>,
     IdCollection<ParagraphStyleGroup>,
-    NamedCollection<ParagraphStyleGroup>, InDesignPlugins.ParagraphStyleGroups {
+    NamedCollection<ParagraphStyleGroup>, InDesignEdition.ParagraphStyleGroups, InDesignPlugins.ParagraphStyleGroups {
   /**
    * Creates a new paragraph style group.
    * * **Duplicate Names:** If a style group with the specified name already exists, this method will throw an error. Check existence using `itemByName("Name").isValid` before adding.

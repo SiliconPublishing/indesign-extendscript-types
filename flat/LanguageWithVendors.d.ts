@@ -9,6 +9,7 @@ import type { Mode, Read } from './_base/Types';
 import type { LabelableEventDOMObject, IndexedDOMObject, ReadonlyNamedDOMObject } from './_base/DomObjects';
 import type { Application } from './Application';
 import type { Language } from './Language';
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -27,7 +28,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * This is the surface behind the Dictionary preferences panel, as opposed to
  * the per-document {@link Language}.
  */
-export interface LanguageWithVendors extends InDesignPlugins.LanguageWithVendors<'single'> {
+export interface LanguageWithVendors extends InDesignEdition.LanguageWithVendors, InDesignPlugins.LanguageWithVendors<'single'> {
   /**
    * A collection of events
    */
@@ -131,8 +132,6 @@ export interface LanguageWithVendors extends InDesignPlugins.LanguageWithVendors
   getElements(): LanguageWithVendors[];
   /** The unique numeric ID of the language within its session. */
   readonly id: number;
-  /** The untranslated (English) name of the language. */
-  readonly untranslatedName: string;
   /** The full name of the language's ICU locale, used by ICU-based text services. */
   readonly icuLocaleName: string;
   /** Every spell-checking vendor plug-in available for this language. */
@@ -176,7 +175,7 @@ export interface LanguageWithVendors extends InDesignPlugins.LanguageWithVendors
  * This is the surface behind the Dictionary preferences panel, as opposed to
  * the per-document {@link Language}.
  */
-export interface LanguageWithVendorsPlural extends InDesignPlugins.LanguageWithVendors<'plural'> {
+export interface LanguageWithVendorsPlural extends InDesignEdition.LanguageWithVendorsPlural, InDesignPlugins.LanguageWithVendors<'plural'> {
   /**
    * A collection of events
    */
@@ -280,8 +279,6 @@ export interface LanguageWithVendorsPlural extends InDesignPlugins.LanguageWithV
   getElements(): LanguageWithVendors[];
   /** The unique numeric ID of the language within its session. */
   readonly id: (number)[];
-  /** The untranslated (English) name of the language. */
-  readonly untranslatedName: (string)[];
   /** The full name of the language's ICU locale, used by ICU-based text services. */
   readonly icuLocaleName: (string)[];
   /** Every spell-checking vendor plug-in available for this language. */
@@ -316,4 +313,33 @@ export interface LanguageWithVendorsPlural extends InDesignPlugins.LanguageWithV
    * @param filePath The path to the dictionary file.
    */
   removeDictionaryPath(filePath: string): (string)[];
+}
+/** LanguageWithVendors's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface LanguageWithVendorsDesktop {
+  /** The untranslated (English) name of the language.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly untranslatedName: string;
+}
+
+/** LanguageWithVendors's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface LanguageWithVendorsDesktopPlural {
+  /** The untranslated (English) name of the language.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly untranslatedName: (string)[];
+}
+
+/** LanguageWithVendors's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface LanguageWithVendorsServer {
+}
+
+/** LanguageWithVendors's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface LanguageWithVendorsServerPlural {
+}
+
+/** LanguageWithVendors's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface LanguageWithVendorsPortable {
+}
+
+/** LanguageWithVendors's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface LanguageWithVendorsPortablePlural {
 }

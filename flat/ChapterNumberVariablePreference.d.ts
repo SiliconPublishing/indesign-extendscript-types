@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * The preferences for a chapter number variable.
  */
-export interface ChapterNumberVariablePreference extends InDesignPlugins.ChapterNumberVariablePreference<'single'> {
+export interface ChapterNumberVariablePreference extends InDesignEdition.ChapterNumberVariablePreference, InDesignPlugins.ChapterNumberVariablePreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -119,7 +119,7 @@ export interface ChapterNumberVariablePreference extends InDesignPlugins.Chapter
 /**
  * The preferences for a chapter number variable.
  */
-export interface ChapterNumberVariablePreferencePlural extends InDesignPlugins.ChapterNumberVariablePreference<'plural'> {
+export interface ChapterNumberVariablePreferencePlural extends InDesignEdition.ChapterNumberVariablePreferencePlural, InDesignPlugins.ChapterNumberVariablePreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -68,11 +68,15 @@ import type { WMFs } from './WMFs';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { SplineItemDesktop } from "./SplineItem";
+import type { SplineItemServer } from "./SplineItem";
+import type { SplineItemPortable } from "./SplineItem";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * An ellipse — the round counterpart of {@link Rectangle}.
  */
-export interface Oval<TParent = PageItemParent, M extends Mode = 'single'> extends SplineItem<TParent, Oval, M>, InDesignPlugins.Oval<M> {
+export interface Oval<TParent = PageItemParent, M extends Mode = 'single'> extends SplineItem<TParent, Oval, M>, InDesignEdition.Oval<TParent, M>, InDesignPlugins.Oval<M> {
   /** Resolves the proxy into the individual {@link Oval} objects it stands for. */
   getElements(): Oval<TParent, 'single'>[];
 
@@ -89,3 +93,11 @@ export interface Oval<TParent = PageItemParent, M extends Mode = 'single'> exten
   /** Removes the frame's fitting options, resetting them to the initial (no auto-fit) state. */
   clearFrameFittingOptions(): Read<M, void>;
 }
+/** Oval's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface OvalDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, SplineItemDesktop<TParent, Oval, M> {}
+
+/** Oval's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface OvalServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, SplineItemServer<TParent, Oval, M> {}
+
+/** Oval's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface OvalPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, SplineItemPortable<TParent, Oval, M> {}

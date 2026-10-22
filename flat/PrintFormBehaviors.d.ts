@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection PrintFormBehavior
  */
-export interface PrintFormBehaviors extends InDesignPlugins.PrintFormBehaviors {
+export interface PrintFormBehaviors extends InDesignEdition.PrintFormBehaviors, InDesignPlugins.PrintFormBehaviors {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

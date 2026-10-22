@@ -30,5 +30,5 @@ export interface Rectangles<TParent = PageItemParent>
     BaseCollection<Rectangle<TParent>, Rectangle, Rectangle<TParent, 'plural'>>,
     IdCollection<Rectangle<TParent>>,
     NamedCollection<Rectangle<TParent>>,
-    AddablePageItemCollection<Rectangle<TParent>, Rectangle>, InDesignPlugins.Rectangles {
+    AddablePageItemCollection<Rectangle<TParent>, Rectangle>, InDesignEdition.Rectangles<TParent>, InDesignPlugins.Rectangles {
 }

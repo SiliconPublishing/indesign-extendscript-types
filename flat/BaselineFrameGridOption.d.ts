@@ -30,7 +30,7 @@ import type { FilePath } from './_base/Types';
  * Settings for a custom baseline grid scoped to a single text frame, endnote
  * frame, or object style, distinct from the document's default grid.
  */
-export interface BaselineFrameGridOption extends InDesignPlugins.BaselineFrameGridOption<'single'> {
+export interface BaselineFrameGridOption extends InDesignEdition.BaselineFrameGridOption, InDesignPlugins.BaselineFrameGridOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -133,7 +133,7 @@ export interface BaselineFrameGridOption extends InDesignPlugins.BaselineFrameGr
  * Settings for a custom baseline grid scoped to a single text frame, endnote
  * frame, or object style, distinct from the document's default grid.
  */
-export interface BaselineFrameGridOptionPlural extends InDesignPlugins.BaselineFrameGridOption<'plural'> {
+export interface BaselineFrameGridOptionPlural extends InDesignEdition.BaselineFrameGridOptionPlural, InDesignPlugins.BaselineFrameGridOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

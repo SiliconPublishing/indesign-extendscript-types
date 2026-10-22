@@ -30,7 +30,7 @@ import type { UIColors } from './Enums/UIColors';
 export interface Hyperlink<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document, M>,
     IndexedDOMObject<Document, M>,
-    NamableDOMObject<Document, M>, InDesignPlugins.Hyperlink<M> {
+    NamableDOMObject<Document, M>, InDesignEdition.Hyperlink<M>, InDesignPlugins.Hyperlink<M> {
   /** Resolves the proxy into the individual {@link Hyperlink} objects it stands for. */
   getElements(): Hyperlink<'single'>[];
 

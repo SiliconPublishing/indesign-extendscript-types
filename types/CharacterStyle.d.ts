@@ -34,6 +34,7 @@ import type { LanguageWithVendors } from './LanguageWithVendors';
 import type { MixedInk } from './MixedInk';
 import type { Swatch } from './Swatch';
 import type { Tint } from './Tint';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A named character style definition, held in a document's or the application's {@link CharacterStyles} collection (optionally nested inside a {@link CharacterStyleGroup}).
@@ -49,7 +50,7 @@ export interface CharacterStyle<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document | Application | CharacterStyleGroup, M>,
     IndexedDOMObject<Document | Application | CharacterStyleGroup, M>,
     CharacterStyleAttributes<M, NothingEnum.NOTHING, null, NothingEnum.NOTHING>,
-    TextGraphicAttributes<M, NothingEnum.NOTHING>, InDesignPlugins.CharacterStyle<M> {
+    TextGraphicAttributes<M, NothingEnum.NOTHING>, InDesignEdition.CharacterStyle<M>, InDesignPlugins.CharacterStyle<M> {
   /** Resolves the proxy into the individual {@link CharacterStyle} objects it stands for. */
   getElements(): CharacterStyle<'single'>[];
 
@@ -77,14 +78,6 @@ export interface CharacterStyle<M extends Mode = 'single'>
   /** If `true`, emits CSS for this style when exporting to EPUB or HTML. */
   get emitCss(): Read<M, boolean | NothingEnum.NOTHING>;
   set emitCss(value: boolean | NothingEnum.NOTHING);
-
-  /**
-   * A unique identifier that can be assigned to the style to differentiate it
-   * from others. Internal use only.
-   */
-  get styleUniqueId(): Read<M, string | NothingEnum.NOTHING>;
-  set styleUniqueId(value: string | NothingEnum.NOTHING);
-
   /** If `true`, generates a CSS class attribute for the style on export. */
   get includeClass(): Read<M, boolean | NothingEnum.NOTHING>;
   set includeClass(value: boolean | NothingEnum.NOTHING);
@@ -108,21 +101,6 @@ export interface CharacterStyle<M extends Mode = 'single'>
 
   /** Whether the design axis at `nthAxisIndex` is hidden in a variable font applied through this style. */
   isNthDesignAxisHidden(nthAxisIndex: number): Read<M, boolean>;
-
-  /**
-   * Renders a sample thumbnail image of `previewText` set in this style, and
-   * writes it to `to`.
-   * @param space The color space (RGB, CMYK, or LAB) `colorValue` is expressed in.
-   * @param colorValue The sample text color, as component values in `space`.
-   */
-  createThumbnailWithProperties(
-    previewText: string,
-    pointSize: number,
-    space: ColorSpace,
-    colorValue: number[],
-    to: FilePath,
-  ): boolean;
-
   /**
    * Deletes the style.
    * @param replacingWith The style applied to any text currently tagged with this style. Text is left unstyled if omitted.
@@ -138,3 +116,38 @@ export interface CharacterStyle<M extends Mode = 'single'>
    */
   move(to: LocationOptions, reference?: StyleMoveReference): Read<M, CharacterStyle>;
 }
+/** CharacterStyle's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface CharacterStyleDesktop<M extends Mode = 'single'> extends EditionPart {
+  /**
+   * A unique identifier that can be assigned to the style to differentiate it
+   * from others. Internal use only.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  get styleUniqueId(): Read<M, string | NothingEnum.NOTHING>;
+
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set styleUniqueId(value: string | NothingEnum.NOTHING);
+
+  /**
+   * Renders a sample thumbnail image of `previewText` set in this style, and
+   * writes it to `to`.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param space The color space (RGB, CMYK, or LAB) `colorValue` is expressed in.
+   * @param colorValue The sample text color, as component values in `space`.
+   */
+  createThumbnailWithProperties(
+    previewText: string,
+    pointSize: number,
+    space: ColorSpace,
+    colorValue: number[],
+    to: FilePath,
+  ): boolean;
+}
+
+/** CharacterStyle's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface CharacterStyleServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** CharacterStyle's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface CharacterStylePortable<M extends Mode = 'single'> extends EditionPart {}

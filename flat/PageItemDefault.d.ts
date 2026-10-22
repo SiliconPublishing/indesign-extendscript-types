@@ -38,7 +38,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Application- or document-level default page-item formatting (fill, stroke, object styles) applied to newly created page items.
  */
-export interface PageItemDefault extends InDesignPlugins.PageItemDefault<'single'> {
+export interface PageItemDefault extends InDesignEdition.PageItemDefault, InDesignPlugins.PageItemDefault<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -253,7 +253,7 @@ export interface PageItemDefault extends InDesignPlugins.PageItemDefault<'single
 /**
  * Application- or document-level default page-item formatting (fill, stroke, object styles) applied to newly created page items.
  */
-export interface PageItemDefaultPlural extends InDesignPlugins.PageItemDefault<'plural'> {
+export interface PageItemDefaultPlural extends InDesignEdition.PageItemDefaultPlural, InDesignPlugins.PageItemDefault<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

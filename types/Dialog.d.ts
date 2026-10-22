@@ -22,7 +22,7 @@ import type { DialogColumn } from './DialogColumn';
 export interface Dialog<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Application, M>,
     IndexedDOMObject<Application, M>,
-    NamableDOMObject<Application, M>, InDesignPlugins.Dialog<M> {
+    NamableDOMObject<Application, M>, InDesignEdition.Dialog<M>, InDesignPlugins.Dialog<M> {
   /** Resolves the proxy into the individual {@link Dialog} objects it stands for. */
   getElements(): Dialog<'single'>[];
 

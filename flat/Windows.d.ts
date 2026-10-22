@@ -21,7 +21,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Window
  */
-export interface Windows extends InDesignPlugins.Windows {
+export interface Windows extends InDesignEdition.Windows, InDesignPlugins.Windows {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

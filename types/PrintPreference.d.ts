@@ -42,7 +42,7 @@ import type { Trapping } from './Enums/Trapping';
 /**
  * A book's or document's print settings.
  */
-export interface PrintPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Book | Document, M>, InDesignPlugins.PrintPreference<M> {
+export interface PrintPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Book | Document, M>, InDesignEdition.PrintPreference<M>, InDesignPlugins.PrintPreference<M> {
   /** Resolves the proxy into the individual {@link PrintPreference} objects it stands for. */
   getElements(): PrintPreference<'single'>[];
 

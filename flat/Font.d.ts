@@ -31,7 +31,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * Distinct from a text range's own `appliedFont`, which references a font *by name* for use in
  * formatting; this object exposes the font's own metadata and installation status.
  */
-export interface Font extends InDesignPlugins.Font<'single'> {
+export interface Font extends InDesignEdition.Font, InDesignPlugins.Font<'single'> {
   /**
    * A collection of events
    */
@@ -185,7 +185,7 @@ export interface Font extends InDesignPlugins.Font<'single'> {
  * Distinct from a text range's own `appliedFont`, which references a font *by name* for use in
  * formatting; this object exposes the font's own metadata and installation status.
  */
-export interface FontPlural extends InDesignPlugins.Font<'plural'> {
+export interface FontPlural extends InDesignEdition.FontPlural, InDesignPlugins.Font<'plural'> {
   /**
    * A collection of events
    */

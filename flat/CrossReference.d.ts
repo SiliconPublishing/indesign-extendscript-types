@@ -28,7 +28,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * references embedded in document text, use {@link CrossReferenceSource}
  * and {@link Hyperlink} instead.
  */
-export interface CrossReference extends InDesignPlugins.CrossReference<'single'> {
+export interface CrossReference extends InDesignEdition.CrossReference, InDesignPlugins.CrossReference<'single'> {
   /**
    * A collection of events
    */
@@ -153,7 +153,7 @@ export interface CrossReference extends InDesignPlugins.CrossReference<'single'>
  * references embedded in document text, use {@link CrossReferenceSource}
  * and {@link Hyperlink} instead.
  */
-export interface CrossReferencePlural extends InDesignPlugins.CrossReference<'plural'> {
+export interface CrossReferencePlural extends InDesignEdition.CrossReferencePlural, InDesignPlugins.CrossReference<'plural'> {
   /**
    * A collection of events
    */

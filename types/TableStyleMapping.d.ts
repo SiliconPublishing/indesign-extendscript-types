@@ -16,7 +16,7 @@ import type { MapType } from './Enums/MapType';
  */
 export interface TableStyleMapping<M extends Mode = 'single'>
   extends EventTargetDOMObject<StyleMappingParent, M>,
-    IndexedDOMObject<StyleMappingParent, M>, InDesignPlugins.TableStyleMapping<M> {
+    IndexedDOMObject<StyleMappingParent, M>, InDesignEdition.TableStyleMapping<M>, InDesignPlugins.TableStyleMapping<M> {
   /** Resolves the proxy into the individual {@link TableStyleMapping} objects it stands for. */
   getElements(): TableStyleMapping<'single'>[];
 

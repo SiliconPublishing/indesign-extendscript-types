@@ -20,7 +20,7 @@ import type { DialogRow } from './DialogRow';
 export interface DialogColumn<M extends Mode = 'single'>
   extends EventTargetDOMObject<DialogContainerParent, M>,
     IndexedDOMObject<DialogContainerParent, M>,
-    WidgetContainer<M>, InDesignPlugins.DialogColumn<M>{
+    WidgetContainer<M>, InDesignEdition.DialogColumn<M>, InDesignPlugins.DialogColumn<M>{
   /** Resolves the proxy into the individual {@link DialogColumn} objects it stands for. */
   getElements(): DialogColumn<'single'>[];
 

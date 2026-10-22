@@ -44,6 +44,8 @@ function main(arg) {
             var spec = '';
             try { spec = obj.toSpecifier(); } catch (e) {}
             if (spec.indexOf('/document') !== 0) return [];
+            // "Class.*:write": a class whose writes crash InDesign whichever comes first.
+            var noWrites = !!s.blocked[cls + '.*:write'];
             var props, next = [];
             try { props = obj.reflect.properties; } catch (e) { return next; }
             for (var i = 0; i < props.length; i++) {
@@ -54,7 +56,7 @@ function main(arg) {
                 var orig;
                 try { orig = obj[name]; } catch (e) { continue; }
                 next.push(orig);
-                if (String(props[i].type) !== 'readwrite' || writes[key]) continue;
+                if (noWrites || String(props[i].type) !== 'readwrite' || writes[key]) continue;
                 var result = {};
                 var trials = trialsFor(orig);
                 for (var t = 0; t < trials.length; t++) {

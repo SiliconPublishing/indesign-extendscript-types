@@ -13,6 +13,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
 import type { DTD } from './DTD';
 import type { XMLComment } from './XMLComment';
 import type { XMLInstruction } from './XMLInstruction';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * The base of the XML item family — {@link XMLElement}, {@link XMLComment},
@@ -21,7 +22,7 @@ import type { XMLInstruction } from './XMLInstruction';
  */
 export interface XMLItem<M extends Mode = 'single'>
   extends EventTargetDOMObject<Document | XMLElement, M>,
-    IndexedDOMObject<Document | XMLElement, M>, InDesignPlugins.XMLItem<M> {
+    IndexedDOMObject<Document | XMLElement, M>, InDesignEdition.XMLItem<M>, InDesignPlugins.XMLItem<M> {
   /** Resolves the proxy into the individual {@link XMLItem} objects it stands for. */
   getElements(): XMLItem<'single'>[];
 
@@ -33,13 +34,22 @@ export interface XMLItem<M extends Mode = 'single'>
 
   /** Duplicates the XMLItem. */
   duplicate(): Read<M, XMLItem>;
-
+}
+/** XMLItem's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLItemDesktop<M extends Mode = 'single'> extends EditionPart {
   /**
    * Selects the object.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param existingSelection How this selection combines with the current one. Defaults to {@link SelectionOptions.REPLACE_WITH}.
    */
   select(existingSelection?: SelectionOptions): Read<M, void>;
 }
+
+/** XMLItem's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLItemServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** XMLItem's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface XMLItemPortable<M extends Mode = 'single'> extends EditionPart {}
 
 /**
  * A structure node InDesign reports as a plain {@link XMLItem} rather than as an element,
@@ -50,3 +60,11 @@ export interface XMLItem<M extends Mode = 'single'>
  */
 export interface PlainXMLItem<M extends Mode = 'single'> extends XMLItem<M> {
 }
+/** PlainXMLItem's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface PlainXMLItemDesktop<M extends Mode = 'single'> extends EditionPart, XMLItemDesktop<M> {}
+
+/** PlainXMLItem's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface PlainXMLItemServer<M extends Mode = 'single'> extends EditionPart, XMLItemServer<M> {}
+
+/** PlainXMLItem's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface PlainXMLItemPortable<M extends Mode = 'single'> extends EditionPart, XMLItemPortable<M> {}

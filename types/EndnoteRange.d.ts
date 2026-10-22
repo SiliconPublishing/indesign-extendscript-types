@@ -29,7 +29,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
 export interface EndnoteRange<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Text | InsertionPoint | TextStyleRange | Paragraph | TextColumn | Line | Word | Character | Story | XmlStory, M>,
     IndexedDOMObject<Text | InsertionPoint | TextStyleRange | Paragraph | TextColumn | Line | Word | Character | Story | XmlStory, M>,
-    NamableDOMObject<Text | InsertionPoint | TextStyleRange | Paragraph | TextColumn | Line | Word | Character | Story | XmlStory, M>, InDesignPlugins.EndnoteRange<M> {
+    NamableDOMObject<Text | InsertionPoint | TextStyleRange | Paragraph | TextColumn | Line | Word | Character | Story | XmlStory, M>, InDesignEdition.EndnoteRange<M>, InDesignPlugins.EndnoteRange<M> {
   /** Resolves the proxy into the individual {@link EndnoteRange} objects it stands for. */
   getElements(): EndnoteRange<'single'>[];
 

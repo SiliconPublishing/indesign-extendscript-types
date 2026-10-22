@@ -9,13 +9,14 @@ import type { Mode, Read } from './_base/Types';
 import type { EventTargetDOMObject, IndexedDOMObject } from './_base/DomObjects';
 import type { GraphicLayerParent } from './_base/Parents';
 import type { GraphicLayers } from './GraphicLayers';
+import type { Document } from "./Document";
 
 /**
  * A single layer of an imported layered graphic (PSD, AI, PDF).
  */
 export interface GraphicLayer<M extends Mode = 'single'>
-  extends EventTargetDOMObject<GraphicLayerParent, M>,
-    IndexedDOMObject<GraphicLayerParent, M>, InDesignPlugins.GraphicLayer<M> {
+  extends EventTargetDOMObject<GraphicLayerParent | Document, M>,
+    IndexedDOMObject<GraphicLayerParent | Document, M>, InDesignEdition.GraphicLayer<M>, InDesignPlugins.GraphicLayer<M> {
   /** Resolves the proxy into the individual {@link GraphicLayer} objects it stands for. */
   getElements(): GraphicLayer<'single'>[];
 
@@ -26,45 +27,45 @@ export interface GraphicLayer<M extends Mode = 'single'>
   readonly name: Read<M, string>;
 
   /** The layer's visibility as stored in the original source file. */
-  readonly originalVisibility: Read<M, boolean>;
+  readonly originalVisibility: Read<M, boolean | undefined>;
 
   /** If `true`, this layer is a color-separator layer. */
-  readonly separatorLayer: Read<M, boolean>;
+  readonly separatorLayer: Read<M, boolean | undefined>;
 
   /** If `true`, this layer is an adjustment layer. */
-  readonly adjustmentLayer: Read<M, boolean>;
+  readonly adjustmentLayer: Read<M, boolean | undefined>;
 
   /** If `true`, this layer is an effects (FX) layer. */
-  readonly fxLayer: Read<M, boolean>;
+  readonly fxLayer: Read<M, boolean | undefined>;
 
   /** If `true`, this layer is locked in the source file. */
-  readonly locked: Read<M, boolean>;
+  readonly locked: Read<M, boolean | undefined>;
 
   /** If `true`, this layer is a section-divider layer. */
-  readonly sectionDividerLayer: Read<M, boolean>;
+  readonly sectionDividerLayer: Read<M, boolean | undefined>;
 
   /** If `true`, the source file defines a screen (view) visibility state for this layer. */
-  readonly hasViewState: Read<M, boolean>;
+  readonly hasViewState: Read<M, boolean | undefined>;
 
   /** The layer's screen (view) visibility, when {@link hasViewState} is `true`. */
-  readonly viewState: Read<M, boolean>;
+  readonly viewState: Read<M, boolean | undefined>;
 
   /** If `true`, the source file defines an export visibility state for this layer. */
-  readonly hasExportState: Read<M, boolean>;
+  readonly hasExportState: Read<M, boolean | undefined>;
 
   /** The layer's export visibility, when {@link hasExportState} is `true`. */
-  readonly exportState: Read<M, boolean>;
+  readonly exportState: Read<M, boolean | undefined>;
 
   /** If `true`, the source file defines a print visibility state for this layer. */
-  readonly hasPrintState: Read<M, boolean>;
+  readonly hasPrintState: Read<M, boolean | undefined>;
 
   /** The layer's print visibility, when {@link hasPrintState} is `true`. */
-  readonly printState: Read<M, boolean>;
+  readonly printState: Read<M, boolean | undefined>;
 
   /** Nested sub-layers, for layer groups. */
-  readonly graphicLayers: GraphicLayers;
+  readonly graphicLayers: GraphicLayers | undefined;
 
   /** The layer's current, script-controllable visibility in the placed graphic. */
-  get currentVisibility(): Read<M, boolean>;
+  get currentVisibility(): Read<M, boolean | undefined>;
   set currentVisibility(value: boolean);
 }

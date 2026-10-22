@@ -28,7 +28,7 @@ export interface MenuItems
   extends
     BaseCollection<MenuItem, MenuItem, MenuItem<'plural'>>,
     IdCollection<MenuItem>,
-    NamedCollection<MenuItem>, InDesignPlugins.MenuItems {
+    NamedCollection<MenuItem>, InDesignEdition.MenuItems, InDesignPlugins.MenuItems {
   /**
    * Creates and inserts a new {@link MenuItem} into the menu.
    *

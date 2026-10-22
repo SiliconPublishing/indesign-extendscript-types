@@ -12,6 +12,7 @@ import type { File } from './_base/Types';
 import type { UserInteractionLevels } from './Enums/UserInteractionLevels';
 import type { Document } from './Document';
 import type { LayoutWindow } from './LayoutWindow';
+import type { EditionPart } from "./_base/Editions";
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
 import type { EventString } from './_base/DomObjects';
@@ -20,7 +21,7 @@ import type { EventPhases } from './Enums/EventPhases';
 /**
  * An event dispatched before or after a file is imported into, or exported from, a document.
  */
-export interface ImportExportEvent extends InDesignPlugins.ImportExportEvent<'single'> {
+export interface ImportExportEvent extends InDesignEdition.ImportExportEvent, InDesignPlugins.ImportExportEvent<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -98,15 +99,12 @@ export interface ImportExportEvent extends InDesignPlugins.ImportExportEvent<'si
   readonly fullName: File;
   /** The import/export file format. */
   readonly format: string;
-  /** Controls the display of dialogs and alerts while this event's handler runs. */
-  get userInteractionLevel(): UserInteractionLevels;
-  set userInteractionLevel(value: UserInteractionLevels);
 }
 
 /**
  * An event dispatched before or after a file is imported into, or exported from, a document.
  */
-export interface ImportExportEventPlural extends InDesignPlugins.ImportExportEvent<'plural'> {
+export interface ImportExportEventPlural extends InDesignEdition.ImportExportEventPlural, InDesignPlugins.ImportExportEvent<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -184,7 +182,41 @@ export interface ImportExportEventPlural extends InDesignPlugins.ImportExportEve
   readonly fullName: (File)[];
   /** The import/export file format. */
   readonly format: (string)[];
-  /** Controls the display of dialogs and alerts while this event's handler runs. */
-  get userInteractionLevel(): (UserInteractionLevels)[];
+}
+/** ImportExportEvent's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ImportExportEventDesktop {
+  /** Controls the display of dialogs and alerts while this event's handler runs.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get userInteractionLevel(): UserInteractionLevels;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
   set userInteractionLevel(value: UserInteractionLevels);
+}
+
+/** ImportExportEvent's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ImportExportEventDesktopPlural {
+  /** Controls the display of dialogs and alerts while this event's handler runs.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get userInteractionLevel(): (UserInteractionLevels)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set userInteractionLevel(value: UserInteractionLevels);
+}
+
+/** ImportExportEvent's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ImportExportEventServer {
+}
+
+/** ImportExportEvent's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ImportExportEventServerPlural {
+}
+
+/** ImportExportEvent's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ImportExportEventPortable {
+}
+
+/** ImportExportEvent's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ImportExportEventPortablePlural {
 }

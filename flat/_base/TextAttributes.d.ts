@@ -86,6 +86,7 @@ import type { Gradient } from '../Gradient';
 import type { MixedInk } from '../MixedInk';
 import type { Text } from '../Text';
 import type { Tint } from '../Tint';
+import type { EditionPart } from "./Editions";
 
 /**
  * Fill, stroke, and gradient attributes a text run draws its glyphs with.
@@ -2586,11 +2587,6 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   /** Paragraph kashida width. 0 is none, 1 is short, 2 is medium, 3 is long */
   get paragraphKashidaWidth(): Read<M, number>;
   set paragraphKashidaWidth(value: number | NSet);
-
-  /** If true, aligns the baseline of the text to the baseline grid. */
-  get alignToBaseline(): Read<M, boolean>;
-  set alignToBaseline(value: boolean | NSet);
-
   /** First-line indent, relative to {@link leftIndent}. Negative values hang. */
   get firstLineIndent(): Read<M, number>;
   set firstLineIndent(value: MeasurementValue | NSet);
@@ -3033,6 +3029,43 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   get numberingAlignment(): Read<M, ListAlignment>;
   set numberingAlignment(value: ListAlignment | NSet);
 }
+/** ParagraphAttributesBase's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphAttributesBaseDesktop {
+  /** If true, aligns the baseline of the text to the baseline grid.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get alignToBaseline(): boolean;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set alignToBaseline(value: boolean | never);
+}
+
+/** ParagraphAttributesBase's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphAttributesBaseDesktopPlural {
+  /** If true, aligns the baseline of the text to the baseline grid.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get alignToBaseline(): (boolean)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set alignToBaseline(value: boolean | never);
+}
+
+/** ParagraphAttributesBase's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphAttributesBaseServer {
+}
+
+/** ParagraphAttributesBase's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphAttributesBaseServerPlural {
+}
+
+/** ParagraphAttributesBase's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ParagraphAttributesBasePortable {
+}
+
+/** ParagraphAttributesBase's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ParagraphAttributesBasePortablePlural {
+}
 
 /**
  * Live paragraph-level formatting on a text range: indents, spacing,
@@ -3235,9 +3268,6 @@ export interface ParagraphFormatAttributes {
   /** Paragraph kashida width. 0 is none, 1 is short, 2 is medium, 3 is long */
   get paragraphKashidaWidth(): number;
   set paragraphKashidaWidth(value: number | never);
-  /** If true, aligns the baseline of the text to the baseline grid. */
-  get alignToBaseline(): boolean;
-  set alignToBaseline(value: boolean | never);
   /** First-line indent, relative to {@link leftIndent}. Negative values hang. */
   get firstLineIndent(): number;
   set firstLineIndent(value: MeasurementValue | never);
@@ -3776,9 +3806,6 @@ export interface ParagraphFormatAttributesPlural {
   /** Paragraph kashida width. 0 is none, 1 is short, 2 is medium, 3 is long */
   get paragraphKashidaWidth(): (number)[];
   set paragraphKashidaWidth(value: number | never);
-  /** If true, aligns the baseline of the text to the baseline grid. */
-  get alignToBaseline(): (boolean)[];
-  set alignToBaseline(value: boolean | never);
   /** First-line indent, relative to {@link leftIndent}. Negative values hang. */
   get firstLineIndent(): (number)[];
   set firstLineIndent(value: MeasurementValue | never);
@@ -4115,6 +4142,43 @@ export interface ParagraphFormatAttributesPlural {
   get numberingAlignment(): (ListAlignment)[];
   set numberingAlignment(value: ListAlignment | never);
 }
+/** ParagraphFormatAttributes's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphFormatAttributesDesktop {
+  /** If true, aligns the baseline of the text to the baseline grid.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get alignToBaseline(): boolean;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set alignToBaseline(value: boolean | never);
+}
+
+/** ParagraphFormatAttributes's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphFormatAttributesDesktopPlural {
+  /** If true, aligns the baseline of the text to the baseline grid.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get alignToBaseline(): (boolean)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set alignToBaseline(value: boolean | never);
+}
+
+/** ParagraphFormatAttributes's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphFormatAttributesServer {
+}
+
+/** ParagraphFormatAttributes's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphFormatAttributesServerPlural {
+}
+
+/** ParagraphFormatAttributes's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ParagraphFormatAttributesPortable {
+}
+
+/** ParagraphFormatAttributes's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ParagraphFormatAttributesPortablePlural {
+}
 
 /**
  * Paragraph formatting stored as a named **style definition**
@@ -4315,9 +4379,6 @@ export interface ParagraphStyleAttributes {
   /** Paragraph kashida width. 0 is none, 1 is short, 2 is medium, 3 is long */
   get paragraphKashidaWidth(): number;
   set paragraphKashidaWidth(value: number | never);
-  /** If true, aligns the baseline of the text to the baseline grid. */
-  get alignToBaseline(): boolean;
-  set alignToBaseline(value: boolean | never);
   /** First-line indent, relative to {@link leftIndent}. Negative values hang. */
   get firstLineIndent(): number;
   set firstLineIndent(value: MeasurementValue | never);
@@ -4854,9 +4915,6 @@ export interface ParagraphStyleAttributesPlural {
   /** Paragraph kashida width. 0 is none, 1 is short, 2 is medium, 3 is long */
   get paragraphKashidaWidth(): (number)[];
   set paragraphKashidaWidth(value: number | never);
-  /** If true, aligns the baseline of the text to the baseline grid. */
-  get alignToBaseline(): (boolean)[];
-  set alignToBaseline(value: boolean | never);
   /** First-line indent, relative to {@link leftIndent}. Negative values hang. */
   get firstLineIndent(): (number)[];
   set firstLineIndent(value: MeasurementValue | never);
@@ -5192,4 +5250,41 @@ export interface ParagraphStyleAttributesPlural {
   /** The alignment of the number. */
   get numberingAlignment(): (ListAlignment)[];
   set numberingAlignment(value: ListAlignment | never);
+}
+/** ParagraphStyleAttributes's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphStyleAttributesDesktop {
+  /** If true, aligns the baseline of the text to the baseline grid.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get alignToBaseline(): boolean;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set alignToBaseline(value: boolean | never);
+}
+
+/** ParagraphStyleAttributes's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphStyleAttributesDesktopPlural {
+  /** If true, aligns the baseline of the text to the baseline grid.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get alignToBaseline(): (boolean)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set alignToBaseline(value: boolean | never);
+}
+
+/** ParagraphStyleAttributes's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphStyleAttributesServer {
+}
+
+/** ParagraphStyleAttributes's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphStyleAttributesServerPlural {
+}
+
+/** ParagraphStyleAttributes's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ParagraphStyleAttributesPortable {
+}
+
+/** ParagraphStyleAttributes's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ParagraphStyleAttributesPortablePlural {
 }

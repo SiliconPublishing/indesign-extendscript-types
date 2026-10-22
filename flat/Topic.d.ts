@@ -33,7 +33,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * own {@link topics} collection, and carry the {@link CrossReference}s and
  * {@link PageReference}s that make up the generated index entry.
  */
-export interface Topic extends InDesignPlugins.Topic<'single'> {
+export interface Topic extends InDesignEdition.Topic, InDesignPlugins.Topic<'single'> {
   /**
    * A collection of events
    */
@@ -155,7 +155,7 @@ export interface Topic extends InDesignPlugins.Topic<'single'> {
  * own {@link topics} collection, and carry the {@link CrossReference}s and
  * {@link PageReference}s that make up the generated index entry.
  */
-export interface TopicPlural extends InDesignPlugins.Topic<'plural'> {
+export interface TopicPlural extends InDesignEdition.TopicPlural, InDesignPlugins.Topic<'plural'> {
   /**
    * A collection of events
    */

@@ -15,7 +15,7 @@ import type { CharacterStyle } from './CharacterStyle';
  * "See page 12") describing another location, formatted by its
  * {@link appliedFormat}.
  */
-export interface CrossReferenceSource<M extends Mode = 'single'> extends HyperlinkTextSource<M>, InDesignPlugins.CrossReferenceSource<M>{
+export interface CrossReferenceSource<M extends Mode = 'single'> extends HyperlinkTextSource<M>, InDesignEdition.CrossReferenceSource<M>, InDesignPlugins.CrossReferenceSource<M>{
   /** Resolves the proxy into the individual {@link CrossReferenceSource} objects it stands for. */
   getElements(): CrossReferenceSource<'single'>[];
 

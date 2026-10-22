@@ -20,7 +20,7 @@ import type { PreflightProcess } from './PreflightProcess';
  * document's content based on the rules defined in the profile.
  * @collection PreflightProcess
  */
-export interface PreflightProcesses extends BaseCollection<PreflightProcess, PreflightProcess, PreflightProcess<'plural'>>, InDesignPlugins.PreflightProcesses {
+export interface PreflightProcesses extends BaseCollection<PreflightProcess, PreflightProcess, PreflightProcess<'plural'>>, InDesignEdition.PreflightProcesses, InDesignPlugins.PreflightProcesses {
   /**
    * Initiates a new preflight inspection on the specified document.
    * The process runs asynchronously, and its status can be monitored through the returned {@link PreflightProcess} object.

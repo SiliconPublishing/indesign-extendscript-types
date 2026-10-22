@@ -25,7 +25,7 @@ import type { PageItemParent } from './_base/Parents';
  * @collection SVG
  */
 export interface SVGs<TParent = PageItemParent>
-  extends BaseCollection<SVG<TParent>, SVG, SVG<TParent, 'plural'>>, IdCollection<SVG<TParent>>, NamedCollection<SVG<TParent>>, InDesignPlugins.SVGs {
+  extends BaseCollection<SVG<TParent>, SVG, SVG<TParent, 'plural'>>, IdCollection<SVG<TParent>>, NamedCollection<SVG<TParent>>, InDesignEdition.SVGs<TParent>, InDesignPlugins.SVGs {
   /**
    * Creates a new SVG container from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link SVG}.

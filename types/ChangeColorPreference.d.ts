@@ -14,7 +14,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
 /**
  * Change color preferences.
  */
-export interface ChangeColorPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.ChangeColorPreference<M> {
+export interface ChangeColorPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.ChangeColorPreference<M>, InDesignPlugins.ChangeColorPreference<M> {
   /** Resolves the proxy into the individual {@link ChangeColorPreference} objects it stands for. */
   getElements(): ChangeColorPreference<'single'>[];
 

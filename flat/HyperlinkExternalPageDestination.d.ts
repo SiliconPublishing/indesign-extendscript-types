@@ -25,7 +25,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A {@link Hyperlink} destination that is a page in a document other than
  * the one containing the hyperlink's source.
  */
-export interface HyperlinkExternalPageDestination extends InDesignPlugins.HyperlinkExternalPageDestination<'single'> {
+export interface HyperlinkExternalPageDestination extends InDesignEdition.HyperlinkExternalPageDestination, InDesignPlugins.HyperlinkExternalPageDestination<'single'> {
   /**
    * A collection of events
    */
@@ -165,7 +165,7 @@ export interface HyperlinkExternalPageDestination extends InDesignPlugins.Hyperl
  * A {@link Hyperlink} destination that is a page in a document other than
  * the one containing the hyperlink's source.
  */
-export interface HyperlinkExternalPageDestinationPlural extends InDesignPlugins.HyperlinkExternalPageDestination<'plural'> {
+export interface HyperlinkExternalPageDestinationPlural extends InDesignEdition.HyperlinkExternalPageDestinationPlural, InDesignPlugins.HyperlinkExternalPageDestination<'plural'> {
   /**
    * A collection of events
    */

@@ -44,7 +44,7 @@ import type { WidgetParent } from './_base/Parents';
  * activates or deactivates every control it contains by clicking the
  * checkbox.
  */
-export interface EnablingGroup extends InDesignPlugins.EnablingGroup<'single'> {
+export interface EnablingGroup extends InDesignEdition.EnablingGroup, InDesignPlugins.EnablingGroup<'single'> {
   /**
    * A collection of events
    */
@@ -189,7 +189,7 @@ export interface EnablingGroup extends InDesignPlugins.EnablingGroup<'single'> {
  * activates or deactivates every control it contains by clicking the
  * checkbox.
  */
-export interface EnablingGroupPlural extends InDesignPlugins.EnablingGroup<'plural'> {
+export interface EnablingGroupPlural extends InDesignEdition.EnablingGroupPlural, InDesignPlugins.EnablingGroup<'plural'> {
   /**
    * A collection of events
    */

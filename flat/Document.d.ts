@@ -221,6 +221,7 @@ import type { Windows } from './Windows';
 import type { LayoutWindows } from './LayoutWindows';
 import type { StoryWindows } from './StoryWindows';
 import type { AnyGraphic, AnyPageItem, SelectionItem } from './_base/Unions';
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -241,7 +242,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * behaviour to this file, and the file-level operations — save, close, export,
  * package and place.
  */
-export interface Document extends InDesignPlugins.Document<'single'> {
+export interface Document extends InDesignEdition.Document, InDesignPlugins.Document<'single'> {
   /**
    * A collection of events
    */
@@ -354,8 +355,6 @@ export interface Document extends InDesignPlugins.Document<'single'> {
   readonly fullName: File;
   /** The folder containing the document, as a {@link Folder} entry — reach the path with `.nativePath`. Not the document file itself; see {@link fullName}. */
   readonly filePath: Folder;
-  /** The cloud path for a cloud document; accessing it on a non-cloud document throws. */
-  readonly cloudPath: string;
   /** Whether this is an Adobe cloud document rather than a local file. */
   readonly isCloudDocument: boolean;
   /** Whether the document window is visible. */
@@ -371,15 +370,6 @@ export interface Document extends InDesignPlugins.Document<'single'> {
   /** Whether the document is open read-only. */
   readonly readOnly: boolean;
   // ---- Undo / redo introspection ------------------------------------------
-
-  /** Name of the action currently on top of the undo stack. */
-  readonly undoName: string;
-  /** Name of the action currently on top of the redo stack. */
-  readonly redoName: string;
-  /** Names of every action in the undo stack, most recent first. */
-  readonly undoHistory: string[];
-  /** Names of every action in the redo stack. */
-  readonly redoHistory: string[];
   // ---- Color management ----------------------------------------------------
 
   /** The document's working CMYK profile, by name. */
@@ -419,20 +409,6 @@ export interface Document extends InDesignPlugins.Document<'single'> {
   get activeLayer(): Layer;
   set activeLayer(value: Layer | string);
   // ---- Selection -----------------------------------------------------------
-
-  /**
-   * The document's current selection. Assign a single object, an array of
-   * objects, or {@link NothingEnum.NOTHING} to clear it; the element types
-   * depend on what is selectable in the current context (page items, text
-   * ranges, table cells…).
-   */
-  get selection(): SelectionItem[];
-  set selection(value: SelectionItem | SelectionItem[] | NothingEnum.NOTHING);
-  /** The key object of a multi-object selection (the alignment anchor), or {@link NothingEnum.NOTHING}. */
-  get selectionKeyObject(): PageItem | null;
-  set selectionKeyObject(value: PageItem | NothingEnum.NOTHING);
-  /** Page items currently selected in the document. A snapshot array. */
-  readonly selectedPageItems: AnyPageItem[];
   // ---- Math object defaults ------------------------------------------------
 
   /** Default font size, in points, for math objects. */
@@ -471,11 +447,6 @@ export interface Document extends InDesignPlugins.Document<'single'> {
   /** The {@link XMLItem} root associated with the document's XML structure. */
   readonly associatedXMLElement: XMLItem;
   // ---- Preference / settings objects (readonly) ---------------------------
-
-  /** XML view preference settings — see {@link XMLViewPreference}. */
-  readonly xmlViewPreferences: XMLViewPreference;
-  /** Galley view preference settings — see {@link GalleyPreference}. */
-  readonly galleyPreferences: GalleyPreference;
   /** Preflight option settings — see {@link PreflightOption}. */
   readonly preflightOptions: PreflightOption;
   /** The active {@link PreflightProcess} for this document, if any. */
@@ -744,12 +715,6 @@ export interface Document extends InDesignPlugins.Document<'single'> {
   readonly assignments: Assignments;
   /** {@link Articles} in the document. */
   readonly articles: Articles;
-  /** {@link Windows} showing this document. */
-  readonly windows: Windows;
-  /** {@link LayoutWindows} showing this document. */
-  readonly layoutWindows: LayoutWindows;
-  /** {@link StoryWindows} (galley/story editor) for this document. */
-  readonly storyWindows: StoryWindows;
   // ---- Page-item container accessors ---------------------------------------
 
   /** {@link Ovals} (ellipses) at the document's top level. */
@@ -812,10 +777,6 @@ export interface Document extends InDesignPlugins.Document<'single'> {
    * @param stationery If `true`, saves the copy as a template. Defaults to `false`.
    */
   saveACopy(to?: FilePath, stationery?: boolean): void;
-  /** Saves the document as an Adobe cloud document at `cloudPath`. */
-  saveAsCloud(cloudPath: string): Document;
-  /** Saves a copy of the document as an Adobe cloud document at `cloudPath`. */
-  saveACopyCloud(cloudPath: string): Document;
   /**
    * Closes the document.
    * @param saving Whether to save changes before closing; when
@@ -828,48 +789,6 @@ export interface Document extends InDesignPlugins.Document<'single'> {
   close(saving?: SaveOptions, savingIn?: FilePath, versionComments?: string, forceSave?: boolean): void;
   /** Reverts the document to its state at the last save. Returns `true` on success. */
   revert(): boolean;
-  /**
-   * Exports the document (or a selection) to a file.
-   * @param format Export format — an {@link ExportFormat} value or a
-   * format/extension string as shown in the Export dialog.
-   * @param to Destination path.
-   * @param showingOptions If `true`, shows the format's export-options dialog. Defaults to `false`.
-   * @param using Export preset to use (e.g. a {@link PDFExportPreset}).
-   * @param versionComments Version Cue comment.
-   * @param forceSave If `true`, forces a new version. Defaults to `false`.
-   */
-  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): void;
-  /**
-   * Exports the document to a file on a background thread, returning the
-   * {@link BackgroundTask} that tracks progress.
-   * @param format Export format — see {@link exportFile}.
-   * @param to Destination path.
-   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
-   * @param using Export preset to use.
-   * @param versionComments Version Cue comment.
-   * @param forceSave If `true`, forces a new version. Defaults to `false`.
-   */
-  asynchronousExportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): BackgroundTask;
-  /**
-   * Places one or more files, following the Place menu behavior — may load the
-   * place gun or replace the current selection depending on preferences.
-   *
-   * Placing an image returns the **graphic** (`Image`, `PDF`, `EPS`…),
-   * not the frame InDesign creates around it. Sizing and moving belong to the frame,
-   * which is the graphic's `parent` — narrow it before use, since a graphic can also
-   * sit in a cell or a snippet:
-   *
-   * ```ts
-   * const img = doc.place(file)[0];
-   * if (img && img.parent instanceof Rectangle) {
-   *   img.parent.fit(FitOptions.PROPORTIONALLY);
-   * }
-   * ```
-   * @param fileName One file path, or an array of paths.
-   * @param showingOptions If `true`, shows the import-options dialog. Defaults to `false`.
-   * @param withProperties Initial properties for the placed object(s).
-   */
-  place(fileName: FilePath | FilePath[], showingOptions?: boolean, withProperties?: object): void;
   /**
    * Packages the document for output — collecting fonts, links, and a report.
    * @param to Destination folder for the package.
@@ -888,18 +807,6 @@ export interface Document extends InDesignPlugins.Document<'single'> {
    * @param forceSave If `true`, forces a new version. Defaults to `false`.
    */
   packageForPrint(to: FolderPath, copyingFonts: boolean, copyingLinkedGraphics: boolean, copyingProfiles: boolean, updatingGraphics: boolean, includingHiddenLayers: boolean, ignorePreflightErrors: boolean, creatingReport: boolean, includeIdml?: boolean, includePdf?: boolean, pdfStyle?: string, useDocumentHyphenationExceptionsOnly?: boolean, versionComments?: string, forceSave?: boolean): boolean;
-  /**
-   * Prints the document.
-   * @param printDialog If `true`, shows the Print dialog. Defaults to `false`.
-   * @param using A {@link PrinterPreset} or built-in {@link PrinterPresetTypes} to print with.
-   */
-  print(printDialog?: boolean, using?: PrinterPresetTypes | PrinterPreset): void;
-  /**
-   * Prints the document as a booklet, using the document's booklet and print settings.
-   * @param printBookletDialog If `true`, shows the Print Booklet dialog. Defaults to `false`.
-   * @param using A {@link PrinterPreset} or built-in {@link PrinterPresetTypes} to print with.
-   */
-  printBooklet(printBookletDialog?: boolean, using?: PrinterPresetTypes | PrinterPreset): void;
   /**
    * Creates a table of contents and places its story.
    * @param using The {@link TOCStyle} defining content, title, and format.
@@ -992,17 +899,6 @@ export interface Document extends InDesignPlugins.Document<'single'> {
   /** Recomposes all text in the document. */
   recompose(): void;
   /**
-   * Selects the given object(s) in the document.
-   * @param selectableItems The object(s) to select, {@link SelectAll} to select
-   * everything, or {@link NothingEnum.NOTHING} to clear the selection.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(selectableItems: object | object[] | NothingEnum | SelectAll, existingSelection?: SelectionOptions): void;
-  /** Undoes the last action. */
-  undo(): void;
-  /** Redoes the last undone action. */
-  redo(): void;
-  /**
    * Aligns page items.
    * @param alignDistributeItems Items to align.
    * @param alignOption Alignment to apply.
@@ -1060,20 +956,6 @@ export interface Document extends InDesignPlugins.Document<'single'> {
    */
   createFromMathML(mathmlDescription: string, mathmlDestinationPage: Page, destinationLayer: Layer, placePoint: MeasurementValue[]): SVG;
   /**
-   * Creates a missing-font placeholder object.
-   * @param fontFamily Font family name.
-   * @param fontStyleName Font style name.
-   * @param postscriptName PostScript name.
-   */
-  createMissingFontObject(fontFamily: string, fontStyleName: string, postscriptName: string): Font;
-  /** Direction of the currently selected text. */
-  getSelectedTextDirection(): TextDirection;
-  /**
-   * Returns the style-conflict resolution strategy, or `false` if the user cancels.
-   * @param charOrParaStyle Which style type to inspect.
-   */
-  getStyleConflictResolutionStrategy(charOrParaStyle?: StyleType): GlobalClashResolutionStrategy | false;
-  /**
    * Transforms a color value between color spaces.
    * @param colorValue Source color component values.
    * @param sourceColorSpace Source color space.
@@ -1094,21 +976,11 @@ export interface Document extends InDesignPlugins.Document<'single'> {
    */
   exportPageItemsToSnippet(to: FilePath, pageItemIds: number[]): void;
   /**
-   * Exports assets required for a Creative Cloud library.
-   * @param jsondata JSON-encoded export information.
-   */
-  exportForCloudLibrary(jsondata: string): boolean;
-  /**
    * Imports PDF comments into the document.
    * @param from The PDF file to import comments from.
    * @param withProperties Initial property values.
    */
   importPdfComments(from: FilePath, withProperties?: object): void;
-  /**
-   * Places a cloud asset onto the document.
-   * @param jsondata JSON metadata describing the cloud asset.
-   */
-  placeCloudAsset(jsondata: string): void;
   /** Finds color matching the current find-color query. Returns the match count. */
   findColor(): number;
   /** Replaces color matching the find-color query with the change-color value. Returns the change count. */
@@ -1214,7 +1086,7 @@ export interface Document extends InDesignPlugins.Document<'single'> {
  * behaviour to this file, and the file-level operations — save, close, export,
  * package and place.
  */
-export interface DocumentPlural extends InDesignPlugins.Document<'plural'> {
+export interface DocumentPlural extends InDesignEdition.DocumentPlural, InDesignPlugins.Document<'plural'> {
   /**
    * A collection of events
    */
@@ -1327,8 +1199,6 @@ export interface DocumentPlural extends InDesignPlugins.Document<'plural'> {
   readonly fullName: (File)[];
   /** The folder containing the document, as a {@link Folder} entry — reach the path with `.nativePath`. Not the document file itself; see {@link fullName}. */
   readonly filePath: (Folder)[];
-  /** The cloud path for a cloud document; accessing it on a non-cloud document throws. */
-  readonly cloudPath: (string)[];
   /** Whether this is an Adobe cloud document rather than a local file. */
   readonly isCloudDocument: (boolean)[];
   /** Whether the document window is visible. */
@@ -1344,15 +1214,6 @@ export interface DocumentPlural extends InDesignPlugins.Document<'plural'> {
   /** Whether the document is open read-only. */
   readonly readOnly: (boolean)[];
   // ---- Undo / redo introspection ------------------------------------------
-
-  /** Name of the action currently on top of the undo stack. */
-  readonly undoName: (string)[];
-  /** Name of the action currently on top of the redo stack. */
-  readonly redoName: (string)[];
-  /** Names of every action in the undo stack, most recent first. */
-  readonly undoHistory: (string[])[];
-  /** Names of every action in the redo stack. */
-  readonly redoHistory: (string[])[];
   // ---- Color management ----------------------------------------------------
 
   /** The document's working CMYK profile, by name. */
@@ -1392,20 +1253,6 @@ export interface DocumentPlural extends InDesignPlugins.Document<'plural'> {
   get activeLayer(): (Layer)[];
   set activeLayer(value: Layer | string);
   // ---- Selection -----------------------------------------------------------
-
-  /**
-   * The document's current selection. Assign a single object, an array of
-   * objects, or {@link NothingEnum.NOTHING} to clear it; the element types
-   * depend on what is selectable in the current context (page items, text
-   * ranges, table cells…).
-   */
-  get selection(): (SelectionItem[])[];
-  set selection(value: SelectionItem | SelectionItem[] | NothingEnum.NOTHING);
-  /** The key object of a multi-object selection (the alignment anchor), or {@link NothingEnum.NOTHING}. */
-  get selectionKeyObject(): (PageItem | null)[];
-  set selectionKeyObject(value: PageItem | NothingEnum.NOTHING);
-  /** Page items currently selected in the document. A snapshot array. */
-  readonly selectedPageItems: (AnyPageItem[])[];
   // ---- Math object defaults ------------------------------------------------
 
   /** Default font size, in points, for math objects. */
@@ -1444,11 +1291,6 @@ export interface DocumentPlural extends InDesignPlugins.Document<'plural'> {
   /** The {@link XMLItem} root associated with the document's XML structure. */
   readonly associatedXMLElement: (XMLItem)[];
   // ---- Preference / settings objects (readonly) ---------------------------
-
-  /** XML view preference settings — see {@link XMLViewPreference}. */
-  readonly xmlViewPreferences: (XMLViewPreference)[];
-  /** Galley view preference settings — see {@link GalleyPreference}. */
-  readonly galleyPreferences: (GalleyPreference)[];
   /** Preflight option settings — see {@link PreflightOption}. */
   readonly preflightOptions: (PreflightOption)[];
   /** The active {@link PreflightProcess} for this document, if any. */
@@ -1717,12 +1559,6 @@ export interface DocumentPlural extends InDesignPlugins.Document<'plural'> {
   readonly assignments: Assignments;
   /** {@link Articles} in the document. */
   readonly articles: Articles;
-  /** {@link Windows} showing this document. */
-  readonly windows: Windows;
-  /** {@link LayoutWindows} showing this document. */
-  readonly layoutWindows: LayoutWindows;
-  /** {@link StoryWindows} (galley/story editor) for this document. */
-  readonly storyWindows: StoryWindows;
   // ---- Page-item container accessors ---------------------------------------
 
   /** {@link Ovals} (ellipses) at the document's top level. */
@@ -1785,10 +1621,6 @@ export interface DocumentPlural extends InDesignPlugins.Document<'plural'> {
    * @param stationery If `true`, saves the copy as a template. Defaults to `false`.
    */
   saveACopy(to?: FilePath, stationery?: boolean): (void)[];
-  /** Saves the document as an Adobe cloud document at `cloudPath`. */
-  saveAsCloud(cloudPath: string): (Document)[];
-  /** Saves a copy of the document as an Adobe cloud document at `cloudPath`. */
-  saveACopyCloud(cloudPath: string): (Document)[];
   /**
    * Closes the document.
    * @param saving Whether to save changes before closing; when
@@ -1801,48 +1633,6 @@ export interface DocumentPlural extends InDesignPlugins.Document<'plural'> {
   close(saving?: SaveOptions, savingIn?: FilePath, versionComments?: string, forceSave?: boolean): (void)[];
   /** Reverts the document to its state at the last save. Returns `true` on success. */
   revert(): (boolean)[];
-  /**
-   * Exports the document (or a selection) to a file.
-   * @param format Export format — an {@link ExportFormat} value or a
-   * format/extension string as shown in the Export dialog.
-   * @param to Destination path.
-   * @param showingOptions If `true`, shows the format's export-options dialog. Defaults to `false`.
-   * @param using Export preset to use (e.g. a {@link PDFExportPreset}).
-   * @param versionComments Version Cue comment.
-   * @param forceSave If `true`, forces a new version. Defaults to `false`.
-   */
-  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (void)[];
-  /**
-   * Exports the document to a file on a background thread, returning the
-   * {@link BackgroundTask} that tracks progress.
-   * @param format Export format — see {@link exportFile}.
-   * @param to Destination path.
-   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
-   * @param using Export preset to use.
-   * @param versionComments Version Cue comment.
-   * @param forceSave If `true`, forces a new version. Defaults to `false`.
-   */
-  asynchronousExportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (BackgroundTask)[];
-  /**
-   * Places one or more files, following the Place menu behavior — may load the
-   * place gun or replace the current selection depending on preferences.
-   *
-   * Placing an image returns the **graphic** (`Image`, `PDF`, `EPS`…),
-   * not the frame InDesign creates around it. Sizing and moving belong to the frame,
-   * which is the graphic's `parent` — narrow it before use, since a graphic can also
-   * sit in a cell or a snippet:
-   *
-   * ```ts
-   * const img = doc.place(file)[0];
-   * if (img && img.parent instanceof Rectangle) {
-   *   img.parent.fit(FitOptions.PROPORTIONALLY);
-   * }
-   * ```
-   * @param fileName One file path, or an array of paths.
-   * @param showingOptions If `true`, shows the import-options dialog. Defaults to `false`.
-   * @param withProperties Initial properties for the placed object(s).
-   */
-  place(fileName: FilePath | FilePath[], showingOptions?: boolean, withProperties?: object): (void)[];
   /**
    * Packages the document for output — collecting fonts, links, and a report.
    * @param to Destination folder for the package.
@@ -1861,18 +1651,6 @@ export interface DocumentPlural extends InDesignPlugins.Document<'plural'> {
    * @param forceSave If `true`, forces a new version. Defaults to `false`.
    */
   packageForPrint(to: FolderPath, copyingFonts: boolean, copyingLinkedGraphics: boolean, copyingProfiles: boolean, updatingGraphics: boolean, includingHiddenLayers: boolean, ignorePreflightErrors: boolean, creatingReport: boolean, includeIdml?: boolean, includePdf?: boolean, pdfStyle?: string, useDocumentHyphenationExceptionsOnly?: boolean, versionComments?: string, forceSave?: boolean): (boolean)[];
-  /**
-   * Prints the document.
-   * @param printDialog If `true`, shows the Print dialog. Defaults to `false`.
-   * @param using A {@link PrinterPreset} or built-in {@link PrinterPresetTypes} to print with.
-   */
-  print(printDialog?: boolean, using?: PrinterPresetTypes | PrinterPreset): (void)[];
-  /**
-   * Prints the document as a booklet, using the document's booklet and print settings.
-   * @param printBookletDialog If `true`, shows the Print Booklet dialog. Defaults to `false`.
-   * @param using A {@link PrinterPreset} or built-in {@link PrinterPresetTypes} to print with.
-   */
-  printBooklet(printBookletDialog?: boolean, using?: PrinterPresetTypes | PrinterPreset): (void)[];
   /**
    * Creates a table of contents and places its story.
    * @param using The {@link TOCStyle} defining content, title, and format.
@@ -1965,17 +1743,6 @@ export interface DocumentPlural extends InDesignPlugins.Document<'plural'> {
   /** Recomposes all text in the document. */
   recompose(): (void)[];
   /**
-   * Selects the given object(s) in the document.
-   * @param selectableItems The object(s) to select, {@link SelectAll} to select
-   * everything, or {@link NothingEnum.NOTHING} to clear the selection.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(selectableItems: object | object[] | NothingEnum | SelectAll, existingSelection?: SelectionOptions): (void)[];
-  /** Undoes the last action. */
-  undo(): (void)[];
-  /** Redoes the last undone action. */
-  redo(): (void)[];
-  /**
    * Aligns page items.
    * @param alignDistributeItems Items to align.
    * @param alignOption Alignment to apply.
@@ -2033,20 +1800,6 @@ export interface DocumentPlural extends InDesignPlugins.Document<'plural'> {
    */
   createFromMathML(mathmlDescription: string, mathmlDestinationPage: Page, destinationLayer: Layer, placePoint: MeasurementValue[]): (SVG)[];
   /**
-   * Creates a missing-font placeholder object.
-   * @param fontFamily Font family name.
-   * @param fontStyleName Font style name.
-   * @param postscriptName PostScript name.
-   */
-  createMissingFontObject(fontFamily: string, fontStyleName: string, postscriptName: string): (Font)[];
-  /** Direction of the currently selected text. */
-  getSelectedTextDirection(): (TextDirection)[];
-  /**
-   * Returns the style-conflict resolution strategy, or `false` if the user cancels.
-   * @param charOrParaStyle Which style type to inspect.
-   */
-  getStyleConflictResolutionStrategy(charOrParaStyle?: StyleType): (GlobalClashResolutionStrategy | false)[];
-  /**
    * Transforms a color value between color spaces.
    * @param colorValue Source color component values.
    * @param sourceColorSpace Source color space.
@@ -2067,21 +1820,11 @@ export interface DocumentPlural extends InDesignPlugins.Document<'plural'> {
    */
   exportPageItemsToSnippet(to: FilePath, pageItemIds: number[]): (void)[];
   /**
-   * Exports assets required for a Creative Cloud library.
-   * @param jsondata JSON-encoded export information.
-   */
-  exportForCloudLibrary(jsondata: string): (boolean)[];
-  /**
    * Imports PDF comments into the document.
    * @param from The PDF file to import comments from.
    * @param withProperties Initial property values.
    */
   importPdfComments(from: FilePath, withProperties?: object): (void)[];
-  /**
-   * Places a cloud asset onto the document.
-   * @param jsondata JSON metadata describing the cloud asset.
-   */
-  placeCloudAsset(jsondata: string): (void)[];
   /** Finds color matching the current find-color query. Returns the match count. */
   findColor(): (number)[];
   /** Replaces color matching the find-color query with the change-color value. Returns the change count. */
@@ -2175,4 +1918,429 @@ export interface DocumentPlural extends InDesignPlugins.Document<'plural'> {
   handleMathMLMessage(resyncData: string): (void)[];
   /** Internal use only — reserved for the InDesign engineering team. */
   internalMethod(internalParameter1: string, internalParameter2: string): (string)[];
+}
+/** Document's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DocumentDesktop {
+  /** The cloud path for a cloud document; accessing it on a non-cloud document throws.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly cloudPath: string;
+  /** Page items currently selected in the document. A snapshot array.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly selectedPageItems: AnyPageItem[];
+  /** Name of the action currently on top of the undo stack.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly undoName: string;
+  /** Name of the action currently on top of the redo stack.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly redoName: string;
+  /** Names of every action in the undo stack, most recent first.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly undoHistory: string[];
+  /** Names of every action in the redo stack.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly redoHistory: string[];
+  /** XML view preference settings — see {@link XMLViewPreference}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly xmlViewPreferences: XMLViewPreference;
+  /** Galley view preference settings — see {@link GalleyPreference}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly galleyPreferences: GalleyPreference;
+  /** {@link Windows} showing this document.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly windows: Windows;
+  /** {@link LayoutWindows} showing this document.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly layoutWindows: LayoutWindows;
+  /** {@link StoryWindows} (galley/story editor) for this document.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly storyWindows: StoryWindows;
+  /**
+   * The document's current selection. Assign a single object, an array of
+   * objects, or {@link NothingEnum.NOTHING} to clear it; the element types
+   * depend on what is selectable in the current context (page items, text
+   * ranges, table cells…).
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  get selection(): SelectionItem[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set selection(value: SelectionItem | SelectionItem[] | NothingEnum.NOTHING);
+  /** The key object of a multi-object selection (the alignment anchor), or {@link NothingEnum.NOTHING}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get selectionKeyObject(): PageItem | null;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set selectionKeyObject(value: PageItem | NothingEnum.NOTHING);
+  /**
+   * Prints the document.
+   * InDesign Server 21.6 takes `print(using?, withGrids?)` instead.
+   * @param printDialog If `true`, shows the Print dialog. Defaults to `false`.
+   * @param using A {@link PrinterPreset} or built-in {@link PrinterPresetTypes} to print with.
+   */
+  print(printDialog?: boolean, using?: PrinterPresetTypes | PrinterPreset): void;
+  /**
+   * Prints the document as a booklet, using the document's booklet and print settings.
+   * InDesign Server 21.6 takes `printBooklet(using?)` instead.
+   * @param printBookletDialog If `true`, shows the Print Booklet dialog. Defaults to `false`.
+   * @param using A {@link PrinterPreset} or built-in {@link PrinterPresetTypes} to print with.
+   */
+  printBooklet(printBookletDialog?: boolean, using?: PrinterPresetTypes | PrinterPreset): void;
+  /**
+   * Exports the document (or a selection) to a file.
+   * InDesign Server 21.6 takes `exportFile(format, to, using?, withGrids?, versionComments?, forceSave?)` instead.
+   * @param format Export format — an {@link ExportFormat} value or a
+   * format/extension string as shown in the Export dialog.
+   * @param to Destination path.
+   * @param showingOptions If `true`, shows the format's export-options dialog. Defaults to `false`.
+   * @param using Export preset to use (e.g. a {@link PDFExportPreset}).
+   * @param versionComments Version Cue comment.
+   * @param forceSave If `true`, forces a new version. Defaults to `false`.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): void;
+  /**
+   * Exports the document to a file on a background thread, returning the
+   * {@link BackgroundTask} that tracks progress.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param format Export format — see {@link exportFile}.
+   * @param to Destination path.
+   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
+   * @param using Export preset to use.
+   * @param versionComments Version Cue comment.
+   * @param forceSave If `true`, forces a new version. Defaults to `false`.
+   */
+  asynchronousExportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): BackgroundTask;
+  /** Saves the document as an Adobe cloud document at `cloudPath`.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  saveAsCloud(cloudPath: string): Document;
+  /** Saves a copy of the document as an Adobe cloud document at `cloudPath`.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  saveACopyCloud(cloudPath: string): Document;
+  /**
+   * Selects the given object(s) in the document.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param selectableItems The object(s) to select, {@link SelectAll} to select
+   * everything, or {@link NothingEnum.NOTHING} to clear the selection.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(selectableItems: object | object[] | NothingEnum | SelectAll, existingSelection?: SelectionOptions): void;
+  /** Undoes the last action.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  undo(): void;
+  /** Redoes the last undone action.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  redo(): void;
+  /**
+   * Places one or more files, following the Place menu behavior — may load the
+   * place gun or replace the current selection depending on preferences.
+   *
+   * Placing an image returns the **graphic** (`Image`, `PDF`, `EPS`…),
+   * not the frame InDesign creates around it. Sizing and moving belong to the frame,
+   * which is the graphic's `parent` — narrow it before use, since a graphic can also
+   * sit in a cell or a snippet:
+   *
+   * ```ts
+   * const img = doc.place(file)[0];
+   * if (img && img.parent instanceof Rectangle) {
+   *   img.parent.fit(FitOptions.PROPORTIONALLY);
+   * }
+   * ```
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param fileName One file path, or an array of paths.
+   * @param showingOptions If `true`, shows the import-options dialog. Defaults to `false`.
+   * @param withProperties Initial properties for the placed object(s).
+   */
+  place(fileName: FilePath | FilePath[], showingOptions?: boolean, withProperties?: object): void;
+  /**
+   * Places a cloud asset onto the document.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param jsondata JSON metadata describing the cloud asset.
+   */
+  placeCloudAsset(jsondata: string): void;
+  /**
+   * Creates a missing-font placeholder object.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param fontFamily Font family name.
+   * @param fontStyleName Font style name.
+   * @param postscriptName PostScript name.
+   */
+  createMissingFontObject(fontFamily: string, fontStyleName: string, postscriptName: string): Font;
+  /**
+   * Returns the style-conflict resolution strategy, or `false` if the user cancels.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param charOrParaStyle Which style type to inspect.
+   */
+  getStyleConflictResolutionStrategy(charOrParaStyle?: StyleType): GlobalClashResolutionStrategy | false;
+  /**
+   * Exports assets required for a Creative Cloud library.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param jsondata JSON-encoded export information.
+   */
+  exportForCloudLibrary(jsondata: string): boolean;
+  /** Direction of the currently selected text.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  getSelectedTextDirection(): TextDirection;
+}
+
+/** Document's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DocumentDesktopPlural {
+  /** The cloud path for a cloud document; accessing it on a non-cloud document throws.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly cloudPath: (string)[];
+  /** Page items currently selected in the document. A snapshot array.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly selectedPageItems: (AnyPageItem[])[];
+  /** Name of the action currently on top of the undo stack.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly undoName: (string)[];
+  /** Name of the action currently on top of the redo stack.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly redoName: (string)[];
+  /** Names of every action in the undo stack, most recent first.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly undoHistory: (string[])[];
+  /** Names of every action in the redo stack.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly redoHistory: (string[])[];
+  /** XML view preference settings — see {@link XMLViewPreference}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly xmlViewPreferences: (XMLViewPreference)[];
+  /** Galley view preference settings — see {@link GalleyPreference}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly galleyPreferences: (GalleyPreference)[];
+  /** {@link Windows} showing this document.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly windows: Windows;
+  /** {@link LayoutWindows} showing this document.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly layoutWindows: LayoutWindows;
+  /** {@link StoryWindows} (galley/story editor) for this document.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly storyWindows: StoryWindows;
+  /**
+   * The document's current selection. Assign a single object, an array of
+   * objects, or {@link NothingEnum.NOTHING} to clear it; the element types
+   * depend on what is selectable in the current context (page items, text
+   * ranges, table cells…).
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  get selection(): (SelectionItem[])[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set selection(value: SelectionItem | SelectionItem[] | NothingEnum.NOTHING);
+  /** The key object of a multi-object selection (the alignment anchor), or {@link NothingEnum.NOTHING}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get selectionKeyObject(): (PageItem | null)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set selectionKeyObject(value: PageItem | NothingEnum.NOTHING);
+  /**
+   * Prints the document.
+   * InDesign Server 21.6 takes `print(using?, withGrids?)` instead.
+   * @param printDialog If `true`, shows the Print dialog. Defaults to `false`.
+   * @param using A {@link PrinterPreset} or built-in {@link PrinterPresetTypes} to print with.
+   */
+  print(printDialog?: boolean, using?: PrinterPresetTypes | PrinterPreset): (void)[];
+  /**
+   * Prints the document as a booklet, using the document's booklet and print settings.
+   * InDesign Server 21.6 takes `printBooklet(using?)` instead.
+   * @param printBookletDialog If `true`, shows the Print Booklet dialog. Defaults to `false`.
+   * @param using A {@link PrinterPreset} or built-in {@link PrinterPresetTypes} to print with.
+   */
+  printBooklet(printBookletDialog?: boolean, using?: PrinterPresetTypes | PrinterPreset): (void)[];
+  /**
+   * Exports the document (or a selection) to a file.
+   * InDesign Server 21.6 takes `exportFile(format, to, using?, withGrids?, versionComments?, forceSave?)` instead.
+   * @param format Export format — an {@link ExportFormat} value or a
+   * format/extension string as shown in the Export dialog.
+   * @param to Destination path.
+   * @param showingOptions If `true`, shows the format's export-options dialog. Defaults to `false`.
+   * @param using Export preset to use (e.g. a {@link PDFExportPreset}).
+   * @param versionComments Version Cue comment.
+   * @param forceSave If `true`, forces a new version. Defaults to `false`.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (void)[];
+  /**
+   * Exports the document to a file on a background thread, returning the
+   * {@link BackgroundTask} that tracks progress.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param format Export format — see {@link exportFile}.
+   * @param to Destination path.
+   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
+   * @param using Export preset to use.
+   * @param versionComments Version Cue comment.
+   * @param forceSave If `true`, forces a new version. Defaults to `false`.
+   */
+  asynchronousExportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (BackgroundTask)[];
+  /** Saves the document as an Adobe cloud document at `cloudPath`.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  saveAsCloud(cloudPath: string): (Document)[];
+  /** Saves a copy of the document as an Adobe cloud document at `cloudPath`.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  saveACopyCloud(cloudPath: string): (Document)[];
+  /**
+   * Selects the given object(s) in the document.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param selectableItems The object(s) to select, {@link SelectAll} to select
+   * everything, or {@link NothingEnum.NOTHING} to clear the selection.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(selectableItems: object | object[] | NothingEnum | SelectAll, existingSelection?: SelectionOptions): (void)[];
+  /** Undoes the last action.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  undo(): (void)[];
+  /** Redoes the last undone action.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  redo(): (void)[];
+  /**
+   * Places one or more files, following the Place menu behavior — may load the
+   * place gun or replace the current selection depending on preferences.
+   *
+   * Placing an image returns the **graphic** (`Image`, `PDF`, `EPS`…),
+   * not the frame InDesign creates around it. Sizing and moving belong to the frame,
+   * which is the graphic's `parent` — narrow it before use, since a graphic can also
+   * sit in a cell or a snippet:
+   *
+   * ```ts
+   * const img = doc.place(file)[0];
+   * if (img && img.parent instanceof Rectangle) {
+   *   img.parent.fit(FitOptions.PROPORTIONALLY);
+   * }
+   * ```
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param fileName One file path, or an array of paths.
+   * @param showingOptions If `true`, shows the import-options dialog. Defaults to `false`.
+   * @param withProperties Initial properties for the placed object(s).
+   */
+  place(fileName: FilePath | FilePath[], showingOptions?: boolean, withProperties?: object): (void)[];
+  /**
+   * Places a cloud asset onto the document.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param jsondata JSON metadata describing the cloud asset.
+   */
+  placeCloudAsset(jsondata: string): (void)[];
+  /**
+   * Creates a missing-font placeholder object.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param fontFamily Font family name.
+   * @param fontStyleName Font style name.
+   * @param postscriptName PostScript name.
+   */
+  createMissingFontObject(fontFamily: string, fontStyleName: string, postscriptName: string): (Font)[];
+  /**
+   * Returns the style-conflict resolution strategy, or `false` if the user cancels.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param charOrParaStyle Which style type to inspect.
+   */
+  getStyleConflictResolutionStrategy(charOrParaStyle?: StyleType): (GlobalClashResolutionStrategy | false)[];
+  /**
+   * Exports assets required for a Creative Cloud library.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param jsondata JSON-encoded export information.
+   */
+  exportForCloudLibrary(jsondata: string): (boolean)[];
+  /** Direction of the currently selected text.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  getSelectedTextDirection(): (TextDirection)[];
+}
+
+/** Document's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DocumentServer {
+  /**
+   * Prints the document.
+   * InDesign desktop 21.6 takes `print(printDialog?, using?)` instead.
+   * @param using A {@link PrinterPreset} or built-in {@link PrinterPresetTypes} to print with.
+   * @param withGrids Whether to print grids (Optional)
+   */
+  print(using?: PrinterPresetTypes | PrinterPreset, withGrids?: boolean): void;
+  /**
+   * Prints the document as a booklet, using the document's booklet and print settings.
+   * InDesign desktop 21.6 takes `printBooklet(printBookletDialog?, using?)` instead.
+   * @param using A {@link PrinterPreset} or built-in {@link PrinterPresetTypes} to print with.
+   */
+  printBooklet(using?: PrinterPresetTypes | PrinterPreset): void;
+  /**
+   * Exports the document (or a selection) to a file.
+   * InDesign desktop 21.6 takes `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)` instead.
+   * @param format Export format — an {@link ExportFormat} value or a format/extension string as shown in the Export dialog.
+   * @param to Destination path.
+   * @param using Export preset to use (e.g. a {@link PDFExportPreset}).
+   * @param versionComments Version Cue comment.
+   * @param forceSave If `true`, forces a new version. Defaults to `false`.
+   * @param withGrids If true, exports the grids. (Optional)
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, using?: PDFExportPreset, withGrids?: boolean, versionComments?: string, forceSave?: boolean): void;
+}
+
+/** Document's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DocumentServerPlural {
+  /**
+   * Prints the document.
+   * InDesign desktop 21.6 takes `print(printDialog?, using?)` instead.
+   * @param using A {@link PrinterPreset} or built-in {@link PrinterPresetTypes} to print with.
+   * @param withGrids Whether to print grids (Optional)
+   */
+  print(using?: PrinterPresetTypes | PrinterPreset, withGrids?: boolean): (void)[];
+  /**
+   * Prints the document as a booklet, using the document's booklet and print settings.
+   * InDesign desktop 21.6 takes `printBooklet(printBookletDialog?, using?)` instead.
+   * @param using A {@link PrinterPreset} or built-in {@link PrinterPresetTypes} to print with.
+   */
+  printBooklet(using?: PrinterPresetTypes | PrinterPreset): (void)[];
+  /**
+   * Exports the document (or a selection) to a file.
+   * InDesign desktop 21.6 takes `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)` instead.
+   * @param format Export format — an {@link ExportFormat} value or a format/extension string as shown in the Export dialog.
+   * @param to Destination path.
+   * @param using Export preset to use (e.g. a {@link PDFExportPreset}).
+   * @param versionComments Version Cue comment.
+   * @param forceSave If `true`, forces a new version. Defaults to `false`.
+   * @param withGrids If true, exports the grids. (Optional)
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, using?: PDFExportPreset, withGrids?: boolean, versionComments?: string, forceSave?: boolean): (void)[];
+}
+
+/** Document's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DocumentPortable {
+  /**
+   * Prints the document.
+   * Portable form: the editions' parameters differ after these (desktop `print(printDialog?, using?)`, InDesign Server `print(using?, withGrids?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   */
+  print(): void;
+  /**
+   * Prints the document as a booklet, using the document's booklet and print settings.
+   * Portable form: the editions' parameters differ after these (desktop `printBooklet(printBookletDialog?, using?)`, InDesign Server `printBooklet(using?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   */
+  printBooklet(): void;
+  /**
+   * Exports the document (or a selection) to a file.
+   * Portable form: the editions' parameters differ after these (desktop `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)`, InDesign Server `exportFile(format, to, using?, withGrids?, versionComments?, forceSave?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param format Export format — an {@link ExportFormat} value or a format/extension string as shown in the Export dialog.
+   * @param to Destination path.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath): void;
+}
+
+/** Document's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DocumentPortablePlural {
+  /**
+   * Prints the document.
+   * Portable form: the editions' parameters differ after these (desktop `print(printDialog?, using?)`, InDesign Server `print(using?, withGrids?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   */
+  print(): (void)[];
+  /**
+   * Prints the document as a booklet, using the document's booklet and print settings.
+   * Portable form: the editions' parameters differ after these (desktop `printBooklet(printBookletDialog?, using?)`, InDesign Server `printBooklet(using?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   */
+  printBooklet(): (void)[];
+  /**
+   * Exports the document (or a selection) to a file.
+   * Portable form: the editions' parameters differ after these (desktop `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)`, InDesign Server `exportFile(format, to, using?, withGrids?, versionComments?, forceSave?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param format Export format — an {@link ExportFormat} value or a format/extension string as shown in the Export dialog.
+   * @param to Destination path.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath): (void)[];
 }

@@ -24,7 +24,7 @@ import type { DocumentOrApplication } from './_base/Parents';
 /**
  * A stroke style of evenly spaced dots.
  */
-export interface DottedStrokeStyle extends InDesignPlugins.DottedStrokeStyle<'single'> {
+export interface DottedStrokeStyle extends InDesignEdition.DottedStrokeStyle, InDesignPlugins.DottedStrokeStyle<'single'> {
   /**
    * A collection of events
    */
@@ -137,7 +137,7 @@ export interface DottedStrokeStyle extends InDesignPlugins.DottedStrokeStyle<'si
 /**
  * A stroke style of evenly spaced dots.
  */
-export interface DottedStrokeStylePlural extends InDesignPlugins.DottedStrokeStyle<'plural'> {
+export interface DottedStrokeStylePlural extends InDesignEdition.DottedStrokeStylePlural, InDesignPlugins.DottedStrokeStyle<'plural'> {
   /**
    * A collection of events
    */

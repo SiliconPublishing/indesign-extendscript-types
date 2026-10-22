@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection StaticText
  */
-export interface StaticTexts extends InDesignPlugins.StaticTexts {
+export interface StaticTexts extends InDesignEdition.StaticTexts, InDesignPlugins.StaticTexts {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

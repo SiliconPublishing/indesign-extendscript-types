@@ -24,7 +24,7 @@ export interface OpenFileBehaviors
   extends
     BaseCollection<OpenFileBehavior, OpenFileBehavior, OpenFileBehavior<'plural'>>,
     IdCollection<OpenFileBehavior>,
-    NamedCollection<OpenFileBehavior>, InDesignPlugins.OpenFileBehaviors {
+    NamedCollection<OpenFileBehavior>, InDesignEdition.OpenFileBehaviors, InDesignPlugins.OpenFileBehaviors {
   /**
    * Creates a new open file behavior.
    * @param withProperties Initial values for properties of the new {@link OpenFileBehavior}.

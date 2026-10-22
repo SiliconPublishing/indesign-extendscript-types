@@ -26,7 +26,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Timing settings.
  */
-export interface TimingSetting extends InDesignPlugins.TimingSetting<'single'> {
+export interface TimingSetting extends InDesignEdition.TimingSetting, InDesignPlugins.TimingSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -117,7 +117,7 @@ export interface TimingSetting extends InDesignPlugins.TimingSetting<'single'> {
 /**
  * Timing settings.
  */
-export interface TimingSettingPlural extends InDesignPlugins.TimingSetting<'plural'> {
+export interface TimingSettingPlural extends InDesignEdition.TimingSettingPlural, InDesignPlugins.TimingSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

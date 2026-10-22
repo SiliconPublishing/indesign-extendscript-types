@@ -26,7 +26,7 @@ import type { Document } from './Document';
  * the destination type InDesign creates automatically for paragraph-based
  * cross-references (e.g. "See [paragraph text] on page 12").
  */
-export interface ParagraphDestination extends InDesignPlugins.ParagraphDestination<'single'> {
+export interface ParagraphDestination extends InDesignEdition.ParagraphDestination, InDesignPlugins.ParagraphDestination<'single'> {
   /**
    * A collection of events
    */
@@ -149,7 +149,7 @@ export interface ParagraphDestination extends InDesignPlugins.ParagraphDestinati
  * the destination type InDesign creates automatically for paragraph-based
  * cross-references (e.g. "See [paragraph text] on page 12").
  */
-export interface ParagraphDestinationPlural extends InDesignPlugins.ParagraphDestination<'plural'> {
+export interface ParagraphDestinationPlural extends InDesignEdition.ParagraphDestinationPlural, InDesignPlugins.ParagraphDestination<'plural'> {
   /**
    * A collection of events
    */

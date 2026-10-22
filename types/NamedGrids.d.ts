@@ -24,7 +24,7 @@ export interface NamedGrids
   extends
     BaseCollection<NamedGrid, NamedGrid, NamedGrid<'plural'>>,
     IdCollection<NamedGrid>,
-    NamedCollection<NamedGrid>, InDesignPlugins.NamedGrids {
+    NamedCollection<NamedGrid>, InDesignEdition.NamedGrids, InDesignPlugins.NamedGrids {
   /**
    * Creates a new named grid.
    *

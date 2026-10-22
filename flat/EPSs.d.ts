@@ -21,7 +21,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection EPS
  */
-export interface EPSs<TParent = PageItemParent> extends InDesignPlugins.EPSs {
+export interface EPSs<TParent = PageItemParent> extends InDesignEdition.EPSs<TParent>, InDesignPlugins.EPSs {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

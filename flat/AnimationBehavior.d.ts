@@ -26,7 +26,7 @@ import type { BehaviorParent } from './_base/Parents';
 /**
  * A behavior that plays a motion-preset animation applied to a page item.
  */
-export interface AnimationBehavior extends InDesignPlugins.AnimationBehavior<'single'> {
+export interface AnimationBehavior extends InDesignEdition.AnimationBehavior, InDesignPlugins.AnimationBehavior<'single'> {
   /**
    * A collection of events
    */
@@ -152,7 +152,7 @@ export interface AnimationBehavior extends InDesignPlugins.AnimationBehavior<'si
 /**
  * A behavior that plays a motion-preset animation applied to a page item.
  */
-export interface AnimationBehaviorPlural extends InDesignPlugins.AnimationBehavior<'plural'> {
+export interface AnimationBehaviorPlural extends InDesignEdition.AnimationBehaviorPlural, InDesignPlugins.AnimationBehavior<'plural'> {
   /**
    * A collection of events
    */

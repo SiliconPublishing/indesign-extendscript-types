@@ -20,5 +20,5 @@ import type { PageItemParent } from './_base/Parents';
  * @collection Image
  */
 export interface Images<TParent = PageItemParent>
-  extends BaseCollection<Image<TParent>, Image, Image<TParent, 'plural'>>, IdCollection<Image<TParent>>, NamedCollection<Image<TParent>>, InDesignPlugins.Images {
+  extends BaseCollection<Image<TParent>, Image, Image<TParent, 'plural'>>, IdCollection<Image<TParent>>, NamedCollection<Image<TParent>>, InDesignEdition.Images<TParent>, InDesignPlugins.Images {
 }

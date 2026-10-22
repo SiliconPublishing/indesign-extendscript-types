@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection CharStyleMapping
  */
-export interface CharStyleMappings extends InDesignPlugins.CharStyleMappings {
+export interface CharStyleMappings extends InDesignEdition.CharStyleMappings, InDesignPlugins.CharStyleMappings {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

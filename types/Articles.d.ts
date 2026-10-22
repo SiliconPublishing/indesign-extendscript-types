@@ -25,7 +25,7 @@ export interface Articles
   extends
     BaseCollection<Article, Article, Article<'plural'>>,
     IdCollection<Article>,
-    NamedCollection<Article>, InDesignPlugins.Articles {
+    NamedCollection<Article>, InDesignEdition.Articles, InDesignPlugins.Articles {
   /**
    * Creates a new {@link Article} in the document.
    *

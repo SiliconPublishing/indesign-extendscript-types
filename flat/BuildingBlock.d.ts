@@ -27,7 +27,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * number, custom string, and so on — within a {@link CrossReferenceFormat}'s
  * {@link BuildingBlocks} collection.
  */
-export interface BuildingBlock extends InDesignPlugins.BuildingBlock<'single'> {
+export interface BuildingBlock extends InDesignEdition.BuildingBlock, InDesignPlugins.BuildingBlock<'single'> {
   /**
    * A collection of events
    */
@@ -147,7 +147,7 @@ export interface BuildingBlock extends InDesignPlugins.BuildingBlock<'single'> {
  * number, custom string, and so on — within a {@link CrossReferenceFormat}'s
  * {@link BuildingBlocks} collection.
  */
-export interface BuildingBlockPlural extends InDesignPlugins.BuildingBlock<'plural'> {
+export interface BuildingBlockPlural extends InDesignEdition.BuildingBlockPlural, InDesignPlugins.BuildingBlock<'plural'> {
   /**
    * A collection of events
    */

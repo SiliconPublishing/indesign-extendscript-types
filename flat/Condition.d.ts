@@ -28,7 +28,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * ranges so they can be shown or hidden together, as either visible published
  * content or an editing-time annotation (indicated by {@link indicatorColor}).
  */
-export interface Condition extends InDesignPlugins.Condition<'single'> {
+export interface Condition extends InDesignEdition.Condition, InDesignPlugins.Condition<'single'> {
   /**
    * A collection of events
    */
@@ -162,7 +162,7 @@ export interface Condition extends InDesignPlugins.Condition<'single'> {
  * ranges so they can be shown or hidden together, as either visible published
  * content or an editing-time annotation (indicated by {@link indicatorColor}).
  */
-export interface ConditionPlural extends InDesignPlugins.Condition<'plural'> {
+export interface ConditionPlural extends InDesignEdition.ConditionPlural, InDesignPlugins.Condition<'plural'> {
   /**
    * A collection of events
    */

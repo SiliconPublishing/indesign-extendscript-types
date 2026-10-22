@@ -41,7 +41,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A text object flowed along a {@link Path} rather than inside a frame.
  */
-export interface TextPath extends InDesignPlugins.TextPath<'single'> {
+export interface TextPath extends InDesignEdition.TextPath, InDesignPlugins.TextPath<'single'> {
   /**
    * A collection of events
    */
@@ -254,7 +254,7 @@ export interface TextPath extends InDesignPlugins.TextPath<'single'> {
 /**
  * A text object flowed along a {@link Path} rather than inside a frame.
  */
-export interface TextPathPlural extends InDesignPlugins.TextPath<'plural'> {
+export interface TextPathPlural extends InDesignEdition.TextPathPlural, InDesignPlugins.TextPath<'plural'> {
   /**
    * A collection of events
    */

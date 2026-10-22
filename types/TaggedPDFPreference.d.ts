@@ -13,7 +13,7 @@ import type { TaggedPDFStructureOrderOptions } from './Enums/TaggedPDFStructureO
 /**
  * Tagged PDF preferences.
  */
-export interface TaggedPDFPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.TaggedPDFPreference<M> {
+export interface TaggedPDFPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignEdition.TaggedPDFPreference<M>, InDesignPlugins.TaggedPDFPreference<M> {
   /** Resolves the proxy into the individual {@link TaggedPDFPreference} objects it stands for. */
   getElements(): TaggedPDFPreference<'single'>[];
 

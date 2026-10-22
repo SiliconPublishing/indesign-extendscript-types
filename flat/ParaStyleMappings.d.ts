@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection ParaStyleMapping
  */
-export interface ParaStyleMappings extends InDesignPlugins.ParaStyleMappings {
+export interface ParaStyleMappings extends InDesignEdition.ParaStyleMappings, InDesignPlugins.ParaStyleMappings {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

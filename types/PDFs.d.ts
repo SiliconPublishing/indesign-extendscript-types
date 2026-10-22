@@ -20,5 +20,5 @@ import type { PageItemParent } from './_base/Parents';
  * @collection PDF
  */
 export interface PDFs<TParent = PageItemParent>
-  extends BaseCollection<PDF<TParent>, PDF, PDF<TParent, 'plural'>>, IdCollection<PDF<TParent>>, NamedCollection<PDF<TParent>>, InDesignPlugins.PDFs {
+  extends BaseCollection<PDF<TParent>, PDF, PDF<TParent, 'plural'>>, IdCollection<PDF<TParent>>, NamedCollection<PDF<TParent>>, InDesignEdition.PDFs<TParent>, InDesignPlugins.PDFs {
 }

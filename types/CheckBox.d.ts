@@ -67,12 +67,16 @@ import type { WMFs } from './WMFs';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { FormFieldDesktop } from "./FormField";
+import type { FormFieldServer } from "./FormField";
+import type { FormFieldPortable } from "./FormField";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A PDF check-box form field: a two-state (checked/unchecked) toggle control
  * in an interactive PDF form.
  */
-export interface CheckBox<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, CheckBox, M>, FormFieldSurface<CheckBox, M>, InDesignPlugins.CheckBox<M> {
+export interface CheckBox<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, CheckBox, M>, FormFieldSurface<CheckBox, M>, InDesignEdition.CheckBox<TParent, M>, InDesignPlugins.CheckBox<M> {
   /** Resolves the proxy into the individual {@link CheckBox} objects it stands for. */
   getElements(): CheckBox<TParent, 'single'>[];
 
@@ -87,3 +91,11 @@ export interface CheckBox<TParent = PageItemParent, M extends Mode = 'single'> e
   get exportValue(): Read<M, string>;
   set exportValue(value: string);
 }
+/** CheckBox's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface CheckBoxDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldDesktop<TParent, CheckBox, M> {}
+
+/** CheckBox's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface CheckBoxServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldServer<TParent, CheckBox, M> {}
+
+/** CheckBox's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface CheckBoxPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldPortable<TParent, CheckBox, M> {}

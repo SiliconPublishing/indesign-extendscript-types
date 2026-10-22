@@ -28,7 +28,7 @@ import type { FilePath } from './_base/Types';
  * Default content type, size, and style applied to a new anchored object
  * when none are specified explicitly.
  */
-export interface AnchoredObjectDefault extends InDesignPlugins.AnchoredObjectDefault<'single'> {
+export interface AnchoredObjectDefault extends InDesignEdition.AnchoredObjectDefault, InDesignPlugins.AnchoredObjectDefault<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -131,7 +131,7 @@ export interface AnchoredObjectDefault extends InDesignPlugins.AnchoredObjectDef
  * Default content type, size, and style applied to a new anchored object
  * when none are specified explicitly.
  */
-export interface AnchoredObjectDefaultPlural extends InDesignPlugins.AnchoredObjectDefault<'plural'> {
+export interface AnchoredObjectDefaultPlural extends InDesignEdition.AnchoredObjectDefaultPlural, InDesignPlugins.AnchoredObjectDefault<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

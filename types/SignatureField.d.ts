@@ -66,12 +66,24 @@ import type { WMFs } from './WMFs';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { FormFieldDesktop } from "./FormField";
+import type { FormFieldServer } from "./FormField";
+import type { FormFieldPortable } from "./FormField";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A PDF digital-signature form field, used to hold an electronic signature in
  * an interactive PDF form.
  */
-export interface SignatureField<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, SignatureField, M>, FormFieldSurface<SignatureField, M>, InDesignPlugins.SignatureField<M> {
+export interface SignatureField<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, SignatureField, M>, FormFieldSurface<SignatureField, M>, InDesignEdition.SignatureField<TParent, M>, InDesignPlugins.SignatureField<M> {
   /** Resolves the proxy into the individual {@link SignatureField} objects it stands for. */
   getElements(): SignatureField<TParent, 'single'>[];
 }
+/** SignatureField's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface SignatureFieldDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldDesktop<TParent, SignatureField, M> {}
+
+/** SignatureField's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface SignatureFieldServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldServer<TParent, SignatureField, M> {}
+
+/** SignatureField's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface SignatureFieldPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldPortable<TParent, SignatureField, M> {}

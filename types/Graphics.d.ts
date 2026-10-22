@@ -38,6 +38,10 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { GraphicDesktop } from "./Graphic";
+import type { GraphicServer } from "./Graphic";
+import type { GraphicPortable } from "./Graphic";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A collection of imported {@link Graphic} objects in any supported vector,
@@ -49,7 +53,7 @@ export interface Graphics<TParent = PageItemParent>
   extends
     BaseCollection<AnyGraphicOf<TParent>, Graphic, GraphicsPlural<TParent>>,
     IdCollection<AnyGraphicOf<TParent>>,
-    NamedCollection<AnyGraphicOf<TParent>>, InDesignPlugins.Graphics {
+    NamedCollection<AnyGraphicOf<TParent>>, InDesignEdition.Graphics<TParent>, InDesignPlugins.Graphics {
 }
 
 /**
@@ -64,4 +68,12 @@ export interface GraphicsPlural<TParent = PageItemParent>
   /** Resolves the proxy into the individual graphics, each at its concrete class. */
   getElements(): AnyGraphicOf<TParent>[];
 }
+/** GraphicsPlural's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface GraphicsPluralDesktop<TParent = PageItemParent> extends EditionPart, GraphicDesktop<TParent, 'plural'> {}
+
+/** GraphicsPlural's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface GraphicsPluralServer<TParent = PageItemParent> extends EditionPart, GraphicServer<TParent, 'plural'> {}
+
+/** GraphicsPlural's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface GraphicsPluralPortable<TParent = PageItemParent> extends EditionPart, GraphicPortable<TParent, 'plural'> {}
 

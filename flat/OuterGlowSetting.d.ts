@@ -32,7 +32,7 @@ import type { FilePath } from './_base/Types';
  * Settings for the outer-glow effect — a glow that radiates outward from the
  * edges of the object or text it's applied to.
  */
-export interface OuterGlowSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.OuterGlowSetting<'single'> {
+export interface OuterGlowSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignEdition.OuterGlowSetting<TParent>, InDesignPlugins.OuterGlowSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -153,7 +153,7 @@ export interface OuterGlowSetting<TParent = TransparencySetting | StrokeTranspar
  * Settings for the outer-glow effect — a glow that radiates outward from the
  * edges of the object or text it's applied to.
  */
-export interface OuterGlowSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.OuterGlowSetting<'plural'> {
+export interface OuterGlowSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignEdition.OuterGlowSettingPlural<TParent>, InDesignPlugins.OuterGlowSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

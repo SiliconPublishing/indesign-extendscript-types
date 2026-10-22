@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Book
  */
-export interface Books extends InDesignPlugins.Books {
+export interface Books extends InDesignEdition.Books, InDesignPlugins.Books {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

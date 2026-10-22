@@ -33,7 +33,7 @@ import type { FilePath } from './_base/Types';
  * Settings for the inner-glow effect — a glow that radiates inward from the edges
  * of the object or text it's applied to.
  */
-export interface InnerGlowSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.InnerGlowSetting<'single'> {
+export interface InnerGlowSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignEdition.InnerGlowSetting<TParent>, InDesignPlugins.InnerGlowSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -157,7 +157,7 @@ export interface InnerGlowSetting<TParent = TransparencySetting | StrokeTranspar
  * Settings for the inner-glow effect — a glow that radiates inward from the edges
  * of the object or text it's applied to.
  */
-export interface InnerGlowSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.InnerGlowSetting<'plural'> {
+export interface InnerGlowSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignEdition.InnerGlowSettingPlural<TParent>, InDesignPlugins.InnerGlowSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

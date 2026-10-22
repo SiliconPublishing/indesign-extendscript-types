@@ -44,7 +44,7 @@ import type { FilePath } from './_base/Types';
 /**
  * The application's default PDF export options, used by {@link Document.exportFile} and {@link Book.exportFile} when no explicit preset is supplied.
  */
-export interface PDFExportPreference extends InDesignPlugins.PDFExportPreference<'single'> {
+export interface PDFExportPreference extends InDesignEdition.PDFExportPreference, InDesignPlugins.PDFExportPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -413,7 +413,7 @@ export interface PDFExportPreference extends InDesignPlugins.PDFExportPreference
 /**
  * The application's default PDF export options, used by {@link Document.exportFile} and {@link Book.exportFile} when no explicit preset is supplied.
  */
-export interface PDFExportPreferencePlural extends InDesignPlugins.PDFExportPreference<'plural'> {
+export interface PDFExportPreferencePlural extends InDesignEdition.PDFExportPreferencePlural, InDesignPlugins.PDFExportPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

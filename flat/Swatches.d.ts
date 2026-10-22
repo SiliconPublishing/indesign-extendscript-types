@@ -38,7 +38,7 @@ import type { SwatchParent } from './_base/Parents';
  * {@link Color}, {@link Tint}, {@link Gradient}, and {@link MixedInk}.
  * @collection Swatch
  */
-export interface Swatches extends InDesignPlugins.Swatches {
+export interface Swatches extends InDesignEdition.Swatches, InDesignPlugins.Swatches {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

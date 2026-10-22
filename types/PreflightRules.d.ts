@@ -24,5 +24,5 @@ export interface PreflightRules
   extends
     BaseCollection<PreflightRule, PreflightRule, PreflightRule<'plural'>>,
     IdCollection<PreflightRule>,
-    NamedCollection<PreflightRule>, InDesignPlugins.PreflightRules {
+    NamedCollection<PreflightRule>, InDesignEdition.PreflightRules, InDesignPlugins.PreflightRules {
 }

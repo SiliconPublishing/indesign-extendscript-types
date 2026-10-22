@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection GotoAnchorBehavior
  */
-export interface GotoAnchorBehaviors extends InDesignPlugins.GotoAnchorBehaviors {
+export interface GotoAnchorBehaviors extends InDesignEdition.GotoAnchorBehaviors, InDesignPlugins.GotoAnchorBehaviors {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

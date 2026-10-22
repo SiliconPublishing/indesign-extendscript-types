@@ -33,7 +33,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A single tracked change recorded in a story with Track Changes enabled.
  */
-export interface Change extends InDesignPlugins.Change<'single'> {
+export interface Change extends InDesignEdition.Change, InDesignPlugins.Change<'single'> {
   /**
    * A collection of events
    */
@@ -154,7 +154,7 @@ export interface Change extends InDesignPlugins.Change<'single'> {
 /**
  * A single tracked change recorded in a story with Track Changes enabled.
  */
-export interface ChangePlural extends InDesignPlugins.Change<'plural'> {
+export interface ChangePlural extends InDesignEdition.ChangePlural, InDesignPlugins.Change<'plural'> {
   /**
    * A collection of events
    */

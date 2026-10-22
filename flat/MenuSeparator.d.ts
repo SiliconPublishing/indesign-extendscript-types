@@ -26,7 +26,7 @@ import type { MenuElementParent } from './_base/Parents';
  * A visual divider line between groups of {@link MenuItem}s in a {@link Menu}
  * or {@link Submenu}.
  */
-export interface MenuSeparator extends InDesignPlugins.MenuSeparator<'single'> {
+export interface MenuSeparator extends InDesignEdition.MenuSeparator, InDesignPlugins.MenuSeparator<'single'> {
   /**
    * A collection of events
    */
@@ -122,7 +122,7 @@ export interface MenuSeparator extends InDesignPlugins.MenuSeparator<'single'> {
  * A visual divider line between groups of {@link MenuItem}s in a {@link Menu}
  * or {@link Submenu}.
  */
-export interface MenuSeparatorPlural extends InDesignPlugins.MenuSeparator<'plural'> {
+export interface MenuSeparatorPlural extends InDesignEdition.MenuSeparatorPlural, InDesignPlugins.MenuSeparator<'plural'> {
   /**
    * A collection of events
    */

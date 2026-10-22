@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection XMLExportMap
  */
-export interface XMLExportMaps extends InDesignPlugins.XMLExportMaps {
+export interface XMLExportMaps extends InDesignEdition.XMLExportMaps, InDesignPlugins.XMLExportMaps {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

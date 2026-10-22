@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Spell-check preferences.
  */
-export interface SpellPreference extends InDesignPlugins.SpellPreference<'single'> {
+export interface SpellPreference extends InDesignEdition.SpellPreference, InDesignPlugins.SpellPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -166,7 +166,7 @@ export interface SpellPreference extends InDesignPlugins.SpellPreference<'single
 /**
  * Spell-check preferences.
  */
-export interface SpellPreferencePlural extends InDesignPlugins.SpellPreference<'plural'> {
+export interface SpellPreferencePlural extends InDesignEdition.SpellPreferencePlural, InDesignPlugins.SpellPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

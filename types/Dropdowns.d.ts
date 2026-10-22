@@ -17,7 +17,7 @@ import type { Dialog } from './Dialog';
  * @collection Dropdown
  */
 export interface Dropdowns
-  extends BaseCollection<Dropdown, Dropdown, Dropdown<'plural'>>, IdCollection<Dropdown>, InDesignPlugins.Dropdowns {
+  extends BaseCollection<Dropdown, Dropdown, Dropdown<'plural'>>, IdCollection<Dropdown>, InDesignEdition.Dropdowns, InDesignPlugins.Dropdowns {
   /**
    * Creates and adds a new dropdown control to the dialog.
    * @param withProperties Initial values for properties of the new control.

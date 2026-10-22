@@ -22,7 +22,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Input method editor (IME) preferences.
  */
-export interface IMEPreference extends InDesignPlugins.IMEPreference<'single'> {
+export interface IMEPreference extends InDesignEdition.IMEPreference, InDesignPlugins.IMEPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -115,7 +115,7 @@ export interface IMEPreference extends InDesignPlugins.IMEPreference<'single'> {
 /**
  * Input method editor (IME) preferences.
  */
-export interface IMEPreferencePlural extends InDesignPlugins.IMEPreference<'plural'> {
+export interface IMEPreferencePlural extends InDesignEdition.IMEPreferencePlural, InDesignPlugins.IMEPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

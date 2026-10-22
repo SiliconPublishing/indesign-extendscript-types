@@ -22,7 +22,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
  * Settings for the outer-glow effect — a glow that radiates outward from the
  * edges of the object or text it's applied to.
  */
-export interface OuterGlowSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M>, InDesignPlugins.OuterGlowSetting<M> {
+export interface OuterGlowSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M>, InDesignEdition.OuterGlowSetting<M, TParent, NSet>, InDesignPlugins.OuterGlowSetting<M> {
   /** Resolves the proxy into the individual {@link OuterGlowSetting} objects it stands for. */
   getElements(): OuterGlowSetting<'single', TParent>[];
 

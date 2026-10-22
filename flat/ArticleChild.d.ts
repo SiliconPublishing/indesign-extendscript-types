@@ -26,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * An article-membership entry for one item nested inside a {@link Group} that
  * itself belongs to an {@link Article}.
  */
-export interface ArticleChild extends InDesignPlugins.ArticleChild<'single'> {
+export interface ArticleChild extends InDesignEdition.ArticleChild, InDesignPlugins.ArticleChild<'single'> {
   /**
    * A collection of events
    */
@@ -128,7 +128,7 @@ export interface ArticleChild extends InDesignPlugins.ArticleChild<'single'> {
  * An article-membership entry for one item nested inside a {@link Group} that
  * itself belongs to an {@link Article}.
  */
-export interface ArticleChildPlural extends InDesignPlugins.ArticleChild<'plural'> {
+export interface ArticleChildPlural extends InDesignEdition.ArticleChildPlural, InDesignPlugins.ArticleChild<'plural'> {
   /**
    * A collection of events
    */

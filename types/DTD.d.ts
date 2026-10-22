@@ -12,12 +12,13 @@ import type { XMLTag } from './XMLTag';
 import type { SpecialCharacters } from './Enums/SpecialCharacters';
 import type { SelectionOptions } from './Enums/SelectionOptions';
 import type { XMLItem } from "./XMLItem";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * The document type declaration governing XML validation and the tag
  * structure of a document's XML view.
  */
-export interface DTD<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, IndexedDOMObject<Document, M>, InDesignPlugins.DTD<M> {
+export interface DTD<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, IndexedDOMObject<Document, M>, InDesignEdition.DTD<M>, InDesignPlugins.DTD<M> {
   /** Resolves the proxy into the individual {@link DTD} objects it stands for. */
   getElements(): DTD<'single'>[];
 
@@ -39,13 +40,6 @@ export interface DTD<M extends Mode = 'single'> extends EventTargetDOMObject<Doc
 
   /** Deletes the DTD. */
   remove(): Read<M, void>;
-
-  /**
-   * Selects the object.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(existingSelection?: SelectionOptions): Read<M, void>;
-
   // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
 
   /**
@@ -54,3 +48,18 @@ export interface DTD<M extends Mode = 'single'> extends EventTargetDOMObject<Doc
    */
   duplicate(): Read<M, XMLItem>;
 }
+/** DTD's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DTDDesktop<M extends Mode = 'single'> extends EditionPart {
+  /**
+   * Selects the object.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(existingSelection?: SelectionOptions): Read<M, void>;
+}
+
+/** DTD's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DTDServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** DTD's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DTDPortable<M extends Mode = 'single'> extends EditionPart {}

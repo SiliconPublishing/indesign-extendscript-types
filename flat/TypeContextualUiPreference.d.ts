@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
  * Contextual UI preferences shown while editing text, such as prompts for
  * alternates and fractions.
  */
-export interface TypeContextualUiPreference extends InDesignPlugins.TypeContextualUiPreference<'single'> {
+export interface TypeContextualUiPreference extends InDesignEdition.TypeContextualUiPreference, InDesignPlugins.TypeContextualUiPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -117,7 +117,7 @@ export interface TypeContextualUiPreference extends InDesignPlugins.TypeContextu
  * Contextual UI preferences shown while editing text, such as prompts for
  * alternates and fractions.
  */
-export interface TypeContextualUiPreferencePlural extends InDesignPlugins.TypeContextualUiPreference<'plural'> {
+export interface TypeContextualUiPreferencePlural extends InDesignEdition.TypeContextualUiPreferencePlural, InDesignPlugins.TypeContextualUiPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

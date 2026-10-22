@@ -25,7 +25,7 @@ export interface Conditions
   extends
     BaseCollection<Condition, Condition, Condition<'plural'>>,
     IdCollection<Condition>,
-    NamedCollection<Condition>, InDesignPlugins.Conditions {
+    NamedCollection<Condition>, InDesignEdition.Conditions, InDesignPlugins.Conditions {
   /**
    * Creates a new {@link Condition}.
    * @param withProperties Initial values for properties of the new {@link Condition}.

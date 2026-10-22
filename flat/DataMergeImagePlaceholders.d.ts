@@ -10,6 +10,8 @@ import type { DataMergeField } from './DataMergeField';
 import type { PageItem } from './PageItem';
 import type { BaseCollection } from './_base/Collections';
 import type { DataMergeImagePlaceholder } from './DataMergeImagePlaceholder';
+import type { EditionPart } from "./_base/Editions";
+import type { Read } from "./_base/Types";
 import type { DataMergeImagePlaceholderPlural } from './DataMergeImagePlaceholder';
 import type { NothingEnum } from './Enums/NothingEnum';
 
@@ -20,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection DataMergeImagePlaceholder
  */
-export interface DataMergeImagePlaceholders extends InDesignPlugins.DataMergeImagePlaceholders {
+export interface DataMergeImagePlaceholders extends InDesignEdition.DataMergeImagePlaceholders, InDesignPlugins.DataMergeImagePlaceholders {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**
@@ -119,4 +121,22 @@ export interface DataMergeImagePlaceholders extends InDesignPlugins.DataMergeIma
     field: DataMergeField,
     withProperties?: PropertiesSetter<DataMergeImagePlaceholder>,
   ): DataMergeImagePlaceholder;
+}
+/** DataMergeImagePlaceholders's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeImagePlaceholdersDesktop {
+}
+
+/** DataMergeImagePlaceholders's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeImagePlaceholdersServer {
+  /**
+   * Returns the DataMergeImagePlaceholder with the specified name.
+   * InDesign Server only.
+   * @param name The name.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  itemByName(name: string): DataMergeImagePlaceholder;
+}
+
+/** DataMergeImagePlaceholders's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DataMergeImagePlaceholdersPortable {
 }

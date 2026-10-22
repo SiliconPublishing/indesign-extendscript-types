@@ -17,7 +17,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection AutoCorrectTable
  */
-export interface AutoCorrectTables extends InDesignPlugins.AutoCorrectTables {
+export interface AutoCorrectTables extends InDesignEdition.AutoCorrectTables, InDesignPlugins.AutoCorrectTables {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -27,7 +27,7 @@ export interface MathObjects
   extends
     BaseCollection<MathObject, MathObject, MathObject<'plural'>>,
     IdCollection<MathObject>,
-    NamedCollection<MathObject>, InDesignPlugins.MathObjects {
+    NamedCollection<MathObject>, InDesignEdition.MathObjects, InDesignPlugins.MathObjects {
   /**
    * Creates a new math object from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link MathObject}.

@@ -8,11 +8,12 @@
 import type { Mode, Read } from './_base/Types';
 import type { EventTargetDOMObject } from './_base/DomObjects';
 import type { DocumentOrApplication } from './_base/Parents';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * Mojikumi UI preferences.
  */
-export interface MojikumiUiPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.MojikumiUiPreference<M> {
+export interface MojikumiUiPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignEdition.MojikumiUiPreference<M>, InDesignPlugins.MojikumiUiPreference<M> {
   /** Resolves the proxy into the individual {@link MojikumiUiPreference} objects it stands for. */
   getElements(): MojikumiUiPreference<'single'>[];
 
@@ -72,3 +73,27 @@ export interface MojikumiUiPreference<M extends Mode = 'single'> extends EventTa
   get lineEndPeriodOneEm(): Read<M, boolean>;
   set lineEndPeriodOneEm(value: boolean);
 }
+/** MojikumiUiPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface MojikumiUiPreferenceDesktop<M extends Mode = 'single'> extends EditionPart {}
+
+/** MojikumiUiPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface MojikumiUiPreferenceServer<M extends Mode = 'single'> extends EditionPart {
+  /**
+   * If true, displays table for mojikumi tsume and aki optimized for Traditional Chinese centered punctuation glyphs.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get showTradChineseDefault(): Read<M, boolean>;
+  set showTradChineseDefault(value: boolean);
+
+  /**
+   * If true, displays table for mojikumi tsume and aki optimized for Simplified Chinese punctuation glyphs.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get showSimpChineseDefault(): Read<M, boolean>;
+  set showSimpChineseDefault(value: boolean);
+}
+
+/** MojikumiUiPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface MojikumiUiPreferencePortable<M extends Mode = 'single'> extends EditionPart {}

@@ -19,7 +19,7 @@ import type { ParagraphStyle } from './ParagraphStyle';
  */
 export interface NestedGrepStyle<M extends Mode = 'single'>
   extends EventTargetDOMObject<ParagraphAttributeOwner, M>,
-    IndexedDOMObject<ParagraphAttributeOwner, M>, InDesignPlugins.NestedGrepStyle<M> {
+    IndexedDOMObject<ParagraphAttributeOwner, M>, InDesignEdition.NestedGrepStyle<M>, InDesignPlugins.NestedGrepStyle<M> {
   /** Resolves the proxy into the individual {@link NestedGrepStyle} objects it stands for. */
   getElements(): NestedGrepStyle<'single'>[];
 

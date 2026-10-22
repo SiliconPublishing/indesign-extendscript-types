@@ -29,7 +29,7 @@ export interface Polygons<TParent = PageItemParent>
   extends
     BaseCollection<Polygon<TParent>, Polygon, Polygon<TParent, 'plural'>>,
     IdCollection<Polygon<TParent>>,
-    NamedCollection<Polygon<TParent>>, InDesignPlugins.Polygons {
+    NamedCollection<Polygon<TParent>>, InDesignEdition.Polygons<TParent>, InDesignPlugins.Polygons {
   /**
    * Creates a new {@link Polygon} relative to a specific reference object.
    *

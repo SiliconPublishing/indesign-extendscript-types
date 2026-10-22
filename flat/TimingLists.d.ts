@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection TimingList
  */
-export interface TimingLists extends InDesignPlugins.TimingLists {
+export interface TimingLists extends InDesignEdition.TimingLists, InDesignPlugins.TimingLists {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

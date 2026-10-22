@@ -27,5 +27,5 @@ export interface EPSTexts<TParent = PageItemParent>
   extends
     BaseCollection<EPSText<TParent>, EPSText, EPSText<TParent, 'plural'>>,
     IdCollection<EPSText<TParent>>,
-    NamedCollection<EPSText<TParent>>, InDesignPlugins.EPSTexts {
+    NamedCollection<EPSText<TParent>>, InDesignEdition.EPSTexts<TParent>, InDesignPlugins.EPSTexts {
 }

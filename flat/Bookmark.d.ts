@@ -14,6 +14,7 @@ import type { HyperlinkPageDestination } from './HyperlinkPageDestination';
 import type { HyperlinkExternalPageDestination } from './HyperlinkExternalPageDestination';
 import type { Page } from './Page';
 import type { LocationOptions } from './Enums/LocationOptions';
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -30,7 +31,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * navigation to a page, text location, or external page. Bookmarks can
  * nest arbitrarily deep via their own {@link bookmarks} collection.
  */
-export interface Bookmark extends InDesignPlugins.Bookmark<'single'> {
+export interface Bookmark extends InDesignEdition.Bookmark, InDesignPlugins.Bookmark<'single'> {
   /**
    * A collection of events
    */
@@ -152,8 +153,6 @@ export interface Bookmark extends InDesignPlugins.Bookmark<'single'> {
    * @param reference The reference bookmark or document. Required when `to` is {@link LocationOptions.BEFORE} or {@link LocationOptions.AFTER}.
    */
   move(to?: LocationOptions, reference?: Bookmark | Document): Bookmark;
-  /** Navigates to the bookmark's destination. */
-  showBookmark(): void;
   /** Deletes the bookmark. */
   remove(): void;
 }
@@ -163,7 +162,7 @@ export interface Bookmark extends InDesignPlugins.Bookmark<'single'> {
  * navigation to a page, text location, or external page. Bookmarks can
  * nest arbitrarily deep via their own {@link bookmarks} collection.
  */
-export interface BookmarkPlural extends InDesignPlugins.Bookmark<'plural'> {
+export interface BookmarkPlural extends InDesignEdition.BookmarkPlural, InDesignPlugins.Bookmark<'plural'> {
   /**
    * A collection of events
    */
@@ -285,8 +284,35 @@ export interface BookmarkPlural extends InDesignPlugins.Bookmark<'plural'> {
    * @param reference The reference bookmark or document. Required when `to` is {@link LocationOptions.BEFORE} or {@link LocationOptions.AFTER}.
    */
   move(to?: LocationOptions, reference?: Bookmark | Document): (Bookmark)[];
-  /** Navigates to the bookmark's destination. */
-  showBookmark(): (void)[];
   /** Deletes the bookmark. */
   remove(): (void)[];
+}
+/** Bookmark's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface BookmarkDesktop {
+  /** Navigates to the bookmark's destination.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  showBookmark(): void;
+}
+
+/** Bookmark's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface BookmarkDesktopPlural {
+  /** Navigates to the bookmark's destination.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  showBookmark(): (void)[];
+}
+
+/** Bookmark's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface BookmarkServer {
+}
+
+/** Bookmark's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface BookmarkServerPlural {
+}
+
+/** Bookmark's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface BookmarkPortable {
+}
+
+/** Bookmark's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface BookmarkPortablePlural {
 }

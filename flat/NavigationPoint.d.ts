@@ -23,7 +23,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A single named cue point on a {@link Movie}'s timeline, used to seek or
  * trigger behaviors at a specific playback time.
  */
-export interface NavigationPoint extends InDesignPlugins.NavigationPoint<'single'> {
+export interface NavigationPoint extends InDesignEdition.NavigationPoint, InDesignPlugins.NavigationPoint<'single'> {
   /**
    * A collection of events
    */
@@ -127,7 +127,7 @@ export interface NavigationPoint extends InDesignPlugins.NavigationPoint<'single
  * A single named cue point on a {@link Movie}'s timeline, used to seek or
  * trigger behaviors at a specific playback time.
  */
-export interface NavigationPointPlural extends InDesignPlugins.NavigationPoint<'plural'> {
+export interface NavigationPointPlural extends InDesignEdition.NavigationPointPlural, InDesignPlugins.NavigationPoint<'plural'> {
   /**
    * A collection of events
    */

@@ -18,7 +18,7 @@ import type { Document } from './Document';
 export interface NumberingList<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Application | Document, M>,
     IndexedDOMObject<Application | Document, M>,
-    NamableDOMObject<Application | Document, M>, InDesignPlugins.NumberingList<M> {
+    NamableDOMObject<Application | Document, M>, InDesignEdition.NumberingList<M>, InDesignPlugins.NumberingList<M> {
   /** Resolves the proxy into the individual {@link NumberingList} objects it stands for. */
   getElements(): NumberingList<'single'>[];
 

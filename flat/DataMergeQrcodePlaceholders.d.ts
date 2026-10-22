@@ -10,6 +10,8 @@ import type { DataMergeField } from './DataMergeField';
 import type { PageItem } from './PageItem';
 import type { BaseCollection } from './_base/Collections';
 import type { DataMergeQrcodePlaceholder } from './DataMergeQrcodePlaceholder';
+import type { EditionPart } from "./_base/Editions";
+import type { Read } from "./_base/Types";
 import type { DataMergeQrcodePlaceholderPlural } from './DataMergeQrcodePlaceholder';
 import type { NothingEnum } from './Enums/NothingEnum';
 
@@ -20,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection DataMergeQrcodePlaceholder
  */
-export interface DataMergeQrcodePlaceholders extends InDesignPlugins.DataMergeQrcodePlaceholders {
+export interface DataMergeQrcodePlaceholders extends InDesignEdition.DataMergeQrcodePlaceholders, InDesignPlugins.DataMergeQrcodePlaceholders {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**
@@ -119,4 +121,22 @@ export interface DataMergeQrcodePlaceholders extends InDesignPlugins.DataMergeQr
     field: DataMergeField,
     withProperties?: PropertiesSetter<DataMergeQrcodePlaceholder>,
   ): DataMergeQrcodePlaceholder;
+}
+/** DataMergeQrcodePlaceholders's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeQrcodePlaceholdersDesktop {
+}
+
+/** DataMergeQrcodePlaceholders's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeQrcodePlaceholdersServer {
+  /**
+   * Returns the DataMergeQrcodePlaceholder with the specified name.
+   * InDesign Server only.
+   * @param name The name.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  itemByName(name: string): DataMergeQrcodePlaceholder;
+}
+
+/** DataMergeQrcodePlaceholders's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DataMergeQrcodePlaceholdersPortable {
 }

@@ -52,6 +52,34 @@ doc.close(SaveOptions.NO);
 TypeScript can no longer emit ES3, so `.ts` sources need a compiler that can (Babel with an ES3
 preset, for instance). Type-checking `.jsx` with `checkJs` needs nothing more.
 
+## InDesign desktop, InDesign Server, or both
+
+InDesign Server scripts the same DOM with a few hundred differences: no ScriptUI and no UI
+(`app.selection`, `activeDocument`, windows, dialogs, menus), members of its own (`consoleout`,
+`serverSettings`, HTTP links, ...), and, for about 90 methods, its own parameter list. On desktop
+`app.open(from, showingWindow, openOption)`; on Server `app.open(from, openOption)`: arguments are
+positional, so `app.open(f, OpenOptions.OPEN_COPY)` passes a `showingWindow` flag on desktop.
+
+| entry | for |
+|---|---|
+| `indesign-extendscript-types` | InDesign desktop |
+| `indesign-extendscript-types/server` | InDesign Server |
+| `indesign-extendscript-types/portable` | scripts that must run on both |
+
+`portable` declares only what both have, in the form both take: a method whose parameters differ
+is cut after the ones both share (`app.open(from)`, `doc.exportFile(format, to)`), so anything
+that would mean something else on the other edition is a type error. For a branch that only runs
+on one of them, cast to that edition's class, available from every entry:
+
+```ts
+if (app.name.indexOf('Server') >= 0) (app as InDesignServer.Application).consoleout('done');
+else (app as InDesignDesktop.Application).activeDocument.save();
+```
+
+On the desktop and Server entries, members the other edition lacks or takes differently say so in
+their documentation. The editions are measured separately (`snapshots/indesign-<ver>/` and
+`snapshots/indesign-server-<ver>/`); see `REPORT.md` in each for the versions.
+
 ## Two variants
 
 The same API, declared twice:
@@ -60,6 +88,8 @@ The same API, declared twice:
 |---|---|---|
 | `indesign-extendscript-types` (default) | short: `Rectangle<Spread>.geometricBounds: number[]` | writing scripts |
 | `indesign-extendscript-types/authored` | fully generic: `TransformableItem<"single">.geometricBounds` | extending the declarations |
+
+Each edition has both (`.../server/authored`, `.../portable/authored`).
 
 The default (`flat/`) is generated from the authored tree (`types/`). Pick one in `"types"`, never
 both.
@@ -163,6 +193,12 @@ Everything runs in InDesign's pristine `main` ExtendScript engine, through Apple
 | `runtime.json` | the type of every property read, on a fixture document (417 of 424 object classes reached; see REPORT.md) | `tools/dump/runtime.jsx` |
 | `writes.json` | which kinds of value every writable property accepts | `tools/dump/writes.jsx` |
 | `runtime-crashers.json` | reads and writes that crash InDesign | the samplers, which survive crashes |
+
+InDesign Server is measured the same way into `snapshots/indesign-server-21.6/` (pass
+`--app "Adobe InDesign Server 2026"` to the dumps and samplers; the fixture and probes skip what
+needs a UI). Server goes down when the samplers reach a few classes late in the fixture (books,
+library assets, composite fonts, ...), so those are sampled on desktop only; its `REPORT.md` lists
+them.
 
 `tools/compare/` reads both declaration trees with the TypeScript compiler and diffs them against
 the snapshots. `npm test` fails on any difference that is not informational or explained, with a

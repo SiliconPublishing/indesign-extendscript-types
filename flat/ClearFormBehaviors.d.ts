@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection ClearFormBehavior
  */
-export interface ClearFormBehaviors extends InDesignPlugins.ClearFormBehaviors {
+export interface ClearFormBehaviors extends InDesignEdition.ClearFormBehaviors, InDesignPlugins.ClearFormBehaviors {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -12,6 +12,7 @@ import type { Application } from './Application';
 import type { AutoEnum } from './Enums/AutoEnum';
 import type { MeasurementUnits } from './Enums/MeasurementUnits';
 import type { UserInteractionLevels } from './Enums/UserInteractionLevels';
+import type { EditionPart } from "./_base/Editions";
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
 import type { Events } from './Events';
@@ -26,7 +27,7 @@ import type { Event } from './Event';
  * Settings controlling how scripts run — dialog/alert interaction level,
  * measurement units, and whether the screen redraws during execution.
  */
-export interface ScriptPreference extends InDesignPlugins.ScriptPreference<'single'> {
+export interface ScriptPreference extends InDesignEdition.ScriptPreference, InDesignPlugins.ScriptPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -120,9 +121,6 @@ export interface ScriptPreference extends InDesignPlugins.ScriptPreference<'sing
   /** The version of the scripting environment. */
   get version(): string;
   set version(value: string);
-  /** Controls the display of dialogs and alerts during script processing. */
-  get userInteractionLevel(): UserInteractionLevels;
-  set userInteractionLevel(value: UserInteractionLevels);
   /** The measurement unit used during script processing. */
   get measurementUnit(): AutoEnum | MeasurementUnits;
   set measurementUnit(value: AutoEnum | MeasurementUnits);
@@ -135,7 +133,7 @@ export interface ScriptPreference extends InDesignPlugins.ScriptPreference<'sing
  * Settings controlling how scripts run — dialog/alert interaction level,
  * measurement units, and whether the screen redraws during execution.
  */
-export interface ScriptPreferencePlural extends InDesignPlugins.ScriptPreference<'plural'> {
+export interface ScriptPreferencePlural extends InDesignEdition.ScriptPreferencePlural, InDesignPlugins.ScriptPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -229,13 +227,47 @@ export interface ScriptPreferencePlural extends InDesignPlugins.ScriptPreference
   /** The version of the scripting environment. */
   get version(): (string)[];
   set version(value: string);
-  /** Controls the display of dialogs and alerts during script processing. */
-  get userInteractionLevel(): (UserInteractionLevels)[];
-  set userInteractionLevel(value: UserInteractionLevels);
   /** The measurement unit used during script processing. */
   get measurementUnit(): (AutoEnum | MeasurementUnits)[];
   set measurementUnit(value: AutoEnum | MeasurementUnits);
   /** If true, enables redraw during script execution. */
   get enableRedraw(): (boolean)[];
   set enableRedraw(value: boolean);
+}
+/** ScriptPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ScriptPreferenceDesktop {
+  /** Controls the display of dialogs and alerts during script processing.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get userInteractionLevel(): UserInteractionLevels;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set userInteractionLevel(value: UserInteractionLevels);
+}
+
+/** ScriptPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ScriptPreferenceDesktopPlural {
+  /** Controls the display of dialogs and alerts during script processing.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get userInteractionLevel(): (UserInteractionLevels)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set userInteractionLevel(value: UserInteractionLevels);
+}
+
+/** ScriptPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ScriptPreferenceServer {
+}
+
+/** ScriptPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ScriptPreferenceServerPlural {
+}
+
+/** ScriptPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ScriptPreferencePortable {
+}
+
+/** ScriptPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ScriptPreferencePortablePlural {
 }

@@ -25,7 +25,7 @@ import type { TextVariableInstances } from './TextVariableInstances';
  */
 export interface Change<M extends Mode = 'single'>
   extends EventTargetDOMObject<ChangeParent, M>,
-    IndexedDOMObject<ChangeParent, M>, InDesignPlugins.Change<M> {
+    IndexedDOMObject<ChangeParent, M>, InDesignEdition.Change<M>, InDesignPlugins.Change<M> {
   /** Resolves the proxy into the individual {@link Change} objects it stands for. */
   getElements(): Change<'single'>[];
 

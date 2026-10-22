@@ -17,7 +17,7 @@ import type { Gradient } from './Gradient';
  *
  * @collection GradientStop
  */
-export interface GradientStops extends BaseCollection<GradientStop, GradientStop, GradientStop<'plural'>>, InDesignPlugins.GradientStops {
+export interface GradientStops extends BaseCollection<GradientStop, GradientStop, GradientStop<'plural'>>, InDesignEdition.GradientStops, InDesignPlugins.GradientStops {
   /**
    * Creates and adds a new gradient stop to the gradient.
    * @param withProperties Initial values for properties of the new stop.

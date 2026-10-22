@@ -18,7 +18,7 @@ import type { Dialog } from './Dialog';
  * @collection BorderPanel
  */
 export interface BorderPanels
-  extends BaseCollection<BorderPanel, BorderPanel, BorderPanel<'plural'>>, IdCollection<BorderPanel>, InDesignPlugins.BorderPanels {
+  extends BaseCollection<BorderPanel, BorderPanel, BorderPanel<'plural'>>, IdCollection<BorderPanel>, InDesignEdition.BorderPanels, InDesignPlugins.BorderPanels {
   /**
    * Creates and adds a new border panel control to the dialog.
    * @param withProperties Initial values for properties of the new control.

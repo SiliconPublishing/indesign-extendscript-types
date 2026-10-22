@@ -19,7 +19,7 @@ import type { DocumentOrApplication } from './_base/Parents';
 export interface KinsokuTable<M extends Mode = 'single'>
   extends LabelableEventDOMObject<DocumentOrApplication, M>,
     IndexedDOMObject<DocumentOrApplication, M>,
-    NamableDOMObject<DocumentOrApplication, M>, InDesignPlugins.KinsokuTable<M> {
+    NamableDOMObject<DocumentOrApplication, M>, InDesignEdition.KinsokuTable<M>, InDesignPlugins.KinsokuTable<M> {
   /** Resolves the proxy into the individual {@link KinsokuTable} objects it stands for. */
   getElements(): KinsokuTable<'single'>[];
 

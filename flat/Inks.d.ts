@@ -21,7 +21,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Ink
  */
-export interface Inks extends InDesignPlugins.Inks {
+export interface Inks extends InDesignEdition.Inks, InDesignPlugins.Inks {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

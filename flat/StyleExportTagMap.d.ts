@@ -25,7 +25,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * class/attributes, owned by a {@link CharacterStyle} or {@link ParagraphStyle}
  * and consulted when exporting styled text.
  */
-export interface StyleExportTagMap extends InDesignPlugins.StyleExportTagMap<'single'> {
+export interface StyleExportTagMap extends InDesignEdition.StyleExportTagMap, InDesignPlugins.StyleExportTagMap<'single'> {
   /**
    * A collection of events
    */
@@ -131,7 +131,7 @@ export interface StyleExportTagMap extends InDesignPlugins.StyleExportTagMap<'si
  * class/attributes, owned by a {@link CharacterStyle} or {@link ParagraphStyle}
  * and consulted when exporting styled text.
  */
-export interface StyleExportTagMapPlural extends InDesignPlugins.StyleExportTagMap<'plural'> {
+export interface StyleExportTagMapPlural extends InDesignEdition.StyleExportTagMapPlural, InDesignPlugins.StyleExportTagMap<'plural'> {
   /**
    * A collection of events
    */

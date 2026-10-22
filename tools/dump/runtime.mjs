@@ -13,7 +13,7 @@ import { cpSync, existsSync, mkdtempSync, readFileSync, writeFileSync } from 'no
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { inlineIncludes, runExtendScript, runExtendScriptFile } from '../run-extendscript.mjs';
+import { appTarget, inlineIncludes, runExtendScript, runExtendScriptFile } from '../run-extendscript.mjs';
 import { INDESIGN_VERSION, SNAPSHOT } from '../snapshot.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -28,7 +28,7 @@ function waitForApp(app, timeoutSec = 300) {
     const until = Date.now() + timeoutSec * 1000;
     while (Date.now() < until) {
         try {
-            execFileSync('osascript', ['-e', `with timeout of 20 seconds\ntell application "${app}" to get version\nend timeout`], { stdio: 'ignore' });
+            execFileSync('osascript', ['-e', `with timeout of 20 seconds\ntell ${appTarget(app)} to get version\nend timeout`], { stdio: 'ignore' });
             return;
         } catch {
             execFileSync('sleep', ['5']);
@@ -47,7 +47,7 @@ for (var i = app.documents.length - 1; i >= 0; i--) {
 }
 closed;`;
     try {
-        execFileSync('osascript', ['-e', `with timeout of 60 seconds\ntell application "${app}" to do script ${JSON.stringify(script)} language javascript\nend timeout`], { stdio: 'ignore' });
+        execFileSync('osascript', ['-e', `with timeout of 60 seconds\ntell ${appTarget(app)} to do script ${JSON.stringify(script)} language javascript\nend timeout`], { stdio: 'ignore' });
     } catch {}
 }
 
@@ -118,16 +118,18 @@ export function sampleAsync({ app = 'Adobe InDesign 2026' } = {}) {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
     const snapshot = arg('--snapshot', SNAPSHOT);
     const writes = process.argv.includes('--writes');
-    const r = sampleRuntime({ app: arg('--app', 'Adobe InDesign 2026'), snapshot, script: writes ? 'writes.jsx' : 'runtime.jsx' });
-    if (!writes) {
-        const a = sampleAsync({ app: arg('--app', 'Adobe InDesign 2026') });
+    const app = arg('--app', 'Adobe InDesign 2026');
+    const r = sampleRuntime({ app, snapshot, script: writes ? 'writes.jsx' : 'runtime.jsx' });
+    // Background tasks are desktop's (InDesign Server has no BackgroundTask).
+    if (!writes && !/server/i.test(app)) {
+        const a = sampleAsync({ app });
         console.log(`async: task ${a.task}, idle event ${a.idle}, documents closed ${a.closed}, still open ${a.stillOpen}`);
         for (const [k, v] of Object.entries(a.samples)) r.samples[k] = v;
         for (const c of new Set(Object.keys(a.samples).map((k) => k.split('.')[0]))) if (!r.classesSampled.includes(c)) r.classesSampled.push(c);
     }
     writeFileSync(resolve(root, snapshot, writes ? 'writes.json' : 'runtime.json'), JSON.stringify(r, null, 1) + '\n');
     // A crash's recovery can reopen fixture documents and libraries after the retry has started.
-    const left = runExtendScriptFile(join(here, 'cleanup.jsx'), { app: arg('--app', 'Adobe InDesign 2026') });
+    const left = runExtendScriptFile(join(here, 'cleanup.jsx'), { app });
     if (left.some((l) => !/^kept /.test(l))) console.log(`cleanup: ${left.join('; ')}`);
     console.log(`${r.classesSampled.length} classes, ${Object.keys(writes ? r.writes : r.samples).length} members in ${r.ms}ms${r.timedOut ? ' (timed out)' : ''}`);
     if (r.fixtureErrors.length) console.log('fixture errors:\n  ' + r.fixtureErrors.join('\n  '));

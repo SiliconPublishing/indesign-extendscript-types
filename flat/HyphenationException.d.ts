@@ -23,7 +23,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A document's hyphenation exceptions list — words added to or removed from
  * InDesign's automatic hyphenation.
  */
-export interface HyphenationException extends InDesignPlugins.HyphenationException<'single'> {
+export interface HyphenationException extends InDesignEdition.HyphenationException, InDesignPlugins.HyphenationException<'single'> {
   /**
    * A collection of events
    */
@@ -135,7 +135,7 @@ export interface HyphenationException extends InDesignPlugins.HyphenationExcepti
  * A document's hyphenation exceptions list — words added to or removed from
  * InDesign's automatic hyphenation.
  */
-export interface HyphenationExceptionPlural extends InDesignPlugins.HyphenationException<'plural'> {
+export interface HyphenationExceptionPlural extends InDesignEdition.HyphenationExceptionPlural, InDesignPlugins.HyphenationException<'plural'> {
   /**
    * A collection of events
    */

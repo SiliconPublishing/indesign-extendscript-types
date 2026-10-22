@@ -66,12 +66,16 @@ import type { WMFs } from './WMFs';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { FormFieldDesktop } from "./FormField";
+import type { FormFieldServer } from "./FormField";
+import type { FormFieldPortable } from "./FormField";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A PDF text-field form field: a single- or multi-line editable text box in
  * an interactive PDF form.
  */
-export interface TextBox<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, TextBox, M>, FormFieldSurface<TextBox, M>, InDesignPlugins.TextBox<M> {
+export interface TextBox<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, TextBox, M>, FormFieldSurface<TextBox, M>, InDesignEdition.TextBox<TParent, M>, InDesignPlugins.TextBox<M> {
   /** Resolves the proxy into the individual {@link TextBox} objects it stands for. */
   getElements(): TextBox<TParent, 'single'>[];
 
@@ -103,3 +107,11 @@ export interface TextBox<TParent = PageItemParent, M extends Mode = 'single'> ex
   get rightToLeftField(): Read<M, boolean>;
   set rightToLeftField(value: boolean);
 }
+/** TextBox's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface TextBoxDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldDesktop<TParent, TextBox, M> {}
+
+/** TextBox's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface TextBoxServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldServer<TParent, TextBox, M> {}
+
+/** TextBox's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface TextBoxPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldPortable<TParent, TextBox, M> {}

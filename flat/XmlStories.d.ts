@@ -21,7 +21,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection XmlStory
  */
-export interface XmlStories extends InDesignPlugins.XmlStories {
+export interface XmlStories extends InDesignEdition.XmlStories, InDesignPlugins.XmlStories {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

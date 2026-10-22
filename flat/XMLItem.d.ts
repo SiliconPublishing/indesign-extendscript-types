@@ -13,6 +13,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
 import type { DTD } from './DTD';
 import type { XMLComment } from './XMLComment';
 import type { XMLInstruction } from './XMLInstruction';
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -29,7 +30,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * {@link XMLInstruction}, and {@link DTD} all extend this. Represents any node
  * in a document's underlying XML structure.
  */
-export interface XMLItem extends InDesignPlugins.XMLItem<'single'> {
+export interface XMLItem extends InDesignEdition.XMLItem, InDesignPlugins.XMLItem<'single'> {
   /**
    * A collection of events
    */
@@ -121,11 +122,6 @@ export interface XMLItem extends InDesignPlugins.XMLItem<'single'> {
   remove(): void;
   /** Duplicates the XMLItem. */
   duplicate(): XMLItem;
-  /**
-   * Selects the object.
-   * @param existingSelection How this selection combines with the current one. Defaults to {@link SelectionOptions.REPLACE_WITH}.
-   */
-  select(existingSelection?: SelectionOptions): void;
 }
 
 /**
@@ -133,7 +129,7 @@ export interface XMLItem extends InDesignPlugins.XMLItem<'single'> {
  * {@link XMLInstruction}, and {@link DTD} all extend this. Represents any node
  * in a document's underlying XML structure.
  */
-export interface XMLItemPlural extends InDesignPlugins.XMLItem<'plural'> {
+export interface XMLItemPlural extends InDesignEdition.XMLItemPlural, InDesignPlugins.XMLItem<'plural'> {
   /**
    * A collection of events
    */
@@ -225,11 +221,41 @@ export interface XMLItemPlural extends InDesignPlugins.XMLItem<'plural'> {
   remove(): (void)[];
   /** Duplicates the XMLItem. */
   duplicate(): (XMLItem)[];
+}
+/** XMLItem's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLItemDesktop {
   /**
    * Selects the object.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to {@link SelectionOptions.REPLACE_WITH}.
+   */
+  select(existingSelection?: SelectionOptions): void;
+}
+
+/** XMLItem's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLItemDesktopPlural {
+  /**
+   * Selects the object.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param existingSelection How this selection combines with the current one. Defaults to {@link SelectionOptions.REPLACE_WITH}.
    */
   select(existingSelection?: SelectionOptions): (void)[];
+}
+
+/** XMLItem's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLItemServer {
+}
+
+/** XMLItem's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLItemServerPlural {
+}
+
+/** XMLItem's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface XMLItemPortable {
+}
+
+/** XMLItem's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface XMLItemPortablePlural {
 }
 
 /**
@@ -331,11 +357,6 @@ export interface PlainXMLItem {
   remove(): void;
   /** Duplicates the XMLItem. */
   duplicate(): XMLItem;
-  /**
-   * Selects the object.
-   * @param existingSelection How this selection combines with the current one. Defaults to {@link SelectionOptions.REPLACE_WITH}.
-   */
-  select(existingSelection?: SelectionOptions): void;
 }
 
 /**
@@ -437,9 +458,39 @@ export interface PlainXMLItemPlural {
   remove(): (void)[];
   /** Duplicates the XMLItem. */
   duplicate(): (XMLItem)[];
+}
+/** PlainXMLItem's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface PlainXMLItemDesktop {
   /**
    * Selects the object.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to {@link SelectionOptions.REPLACE_WITH}.
+   */
+  select(existingSelection?: SelectionOptions): void;
+}
+
+/** PlainXMLItem's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface PlainXMLItemDesktopPlural {
+  /**
+   * Selects the object.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param existingSelection How this selection combines with the current one. Defaults to {@link SelectionOptions.REPLACE_WITH}.
    */
   select(existingSelection?: SelectionOptions): (void)[];
+}
+
+/** PlainXMLItem's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface PlainXMLItemServer {
+}
+
+/** PlainXMLItem's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface PlainXMLItemServerPlural {
+}
+
+/** PlainXMLItem's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface PlainXMLItemPortable {
+}
+
+/** PlainXMLItem's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface PlainXMLItemPortablePlural {
 }

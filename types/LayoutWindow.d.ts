@@ -29,7 +29,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * ordinary document window showing pages and spreads, as opposed to a
  * {@link StoryWindow}'s text-only story-editor view.
  */
-export interface LayoutWindow<M extends Mode = 'single'> extends Window<M>, InDesignPlugins.LayoutWindow<M>{
+export interface LayoutWindow<M extends Mode = 'single'> extends Window<M>, InDesignEdition.LayoutWindow<M>, InDesignPlugins.LayoutWindow<M>{
   /** Resolves the proxy into the individual {@link LayoutWindow} objects it stands for. */
   getElements(): LayoutWindow<'single'>[];
 

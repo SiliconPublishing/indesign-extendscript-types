@@ -24,5 +24,5 @@ export interface AssignedStories
   extends
     BaseCollection<AssignedStory, AssignedStory, AssignedStory<'plural'>>,
     IdCollection<AssignedStory>,
-    NamedCollection<AssignedStory>, InDesignPlugins.AssignedStories {
+    NamedCollection<AssignedStory>, InDesignEdition.AssignedStories, InDesignPlugins.AssignedStories {
 }

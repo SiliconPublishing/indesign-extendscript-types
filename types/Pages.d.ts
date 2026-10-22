@@ -28,5 +28,5 @@ export interface Pages<TParent = Spread | MasterSpread>
     BaseCollection<Page<TParent>, Page, Page<TParent, 'plural'>>,
     IdCollection<Page<TParent>>,
     NamedCollection<Page<TParent>>,
-    AddableStructureCollection<Page<TParent>, Page | Spread | MasterSpread | Document, Page>, InDesignPlugins.Pages {
+    AddableStructureCollection<Page<TParent>, Page | Spread | MasterSpread | Document, Page>, InDesignEdition.Pages<TParent>, InDesignPlugins.Pages {
 }

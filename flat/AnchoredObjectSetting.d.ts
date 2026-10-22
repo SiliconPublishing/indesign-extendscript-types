@@ -51,7 +51,7 @@ import type { FilePath } from './_base/Types';
 /**
  * The settings for an anchored object.
  */
-export interface AnchoredObjectSetting extends InDesignPlugins.AnchoredObjectSetting<'single'> {
+export interface AnchoredObjectSetting extends InDesignEdition.AnchoredObjectSetting, InDesignPlugins.AnchoredObjectSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -189,7 +189,7 @@ export interface AnchoredObjectSetting extends InDesignPlugins.AnchoredObjectSet
 /**
  * The settings for an anchored object.
  */
-export interface AnchoredObjectSettingPlural extends InDesignPlugins.AnchoredObjectSetting<'plural'> {
+export interface AnchoredObjectSettingPlural extends InDesignEdition.AnchoredObjectSettingPlural, InDesignPlugins.AnchoredObjectSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

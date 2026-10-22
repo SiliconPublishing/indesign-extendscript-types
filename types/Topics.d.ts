@@ -17,7 +17,7 @@ import type { Index } from './Index';
  *
  * @collection Topic
  */
-export interface Topics extends BaseCollection<Topic, Topic, Topic<'plural'>>, NamedCollection<Topic>, InDesignPlugins.Topics {
+export interface Topics extends BaseCollection<Topic, Topic, Topic<'plural'>>, NamedCollection<Topic>, InDesignEdition.Topics, InDesignPlugins.Topics {
   /**
    * Creates a new topic from a properties bag alone. The bag must include `name`.
    * @param withProperties Initial values for properties of the new {@link Topic}.

@@ -14,7 +14,7 @@ import type { CopyrightStatus } from './Enums/CopyrightStatus';
  * Read-only metadata read from a {@link Link}'s source file — author, keywords,
  * copyright, and creation/modification dates, drawn from the file's XMP data.
  */
-export interface LinkMetadata<M extends Mode = 'single'> extends EventTargetDOMObject<Link, M>, InDesignPlugins.LinkMetadata<M> {
+export interface LinkMetadata<M extends Mode = 'single'> extends EventTargetDOMObject<Link, M>, InDesignEdition.LinkMetadata<M>, InDesignPlugins.LinkMetadata<M> {
   /** Resolves the proxy into the individual {@link LinkMetadata} objects it stands for. */
   getElements(): LinkMetadata<'single'>[];
 

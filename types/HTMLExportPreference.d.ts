@@ -25,7 +25,7 @@ import type { UseSVGAsEnum } from './Enums/UseSVGAsEnum';
  * Export settings for InDesign's HTML output: element class attributes, content
  * order, image conversion, and the external CSS/JavaScript to reference.
  */
-export interface HTMLExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, InDesignPlugins.HTMLExportPreference<M> {
+export interface HTMLExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, InDesignEdition.HTMLExportPreference<M>, InDesignPlugins.HTMLExportPreference<M> {
   /** Resolves the proxy into the individual {@link HTMLExportPreference} objects it stands for. */
   getElements(): HTMLExportPreference<'single'>[];
 

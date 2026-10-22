@@ -16,7 +16,7 @@ import type { PNGQualityEnum } from './Enums/PNGQualityEnum';
  * Settings for exporting pages or spreads as PNG images — resolution, color
  * space, quality, transparency, and which pages to include.
  */
-export interface PNGExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.PNGExportPreference<M> {
+export interface PNGExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.PNGExportPreference<M>, InDesignPlugins.PNGExportPreference<M> {
   /** Resolves the proxy into the individual {@link PNGExportPreference} objects it stands for. */
   getElements(): PNGExportPreference<'single'>[];
 

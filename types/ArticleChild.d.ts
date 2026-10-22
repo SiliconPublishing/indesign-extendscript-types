@@ -18,7 +18,7 @@ import type { Article } from './Article';
  */
 export interface ArticleChild<M extends Mode = 'single'>
   extends EventTargetDOMObject<Group, M>,
-    IndexedDOMObject<Group, M>, InDesignPlugins.ArticleChild<M> {
+    IndexedDOMObject<Group, M>, InDesignEdition.ArticleChild<M>, InDesignPlugins.ArticleChild<M> {
   /** Resolves the proxy into the individual {@link ArticleChild} objects it stands for. */
   getElements(): ArticleChild<'single'>[];
 

@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Submenu
  */
-export interface Submenus extends InDesignPlugins.Submenus {
+export interface Submenus extends InDesignEdition.Submenus, InDesignPlugins.Submenus {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

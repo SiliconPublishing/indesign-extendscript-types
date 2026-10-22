@@ -24,7 +24,7 @@ import type { BehaviorParent } from './_base/Parents';
 /**
  * A behavior that submits the interactive PDF form to a URL.
  */
-export interface SubmitFormBehavior extends InDesignPlugins.SubmitFormBehavior<'single'> {
+export interface SubmitFormBehavior extends InDesignEdition.SubmitFormBehavior, InDesignPlugins.SubmitFormBehavior<'single'> {
   /**
    * A collection of events
    */
@@ -144,7 +144,7 @@ export interface SubmitFormBehavior extends InDesignPlugins.SubmitFormBehavior<'
 /**
  * A behavior that submits the interactive PDF form to a URL.
  */
-export interface SubmitFormBehaviorPlural extends InDesignPlugins.SubmitFormBehavior<'plural'> {
+export interface SubmitFormBehaviorPlural extends InDesignEdition.SubmitFormBehaviorPlural, InDesignPlugins.SubmitFormBehavior<'plural'> {
   /**
    * A collection of events
    */

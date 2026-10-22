@@ -15,7 +15,7 @@ import type { BehaviorEvents } from './Enums/BehaviorEvents';
 /**
  * A behavior that controls playback of a {@link Movie} page item.
  */
-export interface MovieBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignPlugins.MovieBehavior<M>{
+export interface MovieBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignEdition.MovieBehavior<M>, InDesignPlugins.MovieBehavior<M>{
   /** Resolves the proxy into the individual {@link MovieBehavior} objects it stands for. */
   getElements(): MovieBehavior<'single'>[];
 

@@ -25,7 +25,7 @@ import type { StoryWindow } from './StoryWindow';
  * ordering) and the document selection, which is shared across all windows viewing the same
  * document.
  */
-export interface Window<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, IndexedDOMObject<Document, M>, InDesignPlugins.Window<M> {
+export interface Window<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, IndexedDOMObject<Document, M>, InDesignEdition.Window<M>, InDesignPlugins.Window<M> {
   /** Resolves the proxy into the individual {@link Window} objects it stands for. */
   getElements(): Window<'single'>[];
 

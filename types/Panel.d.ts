@@ -15,7 +15,7 @@ import type { PagesPanel } from './PagesPanel';
  */
 export interface Panel<M extends Mode = 'single'>
   extends EventTargetDOMObject<Application, M>,
-    IndexedDOMObject<Application, M>, InDesignPlugins.Panel<M> {
+    IndexedDOMObject<Application, M>, InDesignEdition.Panel<M>, InDesignPlugins.Panel<M> {
   /** Resolves the proxy into the individual {@link Panel} objects it stands for. */
   getElements(): Panel<'single'>[];
 

@@ -49,7 +49,7 @@ import type { Event } from './Event';
  * booklet-imposition print feature — kept separate from the document's
  * regular {@link PrintPreference}.
  */
-export interface PrintBookletPrintPreference extends InDesignPlugins.PrintBookletPrintPreference<'single'> {
+export interface PrintBookletPrintPreference extends InDesignEdition.PrintBookletPrintPreference, InDesignPlugins.PrintBookletPrintPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -384,7 +384,7 @@ export interface PrintBookletPrintPreference extends InDesignPlugins.PrintBookle
  * booklet-imposition print feature — kept separate from the document's
  * regular {@link PrintPreference}.
  */
-export interface PrintBookletPrintPreferencePlural extends InDesignPlugins.PrintBookletPrintPreference<'plural'> {
+export interface PrintBookletPrintPreferencePlural extends InDesignEdition.PrintBookletPrintPreferencePlural, InDesignPlugins.PrintBookletPrintPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -26,7 +26,7 @@ import type { SatinSetting } from './SatinSetting';
 /**
  * Transparency settings for the stroke of the parent object.
  */
-export interface StrokeTransparencySetting<M extends Mode = 'single'> extends EventTargetDOMObject<PageItemUnion | FormField | PageItemDefault | ObjectStyle, M>, InDesignPlugins.StrokeTransparencySetting<M> {
+export interface StrokeTransparencySetting<M extends Mode = 'single'> extends EventTargetDOMObject<PageItemUnion | FormField | PageItemDefault | ObjectStyle, M>, InDesignEdition.StrokeTransparencySetting<M>, InDesignPlugins.StrokeTransparencySetting<M> {
   /** Resolves the proxy into the individual {@link StrokeTransparencySetting} objects it stands for. */
   getElements(): StrokeTransparencySetting<'single'>[];
 

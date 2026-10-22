@@ -23,7 +23,7 @@ import type { WidgetParent } from './_base/Parents';
 /**
  * A numeric entry field for percentage values.
  */
-export interface PercentEditbox extends InDesignPlugins.PercentEditbox<'single'> {
+export interface PercentEditbox extends InDesignEdition.PercentEditbox, InDesignPlugins.PercentEditbox<'single'> {
   /**
    * A collection of events
    */
@@ -156,7 +156,7 @@ export interface PercentEditbox extends InDesignPlugins.PercentEditbox<'single'>
 /**
  * A numeric entry field for percentage values.
  */
-export interface PercentEditboxPlural extends InDesignPlugins.PercentEditbox<'plural'> {
+export interface PercentEditboxPlural extends InDesignEdition.PercentEditboxPlural, InDesignPlugins.PercentEditbox<'plural'> {
   /**
    * A collection of events
    */

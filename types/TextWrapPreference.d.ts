@@ -24,7 +24,7 @@ import type { TextWrapSideOptions } from './Enums/TextWrapSideOptions';
  * Settings controlling how surrounding text wraps around an object — the wrap
  * shape, the offset from the object's edges, and which side(s) text flows along.
  */
-export interface TextWrapPreference<M extends Mode = 'single'> extends EventTargetDOMObject<PageItemUnion | FormField | Application | Document | ObjectStyle, M>, InDesignPlugins.TextWrapPreference<M> {
+export interface TextWrapPreference<M extends Mode = 'single'> extends EventTargetDOMObject<PageItemUnion | FormField | Application | Document | ObjectStyle, M>, InDesignEdition.TextWrapPreference<M>, InDesignPlugins.TextWrapPreference<M> {
   /** Resolves the proxy into the individual {@link TextWrapPreference} objects it stands for. */
   getElements(): TextWrapPreference<'single'>[];
 

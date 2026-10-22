@@ -22,7 +22,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Text editing preferences.
  */
-export interface TextEditingPreference extends InDesignPlugins.TextEditingPreference<'single'> {
+export interface TextEditingPreference extends InDesignEdition.TextEditingPreference, InDesignPlugins.TextEditingPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -124,7 +124,7 @@ export interface TextEditingPreference extends InDesignPlugins.TextEditingPrefer
 /**
  * Text editing preferences.
  */
-export interface TextEditingPreferencePlural extends InDesignPlugins.TextEditingPreference<'plural'> {
+export interface TextEditingPreferencePlural extends InDesignEdition.TextEditingPreferencePlural, InDesignPlugins.TextEditingPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * text within a paragraph based on defined delimiters or character counts.
  * @collection NestedStyle
  */
-export interface NestedStyles extends InDesignPlugins.NestedStyles {
+export interface NestedStyles extends InDesignEdition.NestedStyles, InDesignPlugins.NestedStyles {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -22,7 +22,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A single button inside a {@link RadiobuttonGroup}.
  */
-export interface RadiobuttonControl extends InDesignPlugins.RadiobuttonControl<'single'> {
+export interface RadiobuttonControl extends InDesignEdition.RadiobuttonControl, InDesignPlugins.RadiobuttonControl<'single'> {
   /**
    * A collection of events
    */
@@ -125,7 +125,7 @@ export interface RadiobuttonControl extends InDesignPlugins.RadiobuttonControl<'
 /**
  * A single button inside a {@link RadiobuttonGroup}.
  */
-export interface RadiobuttonControlPlural extends InDesignPlugins.RadiobuttonControl<'plural'> {
+export interface RadiobuttonControlPlural extends InDesignEdition.RadiobuttonControlPlural, InDesignPlugins.RadiobuttonControl<'plural'> {
   /**
    * A collection of events
    */

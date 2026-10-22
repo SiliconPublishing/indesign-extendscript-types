@@ -21,7 +21,7 @@ import type { Index } from './Index';
 export interface PageReference<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Topic, M>,
     IndexedDOMObject<Topic, M>,
-    NamableDOMObject<Topic, M>, InDesignPlugins.PageReference<M> {
+    NamableDOMObject<Topic, M>, InDesignEdition.PageReference<M>, InDesignPlugins.PageReference<M> {
   /** Resolves the proxy into the individual {@link PageReference} objects it stands for. */
   getElements(): PageReference<'single'>[];
 

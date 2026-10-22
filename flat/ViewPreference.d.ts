@@ -11,6 +11,7 @@ import type { DocumentOrApplication } from './_base/Parents';
 import type { MeasurementValue } from './_base/Types';
 import type { MeasurementUnits } from './Enums/MeasurementUnits';
 import type { RulerOrigin } from './Enums/RulerOrigin';
+import type { EditionPart } from "./_base/Editions";
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
 import type { Events } from './Events';
@@ -25,7 +26,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Application- or document-wide view defaults (rulers, guides, screen mode, measurement units).
  */
-export interface ViewPreference extends InDesignPlugins.ViewPreference<'single'> {
+export interface ViewPreference extends InDesignEdition.ViewPreference, InDesignPlugins.ViewPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -157,15 +158,12 @@ export interface ViewPreference extends InDesignPlugins.ViewPreference<'single'>
   /** The measurement unit for the print dialog. */
   get printDialogMeasurementUnits(): MeasurementUnits;
   set printDialogMeasurementUnits(value: MeasurementUnits);
-  /** If true, notes are displayed. */
-  get showNotes(): boolean;
-  set showNotes(value: boolean);
 }
 
 /**
  * Application- or document-wide view defaults (rulers, guides, screen mode, measurement units).
  */
-export interface ViewPreferencePlural extends InDesignPlugins.ViewPreference<'plural'> {
+export interface ViewPreferencePlural extends InDesignEdition.ViewPreferencePlural, InDesignPlugins.ViewPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -297,7 +295,41 @@ export interface ViewPreferencePlural extends InDesignPlugins.ViewPreference<'pl
   /** The measurement unit for the print dialog. */
   get printDialogMeasurementUnits(): (MeasurementUnits)[];
   set printDialogMeasurementUnits(value: MeasurementUnits);
-  /** If true, notes are displayed. */
-  get showNotes(): (boolean)[];
+}
+/** ViewPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ViewPreferenceDesktop {
+  /** If true, notes are displayed.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get showNotes(): boolean;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
   set showNotes(value: boolean);
+}
+
+/** ViewPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ViewPreferenceDesktopPlural {
+  /** If true, notes are displayed.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get showNotes(): (boolean)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set showNotes(value: boolean);
+}
+
+/** ViewPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ViewPreferenceServer {
+}
+
+/** ViewPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ViewPreferenceServerPlural {
+}
+
+/** ViewPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ViewPreferencePortable {
+}
+
+/** ViewPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ViewPreferencePortablePlural {
 }

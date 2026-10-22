@@ -32,7 +32,7 @@ export type MojikumiAkiOverride = [
 export interface MojikumiTable<M extends Mode = 'single'>
   extends LabelableEventDOMObject<DocumentOrApplication, M>,
     IndexedDOMObject<DocumentOrApplication, M>,
-    NamableDOMObject<DocumentOrApplication, M>, InDesignPlugins.MojikumiTable<M> {
+    NamableDOMObject<DocumentOrApplication, M>, InDesignEdition.MojikumiTable<M>, InDesignPlugins.MojikumiTable<M> {
   /** Resolves the proxy into the individual {@link MojikumiTable} objects it stands for. */
   getElements(): MojikumiTable<'single'>[];
 

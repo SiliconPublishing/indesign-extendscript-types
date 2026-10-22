@@ -24,7 +24,7 @@ import type { FilePath } from './_base/Types';
  * Configuration for a data merge — how placed images fit their frames, whether
  * merged images link or embed, and how the merged records split across output documents.
  */
-export interface DataMergeOption extends InDesignPlugins.DataMergeOption<'single'> {
+export interface DataMergeOption extends InDesignEdition.DataMergeOption, InDesignPlugins.DataMergeOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -136,7 +136,7 @@ export interface DataMergeOption extends InDesignPlugins.DataMergeOption<'single
  * Configuration for a data merge — how placed images fit their frames, whether
  * merged images link or embed, and how the merged records split across output documents.
  */
-export interface DataMergeOptionPlural extends InDesignPlugins.DataMergeOption<'plural'> {
+export interface DataMergeOptionPlural extends InDesignEdition.DataMergeOptionPlural, InDesignPlugins.DataMergeOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

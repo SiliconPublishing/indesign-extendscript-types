@@ -111,14 +111,19 @@ function walkDom(roots, visit, progress, blocked) {
         try { cls = obj.constructor.name; } catch (e) { continue; }
         // A reference kept since creation can go stale while the object lives on (a style's
         // export tag map, a graphic layer); look it up again by its specifier.
+        // Not a graphic layer: resolve() of its specifier gives a husk whose properties read
+        // undefined and whose parent is the Document (probe "resolve() of a graphic layer").
         try {
             if (obj.isValid === false) {
+                if (cls === 'GraphicLayer') continue;
                 var again = null;
                 try { again = resolve(obj.toSpecifier()); } catch (e) {}
                 if (!again || again.isValid === false) continue;
                 obj = again;
             }
         } catch (e) {}
+        // "Class.*": a class that crashes InDesign whatever is read first (runtime-crashers.json).
+        if (blocked[cls + '.*']) continue;
         if (!isRoot && (seen[cls] || 0) >= PER_CLASS) continue;
         seen[cls] = (seen[cls] || 0) + 1;
         if (isCollection(obj)) {

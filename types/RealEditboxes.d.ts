@@ -18,7 +18,7 @@ import type { RealEditbox } from './RealEditbox';
  * @collection RealEditbox
  */
 export interface RealEditboxes
-  extends BaseCollection<RealEditbox, RealEditbox, RealEditbox<'plural'>>, IdCollection<RealEditbox>, InDesignPlugins.RealEditboxes {
+  extends BaseCollection<RealEditbox, RealEditbox, RealEditbox<'plural'>>, IdCollection<RealEditbox>, InDesignEdition.RealEditboxes, InDesignPlugins.RealEditboxes {
   /**
    * Creates and adds a new real-number editbox control to the dialog container.
    * @param withProperties Initial values for properties of the new control, such as its initial numeric value, range constraints, and label.

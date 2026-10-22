@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection ParagraphStyle
  */
-export interface ParagraphStyles extends InDesignPlugins.ParagraphStyles {
+export interface ParagraphStyles extends InDesignEdition.ParagraphStyles, InDesignPlugins.ParagraphStyles {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

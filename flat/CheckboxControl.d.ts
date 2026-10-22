@@ -22,7 +22,7 @@ import type { WidgetParent } from './_base/Parents';
 /**
  * A standalone checkbox control with an adjoining text label.
  */
-export interface CheckboxControl extends InDesignPlugins.CheckboxControl<'single'> {
+export interface CheckboxControl extends InDesignEdition.CheckboxControl, InDesignPlugins.CheckboxControl<'single'> {
   /**
    * A collection of events
    */
@@ -127,7 +127,7 @@ export interface CheckboxControl extends InDesignPlugins.CheckboxControl<'single
 /**
  * A standalone checkbox control with an adjoining text label.
  */
-export interface CheckboxControlPlural extends InDesignPlugins.CheckboxControl<'plural'> {
+export interface CheckboxControlPlural extends InDesignEdition.CheckboxControlPlural, InDesignPlugins.CheckboxControl<'plural'> {
   /**
    * A collection of events
    */

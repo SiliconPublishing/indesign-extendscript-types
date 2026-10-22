@@ -20,7 +20,7 @@ import type { Word } from './Word';
  *
  * @collection InsertionPoint
  */
-export interface InsertionPoints<TParent = TextParent> extends BaseCollection<InsertionPoint<TParent>, Text, InsertionPoint<TParent, 'plural'>, Text<TParent, 'plural'>>, InDesignPlugins.InsertionPoints {
+export interface InsertionPoints<TParent = TextParent> extends BaseCollection<InsertionPoint<TParent>, Text, InsertionPoint<TParent, 'plural'>, Text<TParent, 'plural'>>, InDesignEdition.InsertionPoints<TParent>, InDesignPlugins.InsertionPoints {
   /**
    * Returns the contiguous {@link Text} range between two bounds (inclusive).
    *

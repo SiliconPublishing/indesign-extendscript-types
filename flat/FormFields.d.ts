@@ -26,7 +26,7 @@ import type { PageItemAddReference } from './_base/Collections';
  *
  * @collection FormField
  */
-export interface FormFields<TParent = PageItemParent> extends InDesignPlugins.FormFields {
+export interface FormFields<TParent = PageItemParent> extends InDesignEdition.FormFields<TParent>, InDesignPlugins.FormFields {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

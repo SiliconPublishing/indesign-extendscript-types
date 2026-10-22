@@ -13,7 +13,7 @@ import type { BehaviorEvents } from './Enums/BehaviorEvents';
 /**
  * A behavior that submits the interactive PDF form to a URL.
  */
-export interface SubmitFormBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignPlugins.SubmitFormBehavior<M>{
+export interface SubmitFormBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignEdition.SubmitFormBehavior<M>, InDesignPlugins.SubmitFormBehavior<M>{
   /** Resolves the proxy into the individual {@link SubmitFormBehavior} objects it stands for. */
   getElements(): SubmitFormBehavior<'single'>[];
 

@@ -24,7 +24,7 @@ export interface GotoAnchorBehaviors
   extends
     BaseCollection<GotoAnchorBehavior, GotoAnchorBehavior, GotoAnchorBehavior<'plural'>>,
     IdCollection<GotoAnchorBehavior>,
-    NamedCollection<GotoAnchorBehavior>, InDesignPlugins.GotoAnchorBehaviors {
+    NamedCollection<GotoAnchorBehavior>, InDesignEdition.GotoAnchorBehaviors, InDesignPlugins.GotoAnchorBehaviors {
   /**
    * Creates a new goto anchor behavior.
    * @param withProperties Initial values for properties of the new {@link GotoAnchorBehavior}.

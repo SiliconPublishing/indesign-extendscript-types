@@ -25,7 +25,7 @@ import type { WidgetParent } from './_base/Parents';
  * A numeric entry field for measurement values, interpreted internally in
  * points and converted to {@link editUnits} for display when the dialog opens.
  */
-export interface MeasurementEditbox extends InDesignPlugins.MeasurementEditbox<'single'> {
+export interface MeasurementEditbox extends InDesignEdition.MeasurementEditbox, InDesignPlugins.MeasurementEditbox<'single'> {
   /**
    * A collection of events
    */
@@ -162,7 +162,7 @@ export interface MeasurementEditbox extends InDesignPlugins.MeasurementEditbox<'
  * A numeric entry field for measurement values, interpreted internally in
  * points and converted to {@link editUnits} for display when the dialog opens.
  */
-export interface MeasurementEditboxPlural extends InDesignPlugins.MeasurementEditbox<'plural'> {
+export interface MeasurementEditboxPlural extends InDesignEdition.MeasurementEditboxPlural, InDesignPlugins.MeasurementEditbox<'plural'> {
   /**
    * A collection of events
    */

@@ -9,4 +9,4 @@
  */
 /// <reference path="./lib/global.d.ts" />
 /// <reference path="./lib/ScriptUI.d.ts" />
-/// <reference path="./types/globals.d.ts" />
+/// <reference path="./types/editions/desktop.d.ts" />

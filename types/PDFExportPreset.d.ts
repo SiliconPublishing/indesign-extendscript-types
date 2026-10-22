@@ -35,7 +35,7 @@ import type { ExportLayerOptions } from './Enums/ExportLayerOptions';
 export interface PDFExportPreset<M extends Mode = 'single'>
   extends EventTargetDOMObject<Application, M>,
     IndexedDOMObject<Application, M>,
-    NamableDOMObject<Application, M>, InDesignPlugins.PDFExportPreset<M> {
+    NamableDOMObject<Application, M>, InDesignEdition.PDFExportPreset<M>, InDesignPlugins.PDFExportPreset<M> {
   /** Resolves the proxy into the individual {@link PDFExportPreset} objects it stands for. */
   getElements(): PDFExportPreset<'single'>[];
 

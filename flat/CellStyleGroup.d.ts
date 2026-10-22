@@ -32,7 +32,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * nestable inside a document's or the application's
  * {@link CellStyleGroups} collection (or another group).
  */
-export interface CellStyleGroup extends InDesignPlugins.CellStyleGroup<'single'> {
+export interface CellStyleGroup extends InDesignEdition.CellStyleGroup, InDesignPlugins.CellStyleGroup<'single'> {
   /**
    * A collection of events
    */
@@ -162,7 +162,7 @@ export interface CellStyleGroup extends InDesignPlugins.CellStyleGroup<'single'>
  * nestable inside a document's or the application's
  * {@link CellStyleGroups} collection (or another group).
  */
-export interface CellStyleGroupPlural extends InDesignPlugins.CellStyleGroup<'plural'> {
+export interface CellStyleGroupPlural extends InDesignEdition.CellStyleGroupPlural, InDesignPlugins.CellStyleGroup<'plural'> {
   /**
    * A collection of events
    */

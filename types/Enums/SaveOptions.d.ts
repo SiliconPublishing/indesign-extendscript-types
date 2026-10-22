@@ -91,31 +91,21 @@ type YES = SaveOptions_YES;
  */
 export declare const SaveOptions: typeof Enumeration & {
 
-  /**
-   * Does not save changes.
-   */
-  readonly NO: SaveOptions_NO;
-  /**
-   * Does not save changes.
-   */
-  readonly no: SaveOptions_NO;
+          /**
+           * Does not save changes.
+           */
+          readonly NO: SaveOptions_NO;
+          /**
+           * Does not save changes.
+           */
+          readonly no: SaveOptions_NO;
+          /**
+           * Saves changes.
+           */
+          readonly YES: SaveOptions_YES;
+          /**
+           * Saves changes.
+           */
+          readonly yes: SaveOptions_YES;
 
-  /**
-   * Displays a prompt asking whether to save changes.
-   */
-  readonly ASK: SaveOptions_ASK;
-  /**
-   * Displays a prompt asking whether to save changes.
-   */
-  readonly ask: SaveOptions_ASK;
-
-  /**
-   * Saves changes.
-   */
-  readonly YES: SaveOptions_YES;
-  /**
-   * Saves changes.
-   */
-  readonly yes: SaveOptions_YES;
-
-}
+        } & InDesignEdition.SaveOptions

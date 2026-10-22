@@ -17,7 +17,7 @@ import type { ColorGroup } from './ColorGroup';
  * A mixed ink swatch — a color built from percentages of two or more
  * {@link Ink} plates, optionally generated from a {@link MixedInkGroup}.
  */
-export interface MixedInk<M extends Mode = 'single'> extends Swatch<M>, InDesignPlugins.MixedInk<M>{
+export interface MixedInk<M extends Mode = 'single'> extends Swatch<M>, InDesignEdition.MixedInk<M>, InDesignPlugins.MixedInk<M>{
   /** Resolves the proxy into the individual {@link MixedInk} objects it stands for. */
   getElements(): MixedInk<'single'>[];
 

@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection TOCStyle
  */
-export interface TOCStyles extends InDesignPlugins.TOCStyles {
+export interface TOCStyles extends InDesignEdition.TOCStyles, InDesignPlugins.TOCStyles {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

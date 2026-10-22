@@ -17,7 +17,7 @@ import type { PDFExportPreset } from './PDFExportPreset';
  * @collection PDFExportPreset
  */
 export interface PDFExportPresets
-  extends BaseCollection<PDFExportPreset, PDFExportPreset, PDFExportPreset<'plural'>>, NamedCollection<PDFExportPreset>, InDesignPlugins.PDFExportPresets {
+  extends BaseCollection<PDFExportPreset, PDFExportPreset, PDFExportPreset<'plural'>>, NamedCollection<PDFExportPreset>, InDesignEdition.PDFExportPresets, InDesignPlugins.PDFExportPresets {
   /**
    * Creates a new PDF export preset.
    *

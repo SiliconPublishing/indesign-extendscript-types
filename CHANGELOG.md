@@ -5,6 +5,12 @@
 First ExtendScript edition, converted from indesign-uxp-types 1.0.0 and measured against
 InDesign 2026 (21.6.0.57).
 
+- **Editions:** `indesign-extendscript-types/server` (InDesign Server) and
+  `indesign-extendscript-types/portable` (what desktop and Server share, in the form both take),
+  beside the desktop default. Members are split by measured dictionaries
+  (`tools/editions/`, `tools/codemod/editions.mjs`); `InDesignDesktop.X` / `InDesignServer.X` give
+  one edition's class from any entry.
+- The package version follows InDesign: 21.6.x is measured against InDesign 21.6.
 - **Globals instead of the `indesign` module:** `app`, every enumeration and DOM class, with event
   names, `reflect` and `instanceof` narrowing. Every DOM type is also under `InDesign.`.
 - **ES3 core library** (`lib/`): `$` (with `$.dictionary`, `$.list`, `$.summary`), `File`, `Folder`,

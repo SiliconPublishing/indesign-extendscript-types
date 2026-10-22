@@ -37,6 +37,8 @@ import type { DimensionAttributes } from './Enums/DimensionAttributes';
 import type { PositionAttributes } from './Enums/PositionAttributes';
 import type { ObjectStyles } from './ObjectStyles';
 import type { FlexObject } from './FlexObject';
+import type { EditionPart } from "./_base/Editions";
+import type { NamedGrid } from "./NamedGrid";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -69,7 +71,7 @@ import type { ArrowHeadAlignmentEnum } from './Enums/ArrowHeadAlignmentEnum';
  * attributes any drawable object has, but none of the geometry — a gradient's start point and
  * length, and the dash-and-gap pattern, belong to the drawn object rather than to the style.
  */
-export interface ObjectStyle extends InDesignPlugins.ObjectStyle<'single'> {
+export interface ObjectStyle extends InDesignEdition.ObjectStyle, InDesignPlugins.ObjectStyle<'single'> {
   /**
    * A collection of events
    */
@@ -445,7 +447,7 @@ export interface ObjectStyle extends InDesignPlugins.ObjectStyle<'single'> {
  * attributes any drawable object has, but none of the geometry — a gradient's start point and
  * length, and the dash-and-gap pattern, belong to the drawn object rather than to the style.
  */
-export interface ObjectStylePlural extends InDesignPlugins.ObjectStyle<'plural'> {
+export interface ObjectStylePlural extends InDesignEdition.ObjectStylePlural, InDesignPlugins.ObjectStyle<'plural'> {
   /**
    * A collection of events
    */
@@ -808,4 +810,41 @@ export interface ObjectStylePlural extends InDesignPlugins.ObjectStyle<'plural'>
    * @param replacingWith The style applied to any objects currently tagged with this style. Objects are left unstyled if omitted.
    */
   remove(replacingWith?: ObjectStyle | string): (void)[];
+}
+/** ObjectStyle's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ObjectStyleDesktop {
+}
+
+/** ObjectStyle's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ObjectStyleDesktopPlural {
+}
+
+/** ObjectStyle's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ObjectStyleServer {
+  /**
+   * The named grid in use.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get appliedNamedGrid(): NamedGrid | null;
+  set appliedNamedGrid(value: NamedGrid);
+}
+
+/** ObjectStyle's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ObjectStyleServerPlural {
+  /**
+   * The named grid in use.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get appliedNamedGrid(): (NamedGrid | null)[];
+  set appliedNamedGrid(value: NamedGrid);
+}
+
+/** ObjectStyle's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ObjectStylePortable {
+}
+
+/** ObjectStyle's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ObjectStylePortablePlural {
 }

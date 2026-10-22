@@ -16,7 +16,7 @@ import type { MapType } from './Enums/MapType';
  */
 export interface CellStyleMapping<M extends Mode = 'single'>
   extends EventTargetDOMObject<StyleMappingParent, M>,
-    IndexedDOMObject<StyleMappingParent, M>, InDesignPlugins.CellStyleMapping<M> {
+    IndexedDOMObject<StyleMappingParent, M>, InDesignEdition.CellStyleMapping<M>, InDesignPlugins.CellStyleMapping<M> {
   /** Resolves the proxy into the individual {@link CellStyleMapping} objects it stands for. */
   getElements(): CellStyleMapping<'single'>[];
 

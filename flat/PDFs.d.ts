@@ -21,7 +21,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection PDF
  */
-export interface PDFs<TParent = PageItemParent> extends InDesignPlugins.PDFs {
+export interface PDFs<TParent = PageItemParent> extends InDesignEdition.PDFs<TParent>, InDesignPlugins.PDFs {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

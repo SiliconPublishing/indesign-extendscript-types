@@ -11,6 +11,7 @@ import type { Document } from './Document';
 import type { DataMergeField } from './DataMergeField';
 import type { InsertionPoint } from './InsertionPoint';
 import type { Story } from './Story';
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -26,7 +27,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A location in story text marked to receive a data merge field's text value
  * during a merge.
  */
-export interface DataMergeTextPlaceholder extends InDesignPlugins.DataMergeTextPlaceholder<'single'> {
+export interface DataMergeTextPlaceholder extends InDesignEdition.DataMergeTextPlaceholder, InDesignPlugins.DataMergeTextPlaceholder<'single'> {
   /**
    * A collection of events
    */
@@ -127,7 +128,7 @@ export interface DataMergeTextPlaceholder extends InDesignPlugins.DataMergeTextP
  * A location in story text marked to receive a data merge field's text value
  * during a merge.
  */
-export interface DataMergeTextPlaceholderPlural extends InDesignPlugins.DataMergeTextPlaceholder<'plural'> {
+export interface DataMergeTextPlaceholderPlural extends InDesignEdition.DataMergeTextPlaceholderPlural, InDesignPlugins.DataMergeTextPlaceholder<'plural'> {
   /**
    * A collection of events
    */
@@ -222,4 +223,39 @@ export interface DataMergeTextPlaceholderPlural extends InDesignPlugins.DataMerg
   /** The number of characters the placeholder occupies in {@link parentStory}, starting at
    * {@link storyOffset}. */
   readonly length: (number)[];
+}
+/** DataMergeTextPlaceholder's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeTextPlaceholderDesktop {
+}
+
+/** DataMergeTextPlaceholder's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeTextPlaceholderDesktopPlural {
+}
+
+/** DataMergeTextPlaceholder's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeTextPlaceholderServer {
+  /**
+   * The name of the tag.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly name: string;
+}
+
+/** DataMergeTextPlaceholder's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeTextPlaceholderServerPlural {
+  /**
+   * The name of the tag.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly name: (string)[];
+}
+
+/** DataMergeTextPlaceholder's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DataMergeTextPlaceholderPortable {
+}
+
+/** DataMergeTextPlaceholder's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DataMergeTextPlaceholderPortablePlural {
 }

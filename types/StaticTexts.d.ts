@@ -18,7 +18,7 @@ import type { Dialog } from './Dialog';
  * @collection StaticText
  */
 export interface StaticTexts
-  extends BaseCollection<StaticText, StaticText, StaticText<'plural'>>, IdCollection<StaticText>, InDesignPlugins.StaticTexts {
+  extends BaseCollection<StaticText, StaticText, StaticText<'plural'>>, IdCollection<StaticText>, InDesignEdition.StaticTexts, InDesignPlugins.StaticTexts {
   /**
    * Creates and adds a new static text control to the dialog.
    * @param withProperties Initial values for properties of the new control.

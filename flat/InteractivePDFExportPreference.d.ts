@@ -31,7 +31,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Interactive PDF export settings for the application object.
  */
-export interface InteractivePDFExportPreference extends InDesignPlugins.InteractivePDFExportPreference<'single'> {
+export interface InteractivePDFExportPreference extends InDesignEdition.InteractivePDFExportPreference, InDesignPlugins.InteractivePDFExportPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -187,7 +187,7 @@ export interface InteractivePDFExportPreference extends InDesignPlugins.Interact
 /**
  * Interactive PDF export settings for the application object.
  */
-export interface InteractivePDFExportPreferencePlural extends InDesignPlugins.InteractivePDFExportPreference<'plural'> {
+export interface InteractivePDFExportPreferencePlural extends InDesignEdition.InteractivePDFExportPreferencePlural, InDesignPlugins.InteractivePDFExportPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

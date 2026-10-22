@@ -24,5 +24,5 @@ export interface SplineItems<TParent = PageItemParent>
   extends
     BaseCollection<SplineItem<TParent>, SplineItem, SplineItem<TParent, PageItemParent, 'plural'>>,
     IdCollection<SplineItem<TParent>>,
-    NamedCollection<SplineItem<TParent>>, InDesignPlugins.SplineItems {
+    NamedCollection<SplineItem<TParent>>, InDesignEdition.SplineItems<TParent>, InDesignPlugins.SplineItems {
 }

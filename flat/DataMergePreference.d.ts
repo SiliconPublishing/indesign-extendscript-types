@@ -27,7 +27,7 @@ import type { Event } from './Event';
  * {@link DataMerge} — which records to include, their arrangement and spacing,
  * and the page margins.
  */
-export interface DataMergePreference extends InDesignPlugins.DataMergePreference<'single'> {
+export interface DataMergePreference extends InDesignEdition.DataMergePreference, InDesignPlugins.DataMergePreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -154,7 +154,7 @@ export interface DataMergePreference extends InDesignPlugins.DataMergePreference
  * {@link DataMerge} — which records to include, their arrangement and spacing,
  * and the page margins.
  */
-export interface DataMergePreferencePlural extends InDesignPlugins.DataMergePreference<'plural'> {
+export interface DataMergePreferencePlural extends InDesignEdition.DataMergePreferencePlural, InDesignPlugins.DataMergePreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

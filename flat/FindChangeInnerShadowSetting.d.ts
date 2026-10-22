@@ -29,7 +29,7 @@ import type { BlendMode } from './Enums/BlendMode';
 /**
  * The same {@link InnerShadowSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeInnerShadowSetting extends InDesignPlugins.FindChangeInnerShadowSetting<'single'> {
+export interface FindChangeInnerShadowSetting extends InDesignEdition.FindChangeInnerShadowSetting, InDesignPlugins.FindChangeInnerShadowSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -112,12 +112,16 @@ export interface FindChangeInnerShadowSetting extends InDesignPlugins.FindChange
   /**
    * The horizontal offset of the shadow.
    *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
+   *
    * **Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
    */
   get xOffset(): number | NothingEnum.NOTHING;
   set xOffset(value: MeasurementValue | NothingEnum.NOTHING);
   /**
    * The vertical offset of the shadow.
+   *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
    *
    * **Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
    */
@@ -160,7 +164,7 @@ export interface FindChangeInnerShadowSetting extends InDesignPlugins.FindChange
 /**
  * The same {@link InnerShadowSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeInnerShadowSettingPlural extends InDesignPlugins.FindChangeInnerShadowSetting<'plural'> {
+export interface FindChangeInnerShadowSettingPlural extends InDesignEdition.FindChangeInnerShadowSettingPlural, InDesignPlugins.FindChangeInnerShadowSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -243,12 +247,16 @@ export interface FindChangeInnerShadowSettingPlural extends InDesignPlugins.Find
   /**
    * The horizontal offset of the shadow.
    *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
+   *
    * **Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
    */
   get xOffset(): (number | NothingEnum.NOTHING)[];
   set xOffset(value: MeasurementValue | NothingEnum.NOTHING);
   /**
    * The vertical offset of the shadow.
+   *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
    *
    * **Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
    */

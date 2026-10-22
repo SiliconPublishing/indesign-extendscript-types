@@ -28,5 +28,5 @@ export interface SignatureFields<TParent = PageItemParent>
     BaseCollection<SignatureField<TParent>, SignatureField, SignatureField<TParent, 'plural'>>,
     IdCollection<SignatureField<TParent>>,
     NamedCollection<SignatureField<TParent>>,
-    AddablePageItemCollection<SignatureField<TParent>, SignatureField>, InDesignPlugins.SignatureFields {
+    AddablePageItemCollection<SignatureField<TParent>, SignatureField>, InDesignEdition.SignatureFields<TParent>, InDesignPlugins.SignatureFields {
 }

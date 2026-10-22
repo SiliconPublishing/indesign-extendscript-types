@@ -17,7 +17,7 @@ import type { ParagraphStyle } from './ParagraphStyle';
  */
 export interface StyleExportTagMap<M extends Mode = 'single'>
   extends EventTargetDOMObject<CharacterStyle | ParagraphStyle, M>,
-    IndexedDOMObject<CharacterStyle | ParagraphStyle, M>, InDesignPlugins.StyleExportTagMap<M> {
+    IndexedDOMObject<CharacterStyle | ParagraphStyle, M>, InDesignEdition.StyleExportTagMap<M>, InDesignPlugins.StyleExportTagMap<M> {
   /** Resolves the proxy into the individual {@link StyleExportTagMap} objects it stands for. */
   getElements(): StyleExportTagMap<'single'>[];
 

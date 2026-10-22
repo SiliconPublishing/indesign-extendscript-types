@@ -25,7 +25,7 @@ export interface KinsokuTables
   extends
     BaseCollection<KinsokuTable, KinsokuTable, KinsokuTable<'plural'>>,
     IdCollection<KinsokuTable>,
-    NamedCollection<KinsokuTable>, InDesignPlugins.KinsokuTables {
+    NamedCollection<KinsokuTable>, InDesignEdition.KinsokuTables, InDesignPlugins.KinsokuTables {
   /**
    * Creates a new kinsoku table from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link KinsokuTable}. Must include `name`.

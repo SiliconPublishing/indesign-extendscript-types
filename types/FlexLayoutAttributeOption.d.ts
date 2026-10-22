@@ -19,7 +19,7 @@ import type { FlexWrap } from './Enums/FlexWrap';
 /**
  * Options for applying flex layout attributes to a flex object.
  */
-export interface FlexLayoutAttributeOption<M extends Mode = 'single'> extends EventTargetDOMObject<ObjectStyle, M>, InDesignPlugins.FlexLayoutAttributeOption<M> {
+export interface FlexLayoutAttributeOption<M extends Mode = 'single'> extends EventTargetDOMObject<ObjectStyle, M>, InDesignEdition.FlexLayoutAttributeOption<M>, InDesignPlugins.FlexLayoutAttributeOption<M> {
   /** Resolves the proxy into the individual {@link FlexLayoutAttributeOption} objects it stands for. */
   getElements(): FlexLayoutAttributeOption<'single'>[];
 

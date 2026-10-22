@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection StripedStrokeStyle
  */
-export interface StripedStrokeStyles extends InDesignPlugins.StripedStrokeStyles {
+export interface StripedStrokeStyles extends InDesignEdition.StripedStrokeStyles, InDesignPlugins.StripedStrokeStyles {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

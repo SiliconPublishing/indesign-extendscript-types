@@ -10,6 +10,10 @@ import type { XMLItem } from './XMLItem';
 import type { InsertionPoint } from './InsertionPoint';
 import type { Text } from './Text';
 import type { LocationOptions } from './Enums/LocationOptions';
+import type { XMLItemDesktop } from "./XMLItem";
+import type { XMLItemServer } from "./XMLItem";
+import type { XMLItemPortable } from "./XMLItem";
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -27,7 +31,7 @@ import type { XMLElement } from './XMLElement';
 /**
  * A comment (`<!-- ... -->`) in a document's underlying XML structure.
  */
-export interface XMLComment extends InDesignPlugins.XMLComment<'single'> {
+export interface XMLComment extends InDesignEdition.XMLComment, InDesignPlugins.XMLComment<'single'> {
   /**
    * A collection of events
    */
@@ -115,11 +119,6 @@ export interface XMLComment extends InDesignPlugins.XMLComment<'single'> {
   readonly id: number;
   /** Deletes the XMLItem. */
   remove(): void;
-  /**
-   * Selects the object.
-   * @param existingSelection How this selection combines with the current one. Defaults to {@link SelectionOptions.REPLACE_WITH}.
-   */
-  select(existingSelection?: SelectionOptions): void;
   /** Resolves the proxy into the individual {@link XMLComment} objects it stands for. */
   getElements(): XMLComment[];
   /** The insertion point immediately before this comment in its containing story. */
@@ -140,7 +139,7 @@ export interface XMLComment extends InDesignPlugins.XMLComment<'single'> {
 /**
  * A comment (`<!-- ... -->`) in a document's underlying XML structure.
  */
-export interface XMLCommentPlural extends InDesignPlugins.XMLComment<'plural'> {
+export interface XMLCommentPlural extends InDesignEdition.XMLCommentPlural, InDesignPlugins.XMLComment<'plural'> {
   /**
    * A collection of events
    */
@@ -228,11 +227,6 @@ export interface XMLCommentPlural extends InDesignPlugins.XMLComment<'plural'> {
   readonly id: (number)[];
   /** Deletes the XMLItem. */
   remove(): (void)[];
-  /**
-   * Selects the object.
-   * @param existingSelection How this selection combines with the current one. Defaults to {@link SelectionOptions.REPLACE_WITH}.
-   */
-  select(existingSelection?: SelectionOptions): (void)[];
   /** Resolves the proxy into the individual {@link XMLComment} objects it stands for. */
   getElements(): XMLComment[];
   /** The insertion point immediately before this comment in its containing story. */
@@ -248,4 +242,39 @@ export interface XMLCommentPlural extends InDesignPlugins.XMLComment<'plural'> {
   move(to: LocationOptions, reference?: XMLItem | Text): (XMLComment)[];
   /** Duplicates the comment. */
   duplicate(): (XMLComment)[];
+}
+/** XMLComment's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLCommentDesktop {
+  /**
+   * Selects the object.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to {@link SelectionOptions.REPLACE_WITH}.
+   */
+  select(existingSelection?: SelectionOptions): void;
+}
+
+/** XMLComment's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLCommentDesktopPlural {
+  /**
+   * Selects the object.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to {@link SelectionOptions.REPLACE_WITH}.
+   */
+  select(existingSelection?: SelectionOptions): (void)[];
+}
+
+/** XMLComment's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLCommentServer {
+}
+
+/** XMLComment's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLCommentServerPlural {
+}
+
+/** XMLComment's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface XMLCommentPortable {
+}
+
+/** XMLComment's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface XMLCommentPortablePlural {
 }

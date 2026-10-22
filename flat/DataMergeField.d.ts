@@ -28,7 +28,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * insertion into {@link DataMergeTextPlaceholder}, {@link DataMergeImagePlaceholder},
  * and {@link DataMergeQrcodePlaceholder} placeholders.
  */
-export interface DataMergeField extends InDesignPlugins.DataMergeField<'single'> {
+export interface DataMergeField extends InDesignEdition.DataMergeField, InDesignPlugins.DataMergeField<'single'> {
   /**
    * A collection of events
    */
@@ -125,7 +125,7 @@ export interface DataMergeField extends InDesignPlugins.DataMergeField<'single'>
  * insertion into {@link DataMergeTextPlaceholder}, {@link DataMergeImagePlaceholder},
  * and {@link DataMergeQrcodePlaceholder} placeholders.
  */
-export interface DataMergeFieldPlural extends InDesignPlugins.DataMergeField<'plural'> {
+export interface DataMergeFieldPlural extends InDesignEdition.DataMergeFieldPlural, InDesignPlugins.DataMergeField<'plural'> {
   /**
    * A collection of events
    */

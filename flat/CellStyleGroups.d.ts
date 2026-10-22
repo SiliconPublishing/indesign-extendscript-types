@@ -18,7 +18,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection CellStyleGroup
  */
-export interface CellStyleGroups extends InDesignPlugins.CellStyleGroups {
+export interface CellStyleGroups extends InDesignEdition.CellStyleGroups, InDesignPlugins.CellStyleGroups {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -27,5 +27,5 @@ export interface TextBoxes<TParent = PageItemParent>
     BaseCollection<TextBox<TParent>, TextBox, TextBox<TParent, 'plural'>>,
     IdCollection<TextBox<TParent>>,
     NamedCollection<TextBox<TParent>>,
-    AddablePageItemCollection<TextBox<TParent>, TextBox>, InDesignPlugins.TextBoxes {
+    AddablePageItemCollection<TextBox<TParent>, TextBox>, InDesignEdition.TextBoxes<TParent>, InDesignPlugins.TextBoxes {
 }

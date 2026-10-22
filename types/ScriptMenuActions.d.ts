@@ -24,7 +24,7 @@ export interface ScriptMenuActions
   extends
     BaseCollection<ScriptMenuAction, ScriptMenuAction, ScriptMenuAction<'plural'>>,
     IdCollection<ScriptMenuAction>,
-    NamedCollection<ScriptMenuAction>, InDesignPlugins.ScriptMenuActions {
+    NamedCollection<ScriptMenuAction>, InDesignEdition.ScriptMenuActions, InDesignPlugins.ScriptMenuActions {
   /**
    * Creates a new script menu action from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link ScriptMenuAction}.

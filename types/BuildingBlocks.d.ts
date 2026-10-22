@@ -19,7 +19,7 @@ import type { CrossReferenceFormat } from './CrossReferenceFormat';
  * "Paragraph Text," or "Chapter Number"—that constitute the formatted cross-reference.
  * @collection BuildingBlock
  */
-export interface BuildingBlocks extends BaseCollection<BuildingBlock, BuildingBlock, BuildingBlock<'plural'>>, InDesignPlugins.BuildingBlocks {
+export interface BuildingBlocks extends BaseCollection<BuildingBlock, BuildingBlock, BuildingBlock<'plural'>>, InDesignEdition.BuildingBlocks, InDesignPlugins.BuildingBlocks {
   /**
    * Creates a new building block from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link BuildingBlock}. Must include `blockType`.

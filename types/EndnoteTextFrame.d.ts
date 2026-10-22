@@ -69,6 +69,10 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { TextFrameDesktop } from "./TextFrame";
+import type { TextFrameServer } from "./TextFrame";
+import type { TextFramePortable } from "./TextFrame";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * The text frame InDesign automatically creates and manages to hold a story's collected
@@ -77,7 +81,15 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * Behaves exactly like a regular {@link TextFrame}; InDesign creates, resizes, and threads
  * these frames itself as endnotes are added or removed.
  */
-export interface EndnoteTextFrame<TParent = PageItemParent, M extends Mode = 'single'> extends TextFrame<TParent, M>, InDesignPlugins.EndnoteTextFrame<M> {
+export interface EndnoteTextFrame<TParent = PageItemParent, M extends Mode = 'single'> extends TextFrame<TParent, M>, InDesignEdition.EndnoteTextFrame<TParent, M>, InDesignPlugins.EndnoteTextFrame<M> {
   /** Resolves the proxy into the individual {@link EndnoteTextFrame} objects it stands for. */
   getElements(): EndnoteTextFrame<TParent, 'single'>[];
 }
+/** EndnoteTextFrame's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface EndnoteTextFrameDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, TextFrameDesktop<TParent, M> {}
+
+/** EndnoteTextFrame's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface EndnoteTextFrameServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, TextFrameServer<TParent, M> {}
+
+/** EndnoteTextFrame's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface EndnoteTextFramePortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, TextFramePortable<TParent, M> {}

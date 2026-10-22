@@ -24,5 +24,5 @@ export interface IndexSections
   extends
     BaseCollection<IndexSection, IndexSection, IndexSection<'plural'>>,
     IdCollection<IndexSection>,
-    NamedCollection<IndexSection>, InDesignPlugins.IndexSections {
+    NamedCollection<IndexSection>, InDesignEdition.IndexSections, InDesignPlugins.IndexSections {
 }

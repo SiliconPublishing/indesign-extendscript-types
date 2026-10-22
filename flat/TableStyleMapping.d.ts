@@ -24,7 +24,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A rule mapping a table style name in imported content to a table style in this
  * document, applied when placing a Microsoft Excel spreadsheet.
  */
-export interface TableStyleMapping extends InDesignPlugins.TableStyleMapping<'single'> {
+export interface TableStyleMapping extends InDesignEdition.TableStyleMapping, InDesignPlugins.TableStyleMapping<'single'> {
   /**
    * A collection of events
    */
@@ -127,7 +127,7 @@ export interface TableStyleMapping extends InDesignPlugins.TableStyleMapping<'si
  * A rule mapping a table style name in imported content to a table style in this
  * document, applied when placing a Microsoft Excel spreadsheet.
  */
-export interface TableStyleMappingPlural extends InDesignPlugins.TableStyleMapping<'plural'> {
+export interface TableStyleMappingPlural extends InDesignEdition.TableStyleMappingPlural, InDesignPlugins.TableStyleMapping<'plural'> {
   /**
    * A collection of events
    */

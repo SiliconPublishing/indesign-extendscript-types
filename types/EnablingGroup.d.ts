@@ -15,7 +15,7 @@ import type { DialogColumns } from './DialogColumns';
  * activates or deactivates every control it contains by clicking the
  * checkbox.
  */
-export interface EnablingGroup<M extends Mode = 'single'> extends Widget<M>, WidgetContainer<M>, InDesignPlugins.EnablingGroup<M>{
+export interface EnablingGroup<M extends Mode = 'single'> extends Widget<M>, WidgetContainer<M>, InDesignEdition.EnablingGroup<M>, InDesignPlugins.EnablingGroup<M>{
   /** Resolves the proxy into the individual {@link EnablingGroup} objects it stands for. */
   getElements(): EnablingGroup<'single'>[];
 

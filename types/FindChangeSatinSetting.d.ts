@@ -16,7 +16,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
 /**
  * The same {@link SatinSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeSatinSetting<M extends Mode = 'single'> extends SatinSetting<M, FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting, NothingEnum.NOTHING>, InDesignPlugins.FindChangeSatinSetting<M>{
+export interface FindChangeSatinSetting<M extends Mode = 'single'> extends SatinSetting<M, FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting, NothingEnum.NOTHING>, InDesignEdition.FindChangeSatinSetting<M>, InDesignPlugins.FindChangeSatinSetting<M>{
   /** Resolves the proxy into the individual {@link FindChangeSatinSetting} objects it stands for. */
   getElements(): FindChangeSatinSetting<'single'>[];
 }

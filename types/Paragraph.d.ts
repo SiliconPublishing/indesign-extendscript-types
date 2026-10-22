@@ -67,6 +67,10 @@ import type { TextPath } from './TextPath';
 import type { TextVariableInstances } from './TextVariableInstances';
 import type { Tint } from './Tint';
 import type { XMLItem } from './XMLItem';
+import type { TextDesktop } from "./Text";
+import type { TextServer } from "./Text";
+import type { TextPortable } from "./Text";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A paragraph: text bounded by paragraph-return characters.
@@ -75,7 +79,7 @@ import type { XMLItem } from './XMLItem';
  * level number actually rendered for this paragraph, as opposed to the numbering settings
  * ({@link bulletsAndNumberingListType}, {@link numberingFormat} and the rest) that produce them.
  */
-export interface Paragraph<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M>, InDesignPlugins.Paragraph<M> {
+export interface Paragraph<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M>, InDesignEdition.Paragraph<TParent, M>, InDesignPlugins.Paragraph<M> {
   /** Resolves the proxy into the individual {@link Paragraph} objects it stands for. */
   getElements(): Paragraph<TParent, 'single'>[];
 
@@ -85,3 +89,11 @@ export interface Paragraph<TParent = TextParent, M extends Mode = 'single'> exte
   /** The numbered-list level value currently rendered for this paragraph. */
   readonly numberingResultNumber: Read<M, number | undefined>;
 }
+/** Paragraph's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphDesktop<TParent = TextParent, M extends Mode = 'single'> extends EditionPart, TextDesktop<TParent, M> {}
+
+/** Paragraph's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphServer<TParent = TextParent, M extends Mode = 'single'> extends EditionPart, TextServer<TParent, M> {}
+
+/** Paragraph's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ParagraphPortable<TParent = TextParent, M extends Mode = 'single'> extends EditionPart, TextPortable<TParent, M> {}

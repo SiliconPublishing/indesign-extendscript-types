@@ -14,7 +14,7 @@ import type { BehaviorEvents } from './Enums/BehaviorEvents';
 /**
  * A behavior that advances the associated {@link MultiStateObject} to its next state.
  */
-export interface GotoNextStateBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignPlugins.GotoNextStateBehavior<M>{
+export interface GotoNextStateBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignEdition.GotoNextStateBehavior<M>, InDesignPlugins.GotoNextStateBehavior<M>{
   /** Resolves the proxy into the individual {@link GotoNextStateBehavior} objects it stands for. */
   getElements(): GotoNextStateBehavior<'single'>[];
 

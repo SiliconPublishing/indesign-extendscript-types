@@ -18,7 +18,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection AngleEditbox
  */
-export interface AngleEditboxes extends InDesignPlugins.AngleEditboxes {
+export interface AngleEditboxes extends InDesignEdition.AngleEditboxes, InDesignPlugins.AngleEditboxes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

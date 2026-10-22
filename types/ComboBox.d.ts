@@ -66,12 +66,16 @@ import type { WMFs } from './WMFs';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { FormFieldDesktop } from "./FormField";
+import type { FormFieldServer } from "./FormField";
+import type { FormFieldPortable } from "./FormField";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A PDF combo-box form field: an editable or fixed drop-down list of choices
  * in an interactive PDF form.
  */
-export interface ComboBox<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, ComboBox, M>, FormFieldSurface<ComboBox, M>, InDesignPlugins.ComboBox<M> {
+export interface ComboBox<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, ComboBox, M>, FormFieldSurface<ComboBox, M>, InDesignEdition.ComboBox<TParent, M>, InDesignPlugins.ComboBox<M> {
   /** Resolves the proxy into the individual {@link ComboBox} objects it stands for. */
   getElements(): ComboBox<TParent, 'single'>[];
 
@@ -99,3 +103,11 @@ export interface ComboBox<TParent = PageItemParent, M extends Mode = 'single'> e
   get rightToLeftField(): Read<M, boolean>;
   set rightToLeftField(value: boolean);
 }
+/** ComboBox's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ComboBoxDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldDesktop<TParent, ComboBox, M> {}
+
+/** ComboBox's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ComboBoxServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldServer<TParent, ComboBox, M> {}
+
+/** ComboBox's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ComboBoxPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldPortable<TParent, ComboBox, M> {}

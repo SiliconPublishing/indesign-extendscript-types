@@ -21,7 +21,7 @@ import type { CellStyle } from './CellStyle';
  */
 export interface XMLExportMap<M extends Mode = 'single'>
   extends EventTargetDOMObject<Application | Document, M>,
-    IndexedDOMObject<Application | Document, M>, InDesignPlugins.XMLExportMap<M> {
+    IndexedDOMObject<Application | Document, M>, InDesignEdition.XMLExportMap<M>, InDesignPlugins.XMLExportMap<M> {
   /** Resolves the proxy into the individual {@link XMLExportMap} objects it stands for. */
   getElements(): XMLExportMap<'single'>[];
 

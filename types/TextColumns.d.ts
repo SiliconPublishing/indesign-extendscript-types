@@ -21,7 +21,7 @@ import type { Word } from './Word';
  *
  * @collection TextColumn
  */
-export interface TextColumns<TParent = TextParent> extends BaseCollection<TextColumn<TParent>, Text, TextColumn<TParent, 'plural'>, Text<TParent, 'plural'>>, InDesignPlugins.TextColumns {
+export interface TextColumns<TParent = TextParent> extends BaseCollection<TextColumn<TParent>, Text, TextColumn<TParent, 'plural'>, Text<TParent, 'plural'>>, InDesignEdition.TextColumns<TParent>, InDesignPlugins.TextColumns {
   /**
    * Returns the contiguous {@link Text} range between two bounds (inclusive).
    *

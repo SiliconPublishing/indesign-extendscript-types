@@ -11,6 +11,8 @@ import type { DataMergeTextPlaceholder } from './DataMergeTextPlaceholder';
 import type { DataMergeField } from './DataMergeField';
 import type { Story } from './Story';
 import type { InsertionPoint } from './InsertionPoint';
+import type { EditionPart } from "./_base/Editions";
+import type { Read } from "./_base/Types";
 import type { DataMergeTextPlaceholderPlural } from './DataMergeTextPlaceholder';
 import type { NothingEnum } from './Enums/NothingEnum';
 
@@ -21,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection DataMergeTextPlaceholder
  */
-export interface DataMergeTextPlaceholders extends InDesignPlugins.DataMergeTextPlaceholders {
+export interface DataMergeTextPlaceholders extends InDesignEdition.DataMergeTextPlaceholders, InDesignPlugins.DataMergeTextPlaceholders {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**
@@ -122,4 +124,22 @@ export interface DataMergeTextPlaceholders extends InDesignPlugins.DataMergeText
     field: DataMergeField,
     withProperties?: PropertiesSetter<DataMergeTextPlaceholder>,
   ): DataMergeTextPlaceholder;
+}
+/** DataMergeTextPlaceholders's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeTextPlaceholdersDesktop {
+}
+
+/** DataMergeTextPlaceholders's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeTextPlaceholdersServer {
+  /**
+   * Returns the DataMergeTextPlaceholder with the specified name.
+   * InDesign Server only.
+   * @param name The name.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  itemByName(name: string): DataMergeTextPlaceholder;
+}
+
+/** DataMergeTextPlaceholders's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DataMergeTextPlaceholdersPortable {
 }

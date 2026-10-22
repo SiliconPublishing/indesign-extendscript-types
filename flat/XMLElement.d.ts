@@ -61,6 +61,10 @@ import type { SpecialCharacters } from './Enums/SpecialCharacters';
 import type { SelectionOptions } from './Enums/SelectionOptions';
 import type { ExportFormat } from './Enums/ExportFormat';
 import type { FilePath, MeasurementValue } from './_base/Types';
+import type { XMLItemDesktop } from "./XMLItem";
+import type { XMLItemServer } from "./XMLItem";
+import type { XMLItemPortable } from "./XMLItem";
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -79,7 +83,7 @@ import type { Document } from './Document';
  * structural node), and can itself contain child elements, attributes, comments, and
  * processing instructions.
  */
-export interface XMLElement extends InDesignPlugins.XMLElement<'single'> {
+export interface XMLElement extends InDesignEdition.XMLElement, InDesignPlugins.XMLElement<'single'> {
   /**
    * A collection of events
    */
@@ -228,6 +232,10 @@ export interface XMLElement extends InDesignPlugins.XMLElement<'single'> {
   set markupTag(value: XMLTag | string);
   /**
    * The text content of the element.
+   *
+   * *Crashes InDesign 21.6**: assigning `NothingEnum.NOTHING` on a XMLElement takes InDesign down (measured).
+   *
+   * *Crashes InDesign 21.6**: assigning it the value it reads back on a XMLElement takes InDesign down (measured).
    *
    * **Crashes InDesign 21.6**: assigning `NothingEnum.NOTHING` on a XMLElement takes InDesign down (measured).
    *
@@ -378,45 +386,6 @@ export interface XMLElement extends InDesignPlugins.XMLElement<'single'> {
    * @param reverseOrder If `true`, returns the results in reverse order.
    */
   changeTransliterate(reverseOrder?: boolean): Text[];
-  /**
-   * Exports this element's associated content to a file.
-   * @param format The export format, as an {@link ExportFormat} or a file-extension string.
-   * @param to The destination file.
-   * @param showingOptions If `true`, displays the export options dialog. Defaults to `false`.
-   * @param using The export preset to use.
-   * @param versionComments The comment for this version, if the destination is under version control.
-   * @param forceSave If `true`, forcibly saves a version. Defaults to `false`.
-   */
-  exportFile(
-    format: ExportFormat | string,
-    to: FilePath,
-    showingOptions?: boolean,
-    using?: PDFExportPreset,
-    versionComments?: string,
-    forceSave?: boolean,
-  ): void;
-  /**
-   * Asynchronously exports this element's associated content to a file.
-   * @param format The export format, as an {@link ExportFormat} or a file-extension string.
-   * @param to The destination file.
-   * @param showingOptions If `true`, displays the export options dialog. Defaults to `false`.
-   * @param using The export preset to use.
-   * @param versionComments The comment for this version, if the destination is under version control.
-   * @param forceSave If `true`, forcibly saves a version. Defaults to `false`.
-   */
-  asynchronousExportFile(
-    format: ExportFormat | string,
-    to: FilePath,
-    showingOptions?: boolean,
-    using?: PDFExportPreset,
-    versionComments?: string,
-    forceSave?: boolean,
-  ): BackgroundTask;
-  /**
-   * Selects the object.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(existingSelection?: SelectionOptions): void;
 }
 
 /**
@@ -426,7 +395,7 @@ export interface XMLElement extends InDesignPlugins.XMLElement<'single'> {
  * structural node), and can itself contain child elements, attributes, comments, and
  * processing instructions.
  */
-export interface XMLElementPlural extends InDesignPlugins.XMLElement<'plural'> {
+export interface XMLElementPlural extends InDesignEdition.XMLElementPlural, InDesignPlugins.XMLElement<'plural'> {
   /**
    * A collection of events
    */
@@ -575,6 +544,10 @@ export interface XMLElementPlural extends InDesignPlugins.XMLElement<'plural'> {
   set markupTag(value: XMLTag | string);
   /**
    * The text content of the element.
+   *
+   * *Crashes InDesign 21.6**: assigning `NothingEnum.NOTHING` on a XMLElement takes InDesign down (measured).
+   *
+   * *Crashes InDesign 21.6**: assigning it the value it reads back on a XMLElement takes InDesign down (measured).
    *
    * **Crashes InDesign 21.6**: assigning `NothingEnum.NOTHING` on a XMLElement takes InDesign down (measured).
    *
@@ -725,8 +698,18 @@ export interface XMLElementPlural extends InDesignPlugins.XMLElement<'plural'> {
    * @param reverseOrder If `true`, returns the results in reverse order.
    */
   changeTransliterate(reverseOrder?: boolean): (Text[])[];
+}
+/** XMLElement's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLElementDesktop {
+  /**
+   * Selects the object.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(existingSelection?: SelectionOptions): void;
   /**
    * Exports this element's associated content to a file.
+   * InDesign Server 21.6 takes `exportFile(format, to, using?, versionComments?, forceSave?)` instead.
    * @param format The export format, as an {@link ExportFormat} or a file-extension string.
    * @param to The destination file.
    * @param showingOptions If `true`, displays the export options dialog. Defaults to `false`.
@@ -744,6 +727,7 @@ export interface XMLElementPlural extends InDesignPlugins.XMLElement<'plural'> {
   ): void;
   /**
    * Asynchronously exports this element's associated content to a file.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param format The export format, as an {@link ExportFormat} or a file-extension string.
    * @param to The destination file.
    * @param showingOptions If `true`, displays the export options dialog. Defaults to `false`.
@@ -759,9 +743,100 @@ export interface XMLElementPlural extends InDesignPlugins.XMLElement<'plural'> {
     versionComments?: string,
     forceSave?: boolean,
   ): BackgroundTask;
+}
+
+/** XMLElement's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLElementDesktopPlural {
   /**
    * Selects the object.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
    */
   select(existingSelection?: SelectionOptions): (void)[];
+  /**
+   * Exports this element's associated content to a file.
+   * InDesign Server 21.6 takes `exportFile(format, to, using?, versionComments?, forceSave?)` instead.
+   * @param format The export format, as an {@link ExportFormat} or a file-extension string.
+   * @param to The destination file.
+   * @param showingOptions If `true`, displays the export options dialog. Defaults to `false`.
+   * @param using The export preset to use.
+   * @param versionComments The comment for this version, if the destination is under version control.
+   * @param forceSave If `true`, forcibly saves a version. Defaults to `false`.
+   */
+  exportFile(
+    format: ExportFormat | string,
+    to: FilePath,
+    showingOptions?: boolean,
+    using?: PDFExportPreset,
+    versionComments?: string,
+    forceSave?: boolean,
+  ): void;
+  /**
+   * Asynchronously exports this element's associated content to a file.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param format The export format, as an {@link ExportFormat} or a file-extension string.
+   * @param to The destination file.
+   * @param showingOptions If `true`, displays the export options dialog. Defaults to `false`.
+   * @param using The export preset to use.
+   * @param versionComments The comment for this version, if the destination is under version control.
+   * @param forceSave If `true`, forcibly saves a version. Defaults to `false`.
+   */
+  asynchronousExportFile(
+    format: ExportFormat | string,
+    to: FilePath,
+    showingOptions?: boolean,
+    using?: PDFExportPreset,
+    versionComments?: string,
+    forceSave?: boolean,
+  ): BackgroundTask;
+}
+
+/** XMLElement's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLElementServer {
+  /**
+   * Exports this element's associated content to a file.
+   * InDesign desktop 21.6 takes `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)` instead.
+   * @param format The export format, as an {@link ExportFormat} or a file-extension string.
+   * @param to The destination file.
+   * @param using The export preset to use.
+   * @param versionComments The comment for this version, if the destination is under version control.
+   * @param forceSave If `true`, forcibly saves a version. Defaults to `false`.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): void;
+}
+
+/** XMLElement's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLElementServerPlural {
+  /**
+   * Exports this element's associated content to a file.
+   * InDesign desktop 21.6 takes `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)` instead.
+   * @param format The export format, as an {@link ExportFormat} or a file-extension string.
+   * @param to The destination file.
+   * @param using The export preset to use.
+   * @param versionComments The comment for this version, if the destination is under version control.
+   * @param forceSave If `true`, forcibly saves a version. Defaults to `false`.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): void;
+}
+
+/** XMLElement's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface XMLElementPortable {
+  /**
+   * Exports this element's associated content to a file.
+   * Portable form: the editions' parameters differ after these (desktop `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)`, InDesign Server `exportFile(format, to, using?, versionComments?, forceSave?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param format The export format, as an {@link ExportFormat} or a file-extension string.
+   * @param to The destination file.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath): void;
+}
+
+/** XMLElement's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface XMLElementPortablePlural {
+  /**
+   * Exports this element's associated content to a file.
+   * Portable form: the editions' parameters differ after these (desktop `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)`, InDesign Server `exportFile(format, to, using?, versionComments?, forceSave?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param format The export format, as an {@link ExportFormat} or a file-extension string.
+   * @param to The destination file.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath): void;
 }

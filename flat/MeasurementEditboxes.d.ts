@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * automatically handle unit conversion based on the application or document settings.
  * @collection MeasurementEditbox
  */
-export interface MeasurementEditboxes extends InDesignPlugins.MeasurementEditboxes {
+export interface MeasurementEditboxes extends InDesignEdition.MeasurementEditboxes, InDesignPlugins.MeasurementEditboxes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

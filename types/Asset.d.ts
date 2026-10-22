@@ -13,6 +13,7 @@ import type { Text } from './Text';
 import type { PageItem } from './PageItem';
 import type { AssetType } from './Enums/AssetType';
 import type { SelectionOptions } from './Enums/SelectionOptions';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A stored item in an object {@link Library} — reusable content (a page item,
@@ -21,7 +22,7 @@ import type { SelectionOptions } from './Enums/SelectionOptions';
 export interface Asset<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Library, M>,
     IndexedDOMObject<Library, M>,
-    NamableDOMObject<Library, M>, InDesignPlugins.Asset<M> {
+    NamableDOMObject<Library, M>, InDesignEdition.Asset<M>, InDesignPlugins.Asset<M> {
   /** Resolves the proxy into the individual {@link Asset} objects it stands for. */
   getElements(): Asset<'single'>[];
 
@@ -44,10 +45,19 @@ export interface Asset<M extends Mode = 'single'>
 
   /** Places the asset into the specified document or text. */
   placeAsset(on: Document | Text): Read<M, PageItem[]>;
-
+}
+/** Asset's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface AssetDesktop<M extends Mode = 'single'> extends EditionPart {
   /**
    * Selects the asset in the Library panel.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
    */
   select(existingSelection?: SelectionOptions): Read<M, void>;
 }
+
+/** Asset's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface AssetServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** Asset's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface AssetPortable<M extends Mode = 'single'> extends EditionPart {}

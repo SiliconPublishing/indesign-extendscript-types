@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection MojikumiTable
  */
-export interface MojikumiTables extends InDesignPlugins.MojikumiTables {
+export interface MojikumiTables extends InDesignEdition.MojikumiTables, InDesignPlugins.MojikumiTables {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

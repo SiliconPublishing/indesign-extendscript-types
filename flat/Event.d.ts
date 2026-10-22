@@ -19,7 +19,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * An event dispatched by an InDesign DOM object during a script-observable
  * lifecycle transition (creation, deletion, save, place, and so on).
  */
-export interface Event extends InDesignPlugins.Event<'single'> {
+export interface Event extends InDesignEdition.Event, InDesignPlugins.Event<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -102,7 +102,7 @@ export interface Event extends InDesignPlugins.Event<'single'> {
  * An event dispatched by an InDesign DOM object during a script-observable
  * lifecycle transition (creation, deletion, save, place, and so on).
  */
-export interface EventPlural extends InDesignPlugins.Event<'plural'> {
+export interface EventPlural extends InDesignEdition.EventPlural, InDesignPlugins.Event<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

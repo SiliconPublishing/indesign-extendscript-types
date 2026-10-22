@@ -13,7 +13,7 @@ import type { ObjectTypes } from './Enums/ObjectTypes';
 /**
  * Find/change color options.
  */
-export interface FindChangeColorOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.FindChangeColorOption<M> {
+export interface FindChangeColorOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.FindChangeColorOption<M>, InDesignPlugins.FindChangeColorOption<M> {
   /** Resolves the proxy into the individual {@link FindChangeColorOption} objects it stands for. */
   getElements(): FindChangeColorOption<'single'>[];
 

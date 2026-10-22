@@ -14,7 +14,7 @@ import type { ContourOptionsTypes } from './Enums/ContourOptionsTypes';
  * Settings for tracing a custom text-wrap outline around a graphic's shape —
  * from an embedded clipping path, an alpha channel, or detected edges.
  */
-export interface ContourOption<M extends Mode = 'single'> extends EventTargetDOMObject<TextWrapPreference, M>, InDesignPlugins.ContourOption<M> {
+export interface ContourOption<M extends Mode = 'single'> extends EventTargetDOMObject<TextWrapPreference, M>, InDesignEdition.ContourOption<M>, InDesignPlugins.ContourOption<M> {
   /** Resolves the proxy into the individual {@link ContourOption} objects it stands for. */
   getElements(): ContourOption<'single'>[];
 

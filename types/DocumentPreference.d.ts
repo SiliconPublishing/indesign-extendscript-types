@@ -18,7 +18,7 @@ import type { UIColors } from './Enums/UIColors';
 /**
  * Document layout defaults (page size, orientation, facing pages, ruler origin) readable/writable at both the document and application-default level.
  */
-export interface DocumentPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.DocumentPreference<M> {
+export interface DocumentPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignEdition.DocumentPreference<M>, InDesignPlugins.DocumentPreference<M> {
   /** Resolves the proxy into the individual {@link DocumentPreference} objects it stands for. */
   getElements(): DocumentPreference<'single'>[];
 

@@ -27,5 +27,5 @@ export interface Ovals<TParent = PageItemParent>
     BaseCollection<Oval<TParent>, Oval, Oval<TParent, 'plural'>>,
     IdCollection<Oval<TParent>>,
     NamedCollection<Oval<TParent>>,
-    AddablePageItemCollection<Oval<TParent>, Oval>, InDesignPlugins.Ovals {
+    AddablePageItemCollection<Oval<TParent>, Oval>, InDesignEdition.Ovals<TParent>, InDesignPlugins.Ovals {
 }

@@ -19,7 +19,7 @@ import type { TransformationMatrix } from './TransformationMatrix';
 export interface TransformationMatrices
   extends
     BaseCollection<TransformationMatrix, TransformationMatrix, TransformationMatrix<'plural'>>,
-    NamedCollection<TransformationMatrix>, InDesignPlugins.TransformationMatrices {
+    NamedCollection<TransformationMatrix>, InDesignEdition.TransformationMatrices, InDesignPlugins.TransformationMatrices {
   /**
    * Creates a new {@link TransformationMatrix} from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link TransformationMatrix}.

@@ -17,7 +17,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
 /**
  * The same {@link BevelAndEmbossSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeBevelAndEmbossSetting<M extends Mode = 'single'> extends BevelAndEmbossSetting<M, FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting, NothingEnum.NOTHING>, InDesignPlugins.FindChangeBevelAndEmbossSetting<M>{
+export interface FindChangeBevelAndEmbossSetting<M extends Mode = 'single'> extends BevelAndEmbossSetting<M, FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting, NothingEnum.NOTHING>, InDesignEdition.FindChangeBevelAndEmbossSetting<M>, InDesignPlugins.FindChangeBevelAndEmbossSetting<M>{
   /** Resolves the proxy into the individual {@link FindChangeBevelAndEmbossSetting} objects it stands for. */
   getElements(): FindChangeBevelAndEmbossSetting<'single'>[];
 }

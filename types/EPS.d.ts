@@ -35,12 +35,16 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { GraphicDesktop } from "./Graphic";
+import type { GraphicServer } from "./Graphic";
+import type { GraphicPortable } from "./Graphic";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A placed EPS (Encapsulated PostScript) graphic. See {@link Graphic} for the
  * shared placed-graphic surface.
  */
-export interface EPS<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignPlugins.EPS<M> {
+export interface EPS<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignEdition.EPS<TParent, M>, InDesignPlugins.EPS<M> {
   /** Resolves the proxy into the individual {@link EPS} objects it stands for. */
   getElements(): EPS<TParent, 'single'>[];
 
@@ -68,3 +72,11 @@ export interface EPS<TParent = PageItemParent, M extends Mode = 'single'> extend
   get cmykVectorPolicy(): Read<M, PlacedVectorProfilePolicy>;
   set cmykVectorPolicy(value: PlacedVectorProfilePolicy);
 }
+/** EPS's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface EPSDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicDesktop<TParent, M> {}
+
+/** EPS's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface EPSServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicServer<TParent, M> {}
+
+/** EPS's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface EPSPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicPortable<TParent, M> {}

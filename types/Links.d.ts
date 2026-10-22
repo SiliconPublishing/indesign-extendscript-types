@@ -20,5 +20,5 @@ import type { Link } from './Link';
  * @collection Link
  */
 export interface Links
-  extends BaseCollection<Link, Link, Link<'plural'>>, IdCollection<Link>, NamedCollection<Link>, InDesignPlugins.Links {
+  extends BaseCollection<Link, Link, Link<'plural'>>, IdCollection<Link>, NamedCollection<Link>, InDesignEdition.Links, InDesignPlugins.Links {
 }

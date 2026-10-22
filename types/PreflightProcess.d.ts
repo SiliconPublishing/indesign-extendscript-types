@@ -37,7 +37,7 @@ export type PreflightAggregatedResult = [
  */
 export interface PreflightProcess<M extends Mode = 'single'>
   extends EventTargetDOMObject<Application, M>,
-    IndexedDOMObject<Application, M>, InDesignPlugins.PreflightProcess<M> {
+    IndexedDOMObject<Application, M>, InDesignEdition.PreflightProcess<M>, InDesignPlugins.PreflightProcess<M> {
   /** Resolves the proxy into the individual {@link PreflightProcess} objects it stands for. */
   getElements(): PreflightProcess<'single'>[];
 

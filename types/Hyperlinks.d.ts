@@ -32,7 +32,7 @@ export interface Hyperlinks
   extends
     BaseCollection<Hyperlink, Hyperlink, Hyperlink<'plural'>>,
     IdCollection<Hyperlink>,
-    NamedCollection<Hyperlink>, InDesignPlugins.Hyperlinks {
+    NamedCollection<Hyperlink>, InDesignEdition.Hyperlinks, InDesignPlugins.Hyperlinks {
   /**
    * Creates a new hyperlink.
    *

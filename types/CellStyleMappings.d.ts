@@ -17,7 +17,7 @@ import type { CellStyleMapping } from './CellStyleMapping';
  *
  * @collection CellStyleMapping
  */
-export interface CellStyleMappings extends BaseCollection<CellStyleMapping, CellStyleMapping, CellStyleMapping<'plural'>>, InDesignPlugins.CellStyleMappings {
+export interface CellStyleMappings extends BaseCollection<CellStyleMapping, CellStyleMapping, CellStyleMapping<'plural'>>, InDesignEdition.CellStyleMappings, InDesignPlugins.CellStyleMappings {
   /**
    * Adds a new cell style mapping.
    *

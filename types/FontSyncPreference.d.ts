@@ -12,7 +12,7 @@ import type { Application } from './Application';
 /**
  * Font sync preferences.
  */
-export interface FontSyncPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.FontSyncPreference<M> {
+export interface FontSyncPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.FontSyncPreference<M>, InDesignPlugins.FontSyncPreference<M> {
   /** Resolves the proxy into the individual {@link FontSyncPreference} objects it stands for. */
   getElements(): FontSyncPreference<'single'>[];
 

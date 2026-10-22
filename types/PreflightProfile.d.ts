@@ -20,7 +20,7 @@ import type { PreflightProcess } from './PreflightProcess';
 export interface PreflightProfile<M extends Mode = 'single'>
   extends LabelableEventDOMObject<DocumentOrApplication, M>,
     IndexedDOMObject<DocumentOrApplication, M>,
-    NamableDOMObject<DocumentOrApplication, M>, InDesignPlugins.PreflightProfile<M> {
+    NamableDOMObject<DocumentOrApplication, M>, InDesignEdition.PreflightProfile<M>, InDesignPlugins.PreflightProfile<M> {
   /** Resolves the proxy into the individual {@link PreflightProfile} objects it stands for. */
   getElements(): PreflightProfile<'single'>[];
 

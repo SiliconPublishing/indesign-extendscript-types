@@ -17,7 +17,7 @@ import type { PathPoint } from './PathPoint';
  * The geometric outline of a spline item, text frame, or other path-bearing
  * object — an ordered sequence of {@link PathPoint}s.
  */
-export interface Path<M extends Mode = 'single'> extends EventTargetDOMObject<PathOwner, M>, IndexedDOMObject<PathOwner, M>, InDesignPlugins.Path<M> {
+export interface Path<M extends Mode = 'single'> extends EventTargetDOMObject<PathOwner, M>, IndexedDOMObject<PathOwner, M>, InDesignEdition.Path<M>, InDesignPlugins.Path<M> {
   /** Resolves the proxy into the individual {@link Path} objects it stands for. */
   getElements(): Path<'single'>[];
 

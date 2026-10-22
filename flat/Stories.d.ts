@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * `place()` on a frame. They do not have an independent `add()` method.
  * @collection Story
  */
-export interface Stories extends InDesignPlugins.Stories {
+export interface Stories extends InDesignEdition.Stories, InDesignPlugins.Stories {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

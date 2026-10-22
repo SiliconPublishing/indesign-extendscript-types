@@ -19,7 +19,7 @@ import type { RadiobuttonControl } from './RadiobuttonControl';
  * @collection RadiobuttonGroup
  */
 export interface RadiobuttonGroups
-  extends BaseCollection<RadiobuttonGroup, RadiobuttonGroup, RadiobuttonGroup<'plural'>>, IdCollection<RadiobuttonGroup>, InDesignPlugins.RadiobuttonGroups {
+  extends BaseCollection<RadiobuttonGroup, RadiobuttonGroup, RadiobuttonGroup<'plural'>>, IdCollection<RadiobuttonGroup>, InDesignEdition.RadiobuttonGroups, InDesignPlugins.RadiobuttonGroups {
   /**
    * Creates and adds a new radio button group container to the dialog.
    * @param withProperties Initial values for properties of the new group.

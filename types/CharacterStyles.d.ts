@@ -25,7 +25,7 @@ export interface CharacterStyles
   extends
     BaseCollection<CharacterStyle, CharacterStyle, CharacterStyle<'plural'>>,
     IdCollection<CharacterStyle>,
-    NamedCollection<CharacterStyle>, InDesignPlugins.CharacterStyles {
+    NamedCollection<CharacterStyle>, InDesignEdition.CharacterStyles, InDesignPlugins.CharacterStyles {
   /**
    * Creates a new character style.
    *

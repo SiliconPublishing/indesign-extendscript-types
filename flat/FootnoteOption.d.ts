@@ -32,7 +32,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Options for specifying default footnote formatting.
  */
-export interface FootnoteOption extends InDesignPlugins.FootnoteOption<'single'> {
+export interface FootnoteOption extends InDesignEdition.FootnoteOption, InDesignPlugins.FootnoteOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -242,7 +242,7 @@ export interface FootnoteOption extends InDesignPlugins.FootnoteOption<'single'>
 /**
  * Options for specifying default footnote formatting.
  */
-export interface FootnoteOptionPlural extends InDesignPlugins.FootnoteOption<'plural'> {
+export interface FootnoteOptionPlural extends InDesignEdition.FootnoteOptionPlural, InDesignPlugins.FootnoteOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

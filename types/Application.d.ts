@@ -230,6 +230,9 @@ import type { ScriptMenuActions } from './ScriptMenuActions';
 import type { Menus } from './Menus';
 import type { SelectionItem } from './_base/Unions';
 import type { ScriptArg } from "./ScriptArg";
+import type { EditionPart } from "./_base/Editions";
+import type { ServerSetting } from "./ServerSetting";
+import type { ErrorListErrors } from "./ErrorListErrors";
 
 /**
  * The InDesign application, reached as the global `app` — where every script starts.
@@ -244,7 +247,7 @@ import type { ScriptArg } from "./ScriptArg";
  * Document-scoped state — `activeLayer`, page items, the document body — is on
  * {@link Document}, not here.
  */
-export interface Application<M extends Mode = 'single'> extends LabelableEventDOMObject<Application, M>, InDesignPlugins.Application<M> {
+export interface Application<M extends Mode = 'single'> extends LabelableEventDOMObject<Application, M>, InDesignEdition.Application<M>, InDesignPlugins.Application<M> {
   /** Resolves the proxy into the individual {@link Application} objects it stands for. */
   getElements(): Application<'single'>[];
 
@@ -262,10 +265,6 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
 
   /** The folder containing the application executable, as a {@link Folder} entry — reach the path with `.nativePath`. Not the executable itself; see {@link fullName}. */
   readonly filePath: Read<M, Folder>;
-
-  /** Whether the application is visible on screen. */
-  readonly visible: Read<M, boolean>;
-
   /** The user's serial number. */
   readonly serialNumber: Read<M, string>;
 
@@ -274,10 +273,6 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
 
   /** The current user's GUID. */
   readonly userGuid: Read<M, string>;
-
-  /** Whether a modal dialog or alert is currently active — script operations that touch the UI may block while this is `true`. */
-  readonly modalState: Read<M, boolean>;
-
   /** The licensed feature set. */
   readonly featureSet: Read<M, FeatureSetOptions>;
 
@@ -286,22 +281,6 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
 
   /** Undo mode in effect for the current script execution. */
   readonly activeScriptUndoMode: Read<M, UndoModes>;
-
-  /** Name of the action at the top of the undo stack — what {@link undo} will reverse. */
-  readonly undoName: Read<M, string>;
-
-  /** Name of the action at the top of the redo stack — what {@link redo} will reapply. */
-  readonly redoName: Read<M, string>;
-
-  /** Names of the queued undo steps, most-recent first. */
-  readonly undoHistory: Read<M, string[]>;
-
-  /** Names of the queued redo steps. */
-  readonly redoHistory: Read<M, string[]>;
-
-  /** Whether the Home screen is currently shown. */
-  readonly homeScreenVisible: Read<M, boolean>;
-
   /** Extensions of the file types that {@link place} can import. */
   readonly placeableFileExtensions: Read<M, string[]>;
 
@@ -341,34 +320,9 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
   readonly unusedSwatches: Read<M, Swatch[]>;
 
   // ---- Read/write application state ----------------------------------------
-
-  /** The front-most {@link Document}. Assign a document to bring it forward. */
-  get activeDocument(): Read<M, Document>;
-  set activeDocument(value: Document);
-
-  /** The front-most window. Assign a window to bring it forward. */
-  get activeWindow(): Read<M, Window | LayoutWindow | StoryWindow>;
-  set activeWindow(value: Window | LayoutWindow | StoryWindow);
-
   /** The active {@link Book}. */
   get activeBook(): Read<M, Book>;
   set activeBook(value: Book);
-
-  /**
-   * The current selection. Assign a single object, an array of objects, or
-   * {@link NothingEnum.NOTHING} to clear it.
-   */
-  get selection(): Read<M, SelectionItem[]>;
-  set selection(value: SelectionItem | SelectionItem[] | NothingEnum.NOTHING);
-
-  /** Key object of a multi-object selection (the alignment anchor), or {@link NothingEnum.NOTHING}. */
-  get selectionKeyObject(): Read<M, PageItem | null>;
-  set selectionKeyObject(value: PageItem | NothingEnum.NOTHING);
-
-  /** Whether page items redraw live during mouse operations — never, immediately, or after a brief pause. See {@link LiveDrawingOptions}. */
-  get liveScreenDrawing(): Read<M, LiveDrawingOptions>;
-  set liveScreenDrawing(value: LiveDrawingOptions);
-
   /** The tracked-changes / notes author name used for edits made through scripting. */
   get userName(): Read<M, string>;
   set userName(value: string);
@@ -393,13 +347,6 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
   set httpLinkConnectionManager(value: HttpLinkConnectionManagerObject);
 
   // ---- Toolbox / display ---------------------------------------------------
-
-  /** Current tool-box state — see {@link ToolBox}. */
-  readonly toolBoxTools: Read<M, ToolBox>;
-
-  /** Live display-quality settings — see {@link DisplaySettings}. */
-  readonly displaySettings: DisplaySettings;
-
   /** The content placer used to load and place linked/unlinked page-item content. */
   readonly contentPlacer: Read<M, ContentPlacerObject>;
 
@@ -414,22 +361,6 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
 
   /** Default transform (rotate/scale/flip/shear) behaviors. */
   readonly transformPreferences: Read<M, TransformPreference>;
-
-  /** XML view preference defaults. */
-  readonly xmlViewPreferences: Read<M, XMLViewPreference>;
-
-  /** Display-performance defaults. */
-  readonly displayPerformancePreferences: Read<M, DisplayPerformancePreference>;
-
-  /** GPU-performance defaults. */
-  readonly gpuPerformancePreferences: Read<M, GpuPerformancePreference>;
-
-  /** Galley/story-editor view defaults. */
-  readonly galleyPreferences: Read<M, GalleyPreference>;
-
-  /** Text-editing defaults. */
-  readonly textEditingPreferences: Read<M, TextEditingPreference>;
-
   /** Preflight option defaults. */
   readonly preflightOptions: Read<M, PreflightOption>;
 
@@ -438,10 +369,6 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
 
   /** Data-merge option defaults. */
   readonly dataMergeOptions: Read<M, DataMergeOption>;
-
-  /** Note preference defaults. */
-  readonly notePreferences: Read<M, NotePreference>;
-
   /** JPEG export defaults. */
   readonly jpegExportPreferences: Read<M, JPEGExportPreference>;
 
@@ -516,10 +443,6 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
 
   /** Text-wrap defaults for wrapping text around objects. */
   readonly textWrapPreferences: Read<M, TextWrapPreference>;
-
-  /** Contextual-UI-for-alternates defaults. */
-  readonly typeContextualUiPrefs: Read<M, TypeContextualUiPreference>;
-
   /** Document defaults (page size/margins) applied to new documents. */
   readonly documentPreferences: Read<M, DocumentPreference>;
 
@@ -537,10 +460,6 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
 
   /** View defaults. */
   readonly viewPreferences: Read<M, ViewPreference>;
-
-  /** Smart-guide defaults. */
-  readonly smartGuidePreferences: Read<M, SmartGuidePreference>;
-
   /** Spell-check defaults. */
   readonly spellPreferences: Read<M, SpellPreference>;
 
@@ -577,10 +496,6 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
 
   /** Link-management defaults. */
   readonly linkingPreferences: Read<M, LinkingPreference>;
-
-  /** Grabber (scroll display-quality) defaults. */
-  readonly grabberPreferences: Read<M, GrabberPreference>;
-
   /** Index-formatting defaults. */
   readonly indexGenerationOptions: Read<M, IndexOptions>;
 
@@ -589,19 +504,11 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
 
   /** InCopy (INCX) export defaults. */
   readonly incopyExportOptions: Read<M, InCopyExportOption>;
-
-  /** IME (input method) defaults. */
-  readonly imePreferences: Read<M, IMEPreference>;
-
   /** Image import defaults. */
   readonly imageIOPreferences: Read<M, ImageIOPreference>;
 
   /** Image display defaults. */
   readonly imagePreferences: Read<M, ImagePreference>;
-
-  /** Stroke/fill proxy (swatch-proxy) defaults. */
-  readonly strokeFillProxySettings: Read<M, StrokeFillProxySetting>;
-
   /** Polygon-creation defaults. */
   readonly polygonPreferences: Read<M, PolygonPreference>;
 
@@ -721,16 +628,6 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
 
   /** Open {@link Books}. */
   readonly books: Books;
-
-  /** All {@link Windows} across open documents. */
-  readonly windows: Windows;
-
-  /** Layout {@link LayoutWindows}. */
-  readonly layoutWindows: LayoutWindows;
-
-  /** Story-editor {@link StoryWindows}. */
-  readonly storyWindows: StoryWindows;
-
   /** Installed {@link Fonts}. */
   readonly fonts: Fonts;
 
@@ -811,22 +708,6 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
 
   /** {@link StripedStrokeStyles}. */
   readonly stripedStrokeStyles: StripedStrokeStyles;
-
-  /** {@link Dialogs} created by scripts. */
-  readonly dialogs: Dialogs;
-
-  /** {@link Panels}. */
-  readonly panels: Panels;
-
-  /** {@link Menus}. */
-  readonly menus: Menus;
-
-  /** {@link MenuActions}. */
-  readonly menuActions: MenuActions;
-
-  /** {@link ScriptMenuActions} created by scripts. */
-  readonly scriptMenuActions: ScriptMenuActions;
-
   /** Object {@link Libraries}. */
   readonly libraries: Libraries;
 
@@ -883,10 +764,6 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
 
   /** {@link IdleTasks} attachable to the idle loop. */
   readonly idleTasks: IdleTasks;
-
-  /** Running {@link BackgroundTasks}. */
-  readonly backgroundTasks: BackgroundTasks;
-
   /** {@link TransformationMatrices}. */
   readonly transformationMatrices: TransformationMatrices;
 
@@ -917,49 +794,6 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
   // ==== Methods =============================================================
 
   // ---- Documents & files ---------------------------------------------------
-
-  /**
-   * Opens the specified document, book, or library.
-   * @param from The file path to open.
-   * @param showingWindow If `false`, opens without a visible window. Defaults to `true`.
-   * @param openOption How to open the file — as the original or as a copy. Defaults to `OpenOptions.OPEN_ORIGINAL`.
-   */
-  open(from: FilePath, showingWindow?: boolean, openOption?: OpenOptions): Read<M, Document | Book | Library>;
-  /**
-   * Opens several files at once.
-   * @param from The file paths to open.
-   * @param showingWindow If `false`, opens without a visible window. Defaults to `true`.
-   * @param openOption How to open the files — as originals or as copies. Defaults to `OpenOptions.OPEN_ORIGINAL`.
-   */
-  open(from: FilePath[], showingWindow?: boolean, openOption?: OpenOptions): Read<M, Array<Document | Book | Library>>;
-
-  /**
-   * Opens an Adobe cloud document by its asset reference.
-   * @param assetReference The cloud asset reference.
-   * @param showingWindow If `false`, opens without a visible window. Defaults to `true`.
-   */
-  openCloudDocument(assetReference: string, showingWindow?: boolean): Read<M, Document>;
-
-  /** Deletes the cloud document identified by `assetReference`. */
-  deleteCloudDocument(assetReference: string): Read<M, boolean>;
-
-  /**
-   * Places one or more files following the Place-menu behavior: loads the place
-   * gun or replaces the current selection depending on preferences.
-   * @param fileName One or more files to place.
-   * @param showingOptions If `true`, shows the import-options dialog. Defaults to `false`.
-   * @param withProperties Initial property values for the placed object(s).
-   */
-  place(fileName: FilePath | FilePath[], showingOptions?: boolean, withProperties?: object): Read<M, void>;
-
-  /**
-   * Prints the specified file(s).
-   * @param from One or more file paths to print.
-   * @param printDialog If `true`, shows the print dialog first. Defaults to `false`.
-   * @param using A {@link PrinterPreset} or a built-in {@link PrinterPresetTypes} value.
-   */
-  print(from: FilePath | FilePath[], printDialog?: boolean, using?: PrinterPresetTypes | PrinterPreset): Read<M, void>;
-
   /**
    * Quits the application.
    * @param saving How to handle unsaved changes in open documents. Defaults to `SaveOptions.ASK`.
@@ -974,47 +808,7 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
    * @param untitledCount A positive integer.
    */
   setUntitledCount(untitledCount: number): Read<M, void>;
-
-  /** Creates a temporary copy of `from` and returns the copy's path. */
-  createTemporaryCopy(from: FilePath): Read<M, string>;
-
-  /** Removes `to` from the recently-used-files list. */
-  removeFileFromRecentFiles(to: FilePath): Read<M, boolean>;
-
   // ---- Editing / clipboard / undo -----------------------------------------
-
-  /** Cuts the active document's selection to the clipboard. */
-  cut(): Read<M, void>;
-
-  /** Copies the active document's selection to the clipboard. */
-  copy(): Read<M, void>;
-
-  /** Pastes the clipboard into the active document. */
-  paste(): Read<M, void>;
-
-  /** Pastes the clipboard into the selected object of the active document. */
-  pasteInto(): Read<M, void>;
-
-  /** Pastes the clipboard at the same position the data held in its source document. */
-  pasteInPlace(): Read<M, void>;
-
-  /** Pastes the clipboard without its source formatting. */
-  pasteWithoutFormatting(): Read<M, void>;
-
-  /** Undoes the last action. */
-  undo(): Read<M, void>;
-
-  /** Redoes the last undone action. */
-  redo(): Read<M, void>;
-
-  /**
-   * Selects the specified object(s).
-   * @param selectableItems The object(s) to select, {@link SelectAll} for
-   * everything, or {@link NothingEnum.NOTHING} to clear the selection.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(selectableItems: object | object[] | NothingEnum | SelectAll, existingSelection?: SelectionOptions): Read<M, void>;
-
   // ---- Find / change -------------------------------------------------------
 
   /** Finds color matching {@link findColorPreferences}. */
@@ -1174,28 +968,6 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
    * @param undoName Undo-step name when `undoMode` is entire-script.
    */
   doScript(script: FilePath | string | Function, language?: ScriptLanguage, withArguments?: unknown[], undoMode?: UndoModes, undoName?: string): Read<M, unknown>;
-
-  /** Brings the application to the front / activates it. */
-  activate(): Read<M, void>;
-
-  /** Cascades all open document windows. */
-  cascadeWindows(): Read<M, void>;
-
-  /** Tiles all open document windows. */
-  tileWindows(): Read<M, void>;
-
-  /** Toggles visibility of the entire panel system. */
-  togglePanelSystemVisibility(): Read<M, void>;
-
-  /** Applies a keyboard-shortcut set; omit `name` for the default set. */
-  applyShortcutSet(name?: string): Read<M, void>;
-
-  /** Applies a workspace; omit `name` for the default. */
-  applyWorkspace(name?: string): Read<M, void>;
-
-  /** Applies a menu-customization set; empty string resets all menus, omit for default. */
-  applyMenuCustomization(name?: string): Read<M, void>;
-
   /**
    * Sets the application's default preferences from an IDML defaults file or a
    * language/region enumeration.
@@ -1210,10 +982,6 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
 
   /** Resets all preferences to their defaults. */
   resetPreference(): Read<M, void>;
-
-  /** Opens the panel associated with the given action ID. */
-  openPanel(id: number): Read<M, void>;
-
   /** Forces a rescan of the font folders for newly added fonts. */
   updateFonts(): Read<M, void>;
 
@@ -1221,23 +989,7 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
   mountProject(serverURL: string, projectName: string): Read<M, void>;
 
   // ---- Background tasks ----------------------------------------------------
-
-  /** Cancels all running background tasks. */
-  cancelAllTasks(): Read<M, void>;
-
-  /** Blocks until all background tasks finish, returning their final states. */
-  waitForAllTasks(): Read<M, TaskState[]>;
-
   // ---- Color / performance / misc ------------------------------------------
-
-  /**
-   * Invokes InDesign's color picker.
-   * @param space The color space to edit in.
-   * @param colorValue Initial color values.
-   * @returns The chosen color as a string, or empty if cancelled.
-   */
-  invokeColorPicker(space: ColorSpace, colorValue: number[]): Read<M, string>;
-
   /**
    * Converts a color value between color spaces.
    * @param colorValue Source color values.
@@ -1263,13 +1015,6 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
 
   /** Dumps memory allocations between two marks. */
   dumpBetweenMemoryMarks(from: number[], to: number[]): Read<M, void>;
-
-  /** Whether the user has opted in to sharing app-usage data. */
-  isUserSharingAppUsageData(): Read<M, boolean>;
-
-  /** Whether the application is in touch mode. */
-  isAppInTouchMode(): Read<M, boolean>;
-
   /**
    * Locale-independent string(s) matching a localized string, from the internal
    * string-localization database.
@@ -1282,28 +1027,6 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
    * @param forStatus The key string to translate.
    */
   translateKeyString(forStatus: string): Read<M, string>;
-
-  /** Style-conflict resolution strategy for the given style type, or `false` if cancelled. */
-  getStyleConflictResolutionStrategy(charOrParaStyle?: StyleType): Read<M, GlobalClashResolutionStrategy | false>;
-
-  /** Exports the current selection as cloud-library assets. */
-  exportSelectionForCloudLibrary(to: FilePath): Read<M, boolean>;
-
-  /** Opens a cloud-library asset for editing. */
-  openCloudAssetForEdit(jsondata: string): Read<M, boolean>;
-
-  /** Sets the thumbnail export options for cloud-asset generation. */
-  setCloudLibraryOptions(maxwidth: number, maxheight: number): Read<M, void>;
-
-  /** Sets the cloud-libraries collection info. */
-  setCloudLibraryCollection(librariesCollectionInfo: string): Read<M, void>;
-
-  /** JSON data for the CCX welcome dialog. */
-  getCCXUserJSONData(jsondata?: string): Read<M, string>;
-
-  /** User's choice for adding text-frame vs. whole-story content to the cloud. */
-  getUserChoiceForCloudTextAddition(): Read<M, unknown>;
-
   // ---- Internal use only -----------------------------------------------------
 
   /** Internal use only. */
@@ -1366,4 +1089,491 @@ export interface Application<M extends Mode = 'single'> extends LabelableEventDO
    * Generated from the InDesign 21.6 scripting dictionary.
    */
   readonly scriptArgs: Read<M, ScriptArg>;
+}
+/** Application's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ApplicationDesktop<M extends Mode = 'single'> extends EditionPart {
+  /** IME (input method) defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly imePreferences: Read<M, IMEPreference>;
+
+  /** Stroke/fill proxy (swatch-proxy) defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly strokeFillProxySettings: Read<M, StrokeFillProxySetting>;
+
+  /** Contextual-UI-for-alternates defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly typeContextualUiPrefs: Read<M, TypeContextualUiPreference>;
+
+  /** Smart-guide defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly smartGuidePreferences: Read<M, SmartGuidePreference>;
+
+  /** Whether the application is visible on screen.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly visible: Read<M, boolean>;
+
+  /** Whether a modal dialog or alert is currently active — script operations that touch the UI may block while this is `true`.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly modalState: Read<M, boolean>;
+
+  /** Name of the action at the top of the undo stack — what {@link undo} will reverse.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly undoName: Read<M, string>;
+
+  /** Name of the action at the top of the redo stack — what {@link redo} will reapply.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly redoName: Read<M, string>;
+
+  /** Names of the queued undo steps, most-recent first.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly undoHistory: Read<M, string[]>;
+
+  /** Names of the queued redo steps.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly redoHistory: Read<M, string[]>;
+
+  /** Grabber (scroll display-quality) defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly grabberPreferences: Read<M, GrabberPreference>;
+
+  /** Text-editing defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly textEditingPreferences: Read<M, TextEditingPreference>;
+
+  /** Note preference defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly notePreferences: Read<M, NotePreference>;
+
+  /** XML view preference defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly xmlViewPreferences: Read<M, XMLViewPreference>;
+
+  /** Galley/story-editor view defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly galleyPreferences: Read<M, GalleyPreference>;
+
+  /** Whether the Home screen is currently shown.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly homeScreenVisible: Read<M, boolean>;
+
+  /** Display-performance defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly displayPerformancePreferences: Read<M, DisplayPerformancePreference>;
+
+  /** GPU-performance defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly gpuPerformancePreferences: Read<M, GpuPerformancePreference>;
+
+  /** Current tool-box state — see {@link ToolBox}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly toolBoxTools: Read<M, ToolBox>;
+
+  /** {@link Dialogs} created by scripts.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly dialogs: Dialogs;
+
+  /** All {@link Windows} across open documents.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly windows: Windows;
+
+  /** Layout {@link LayoutWindows}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly layoutWindows: LayoutWindows;
+
+  /** Story-editor {@link StoryWindows}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly storyWindows: StoryWindows;
+
+  /** {@link Panels}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly panels: Panels;
+
+  /** Running {@link BackgroundTasks}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly backgroundTasks: BackgroundTasks;
+
+  /** {@link MenuActions}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly menuActions: MenuActions;
+
+  /** {@link ScriptMenuActions} created by scripts.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly scriptMenuActions: ScriptMenuActions;
+
+  /** {@link Menus}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly menus: Menus;
+
+  /** Live display-quality settings — see {@link DisplaySettings}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly displaySettings: DisplaySettings;
+
+  /**
+   * The current selection. Assign a single object, an array of objects, or
+   * {@link NothingEnum.NOTHING} to clear it.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  get selection(): Read<M, SelectionItem[]>;
+
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set selection(value: SelectionItem | SelectionItem[] | NothingEnum.NOTHING);
+
+  /** The front-most window. Assign a window to bring it forward.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get activeWindow(): Read<M, Window | LayoutWindow | StoryWindow>;
+
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set activeWindow(value: Window | LayoutWindow | StoryWindow);
+
+  /** Whether page items redraw live during mouse operations — never, immediately, or after a brief pause. See {@link LiveDrawingOptions}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get liveScreenDrawing(): Read<M, LiveDrawingOptions>;
+
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set liveScreenDrawing(value: LiveDrawingOptions);
+
+  /** Key object of a multi-object selection (the alignment anchor), or {@link NothingEnum.NOTHING}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get selectionKeyObject(): Read<M, PageItem | null>;
+
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set selectionKeyObject(value: PageItem | NothingEnum.NOTHING);
+
+  /** The front-most {@link Document}. Assign a document to bring it forward.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get activeDocument(): Read<M, Document>;
+
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set activeDocument(value: Document);
+
+  /**
+   * Prints the specified file(s).
+   * InDesign Server 21.6 takes `print(from, using?, withGrids?)` instead.
+   * @param from One or more file paths to print.
+   * @param printDialog If `true`, shows the print dialog first. Defaults to `false`.
+   * @param using A {@link PrinterPreset} or a built-in {@link PrinterPresetTypes} value.
+   */
+  print(from: FilePath | FilePath[], printDialog?: boolean, using?: PrinterPresetTypes | PrinterPreset): Read<M, void>;
+
+  /** Cuts the active document's selection to the clipboard.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  cut(): Read<M, void>;
+
+  /** Copies the active document's selection to the clipboard.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  copy(): Read<M, void>;
+
+  /** Pastes the clipboard into the active document.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  paste(): Read<M, void>;
+
+  /** Pastes the clipboard into the selected object of the active document.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  pasteInto(): Read<M, void>;
+
+  /** Pastes the clipboard at the same position the data held in its source document.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  pasteInPlace(): Read<M, void>;
+
+  /** Pastes the clipboard without its source formatting.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  pasteWithoutFormatting(): Read<M, void>;
+
+  /**
+   * Selects the specified object(s).
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param selectableItems The object(s) to select, {@link SelectAll} for
+   * everything, or {@link NothingEnum.NOTHING} to clear the selection.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(selectableItems: object | object[] | NothingEnum | SelectAll, existingSelection?: SelectionOptions): Read<M, void>;
+
+  /** Applies a keyboard-shortcut set; omit `name` for the default set.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  applyShortcutSet(name?: string): Read<M, void>;
+
+  /** Applies a workspace; omit `name` for the default.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  applyWorkspace(name?: string): Read<M, void>;
+
+  /** Applies a menu-customization set; empty string resets all menus, omit for default.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  applyMenuCustomization(name?: string): Read<M, void>;
+
+  /** Toggles visibility of the entire panel system.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  togglePanelSystemVisibility(): Read<M, void>;
+
+  /**
+   * Opens the specified document, book, or library.
+   * InDesign Server 21.6 takes `open(from, openOption?)` instead.
+   * @param from The file path to open.
+   * @param showingWindow If `false`, opens without a visible window. Defaults to `true`.
+   * @param openOption How to open the file — as the original or as a copy. Defaults to `OpenOptions.OPEN_ORIGINAL`.
+   */
+  open(from: FilePath, showingWindow?: boolean, openOption?: OpenOptions): Read<M, Document | Book | Library>;
+
+  /**
+   * Opens several files at once.
+   * InDesign Server 21.6 takes `open(from, openOption?)` instead.
+   * @param from The file paths to open.
+   * @param showingWindow If `false`, opens without a visible window. Defaults to `true`.
+   * @param openOption How to open the files — as originals or as copies. Defaults to `OpenOptions.OPEN_ORIGINAL`.
+   */
+  open(from: FilePath[], showingWindow?: boolean, openOption?: OpenOptions): Read<M, Array<Document | Book | Library>>;
+
+  /** Brings the application to the front / activates it.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  activate(): Read<M, void>;
+
+  /** Cascades all open document windows.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  cascadeWindows(): Read<M, void>;
+
+  /** Tiles all open document windows.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  tileWindows(): Read<M, void>;
+
+  /** Cancels all running background tasks.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  cancelAllTasks(): Read<M, void>;
+
+  /** Blocks until all background tasks finish, returning their final states.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  waitForAllTasks(): Read<M, TaskState[]>;
+
+  /** Undoes the last action.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  undo(): Read<M, void>;
+
+  /** Redoes the last undone action.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  redo(): Read<M, void>;
+
+  /** Deletes the cloud document identified by `assetReference`.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  deleteCloudDocument(assetReference: string): Read<M, boolean>;
+
+  /**
+   * Opens an Adobe cloud document by its asset reference.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param assetReference The cloud asset reference.
+   * @param showingWindow If `false`, opens without a visible window. Defaults to `true`.
+   */
+  openCloudDocument(assetReference: string, showingWindow?: boolean): Read<M, Document>;
+
+  /**
+   * Places one or more files following the Place-menu behavior: loads the place
+   * gun or replaces the current selection depending on preferences.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param fileName One or more files to place.
+   * @param showingOptions If `true`, shows the import-options dialog. Defaults to `false`.
+   * @param withProperties Initial property values for the placed object(s).
+   */
+  place(fileName: FilePath | FilePath[], showingOptions?: boolean, withProperties?: object): Read<M, void>;
+
+  /**
+   * Invokes InDesign's color picker.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param space The color space to edit in.
+   * @param colorValue Initial color values.
+   * @returns The chosen color as a string, or empty if cancelled.
+   */
+  invokeColorPicker(space: ColorSpace, colorValue: number[]): Read<M, string>;
+
+  /** Opens a cloud-library asset for editing.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  openCloudAssetForEdit(jsondata: string): Read<M, boolean>;
+
+  /** Sets the thumbnail export options for cloud-asset generation.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  setCloudLibraryOptions(maxwidth: number, maxheight: number): Read<M, void>;
+
+  /** Exports the current selection as cloud-library assets.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  exportSelectionForCloudLibrary(to: FilePath): Read<M, boolean>;
+
+  /** Whether the user has opted in to sharing app-usage data.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  isUserSharingAppUsageData(): Read<M, boolean>;
+
+  /** Sets the cloud-libraries collection info.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  setCloudLibraryCollection(librariesCollectionInfo: string): Read<M, void>;
+
+  /** Creates a temporary copy of `from` and returns the copy's path.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  createTemporaryCopy(from: FilePath): Read<M, string>;
+
+  /** Removes `to` from the recently-used-files list.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  removeFileFromRecentFiles(to: FilePath): Read<M, boolean>;
+
+  /** Whether the application is in touch mode.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  isAppInTouchMode(): Read<M, boolean>;
+
+  /** JSON data for the CCX welcome dialog.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  getCCXUserJSONData(jsondata?: string): Read<M, string>;
+
+  /** Style-conflict resolution strategy for the given style type, or `false` if cancelled.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  getStyleConflictResolutionStrategy(charOrParaStyle?: StyleType): Read<M, GlobalClashResolutionStrategy | false>;
+
+  /** Opens the panel associated with the given action ID.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  openPanel(id: number): Read<M, void>;
+
+  /** User's choice for adding text-frame vs. whole-story content to the cloud.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  getUserChoiceForCloudTextAddition(): Read<M, unknown>;
+}
+
+/** Application's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ApplicationServer<M extends Mode = 'single'> extends EditionPart {
+  /**
+   * Prints the specified file(s).
+   * InDesign desktop 21.6 takes `print(from, printDialog?, using?)` instead.
+   * @param from One or more file paths to print.
+   * @param using A {@link PrinterPreset} or a built-in {@link PrinterPresetTypes} value.
+   * @param withGrids Whether to print grids (Optional)
+   */
+  print(from: FilePath | FilePath[], using?: PrinterPresetTypes | PrinterPreset, withGrids?: boolean): Read<M, void>;
+
+  /**
+   * Opens the specified document, book, or library.
+   * InDesign desktop 21.6 takes `open(from, showingWindow?, openOption?)` instead.
+   * @param from The file path to open.
+   * @param openOption How to open the file — as the original or as a copy. Defaults to `OpenOptions.OPEN_ORIGINAL`.
+   */
+  open(from: FilePath, openOption?: OpenOptions): Read<M, Document | Book | Library>;
+
+  /**
+   * Opens several files at once.
+   * InDesign desktop 21.6 takes `open(from, showingWindow?, openOption?)` instead.
+   * @param from The file paths to open.
+   * @param openOption How to open the files — as originals or as copies. Defaults to `OpenOptions.OPEN_ORIGINAL`.
+   */
+  open(from: FilePath[], openOption?: OpenOptions): Read<M, Array<Document | Book | Library>>;
+
+  /**
+   * The socket the server uses to service administrative requests.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly serverAdminPort: Read<M, number>;
+
+  /**
+   * The name of the machine InDesignServer is running on; either symbolic (host.corp.com) or IP address (123.345.678.90).
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly serverHostName: Read<M, string>;
+
+  /**
+   * Runtime settings specific to server.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly serverSettings: Read<M, ServerSetting>;
+
+  /**
+   * A collection of error list errors.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly errorListErrors: Read<M, ErrorListErrors>;
+
+  /**
+   * [For internal use only] Add Font Directory from specific path.
+   * InDesign Server only.
+   * @param fontDirectory Path to the font directory.
+   * @param obfuscateFlag Flag to specify.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  addFontDirectory(fontDirectory: string, obfuscateFlag: boolean): Read<M, void>;
+
+  /**
+   * [For internal use only] Remove Font Directory for specific path.
+   * InDesign Server only.
+   * @param fontDirectory Path to the font directory.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  removeFontDirectory(fontDirectory: string): Read<M, void>;
+
+  /**
+   * Outputs the specified message to std out.
+   * InDesign Server only.
+   * @param message The message.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  consoleout(message: string): Read<M, void>;
+
+  /**
+   * Outputs the specified message to std err.
+   * InDesign Server only.
+   * @param message The message.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  consoleerr(message: string): Read<M, void>;
+
+  /**
+   * Clears all errors in the error list.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  clearAllErrors(): Read<M, void>;
+
+  /**
+   * Internal use only: Recovers the specified document.
+   * InDesign Server only.
+   * @param from The file path(s) to the document.
+   * @param to The path to the export file.
+   * @param recoveryparams recovery parameters (Optional)
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  recover(from: FilePath, to: FilePath, recoveryparams?: string): Read<M, void>;
+
+  /**
+   * Executes a server test.
+   * InDesign Server only.
+   * @param testName The test to execute.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  serverTest(testName: string): Read<M, void>;
+}
+
+/** Application's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ApplicationPortable<M extends Mode = 'single'> extends EditionPart {
+  /**
+   * Prints the specified file(s).
+   * Portable form: the editions' parameters differ after these (desktop `print(from, printDialog?, using?)`, InDesign Server `print(from, using?, withGrids?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param from One or more file paths to print.
+   */
+  print(from: FilePath | FilePath[]): Read<M, void>;
+
+  /**
+   * Opens the specified document, book, or library.
+   * Portable form: the editions' parameters differ after these (desktop `open(from, showingWindow?, openOption?)`, InDesign Server `open(from, openOption?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param from The file path to open.
+   */
+  open(from: FilePath): Read<M, Document | Book | Library>;
+
+  /**
+   * Opens several files at once.
+   * Portable form: the editions' parameters differ after these (desktop `open(from, showingWindow?, openOption?)`, InDesign Server `open(from, openOption?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param from The file paths to open.
+   */
+  open(from: FilePath[]): Read<M, Array<Document | Book | Library>>;
 }

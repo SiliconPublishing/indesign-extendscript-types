@@ -16,5 +16,5 @@ import type { StoryWindow } from './StoryWindow';
  * @collection StoryWindow
  */
 export interface StoryWindows
-  extends BaseCollection<StoryWindow, StoryWindow, StoryWindow<'plural'>>, NamedCollection<StoryWindow>, InDesignPlugins.StoryWindows {
+  extends BaseCollection<StoryWindow, StoryWindow, StoryWindow<'plural'>>, NamedCollection<StoryWindow>, InDesignEdition.StoryWindows, InDesignPlugins.StoryWindows {
 }

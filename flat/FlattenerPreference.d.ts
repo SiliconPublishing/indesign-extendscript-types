@@ -25,7 +25,7 @@ import type { FilePath } from './_base/Types';
  * artwork when the spread is printed or exported — rasterization balance,
  * resolution, and stroke/text handling.
  */
-export interface FlattenerPreference extends InDesignPlugins.FlattenerPreference<'single'> {
+export interface FlattenerPreference extends InDesignEdition.FlattenerPreference, InDesignPlugins.FlattenerPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -152,7 +152,7 @@ export interface FlattenerPreference extends InDesignPlugins.FlattenerPreference
  * artwork when the spread is printed or exported — rasterization balance,
  * resolution, and stroke/text handling.
  */
-export interface FlattenerPreferencePlural extends InDesignPlugins.FlattenerPreference<'plural'> {
+export interface FlattenerPreferencePlural extends InDesignEdition.FlattenerPreferencePlural, InDesignPlugins.FlattenerPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -30,7 +30,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Options for specifying default endnote formatting.
  */
-export interface EndnoteOption extends InDesignPlugins.EndnoteOption<'single'> {
+export interface EndnoteOption extends InDesignEdition.EndnoteOption, InDesignPlugins.EndnoteOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -159,7 +159,7 @@ export interface EndnoteOption extends InDesignPlugins.EndnoteOption<'single'> {
 /**
  * Options for specifying default endnote formatting.
  */
-export interface EndnoteOptionPlural extends InDesignPlugins.EndnoteOption<'plural'> {
+export interface EndnoteOptionPlural extends InDesignEdition.EndnoteOptionPlural, InDesignPlugins.EndnoteOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

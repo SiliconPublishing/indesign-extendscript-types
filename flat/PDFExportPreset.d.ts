@@ -42,7 +42,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A named set of PDF export settings, applied by {@link Application.pdfExportPresets}
  * when exporting a document to PDF.
  */
-export interface PDFExportPreset extends InDesignPlugins.PDFExportPreset<'single'> {
+export interface PDFExportPreset extends InDesignEdition.PDFExportPreset, InDesignPlugins.PDFExportPreset<'single'> {
   /**
    * A collection of events
    */
@@ -430,7 +430,7 @@ export interface PDFExportPreset extends InDesignPlugins.PDFExportPreset<'single
  * A named set of PDF export settings, applied by {@link Application.pdfExportPresets}
  * when exporting a document to PDF.
  */
-export interface PDFExportPresetPlural extends InDesignPlugins.PDFExportPreset<'plural'> {
+export interface PDFExportPresetPlural extends InDesignEdition.PDFExportPresetPlural, InDesignPlugins.PDFExportPreset<'plural'> {
   /**
    * A collection of events
    */

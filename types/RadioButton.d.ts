@@ -67,12 +67,16 @@ import type { WMFs } from './WMFs';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { FormFieldDesktop } from "./FormField";
+import type { FormFieldServer } from "./FormField";
+import type { FormFieldPortable } from "./FormField";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A PDF radio-button form field: one button in a mutually-exclusive group of
  * radio buttons sharing the same export name in an interactive PDF form.
  */
-export interface RadioButton<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, RadioButton, M>, FormFieldSurface<RadioButton, M>, InDesignPlugins.RadioButton<M> {
+export interface RadioButton<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, RadioButton, M>, FormFieldSurface<RadioButton, M>, InDesignEdition.RadioButton<TParent, M>, InDesignPlugins.RadioButton<M> {
   /** Resolves the proxy into the individual {@link RadioButton} objects it stands for. */
   getElements(): RadioButton<TParent, 'single'>[];
 
@@ -87,3 +91,11 @@ export interface RadioButton<TParent = PageItemParent, M extends Mode = 'single'
   /** {@link States} (appearance states) of this radio button. */
   readonly states: States;
 }
+/** RadioButton's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface RadioButtonDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldDesktop<TParent, RadioButton, M> {}
+
+/** RadioButton's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface RadioButtonServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldServer<TParent, RadioButton, M> {}
+
+/** RadioButton's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface RadioButtonPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldPortable<TParent, RadioButton, M> {}

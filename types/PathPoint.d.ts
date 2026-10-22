@@ -16,7 +16,7 @@ import type { JoinOptions } from './Enums/JoinOptions';
  * A single anchor point on a {@link Path}, with its incoming and outgoing
  * Bézier direction handles.
  */
-export interface PathPoint<M extends Mode = 'single'> extends EventTargetDOMObject<Path, M>, IndexedDOMObject<Path, M>, InDesignPlugins.PathPoint<M> {
+export interface PathPoint<M extends Mode = 'single'> extends EventTargetDOMObject<Path, M>, IndexedDOMObject<Path, M>, InDesignEdition.PathPoint<M>, InDesignPlugins.PathPoint<M> {
   /** Resolves the proxy into the individual {@link PathPoint} objects it stands for. */
   getElements(): PathPoint<'single'>[];
 

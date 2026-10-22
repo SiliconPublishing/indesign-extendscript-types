@@ -45,6 +45,10 @@ import type { NumberingRestartPolicy } from './NumberingRestartPolicy';
 import type { Swatch } from './Swatch';
 import type { TabStop } from './TabStop';
 import type { Tint } from './Tint';
+import type { ParagraphStyleAttributesDesktop } from "./_base/TextAttributes";
+import type { ParagraphStyleAttributesServer } from "./_base/TextAttributes";
+import type { ParagraphStyleAttributesPortable } from "./_base/TextAttributes";
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -119,7 +123,7 @@ import type { OutlineJoin } from './Enums/OutlineJoin';
  * Unlike a character style, a paragraph style always resolves every attribute to a
  * concrete value rather than leaving unset ones as {@link NothingEnum.NOTHING}.
  */
-export interface ParagraphStyle extends InDesignPlugins.ParagraphStyle<'single'> {
+export interface ParagraphStyle extends InDesignEdition.ParagraphStyle, InDesignPlugins.ParagraphStyle<'single'> {
   /**
    * A collection of events
    */
@@ -408,9 +412,6 @@ export interface ParagraphStyle extends InDesignPlugins.ParagraphStyle<'single'>
   /** Paragraph kashida width. 0 is none, 1 is short, 2 is medium, 3 is long */
   get paragraphKashidaWidth(): number;
   set paragraphKashidaWidth(value: number | NothingEnum.NOTHING);
-  /** If true, aligns the baseline of the text to the baseline grid. */
-  get alignToBaseline(): boolean;
-  set alignToBaseline(value: boolean | NothingEnum.NOTHING);
   /** First-line indent, relative to {@link leftIndent}. Negative values hang. */
   get firstLineIndent(): number;
   set firstLineIndent(value: MeasurementValue | NothingEnum.NOTHING);
@@ -1223,12 +1224,6 @@ export interface ParagraphStyle extends InDesignPlugins.ParagraphStyle<'single'>
   /** If `true`, emits CSS for this style when exporting to EPUB or HTML. */
   get emitCss(): boolean;
   set emitCss(value: boolean);
-  /**
-   * A unique identifier that can be assigned to the style to differentiate it
-   * from others. Internal use only.
-   */
-  get styleUniqueId(): string;
-  set styleUniqueId(value: string);
   /** If `true`, generates a CSS class attribute for the style on export. */
   get includeClass(): boolean;
   set includeClass(value: boolean);
@@ -1248,19 +1243,6 @@ export interface ParagraphStyle extends InDesignPlugins.ParagraphStyle<'single'>
   setNthDesignAxis(nthAxisIndex: number, nthAxisValue: number): void;
   /** Whether the design axis at `nthAxisIndex` is hidden in a variable font applied through this style. */
   isNthDesignAxisHidden(nthAxisIndex: number): boolean;
-  /**
-   * Renders a sample thumbnail image of `previewText` set in this style, and
-   * writes it to `to`.
-   * @param space The color space (RGB, CMYK, or LAB) `colorValue` is expressed in.
-   * @param colorValue The sample text color, as component values in `space`.
-   */
-  createThumbnailWithProperties(
-    previewText: string,
-    pointSize: number,
-    space: ColorSpace,
-    colorValue: number[],
-    to: FilePath,
-  ): boolean;
   /** Converts any bullets or numbering applied through this style into literal text. */
   convertBulletsAndNumberingToText(): void;
   /**
@@ -1268,11 +1250,6 @@ export interface ParagraphStyle extends InDesignPlugins.ParagraphStyle<'single'>
    * @param replacingWith The style applied to any paragraphs currently tagged with this style. Paragraphs are left unstyled if omitted.
    */
   remove(replacingWith?: ParagraphStyle | string): void;
-  /**
-   * @internal Forcefully deletes the style, bypassing the usual safety checks. Internal use only.
-   * @param replacingWith The style applied to any paragraphs currently tagged with this style.
-   */
-  forceDelete(replacingWith?: ParagraphStyle): void;
   /** Duplicates the paragraph style. */
   duplicate(): ParagraphStyle;
   /**
@@ -1292,7 +1269,7 @@ export interface ParagraphStyle extends InDesignPlugins.ParagraphStyle<'single'>
  * Unlike a character style, a paragraph style always resolves every attribute to a
  * concrete value rather than leaving unset ones as {@link NothingEnum.NOTHING}.
  */
-export interface ParagraphStylePlural extends InDesignPlugins.ParagraphStyle<'plural'> {
+export interface ParagraphStylePlural extends InDesignEdition.ParagraphStylePlural, InDesignPlugins.ParagraphStyle<'plural'> {
   /**
    * A collection of events
    */
@@ -1581,9 +1558,6 @@ export interface ParagraphStylePlural extends InDesignPlugins.ParagraphStyle<'pl
   /** Paragraph kashida width. 0 is none, 1 is short, 2 is medium, 3 is long */
   get paragraphKashidaWidth(): (number)[];
   set paragraphKashidaWidth(value: number | NothingEnum.NOTHING);
-  /** If true, aligns the baseline of the text to the baseline grid. */
-  get alignToBaseline(): (boolean)[];
-  set alignToBaseline(value: boolean | NothingEnum.NOTHING);
   /** First-line indent, relative to {@link leftIndent}. Negative values hang. */
   get firstLineIndent(): (number)[];
   set firstLineIndent(value: MeasurementValue | NothingEnum.NOTHING);
@@ -2396,12 +2370,6 @@ export interface ParagraphStylePlural extends InDesignPlugins.ParagraphStyle<'pl
   /** If `true`, emits CSS for this style when exporting to EPUB or HTML. */
   get emitCss(): (boolean)[];
   set emitCss(value: boolean);
-  /**
-   * A unique identifier that can be assigned to the style to differentiate it
-   * from others. Internal use only.
-   */
-  get styleUniqueId(): (string)[];
-  set styleUniqueId(value: string);
   /** If `true`, generates a CSS class attribute for the style on export. */
   get includeClass(): (boolean)[];
   set includeClass(value: boolean);
@@ -2421,9 +2389,50 @@ export interface ParagraphStylePlural extends InDesignPlugins.ParagraphStyle<'pl
   setNthDesignAxis(nthAxisIndex: number, nthAxisValue: number): (void)[];
   /** Whether the design axis at `nthAxisIndex` is hidden in a variable font applied through this style. */
   isNthDesignAxisHidden(nthAxisIndex: number): (boolean)[];
+  /** Converts any bullets or numbering applied through this style into literal text. */
+  convertBulletsAndNumberingToText(): (void)[];
+  /**
+   * Deletes the style.
+   * @param replacingWith The style applied to any paragraphs currently tagged with this style. Paragraphs are left unstyled if omitted.
+   */
+  remove(replacingWith?: ParagraphStyle | string): (void)[];
+  /** Duplicates the paragraph style. */
+  duplicate(): (ParagraphStyle)[];
+  /**
+   * Moves the style to a new position among its siblings.
+   * @param reference The style, group, or root relative to which the style is moved. Required when `to` is {@link LocationOptions.BEFORE} or {@link LocationOptions.AFTER}.
+   */
+  move(to: LocationOptions, reference?: StyleMoveReference): (ParagraphStyle)[];
+}
+/** ParagraphStyle's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphStyleDesktop {
+  /** If true, aligns the baseline of the text to the baseline grid.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get alignToBaseline(): boolean;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set alignToBaseline(value: boolean | NothingEnum.NOTHING);
+  /**
+   * A unique identifier that can be assigned to the style to differentiate it
+   * from others. Internal use only.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  get styleUniqueId(): string;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set styleUniqueId(value: string);
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @internal Forcefully deletes the style, bypassing the usual safety checks. Internal use only.
+   * @param replacingWith The style applied to any paragraphs currently tagged with this style.
+   */
+  forceDelete(replacingWith?: ParagraphStyle): void;
   /**
    * Renders a sample thumbnail image of `previewText` set in this style, and
    * writes it to `to`.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param space The color space (RGB, CMYK, or LAB) `colorValue` is expressed in.
    * @param colorValue The sample text color, as component values in `space`.
    */
@@ -2434,23 +2443,61 @@ export interface ParagraphStylePlural extends InDesignPlugins.ParagraphStyle<'pl
     colorValue: number[],
     to: FilePath,
   ): boolean;
-  /** Converts any bullets or numbering applied through this style into literal text. */
-  convertBulletsAndNumberingToText(): (void)[];
+}
+
+/** ParagraphStyle's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphStyleDesktopPlural {
+  /** If true, aligns the baseline of the text to the baseline grid.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get alignToBaseline(): (boolean)[];
   /**
-   * Deletes the style.
-   * @param replacingWith The style applied to any paragraphs currently tagged with this style. Paragraphs are left unstyled if omitted.
+   * Desktop only: InDesign Server 21.6 does not have it.
    */
-  remove(replacingWith?: ParagraphStyle | string): (void)[];
+  set alignToBaseline(value: boolean | NothingEnum.NOTHING);
   /**
+   * A unique identifier that can be assigned to the style to differentiate it
+   * from others. Internal use only.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  get styleUniqueId(): (string)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set styleUniqueId(value: string);
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @internal Forcefully deletes the style, bypassing the usual safety checks. Internal use only.
    * @param replacingWith The style applied to any paragraphs currently tagged with this style.
    */
   forceDelete(replacingWith?: ParagraphStyle): (void)[];
-  /** Duplicates the paragraph style. */
-  duplicate(): (ParagraphStyle)[];
   /**
-   * Moves the style to a new position among its siblings.
-   * @param reference The style, group, or root relative to which the style is moved. Required when `to` is {@link LocationOptions.BEFORE} or {@link LocationOptions.AFTER}.
+   * Renders a sample thumbnail image of `previewText` set in this style, and
+   * writes it to `to`.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param space The color space (RGB, CMYK, or LAB) `colorValue` is expressed in.
+   * @param colorValue The sample text color, as component values in `space`.
    */
-  move(to: LocationOptions, reference?: StyleMoveReference): (ParagraphStyle)[];
+  createThumbnailWithProperties(
+    previewText: string,
+    pointSize: number,
+    space: ColorSpace,
+    colorValue: number[],
+    to: FilePath,
+  ): boolean;
+}
+
+/** ParagraphStyle's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphStyleServer {
+}
+
+/** ParagraphStyle's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphStyleServerPlural {
+}
+
+/** ParagraphStyle's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ParagraphStylePortable {
+}
+
+/** ParagraphStyle's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ParagraphStylePortablePlural {
 }

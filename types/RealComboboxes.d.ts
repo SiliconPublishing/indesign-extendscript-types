@@ -17,7 +17,7 @@ import type { RealCombobox } from './RealCombobox';
  * @collection RealCombobox
  */
 export interface RealComboboxes
-  extends BaseCollection<RealCombobox, RealCombobox, RealCombobox<'plural'>>, IdCollection<RealCombobox>, InDesignPlugins.RealComboboxes {
+  extends BaseCollection<RealCombobox, RealCombobox, RealCombobox<'plural'>>, IdCollection<RealCombobox>, InDesignEdition.RealComboboxes, InDesignPlugins.RealComboboxes {
   /**
    * Creates and adds a new real-number combobox control to the dialog container.
    * @param withProperties Initial values for properties of the new control, including labels, value ranges, and the list of selectable items.

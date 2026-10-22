@@ -23,7 +23,7 @@ export interface TextPaths
   extends
     BaseCollection<TextPath, TextPath, TextPath<'plural'>>,
     IdCollection<TextPath>,
-    NamedCollection<TextPath>, InDesignPlugins.TextPaths {
+    NamedCollection<TextPath>, InDesignEdition.TextPaths, InDesignPlugins.TextPaths {
   /**
    * Creates a new text path on the parent object.
    * @param withProperties Initial values for properties of the new {@link TextPath}.

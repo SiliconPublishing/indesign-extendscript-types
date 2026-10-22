@@ -17,7 +17,7 @@ import type { CopyrightStatus } from './Enums/CopyrightStatus';
  * access to any XMP property by namespace and path, and sync with an external
  * metadata file.
  */
-export interface MetadataPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, InDesignPlugins.MetadataPreference<M> {
+export interface MetadataPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, InDesignEdition.MetadataPreference<M>, InDesignPlugins.MetadataPreference<M> {
   /** Resolves the proxy into the individual {@link MetadataPreference} objects it stands for. */
   getElements(): MetadataPreference<'single'>[];
 

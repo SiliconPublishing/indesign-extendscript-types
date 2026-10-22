@@ -13,7 +13,7 @@ import type { StyleConflict } from './Enums/StyleConflict';
 /**
  * Tagged text import preferences.
  */
-export interface TaggedTextImportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.TaggedTextImportPreference<M> {
+export interface TaggedTextImportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.TaggedTextImportPreference<M>, InDesignPlugins.TaggedTextImportPreference<M> {
   /** Resolves the proxy into the individual {@link TaggedTextImportPreference} objects it stands for. */
   getElements(): TaggedTextImportPreference<'single'>[];
 

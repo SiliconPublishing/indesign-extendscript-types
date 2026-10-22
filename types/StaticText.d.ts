@@ -13,7 +13,7 @@ import type { StaticAlignmentOptions } from './Enums/StaticAlignmentOptions';
  * A non-interactive text label, typically identifying another control or
  * group of controls.
  */
-export interface StaticText<M extends Mode = 'single'> extends Widget<M>, InDesignPlugins.StaticText<M>{
+export interface StaticText<M extends Mode = 'single'> extends Widget<M>, InDesignEdition.StaticText<M>, InDesignPlugins.StaticText<M>{
   /** Resolves the proxy into the individual {@link StaticText} objects it stands for. */
   getElements(): StaticText<'single'>[];
 

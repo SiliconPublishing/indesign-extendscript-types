@@ -26,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * style, restart behavior, and an optional section marker/prefix for the
  * pages it spans.
  */
-export interface Section extends InDesignPlugins.Section<'single'> {
+export interface Section extends InDesignEdition.Section, InDesignPlugins.Section<'single'> {
   /**
    * A collection of events
    */
@@ -178,7 +178,7 @@ export interface Section extends InDesignPlugins.Section<'single'> {
  * style, restart behavior, and an optional section marker/prefix for the
  * pages it spans.
  */
-export interface SectionPlural extends InDesignPlugins.Section<'plural'> {
+export interface SectionPlural extends InDesignEdition.SectionPlural, InDesignPlugins.Section<'plural'> {
   /**
    * A collection of events
    */

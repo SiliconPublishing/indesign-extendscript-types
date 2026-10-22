@@ -20,7 +20,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * Snippets are serialized InDesign objects stored in `.idms` files.
  * @collection Snippet
  */
-export interface Snippets extends InDesignPlugins.Snippets {
+export interface Snippets extends InDesignEdition.Snippets, InDesignPlugins.Snippets {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

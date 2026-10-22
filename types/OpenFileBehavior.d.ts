@@ -13,7 +13,7 @@ import type { BehaviorEvents } from './Enums/BehaviorEvents';
 /**
  * A behavior that opens an external file.
  */
-export interface OpenFileBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignPlugins.OpenFileBehavior<M>{
+export interface OpenFileBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignEdition.OpenFileBehavior<M>, InDesignPlugins.OpenFileBehavior<M>{
   /** Resolves the proxy into the individual {@link OpenFileBehavior} objects it stands for. */
   getElements(): OpenFileBehavior<'single'>[];
 

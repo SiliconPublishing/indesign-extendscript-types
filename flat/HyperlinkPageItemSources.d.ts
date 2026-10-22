@@ -24,7 +24,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection HyperlinkPageItemSource
  */
-export interface HyperlinkPageItemSources extends InDesignPlugins.HyperlinkPageItemSources {
+export interface HyperlinkPageItemSources extends InDesignEdition.HyperlinkPageItemSources, InDesignPlugins.HyperlinkPageItemSources {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

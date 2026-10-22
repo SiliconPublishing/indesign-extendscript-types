@@ -25,7 +25,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A {@link Hyperlink} source that is a specific page item — a rectangle,
  * image, group, or any other {@link PageItem} — rather than a text range.
  */
-export interface HyperlinkPageItemSource extends InDesignPlugins.HyperlinkPageItemSource<'single'> {
+export interface HyperlinkPageItemSource extends InDesignEdition.HyperlinkPageItemSource, InDesignPlugins.HyperlinkPageItemSource<'single'> {
   /**
    * A collection of events
    */
@@ -147,7 +147,7 @@ export interface HyperlinkPageItemSource extends InDesignPlugins.HyperlinkPageIt
  * A {@link Hyperlink} source that is a specific page item — a rectangle,
  * image, group, or any other {@link PageItem} — rather than a text range.
  */
-export interface HyperlinkPageItemSourcePlural extends InDesignPlugins.HyperlinkPageItemSource<'plural'> {
+export interface HyperlinkPageItemSourcePlural extends InDesignEdition.HyperlinkPageItemSourcePlural, InDesignPlugins.HyperlinkPageItemSource<'plural'> {
   /**
    * A collection of events
    */

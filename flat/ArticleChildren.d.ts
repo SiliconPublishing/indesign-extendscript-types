@@ -18,7 +18,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection ArticleChild
  */
-export interface ArticleChildren extends InDesignPlugins.ArticleChildren {
+export interface ArticleChildren extends InDesignEdition.ArticleChildren, InDesignPlugins.ArticleChildren {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

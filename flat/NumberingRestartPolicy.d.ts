@@ -39,7 +39,7 @@ import type { FilePath } from './_base/Types';
  * Controls where automatic numbering restarts within a list, and the range
  * of levels the restart applies to.
  */
-export interface NumberingRestartPolicy extends InDesignPlugins.NumberingRestartPolicy<'single'> {
+export interface NumberingRestartPolicy extends InDesignEdition.NumberingRestartPolicy, InDesignPlugins.NumberingRestartPolicy<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -136,7 +136,7 @@ export interface NumberingRestartPolicy extends InDesignPlugins.NumberingRestart
  * Controls where automatic numbering restarts within a list, and the range
  * of levels the restart applies to.
  */
-export interface NumberingRestartPolicyPlural extends InDesignPlugins.NumberingRestartPolicy<'plural'> {
+export interface NumberingRestartPolicyPlural extends InDesignEdition.NumberingRestartPolicyPlural, InDesignPlugins.NumberingRestartPolicy<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

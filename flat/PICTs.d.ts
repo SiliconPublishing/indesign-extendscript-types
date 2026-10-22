@@ -20,7 +20,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection PICT
  */
-export interface PICTs<TParent = PageItemParent> extends InDesignPlugins.PICTs {
+export interface PICTs<TParent = PageItemParent> extends InDesignEdition.PICTs<TParent>, InDesignPlugins.PICTs {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

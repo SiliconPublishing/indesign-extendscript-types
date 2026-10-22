@@ -1,0 +1,1 @@
+<classdef name="NothingEnum" enumeration="true">  <shortdesc>Nothing.</shortdesc>  <elements type="class">    <property name="NOTHING" rwaccess="readonly">      <shortdesc>Nothing</shortdesc>      <datatype>        <type>number</type>        <value>1851876449</value>      </datatype>    </property>  </elements></classdef>

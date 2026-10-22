@@ -32,7 +32,7 @@ export interface CrossReferences
   extends
     BaseCollection<CrossReference, CrossReference, CrossReference<'plural'>>,
     IdCollection<CrossReference>,
-    NamedCollection<CrossReference>, InDesignPlugins.CrossReferences {
+    NamedCollection<CrossReference>, InDesignEdition.CrossReferences, InDesignPlugins.CrossReferences {
   /**
    * Adds a new index cross-reference to the {@link Topic}.
    *

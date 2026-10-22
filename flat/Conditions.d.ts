@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * within a single layout.
  * @collection Condition
  */
-export interface Conditions extends InDesignPlugins.Conditions {
+export interface Conditions extends InDesignEdition.Conditions, InDesignPlugins.Conditions {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

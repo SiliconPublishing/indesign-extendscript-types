@@ -230,6 +230,9 @@ import type { ScriptMenuActions } from './ScriptMenuActions';
 import type { Menus } from './Menus';
 import type { SelectionItem } from './_base/Unions';
 import type { ScriptArg } from "./ScriptArg";
+import type { EditionPart } from "./_base/Editions";
+import type { ServerSetting } from "./ServerSetting";
+import type { ErrorListErrors } from "./ErrorListErrors";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -253,7 +256,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * Document-scoped state — `activeLayer`, page items, the document body — is on
  * {@link Document}, not here.
  */
-export interface Application extends InDesignPlugins.Application<'single'> {
+export interface Application extends InDesignEdition.Application, InDesignPlugins.Application<'single'> {
   /**
    * A collection of events
    */
@@ -359,32 +362,18 @@ export interface Application extends InDesignPlugins.Application<'single'> {
   readonly fullName: File | Folder;
   /** The folder containing the application executable, as a {@link Folder} entry — reach the path with `.nativePath`. Not the executable itself; see {@link fullName}. */
   readonly filePath: Folder;
-  /** Whether the application is visible on screen. */
-  readonly visible: boolean;
   /** The user's serial number. */
   readonly serialNumber: string;
   /** The current user's Adobe ID. */
   readonly userAdobeId: string;
   /** The current user's GUID. */
   readonly userGuid: string;
-  /** Whether a modal dialog or alert is currently active — script operations that touch the UI may block while this is `true`. */
-  readonly modalState: boolean;
   /** The licensed feature set. */
   readonly featureSet: FeatureSetOptions;
   /** Path to the script currently running from the Scripts panel, if any. */
   readonly activeScript: File;
   /** Undo mode in effect for the current script execution. */
   readonly activeScriptUndoMode: UndoModes;
-  /** Name of the action at the top of the undo stack — what {@link undo} will reverse. */
-  readonly undoName: string;
-  /** Name of the action at the top of the redo stack — what {@link redo} will reapply. */
-  readonly redoName: string;
-  /** Names of the queued undo steps, most-recent first. */
-  readonly undoHistory: string[];
-  /** Names of the queued redo steps. */
-  readonly redoHistory: string[];
-  /** Whether the Home screen is currently shown. */
-  readonly homeScreenVisible: boolean;
   /** Extensions of the file types that {@link place} can import. */
   readonly placeableFileExtensions: string[];
   /** The file types that {@link place} can import. */
@@ -412,28 +401,9 @@ export interface Application extends InDesignPlugins.Application<'single'> {
   /** {@link Swatch}es not currently applied to any object. A snapshot array. */
   readonly unusedSwatches: Swatch[];
   // ---- Read/write application state ----------------------------------------
-
-  /** The front-most {@link Document}. Assign a document to bring it forward. */
-  get activeDocument(): Document;
-  set activeDocument(value: Document);
-  /** The front-most window. Assign a window to bring it forward. */
-  get activeWindow(): Window | LayoutWindow | StoryWindow;
-  set activeWindow(value: Window | LayoutWindow | StoryWindow);
   /** The active {@link Book}. */
   get activeBook(): Book;
   set activeBook(value: Book);
-  /**
-   * The current selection. Assign a single object, an array of objects, or
-   * {@link NothingEnum.NOTHING} to clear it.
-   */
-  get selection(): SelectionItem[];
-  set selection(value: SelectionItem | SelectionItem[] | NothingEnum.NOTHING);
-  /** Key object of a multi-object selection (the alignment anchor), or {@link NothingEnum.NOTHING}. */
-  get selectionKeyObject(): PageItem | null;
-  set selectionKeyObject(value: PageItem | NothingEnum.NOTHING);
-  /** Whether page items redraw live during mouse operations — never, immediately, or after a brief pause. See {@link LiveDrawingOptions}. */
-  get liveScreenDrawing(): LiveDrawingOptions;
-  set liveScreenDrawing(value: LiveDrawingOptions);
   /** The tracked-changes / notes author name used for edits made through scripting. */
   get userName(): string;
   set userName(value: string);
@@ -453,11 +423,6 @@ export interface Application extends InDesignPlugins.Application<'single'> {
   get httpLinkConnectionManager(): HttpLinkConnectionManagerObject;
   set httpLinkConnectionManager(value: HttpLinkConnectionManagerObject);
   // ---- Toolbox / display ---------------------------------------------------
-
-  /** Current tool-box state — see {@link ToolBox}. */
-  readonly toolBoxTools: ToolBox;
-  /** Live display-quality settings — see {@link DisplaySettings}. */
-  readonly displaySettings: DisplaySettings;
   /** The content placer used to load and place linked/unlinked page-item content. */
   readonly contentPlacer: ContentPlacerObject;
   // ---- Default preference & settings objects -------------------------------
@@ -469,24 +434,12 @@ export interface Application extends InDesignPlugins.Application<'single'> {
   readonly clipboardPreferences: ClipboardPreference;
   /** Default transform (rotate/scale/flip/shear) behaviors. */
   readonly transformPreferences: TransformPreference;
-  /** XML view preference defaults. */
-  readonly xmlViewPreferences: XMLViewPreference;
-  /** Display-performance defaults. */
-  readonly displayPerformancePreferences: DisplayPerformancePreference;
-  /** GPU-performance defaults. */
-  readonly gpuPerformancePreferences: GpuPerformancePreference;
-  /** Galley/story-editor view defaults. */
-  readonly galleyPreferences: GalleyPreference;
-  /** Text-editing defaults. */
-  readonly textEditingPreferences: TextEditingPreference;
   /** Preflight option defaults. */
   readonly preflightOptions: PreflightOption;
   /** Preflight book option defaults. */
   readonly preflightBookOptions: PreflightBookOption;
   /** Data-merge option defaults. */
   readonly dataMergeOptions: DataMergeOption;
-  /** Note preference defaults. */
-  readonly notePreferences: NotePreference;
   /** JPEG export defaults. */
   readonly jpegExportPreferences: JPEGExportPreference;
   /** Text import defaults. */
@@ -537,8 +490,6 @@ export interface Application extends InDesignPlugins.Application<'single'> {
   readonly footnoteOptions: FootnoteOption;
   /** Text-wrap defaults for wrapping text around objects. */
   readonly textWrapPreferences: TextWrapPreference;
-  /** Contextual-UI-for-alternates defaults. */
-  readonly typeContextualUiPrefs: TypeContextualUiPreference;
   /** Document defaults (page size/margins) applied to new documents. */
   readonly documentPreferences: DocumentPreference;
   /** Baseline/document grid defaults. */
@@ -551,8 +502,6 @@ export interface Application extends InDesignPlugins.Application<'single'> {
   readonly pasteboardPreferences: PasteboardPreference;
   /** View defaults. */
   readonly viewPreferences: ViewPreference;
-  /** Smart-guide defaults. */
-  readonly smartGuidePreferences: SmartGuidePreference;
   /** Spell-check defaults. */
   readonly spellPreferences: SpellPreference;
   /** Auto-correct defaults. */
@@ -577,22 +526,16 @@ export interface Application extends InDesignPlugins.Application<'single'> {
   readonly taggedPDFPreferences: TaggedPDFPreference;
   /** Link-management defaults. */
   readonly linkingPreferences: LinkingPreference;
-  /** Grabber (scroll display-quality) defaults. */
-  readonly grabberPreferences: GrabberPreference;
   /** Index-formatting defaults. */
   readonly indexGenerationOptions: IndexOptions;
   /** Track-changes defaults. */
   readonly trackChangesPreferences: TrackChangesPreference;
   /** InCopy (INCX) export defaults. */
   readonly incopyExportOptions: InCopyExportOption;
-  /** IME (input method) defaults. */
-  readonly imePreferences: IMEPreference;
   /** Image import defaults. */
   readonly imageIOPreferences: ImageIOPreference;
   /** Image display defaults. */
   readonly imagePreferences: ImagePreference;
-  /** Stroke/fill proxy (swatch-proxy) defaults. */
-  readonly strokeFillProxySettings: StrokeFillProxySetting;
   /** Polygon-creation defaults. */
   readonly polygonPreferences: PolygonPreference;
   /** Default page-item formatting. */
@@ -690,12 +633,6 @@ export interface Application extends InDesignPlugins.Application<'single'> {
   readonly documents: Documents;
   /** Open {@link Books}. */
   readonly books: Books;
-  /** All {@link Windows} across open documents. */
-  readonly windows: Windows;
-  /** Layout {@link LayoutWindows}. */
-  readonly layoutWindows: LayoutWindows;
-  /** Story-editor {@link StoryWindows}. */
-  readonly storyWindows: StoryWindows;
   /** Installed {@link Fonts}. */
   readonly fonts: Fonts;
   /** Application-level {@link Swatches}. */
@@ -750,16 +687,6 @@ export interface Application extends InDesignPlugins.Application<'single'> {
   readonly dottedStrokeStyles: DottedStrokeStyles;
   /** {@link StripedStrokeStyles}. */
   readonly stripedStrokeStyles: StripedStrokeStyles;
-  /** {@link Dialogs} created by scripts. */
-  readonly dialogs: Dialogs;
-  /** {@link Panels}. */
-  readonly panels: Panels;
-  /** {@link Menus}. */
-  readonly menus: Menus;
-  /** {@link MenuActions}. */
-  readonly menuActions: MenuActions;
-  /** {@link ScriptMenuActions} created by scripts. */
-  readonly scriptMenuActions: ScriptMenuActions;
   /** Object {@link Libraries}. */
   readonly libraries: Libraries;
   /** {@link DocumentPresets}. */
@@ -798,8 +725,6 @@ export interface Application extends InDesignPlugins.Application<'single'> {
   readonly indexingSortOptions: IndexingSortOptions;
   /** {@link IdleTasks} attachable to the idle loop. */
   readonly idleTasks: IdleTasks;
-  /** Running {@link BackgroundTasks}. */
-  readonly backgroundTasks: BackgroundTasks;
   /** {@link TransformationMatrices}. */
   readonly transformationMatrices: TransformationMatrices;
   /** {@link XMLTags} shared across documents. */
@@ -821,44 +746,6 @@ export interface Application extends InDesignPlugins.Application<'single'> {
   // ==== Methods =============================================================
 
   // ---- Documents & files ---------------------------------------------------
-
-  /**
-   * Opens the specified document, book, or library.
-   * @param from The file path to open.
-   * @param showingWindow If `false`, opens without a visible window. Defaults to `true`.
-   * @param openOption How to open the file — as the original or as a copy. Defaults to `OpenOptions.OPEN_ORIGINAL`.
-   */
-  open(from: FilePath, showingWindow?: boolean, openOption?: OpenOptions): Document | Book | Library;
-  /**
-   * Opens several files at once.
-   * @param from The file paths to open.
-   * @param showingWindow If `false`, opens without a visible window. Defaults to `true`.
-   * @param openOption How to open the files — as originals or as copies. Defaults to `OpenOptions.OPEN_ORIGINAL`.
-   */
-  open(from: FilePath[], showingWindow?: boolean, openOption?: OpenOptions): Array<Document | Book | Library>;
-  /**
-   * Opens an Adobe cloud document by its asset reference.
-   * @param assetReference The cloud asset reference.
-   * @param showingWindow If `false`, opens without a visible window. Defaults to `true`.
-   */
-  openCloudDocument(assetReference: string, showingWindow?: boolean): Document;
-  /** Deletes the cloud document identified by `assetReference`. */
-  deleteCloudDocument(assetReference: string): boolean;
-  /**
-   * Places one or more files following the Place-menu behavior: loads the place
-   * gun or replaces the current selection depending on preferences.
-   * @param fileName One or more files to place.
-   * @param showingOptions If `true`, shows the import-options dialog. Defaults to `false`.
-   * @param withProperties Initial property values for the placed object(s).
-   */
-  place(fileName: FilePath | FilePath[], showingOptions?: boolean, withProperties?: object): void;
-  /**
-   * Prints the specified file(s).
-   * @param from One or more file paths to print.
-   * @param printDialog If `true`, shows the print dialog first. Defaults to `false`.
-   * @param using A {@link PrinterPreset} or a built-in {@link PrinterPresetTypes} value.
-   */
-  print(from: FilePath | FilePath[], printDialog?: boolean, using?: PrinterPresetTypes | PrinterPreset): void;
   /**
    * Quits the application.
    * @param saving How to handle unsaved changes in open documents. Defaults to `SaveOptions.ASK`.
@@ -871,35 +758,7 @@ export interface Application extends InDesignPlugins.Application<'single'> {
    * @param untitledCount A positive integer.
    */
   setUntitledCount(untitledCount: number): void;
-  /** Creates a temporary copy of `from` and returns the copy's path. */
-  createTemporaryCopy(from: FilePath): string;
-  /** Removes `to` from the recently-used-files list. */
-  removeFileFromRecentFiles(to: FilePath): boolean;
   // ---- Editing / clipboard / undo -----------------------------------------
-
-  /** Cuts the active document's selection to the clipboard. */
-  cut(): void;
-  /** Copies the active document's selection to the clipboard. */
-  copy(): void;
-  /** Pastes the clipboard into the active document. */
-  paste(): void;
-  /** Pastes the clipboard into the selected object of the active document. */
-  pasteInto(): void;
-  /** Pastes the clipboard at the same position the data held in its source document. */
-  pasteInPlace(): void;
-  /** Pastes the clipboard without its source formatting. */
-  pasteWithoutFormatting(): void;
-  /** Undoes the last action. */
-  undo(): void;
-  /** Redoes the last undone action. */
-  redo(): void;
-  /**
-   * Selects the specified object(s).
-   * @param selectableItems The object(s) to select, {@link SelectAll} for
-   * everything, or {@link NothingEnum.NOTHING} to clear the selection.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(selectableItems: object | object[] | NothingEnum | SelectAll, existingSelection?: SelectionOptions): void;
   // ---- Find / change -------------------------------------------------------
 
   /** Finds color matching {@link findColorPreferences}. */
@@ -1033,20 +892,6 @@ export interface Application extends InDesignPlugins.Application<'single'> {
    * @param undoName Undo-step name when `undoMode` is entire-script.
    */
   doScript(script: FilePath | string | Function, language?: ScriptLanguage, withArguments?: unknown[], undoMode?: UndoModes, undoName?: string): unknown;
-  /** Brings the application to the front / activates it. */
-  activate(): void;
-  /** Cascades all open document windows. */
-  cascadeWindows(): void;
-  /** Tiles all open document windows. */
-  tileWindows(): void;
-  /** Toggles visibility of the entire panel system. */
-  togglePanelSystemVisibility(): void;
-  /** Applies a keyboard-shortcut set; omit `name` for the default set. */
-  applyShortcutSet(name?: string): void;
-  /** Applies a workspace; omit `name` for the default. */
-  applyWorkspace(name?: string): void;
-  /** Applies a menu-customization set; empty string resets all menus, omit for default. */
-  applyMenuCustomization(name?: string): void;
   /**
    * Sets the application's default preferences from an IDML defaults file or a
    * language/region enumeration.
@@ -1058,27 +903,12 @@ export interface Application extends InDesignPlugins.Application<'single'> {
   exportSettings(fileReference: string): void;
   /** Resets all preferences to their defaults. */
   resetPreference(): void;
-  /** Opens the panel associated with the given action ID. */
-  openPanel(id: number): void;
   /** Forces a rescan of the font folders for newly added fonts. */
   updateFonts(): void;
   /** Mounts a Version Cue project. */
   mountProject(serverURL: string, projectName: string): void;
   // ---- Background tasks ----------------------------------------------------
-
-  /** Cancels all running background tasks. */
-  cancelAllTasks(): void;
-  /** Blocks until all background tasks finish, returning their final states. */
-  waitForAllTasks(): TaskState[];
   // ---- Color / performance / misc ------------------------------------------
-
-  /**
-   * Invokes InDesign's color picker.
-   * @param space The color space to edit in.
-   * @param colorValue Initial color values.
-   * @returns The chosen color as a string, or empty if cancelled.
-   */
-  invokeColorPicker(space: ColorSpace, colorValue: number[]): string;
   /**
    * Converts a color value between color spaces.
    * @param colorValue Source color values.
@@ -1098,10 +928,6 @@ export interface Application extends InDesignPlugins.Application<'single'> {
   dumpFromMemoryMark(from: number[]): void;
   /** Dumps memory allocations between two marks. */
   dumpBetweenMemoryMarks(from: number[], to: number[]): void;
-  /** Whether the user has opted in to sharing app-usage data. */
-  isUserSharingAppUsageData(): boolean;
-  /** Whether the application is in touch mode. */
-  isAppInTouchMode(): boolean;
   /**
    * Locale-independent string(s) matching a localized string, from the internal
    * string-localization database.
@@ -1113,20 +939,6 @@ export interface Application extends InDesignPlugins.Application<'single'> {
    * @param forStatus The key string to translate.
    */
   translateKeyString(forStatus: string): string;
-  /** Style-conflict resolution strategy for the given style type, or `false` if cancelled. */
-  getStyleConflictResolutionStrategy(charOrParaStyle?: StyleType): GlobalClashResolutionStrategy | false;
-  /** Exports the current selection as cloud-library assets. */
-  exportSelectionForCloudLibrary(to: FilePath): boolean;
-  /** Opens a cloud-library asset for editing. */
-  openCloudAssetForEdit(jsondata: string): boolean;
-  /** Sets the thumbnail export options for cloud-asset generation. */
-  setCloudLibraryOptions(maxwidth: number, maxheight: number): void;
-  /** Sets the cloud-libraries collection info. */
-  setCloudLibraryCollection(librariesCollectionInfo: string): void;
-  /** JSON data for the CCX welcome dialog. */
-  getCCXUserJSONData(jsondata?: string): string;
-  /** User's choice for adding text-frame vs. whole-story content to the cloud. */
-  getUserChoiceForCloudTextAddition(): unknown;
   // ---- Internal use only -----------------------------------------------------
 
   /** Internal use only. */
@@ -1187,7 +999,7 @@ export interface Application extends InDesignPlugins.Application<'single'> {
  * Document-scoped state — `activeLayer`, page items, the document body — is on
  * {@link Document}, not here.
  */
-export interface ApplicationPlural extends InDesignPlugins.Application<'plural'> {
+export interface ApplicationPlural extends InDesignEdition.ApplicationPlural, InDesignPlugins.Application<'plural'> {
   /**
    * A collection of events
    */
@@ -1293,32 +1105,18 @@ export interface ApplicationPlural extends InDesignPlugins.Application<'plural'>
   readonly fullName: (File | Folder)[];
   /** The folder containing the application executable, as a {@link Folder} entry — reach the path with `.nativePath`. Not the executable itself; see {@link fullName}. */
   readonly filePath: (Folder)[];
-  /** Whether the application is visible on screen. */
-  readonly visible: (boolean)[];
   /** The user's serial number. */
   readonly serialNumber: (string)[];
   /** The current user's Adobe ID. */
   readonly userAdobeId: (string)[];
   /** The current user's GUID. */
   readonly userGuid: (string)[];
-  /** Whether a modal dialog or alert is currently active — script operations that touch the UI may block while this is `true`. */
-  readonly modalState: (boolean)[];
   /** The licensed feature set. */
   readonly featureSet: (FeatureSetOptions)[];
   /** Path to the script currently running from the Scripts panel, if any. */
   readonly activeScript: (File)[];
   /** Undo mode in effect for the current script execution. */
   readonly activeScriptUndoMode: (UndoModes)[];
-  /** Name of the action at the top of the undo stack — what {@link undo} will reverse. */
-  readonly undoName: (string)[];
-  /** Name of the action at the top of the redo stack — what {@link redo} will reapply. */
-  readonly redoName: (string)[];
-  /** Names of the queued undo steps, most-recent first. */
-  readonly undoHistory: (string[])[];
-  /** Names of the queued redo steps. */
-  readonly redoHistory: (string[])[];
-  /** Whether the Home screen is currently shown. */
-  readonly homeScreenVisible: (boolean)[];
   /** Extensions of the file types that {@link place} can import. */
   readonly placeableFileExtensions: (string[])[];
   /** The file types that {@link place} can import. */
@@ -1346,28 +1144,9 @@ export interface ApplicationPlural extends InDesignPlugins.Application<'plural'>
   /** {@link Swatch}es not currently applied to any object. A snapshot array. */
   readonly unusedSwatches: (Swatch[])[];
   // ---- Read/write application state ----------------------------------------
-
-  /** The front-most {@link Document}. Assign a document to bring it forward. */
-  get activeDocument(): (Document)[];
-  set activeDocument(value: Document);
-  /** The front-most window. Assign a window to bring it forward. */
-  get activeWindow(): (Window | LayoutWindow | StoryWindow)[];
-  set activeWindow(value: Window | LayoutWindow | StoryWindow);
   /** The active {@link Book}. */
   get activeBook(): (Book)[];
   set activeBook(value: Book);
-  /**
-   * The current selection. Assign a single object, an array of objects, or
-   * {@link NothingEnum.NOTHING} to clear it.
-   */
-  get selection(): (SelectionItem[])[];
-  set selection(value: SelectionItem | SelectionItem[] | NothingEnum.NOTHING);
-  /** Key object of a multi-object selection (the alignment anchor), or {@link NothingEnum.NOTHING}. */
-  get selectionKeyObject(): (PageItem | null)[];
-  set selectionKeyObject(value: PageItem | NothingEnum.NOTHING);
-  /** Whether page items redraw live during mouse operations — never, immediately, or after a brief pause. See {@link LiveDrawingOptions}. */
-  get liveScreenDrawing(): (LiveDrawingOptions)[];
-  set liveScreenDrawing(value: LiveDrawingOptions);
   /** The tracked-changes / notes author name used for edits made through scripting. */
   get userName(): (string)[];
   set userName(value: string);
@@ -1387,11 +1166,6 @@ export interface ApplicationPlural extends InDesignPlugins.Application<'plural'>
   get httpLinkConnectionManager(): (HttpLinkConnectionManagerObject)[];
   set httpLinkConnectionManager(value: HttpLinkConnectionManagerObject);
   // ---- Toolbox / display ---------------------------------------------------
-
-  /** Current tool-box state — see {@link ToolBox}. */
-  readonly toolBoxTools: (ToolBox)[];
-  /** Live display-quality settings — see {@link DisplaySettings}. */
-  readonly displaySettings: DisplaySettings;
   /** The content placer used to load and place linked/unlinked page-item content. */
   readonly contentPlacer: (ContentPlacerObject)[];
   // ---- Default preference & settings objects -------------------------------
@@ -1403,24 +1177,12 @@ export interface ApplicationPlural extends InDesignPlugins.Application<'plural'>
   readonly clipboardPreferences: (ClipboardPreference)[];
   /** Default transform (rotate/scale/flip/shear) behaviors. */
   readonly transformPreferences: (TransformPreference)[];
-  /** XML view preference defaults. */
-  readonly xmlViewPreferences: (XMLViewPreference)[];
-  /** Display-performance defaults. */
-  readonly displayPerformancePreferences: (DisplayPerformancePreference)[];
-  /** GPU-performance defaults. */
-  readonly gpuPerformancePreferences: (GpuPerformancePreference)[];
-  /** Galley/story-editor view defaults. */
-  readonly galleyPreferences: (GalleyPreference)[];
-  /** Text-editing defaults. */
-  readonly textEditingPreferences: (TextEditingPreference)[];
   /** Preflight option defaults. */
   readonly preflightOptions: (PreflightOption)[];
   /** Preflight book option defaults. */
   readonly preflightBookOptions: (PreflightBookOption)[];
   /** Data-merge option defaults. */
   readonly dataMergeOptions: (DataMergeOption)[];
-  /** Note preference defaults. */
-  readonly notePreferences: (NotePreference)[];
   /** JPEG export defaults. */
   readonly jpegExportPreferences: (JPEGExportPreference)[];
   /** Text import defaults. */
@@ -1471,8 +1233,6 @@ export interface ApplicationPlural extends InDesignPlugins.Application<'plural'>
   readonly footnoteOptions: (FootnoteOption)[];
   /** Text-wrap defaults for wrapping text around objects. */
   readonly textWrapPreferences: (TextWrapPreference)[];
-  /** Contextual-UI-for-alternates defaults. */
-  readonly typeContextualUiPrefs: (TypeContextualUiPreference)[];
   /** Document defaults (page size/margins) applied to new documents. */
   readonly documentPreferences: (DocumentPreference)[];
   /** Baseline/document grid defaults. */
@@ -1485,8 +1245,6 @@ export interface ApplicationPlural extends InDesignPlugins.Application<'plural'>
   readonly pasteboardPreferences: (PasteboardPreference)[];
   /** View defaults. */
   readonly viewPreferences: (ViewPreference)[];
-  /** Smart-guide defaults. */
-  readonly smartGuidePreferences: (SmartGuidePreference)[];
   /** Spell-check defaults. */
   readonly spellPreferences: (SpellPreference)[];
   /** Auto-correct defaults. */
@@ -1511,22 +1269,16 @@ export interface ApplicationPlural extends InDesignPlugins.Application<'plural'>
   readonly taggedPDFPreferences: (TaggedPDFPreference)[];
   /** Link-management defaults. */
   readonly linkingPreferences: (LinkingPreference)[];
-  /** Grabber (scroll display-quality) defaults. */
-  readonly grabberPreferences: (GrabberPreference)[];
   /** Index-formatting defaults. */
   readonly indexGenerationOptions: (IndexOptions)[];
   /** Track-changes defaults. */
   readonly trackChangesPreferences: (TrackChangesPreference)[];
   /** InCopy (INCX) export defaults. */
   readonly incopyExportOptions: (InCopyExportOption)[];
-  /** IME (input method) defaults. */
-  readonly imePreferences: (IMEPreference)[];
   /** Image import defaults. */
   readonly imageIOPreferences: (ImageIOPreference)[];
   /** Image display defaults. */
   readonly imagePreferences: (ImagePreference)[];
-  /** Stroke/fill proxy (swatch-proxy) defaults. */
-  readonly strokeFillProxySettings: (StrokeFillProxySetting)[];
   /** Polygon-creation defaults. */
   readonly polygonPreferences: (PolygonPreference)[];
   /** Default page-item formatting. */
@@ -1624,12 +1376,6 @@ export interface ApplicationPlural extends InDesignPlugins.Application<'plural'>
   readonly documents: Documents;
   /** Open {@link Books}. */
   readonly books: Books;
-  /** All {@link Windows} across open documents. */
-  readonly windows: Windows;
-  /** Layout {@link LayoutWindows}. */
-  readonly layoutWindows: LayoutWindows;
-  /** Story-editor {@link StoryWindows}. */
-  readonly storyWindows: StoryWindows;
   /** Installed {@link Fonts}. */
   readonly fonts: Fonts;
   /** Application-level {@link Swatches}. */
@@ -1684,16 +1430,6 @@ export interface ApplicationPlural extends InDesignPlugins.Application<'plural'>
   readonly dottedStrokeStyles: DottedStrokeStyles;
   /** {@link StripedStrokeStyles}. */
   readonly stripedStrokeStyles: StripedStrokeStyles;
-  /** {@link Dialogs} created by scripts. */
-  readonly dialogs: Dialogs;
-  /** {@link Panels}. */
-  readonly panels: Panels;
-  /** {@link Menus}. */
-  readonly menus: Menus;
-  /** {@link MenuActions}. */
-  readonly menuActions: MenuActions;
-  /** {@link ScriptMenuActions} created by scripts. */
-  readonly scriptMenuActions: ScriptMenuActions;
   /** Object {@link Libraries}. */
   readonly libraries: Libraries;
   /** {@link DocumentPresets}. */
@@ -1732,8 +1468,6 @@ export interface ApplicationPlural extends InDesignPlugins.Application<'plural'>
   readonly indexingSortOptions: IndexingSortOptions;
   /** {@link IdleTasks} attachable to the idle loop. */
   readonly idleTasks: IdleTasks;
-  /** Running {@link BackgroundTasks}. */
-  readonly backgroundTasks: BackgroundTasks;
   /** {@link TransformationMatrices}. */
   readonly transformationMatrices: TransformationMatrices;
   /** {@link XMLTags} shared across documents. */
@@ -1755,44 +1489,6 @@ export interface ApplicationPlural extends InDesignPlugins.Application<'plural'>
   // ==== Methods =============================================================
 
   // ---- Documents & files ---------------------------------------------------
-
-  /**
-   * Opens the specified document, book, or library.
-   * @param from The file path to open.
-   * @param showingWindow If `false`, opens without a visible window. Defaults to `true`.
-   * @param openOption How to open the file — as the original or as a copy. Defaults to `OpenOptions.OPEN_ORIGINAL`.
-   */
-  open(from: FilePath, showingWindow?: boolean, openOption?: OpenOptions): (Document | Book | Library)[];
-  /**
-   * Opens several files at once.
-   * @param from The file paths to open.
-   * @param showingWindow If `false`, opens without a visible window. Defaults to `true`.
-   * @param openOption How to open the files — as originals or as copies. Defaults to `OpenOptions.OPEN_ORIGINAL`.
-   */
-  open(from: FilePath[], showingWindow?: boolean, openOption?: OpenOptions): (Array<Document | Book | Library>)[];
-  /**
-   * Opens an Adobe cloud document by its asset reference.
-   * @param assetReference The cloud asset reference.
-   * @param showingWindow If `false`, opens without a visible window. Defaults to `true`.
-   */
-  openCloudDocument(assetReference: string, showingWindow?: boolean): (Document)[];
-  /** Deletes the cloud document identified by `assetReference`. */
-  deleteCloudDocument(assetReference: string): (boolean)[];
-  /**
-   * Places one or more files following the Place-menu behavior: loads the place
-   * gun or replaces the current selection depending on preferences.
-   * @param fileName One or more files to place.
-   * @param showingOptions If `true`, shows the import-options dialog. Defaults to `false`.
-   * @param withProperties Initial property values for the placed object(s).
-   */
-  place(fileName: FilePath | FilePath[], showingOptions?: boolean, withProperties?: object): (void)[];
-  /**
-   * Prints the specified file(s).
-   * @param from One or more file paths to print.
-   * @param printDialog If `true`, shows the print dialog first. Defaults to `false`.
-   * @param using A {@link PrinterPreset} or a built-in {@link PrinterPresetTypes} value.
-   */
-  print(from: FilePath | FilePath[], printDialog?: boolean, using?: PrinterPresetTypes | PrinterPreset): (void)[];
   /**
    * Quits the application.
    * @param saving How to handle unsaved changes in open documents. Defaults to `SaveOptions.ASK`.
@@ -1805,35 +1501,7 @@ export interface ApplicationPlural extends InDesignPlugins.Application<'plural'>
    * @param untitledCount A positive integer.
    */
   setUntitledCount(untitledCount: number): (void)[];
-  /** Creates a temporary copy of `from` and returns the copy's path. */
-  createTemporaryCopy(from: FilePath): (string)[];
-  /** Removes `to` from the recently-used-files list. */
-  removeFileFromRecentFiles(to: FilePath): (boolean)[];
   // ---- Editing / clipboard / undo -----------------------------------------
-
-  /** Cuts the active document's selection to the clipboard. */
-  cut(): (void)[];
-  /** Copies the active document's selection to the clipboard. */
-  copy(): (void)[];
-  /** Pastes the clipboard into the active document. */
-  paste(): (void)[];
-  /** Pastes the clipboard into the selected object of the active document. */
-  pasteInto(): (void)[];
-  /** Pastes the clipboard at the same position the data held in its source document. */
-  pasteInPlace(): (void)[];
-  /** Pastes the clipboard without its source formatting. */
-  pasteWithoutFormatting(): (void)[];
-  /** Undoes the last action. */
-  undo(): (void)[];
-  /** Redoes the last undone action. */
-  redo(): (void)[];
-  /**
-   * Selects the specified object(s).
-   * @param selectableItems The object(s) to select, {@link SelectAll} for
-   * everything, or {@link NothingEnum.NOTHING} to clear the selection.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(selectableItems: object | object[] | NothingEnum | SelectAll, existingSelection?: SelectionOptions): (void)[];
   // ---- Find / change -------------------------------------------------------
 
   /** Finds color matching {@link findColorPreferences}. */
@@ -1967,20 +1635,6 @@ export interface ApplicationPlural extends InDesignPlugins.Application<'plural'>
    * @param undoName Undo-step name when `undoMode` is entire-script.
    */
   doScript(script: FilePath | string | Function, language?: ScriptLanguage, withArguments?: unknown[], undoMode?: UndoModes, undoName?: string): (unknown)[];
-  /** Brings the application to the front / activates it. */
-  activate(): (void)[];
-  /** Cascades all open document windows. */
-  cascadeWindows(): (void)[];
-  /** Tiles all open document windows. */
-  tileWindows(): (void)[];
-  /** Toggles visibility of the entire panel system. */
-  togglePanelSystemVisibility(): (void)[];
-  /** Applies a keyboard-shortcut set; omit `name` for the default set. */
-  applyShortcutSet(name?: string): (void)[];
-  /** Applies a workspace; omit `name` for the default. */
-  applyWorkspace(name?: string): (void)[];
-  /** Applies a menu-customization set; empty string resets all menus, omit for default. */
-  applyMenuCustomization(name?: string): (void)[];
   /**
    * Sets the application's default preferences from an IDML defaults file or a
    * language/region enumeration.
@@ -1992,27 +1646,12 @@ export interface ApplicationPlural extends InDesignPlugins.Application<'plural'>
   exportSettings(fileReference: string): (void)[];
   /** Resets all preferences to their defaults. */
   resetPreference(): (void)[];
-  /** Opens the panel associated with the given action ID. */
-  openPanel(id: number): (void)[];
   /** Forces a rescan of the font folders for newly added fonts. */
   updateFonts(): (void)[];
   /** Mounts a Version Cue project. */
   mountProject(serverURL: string, projectName: string): (void)[];
   // ---- Background tasks ----------------------------------------------------
-
-  /** Cancels all running background tasks. */
-  cancelAllTasks(): (void)[];
-  /** Blocks until all background tasks finish, returning their final states. */
-  waitForAllTasks(): (TaskState[])[];
   // ---- Color / performance / misc ------------------------------------------
-
-  /**
-   * Invokes InDesign's color picker.
-   * @param space The color space to edit in.
-   * @param colorValue Initial color values.
-   * @returns The chosen color as a string, or empty if cancelled.
-   */
-  invokeColorPicker(space: ColorSpace, colorValue: number[]): (string)[];
   /**
    * Converts a color value between color spaces.
    * @param colorValue Source color values.
@@ -2032,10 +1671,6 @@ export interface ApplicationPlural extends InDesignPlugins.Application<'plural'>
   dumpFromMemoryMark(from: number[]): (void)[];
   /** Dumps memory allocations between two marks. */
   dumpBetweenMemoryMarks(from: number[], to: number[]): (void)[];
-  /** Whether the user has opted in to sharing app-usage data. */
-  isUserSharingAppUsageData(): (boolean)[];
-  /** Whether the application is in touch mode. */
-  isAppInTouchMode(): (boolean)[];
   /**
    * Locale-independent string(s) matching a localized string, from the internal
    * string-localization database.
@@ -2047,20 +1682,6 @@ export interface ApplicationPlural extends InDesignPlugins.Application<'plural'>
    * @param forStatus The key string to translate.
    */
   translateKeyString(forStatus: string): (string)[];
-  /** Style-conflict resolution strategy for the given style type, or `false` if cancelled. */
-  getStyleConflictResolutionStrategy(charOrParaStyle?: StyleType): (GlobalClashResolutionStrategy | false)[];
-  /** Exports the current selection as cloud-library assets. */
-  exportSelectionForCloudLibrary(to: FilePath): (boolean)[];
-  /** Opens a cloud-library asset for editing. */
-  openCloudAssetForEdit(jsondata: string): (boolean)[];
-  /** Sets the thumbnail export options for cloud-asset generation. */
-  setCloudLibraryOptions(maxwidth: number, maxheight: number): (void)[];
-  /** Sets the cloud-libraries collection info. */
-  setCloudLibraryCollection(librariesCollectionInfo: string): (void)[];
-  /** JSON data for the CCX welcome dialog. */
-  getCCXUserJSONData(jsondata?: string): (string)[];
-  /** User's choice for adding text-frame vs. whole-story content to the cloud. */
-  getUserChoiceForCloudTextAddition(): (unknown)[];
   // ---- Internal use only -----------------------------------------------------
 
   /** Internal use only. */
@@ -2106,4 +1727,799 @@ export interface ApplicationPlural extends InDesignPlugins.Application<'plural'>
    * Generated from the InDesign 21.6 scripting dictionary.
    */
   readonly scriptArgs: (ScriptArg)[];
+}
+/** Application's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ApplicationDesktop {
+  /** IME (input method) defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly imePreferences: IMEPreference;
+  /** Stroke/fill proxy (swatch-proxy) defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly strokeFillProxySettings: StrokeFillProxySetting;
+  /** Contextual-UI-for-alternates defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly typeContextualUiPrefs: TypeContextualUiPreference;
+  /** Smart-guide defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly smartGuidePreferences: SmartGuidePreference;
+  /** Whether the application is visible on screen.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly visible: boolean;
+  /** Whether a modal dialog or alert is currently active — script operations that touch the UI may block while this is `true`.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly modalState: boolean;
+  /** Name of the action at the top of the undo stack — what {@link undo} will reverse.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly undoName: string;
+  /** Name of the action at the top of the redo stack — what {@link redo} will reapply.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly redoName: string;
+  /** Names of the queued undo steps, most-recent first.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly undoHistory: string[];
+  /** Names of the queued redo steps.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly redoHistory: string[];
+  /** Grabber (scroll display-quality) defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly grabberPreferences: GrabberPreference;
+  /** Text-editing defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly textEditingPreferences: TextEditingPreference;
+  /** Note preference defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly notePreferences: NotePreference;
+  /** XML view preference defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly xmlViewPreferences: XMLViewPreference;
+  /** Galley/story-editor view defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly galleyPreferences: GalleyPreference;
+  /** Whether the Home screen is currently shown.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly homeScreenVisible: boolean;
+  /** Display-performance defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly displayPerformancePreferences: DisplayPerformancePreference;
+  /** GPU-performance defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly gpuPerformancePreferences: GpuPerformancePreference;
+  /** Current tool-box state — see {@link ToolBox}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly toolBoxTools: ToolBox;
+  /** {@link Dialogs} created by scripts.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly dialogs: Dialogs;
+  /** All {@link Windows} across open documents.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly windows: Windows;
+  /** Layout {@link LayoutWindows}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly layoutWindows: LayoutWindows;
+  /** Story-editor {@link StoryWindows}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly storyWindows: StoryWindows;
+  /** {@link Panels}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly panels: Panels;
+  /** Running {@link BackgroundTasks}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly backgroundTasks: BackgroundTasks;
+  /** {@link MenuActions}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly menuActions: MenuActions;
+  /** {@link ScriptMenuActions} created by scripts.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly scriptMenuActions: ScriptMenuActions;
+  /** {@link Menus}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly menus: Menus;
+  /** Live display-quality settings — see {@link DisplaySettings}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly displaySettings: DisplaySettings;
+  /**
+   * The current selection. Assign a single object, an array of objects, or
+   * {@link NothingEnum.NOTHING} to clear it.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  get selection(): SelectionItem[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set selection(value: SelectionItem | SelectionItem[] | NothingEnum.NOTHING);
+  /** The front-most window. Assign a window to bring it forward.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get activeWindow(): Window | LayoutWindow | StoryWindow;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set activeWindow(value: Window | LayoutWindow | StoryWindow);
+  /** Whether page items redraw live during mouse operations — never, immediately, or after a brief pause. See {@link LiveDrawingOptions}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get liveScreenDrawing(): LiveDrawingOptions;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set liveScreenDrawing(value: LiveDrawingOptions);
+  /** Key object of a multi-object selection (the alignment anchor), or {@link NothingEnum.NOTHING}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get selectionKeyObject(): PageItem | null;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set selectionKeyObject(value: PageItem | NothingEnum.NOTHING);
+  /** The front-most {@link Document}. Assign a document to bring it forward.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get activeDocument(): Document;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set activeDocument(value: Document);
+  /**
+   * Prints the specified file(s).
+   * InDesign Server 21.6 takes `print(from, using?, withGrids?)` instead.
+   * @param from One or more file paths to print.
+   * @param printDialog If `true`, shows the print dialog first. Defaults to `false`.
+   * @param using A {@link PrinterPreset} or a built-in {@link PrinterPresetTypes} value.
+   */
+  print(from: FilePath | FilePath[], printDialog?: boolean, using?: PrinterPresetTypes | PrinterPreset): void;
+  /** Cuts the active document's selection to the clipboard.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  cut(): void;
+  /** Copies the active document's selection to the clipboard.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  copy(): void;
+  /** Pastes the clipboard into the active document.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  paste(): void;
+  /** Pastes the clipboard into the selected object of the active document.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  pasteInto(): void;
+  /** Pastes the clipboard at the same position the data held in its source document.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  pasteInPlace(): void;
+  /** Pastes the clipboard without its source formatting.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  pasteWithoutFormatting(): void;
+  /**
+   * Selects the specified object(s).
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param selectableItems The object(s) to select, {@link SelectAll} for
+   * everything, or {@link NothingEnum.NOTHING} to clear the selection.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(selectableItems: object | object[] | NothingEnum | SelectAll, existingSelection?: SelectionOptions): void;
+  /** Applies a keyboard-shortcut set; omit `name` for the default set.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  applyShortcutSet(name?: string): void;
+  /** Applies a workspace; omit `name` for the default.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  applyWorkspace(name?: string): void;
+  /** Applies a menu-customization set; empty string resets all menus, omit for default.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  applyMenuCustomization(name?: string): void;
+  /** Toggles visibility of the entire panel system.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  togglePanelSystemVisibility(): void;
+  /**
+   * Opens the specified document, book, or library.
+   * InDesign Server 21.6 takes `open(from, openOption?)` instead.
+   * @param from The file path to open.
+   * @param showingWindow If `false`, opens without a visible window. Defaults to `true`.
+   * @param openOption How to open the file — as the original or as a copy. Defaults to `OpenOptions.OPEN_ORIGINAL`.
+   */
+  open(from: FilePath, showingWindow?: boolean, openOption?: OpenOptions): Document | Book | Library;
+  /**
+   * Opens several files at once.
+   * InDesign Server 21.6 takes `open(from, openOption?)` instead.
+   * @param from The file paths to open.
+   * @param showingWindow If `false`, opens without a visible window. Defaults to `true`.
+   * @param openOption How to open the files — as originals or as copies. Defaults to `OpenOptions.OPEN_ORIGINAL`.
+   */
+  open(from: FilePath[], showingWindow?: boolean, openOption?: OpenOptions): Array<Document | Book | Library>;
+  /** Brings the application to the front / activates it.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  activate(): void;
+  /** Cascades all open document windows.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  cascadeWindows(): void;
+  /** Tiles all open document windows.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  tileWindows(): void;
+  /** Cancels all running background tasks.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  cancelAllTasks(): void;
+  /** Blocks until all background tasks finish, returning their final states.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  waitForAllTasks(): TaskState[];
+  /** Undoes the last action.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  undo(): void;
+  /** Redoes the last undone action.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  redo(): void;
+  /** Deletes the cloud document identified by `assetReference`.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  deleteCloudDocument(assetReference: string): boolean;
+  /**
+   * Opens an Adobe cloud document by its asset reference.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param assetReference The cloud asset reference.
+   * @param showingWindow If `false`, opens without a visible window. Defaults to `true`.
+   */
+  openCloudDocument(assetReference: string, showingWindow?: boolean): Document;
+  /**
+   * Places one or more files following the Place-menu behavior: loads the place
+   * gun or replaces the current selection depending on preferences.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param fileName One or more files to place.
+   * @param showingOptions If `true`, shows the import-options dialog. Defaults to `false`.
+   * @param withProperties Initial property values for the placed object(s).
+   */
+  place(fileName: FilePath | FilePath[], showingOptions?: boolean, withProperties?: object): void;
+  /**
+   * Invokes InDesign's color picker.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param space The color space to edit in.
+   * @param colorValue Initial color values.
+   * @returns The chosen color as a string, or empty if cancelled.
+   */
+  invokeColorPicker(space: ColorSpace, colorValue: number[]): string;
+  /** Opens a cloud-library asset for editing.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  openCloudAssetForEdit(jsondata: string): boolean;
+  /** Sets the thumbnail export options for cloud-asset generation.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  setCloudLibraryOptions(maxwidth: number, maxheight: number): void;
+  /** Exports the current selection as cloud-library assets.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  exportSelectionForCloudLibrary(to: FilePath): boolean;
+  /** Whether the user has opted in to sharing app-usage data.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  isUserSharingAppUsageData(): boolean;
+  /** Sets the cloud-libraries collection info.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  setCloudLibraryCollection(librariesCollectionInfo: string): void;
+  /** Creates a temporary copy of `from` and returns the copy's path.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  createTemporaryCopy(from: FilePath): string;
+  /** Removes `to` from the recently-used-files list.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  removeFileFromRecentFiles(to: FilePath): boolean;
+  /** Whether the application is in touch mode.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  isAppInTouchMode(): boolean;
+  /** JSON data for the CCX welcome dialog.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  getCCXUserJSONData(jsondata?: string): string;
+  /** Style-conflict resolution strategy for the given style type, or `false` if cancelled.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  getStyleConflictResolutionStrategy(charOrParaStyle?: StyleType): GlobalClashResolutionStrategy | false;
+  /** Opens the panel associated with the given action ID.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  openPanel(id: number): void;
+  /** User's choice for adding text-frame vs. whole-story content to the cloud.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  getUserChoiceForCloudTextAddition(): unknown;
+}
+
+/** Application's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ApplicationDesktopPlural {
+  /** IME (input method) defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly imePreferences: (IMEPreference)[];
+  /** Stroke/fill proxy (swatch-proxy) defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly strokeFillProxySettings: (StrokeFillProxySetting)[];
+  /** Contextual-UI-for-alternates defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly typeContextualUiPrefs: (TypeContextualUiPreference)[];
+  /** Smart-guide defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly smartGuidePreferences: (SmartGuidePreference)[];
+  /** Whether the application is visible on screen.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly visible: (boolean)[];
+  /** Whether a modal dialog or alert is currently active — script operations that touch the UI may block while this is `true`.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly modalState: (boolean)[];
+  /** Name of the action at the top of the undo stack — what {@link undo} will reverse.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly undoName: (string)[];
+  /** Name of the action at the top of the redo stack — what {@link redo} will reapply.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly redoName: (string)[];
+  /** Names of the queued undo steps, most-recent first.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly undoHistory: (string[])[];
+  /** Names of the queued redo steps.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly redoHistory: (string[])[];
+  /** Grabber (scroll display-quality) defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly grabberPreferences: (GrabberPreference)[];
+  /** Text-editing defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly textEditingPreferences: (TextEditingPreference)[];
+  /** Note preference defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly notePreferences: (NotePreference)[];
+  /** XML view preference defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly xmlViewPreferences: (XMLViewPreference)[];
+  /** Galley/story-editor view defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly galleyPreferences: (GalleyPreference)[];
+  /** Whether the Home screen is currently shown.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly homeScreenVisible: (boolean)[];
+  /** Display-performance defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly displayPerformancePreferences: (DisplayPerformancePreference)[];
+  /** GPU-performance defaults.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly gpuPerformancePreferences: (GpuPerformancePreference)[];
+  /** Current tool-box state — see {@link ToolBox}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly toolBoxTools: (ToolBox)[];
+  /** {@link Dialogs} created by scripts.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly dialogs: Dialogs;
+  /** All {@link Windows} across open documents.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly windows: Windows;
+  /** Layout {@link LayoutWindows}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly layoutWindows: LayoutWindows;
+  /** Story-editor {@link StoryWindows}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly storyWindows: StoryWindows;
+  /** {@link Panels}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly panels: Panels;
+  /** Running {@link BackgroundTasks}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly backgroundTasks: BackgroundTasks;
+  /** {@link MenuActions}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly menuActions: MenuActions;
+  /** {@link ScriptMenuActions} created by scripts.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly scriptMenuActions: ScriptMenuActions;
+  /** {@link Menus}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly menus: Menus;
+  /** Live display-quality settings — see {@link DisplaySettings}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly displaySettings: DisplaySettings;
+  /**
+   * The current selection. Assign a single object, an array of objects, or
+   * {@link NothingEnum.NOTHING} to clear it.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  get selection(): (SelectionItem[])[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set selection(value: SelectionItem | SelectionItem[] | NothingEnum.NOTHING);
+  /** The front-most window. Assign a window to bring it forward.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get activeWindow(): (Window | LayoutWindow | StoryWindow)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set activeWindow(value: Window | LayoutWindow | StoryWindow);
+  /** Whether page items redraw live during mouse operations — never, immediately, or after a brief pause. See {@link LiveDrawingOptions}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get liveScreenDrawing(): (LiveDrawingOptions)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set liveScreenDrawing(value: LiveDrawingOptions);
+  /** Key object of a multi-object selection (the alignment anchor), or {@link NothingEnum.NOTHING}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get selectionKeyObject(): (PageItem | null)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set selectionKeyObject(value: PageItem | NothingEnum.NOTHING);
+  /** The front-most {@link Document}. Assign a document to bring it forward.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get activeDocument(): (Document)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set activeDocument(value: Document);
+  /**
+   * Prints the specified file(s).
+   * InDesign Server 21.6 takes `print(from, using?, withGrids?)` instead.
+   * @param from One or more file paths to print.
+   * @param printDialog If `true`, shows the print dialog first. Defaults to `false`.
+   * @param using A {@link PrinterPreset} or a built-in {@link PrinterPresetTypes} value.
+   */
+  print(from: FilePath | FilePath[], printDialog?: boolean, using?: PrinterPresetTypes | PrinterPreset): (void)[];
+  /** Cuts the active document's selection to the clipboard.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  cut(): (void)[];
+  /** Copies the active document's selection to the clipboard.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  copy(): (void)[];
+  /** Pastes the clipboard into the active document.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  paste(): (void)[];
+  /** Pastes the clipboard into the selected object of the active document.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  pasteInto(): (void)[];
+  /** Pastes the clipboard at the same position the data held in its source document.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  pasteInPlace(): (void)[];
+  /** Pastes the clipboard without its source formatting.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  pasteWithoutFormatting(): (void)[];
+  /**
+   * Selects the specified object(s).
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param selectableItems The object(s) to select, {@link SelectAll} for
+   * everything, or {@link NothingEnum.NOTHING} to clear the selection.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(selectableItems: object | object[] | NothingEnum | SelectAll, existingSelection?: SelectionOptions): (void)[];
+  /** Applies a keyboard-shortcut set; omit `name` for the default set.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  applyShortcutSet(name?: string): (void)[];
+  /** Applies a workspace; omit `name` for the default.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  applyWorkspace(name?: string): (void)[];
+  /** Applies a menu-customization set; empty string resets all menus, omit for default.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  applyMenuCustomization(name?: string): (void)[];
+  /** Toggles visibility of the entire panel system.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  togglePanelSystemVisibility(): (void)[];
+  /**
+   * Opens the specified document, book, or library.
+   * InDesign Server 21.6 takes `open(from, openOption?)` instead.
+   * @param from The file path to open.
+   * @param showingWindow If `false`, opens without a visible window. Defaults to `true`.
+   * @param openOption How to open the file — as the original or as a copy. Defaults to `OpenOptions.OPEN_ORIGINAL`.
+   */
+  open(from: FilePath, showingWindow?: boolean, openOption?: OpenOptions): (Document | Book | Library)[];
+  /**
+   * Opens several files at once.
+   * InDesign Server 21.6 takes `open(from, openOption?)` instead.
+   * @param from The file paths to open.
+   * @param showingWindow If `false`, opens without a visible window. Defaults to `true`.
+   * @param openOption How to open the files — as originals or as copies. Defaults to `OpenOptions.OPEN_ORIGINAL`.
+   */
+  open(from: FilePath[], showingWindow?: boolean, openOption?: OpenOptions): (Array<Document | Book | Library>)[];
+  /** Brings the application to the front / activates it.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  activate(): (void)[];
+  /** Cascades all open document windows.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  cascadeWindows(): (void)[];
+  /** Tiles all open document windows.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  tileWindows(): (void)[];
+  /** Cancels all running background tasks.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  cancelAllTasks(): (void)[];
+  /** Blocks until all background tasks finish, returning their final states.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  waitForAllTasks(): (TaskState[])[];
+  /** Undoes the last action.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  undo(): (void)[];
+  /** Redoes the last undone action.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  redo(): (void)[];
+  /** Deletes the cloud document identified by `assetReference`.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  deleteCloudDocument(assetReference: string): (boolean)[];
+  /**
+   * Opens an Adobe cloud document by its asset reference.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param assetReference The cloud asset reference.
+   * @param showingWindow If `false`, opens without a visible window. Defaults to `true`.
+   */
+  openCloudDocument(assetReference: string, showingWindow?: boolean): (Document)[];
+  /**
+   * Places one or more files following the Place-menu behavior: loads the place
+   * gun or replaces the current selection depending on preferences.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param fileName One or more files to place.
+   * @param showingOptions If `true`, shows the import-options dialog. Defaults to `false`.
+   * @param withProperties Initial property values for the placed object(s).
+   */
+  place(fileName: FilePath | FilePath[], showingOptions?: boolean, withProperties?: object): (void)[];
+  /**
+   * Invokes InDesign's color picker.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param space The color space to edit in.
+   * @param colorValue Initial color values.
+   * @returns The chosen color as a string, or empty if cancelled.
+   */
+  invokeColorPicker(space: ColorSpace, colorValue: number[]): (string)[];
+  /** Opens a cloud-library asset for editing.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  openCloudAssetForEdit(jsondata: string): (boolean)[];
+  /** Sets the thumbnail export options for cloud-asset generation.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  setCloudLibraryOptions(maxwidth: number, maxheight: number): (void)[];
+  /** Exports the current selection as cloud-library assets.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  exportSelectionForCloudLibrary(to: FilePath): (boolean)[];
+  /** Whether the user has opted in to sharing app-usage data.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  isUserSharingAppUsageData(): (boolean)[];
+  /** Sets the cloud-libraries collection info.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  setCloudLibraryCollection(librariesCollectionInfo: string): (void)[];
+  /** Creates a temporary copy of `from` and returns the copy's path.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  createTemporaryCopy(from: FilePath): (string)[];
+  /** Removes `to` from the recently-used-files list.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  removeFileFromRecentFiles(to: FilePath): (boolean)[];
+  /** Whether the application is in touch mode.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  isAppInTouchMode(): (boolean)[];
+  /** JSON data for the CCX welcome dialog.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  getCCXUserJSONData(jsondata?: string): (string)[];
+  /** Style-conflict resolution strategy for the given style type, or `false` if cancelled.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  getStyleConflictResolutionStrategy(charOrParaStyle?: StyleType): (GlobalClashResolutionStrategy | false)[];
+  /** Opens the panel associated with the given action ID.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  openPanel(id: number): (void)[];
+  /** User's choice for adding text-frame vs. whole-story content to the cloud.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  getUserChoiceForCloudTextAddition(): (unknown)[];
+}
+
+/** Application's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ApplicationServer {
+  /**
+   * Prints the specified file(s).
+   * InDesign desktop 21.6 takes `print(from, printDialog?, using?)` instead.
+   * @param from One or more file paths to print.
+   * @param using A {@link PrinterPreset} or a built-in {@link PrinterPresetTypes} value.
+   * @param withGrids Whether to print grids (Optional)
+   */
+  print(from: FilePath | FilePath[], using?: PrinterPresetTypes | PrinterPreset, withGrids?: boolean): void;
+  /**
+   * Opens the specified document, book, or library.
+   * InDesign desktop 21.6 takes `open(from, showingWindow?, openOption?)` instead.
+   * @param from The file path to open.
+   * @param openOption How to open the file — as the original or as a copy. Defaults to `OpenOptions.OPEN_ORIGINAL`.
+   */
+  open(from: FilePath, openOption?: OpenOptions): Document | Book | Library;
+  /**
+   * Opens several files at once.
+   * InDesign desktop 21.6 takes `open(from, showingWindow?, openOption?)` instead.
+   * @param from The file paths to open.
+   * @param openOption How to open the files — as originals or as copies. Defaults to `OpenOptions.OPEN_ORIGINAL`.
+   */
+  open(from: FilePath[], openOption?: OpenOptions): Array<Document | Book | Library>;
+  /**
+   * The socket the server uses to service administrative requests.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly serverAdminPort: number;
+  /**
+   * The name of the machine InDesignServer is running on; either symbolic (host.corp.com) or IP address (123.345.678.90).
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly serverHostName: string;
+  /**
+   * Runtime settings specific to server.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly serverSettings: ServerSetting;
+  /**
+   * A collection of error list errors.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly errorListErrors: ErrorListErrors;
+  /**
+   * [For internal use only] Add Font Directory from specific path.
+   * InDesign Server only.
+   * @param fontDirectory Path to the font directory.
+   * @param obfuscateFlag Flag to specify.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  addFontDirectory(fontDirectory: string, obfuscateFlag: boolean): void;
+  /**
+   * [For internal use only] Remove Font Directory for specific path.
+   * InDesign Server only.
+   * @param fontDirectory Path to the font directory.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  removeFontDirectory(fontDirectory: string): void;
+  /**
+   * Outputs the specified message to std out.
+   * InDesign Server only.
+   * @param message The message.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  consoleout(message: string): void;
+  /**
+   * Outputs the specified message to std err.
+   * InDesign Server only.
+   * @param message The message.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  consoleerr(message: string): void;
+  /**
+   * Clears all errors in the error list.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  clearAllErrors(): void;
+  /**
+   * Internal use only: Recovers the specified document.
+   * InDesign Server only.
+   * @param from The file path(s) to the document.
+   * @param to The path to the export file.
+   * @param recoveryparams recovery parameters (Optional)
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  recover(from: FilePath, to: FilePath, recoveryparams?: string): void;
+  /**
+   * Executes a server test.
+   * InDesign Server only.
+   * @param testName The test to execute.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  serverTest(testName: string): void;
+}
+
+/** Application's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ApplicationServerPlural {
+  /**
+   * Prints the specified file(s).
+   * InDesign desktop 21.6 takes `print(from, printDialog?, using?)` instead.
+   * @param from One or more file paths to print.
+   * @param using A {@link PrinterPreset} or a built-in {@link PrinterPresetTypes} value.
+   * @param withGrids Whether to print grids (Optional)
+   */
+  print(from: FilePath | FilePath[], using?: PrinterPresetTypes | PrinterPreset, withGrids?: boolean): (void)[];
+  /**
+   * Opens the specified document, book, or library.
+   * InDesign desktop 21.6 takes `open(from, showingWindow?, openOption?)` instead.
+   * @param from The file path to open.
+   * @param openOption How to open the file — as the original or as a copy. Defaults to `OpenOptions.OPEN_ORIGINAL`.
+   */
+  open(from: FilePath, openOption?: OpenOptions): (Document | Book | Library)[];
+  /**
+   * Opens several files at once.
+   * InDesign desktop 21.6 takes `open(from, showingWindow?, openOption?)` instead.
+   * @param from The file paths to open.
+   * @param openOption How to open the files — as originals or as copies. Defaults to `OpenOptions.OPEN_ORIGINAL`.
+   */
+  open(from: FilePath[], openOption?: OpenOptions): (Array<Document | Book | Library>)[];
+  /**
+   * The socket the server uses to service administrative requests.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly serverAdminPort: (number)[];
+  /**
+   * The name of the machine InDesignServer is running on; either symbolic (host.corp.com) or IP address (123.345.678.90).
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly serverHostName: (string)[];
+  /**
+   * Runtime settings specific to server.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly serverSettings: (ServerSetting)[];
+  /**
+   * A collection of error list errors.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly errorListErrors: (ErrorListErrors)[];
+  /**
+   * [For internal use only] Add Font Directory from specific path.
+   * InDesign Server only.
+   * @param fontDirectory Path to the font directory.
+   * @param obfuscateFlag Flag to specify.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  addFontDirectory(fontDirectory: string, obfuscateFlag: boolean): (void)[];
+  /**
+   * [For internal use only] Remove Font Directory for specific path.
+   * InDesign Server only.
+   * @param fontDirectory Path to the font directory.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  removeFontDirectory(fontDirectory: string): (void)[];
+  /**
+   * Outputs the specified message to std out.
+   * InDesign Server only.
+   * @param message The message.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  consoleout(message: string): (void)[];
+  /**
+   * Outputs the specified message to std err.
+   * InDesign Server only.
+   * @param message The message.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  consoleerr(message: string): (void)[];
+  /**
+   * Clears all errors in the error list.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  clearAllErrors(): (void)[];
+  /**
+   * Internal use only: Recovers the specified document.
+   * InDesign Server only.
+   * @param from The file path(s) to the document.
+   * @param to The path to the export file.
+   * @param recoveryparams recovery parameters (Optional)
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  recover(from: FilePath, to: FilePath, recoveryparams?: string): (void)[];
+  /**
+   * Executes a server test.
+   * InDesign Server only.
+   * @param testName The test to execute.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  serverTest(testName: string): (void)[];
+}
+
+/** Application's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ApplicationPortable {
+  /**
+   * Prints the specified file(s).
+   * Portable form: the editions' parameters differ after these (desktop `print(from, printDialog?, using?)`, InDesign Server `print(from, using?, withGrids?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param from One or more file paths to print.
+   */
+  print(from: FilePath | FilePath[]): void;
+  /**
+   * Opens the specified document, book, or library.
+   * Portable form: the editions' parameters differ after these (desktop `open(from, showingWindow?, openOption?)`, InDesign Server `open(from, openOption?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param from The file path to open.
+   */
+  open(from: FilePath): Document | Book | Library;
+  /**
+   * Opens several files at once.
+   * Portable form: the editions' parameters differ after these (desktop `open(from, showingWindow?, openOption?)`, InDesign Server `open(from, openOption?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param from The file paths to open.
+   */
+  open(from: FilePath[]): Array<Document | Book | Library>;
+}
+
+/** Application's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ApplicationPortablePlural {
+  /**
+   * Prints the specified file(s).
+   * Portable form: the editions' parameters differ after these (desktop `print(from, printDialog?, using?)`, InDesign Server `print(from, using?, withGrids?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param from One or more file paths to print.
+   */
+  print(from: FilePath | FilePath[]): (void)[];
+  /**
+   * Opens the specified document, book, or library.
+   * Portable form: the editions' parameters differ after these (desktop `open(from, showingWindow?, openOption?)`, InDesign Server `open(from, openOption?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param from The file path to open.
+   */
+  open(from: FilePath): (Document | Book | Library)[];
+  /**
+   * Opens several files at once.
+   * Portable form: the editions' parameters differ after these (desktop `open(from, showingWindow?, openOption?)`, InDesign Server `open(from, openOption?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param from The file paths to open.
+   */
+  open(from: FilePath[]): (Array<Document | Book | Library>)[];
 }

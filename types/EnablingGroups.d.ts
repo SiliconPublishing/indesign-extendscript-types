@@ -18,7 +18,7 @@ import type { Dialog } from './Dialog';
  * @collection EnablingGroup
  */
 export interface EnablingGroups
-  extends BaseCollection<EnablingGroup, EnablingGroup, EnablingGroup<'plural'>>, IdCollection<EnablingGroup>, InDesignPlugins.EnablingGroups {
+  extends BaseCollection<EnablingGroup, EnablingGroup, EnablingGroup<'plural'>>, IdCollection<EnablingGroup>, InDesignEdition.EnablingGroups, InDesignPlugins.EnablingGroups {
   /**
    * Creates and adds a new enabling group to the dialog.
    * @param withProperties Initial values for properties of the new group.

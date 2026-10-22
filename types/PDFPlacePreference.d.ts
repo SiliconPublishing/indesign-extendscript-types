@@ -13,7 +13,7 @@ import type { PDFCrop } from './Enums/PDFCrop';
 /**
  * PDF place preferences.
  */
-export interface PDFPlacePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.PDFPlacePreference<M> {
+export interface PDFPlacePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.PDFPlacePreference<M>, InDesignPlugins.PDFPlacePreference<M> {
   /** Resolves the proxy into the individual {@link PDFPlacePreference} objects it stands for. */
   getElements(): PDFPlacePreference<'single'>[];
 

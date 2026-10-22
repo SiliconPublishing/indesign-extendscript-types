@@ -11,6 +11,7 @@ import type { XMLElement } from './XMLElement';
 import type { XMLTag } from './XMLTag';
 import type { XMLElementLocation } from './Enums/XMLElementLocation';
 import type { SelectionOptions } from './Enums/SelectionOptions';
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -26,7 +27,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * An attribute (`name="value"`) on an {@link XMLElement} in a document's
  * underlying XML structure.
  */
-export interface XMLAttribute extends InDesignPlugins.XMLAttribute<'single'> {
+export interface XMLAttribute extends InDesignEdition.XMLAttribute, InDesignPlugins.XMLAttribute<'single'> {
   /**
    * A collection of events
    */
@@ -128,18 +129,13 @@ export interface XMLAttribute extends InDesignPlugins.XMLAttribute<'single'> {
    * @param markupTag The tag to apply to the new element.
    */
   convertToElement(located?: XMLElementLocation, markupTag?: XMLTag): XMLElement;
-  /**
-   * Selects the object.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(existingSelection?: SelectionOptions): void;
 }
 
 /**
  * An attribute (`name="value"`) on an {@link XMLElement} in a document's
  * underlying XML structure.
  */
-export interface XMLAttributePlural extends InDesignPlugins.XMLAttribute<'plural'> {
+export interface XMLAttributePlural extends InDesignEdition.XMLAttributePlural, InDesignPlugins.XMLAttribute<'plural'> {
   /**
    * A collection of events
    */
@@ -241,9 +237,39 @@ export interface XMLAttributePlural extends InDesignPlugins.XMLAttribute<'plural
    * @param markupTag The tag to apply to the new element.
    */
   convertToElement(located?: XMLElementLocation, markupTag?: XMLTag): (XMLElement)[];
+}
+/** XMLAttribute's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLAttributeDesktop {
   /**
    * Selects the object.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(existingSelection?: SelectionOptions): void;
+}
+
+/** XMLAttribute's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLAttributeDesktopPlural {
+  /**
+   * Selects the object.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
    */
   select(existingSelection?: SelectionOptions): (void)[];
+}
+
+/** XMLAttribute's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLAttributeServer {
+}
+
+/** XMLAttribute's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLAttributeServerPlural {
+}
+
+/** XMLAttribute's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface XMLAttributePortable {
+}
+
+/** XMLAttribute's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface XMLAttributePortablePlural {
 }

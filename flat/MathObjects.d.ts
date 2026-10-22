@@ -25,7 +25,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection MathObject
  */
-export interface MathObjects extends InDesignPlugins.MathObjects {
+export interface MathObjects extends InDesignEdition.MathObjects, InDesignPlugins.MathObjects {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

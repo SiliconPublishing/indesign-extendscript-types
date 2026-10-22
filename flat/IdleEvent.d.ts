@@ -18,7 +18,7 @@ import type { EventPhases } from './Enums/EventPhases';
 /**
  * An event dispatched at idle time for a registered {@link IdleTask}.
  */
-export interface IdleEvent extends InDesignPlugins.IdleEvent<'single'> {
+export interface IdleEvent extends InDesignEdition.IdleEvent, InDesignPlugins.IdleEvent<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -99,7 +99,7 @@ export interface IdleEvent extends InDesignPlugins.IdleEvent<'single'> {
 /**
  * An event dispatched at idle time for a registered {@link IdleTask}.
  */
-export interface IdleEventPlural extends InDesignPlugins.IdleEvent<'plural'> {
+export interface IdleEventPlural extends InDesignEdition.IdleEventPlural, InDesignPlugins.IdleEvent<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

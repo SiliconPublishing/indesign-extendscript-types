@@ -17,7 +17,7 @@ import type { InCopyUIColors } from './Enums/InCopyUIColors';
 /**
  * Track changes preferences.
  */
-export interface TrackChangesPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.TrackChangesPreference<M> {
+export interface TrackChangesPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.TrackChangesPreference<M>, InDesignPlugins.TrackChangesPreference<M> {
   /** Resolves the proxy into the individual {@link TrackChangesPreference} objects it stands for. */
   getElements(): TrackChangesPreference<'single'>[];
 

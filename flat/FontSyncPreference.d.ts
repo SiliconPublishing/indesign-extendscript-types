@@ -22,7 +22,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Font sync preferences.
  */
-export interface FontSyncPreference extends InDesignPlugins.FontSyncPreference<'single'> {
+export interface FontSyncPreference extends InDesignEdition.FontSyncPreference, InDesignPlugins.FontSyncPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -112,7 +112,7 @@ export interface FontSyncPreference extends InDesignPlugins.FontSyncPreference<'
 /**
  * Font sync preferences.
  */
-export interface FontSyncPreferencePlural extends InDesignPlugins.FontSyncPreference<'plural'> {
+export interface FontSyncPreferencePlural extends InDesignEdition.FontSyncPreferencePlural, InDesignPlugins.FontSyncPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -18,7 +18,7 @@ import type { ParagraphStyle } from './ParagraphStyle';
  *
  * @collection StyleExportTagMap
  */
-export interface StyleExportTagMaps extends BaseCollection<StyleExportTagMap, StyleExportTagMap, StyleExportTagMap<'plural'>>, InDesignPlugins.StyleExportTagMaps {
+export interface StyleExportTagMaps extends BaseCollection<StyleExportTagMap, StyleExportTagMap, StyleExportTagMap<'plural'>>, InDesignEdition.StyleExportTagMaps, InDesignPlugins.StyleExportTagMaps {
   /**
    * Creates a new style export tag mapping.
    *

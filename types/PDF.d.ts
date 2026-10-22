@@ -37,11 +37,15 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { GraphicDesktop } from "./Graphic";
+import type { GraphicServer } from "./Graphic";
+import type { GraphicPortable } from "./Graphic";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A placed PDF page.
  */
-export interface PDF<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignPlugins.PDF<M> {
+export interface PDF<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignEdition.PDF<TParent, M>, InDesignPlugins.PDF<M> {
   /** Resolves the proxy into the individual {@link PDF} objects it stands for. */
   getElements(): PDF<TParent, 'single'>[];
 
@@ -66,3 +70,11 @@ export interface PDF<TParent = PageItemParent, M extends Mode = 'single'> extend
   get cmykVectorPolicy(): Read<M, PlacedVectorProfilePolicy>;
   set cmykVectorPolicy(value: PlacedVectorProfilePolicy);
 }
+/** PDF's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface PDFDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicDesktop<TParent, M> {}
+
+/** PDF's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface PDFServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicServer<TParent, M> {}
+
+/** PDF's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface PDFPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicPortable<TParent, M> {}

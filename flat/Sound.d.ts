@@ -36,6 +36,10 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { MediaItemDesktop } from "./MediaItem";
+import type { MediaItemServer } from "./MediaItem";
+import type { MediaItemPortable } from "./MediaItem";
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -77,19 +81,19 @@ import type { Movie } from './Movie';
 import type { DimensionsConstraints } from './Enums/DimensionsConstraints';
 import type { FlexWidthHeightMode } from './Enums/FlexWidthHeightMode';
 import type { FlexEnum } from './Enums/FlexEnum';
-import type { DisplaySettingOptions } from './Enums/DisplaySettingOptions';
 import type { Asset } from './Asset';
 import type { ConvertShapeOptions } from './Enums/ConvertShapeOptions';
+import type { Paths } from './Paths';
+import type { DisplaySettingOptions } from './Enums/DisplaySettingOptions';
 import type { ExportFormat } from './Enums/ExportFormat';
 import type { PDFExportPreset } from './PDFExportPreset';
 import type { SelectionOptions } from './Enums/SelectionOptions';
-import type { Paths } from './Paths';
 
 /**
  * A placed sound clip (legacy PDF interactive media). See {@link MediaItem}
  * for the shared media-item surface.
  */
-export interface Sound<TParent = PageItemParent> extends InDesignPlugins.Sound<'single'> {
+export interface Sound<TParent = PageItemParent> extends InDesignEdition.Sound<TParent>, InDesignPlugins.Sound<'single'> {
   /**
    * A collection of events
    */
@@ -324,14 +328,6 @@ export interface Sound<TParent = PageItemParent> extends InDesignPlugins.Sound<'
    * @param opposingCorners Two opposing corners, each an `[x, y]` point.
    */
   reframe(inCoordinateSpace: BoundsSpecifier, opposingCorners: Array<[number, number]>): void;
-  /** Repeats the last single transform applied to any object on this item. */
-  transformAgain(): string[];
-  /** Repeats the last transform *sequence* applied to any object (or group) on this item. */
-  transformSequenceAgain(): string[];
-  /** Like {@link transformAgain}, but repeats the last transform applied to any *page item* specifically. */
-  transformAgainIndividually(): string[];
-  /** Like {@link transformSequenceAgain}, but applied individually to each targeted item. */
-  transformSequenceAgainIndividually(): string[];
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of the PageItem. */
   get fillColor(): Swatch;
   set fillColor(value: Swatch | string);
@@ -529,9 +525,6 @@ export interface Sound<TParent = PageItemParent> extends InDesignPlugins.Sound<'
   /** Whether the item is visible. A hidden item still prints unless {@link GraphicAttributes.nonprinting} is set. */
   get visible(): boolean;
   set visible(value: boolean);
-  /** Screen display-quality override for this item (fast, typical, or high quality). */
-  get localDisplaySetting(): DisplaySettingOptions;
-  set localDisplaySetting(value: DisplaySettingOptions);
   /**
    * Stores a copy of the item in a {@link Library} as a reusable asset.
    * @param withProperties Initial property values for the created {@link Asset}.
@@ -556,14 +549,6 @@ export interface Sound<TParent = PageItemParent> extends InDesignPlugins.Sound<'
    * @param reverseOrder If `true`, results come back last-to-first.
    */
   changeObject(reverseOrder?: boolean): PageItem[];
-  /**
-   * Places a file into the item as its content, returning the placed object(s).
-   * @param fileName Path to the asset to place.
-   * @param showingOptions If `true`, shows the format's import-options dialog. Defaults to `false`.
-   * @param withProperties Initial property values for the placed object(s).
-   * @returns The placed object(s); usually a single-element array.
-   */
-  place(fileName: FilePath, showingOptions?: boolean, withProperties?: object): AnyPageItem[];
   /**
    * Overrides this master-page item onto a document page as an editable copy.
    * @param destinationPage The document page to place the override on.
@@ -621,21 +606,6 @@ export interface Sound<TParent = PageItemParent> extends InDesignPlugins.Sound<'
     withProperties?: object,
   ): void;
   /**
-   * Exports the item to a file.
-   * @param format An {@link ExportFormat} or a matching file-type extension string.
-   * @param to Destination path.
-   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
-   * @param using An export preset such as a {@link PDFExportPreset}.
-   */
-  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): void;
-  /**
-   * Exports the item to a file on a background thread, returning the running
-   * {@link BackgroundTask}.
-   * @param format An {@link ExportFormat} or a matching file-type extension string.
-   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
-   */
-  asynchronousExportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): BackgroundTask;
-  /**
    * Loads the given page items into the content placer and places a linked or
    * unlinked duplicate into this item.
    * @param linkPageItems If `true`, links the placed items to their source (overrides `linkStories`). Defaults to `false`.
@@ -644,11 +614,6 @@ export interface Sound<TParent = PageItemParent> extends InDesignPlugins.Sound<'
    * @param showingOptions If `true`, shows the link-options dialog. Defaults to `false`.
    */
   contentPlace(pageItems: PageItem | PageItem[], linkPageItems?: boolean, linkStories?: boolean, mapStyles?: boolean, showingOptions?: boolean): PageItem[];
-  /**
-   * Selects the item in the active document window.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(existingSelection?: SelectionOptions): void;
   /** A collection of the paths making up the media item's poster-frame outline. */
   readonly paths: Paths;
   /** Resolves the proxy into the individual {@link Sound} objects it stands for. */
@@ -704,7 +669,7 @@ export interface Sound<TParent = PageItemParent> extends InDesignPlugins.Sound<'
  * A placed sound clip (legacy PDF interactive media). See {@link MediaItem}
  * for the shared media-item surface.
  */
-export interface SoundPlural<TParent = PageItemParent> extends InDesignPlugins.Sound<'plural'> {
+export interface SoundPlural<TParent = PageItemParent> extends InDesignEdition.SoundPlural<TParent>, InDesignPlugins.Sound<'plural'> {
   /**
    * A collection of events
    */
@@ -939,14 +904,6 @@ export interface SoundPlural<TParent = PageItemParent> extends InDesignPlugins.S
    * @param opposingCorners Two opposing corners, each an `[x, y]` point.
    */
   reframe(inCoordinateSpace: BoundsSpecifier, opposingCorners: Array<[number, number]>): (void)[];
-  /** Repeats the last single transform applied to any object on this item. */
-  transformAgain(): (string[])[];
-  /** Repeats the last transform *sequence* applied to any object (or group) on this item. */
-  transformSequenceAgain(): (string[])[];
-  /** Like {@link transformAgain}, but repeats the last transform applied to any *page item* specifically. */
-  transformAgainIndividually(): (string[])[];
-  /** Like {@link transformSequenceAgain}, but applied individually to each targeted item. */
-  transformSequenceAgainIndividually(): (string[])[];
   /** The swatch (color, gradient, tint, or mixed ink) applied to the fill of the PageItem. */
   get fillColor(): (Swatch)[];
   set fillColor(value: Swatch | string);
@@ -1144,9 +1101,6 @@ export interface SoundPlural<TParent = PageItemParent> extends InDesignPlugins.S
   /** Whether the item is visible. A hidden item still prints unless {@link GraphicAttributes.nonprinting} is set. */
   get visible(): (boolean)[];
   set visible(value: boolean);
-  /** Screen display-quality override for this item (fast, typical, or high quality). */
-  get localDisplaySetting(): (DisplaySettingOptions)[];
-  set localDisplaySetting(value: DisplaySettingOptions);
   /**
    * Stores a copy of the item in a {@link Library} as a reusable asset.
    * @param withProperties Initial property values for the created {@link Asset}.
@@ -1171,14 +1125,6 @@ export interface SoundPlural<TParent = PageItemParent> extends InDesignPlugins.S
    * @param reverseOrder If `true`, results come back last-to-first.
    */
   changeObject(reverseOrder?: boolean): (PageItem[])[];
-  /**
-   * Places a file into the item as its content, returning the placed object(s).
-   * @param fileName Path to the asset to place.
-   * @param showingOptions If `true`, shows the format's import-options dialog. Defaults to `false`.
-   * @param withProperties Initial property values for the placed object(s).
-   * @returns The placed object(s); usually a single-element array.
-   */
-  place(fileName: FilePath, showingOptions?: boolean, withProperties?: object): (AnyPageItem[])[];
   /**
    * Overrides this master-page item onto a document page as an editable copy.
    * @param destinationPage The document page to place the override on.
@@ -1236,21 +1182,6 @@ export interface SoundPlural<TParent = PageItemParent> extends InDesignPlugins.S
     withProperties?: object,
   ): void;
   /**
-   * Exports the item to a file.
-   * @param format An {@link ExportFormat} or a matching file-type extension string.
-   * @param to Destination path.
-   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
-   * @param using An export preset such as a {@link PDFExportPreset}.
-   */
-  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (void)[];
-  /**
-   * Exports the item to a file on a background thread, returning the running
-   * {@link BackgroundTask}.
-   * @param format An {@link ExportFormat} or a matching file-type extension string.
-   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
-   */
-  asynchronousExportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (BackgroundTask)[];
-  /**
    * Loads the given page items into the content placer and places a linked or
    * unlinked duplicate into this item.
    * @param linkPageItems If `true`, links the placed items to their source (overrides `linkStories`). Defaults to `false`.
@@ -1259,11 +1190,6 @@ export interface SoundPlural<TParent = PageItemParent> extends InDesignPlugins.S
    * @param showingOptions If `true`, shows the link-options dialog. Defaults to `false`.
    */
   contentPlace(pageItems: PageItem | PageItem[], linkPageItems?: boolean, linkStories?: boolean, mapStyles?: boolean, showingOptions?: boolean): (PageItem[])[];
-  /**
-   * Selects the item in the active document window.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(existingSelection?: SelectionOptions): (void)[];
   /** A collection of the paths making up the media item's poster-frame outline. */
   readonly paths: Paths;
   /** Resolves the proxy into the individual {@link Sound} objects it stands for. */
@@ -1313,4 +1239,189 @@ export interface SoundPlural<TParent = PageItemParent> extends InDesignPlugins.S
   bringForward(): (void)[];
   /** Sends the sound back one level within its layer. */
   sendBackward(): (void)[];
+}
+/** Sound's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface SoundDesktop<TParent = PageItemParent> {
+  /** Repeats the last single transform applied to any object on this item.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  transformAgain(): string[];
+  /** Repeats the last transform *sequence* applied to any object (or group) on this item.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  transformSequenceAgain(): string[];
+  /** Like {@link transformAgain}, but repeats the last transform applied to any *page item* specifically.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  transformAgainIndividually(): string[];
+  /** Like {@link transformSequenceAgain}, but applied individually to each targeted item.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  transformSequenceAgainIndividually(): string[];
+  /** Screen display-quality override for this item (fast, typical, or high quality).
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get localDisplaySetting(): DisplaySettingOptions;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set localDisplaySetting(value: DisplaySettingOptions);
+  /**
+   * Exports the item to a file.
+   * InDesign Server 21.6 takes `exportFile(format, to, using?, versionComments?, forceSave?)` instead.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
+   * @param using An export preset such as a {@link PDFExportPreset}.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): void;
+  /**
+   * Exports the item to a file on a background thread, returning the running
+   * {@link BackgroundTask}.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
+   */
+  asynchronousExportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): BackgroundTask;
+  /**
+   * Selects the item in the active document window.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(existingSelection?: SelectionOptions): void;
+  /**
+   * Places a file into the item as its content, returning the placed object(s).
+   * InDesign Server 21.6 takes `place(fileName, withProperties?)` instead.
+   * @param fileName Path to the asset to place.
+   * @param showingOptions If `true`, shows the format's import-options dialog. Defaults to `false`.
+   * @param withProperties Initial property values for the placed object(s).
+   * @returns The placed object(s); usually a single-element array.
+   */
+  place(fileName: FilePath, showingOptions?: boolean, withProperties?: object): AnyPageItem[];
+}
+
+/** Sound's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface SoundDesktopPlural<TParent = PageItemParent> {
+  /** Repeats the last single transform applied to any object on this item.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  transformAgain(): (string[])[];
+  /** Repeats the last transform *sequence* applied to any object (or group) on this item.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  transformSequenceAgain(): (string[])[];
+  /** Like {@link transformAgain}, but repeats the last transform applied to any *page item* specifically.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  transformAgainIndividually(): (string[])[];
+  /** Like {@link transformSequenceAgain}, but applied individually to each targeted item.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  transformSequenceAgainIndividually(): (string[])[];
+  /** Screen display-quality override for this item (fast, typical, or high quality).
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get localDisplaySetting(): (DisplaySettingOptions)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set localDisplaySetting(value: DisplaySettingOptions);
+  /**
+   * Exports the item to a file.
+   * InDesign Server 21.6 takes `exportFile(format, to, using?, versionComments?, forceSave?)` instead.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
+   * @param using An export preset such as a {@link PDFExportPreset}.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (void)[];
+  /**
+   * Exports the item to a file on a background thread, returning the running
+   * {@link BackgroundTask}.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
+   */
+  asynchronousExportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (BackgroundTask)[];
+  /**
+   * Selects the item in the active document window.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(existingSelection?: SelectionOptions): (void)[];
+  /**
+   * Places a file into the item as its content, returning the placed object(s).
+   * InDesign Server 21.6 takes `place(fileName, withProperties?)` instead.
+   * @param fileName Path to the asset to place.
+   * @param showingOptions If `true`, shows the format's import-options dialog. Defaults to `false`.
+   * @param withProperties Initial property values for the placed object(s).
+   * @returns The placed object(s); usually a single-element array.
+   */
+  place(fileName: FilePath, showingOptions?: boolean, withProperties?: object): (AnyPageItem[])[];
+}
+
+/** Sound's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface SoundServer<TParent = PageItemParent> {
+  /**
+   * Exports the item to a file.
+   * InDesign desktop 21.6 takes `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)` instead.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   * @param using An export preset such as a {@link PDFExportPreset}.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): void;
+  /**
+   * Places a file into the item as its content, returning the placed object(s).
+   * InDesign desktop 21.6 takes `place(fileName, showingOptions?, withProperties?)` instead.
+   * @param fileName Path to the asset to place.
+   * @param withProperties Initial property values for the placed object(s).
+   * @returns The placed object(s); usually a single-element array.
+   */
+  place(fileName: FilePath, withProperties?: object): AnyPageItem[];
+}
+
+/** Sound's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface SoundServerPlural<TParent = PageItemParent> {
+  /**
+   * Exports the item to a file.
+   * InDesign desktop 21.6 takes `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)` instead.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   * @param using An export preset such as a {@link PDFExportPreset}.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (void)[];
+  /**
+   * Places a file into the item as its content, returning the placed object(s).
+   * InDesign desktop 21.6 takes `place(fileName, showingOptions?, withProperties?)` instead.
+   * @param fileName Path to the asset to place.
+   * @param withProperties Initial property values for the placed object(s).
+   * @returns The placed object(s); usually a single-element array.
+   */
+  place(fileName: FilePath, withProperties?: object): (AnyPageItem[])[];
+}
+
+/** Sound's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface SoundPortable<TParent = PageItemParent> {
+  /**
+   * Exports the item to a file.
+   * Portable form: the editions' parameters differ after these (desktop `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)`, InDesign Server `exportFile(format, to, using?, versionComments?, forceSave?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath): void;
+  /**
+   * Places a file into the item as its content, returning the placed object(s).
+   * Portable form: the editions' parameters differ after these (desktop `place(fileName, showingOptions?, withProperties?)`, InDesign Server `place(fileName, withProperties?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param fileName Path to the asset to place.
+   * @returns The placed object(s); usually a single-element array.
+   */
+  place(fileName: FilePath): AnyPageItem[];
+}
+
+/** Sound's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface SoundPortablePlural<TParent = PageItemParent> {
+  /**
+   * Exports the item to a file.
+   * Portable form: the editions' parameters differ after these (desktop `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)`, InDesign Server `exportFile(format, to, using?, versionComments?, forceSave?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath): (void)[];
+  /**
+   * Places a file into the item as its content, returning the placed object(s).
+   * Portable form: the editions' parameters differ after these (desktop `place(fileName, showingOptions?, withProperties?)`, InDesign Server `place(fileName, withProperties?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param fileName Path to the asset to place.
+   * @returns The placed object(s); usually a single-element array.
+   */
+  place(fileName: FilePath): (AnyPageItem[])[];
 }

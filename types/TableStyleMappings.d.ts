@@ -17,7 +17,7 @@ import type { TableStyleMapping } from './TableStyleMapping';
  *
  * @collection TableStyleMapping
  */
-export interface TableStyleMappings extends BaseCollection<TableStyleMapping, TableStyleMapping, TableStyleMapping<'plural'>>, InDesignPlugins.TableStyleMappings {
+export interface TableStyleMappings extends BaseCollection<TableStyleMapping, TableStyleMapping, TableStyleMapping<'plural'>>, InDesignEdition.TableStyleMappings, InDesignPlugins.TableStyleMappings {
   /**
    * Adds a new table style mapping.
    *

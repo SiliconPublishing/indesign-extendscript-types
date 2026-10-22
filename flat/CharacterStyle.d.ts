@@ -34,6 +34,7 @@ import type { LanguageWithVendors } from './LanguageWithVendors';
 import type { MixedInk } from './MixedInk';
 import type { Swatch } from './Swatch';
 import type { Tint } from './Tint';
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -73,7 +74,7 @@ import type { OutlineJoin } from './Enums/OutlineJoin';
  * A character style holds only the attributes explicitly set on it: any attribute left
  * unset reads back as {@link NothingEnum.NOTHING} rather than resolving to a value.
  */
-export interface CharacterStyle extends InDesignPlugins.CharacterStyle<'single'> {
+export interface CharacterStyle extends InDesignEdition.CharacterStyle, InDesignPlugins.CharacterStyle<'single'> {
   /**
    * A collection of events
    */
@@ -645,12 +646,6 @@ export interface CharacterStyle extends InDesignPlugins.CharacterStyle<'single'>
   /** If `true`, emits CSS for this style when exporting to EPUB or HTML. */
   get emitCss(): boolean | NothingEnum.NOTHING;
   set emitCss(value: boolean | NothingEnum.NOTHING);
-  /**
-   * A unique identifier that can be assigned to the style to differentiate it
-   * from others. Internal use only.
-   */
-  get styleUniqueId(): string | NothingEnum.NOTHING;
-  set styleUniqueId(value: string | NothingEnum.NOTHING);
   /** If `true`, generates a CSS class attribute for the style on export. */
   get includeClass(): boolean | NothingEnum.NOTHING;
   set includeClass(value: boolean | NothingEnum.NOTHING);
@@ -670,19 +665,6 @@ export interface CharacterStyle extends InDesignPlugins.CharacterStyle<'single'>
   setNthDesignAxis(nthAxisIndex: number, nthAxisValue: number): void;
   /** Whether the design axis at `nthAxisIndex` is hidden in a variable font applied through this style. */
   isNthDesignAxisHidden(nthAxisIndex: number): boolean;
-  /**
-   * Renders a sample thumbnail image of `previewText` set in this style, and
-   * writes it to `to`.
-   * @param space The color space (RGB, CMYK, or LAB) `colorValue` is expressed in.
-   * @param colorValue The sample text color, as component values in `space`.
-   */
-  createThumbnailWithProperties(
-    previewText: string,
-    pointSize: number,
-    space: ColorSpace,
-    colorValue: number[],
-    to: FilePath,
-  ): boolean;
   /**
    * Deletes the style.
    * @param replacingWith The style applied to any text currently tagged with this style. Text is left unstyled if omitted.
@@ -707,7 +689,7 @@ export interface CharacterStyle extends InDesignPlugins.CharacterStyle<'single'>
  * A character style holds only the attributes explicitly set on it: any attribute left
  * unset reads back as {@link NothingEnum.NOTHING} rather than resolving to a value.
  */
-export interface CharacterStylePlural extends InDesignPlugins.CharacterStyle<'plural'> {
+export interface CharacterStylePlural extends InDesignEdition.CharacterStylePlural, InDesignPlugins.CharacterStyle<'plural'> {
   /**
    * A collection of events
    */
@@ -1279,12 +1261,6 @@ export interface CharacterStylePlural extends InDesignPlugins.CharacterStyle<'pl
   /** If `true`, emits CSS for this style when exporting to EPUB or HTML. */
   get emitCss(): (boolean | NothingEnum.NOTHING)[];
   set emitCss(value: boolean | NothingEnum.NOTHING);
-  /**
-   * A unique identifier that can be assigned to the style to differentiate it
-   * from others. Internal use only.
-   */
-  get styleUniqueId(): (string | NothingEnum.NOTHING)[];
-  set styleUniqueId(value: string | NothingEnum.NOTHING);
   /** If `true`, generates a CSS class attribute for the style on export. */
   get includeClass(): (boolean | NothingEnum.NOTHING)[];
   set includeClass(value: boolean | NothingEnum.NOTHING);
@@ -1305,19 +1281,6 @@ export interface CharacterStylePlural extends InDesignPlugins.CharacterStyle<'pl
   /** Whether the design axis at `nthAxisIndex` is hidden in a variable font applied through this style. */
   isNthDesignAxisHidden(nthAxisIndex: number): (boolean)[];
   /**
-   * Renders a sample thumbnail image of `previewText` set in this style, and
-   * writes it to `to`.
-   * @param space The color space (RGB, CMYK, or LAB) `colorValue` is expressed in.
-   * @param colorValue The sample text color, as component values in `space`.
-   */
-  createThumbnailWithProperties(
-    previewText: string,
-    pointSize: number,
-    space: ColorSpace,
-    colorValue: number[],
-    to: FilePath,
-  ): boolean;
-  /**
    * Deletes the style.
    * @param replacingWith The style applied to any text currently tagged with this style. Text is left unstyled if omitted.
    */
@@ -1329,4 +1292,75 @@ export interface CharacterStylePlural extends InDesignPlugins.CharacterStyle<'pl
    * @param reference The style, group, or root relative to which the style is moved. Required when `to` is {@link LocationOptions.BEFORE} or {@link LocationOptions.AFTER}.
    */
   move(to: LocationOptions, reference?: StyleMoveReference): (CharacterStyle)[];
+}
+/** CharacterStyle's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface CharacterStyleDesktop {
+  /**
+   * A unique identifier that can be assigned to the style to differentiate it
+   * from others. Internal use only.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  get styleUniqueId(): string | NothingEnum.NOTHING;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set styleUniqueId(value: string | NothingEnum.NOTHING);
+  /**
+   * Renders a sample thumbnail image of `previewText` set in this style, and
+   * writes it to `to`.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param space The color space (RGB, CMYK, or LAB) `colorValue` is expressed in.
+   * @param colorValue The sample text color, as component values in `space`.
+   */
+  createThumbnailWithProperties(
+    previewText: string,
+    pointSize: number,
+    space: ColorSpace,
+    colorValue: number[],
+    to: FilePath,
+  ): boolean;
+}
+
+/** CharacterStyle's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface CharacterStyleDesktopPlural {
+  /**
+   * A unique identifier that can be assigned to the style to differentiate it
+   * from others. Internal use only.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  get styleUniqueId(): (string | NothingEnum.NOTHING)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set styleUniqueId(value: string | NothingEnum.NOTHING);
+  /**
+   * Renders a sample thumbnail image of `previewText` set in this style, and
+   * writes it to `to`.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param space The color space (RGB, CMYK, or LAB) `colorValue` is expressed in.
+   * @param colorValue The sample text color, as component values in `space`.
+   */
+  createThumbnailWithProperties(
+    previewText: string,
+    pointSize: number,
+    space: ColorSpace,
+    colorValue: number[],
+    to: FilePath,
+  ): boolean;
+}
+
+/** CharacterStyle's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface CharacterStyleServer {
+}
+
+/** CharacterStyle's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface CharacterStyleServerPlural {
+}
+
+/** CharacterStyle's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface CharacterStylePortable {
+}
+
+/** CharacterStyle's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface CharacterStylePortablePlural {
 }

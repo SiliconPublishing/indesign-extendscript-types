@@ -29,7 +29,7 @@ export type AssignmentFrameColor = [number, number, number] | UIColors | Nothing
 export interface Assignment<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document, M>,
     IndexedDOMObject<Document, M>,
-    NamableDOMObject<Document, M>, InDesignPlugins.Assignment<M> {
+    NamableDOMObject<Document, M>, InDesignEdition.Assignment<M>, InDesignPlugins.Assignment<M> {
   /** Resolves the proxy into the individual {@link Assignment} objects it stands for. */
   getElements(): Assignment<'single'>[];
 

@@ -67,13 +67,17 @@ import type { WMFs } from './WMFs';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { SplineItemDesktop } from "./SplineItem";
+import type { SplineItemServer } from "./SplineItem";
+import type { SplineItemPortable } from "./SplineItem";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A regular polygon or star — any shape that is not a rectangle, ellipse, or
  * graphic line. New polygons are created using the current polygon preferences
  * (side count and star inset).
  */
-export interface Polygon<TParent = PageItemParent, M extends Mode = 'single'> extends SplineItem<TParent, Polygon, M>, InDesignPlugins.Polygon<M> {
+export interface Polygon<TParent = PageItemParent, M extends Mode = 'single'> extends SplineItem<TParent, Polygon, M>, InDesignEdition.Polygon<TParent, M>, InDesignPlugins.Polygon<M> {
   /** Resolves the proxy into the individual {@link Polygon} objects it stands for. */
   getElements(): Polygon<TParent, 'single'>[];
 
@@ -90,3 +94,11 @@ export interface Polygon<TParent = PageItemParent, M extends Mode = 'single'> ex
   /** Removes the frame's fitting options, resetting them to the initial (no auto-fit) state. */
   clearFrameFittingOptions(): Read<M, void>;
 }
+/** Polygon's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface PolygonDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, SplineItemDesktop<TParent, Polygon, M> {}
+
+/** Polygon's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface PolygonServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, SplineItemServer<TParent, Polygon, M> {}
+
+/** Polygon's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface PolygonPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, SplineItemPortable<TParent, Polygon, M> {}

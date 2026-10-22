@@ -37,6 +37,8 @@ import type { DimensionAttributes } from './Enums/DimensionAttributes';
 import type { PositionAttributes } from './Enums/PositionAttributes';
 import type { ObjectStyles } from './ObjectStyles';
 import type { FlexObject } from './FlexObject';
+import type { EditionPart } from "./_base/Editions";
+import type { NamedGrid } from "./NamedGrid";
 
 /**
  * A named object style definition, held in a document's or the application's {@link ObjectStyles} collection (optionally nested inside an {@link ObjectStyleGroup}).
@@ -52,7 +54,7 @@ import type { FlexObject } from './FlexObject';
 export interface ObjectStyle<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document | Application | ObjectStyleGroup, M>,
     IndexedDOMObject<Document | Application | ObjectStyleGroup, M>,
-    GraphicAttributesBase<M>, InDesignPlugins.ObjectStyle<M>{
+    GraphicAttributesBase<M>, InDesignEdition.ObjectStyle<M>, InDesignPlugins.ObjectStyle<M>{
   /** Resolves the proxy into the individual {@link ObjectStyle} objects it stands for. */
   getElements(): ObjectStyle<'single'>[];
 
@@ -272,3 +274,19 @@ export interface ObjectStyle<M extends Mode = 'single'>
    */
   remove(replacingWith?: ObjectStyle | string): Read<M, void>;
 }
+/** ObjectStyle's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ObjectStyleDesktop<M extends Mode = 'single'> extends EditionPart {}
+
+/** ObjectStyle's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ObjectStyleServer<M extends Mode = 'single'> extends EditionPart {
+  /**
+   * The named grid in use.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get appliedNamedGrid(): Read<M, NamedGrid | null>;
+  set appliedNamedGrid(value: NamedGrid);
+}
+
+/** ObjectStyle's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ObjectStylePortable<M extends Mode = 'single'> extends EditionPart {}

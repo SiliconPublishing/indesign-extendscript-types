@@ -10,6 +10,7 @@ import type { Event } from './Event';
 import type { Document } from './Document';
 import type { DocumentPrintUiOptions } from './Enums/DocumentPrintUiOptions';
 import type { LayoutWindow } from './LayoutWindow';
+import type { EditionPart } from "./_base/Editions";
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
 import type { EventString } from './_base/DomObjects';
@@ -18,7 +19,7 @@ import type { EventPhases } from './Enums/EventPhases';
 /**
  * An event dispatched before or after a document is printed.
  */
-export interface PrintEvent extends InDesignPlugins.PrintEvent<'single'> {
+export interface PrintEvent extends InDesignEdition.PrintEvent, InDesignPlugins.PrintEvent<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -92,15 +93,12 @@ export interface PrintEvent extends InDesignPlugins.PrintEvent<'single'> {
   /** Resolves the proxy into the individual {@link PrintEvent} objects it stands for. */
   getElements(): PrintEvent[];
   readonly parent: Document;
-  /** How much of the print dialog is suppressed — see {@link DocumentPrintUiOptions}. */
-  get documentPrintUiOption(): DocumentPrintUiOptions | DocumentPrintUiOptions[];
-  set documentPrintUiOption(value: DocumentPrintUiOptions | DocumentPrintUiOptions[]);
 }
 
 /**
  * An event dispatched before or after a document is printed.
  */
-export interface PrintEventPlural extends InDesignPlugins.PrintEvent<'plural'> {
+export interface PrintEventPlural extends InDesignEdition.PrintEventPlural, InDesignPlugins.PrintEvent<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -174,7 +172,41 @@ export interface PrintEventPlural extends InDesignPlugins.PrintEvent<'plural'> {
   /** Resolves the proxy into the individual {@link PrintEvent} objects it stands for. */
   getElements(): PrintEvent[];
   readonly parent: (Document)[];
-  /** How much of the print dialog is suppressed — see {@link DocumentPrintUiOptions}. */
-  get documentPrintUiOption(): (DocumentPrintUiOptions | DocumentPrintUiOptions[])[];
+}
+/** PrintEvent's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface PrintEventDesktop {
+  /** How much of the print dialog is suppressed — see {@link DocumentPrintUiOptions}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get documentPrintUiOption(): DocumentPrintUiOptions | DocumentPrintUiOptions[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
   set documentPrintUiOption(value: DocumentPrintUiOptions | DocumentPrintUiOptions[]);
+}
+
+/** PrintEvent's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface PrintEventDesktopPlural {
+  /** How much of the print dialog is suppressed — see {@link DocumentPrintUiOptions}.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get documentPrintUiOption(): (DocumentPrintUiOptions | DocumentPrintUiOptions[])[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set documentPrintUiOption(value: DocumentPrintUiOptions | DocumentPrintUiOptions[]);
+}
+
+/** PrintEvent's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface PrintEventServer {
+}
+
+/** PrintEvent's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface PrintEventServerPlural {
+}
+
+/** PrintEvent's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface PrintEventPortable {
+}
+
+/** PrintEvent's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface PrintEventPortablePlural {
 }

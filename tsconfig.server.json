@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "files": [
+    "lib/global.d.ts",
+    "flat/editions/server.d.ts"
+  ],
+  "include": [
+    "test/typecheck/server/*.ts"
+  ]
+}

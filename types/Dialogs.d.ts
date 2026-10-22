@@ -23,7 +23,7 @@ export interface Dialogs
   extends
     BaseCollection<Dialog, Dialog, Dialog<'plural'>>,
     IdCollection<Dialog>,
-    NamedCollection<Dialog>, InDesignPlugins.Dialogs {
+    NamedCollection<Dialog>, InDesignEdition.Dialogs, InDesignPlugins.Dialogs {
   /**
    * Creates a new dialog.
    * @param withProperties Initial values for properties of the new {@link Dialog}.

@@ -14,7 +14,7 @@ import type { MeasurementUnits } from './Enums/MeasurementUnits';
  * An editable dropdown for measurement values, interpreted internally in
  * points and converted to {@link editUnits} for display when the dialog opens.
  */
-export interface MeasurementCombobox<M extends Mode = 'single'> extends Widget<M>, NumericComboboxSurface<M>, InDesignPlugins.MeasurementCombobox<M>{
+export interface MeasurementCombobox<M extends Mode = 'single'> extends Widget<M>, NumericComboboxSurface<M>, InDesignEdition.MeasurementCombobox<M>, InDesignPlugins.MeasurementCombobox<M>{
   /** Resolves the proxy into the individual {@link MeasurementCombobox} objects it stands for. */
   getElements(): MeasurementCombobox<'single'>[];
 

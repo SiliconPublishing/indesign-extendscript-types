@@ -39,12 +39,16 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { MediaItemDesktop } from "./MediaItem";
+import type { MediaItemServer } from "./MediaItem";
+import type { MediaItemPortable } from "./MediaItem";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A placed movie clip (legacy SWF/PDF interactive media). See {@link MediaItem}
  * for the shared media-item surface.
  */
-export interface Movie<TParent = PageItemParent, M extends Mode = 'single'> extends MediaItem<TParent, M>, InDesignPlugins.Movie<M> {
+export interface Movie<TParent = PageItemParent, M extends Mode = 'single'> extends MediaItem<TParent, M>, InDesignEdition.Movie<TParent, M>, InDesignPlugins.Movie<M> {
   /** Resolves the proxy into the individual {@link Movie} objects it stands for. */
   getElements(): Movie<TParent, 'single'>[];
 
@@ -137,3 +141,11 @@ export interface Movie<TParent = PageItemParent, M extends Mode = 'single'> exte
   /** Sends the movie back one level within its layer. */
   sendBackward(): Read<M, void>;
 }
+/** Movie's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface MovieDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, MediaItemDesktop<TParent, M> {}
+
+/** Movie's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface MovieServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, MediaItemServer<TParent, M> {}
+
+/** Movie's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface MoviePortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, MediaItemPortable<TParent, M> {}

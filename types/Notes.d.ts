@@ -27,5 +27,5 @@ export interface Notes
     BaseCollection<Note, Note, Note<'plural'>>,
     IdCollection<Note>,
     NamedCollection<Note>,
-    AddableTextElementCollection<Note, Note | InsertionPoint>, InDesignPlugins.Notes {
+    AddableTextElementCollection<Note, Note | InsertionPoint>, InDesignEdition.Notes, InDesignPlugins.Notes {
 }

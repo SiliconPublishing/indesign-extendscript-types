@@ -14,7 +14,7 @@ import type { BehaviorEvents } from './Enums/BehaviorEvents';
 /**
  * A behavior that jumps to the previous view in the navigation history.
  */
-export interface GotoPreviousViewBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignPlugins.GotoPreviousViewBehavior<M>{
+export interface GotoPreviousViewBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignEdition.GotoPreviousViewBehavior<M>, InDesignPlugins.GotoPreviousViewBehavior<M>{
   /** Resolves the proxy into the individual {@link GotoPreviousViewBehavior} objects it stands for. */
   getElements(): GotoPreviousViewBehavior<'single'>[];
 

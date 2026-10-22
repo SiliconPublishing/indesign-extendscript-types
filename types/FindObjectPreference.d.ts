@@ -50,12 +50,15 @@ import type { UIColors } from './Enums/UIColors';
 import type { VerticalJustification } from './Enums/VerticalJustification';
 import type { VerticallyRelativeTo } from './Enums/VerticallyRelativeTo';
 import type { ObjectStyle } from './ObjectStyle';
+import type { EditionPart } from "./_base/Editions";
+import type { FrameTypes } from "./Enums/FrameTypes";
+import type { StoryHorizontalOrVertical } from "./Enums/StoryHorizontalOrVertical";
 
 /**
  * The object criteria a find/change object operation matches against, set via
  * {@link Application.findObjectPreferences} and used by {@link Application.findObject}.
  */
-export interface FindObjectPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.FindObjectPreference<M> {
+export interface FindObjectPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.FindObjectPreference<M>, InDesignPlugins.FindObjectPreference<M> {
   /** Resolves the proxy into the individual {@link FindObjectPreference} objects it stands for. */
   getElements(): FindObjectPreference<'single'>[];
 
@@ -526,3 +529,27 @@ export interface FindObjectPreference<M extends Mode = 'single'> extends EventTa
   /** Provides the actual text for the object. */
   actualText(): Read<M, string>;
 }
+/** FindObjectPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface FindObjectPreferenceDesktop<M extends Mode = 'single'> extends EditionPart {}
+
+/** FindObjectPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface FindObjectPreferenceServer<M extends Mode = 'single'> extends EditionPart {
+  /**
+   * The type of text frame. Can return: FrameTypes enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get frameType(): Read<M, FrameTypes | NothingEnum>;
+  set frameType(value: FrameTypes | NothingEnum);
+
+  /**
+   * The orientation of the text in the story. Can return: StoryHorizontalOrVertical enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get storyOrientation(): Read<M, StoryHorizontalOrVertical | NothingEnum>;
+  set storyOrientation(value: StoryHorizontalOrVertical | NothingEnum);
+}
+
+/** FindObjectPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface FindObjectPreferencePortable<M extends Mode = 'single'> extends EditionPart {}

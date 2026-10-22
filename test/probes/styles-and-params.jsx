@@ -41,7 +41,7 @@ function main() {
         doc.colors.add({ name: 'Spot', model: ColorModel.SPOT, space: ColorSpace.CMYK, colorValue: [0, 100, 0, 0] });
         return doc.mixedInkGroups.add([doc.inks.item(0), doc.inks.itemByName('Spot')]).constructor.name;
     }, 'MixedInkGroup');
-    probe('useApplicationFrame is writable', function () {
+    desktopProbe('useApplicationFrame is writable', function () {
         var v = app.generalPreferences.useApplicationFrame;
         app.generalPreferences.useApplicationFrame = v;
         return 'ok';

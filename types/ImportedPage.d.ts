@@ -37,12 +37,16 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { GraphicDesktop } from "./Graphic";
+import type { GraphicServer } from "./Graphic";
+import type { GraphicPortable } from "./Graphic";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A placed page imported from a PDF or another InDesign document. See
  * {@link Graphic} for the shared placed-graphic surface.
  */
-export interface ImportedPage<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignPlugins.ImportedPage<M> {
+export interface ImportedPage<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignEdition.ImportedPage<TParent, M>, InDesignPlugins.ImportedPage<M> {
   /** Resolves the proxy into the individual {@link ImportedPage} objects it stands for. */
   getElements(): ImportedPage<TParent, 'single'>[];
 
@@ -61,3 +65,11 @@ export interface ImportedPage<TParent = PageItemParent, M extends Mode = 'single
   /** The placed page's number, crop, and transparency settings. */
   readonly pdfAttributes: Read<M, PDFAttribute>;
 }
+/** ImportedPage's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ImportedPageDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicDesktop<TParent, M> {}
+
+/** ImportedPage's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ImportedPageServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicServer<TParent, M> {}
+
+/** ImportedPage's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ImportedPagePortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicPortable<TParent, M> {}

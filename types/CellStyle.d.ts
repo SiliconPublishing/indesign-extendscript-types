@@ -18,6 +18,7 @@ import type { CellStyles } from './CellStyles';
 import type { FirstBaseline } from './Enums/FirstBaseline';
 import type { NothingEnum } from './Enums/NothingEnum';
 import type { ParagraphStyle } from './ParagraphStyle';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A named cell style definition, held in a document's or the application's {@link CellStyles} collection (optionally nested inside a {@link CellStyleGroup}).
@@ -29,7 +30,7 @@ import type { ParagraphStyle } from './ParagraphStyle';
 export interface CellStyle<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document | Application | CellStyleGroup, M>,
     IndexedDOMObject<Document | Application | CellStyleGroup, M>,
-    CellStyleAttributes<M>, InDesignPlugins.CellStyle<M>{
+    CellStyleAttributes<M>, InDesignEdition.CellStyle<M>, InDesignPlugins.CellStyle<M>{
   /** Resolves the proxy into the individual {@link CellStyle} objects it stands for. */
   getElements(): CellStyle<'single'>[];
 
@@ -59,3 +60,19 @@ export interface CellStyle<M extends Mode = 'single'>
    */
   move(to: LocationOptions, reference?: StyleMoveReference): Read<M, CellStyle>;
 }
+/** CellStyle's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface CellStyleDesktop<M extends Mode = 'single'> extends EditionPart {}
+
+/** CellStyle's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface CellStyleServer<M extends Mode = 'single'> extends EditionPart {
+  /**
+   * Whether the direction of the text in a cell runs against the story direction. Can return: Boolean or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get rotationRunsAgainstStory(): Read<M, boolean | NothingEnum>;
+  set rotationRunsAgainstStory(value: boolean | NothingEnum);
+}
+
+/** CellStyle's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface CellStylePortable<M extends Mode = 'single'> extends EditionPart {}

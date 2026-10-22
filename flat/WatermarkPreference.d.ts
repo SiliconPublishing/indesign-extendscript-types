@@ -27,7 +27,7 @@ import type { FilePath } from './_base/Types';
  * The watermark drawn over a document's pages — its text, font, colour, opacity,
  * rotation, and where it sits on the page.
  */
-export interface WatermarkPreference extends InDesignPlugins.WatermarkPreference<'single'> {
+export interface WatermarkPreference extends InDesignEdition.WatermarkPreference, InDesignPlugins.WatermarkPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -157,7 +157,7 @@ export interface WatermarkPreference extends InDesignPlugins.WatermarkPreference
  * The watermark drawn over a document's pages — its text, font, colour, opacity,
  * rotation, and where it sits on the page.
  */
-export interface WatermarkPreferencePlural extends InDesignPlugins.WatermarkPreference<'plural'> {
+export interface WatermarkPreferencePlural extends InDesignEdition.WatermarkPreferencePlural, InDesignPlugins.WatermarkPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

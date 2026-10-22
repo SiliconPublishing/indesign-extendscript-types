@@ -21,7 +21,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection StrokeStyle
  */
-export interface StrokeStyles extends InDesignPlugins.StrokeStyles {
+export interface StrokeStyles extends InDesignEdition.StrokeStyles, InDesignPlugins.StrokeStyles {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

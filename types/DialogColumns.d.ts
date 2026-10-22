@@ -17,7 +17,7 @@ import type { Dialog } from './Dialog';
  * @collection DialogColumn
  */
 export interface DialogColumns
-  extends BaseCollection<DialogColumn, DialogColumn, DialogColumn<'plural'>>, IdCollection<DialogColumn>, InDesignPlugins.DialogColumns {
+  extends BaseCollection<DialogColumn, DialogColumn, DialogColumn<'plural'>>, IdCollection<DialogColumn>, InDesignEdition.DialogColumns, InDesignPlugins.DialogColumns {
   /**
    * Creates and adds a new dialog column to the layout.
    * @param withProperties Initial values for properties of the new column.

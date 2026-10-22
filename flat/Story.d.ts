@@ -92,6 +92,10 @@ import type { TabStop } from './TabStop';
 import type { Tables } from './Tables';
 import type { TextVariableInstances } from './TextVariableInstances';
 import type { Tint } from './Tint';
+import type { ParagraphFormatAttributesDesktop } from "./_base/TextAttributes";
+import type { ParagraphFormatAttributesServer } from "./_base/TextAttributes";
+import type { ParagraphFormatAttributesPortable } from "./_base/TextAttributes";
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -176,7 +180,7 @@ import type { OverrideType } from './Enums/OverrideType';
  * {@link lockState}, and the settings governing a linked or InCopy-managed
  * story.
  */
-export interface Story extends InDesignPlugins.Story<'single'> {
+export interface Story extends InDesignEdition.Story, InDesignPlugins.Story<'single'> {
   /**
    * A collection of events
    */
@@ -856,9 +860,6 @@ export interface Story extends InDesignPlugins.Story<'single'> {
   /** Paragraph kashida width. 0 is none, 1 is short, 2 is medium, 3 is long */
   get paragraphKashidaWidth(): number;
   set paragraphKashidaWidth(value: number | never);
-  /** If true, aligns the baseline of the text to the baseline grid. */
-  get alignToBaseline(): boolean;
-  set alignToBaseline(value: boolean | never);
   /** First-line indent, relative to {@link leftIndent}. Negative values hang. */
   get firstLineIndent(): number;
   set firstLineIndent(value: MeasurementValue | never);
@@ -1508,22 +1509,6 @@ export interface Story extends InDesignPlugins.Story<'single'> {
    * @param reference Required when `to` is {@link LocationOptions.BEFORE} or {@link LocationOptions.AFTER}.
    */
   move(to: LocationOptions, reference?: TextDuplicateReference): Text;
-  /** Opens the story in a {@link StoryWindow} story-editor window. */
-  storyEdit(): StoryWindow;
-  /**
-   * Exports the story to a file.
-   * @param format An {@link ExportFormat} or a matching file-type extension string.
-   * @param to Destination path.
-   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
-   * @param using An export preset such as a {@link PDFExportPreset}.
-   */
-  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): void;
-  /**
-   * Exports the story to a file on a background thread, returning the running {@link BackgroundTask}.
-   * @param format An {@link ExportFormat} or a matching file-type extension string.
-   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
-   */
-  asynchronousExportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): BackgroundTask;
   /**
    * Sets the Nth design axis of a variable font applied within the story.
    * @param nthAxisIndex Index of the design axis.
@@ -1545,7 +1530,7 @@ export interface Story extends InDesignPlugins.Story<'single'> {
  * {@link lockState}, and the settings governing a linked or InCopy-managed
  * story.
  */
-export interface StoryPlural extends InDesignPlugins.Story<'plural'> {
+export interface StoryPlural extends InDesignEdition.StoryPlural, InDesignPlugins.Story<'plural'> {
   /**
    * A collection of events
    */
@@ -2225,9 +2210,6 @@ export interface StoryPlural extends InDesignPlugins.Story<'plural'> {
   /** Paragraph kashida width. 0 is none, 1 is short, 2 is medium, 3 is long */
   get paragraphKashidaWidth(): (number)[];
   set paragraphKashidaWidth(value: number | never);
-  /** If true, aligns the baseline of the text to the baseline grid. */
-  get alignToBaseline(): (boolean)[];
-  set alignToBaseline(value: boolean | never);
   /** First-line indent, relative to {@link leftIndent}. Negative values hang. */
   get firstLineIndent(): (number)[];
   set firstLineIndent(value: MeasurementValue | never);
@@ -2877,22 +2859,6 @@ export interface StoryPlural extends InDesignPlugins.Story<'plural'> {
    * @param reference Required when `to` is {@link LocationOptions.BEFORE} or {@link LocationOptions.AFTER}.
    */
   move(to: LocationOptions, reference?: TextDuplicateReference): (Text)[];
-  /** Opens the story in a {@link StoryWindow} story-editor window. */
-  storyEdit(): (StoryWindow)[];
-  /**
-   * Exports the story to a file.
-   * @param format An {@link ExportFormat} or a matching file-type extension string.
-   * @param to Destination path.
-   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
-   * @param using An export preset such as a {@link PDFExportPreset}.
-   */
-  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (void)[];
-  /**
-   * Exports the story to a file on a background thread, returning the running {@link BackgroundTask}.
-   * @param format An {@link ExportFormat} or a matching file-type extension string.
-   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
-   */
-  asynchronousExportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (BackgroundTask)[];
   /**
    * Sets the Nth design axis of a variable font applied within the story.
    * @param nthAxisIndex Index of the design axis.
@@ -2901,4 +2867,109 @@ export interface StoryPlural extends InDesignPlugins.Story<'plural'> {
   setNthDesignAxis(nthAxisIndex: number, nthAxisValue: number): (void)[];
   /** Whether the Nth design axis of the story's variable font is hidden. @param nthAxisIndex Index of the design axis. */
   isNthDesignAxisHidden(nthAxisIndex: number): (boolean)[];
+}
+/** Story's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface StoryDesktop {
+  /** If true, aligns the baseline of the text to the baseline grid.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get alignToBaseline(): boolean;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set alignToBaseline(value: boolean | never);
+  /** Opens the story in a {@link StoryWindow} story-editor window.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  storyEdit(): StoryWindow;
+  /**
+   * Exports the story to a file.
+   * InDesign Server 21.6 takes `exportFile(format, to, using?, versionComments?, forceSave?)` instead.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
+   * @param using An export preset such as a {@link PDFExportPreset}.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): void;
+  /**
+   * Exports the story to a file on a background thread, returning the running {@link BackgroundTask}.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
+   */
+  asynchronousExportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): BackgroundTask;
+}
+
+/** Story's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface StoryDesktopPlural {
+  /** If true, aligns the baseline of the text to the baseline grid.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get alignToBaseline(): (boolean)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set alignToBaseline(value: boolean | never);
+  /** Opens the story in a {@link StoryWindow} story-editor window.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  storyEdit(): (StoryWindow)[];
+  /**
+   * Exports the story to a file.
+   * InDesign Server 21.6 takes `exportFile(format, to, using?, versionComments?, forceSave?)` instead.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
+   * @param using An export preset such as a {@link PDFExportPreset}.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (void)[];
+  /**
+   * Exports the story to a file on a background thread, returning the running {@link BackgroundTask}.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
+   */
+  asynchronousExportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (BackgroundTask)[];
+}
+
+/** Story's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface StoryServer {
+  /**
+   * Exports the story to a file.
+   * InDesign desktop 21.6 takes `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)` instead.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   * @param using An export preset such as a {@link PDFExportPreset}.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): void;
+}
+
+/** Story's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface StoryServerPlural {
+  /**
+   * Exports the story to a file.
+   * InDesign desktop 21.6 takes `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)` instead.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   * @param using An export preset such as a {@link PDFExportPreset}.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (void)[];
+}
+
+/** Story's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface StoryPortable {
+  /**
+   * Exports the story to a file.
+   * Portable form: the editions' parameters differ after these (desktop `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)`, InDesign Server `exportFile(format, to, using?, versionComments?, forceSave?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath): void;
+}
+
+/** Story's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface StoryPortablePlural {
+  /**
+   * Exports the story to a file.
+   * Portable form: the editions' parameters differ after these (desktop `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)`, InDesign Server `exportFile(format, to, using?, versionComments?, forceSave?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath): (void)[];
 }

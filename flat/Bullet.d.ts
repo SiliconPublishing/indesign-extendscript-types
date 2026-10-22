@@ -43,7 +43,7 @@ import type { FilePath } from './_base/Types';
 /**
  * The bullet character used by a paragraph's bulleted list.
  */
-export interface Bullet extends InDesignPlugins.Bullet<'single'> {
+export interface Bullet extends InDesignEdition.Bullet, InDesignPlugins.Bullet<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -142,7 +142,7 @@ export interface Bullet extends InDesignPlugins.Bullet<'single'> {
 /**
  * The bullet character used by a paragraph's bulleted list.
  */
-export interface BulletPlural extends InDesignPlugins.Bullet<'plural'> {
+export interface BulletPlural extends InDesignEdition.BulletPlural, InDesignPlugins.Bullet<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

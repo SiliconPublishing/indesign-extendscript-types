@@ -24,7 +24,7 @@ export interface NumberingLists
   extends
     BaseCollection<NumberingList, NumberingList, NumberingList<'plural'>>,
     IdCollection<NumberingList>,
-    NamedCollection<NumberingList>, InDesignPlugins.NumberingLists {
+    NamedCollection<NumberingList>, InDesignEdition.NumberingLists, InDesignPlugins.NumberingLists {
   /**
    * Creates a new numbering list from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link NumberingList}. Must include `name`.

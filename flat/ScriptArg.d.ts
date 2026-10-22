@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
  * The command-line/host-script argument store — named string values passed
  * into InDesign at launch and readable from within a script.
  */
-export interface ScriptArg extends InDesignPlugins.ScriptArg<'single'> {
+export interface ScriptArg extends InDesignEdition.ScriptArg, InDesignPlugins.ScriptArg<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -127,7 +127,7 @@ export interface ScriptArg extends InDesignPlugins.ScriptArg<'single'> {
  * The command-line/host-script argument store — named string values passed
  * into InDesign at launch and readable from within a script.
  */
-export interface ScriptArgPlural extends InDesignPlugins.ScriptArg<'plural'> {
+export interface ScriptArgPlural extends InDesignEdition.ScriptArgPlural, InDesignPlugins.ScriptArg<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -21,7 +21,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * Call {@link remove} on it to stop listening; that is more reliable than matching the event
  * name, handler and capture flag through `removeEventListener`.
  */
-export interface EventListener extends InDesignPlugins.EventListener<'single'> {
+export interface EventListener extends InDesignEdition.EventListener, InDesignPlugins.EventListener<'single'> {
   /**
    * The index of the object within its containing parent.
    */
@@ -103,7 +103,7 @@ export interface EventListener extends InDesignPlugins.EventListener<'single'> {
  * Call {@link remove} on it to stop listening; that is more reliable than matching the event
  * name, handler and capture flag through `removeEventListener`.
  */
-export interface EventListenerPlural extends InDesignPlugins.EventListener<'plural'> {
+export interface EventListenerPlural extends InDesignEdition.EventListenerPlural, InDesignPlugins.EventListener<'plural'> {
   /**
    * The index of the object within its containing parent.
    */

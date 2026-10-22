@@ -28,11 +28,11 @@ function main() {
     }, 'File');
     probe('app.open() takes a path string', function () {
         closeFixtures();
-        __doc = app.open(dir + '/a.indd', false);
+        __doc = openHidden(dir + '/a.indd');
         return __doc.name;
     }, 'a.indd');
     probe('app.open() of an array returns an array', function () {
-        var r = app.open([new File(dir + '/b.indd')], false);
+        var r = openHidden([new File(dir + '/b.indd')]);
         var t = (r instanceof Array) + '/' + r.length;
         r[0].close(SaveOptions.NO);
         return t;

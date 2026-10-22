@@ -13,7 +13,7 @@ import type { NumericComboboxSurface } from './_base/WidgetMixins';
  * An editable dropdown for whole-number values (typed entries round to the
  * nearest whole number).
  */
-export interface IntegerCombobox<M extends Mode = 'single'> extends Widget<M>, NumericComboboxSurface<M>, InDesignPlugins.IntegerCombobox<M>{
+export interface IntegerCombobox<M extends Mode = 'single'> extends Widget<M>, NumericComboboxSurface<M>, InDesignEdition.IntegerCombobox<M>, InDesignPlugins.IntegerCombobox<M>{
   /** Resolves the proxy into the individual {@link IntegerCombobox} objects it stands for. */
   getElements(): IntegerCombobox<'single'>[];
 }

@@ -55,6 +55,7 @@ import type { ColumnTypes } from './Enums/ColumnTypes';
 import type { AnyGraphic, AnyPageItem } from './_base/Unions';
 import type { FirstBaseline } from './Enums/FirstBaseline';
 import type { RowTypes } from './Enums/RowTypes';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A single cell of a {@link Table}, the fundamental text- or graphic-bearing
@@ -71,7 +72,7 @@ export interface Cell<M extends Mode = 'single'>
     IndexedDOMObject<Table, M>,
     TableGeometry<M>,
     TableCellAttributes<M>,
-    TextContainerContent<Cell, M>, InDesignPlugins.Cell<M> {
+    TextContainerContent<Cell, M>, InDesignEdition.Cell<M>, InDesignPlugins.Cell<M> {
   /** Resolves the proxy into the individual {@link Cell} objects it stands for. */
   getElements(): Cell<'single'>[];
 
@@ -320,10 +321,19 @@ export interface Cell<M extends Mode = 'single'>
    * @param clearingOverridesThroughRootCellStyle If `true`, clears every override regardless of whether it is also defined in the underlying cell style. Defaults to `false`.
    */
   clearCellStyleOverrides(clearingOverridesThroughRootCellStyle?: boolean): Read<M, void>;
-
+}
+/** Cell's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface CellDesktop<M extends Mode = 'single'> extends EditionPart {
   /**
    * Selects the cell in the active document window.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
    */
   select(existingSelection?: SelectionOptions): Read<M, void>;
 }
+
+/** Cell's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface CellServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** Cell's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface CellPortable<M extends Mode = 'single'> extends EditionPart {}

@@ -8,6 +8,7 @@
 import type { Mode, Read } from './_base/Types';
 import type { LabelableEventDOMObject, IndexedDOMObject, ReadonlyNamedDOMObject } from './_base/DomObjects';
 import type { Document } from './Document';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * The language on which hyphenation rules and spell checking are based, as applied to a text
@@ -16,16 +17,13 @@ import type { Document } from './Document';
 export interface Language<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document, M>,
     IndexedDOMObject<Document, M>,
-    ReadonlyNamedDOMObject<Document, M>, InDesignPlugins.Language<M> {
+    ReadonlyNamedDOMObject<Document, M>, InDesignEdition.Language<M>, InDesignPlugins.Language<M> {
   /** Resolves the proxy into the individual {@link Language} objects it stands for. */
   getElements(): Language<'single'>[];
 
 
   /** The unique numeric ID of the language within its document. */
   readonly id: Read<M, number>;
-  /** The untranslated (English) name of the language. */
-  readonly untranslatedName: Read<M, string>;
-
   /** The full name of the language's ICU locale, used by ICU-based text services. */
   readonly icuLocaleName: Read<M, string>;
 
@@ -45,3 +43,15 @@ export interface Language<M extends Mode = 'single'>
   get spellingVendor(): Read<M, string>;
   set spellingVendor(value: string);
 }
+/** Language's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface LanguageDesktop<M extends Mode = 'single'> extends EditionPart {
+  /** The untranslated (English) name of the language.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly untranslatedName: Read<M, string>;
+}
+
+/** Language's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface LanguageServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** Language's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface LanguagePortable<M extends Mode = 'single'> extends EditionPart {}

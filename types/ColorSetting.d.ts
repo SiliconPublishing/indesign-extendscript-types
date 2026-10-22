@@ -15,7 +15,7 @@ import type { DefaultRenderingIntent } from './Enums/DefaultRenderingIntent';
 /**
  * Color management settings.
  */
-export interface ColorSetting<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.ColorSetting<M> {
+export interface ColorSetting<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.ColorSetting<M>, InDesignPlugins.ColorSetting<M> {
   /** Resolves the proxy into the individual {@link ColorSetting} objects it stands for. */
   getElements(): ColorSetting<'single'>[];
 

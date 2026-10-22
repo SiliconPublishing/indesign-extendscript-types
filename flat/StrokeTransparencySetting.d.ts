@@ -36,7 +36,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Transparency settings for the stroke of the parent object.
  */
-export interface StrokeTransparencySetting extends InDesignPlugins.StrokeTransparencySetting<'single'> {
+export interface StrokeTransparencySetting extends InDesignEdition.StrokeTransparencySetting, InDesignPlugins.StrokeTransparencySetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -145,7 +145,7 @@ export interface StrokeTransparencySetting extends InDesignPlugins.StrokeTranspa
 /**
  * Transparency settings for the stroke of the parent object.
  */
-export interface StrokeTransparencySettingPlural extends InDesignPlugins.StrokeTransparencySetting<'plural'> {
+export interface StrokeTransparencySettingPlural extends InDesignEdition.StrokeTransparencySettingPlural, InDesignPlugins.StrokeTransparencySetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

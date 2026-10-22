@@ -15,7 +15,7 @@ import type { XmlStory } from './XmlStory';
 /**
  * The link options for a linked story.
  */
-export interface LinkedStoryOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application | Document | Story | XmlStory, M>, InDesignPlugins.LinkedStoryOption<M> {
+export interface LinkedStoryOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application | Document | Story | XmlStory, M>, InDesignEdition.LinkedStoryOption<M>, InDesignPlugins.LinkedStoryOption<M> {
   /** Resolves the proxy into the individual {@link LinkedStoryOption} objects it stands for. */
   getElements(): LinkedStoryOption<'single'>[];
 

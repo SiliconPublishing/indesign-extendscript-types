@@ -22,5 +22,5 @@ import type { Document } from './Document';
  * @collection Story
  */
 export interface Stories
-  extends BaseCollection<Story, Story, Story<'plural'>>, IdCollection<Story>, NamedCollection<Story>, InDesignPlugins.Stories {
+  extends BaseCollection<Story, Story, Story<'plural'>>, IdCollection<Story>, NamedCollection<Story>, InDesignEdition.Stories, InDesignPlugins.Stories {
 }

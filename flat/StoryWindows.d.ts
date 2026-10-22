@@ -17,7 +17,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection StoryWindow
  */
-export interface StoryWindows extends InDesignPlugins.StoryWindows {
+export interface StoryWindows extends InDesignEdition.StoryWindows, InDesignPlugins.StoryWindows {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

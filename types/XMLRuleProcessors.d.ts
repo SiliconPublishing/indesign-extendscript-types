@@ -24,7 +24,7 @@ export interface XMLRuleProcessors
   extends
     BaseCollection<XMLRuleProcessor, XMLRuleProcessor, XMLRuleProcessor<'plural'>>,
     IdCollection<XMLRuleProcessor>,
-    NamedCollection<XMLRuleProcessor>, InDesignPlugins.XMLRuleProcessors {
+    NamedCollection<XMLRuleProcessor>, InDesignEdition.XMLRuleProcessors, InDesignPlugins.XMLRuleProcessors {
   /**
    * Creates a new {@link XMLRuleProcessor} to evaluate the document's XML structure.
    *

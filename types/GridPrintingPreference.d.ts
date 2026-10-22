@@ -12,7 +12,7 @@ import type { Application } from './Application';
 /**
  * Grid printing and exporting preferences.
  */
-export interface GridPrintingPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.GridPrintingPreference<M> {
+export interface GridPrintingPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.GridPrintingPreference<M>, InDesignPlugins.GridPrintingPreference<M> {
   /** Resolves the proxy into the individual {@link GridPrintingPreference} objects it stands for. */
   getElements(): GridPrintingPreference<'single'>[];
 

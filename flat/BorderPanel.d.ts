@@ -42,7 +42,7 @@ import type { WidgetParent } from './_base/Parents';
 /**
  * A bordered panel that can hold any number and type of controls.
  */
-export interface BorderPanel extends InDesignPlugins.BorderPanel<'single'> {
+export interface BorderPanel extends InDesignEdition.BorderPanel, InDesignPlugins.BorderPanel<'single'> {
   /**
    * A collection of events
    */
@@ -179,7 +179,7 @@ export interface BorderPanel extends InDesignPlugins.BorderPanel<'single'> {
 /**
  * A bordered panel that can hold any number and type of controls.
  */
-export interface BorderPanelPlural extends InDesignPlugins.BorderPanel<'plural'> {
+export interface BorderPanelPlural extends InDesignEdition.BorderPanelPlural, InDesignPlugins.BorderPanel<'plural'> {
   /**
    * A collection of events
    */

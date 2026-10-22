@@ -16,7 +16,7 @@ import type { HorizontalOrVertical } from './Enums/HorizontalOrVertical';
 /**
  * A page's or spread's margin and column layout.
  */
-export interface MarginPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application | Document | Page, M>, InDesignPlugins.MarginPreference<M> {
+export interface MarginPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application | Document | Page, M>, InDesignEdition.MarginPreference<M>, InDesignPlugins.MarginPreference<M> {
   /** Resolves the proxy into the individual {@link MarginPreference} objects it stands for. */
   getElements(): MarginPreference<'single'>[];
 

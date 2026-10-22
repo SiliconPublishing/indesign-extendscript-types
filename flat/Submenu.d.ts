@@ -27,7 +27,7 @@ import type { MenuElementParent } from './_base/Parents';
  * A nested menu that can itself contain menu items, separators, and further
  * submenus.
  */
-export interface Submenu extends InDesignPlugins.Submenu<'single'> {
+export interface Submenu extends InDesignEdition.Submenu, InDesignPlugins.Submenu<'single'> {
   /**
    * A collection of events
    */
@@ -136,7 +136,7 @@ export interface Submenu extends InDesignPlugins.Submenu<'single'> {
  * A nested menu that can itself contain menu items, separators, and further
  * submenus.
  */
-export interface SubmenuPlural extends InDesignPlugins.Submenu<'plural'> {
+export interface SubmenuPlural extends InDesignEdition.SubmenuPlural, InDesignPlugins.Submenu<'plural'> {
   /**
    * A collection of events
    */

@@ -76,6 +76,10 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { PageItemDesktop } from "./PageItem";
+import type { PageItemServer } from "./PageItem";
+import type { PageItemPortable } from "./PageItem";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A Bezier-path page item — the shared base of the four drawable shapes
@@ -96,7 +100,7 @@ export interface SplineItem<
   extends PageItem<TParent, TChildParent, M>,
     ShapeContainer<TChildParent, M>,
     FormFieldContainer<TChildParent, M>,
-    EndnoteFrameContainer<TChildParent, M>, InDesignPlugins.SplineItem<M> {
+    EndnoteFrameContainer<TChildParent, M>, InDesignEdition.SplineItem<TParent, TChildParent, M>, InDesignPlugins.SplineItem<M> {
   /** Resolves the proxy into the individual {@link SplineItem}s it stands for. */
   getElements(): SplineItem<TParent, TChildParent, 'single'>[];
 
@@ -205,6 +209,14 @@ export interface SplineItem<
   /** Creates a new shape from the areas where this shape and others do *not* overlap. */
   excludeOverlapPath(withItems: PageItem | PageItem[]): Read<M, PageItem>;
 }
+/** SplineItem's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface SplineItemDesktop<TParent = PageItemParent, TChildParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemDesktop<TParent, TChildParent, M> {}
+
+/** SplineItem's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface SplineItemServer<TParent = PageItemParent, TChildParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemServer<TParent, TChildParent, M> {}
+
+/** SplineItem's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface SplineItemPortable<TParent = PageItemParent, TChildParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemPortable<TParent, TChildParent, M> {}
 
 /**
  * A shape InDesign reports as a plain {@link SplineItem} rather than as a rectangle, oval,
@@ -219,3 +231,11 @@ export interface PlainSplineItem<
   M extends Mode = 'single',
 > extends SplineItem<TParent, TChildParent, M> {
 }
+/** PlainSplineItem's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface PlainSplineItemDesktop<TParent = PageItemParent, TChildParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, SplineItemDesktop<TParent, TChildParent, M> {}
+
+/** PlainSplineItem's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface PlainSplineItemServer<TParent = PageItemParent, TChildParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, SplineItemServer<TParent, TChildParent, M> {}
+
+/** PlainSplineItem's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface PlainSplineItemPortable<TParent = PageItemParent, TChildParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, SplineItemPortable<TParent, TChildParent, M> {}

@@ -27,7 +27,7 @@ import type { PageItemAddReference } from './_base/Collections';
  *
  * @collection HtmlItem
  */
-export interface HtmlItems<TParent = PageItemParent> extends InDesignPlugins.HtmlItems {
+export interface HtmlItems<TParent = PageItemParent> extends InDesignEdition.HtmlItems<TParent>, InDesignPlugins.HtmlItems {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

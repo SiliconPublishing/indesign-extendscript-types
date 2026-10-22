@@ -65,12 +65,24 @@ import type { WMFs } from './WMFs';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { SplineItemDesktop } from "./SplineItem";
+import type { SplineItemServer } from "./SplineItem";
+import type { SplineItemPortable } from "./SplineItem";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A straight line defined by two endpoints. It cannot hold placed content, so
  * it has no frame-fitting options.
  */
-export interface GraphicLine<TParent = PageItemParent, M extends Mode = 'single'> extends SplineItem<TParent, GraphicLine, M>, InDesignPlugins.GraphicLine<M> {
+export interface GraphicLine<TParent = PageItemParent, M extends Mode = 'single'> extends SplineItem<TParent, GraphicLine, M>, InDesignEdition.GraphicLine<TParent, M>, InDesignPlugins.GraphicLine<M> {
   /** Resolves the proxy into the individual {@link GraphicLine} objects it stands for. */
   getElements(): GraphicLine<TParent, 'single'>[];
 }
+/** GraphicLine's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface GraphicLineDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, SplineItemDesktop<TParent, GraphicLine, M> {}
+
+/** GraphicLine's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface GraphicLineServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, SplineItemServer<TParent, GraphicLine, M> {}
+
+/** GraphicLine's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface GraphicLinePortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, SplineItemPortable<TParent, GraphicLine, M> {}

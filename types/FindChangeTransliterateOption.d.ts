@@ -14,7 +14,7 @@ import type { Application } from './Application';
  * {@link Application.changeTransliterate}, the transliteration find/change used to
  * convert between Japanese script forms.
  */
-export interface FindChangeTransliterateOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.FindChangeTransliterateOption<M> {
+export interface FindChangeTransliterateOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.FindChangeTransliterateOption<M>, InDesignPlugins.FindChangeTransliterateOption<M> {
   /** Resolves the proxy into the individual {@link FindChangeTransliterateOption} objects it stands for. */
   getElements(): FindChangeTransliterateOption<'single'>[];
 

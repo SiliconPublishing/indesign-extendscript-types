@@ -17,7 +17,7 @@ import type { Dialog } from './Dialog';
  * @collection PercentEditbox
  */
 export interface PercentEditboxes
-  extends BaseCollection<PercentEditbox, PercentEditbox, PercentEditbox<'plural'>>, IdCollection<PercentEditbox>, InDesignPlugins.PercentEditboxes {
+  extends BaseCollection<PercentEditbox, PercentEditbox, PercentEditbox<'plural'>>, IdCollection<PercentEditbox>, InDesignEdition.PercentEditboxes, InDesignPlugins.PercentEditboxes {
   /**
    * Creates and adds a new percentage editbox control to the dialog.
    * @param withProperties Initial values for properties of the new control.

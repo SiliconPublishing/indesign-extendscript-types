@@ -54,12 +54,23 @@ import type { WarichuAlignment } from './Enums/WarichuAlignment';
 import type { Language } from './Language';
 import type { LanguageWithVendors } from './LanguageWithVendors';
 import type { ParagraphStyle } from './ParagraphStyle';
+import type { EditionPart } from "./_base/Editions";
+import type { TextStrokeAlign } from "./Enums/TextStrokeAlign";
+import type { OutlineJoin } from "./Enums/OutlineJoin";
+import type { ParagraphDirectionOptions } from "./Enums/ParagraphDirectionOptions";
+import type { ParagraphJustificationOptions } from "./Enums/ParagraphJustificationOptions";
+import type { CharacterDirectionOptions } from "./Enums/CharacterDirectionOptions";
+import type { DigitsTypeOptions } from "./Enums/DigitsTypeOptions";
+import type { KashidasOptions } from "./Enums/KashidasOptions";
+import type { DiacriticPositionOptions } from "./Enums/DiacriticPositionOptions";
+import type { SpanColumnCountOptions } from "./Enums/SpanColumnCountOptions";
+import type { SpanColumnTypeOptions } from "./Enums/SpanColumnTypeOptions";
 
 /**
  * The character-type and formatting criteria a transliteration search matches against,
  * set via {@link Application.findTransliteratePreferences}.
  */
-export interface FindTransliteratePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.FindTransliteratePreference<M> {
+export interface FindTransliteratePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.FindTransliteratePreference<M>, InDesignPlugins.FindTransliteratePreference<M> {
   /** Resolves the proxy into the individual {@link FindTransliteratePreference} objects it stands for. */
   getElements(): FindTransliteratePreference<'single'>[];
 
@@ -848,3 +859,203 @@ export interface FindTransliteratePreference<M extends Mode = 'single'> extends 
    */
   isNthDesignAxisHidden(nthAxisIndex: number): Read<M, boolean>;
 }
+/** FindTransliteratePreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface FindTransliteratePreferenceDesktop<M extends Mode = 'single'> extends EditionPart {}
+
+/** FindTransliteratePreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface FindTransliteratePreferenceServer<M extends Mode = 'single'> extends EditionPart {
+  /**
+   * The limit of the ratio of stroke width to miter length before a miter (pointed) join becomes a bevel (squared-off) join. Can return: Real (0 - 1000) or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get miterLimit(): Read<M, number | NothingEnum>;
+  set miterLimit(value: number | NothingEnum);
+
+  /**
+   * The stroke alignment applied to the text. Can return: TextStrokeAlign enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get strokeAlignment(): Read<M, TextStrokeAlign | NothingEnum>;
+  set strokeAlignment(value: TextStrokeAlign | NothingEnum);
+
+  /**
+   * The stroke join type applied to the characters of the text. Can return: OutlineJoin enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get endJoin(): Read<M, OutlineJoin | NothingEnum>;
+  set endJoin(value: OutlineJoin | NothingEnum);
+
+  /**
+   * The conditions to search for or change to. Specify the "nothing" enum for "Any" or an empty list for "[Unconditional]". Can return: Array of Strings or NothingEnum enumerator. Can also accept: Array of Conditions.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get appliedConditions(): Read<M, any[] | NothingEnum>;
+  set appliedConditions(value: any[] | NothingEnum);
+
+  /**
+   * Paragraph direction. Can return: ParagraphDirectionOptions enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get paragraphDirection(): Read<M, ParagraphDirectionOptions | NothingEnum>;
+  set paragraphDirection(value: ParagraphDirectionOptions | NothingEnum);
+
+  /**
+   * Paragraph justification. Can return: ParagraphJustificationOptions enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get paragraphJustification(): Read<M, ParagraphJustificationOptions | NothingEnum>;
+  set paragraphJustification(value: ParagraphJustificationOptions | NothingEnum);
+
+  /**
+   * If true, use overlapping swash forms in OpenType fonts. Can return: Boolean or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get otfOverlapSwash(): Read<M, boolean | NothingEnum>;
+  set otfOverlapSwash(value: boolean | NothingEnum);
+
+  /**
+   * If true, use stylistic alternate forms in OpenType fonts. Can return: Boolean or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get otfStylisticAlternate(): Read<M, boolean | NothingEnum>;
+  set otfStylisticAlternate(value: boolean | NothingEnum);
+
+  /**
+   * If true, use alternate justification forms in OpenType fonts. Can return: Boolean or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get otfJustificationAlternate(): Read<M, boolean | NothingEnum>;
+  set otfJustificationAlternate(value: boolean | NothingEnum);
+
+  /**
+   * If true, use stretched alternate forms in OpenType fonts. Can return: Boolean or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get otfStretchedAlternate(): Read<M, boolean | NothingEnum>;
+  set otfStretchedAlternate(value: boolean | NothingEnum);
+
+  /**
+   * The direction of the character. Can return: CharacterDirectionOptions enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get characterDirection(): Read<M, CharacterDirectionOptions | NothingEnum>;
+  set characterDirection(value: CharacterDirectionOptions | NothingEnum);
+
+  /**
+   * The keyboard direction of the character. Can return: CharacterDirectionOptions enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get keyboardDirection(): Read<M, CharacterDirectionOptions | NothingEnum>;
+  set keyboardDirection(value: CharacterDirectionOptions | NothingEnum);
+
+  /**
+   * The digits type. Can return: DigitsTypeOptions enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get digitsType(): Read<M, DigitsTypeOptions | NothingEnum>;
+  set digitsType(value: DigitsTypeOptions | NothingEnum);
+
+  /**
+   * Use of Kashidas for justification. Can return: KashidasOptions enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get kashidas(): Read<M, KashidasOptions | NothingEnum>;
+  set kashidas(value: KashidasOptions | NothingEnum);
+
+  /**
+   * Position of diacriticical characters. Can return: DiacriticPositionOptions enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get diacriticPosition(): Read<M, DiacriticPositionOptions | NothingEnum>;
+  set diacriticPosition(value: DiacriticPositionOptions | NothingEnum);
+
+  /**
+   * The x (horizontal) offset for diacritic adjustment. Can return: Real or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get xOffsetDiacritic(): Read<M, number | NothingEnum>;
+  set xOffsetDiacritic(value: number | NothingEnum);
+
+  /**
+   * The y (vertical) offset for diacritic adjustment. Can return: Real or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get yOffsetDiacritic(): Read<M, number | NothingEnum>;
+  set yOffsetDiacritic(value: number | NothingEnum);
+
+  /**
+   * If the first line in the paragraph should be kept with the last line of previous paragraph. Can return: Boolean or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get keepWithPrevious(): Read<M, boolean | NothingEnum>;
+  set keepWithPrevious(value: boolean | NothingEnum);
+
+  /**
+   * The number of columns a paragraph spans or the number of split columns. Can return: Short Integer (1 - 40), SpanColumnCountOptions enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get spanSplitColumnCount(): Read<M, number | SpanColumnCountOptions | NothingEnum>;
+  set spanSplitColumnCount(value: number | SpanColumnCountOptions | NothingEnum);
+
+  /**
+   * Whether a paragraph should be a single column, span columns or split columns. Can return: SpanColumnTypeOptions enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get spanColumnType(): Read<M, SpanColumnTypeOptions | NothingEnum>;
+  set spanColumnType(value: SpanColumnTypeOptions | NothingEnum);
+
+  /**
+   * The inside gutter if the paragraph splits columns. Can return: Unit or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get splitColumnInsideGutter(): Read<M, number | NothingEnum>;
+  set splitColumnInsideGutter(value: number | string | NothingEnum);
+
+  /**
+   * The outside gutter if the paragraph splits columns. Can return: Unit or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get splitColumnOutsideGutter(): Read<M, number | NothingEnum>;
+  set splitColumnOutsideGutter(value: number | string | NothingEnum);
+
+  /**
+   * The minimum space before a span or a split column. Can return: Unit or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get spanColumnMinSpaceBefore(): Read<M, number | NothingEnum>;
+  set spanColumnMinSpaceBefore(value: number | string | NothingEnum);
+
+  /**
+   * The minimum space after a span or a split column. Can return: Unit or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get spanColumnMinSpaceAfter(): Read<M, number | NothingEnum>;
+  set spanColumnMinSpaceAfter(value: number | string | NothingEnum);
+}
+
+/** FindTransliteratePreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface FindTransliteratePreferencePortable<M extends Mode = 'single'> extends EditionPart {}

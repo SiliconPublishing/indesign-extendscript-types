@@ -31,7 +31,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Drop shadow settings.
  */
-export interface DropShadowSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.DropShadowSetting<'single'> {
+export interface DropShadowSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignEdition.DropShadowSetting<TParent>, InDesignPlugins.DropShadowSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -116,12 +116,16 @@ export interface DropShadowSetting<TParent = TransparencySetting | StrokeTranspa
   /**
    * The distance between the item and its shadow.
    *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
+   *
    * **Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
    */
   get distance(): number | NothingEnum.NOTHING;
   set distance(value: MeasurementValue | never);
   /**
    * The angle at which the shadow is thrown.
+   *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
    *
    * **Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
    */
@@ -180,7 +184,7 @@ export interface DropShadowSetting<TParent = TransparencySetting | StrokeTranspa
 /**
  * Drop shadow settings.
  */
-export interface DropShadowSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.DropShadowSetting<'plural'> {
+export interface DropShadowSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignEdition.DropShadowSettingPlural<TParent>, InDesignPlugins.DropShadowSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -265,12 +269,16 @@ export interface DropShadowSettingPlural<TParent = TransparencySetting | StrokeT
   /**
    * The distance between the item and its shadow.
    *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
+   *
    * **Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
    */
   get distance(): (number | NothingEnum.NOTHING)[];
   set distance(value: MeasurementValue | never);
   /**
    * The angle at which the shadow is thrown.
+   *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
    *
    * **Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
    */

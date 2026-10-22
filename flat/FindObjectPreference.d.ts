@@ -50,6 +50,9 @@ import type { UIColors } from './Enums/UIColors';
 import type { VerticalJustification } from './Enums/VerticalJustification';
 import type { VerticallyRelativeTo } from './Enums/VerticallyRelativeTo';
 import type { ObjectStyle } from './ObjectStyle';
+import type { EditionPart } from "./_base/Editions";
+import type { FrameTypes } from "./Enums/FrameTypes";
+import type { StoryHorizontalOrVertical } from "./Enums/StoryHorizontalOrVertical";
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
 import type { Events } from './Events';
@@ -65,7 +68,7 @@ import type { FilePath } from './_base/Types';
  * The object criteria a find/change object operation matches against, set via
  * {@link Application.findObjectPreferences} and used by {@link Application.findObject}.
  */
-export interface FindObjectPreference extends InDesignPlugins.FindObjectPreference<'single'> {
+export interface FindObjectPreference extends InDesignEdition.FindObjectPreference, InDesignPlugins.FindObjectPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -506,7 +509,7 @@ export interface FindObjectPreference extends InDesignPlugins.FindObjectPreferen
  * The object criteria a find/change object operation matches against, set via
  * {@link Application.findObjectPreferences} and used by {@link Application.findObject}.
  */
-export interface FindObjectPreferencePlural extends InDesignPlugins.FindObjectPreference<'plural'> {
+export interface FindObjectPreferencePlural extends InDesignEdition.FindObjectPreferencePlural, InDesignPlugins.FindObjectPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -941,4 +944,55 @@ export interface FindObjectPreferencePlural extends InDesignPlugins.FindObjectPr
   altText(): (string)[];
   /** Provides the actual text for the object. */
   actualText(): (string)[];
+}
+/** FindObjectPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface FindObjectPreferenceDesktop {
+}
+
+/** FindObjectPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface FindObjectPreferenceDesktopPlural {
+}
+
+/** FindObjectPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface FindObjectPreferenceServer {
+  /**
+   * The type of text frame. Can return: FrameTypes enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get frameType(): FrameTypes | NothingEnum;
+  set frameType(value: FrameTypes | NothingEnum);
+  /**
+   * The orientation of the text in the story. Can return: StoryHorizontalOrVertical enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get storyOrientation(): StoryHorizontalOrVertical | NothingEnum;
+  set storyOrientation(value: StoryHorizontalOrVertical | NothingEnum);
+}
+
+/** FindObjectPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface FindObjectPreferenceServerPlural {
+  /**
+   * The type of text frame. Can return: FrameTypes enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get frameType(): (FrameTypes | NothingEnum)[];
+  set frameType(value: FrameTypes | NothingEnum);
+  /**
+   * The orientation of the text in the story. Can return: StoryHorizontalOrVertical enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get storyOrientation(): (StoryHorizontalOrVertical | NothingEnum)[];
+  set storyOrientation(value: StoryHorizontalOrVertical | NothingEnum);
+}
+
+/** FindObjectPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface FindObjectPreferencePortable {
+}
+
+/** FindObjectPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface FindObjectPreferencePortablePlural {
 }

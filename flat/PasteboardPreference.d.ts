@@ -10,6 +10,7 @@ import type { EventTargetDOMObject } from './_base/DomObjects';
 import type { DocumentOrApplication } from './_base/Parents';
 import type { MeasurementValue } from './_base/Types';
 import type { UIColors } from './Enums/UIColors';
+import type { EditionPart } from "./_base/Editions";
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
 import type { Events } from './Events';
@@ -24,7 +25,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Pasteboard preferences.
  */
-export interface PasteboardPreference extends InDesignPlugins.PasteboardPreference<'single'> {
+export interface PasteboardPreference extends InDesignEdition.PasteboardPreference, InDesignPlugins.PasteboardPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -118,15 +119,12 @@ export interface PasteboardPreference extends InDesignPlugins.PasteboardPreferen
   /** The color of slug guides, specified either as an array of three doubles, each in the range 0 to 255, representing R, G, and B values, or as a UI color. */
   get slugGuideColor(): number[] | UIColors;
   set slugGuideColor(value: number[] | UIColors);
-  /** If true, match the Preview Background color to Theme Color, else use the color-value specified in Preview Background color drop down. */
-  get matchPreviewBackgroundToThemeColor(): boolean;
-  set matchPreviewBackgroundToThemeColor(value: boolean);
 }
 
 /**
  * Pasteboard preferences.
  */
-export interface PasteboardPreferencePlural extends InDesignPlugins.PasteboardPreference<'plural'> {
+export interface PasteboardPreferencePlural extends InDesignEdition.PasteboardPreferencePlural, InDesignPlugins.PasteboardPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -220,7 +218,41 @@ export interface PasteboardPreferencePlural extends InDesignPlugins.PasteboardPr
   /** The color of slug guides, specified either as an array of three doubles, each in the range 0 to 255, representing R, G, and B values, or as a UI color. */
   get slugGuideColor(): (number[] | UIColors)[];
   set slugGuideColor(value: number[] | UIColors);
-  /** If true, match the Preview Background color to Theme Color, else use the color-value specified in Preview Background color drop down. */
-  get matchPreviewBackgroundToThemeColor(): (boolean)[];
+}
+/** PasteboardPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface PasteboardPreferenceDesktop {
+  /** If true, match the Preview Background color to Theme Color, else use the color-value specified in Preview Background color drop down.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get matchPreviewBackgroundToThemeColor(): boolean;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
   set matchPreviewBackgroundToThemeColor(value: boolean);
+}
+
+/** PasteboardPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface PasteboardPreferenceDesktopPlural {
+  /** If true, match the Preview Background color to Theme Color, else use the color-value specified in Preview Background color drop down.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get matchPreviewBackgroundToThemeColor(): (boolean)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set matchPreviewBackgroundToThemeColor(value: boolean);
+}
+
+/** PasteboardPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface PasteboardPreferenceServer {
+}
+
+/** PasteboardPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface PasteboardPreferenceServerPlural {
+}
+
+/** PasteboardPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface PasteboardPreferencePortable {
+}
+
+/** PasteboardPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface PasteboardPreferencePortablePlural {
 }

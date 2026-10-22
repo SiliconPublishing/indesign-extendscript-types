@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection SubmitFormBehavior
  */
-export interface SubmitFormBehaviors extends InDesignPlugins.SubmitFormBehaviors {
+export interface SubmitFormBehaviors extends InDesignEdition.SubmitFormBehaviors, InDesignPlugins.SubmitFormBehaviors {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -18,7 +18,7 @@ import type { Dialog } from './Dialog';
  * @collection PercentCombobox
  */
 export interface PercentComboboxes
-  extends BaseCollection<PercentCombobox, PercentCombobox, PercentCombobox<'plural'>>, IdCollection<PercentCombobox>, InDesignPlugins.PercentComboboxes {
+  extends BaseCollection<PercentCombobox, PercentCombobox, PercentCombobox<'plural'>>, IdCollection<PercentCombobox>, InDesignEdition.PercentComboboxes, InDesignPlugins.PercentComboboxes {
   /**
    * Creates and adds a new percentage combobox control to the dialog.
    * @param withProperties Initial values for properties of the new control.

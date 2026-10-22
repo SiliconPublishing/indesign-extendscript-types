@@ -24,7 +24,7 @@ export interface MotionPresets
   extends
     BaseCollection<MotionPreset, MotionPreset, MotionPreset<'plural'>>,
     IdCollection<MotionPreset>,
-    NamedCollection<MotionPreset>, InDesignPlugins.MotionPresets {
+    NamedCollection<MotionPreset>, InDesignEdition.MotionPresets, InDesignPlugins.MotionPresets {
   /**
    * Creates a new motion preset.
    * @param withProperties Initial values for properties of the new {@link MotionPreset}.

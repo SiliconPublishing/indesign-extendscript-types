@@ -24,7 +24,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Application- or document-wide text composition and editing defaults (smart text reflow, highlighting, key increments).
  */
-export interface TextPreference extends InDesignPlugins.TextPreference<'single'> {
+export interface TextPreference extends InDesignEdition.TextPreference, InDesignPlugins.TextPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -213,7 +213,7 @@ export interface TextPreference extends InDesignPlugins.TextPreference<'single'>
 /**
  * Application- or document-wide text composition and editing defaults (smart text reflow, highlighting, key increments).
  */
-export interface TextPreferencePlural extends InDesignPlugins.TextPreference<'plural'> {
+export interface TextPreferencePlural extends InDesignEdition.TextPreferencePlural, InDesignPlugins.TextPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

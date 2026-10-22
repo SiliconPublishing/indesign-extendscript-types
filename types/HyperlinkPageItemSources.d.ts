@@ -26,7 +26,7 @@ export interface HyperlinkPageItemSources
   extends
     BaseCollection<HyperlinkPageItemSource, HyperlinkPageItemSource, HyperlinkPageItemSource<'plural'>>,
     IdCollection<HyperlinkPageItemSource>,
-    NamedCollection<HyperlinkPageItemSource>, InDesignPlugins.HyperlinkPageItemSources {
+    NamedCollection<HyperlinkPageItemSource>, InDesignEdition.HyperlinkPageItemSources, InDesignPlugins.HyperlinkPageItemSources {
   /**
    * Creates a new hyperlink page item source.
    *

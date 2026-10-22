@@ -25,7 +25,7 @@ export interface NavigationPoints
   extends
     BaseCollection<NavigationPoint, NavigationPoint, NavigationPoint<'plural'>>,
     IdCollection<NavigationPoint>,
-    NamedCollection<NavigationPoint>, InDesignPlugins.NavigationPoints {
+    NamedCollection<NavigationPoint>, InDesignEdition.NavigationPoints, InDesignPlugins.NavigationPoints {
   /**
    * Creates a new navigation point.
    * @param withProperties Initial values for properties of the new {@link NavigationPoint}.

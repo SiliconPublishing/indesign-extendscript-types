@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Linking preferences.
  */
-export interface LinkingPreference extends InDesignPlugins.LinkingPreference<'single'> {
+export interface LinkingPreference extends InDesignEdition.LinkingPreference, InDesignPlugins.LinkingPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -122,7 +122,7 @@ export interface LinkingPreference extends InDesignPlugins.LinkingPreference<'si
 /**
  * Linking preferences.
  */
-export interface LinkingPreferencePlural extends InDesignPlugins.LinkingPreference<'plural'> {
+export interface LinkingPreferencePlural extends InDesignEdition.LinkingPreferencePlural, InDesignPlugins.LinkingPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

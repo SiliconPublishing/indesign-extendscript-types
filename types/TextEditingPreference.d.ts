@@ -12,7 +12,7 @@ import type { Application } from './Application';
 /**
  * Text editing preferences.
  */
-export interface TextEditingPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.TextEditingPreference<M> {
+export interface TextEditingPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.TextEditingPreference<M>, InDesignPlugins.TextEditingPreference<M> {
   /** Resolves the proxy into the individual {@link TextEditingPreference} objects it stands for. */
   getElements(): TextEditingPreference<'single'>[];
 

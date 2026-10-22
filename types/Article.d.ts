@@ -18,7 +18,7 @@ import type { LocationOptions } from './Enums/LocationOptions';
 export interface Article<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document, M>,
     IndexedDOMObject<Document, M>,
-    NamableDOMObject<Document, M>, InDesignPlugins.Article<M> {
+    NamableDOMObject<Document, M>, InDesignEdition.Article<M>, InDesignPlugins.Article<M> {
   /** Resolves the proxy into the individual {@link Article} objects it stands for. */
   getElements(): Article<'single'>[];
 

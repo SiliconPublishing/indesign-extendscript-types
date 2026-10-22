@@ -21,7 +21,7 @@ import type { Layer } from './Layer';
  * @collection Layer
  */
 export interface Layers
-  extends BaseCollection<Layer, Layer, Layer<'plural'>>, IdCollection<Layer>, NamedCollection<Layer>, InDesignPlugins.Layers {
+  extends BaseCollection<Layer, Layer, Layer<'plural'>>, IdCollection<Layer>, NamedCollection<Layer>, InDesignEdition.Layers, InDesignPlugins.Layers {
   /**
    * Creates a new layer.
    *

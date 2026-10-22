@@ -20,5 +20,5 @@ import type { PageItemParent } from './_base/Parents';
  * @collection EPS
  */
 export interface EPSs<TParent = PageItemParent>
-  extends BaseCollection<EPS<TParent>, EPS, EPS<TParent, 'plural'>>, IdCollection<EPS<TParent>>, NamedCollection<EPS<TParent>>, InDesignPlugins.EPSs {
+  extends BaseCollection<EPS<TParent>, EPS, EPS<TParent, 'plural'>>, IdCollection<EPS<TParent>>, NamedCollection<EPS<TParent>>, InDesignEdition.EPSs<TParent>, InDesignPlugins.EPSs {
 }

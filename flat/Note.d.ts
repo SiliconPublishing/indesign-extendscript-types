@@ -49,7 +49,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * point, shown collapsed or expanded in galley/story view. Distinct from
  * {@link Footnote}/{@link Endnote}, which render as document-level references.
  */
-export interface Note extends InDesignPlugins.Note<'single'> {
+export interface Note extends InDesignEdition.Note, InDesignPlugins.Note<'single'> {
   /**
    * A collection of events
    */
@@ -204,7 +204,7 @@ export interface Note extends InDesignPlugins.Note<'single'> {
  * point, shown collapsed or expanded in galley/story view. Distinct from
  * {@link Footnote}/{@link Endnote}, which render as document-level references.
  */
-export interface NotePlural extends InDesignPlugins.Note<'plural'> {
+export interface NotePlural extends InDesignEdition.NotePlural, InDesignPlugins.Note<'plural'> {
   /**
    * A collection of events
    */

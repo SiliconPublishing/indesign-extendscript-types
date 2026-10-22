@@ -30,7 +30,7 @@ import type { UseSVGAsEnum } from './Enums/UseSVGAsEnum';
  * metadata written into the package (title, creator, rights, accessibility),
  * and the image, list, and layout conversion options for EPUB output.
  */
-export interface EPubExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Book | Document, M>, InDesignPlugins.EPubExportPreference<M> {
+export interface EPubExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Book | Document, M>, InDesignEdition.EPubExportPreference<M>, InDesignPlugins.EPubExportPreference<M> {
   /** Resolves the proxy into the individual {@link EPubExportPreference} objects it stands for. */
   getElements(): EPubExportPreference<'single'>[];
 

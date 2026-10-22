@@ -29,7 +29,7 @@ export type ConditionSetEntry = [condition: Condition, visibility: boolean];
  * {@link Condition} visibilities that can be reapplied together, so a group of
  * conditions can be shown/hidden as a single named preset.
  */
-export interface ConditionSet extends InDesignPlugins.ConditionSet<'single'> {
+export interface ConditionSet extends InDesignEdition.ConditionSet, InDesignPlugins.ConditionSet<'single'> {
   /**
    * A collection of events
    */
@@ -153,7 +153,7 @@ export interface ConditionSet extends InDesignPlugins.ConditionSet<'single'> {
  * {@link Condition} visibilities that can be reapplied together, so a group of
  * conditions can be shown/hidden as a single named preset.
  */
-export interface ConditionSetPlural extends InDesignPlugins.ConditionSet<'plural'> {
+export interface ConditionSetPlural extends InDesignEdition.ConditionSetPlural, InDesignPlugins.ConditionSet<'plural'> {
   /**
    * A collection of events
    */

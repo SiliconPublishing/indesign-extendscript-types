@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection OpenFileBehavior
  */
-export interface OpenFileBehaviors extends InDesignPlugins.OpenFileBehaviors {
+export interface OpenFileBehaviors extends InDesignEdition.OpenFileBehaviors, InDesignPlugins.OpenFileBehaviors {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -26,7 +26,7 @@ import type { FilePath } from './_base/Types';
 /**
  * A page's or spread's margin and column layout.
  */
-export interface MarginPreference extends InDesignPlugins.MarginPreference<'single'> {
+export interface MarginPreference extends InDesignEdition.MarginPreference, InDesignPlugins.MarginPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -139,7 +139,7 @@ export interface MarginPreference extends InDesignPlugins.MarginPreference<'sing
 /**
  * A page's or spread's margin and column layout.
  */
-export interface MarginPreferencePlural extends InDesignPlugins.MarginPreference<'plural'> {
+export interface MarginPreferencePlural extends InDesignEdition.MarginPreferencePlural, InDesignPlugins.MarginPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

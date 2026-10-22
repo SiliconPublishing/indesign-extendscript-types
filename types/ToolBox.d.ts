@@ -15,7 +15,7 @@ import type { File } from './_base/Types';
  * The application's tools panel — reports and sets the currently active
  * drawing/selection tool.
  */
-export interface ToolBox<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.ToolBox<M> {
+export interface ToolBox<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.ToolBox<M>, InDesignPlugins.ToolBox<M> {
   /** Resolves the proxy into the individual {@link ToolBox} objects it stands for. */
   getElements(): ToolBox<'single'>[];
 

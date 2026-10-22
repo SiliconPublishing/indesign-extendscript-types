@@ -27,7 +27,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Track changes preferences.
  */
-export interface TrackChangesPreference extends InDesignPlugins.TrackChangesPreference<'single'> {
+export interface TrackChangesPreference extends InDesignEdition.TrackChangesPreference, InDesignPlugins.TrackChangesPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -183,7 +183,7 @@ export interface TrackChangesPreference extends InDesignPlugins.TrackChangesPref
 /**
  * Track changes preferences.
  */
-export interface TrackChangesPreferencePlural extends InDesignPlugins.TrackChangesPreference<'plural'> {
+export interface TrackChangesPreferencePlural extends InDesignEdition.TrackChangesPreferencePlural, InDesignPlugins.TrackChangesPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

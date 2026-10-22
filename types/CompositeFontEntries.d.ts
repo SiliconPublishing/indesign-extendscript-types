@@ -25,7 +25,7 @@ export interface CompositeFontEntries
   extends
     BaseCollection<CompositeFontEntry, CompositeFontEntry, CompositeFontEntry<'plural'>>,
     IdCollection<CompositeFontEntry>,
-    NamedCollection<CompositeFontEntry>, InDesignPlugins.CompositeFontEntries {
+    NamedCollection<CompositeFontEntry>, InDesignEdition.CompositeFontEntries, InDesignPlugins.CompositeFontEntries {
   /**
    * Creates a new composite font entry.
    * @param withProperties Initial values for properties of the new {@link CompositeFontEntry}.

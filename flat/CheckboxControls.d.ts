@@ -18,7 +18,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection CheckboxControl
  */
-export interface CheckboxControls extends InDesignPlugins.CheckboxControls {
+export interface CheckboxControls extends InDesignEdition.CheckboxControls, InDesignPlugins.CheckboxControls {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -24,7 +24,7 @@ import type { BehaviorParent } from './_base/Parents';
 /**
  * A behavior that resets every field of the interactive PDF form to its default value.
  */
-export interface ClearFormBehavior extends InDesignPlugins.ClearFormBehavior<'single'> {
+export interface ClearFormBehavior extends InDesignEdition.ClearFormBehavior, InDesignPlugins.ClearFormBehavior<'single'> {
   /**
    * A collection of events
    */
@@ -141,7 +141,7 @@ export interface ClearFormBehavior extends InDesignPlugins.ClearFormBehavior<'si
 /**
  * A behavior that resets every field of the interactive PDF form to its default value.
  */
-export interface ClearFormBehaviorPlural extends InDesignPlugins.ClearFormBehavior<'plural'> {
+export interface ClearFormBehaviorPlural extends InDesignEdition.ClearFormBehaviorPlural, InDesignPlugins.ClearFormBehavior<'plural'> {
   /**
    * A collection of events
    */

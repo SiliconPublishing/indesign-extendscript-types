@@ -50,6 +50,9 @@ import type { UIColors } from './Enums/UIColors';
 import type { VerticalJustification } from './Enums/VerticalJustification';
 import type { VerticallyRelativeTo } from './Enums/VerticallyRelativeTo';
 import type { ObjectStyle } from './ObjectStyle';
+import type { EditionPart } from "./_base/Editions";
+import type { FrameTypes } from "./Enums/FrameTypes";
+import type { StoryHorizontalOrVertical } from "./Enums/StoryHorizontalOrVertical";
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
 import type { Events } from './Events';
@@ -65,7 +68,7 @@ import type { FilePath } from './_base/Types';
  * The formatting to apply to objects found by a find/change object operation, set via
  * {@link Application.changeObjectPreferences} and used by {@link Application.changeObject}.
  */
-export interface ChangeObjectPreference extends InDesignPlugins.ChangeObjectPreference<'single'> {
+export interface ChangeObjectPreference extends InDesignEdition.ChangeObjectPreference, InDesignPlugins.ChangeObjectPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -506,7 +509,7 @@ export interface ChangeObjectPreference extends InDesignPlugins.ChangeObjectPref
  * The formatting to apply to objects found by a find/change object operation, set via
  * {@link Application.changeObjectPreferences} and used by {@link Application.changeObject}.
  */
-export interface ChangeObjectPreferencePlural extends InDesignPlugins.ChangeObjectPreference<'plural'> {
+export interface ChangeObjectPreferencePlural extends InDesignEdition.ChangeObjectPreferencePlural, InDesignPlugins.ChangeObjectPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -941,4 +944,55 @@ export interface ChangeObjectPreferencePlural extends InDesignPlugins.ChangeObje
   altText(): (string)[];
   /** Provides the actual text for the object. */
   actualText(): (string)[];
+}
+/** ChangeObjectPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ChangeObjectPreferenceDesktop {
+}
+
+/** ChangeObjectPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ChangeObjectPreferenceDesktopPlural {
+}
+
+/** ChangeObjectPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ChangeObjectPreferenceServer {
+  /**
+   * The type of text frame. Can return: FrameTypes enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get frameType(): FrameTypes | NothingEnum;
+  set frameType(value: FrameTypes | NothingEnum);
+  /**
+   * The orientation of the text in the story. Can return: StoryHorizontalOrVertical enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get storyOrientation(): StoryHorizontalOrVertical | NothingEnum;
+  set storyOrientation(value: StoryHorizontalOrVertical | NothingEnum);
+}
+
+/** ChangeObjectPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ChangeObjectPreferenceServerPlural {
+  /**
+   * The type of text frame. Can return: FrameTypes enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get frameType(): (FrameTypes | NothingEnum)[];
+  set frameType(value: FrameTypes | NothingEnum);
+  /**
+   * The orientation of the text in the story. Can return: StoryHorizontalOrVertical enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get storyOrientation(): (StoryHorizontalOrVertical | NothingEnum)[];
+  set storyOrientation(value: StoryHorizontalOrVertical | NothingEnum);
+}
+
+/** ChangeObjectPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ChangeObjectPreferencePortable {
+}
+
+/** ChangeObjectPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ChangeObjectPreferencePortablePlural {
 }

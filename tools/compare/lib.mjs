@@ -15,7 +15,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import ts from 'typescript';
-import { SNAPSHOT } from '../snapshot.mjs';
+import { SERVER_SNAPSHOT, SNAPSHOT } from '../snapshot.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 
@@ -61,7 +61,7 @@ const TARGETS = {
 // Members every function or object carries that say nothing about the class.
 const NOISE = new Set(['__proto__', 'prototype', 'arguments', 'arity', 'length', 'name', 'apply', 'call', 'toSource', 'toString', 'valueOf', 'constructor', 'reflect']);
 
-function createProgram() {
+function createProgram(libs) {
     const dir = mkdtempSync(join(tmpdir(), 'idx-lib-'));
     const probe = join(dir, 'probe.ts');
     const lines = [];
@@ -71,14 +71,15 @@ function createProgram() {
         if (stat) lines.push(`declare const __static_${name.replace('$', 'Dollar')}: NonNullable<typeof ${stat}>;`);
     }
     writeFileSync(probe, lines.join('\n'));
-    const files = ['lib/global.d.ts', 'lib/ScriptUI.d.ts'].map((f) => join(root, f));
+    const files = libs.map((f) => join(root, f));
     const program = ts.createProgram([...files, probe], { noLib: true, target: ts.ScriptTarget.ES5, module: ts.ModuleKind.None, noEmit: true, types: [] });
     return { program, probe };
 }
 
-export function compareLib({ snapshot = SNAPSHOT } = {}) {
+/** edition: desktop (with ScriptUI) or server (InDesign Server has none), each with its own measurements. */
+export function compareLib({ edition = 'desktop', snapshot = edition === 'server' ? SERVER_SNAPSHOT : SNAPSHOT } = {}) {
     const core = JSON.parse(readFileSync(join(root, snapshot, 'corejs.json'), 'utf8'));
-    const { program, probe } = createProgram();
+    const { program, probe } = createProgram(edition === 'desktop' ? ['lib/global.d.ts', 'lib/ScriptUI.d.ts'] : ['lib/global.d.ts']);
     const checker = program.getTypeChecker();
     const sf = program.getSourceFile(probe);
     const findings = [];
@@ -137,7 +138,11 @@ export function compareLib({ snapshot = SNAPSHOT } = {}) {
 
     // Globals.
     const globalSyms = new Set(checker.getSymbolsInScope(sf, ts.SymbolFlags.Value).map((s) => s.getName()));
+    // DOM classes (InDesign Server's Button, Event, ... where desktop has ScriptUI's) are the DOM
+    // comparison's to check.
+    const dictionary = JSON.parse(readFileSync(join(root, snapshot, 'dictionary.json'), 'utf8')).classes;
     for (const [name, type] of Object.entries(core.globals)) {
+        if (dictionary[name] && !globalSyms.has(name)) continue;
         const exists = type !== 'undefined' && !type.startsWith('throws');
         if (exists && !globalSyms.has(name)) add('lib-global', null, name, `global ${type} not declared`);
         if (!exists && globalSyms.has(name) && name !== 'undefined') add('lib-global', null, name, 'declared global the engine does not have');
@@ -147,7 +152,8 @@ export function compareLib({ snapshot = SNAPSHOT } = {}) {
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
     const i = process.argv.indexOf('--snapshot');
-    const findings = compareLib({ snapshot: i >= 0 ? process.argv[i + 1] : SNAPSHOT });
+    const e = process.argv.indexOf('--edition');
+    const findings = compareLib({ edition: e >= 0 ? process.argv[e + 1] : 'desktop', ...(i >= 0 ? { snapshot: process.argv[i + 1] } : {}) });
     const by = {};
     for (const f of findings) by[f.kind] = (by[f.kind] ?? 0) + 1;
     console.log(`${findings.length} findings`, by);

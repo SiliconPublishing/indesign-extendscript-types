@@ -17,6 +17,7 @@ import type { Sound } from './Sound';
 import type { Graphic } from './Graphic';
 import type { XMLElement } from './XMLElement';
 import type { File, Folder } from './_base/Types';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * An object library file (`.indl`) that stores reusable page items, graphics,
@@ -24,7 +25,7 @@ import type { File, Folder } from './_base/Types';
  */
 export interface Library<M extends Mode = 'single'>
   extends EventTargetDOMObject<Application, M>,
-    IndexedDOMObject<Application, M>, InDesignPlugins.Library<M> {
+    IndexedDOMObject<Application, M>, InDesignEdition.Library<M>, InDesignPlugins.Library<M> {
   /** Resolves the proxy into the individual {@link Library} objects it stands for. */
   getElements(): Library<'single'>[];
 
@@ -36,10 +37,6 @@ export interface Library<M extends Mode = 'single'>
 
   /** The full path to the library file. */
   readonly filePath: Read<M, Folder>;
-
-  /** The panel associated with this library. */
-  readonly associatedPanel: Read<M, Panel>;
-
   /** The library's assets. */
   readonly assets: Assets;
 
@@ -56,3 +53,15 @@ export interface Library<M extends Mode = 'single'>
     withProperties?: Object,
   ): Asset;
 }
+/** Library's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface LibraryDesktop<M extends Mode = 'single'> extends EditionPart {
+  /** The panel associated with this library.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly associatedPanel: Read<M, Panel>;
+}
+
+/** Library's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface LibraryServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** Library's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface LibraryPortable<M extends Mode = 'single'> extends EditionPart {}

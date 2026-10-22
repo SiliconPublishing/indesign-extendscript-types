@@ -27,7 +27,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * intent…) applied by {@link Application.documentPresets} when creating a
  * new document.
  */
-export interface DocumentPreset extends InDesignPlugins.DocumentPreset<'single'> {
+export interface DocumentPreset extends InDesignEdition.DocumentPreset, InDesignPlugins.DocumentPreset<'single'> {
   /**
    * A collection of events
    */
@@ -260,7 +260,7 @@ export interface DocumentPreset extends InDesignPlugins.DocumentPreset<'single'>
  * intent…) applied by {@link Application.documentPresets} when creating a
  * new document.
  */
-export interface DocumentPresetPlural extends InDesignPlugins.DocumentPreset<'plural'> {
+export interface DocumentPresetPlural extends InDesignEdition.DocumentPresetPlural, InDesignPlugins.DocumentPreset<'plural'> {
   /**
    * A collection of events
    */

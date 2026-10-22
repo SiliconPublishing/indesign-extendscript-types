@@ -18,7 +18,7 @@ import type { ScriptMenuAction } from './ScriptMenuAction';
  */
 export interface MenuAction<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Application, M>,
-    IndexedDOMObject<Application, M>, InDesignPlugins.MenuAction<M> {
+    IndexedDOMObject<Application, M>, InDesignEdition.MenuAction<M>, InDesignPlugins.MenuAction<M> {
   /** Resolves the proxy into the individual {@link MenuAction} objects it stands for. */
   getElements(): MenuAction<'single'>[];
 

@@ -30,7 +30,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Inner shadow effect settings.
  */
-export interface InnerShadowSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.InnerShadowSetting<'single'> {
+export interface InnerShadowSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignEdition.InnerShadowSetting<TParent>, InDesignPlugins.InnerShadowSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -115,12 +115,16 @@ export interface InnerShadowSetting<TParent = TransparencySetting | StrokeTransp
   /**
    * The horizontal offset of the shadow.
    *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
+   *
    * **Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
    */
   get xOffset(): number | NothingEnum.NOTHING;
   set xOffset(value: MeasurementValue | never);
   /**
    * The vertical offset of the shadow.
+   *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
    *
    * **Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
    */
@@ -161,7 +165,7 @@ export interface InnerShadowSetting<TParent = TransparencySetting | StrokeTransp
 /**
  * Inner shadow effect settings.
  */
-export interface InnerShadowSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.InnerShadowSetting<'plural'> {
+export interface InnerShadowSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignEdition.InnerShadowSettingPlural<TParent>, InDesignPlugins.InnerShadowSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -246,12 +250,16 @@ export interface InnerShadowSettingPlural<TParent = TransparencySetting | Stroke
   /**
    * The horizontal offset of the shadow.
    *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
+   *
    * **Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
    */
   get xOffset(): (number | NothingEnum.NOTHING)[];
   set xOffset(value: MeasurementValue | never);
   /**
    * The vertical offset of the shadow.
+   *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
    *
    * **Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
    */

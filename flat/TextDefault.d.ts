@@ -82,6 +82,7 @@ import type { SpanColumnTypeOptions } from './Enums/SpanColumnTypeOptions';
 import type { StartParagraph } from './Enums/StartParagraph';
 import type { TextStrokeAlign } from './Enums/TextStrokeAlign';
 import type { WarichuAlignment } from './Enums/WarichuAlignment';
+import type { EditionPart } from "./_base/Editions";
 import type { PropertiesGetter } from './_base/Properties';
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
@@ -95,7 +96,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Application- or document-level default character and paragraph formatting applied to new text.
  */
-export interface TextDefault extends InDesignPlugins.TextDefault<'single'> {
+export interface TextDefault extends InDesignEdition.TextDefault, InDesignPlugins.TextDefault<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -514,9 +515,6 @@ export interface TextDefault extends InDesignPlugins.TextDefault<'single'> {
   /** The values of the applied variable font's design axes, indexed to match {@link setNthDesignAxis} and {@link isNthDesignAxisHidden}. */
   get designAxes(): number[];
   set designAxes(value: number[]);
-  /** If true, aligns the baseline of the text to the baseline grid. */
-  get alignToBaseline(): boolean;
-  set alignToBaseline(value: boolean);
   /** The amount to indent the first line. */
   get firstLineIndent(): number;
   set firstLineIndent(value: MeasurementValue);
@@ -1166,7 +1164,7 @@ export interface TextDefault extends InDesignPlugins.TextDefault<'single'> {
 /**
  * Application- or document-level default character and paragraph formatting applied to new text.
  */
-export interface TextDefaultPlural extends InDesignPlugins.TextDefault<'plural'> {
+export interface TextDefaultPlural extends InDesignEdition.TextDefaultPlural, InDesignPlugins.TextDefault<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -1585,9 +1583,6 @@ export interface TextDefaultPlural extends InDesignPlugins.TextDefault<'plural'>
   /** The values of the applied variable font's design axes, indexed to match {@link setNthDesignAxis} and {@link isNthDesignAxisHidden}. */
   get designAxes(): (number[])[];
   set designAxes(value: number[]);
-  /** If true, aligns the baseline of the text to the baseline grid. */
-  get alignToBaseline(): (boolean)[];
-  set alignToBaseline(value: boolean);
   /** The amount to indent the first line. */
   get firstLineIndent(): (number)[];
   set firstLineIndent(value: MeasurementValue);
@@ -2232,4 +2227,41 @@ export interface TextDefaultPlural extends InDesignPlugins.TextDefault<'plural'>
    * @param nthAxisIndex Index of design axis.
    */
   isNthDesignAxisHidden(nthAxisIndex: number): (boolean)[];
+}
+/** TextDefault's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface TextDefaultDesktop {
+  /** If true, aligns the baseline of the text to the baseline grid.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get alignToBaseline(): boolean;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set alignToBaseline(value: boolean);
+}
+
+/** TextDefault's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface TextDefaultDesktopPlural {
+  /** If true, aligns the baseline of the text to the baseline grid.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get alignToBaseline(): (boolean)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set alignToBaseline(value: boolean);
+}
+
+/** TextDefault's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface TextDefaultServer {
+}
+
+/** TextDefault's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface TextDefaultServerPlural {
+}
+
+/** TextDefault's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface TextDefaultPortable {
+}
+
+/** TextDefault's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface TextDefaultPortablePlural {
 }

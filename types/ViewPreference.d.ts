@@ -11,11 +11,12 @@ import type { DocumentOrApplication } from './_base/Parents';
 import type { MeasurementValue } from './_base/Types';
 import type { MeasurementUnits } from './Enums/MeasurementUnits';
 import type { RulerOrigin } from './Enums/RulerOrigin';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * Application- or document-wide view defaults (rulers, guides, screen mode, measurement units).
  */
-export interface ViewPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.ViewPreference<M> {
+export interface ViewPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignEdition.ViewPreference<M>, InDesignPlugins.ViewPreference<M> {
   /** Resolves the proxy into the individual {@link ViewPreference} objects it stands for. */
   getElements(): ViewPreference<'single'>[];
 
@@ -83,8 +84,21 @@ export interface ViewPreference<M extends Mode = 'single'> extends EventTargetDO
   /** The measurement unit for the print dialog. */
   get printDialogMeasurementUnits(): Read<M, MeasurementUnits>;
   set printDialogMeasurementUnits(value: MeasurementUnits);
-
-  /** If true, notes are displayed. */
+}
+/** ViewPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ViewPreferenceDesktop<M extends Mode = 'single'> extends EditionPart {
+  /** If true, notes are displayed.
+   * Desktop only: InDesign Server 21.6 does not have it. */
   get showNotes(): Read<M, boolean>;
+
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
   set showNotes(value: boolean);
 }
+
+/** ViewPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ViewPreferenceServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** ViewPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ViewPreferencePortable<M extends Mode = 'single'> extends EditionPart {}

@@ -61,6 +61,10 @@ import type { SpecialCharacters } from './Enums/SpecialCharacters';
 import type { SelectionOptions } from './Enums/SelectionOptions';
 import type { ExportFormat } from './Enums/ExportFormat';
 import type { FilePath, MeasurementValue } from './_base/Types';
+import type { XMLItemDesktop } from "./XMLItem";
+import type { XMLItemServer } from "./XMLItem";
+import type { XMLItemPortable } from "./XMLItem";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A tagged element in a document's underlying XML structure.
@@ -69,7 +73,7 @@ import type { FilePath, MeasurementValue } from './_base/Types';
  * structural node), and can itself contain child elements, attributes, comments, and
  * processing instructions.
  */
-export interface XMLElement<M extends Mode = 'single'> extends XMLItem<M>, InDesignPlugins.XMLElement<M>{
+export interface XMLElement<M extends Mode = 'single'> extends XMLItem<M>, InDesignEdition.XMLElement<M>, InDesignPlugins.XMLElement<M>{
   /** Resolves the proxy into the individual {@link XMLElement} objects it stands for. */
   getElements(): XMLElement<'single'>[];
 
@@ -160,6 +164,10 @@ export interface XMLElement<M extends Mode = 'single'> extends XMLItem<M>, InDes
 
   /**
    * The text content of the element.
+   *
+   * *Crashes InDesign 21.6**: assigning `NothingEnum.NOTHING` on a XMLElement takes InDesign down (measured).
+   *
+   * *Crashes InDesign 21.6**: assigning it the value it reads back on a XMLElement takes InDesign down (measured).
    *
    * **Crashes InDesign 21.6**: assigning `NothingEnum.NOTHING` on a XMLElement takes InDesign down (measured).
    *
@@ -338,9 +346,19 @@ export interface XMLElement<M extends Mode = 'single'> extends XMLItem<M>, InDes
    * @param reverseOrder If `true`, returns the results in reverse order.
    */
   changeTransliterate(reverseOrder?: boolean): Read<M, Text[]>;
+}
+/** XMLElement's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLElementDesktop<M extends Mode = 'single'> extends EditionPart, XMLItemDesktop<M> {
+  /**
+   * Selects the object.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(existingSelection?: SelectionOptions): Read<M, void>;
 
   /**
    * Exports this element's associated content to a file.
+   * InDesign Server 21.6 takes `exportFile(format, to, using?, versionComments?, forceSave?)` instead.
    * @param format The export format, as an {@link ExportFormat} or a file-extension string.
    * @param to The destination file.
    * @param showingOptions If `true`, displays the export options dialog. Defaults to `false`.
@@ -359,6 +377,7 @@ export interface XMLElement<M extends Mode = 'single'> extends XMLItem<M>, InDes
 
   /**
    * Asynchronously exports this element's associated content to a file.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param format The export format, as an {@link ExportFormat} or a file-extension string.
    * @param to The destination file.
    * @param showingOptions If `true`, displays the export options dialog. Defaults to `false`.
@@ -374,10 +393,29 @@ export interface XMLElement<M extends Mode = 'single'> extends XMLItem<M>, InDes
     versionComments?: string,
     forceSave?: boolean,
   ): BackgroundTask;
+}
 
+/** XMLElement's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLElementServer<M extends Mode = 'single'> extends EditionPart, XMLItemServer<M> {
   /**
-   * Selects the object.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   * Exports this element's associated content to a file.
+   * InDesign desktop 21.6 takes `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)` instead.
+   * @param format The export format, as an {@link ExportFormat} or a file-extension string.
+   * @param to The destination file.
+   * @param using The export preset to use.
+   * @param versionComments The comment for this version, if the destination is under version control.
+   * @param forceSave If `true`, forcibly saves a version. Defaults to `false`.
    */
-  select(existingSelection?: SelectionOptions): Read<M, void>;
+  exportFile(format: ExportFormat | string, to: FilePath, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): void;
+}
+
+/** XMLElement's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface XMLElementPortable<M extends Mode = 'single'> extends EditionPart, XMLItemPortable<M> {
+  /**
+   * Exports this element's associated content to a file.
+   * Portable form: the editions' parameters differ after these (desktop `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)`, InDesign Server `exportFile(format, to, using?, versionComments?, forceSave?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param format The export format, as an {@link ExportFormat} or a file-extension string.
+   * @param to The destination file.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath): void;
 }

@@ -55,7 +55,7 @@ export type TextVariableOptions =
  * Its resolved text is inserted wherever a {@link TextVariableInstance} of it
  * is placed in a story.
  */
-export interface TextVariable extends InDesignPlugins.TextVariable<'single'> {
+export interface TextVariable extends InDesignEdition.TextVariable, InDesignPlugins.TextVariable<'single'> {
   /**
    * A collection of events
    */
@@ -172,7 +172,7 @@ export interface TextVariable extends InDesignPlugins.TextVariable<'single'> {
  * Its resolved text is inserted wherever a {@link TextVariableInstance} of it
  * is placed in a story.
  */
-export interface TextVariablePlural extends InDesignPlugins.TextVariable<'plural'> {
+export interface TextVariablePlural extends InDesignEdition.TextVariablePlural, InDesignPlugins.TextVariable<'plural'> {
   /**
    * A collection of events
    */

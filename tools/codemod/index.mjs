@@ -11,7 +11,7 @@
 // ExtendScript-only declarations that have no upstream counterpart live in overlays/, copied in
 // last.
 import { execSync } from 'node:child_process';
-import { cpSync, existsSync, mkdtempSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -20,8 +20,9 @@ import { generateGlobals } from './globals.mjs';
 import { widenByRuntime } from './widen.mjs';
 import { fillFromDictionary } from './fill.mjs';
 import { addPluginHooks } from './plugin-hooks.mjs';
+import { splitEditions } from './editions.mjs';
 import { writeFlat } from '../flatten/index.mjs';
-import { SNAPSHOT } from '../snapshot.mjs';
+import { SERVER_SNAPSHOT, SNAPSHOT } from '../snapshot.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 
@@ -356,6 +357,14 @@ function check(rule, count) {
     return ok;
 }
 
+/** globals.d.ts and editions/*.d.ts of a tree. */
+function writeGlobals(project, dir, hooks, editions) {
+    const out = generateGlobals(project, dir, root, hooks, editions);
+    writeFileSync(join(dir, 'globals.d.ts'), out.globals);
+    mkdirSync(join(dir, 'editions'), { recursive: true });
+    for (const [name, text] of Object.entries(out.editions)) writeFileSync(join(dir, 'editions', `${name}.d.ts`), text);
+}
+
 export function runCodemod({ from = 'upstream/main', out = join(root, 'types') } = {}) {
     const src = extractUpstream(from);
     let ok = true;
@@ -396,16 +405,36 @@ export function runCodemod({ from = 'upstream/main', out = join(root, 'types') }
     // Data-driven: declare what the dictionary has and upstream lacks.
     const filled = fillFromDictionary(project, src, root, SNAPSHOT);
     for (const [k, v] of Object.entries(filled)) console.log(`  ok  ${String(v.length).padStart(5)}  fill from dictionary: ${k}${v.length ? ` (${v.slice(0, 6).join(', ')}${v.length > 6 ? ', ...' : ''})` : ''}`);
+    // InDesign Server's own classes and enumerations (its members come with the editions below).
+    const serverFilled = fillFromDictionary(project, src, root, SERVER_SNAPSHOT, { wholeOnly: true, label: 'InDesign Server' });
+    for (const [k, v] of Object.entries(serverFilled)) if (v.length) console.log(`  ok  ${String(v.length).padStart(5)}  fill from the Server dictionary: ${k} (${v.slice(0, 6).join(', ')}${v.length > 6 ? ', ...' : ''})`);
     project.saveSync();
 
     // Data-driven: widen getters by what InDesign returned at runtime.
     const widened = widenByRuntime(project, src, root, SNAPSHOT);
     console.log(`  ok  ${String(widened.count).padStart(5)}  widen reads by runtime observations`);
+    // What InDesign Server returned, for the members both editions share; its own members are
+    // widened as they are generated (tools/codemod/editions.mjs).
+    if (existsSync(join(root, SERVER_SNAPSHOT, 'runtime.json'))) {
+        project.saveSync();
+        const serverWidened = widenByRuntime(project, src, root, SERVER_SNAPSHOT);
+        console.log(`  ok  ${String(serverWidened.count).padStart(5)}  widen reads by InDesign Server's runtime observations`);
+    }
     if (widened.unhandled.length) console.log(`       ${widened.unhandled.length} observations need an overlay:\n         ${widened.unhandled.join('\n         ')}`);
     project.saveSync();
 
+    // Desktop, Server and portable editions of the members that differ.
+    const editions = splitEditions(project, src, root, { desktop: SNAPSHOT, server: SERVER_SNAPSHOT });
+    if (editions.conflicts.length) throw new Error(`codemod: editions: shared declarations the editions disagree on:\n  ${editions.conflicts.join('\n  ')}`);
+    console.log(`  ok  ${String(editions.moved).padStart(5)}  editions: members moved to parts (${editions.generated} generated from the Server dictionary, ${editions.parts} interfaces with parts, ${editions.enumerators} enumerators)`);
+    if (editions.unplaced.length) console.log(`       ${editions.unplaced.length} not placed:\n         ${editions.unplaced.join('\n         ')}`);
+    project.saveSync();
+
     // Extension points for plugins' declarations (tools/plugin).
-    const hooks = addPluginHooks(project, src, JSON.parse(readFileSync(join(root, SNAPSHOT, 'dictionary.json'), 'utf8')).classes);
+    const hooks = addPluginHooks(project, src, {
+        ...JSON.parse(readFileSync(join(root, SERVER_SNAPSHOT, 'dictionary.json'), 'utf8')).classes,
+        ...JSON.parse(readFileSync(join(root, SNAPSHOT, 'dictionary.json'), 'utf8')).classes,
+    });
     console.log(`  ok  ${String(hooks.length).padStart(5)}  plugin hooks (InDesignPlugins.<Class>)`);
     project.saveSync();
 
@@ -413,7 +442,7 @@ export function runCodemod({ from = 'upstream/main', out = join(root, 'types') }
     rmSync(join(src, 'module.d.ts'), { force: true });
 
     // Globals entry, generated from the measured globals list.
-    writeFileSync(join(src, 'globals.d.ts'), generateGlobals(project, src, root, hooks));
+    writeGlobals(project, src, hooks, editions);
 
     if (existsSync(join(root, 'overlays', 'types'))) cpSync(join(root, 'overlays', 'types'), src, { recursive: true });
 
@@ -438,7 +467,7 @@ export function runCodemod({ from = 'upstream/main', out = join(root, 'types') }
     writeFlat(out, flatOut);
     const flatProject = new Project({ skipAddingFilesFromTsConfig: true, compilerOptions: { noLib: true } });
     flatProject.addSourceFilesAtPaths(join(flatOut, '**/*.d.ts'));
-    writeFileSync(join(flatOut, 'globals.d.ts'), generateGlobals(flatProject, flatOut, root, hooks));
+    writeGlobals(flatProject, flatOut, hooks, editions);
     console.log(`wrote ${relative(root, flatOut)}/`);
 }
 

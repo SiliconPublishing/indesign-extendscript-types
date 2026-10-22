@@ -15,7 +15,7 @@ import type { ColorGroup } from './ColorGroup';
  * A tint swatch — a percentage of a {@link baseColor}. Every property besides
  * {@link tintValue} is derived and read-only.
  */
-export interface Tint<M extends Mode = 'single'> extends Color<M>, InDesignPlugins.Tint<M>{
+export interface Tint<M extends Mode = 'single'> extends Color<M>, InDesignEdition.Tint<M>, InDesignPlugins.Tint<M>{
   /** Resolves the proxy into the individual {@link Tint} objects it stands for. */
   getElements(): Tint<'single'>[];
 

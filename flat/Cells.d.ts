@@ -20,7 +20,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Cell
  */
-export interface Cells extends InDesignPlugins.Cells {
+export interface Cells extends InDesignEdition.Cells, InDesignPlugins.Cells {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

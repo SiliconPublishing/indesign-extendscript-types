@@ -45,7 +45,7 @@ import type { RadioButton } from './RadioButton';
 export interface State<M extends Mode = 'single'>
   extends EventTargetDOMObject<StateOwner, M>,
     IndexedDOMObject<StateOwner, M>,
-    NamableDOMObject<StateOwner, M>, InDesignPlugins.State<M> {
+    NamableDOMObject<StateOwner, M>, InDesignEdition.State<M>, InDesignPlugins.State<M> {
   /** Resolves the proxy into the individual {@link State} objects it stands for. */
   getElements(): State<'single'>[];
 

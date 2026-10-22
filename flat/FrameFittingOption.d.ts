@@ -31,7 +31,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Options for fitting placed or pasted content in a frame.
  */
-export interface FrameFittingOption extends InDesignPlugins.FrameFittingOption<'single'> {
+export interface FrameFittingOption extends InDesignEdition.FrameFittingOption, InDesignPlugins.FrameFittingOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -139,7 +139,7 @@ export interface FrameFittingOption extends InDesignPlugins.FrameFittingOption<'
 /**
  * Options for fitting placed or pasted content in a frame.
  */
-export interface FrameFittingOptionPlural extends InDesignPlugins.FrameFittingOption<'plural'> {
+export interface FrameFittingOptionPlural extends InDesignEdition.FrameFittingOptionPlural, InDesignPlugins.FrameFittingOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

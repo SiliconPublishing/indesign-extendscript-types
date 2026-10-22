@@ -14,7 +14,7 @@ import type { UIColors } from './Enums/UIColors';
  * Settings for Smart Guides — the alignment guides InDesign shows automatically
  * while dragging or resizing objects near other objects.
  */
-export interface SmartGuidePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.SmartGuidePreference<M> {
+export interface SmartGuidePreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.SmartGuidePreference<M>, InDesignPlugins.SmartGuidePreference<M> {
   /** Resolves the proxy into the individual {@link SmartGuidePreference} objects it stands for. */
   getElements(): SmartGuidePreference<'single'>[];
 

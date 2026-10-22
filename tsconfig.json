@@ -8,6 +8,12 @@
     "noEmit": true,
     "types": []
   },
-  "files": ["lib/global.d.ts", "lib/ScriptUI.d.ts", "types/globals.d.ts"],
-  "include": ["test/typecheck/**/*.ts"]
+  "files": [
+    "lib/global.d.ts",
+    "lib/ScriptUI.d.ts",
+    "types/editions/desktop.d.ts"
+  ],
+  "include": [
+    "test/typecheck/*.ts"
+  ]
 }

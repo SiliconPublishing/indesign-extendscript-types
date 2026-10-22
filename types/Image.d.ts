@@ -38,12 +38,16 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { GraphicDesktop } from "./Graphic";
+import type { GraphicServer } from "./Graphic";
+import type { GraphicPortable } from "./Graphic";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A bitmap image in any raster file format (including TIFF, JPEG, GIF, or
  * Photoshop). See {@link Graphic} for the shared placed-graphic surface.
  */
-export interface Image<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignPlugins.Image<M> {
+export interface Image<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignEdition.Image<TParent, M>, InDesignPlugins.Image<M> {
   /** Resolves the proxy into the individual {@link Image} objects it stands for. */
   getElements(): Image<TParent, 'single'>[];
 
@@ -76,3 +80,11 @@ export interface Image<TParent = PageItemParent, M extends Mode = 'single'> exte
   get imageRenderingIntent(): Read<M, RenderingIntent>;
   set imageRenderingIntent(value: RenderingIntent);
 }
+/** Image's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ImageDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicDesktop<TParent, M> {}
+
+/** Image's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ImageServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicServer<TParent, M> {}
+
+/** Image's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ImagePortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicPortable<TParent, M> {}

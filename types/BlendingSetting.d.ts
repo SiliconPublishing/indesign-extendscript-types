@@ -17,7 +17,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
 /**
  * Basic object blending settings.
  */
-export interface BlendingSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M>, InDesignPlugins.BlendingSetting<M> {
+export interface BlendingSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M>, InDesignEdition.BlendingSetting<M, TParent, NSet>, InDesignPlugins.BlendingSetting<M> {
   /** Resolves the proxy into the individual {@link BlendingSetting} objects it stands for. */
   getElements(): BlendingSetting<'single', TParent>[];
 

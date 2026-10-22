@@ -14,7 +14,7 @@ import type { BehaviorEvents } from './Enums/BehaviorEvents';
 /**
  * A behavior that shows or hides a set of interactive form fields.
  */
-export interface ShowHideFieldsBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignPlugins.ShowHideFieldsBehavior<M>{
+export interface ShowHideFieldsBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignEdition.ShowHideFieldsBehavior<M>, InDesignPlugins.ShowHideFieldsBehavior<M>{
   /** Resolves the proxy into the individual {@link ShowHideFieldsBehavior} objects it stands for. */
   getElements(): ShowHideFieldsBehavior<'single'>[];
 

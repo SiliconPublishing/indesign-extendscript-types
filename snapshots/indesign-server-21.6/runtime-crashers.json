@@ -1,0 +1,116 @@
+{
+ "FindChangeDropShadowSetting.distance": {
+  "crashes": true,
+  "version": "21.6",
+  "error": "Command failed: osascript -e with timeout of 600 seconds",
+  "from": "InDesign desktop (not tried on Server)"
+ },
+ "FindChangeDropShadowSetting.angle": {
+  "crashes": true,
+  "version": "21.6",
+  "error": "Command failed: osascript -e with timeout of 600 seconds",
+  "from": "InDesign desktop (not tried on Server)"
+ },
+ "FindChangeInnerShadowSetting.xOffset": {
+  "crashes": true,
+  "version": "21.6",
+  "error": "Command failed: osascript -e with timeout of 600 seconds",
+  "from": "InDesign desktop (not tried on Server)"
+ },
+ "FindChangeInnerShadowSetting.yOffset": {
+  "crashes": true,
+  "version": "21.6",
+  "error": "Command failed: osascript -e with timeout of 600 seconds",
+  "from": "InDesign desktop (not tried on Server)"
+ },
+ "XMLElement.contents:nothing": {
+  "crashes": true,
+  "version": "21.6",
+  "error": "Command failed: osascript -e with timeout of 600 seconds",
+  "from": "InDesign desktop (not tried on Server)"
+ },
+ "XMLElement.contents:roundtrip": {
+  "crashes": true,
+  "version": "21.6",
+  "error": "Command failed: osascript -e with timeout of 600 seconds",
+  "from": "InDesign desktop (not tried on Server)"
+ },
+ "Events[]": {
+  "crashes": true,
+  "version": "21.6",
+  "error": "Command failed: osascript -e with timeout of 600 seconds",
+  "from": "InDesign desktop (not tried on Server)"
+ },
+ "LayoutWindow.activePage:name": {
+  "crashes": true,
+  "version": "21.6",
+  "error": "Command failed: osascript -e with timeout of 600 seconds",
+  "from": "InDesign desktop (not tried on Server)"
+ },
+ "Window.activePage:name": {
+  "crashes": true,
+  "version": "21.6",
+  "error": "Command failed: osascript -e with timeout of 600 seconds",
+  "from": "InDesign desktop (not tried on Server)"
+ },
+ "Asset.*": {
+  "crashes": true,
+  "version": "21.6",
+  "reproduced": false,
+  "note": "InDesign Server goes down when the samplers read (Class.*) or write (Class.*:write) these in the full fixture, at a different property each run; nothing goes down on fresh objects, and no single fixture step, nor either half of the fixture, triggers it (bisected 2026-10-22). Sampled on desktop, where the class is the same."
+ },
+ "Library.*": {
+  "crashes": true,
+  "version": "21.6",
+  "reproduced": false,
+  "note": "InDesign Server goes down when the samplers read (Class.*) or write (Class.*:write) these in the full fixture, at a different property each run; nothing goes down on fresh objects, and no single fixture step, nor either half of the fixture, triggers it (bisected 2026-10-22). Sampled on desktop, where the class is the same."
+ },
+ "BookContent.*": {
+  "crashes": true,
+  "version": "21.6",
+  "reproduced": false,
+  "note": "InDesign Server goes down when the samplers read (Class.*) or write (Class.*:write) these in the full fixture, at a different property each run; nothing goes down on fresh objects, and no single fixture step, nor either half of the fixture, triggers it (bisected 2026-10-22). Sampled on desktop, where the class is the same."
+ },
+ "Book.*": {
+  "crashes": true,
+  "version": "21.6",
+  "reproduced": false,
+  "note": "InDesign Server goes down when the samplers read (Class.*) or write (Class.*:write) these in the full fixture, at a different property each run; nothing goes down on fresh objects, and no single fixture step, nor either half of the fixture, triggers it (bisected 2026-10-22). Sampled on desktop, where the class is the same."
+ },
+ "CompositeFontEntry.*": {
+  "crashes": true,
+  "version": "21.6",
+  "reproduced": false,
+  "note": "InDesign Server goes down when the samplers read (Class.*) or write (Class.*:write) these in the full fixture, at a different property each run; nothing goes down on fresh objects, and no single fixture step, nor either half of the fixture, triggers it (bisected 2026-10-22). Sampled on desktop, where the class is the same."
+ },
+ "CompositeFont.*": {
+  "crashes": true,
+  "version": "21.6",
+  "reproduced": false,
+  "note": "InDesign Server goes down when the samplers read (Class.*) or write (Class.*:write) these in the full fixture, at a different property each run; nothing goes down on fresh objects, and no single fixture step, nor either half of the fixture, triggers it (bisected 2026-10-22). Sampled on desktop, where the class is the same."
+ },
+ "MojikumiTable.*": {
+  "crashes": true,
+  "version": "21.6",
+  "reproduced": false,
+  "note": "InDesign Server goes down when the samplers read (Class.*) or write (Class.*:write) these in the full fixture, at a different property each run; nothing goes down on fresh objects, and no single fixture step, nor either half of the fixture, triggers it (bisected 2026-10-22). Sampled on desktop, where the class is the same."
+ },
+ "KinsokuTable.*": {
+  "crashes": true,
+  "version": "21.6",
+  "reproduced": false,
+  "note": "InDesign Server goes down when the samplers read (Class.*) or write (Class.*:write) these in the full fixture, at a different property each run; nothing goes down on fresh objects, and no single fixture step, nor either half of the fixture, triggers it (bisected 2026-10-22). Sampled on desktop, where the class is the same."
+ },
+ "Assignment.*": {
+  "crashes": true,
+  "version": "21.6",
+  "reproduced": false,
+  "note": "InDesign Server goes down when the samplers read (Class.*) or write (Class.*:write) these in the full fixture, at a different property each run; nothing goes down on fresh objects, and no single fixture step, nor either half of the fixture, triggers it (bisected 2026-10-22). Sampled on desktop, where the class is the same."
+ },
+ "Change.*:write": {
+  "crashes": true,
+  "version": "21.6",
+  "reproduced": false,
+  "note": "InDesign Server goes down when the samplers read (Class.*) or write (Class.*:write) these in the full fixture, at a different property each run; nothing goes down on fresh objects, and no single fixture step, nor either half of the fixture, triggers it (bisected 2026-10-22). Sampled on desktop, where the class is the same."
+ }
+}

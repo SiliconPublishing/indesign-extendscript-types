@@ -14,7 +14,7 @@ import type { EndCap } from './Enums/EndCap';
 /**
  * A stroke style of alternating dashes and gaps.
  */
-export interface DashedStrokeStyle<M extends Mode = 'single'> extends StrokeStyle<M>, InDesignPlugins.DashedStrokeStyle<M>{
+export interface DashedStrokeStyle<M extends Mode = 'single'> extends StrokeStyle<M>, InDesignEdition.DashedStrokeStyle<M>, InDesignPlugins.DashedStrokeStyle<M>{
   /** Resolves the proxy into the individual {@link DashedStrokeStyle} objects it stands for. */
   getElements(): DashedStrokeStyle<'single'>[];
 

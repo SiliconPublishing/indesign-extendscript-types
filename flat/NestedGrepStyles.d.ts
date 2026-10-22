@@ -20,7 +20,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * specific GREP (Regular Expression) pattern within a paragraph.
  * @collection NestedGrepStyle
  */
-export interface NestedGrepStyles extends InDesignPlugins.NestedGrepStyles {
+export interface NestedGrepStyles extends InDesignEdition.NestedGrepStyles, InDesignPlugins.NestedGrepStyles {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

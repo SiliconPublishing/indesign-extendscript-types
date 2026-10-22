@@ -23,7 +23,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A {@link Hyperlink} destination that points to an external web URL.
  */
-export interface HyperlinkURLDestination extends InDesignPlugins.HyperlinkURLDestination<'single'> {
+export interface HyperlinkURLDestination extends InDesignEdition.HyperlinkURLDestination, InDesignPlugins.HyperlinkURLDestination<'single'> {
   /**
    * A collection of events
    */
@@ -144,7 +144,7 @@ export interface HyperlinkURLDestination extends InDesignPlugins.HyperlinkURLDes
 /**
  * A {@link Hyperlink} destination that points to an external web URL.
  */
-export interface HyperlinkURLDestinationPlural extends InDesignPlugins.HyperlinkURLDestination<'plural'> {
+export interface HyperlinkURLDestinationPlural extends InDesignEdition.HyperlinkURLDestinationPlural, InDesignPlugins.HyperlinkURLDestination<'plural'> {
   /**
    * A collection of events
    */

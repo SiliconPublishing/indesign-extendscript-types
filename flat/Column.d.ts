@@ -21,6 +21,7 @@ import type { Text } from './Text';
 import type { ColumnTypes } from './Enums/ColumnTypes';
 import type { FirstBaseline } from './Enums/FirstBaseline';
 import type { RowTypes } from './Enums/RowTypes';
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -47,7 +48,7 @@ import type { VerticalJustification } from './Enums/VerticalJustification';
  * and {@link Row}; the inner-gridline stroke properties are unique to a
  * multi-cell range like this one.
  */
-export interface Column extends InDesignPlugins.Column<'single'> {
+export interface Column extends InDesignEdition.Column, InDesignPlugins.Column<'single'> {
   /**
    * A collection of events
    */
@@ -529,11 +530,6 @@ export interface Column extends InDesignPlugins.Column<'single'> {
    * @param thru The last column in the range, given as a {@link Cell}, {@link Row}, or {@link Column}.
    */
   redistribute(using: HorizontalOrVertical, thru?: Cell | Row | Column): void;
-  /**
-   * Selects the column in the active document window.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(existingSelection?: SelectionOptions): void;
 }
 
 /**
@@ -544,7 +540,7 @@ export interface Column extends InDesignPlugins.Column<'single'> {
  * and {@link Row}; the inner-gridline stroke properties are unique to a
  * multi-cell range like this one.
  */
-export interface ColumnPlural extends InDesignPlugins.Column<'plural'> {
+export interface ColumnPlural extends InDesignEdition.ColumnPlural, InDesignPlugins.Column<'plural'> {
   /**
    * A collection of events
    */
@@ -1026,9 +1022,39 @@ export interface ColumnPlural extends InDesignPlugins.Column<'plural'> {
    * @param thru The last column in the range, given as a {@link Cell}, {@link Row}, or {@link Column}.
    */
   redistribute(using: HorizontalOrVertical, thru?: Cell | Row | Column): (void)[];
+}
+/** Column's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ColumnDesktop {
   /**
    * Selects the column in the active document window.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(existingSelection?: SelectionOptions): void;
+}
+
+/** Column's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ColumnDesktopPlural {
+  /**
+   * Selects the column in the active document window.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
    */
   select(existingSelection?: SelectionOptions): (void)[];
+}
+
+/** Column's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ColumnServer {
+}
+
+/** Column's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ColumnServerPlural {
+}
+
+/** Column's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ColumnPortable {
+}
+
+/** Column's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ColumnPortablePlural {
 }

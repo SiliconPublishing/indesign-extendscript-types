@@ -23,7 +23,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A rule mapping a paragraph style name to another paragraph style name, applied when importing Word or tagged-text content.
  */
-export interface ParaStyleMapping extends InDesignPlugins.ParaStyleMapping<'single'> {
+export interface ParaStyleMapping extends InDesignEdition.ParaStyleMapping, InDesignPlugins.ParaStyleMapping<'single'> {
   /**
    * A collection of events
    */
@@ -125,7 +125,7 @@ export interface ParaStyleMapping extends InDesignPlugins.ParaStyleMapping<'sing
 /**
  * A rule mapping a paragraph style name to another paragraph style name, applied when importing Word or tagged-text content.
  */
-export interface ParaStyleMappingPlural extends InDesignPlugins.ParaStyleMapping<'plural'> {
+export interface ParaStyleMappingPlural extends InDesignEdition.ParaStyleMappingPlural, InDesignPlugins.ParaStyleMapping<'plural'> {
   /**
    * A collection of events
    */

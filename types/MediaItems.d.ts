@@ -25,5 +25,5 @@ export interface MediaItems<TParent = PageItemParent>
   extends
     BaseCollection<MediaItem<TParent>, MediaItem, MediaItem<TParent, 'plural'>>,
     IdCollection<MediaItem<TParent>>,
-    NamedCollection<MediaItem<TParent>>, InDesignPlugins.MediaItems {
+    NamedCollection<MediaItem<TParent>>, InDesignEdition.MediaItems<TParent>, InDesignPlugins.MediaItems {
 }

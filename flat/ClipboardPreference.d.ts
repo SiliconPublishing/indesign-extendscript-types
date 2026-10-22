@@ -8,6 +8,7 @@
 import type { Mode, Read } from './_base/Types';
 import type { EventTargetDOMObject } from './_base/DomObjects';
 import type { Application } from './Application';
+import type { EditionPart } from "./_base/Editions";
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
 import type { Events } from './Events';
@@ -23,7 +24,7 @@ import type { FilePath } from './_base/Types';
  * Settings controlling what format content copies and pastes in, and whether
  * PDF data placed on the system clipboard survives quitting the application.
  */
-export interface ClipboardPreference extends InDesignPlugins.ClipboardPreference<'single'> {
+export interface ClipboardPreference extends InDesignEdition.ClipboardPreference, InDesignPlugins.ClipboardPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -108,31 +109,19 @@ export interface ClipboardPreference extends InDesignPlugins.ClipboardPreference
   /** If true, includes text attributes when pasting text. */
   get preferStyledTextWhenPasting(): boolean;
   set preferStyledTextWhenPasting(value: boolean);
-  /** If true, shows the Auto Style option. */
-  get showAutoStyleOption(): boolean;
-  set showAutoStyleOption(value: boolean);
-  /** If true, pastes PDF if available. */
-  get preferPDFWhenPasting(): boolean;
-  set preferPDFWhenPasting(value: boolean);
-  /** If true, copies PDF to the clipboard. */
-  get copyPDFToClipboard(): boolean;
-  set copyPDFToClipboard(value: boolean);
   /** If true, objects cut or copied from different layers retain their layer assignment when pasted. */
   get pasteRemembersLayers(): boolean;
   set pasteRemembersLayers(value: boolean);
   /** If true, preserves PDF data on the system clipboard when the application exits. */
   get preservePdfClipboardAtQuit(): boolean;
   set preservePdfClipboardAtQuit(value: boolean);
-  /** If true, shows paste options when pasting. */
-  get showPasteOptions(): boolean;
-  set showPasteOptions(value: boolean);
 }
 
 /**
  * Settings controlling what format content copies and pastes in, and whether
  * PDF data placed on the system clipboard survives quitting the application.
  */
-export interface ClipboardPreferencePlural extends InDesignPlugins.ClipboardPreference<'plural'> {
+export interface ClipboardPreferencePlural extends InDesignEdition.ClipboardPreferencePlural, InDesignPlugins.ClipboardPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -217,22 +206,89 @@ export interface ClipboardPreferencePlural extends InDesignPlugins.ClipboardPref
   /** If true, includes text attributes when pasting text. */
   get preferStyledTextWhenPasting(): (boolean)[];
   set preferStyledTextWhenPasting(value: boolean);
-  /** If true, shows the Auto Style option. */
-  get showAutoStyleOption(): (boolean)[];
-  set showAutoStyleOption(value: boolean);
-  /** If true, pastes PDF if available. */
-  get preferPDFWhenPasting(): (boolean)[];
-  set preferPDFWhenPasting(value: boolean);
-  /** If true, copies PDF to the clipboard. */
-  get copyPDFToClipboard(): (boolean)[];
-  set copyPDFToClipboard(value: boolean);
   /** If true, objects cut or copied from different layers retain their layer assignment when pasted. */
   get pasteRemembersLayers(): (boolean)[];
   set pasteRemembersLayers(value: boolean);
   /** If true, preserves PDF data on the system clipboard when the application exits. */
   get preservePdfClipboardAtQuit(): (boolean)[];
   set preservePdfClipboardAtQuit(value: boolean);
-  /** If true, shows paste options when pasting. */
-  get showPasteOptions(): (boolean)[];
+}
+/** ClipboardPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ClipboardPreferenceDesktop {
+  /** If true, pastes PDF if available.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get preferPDFWhenPasting(): boolean;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set preferPDFWhenPasting(value: boolean);
+  /** If true, copies PDF to the clipboard.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get copyPDFToClipboard(): boolean;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set copyPDFToClipboard(value: boolean);
+  /** If true, shows the Auto Style option.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get showAutoStyleOption(): boolean;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set showAutoStyleOption(value: boolean);
+  /** If true, shows paste options when pasting.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get showPasteOptions(): boolean;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
   set showPasteOptions(value: boolean);
+}
+
+/** ClipboardPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ClipboardPreferenceDesktopPlural {
+  /** If true, pastes PDF if available.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get preferPDFWhenPasting(): (boolean)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set preferPDFWhenPasting(value: boolean);
+  /** If true, copies PDF to the clipboard.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get copyPDFToClipboard(): (boolean)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set copyPDFToClipboard(value: boolean);
+  /** If true, shows the Auto Style option.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get showAutoStyleOption(): (boolean)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set showAutoStyleOption(value: boolean);
+  /** If true, shows paste options when pasting.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get showPasteOptions(): (boolean)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set showPasteOptions(value: boolean);
+}
+
+/** ClipboardPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ClipboardPreferenceServer {
+}
+
+/** ClipboardPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ClipboardPreferenceServerPlural {
+}
+
+/** ClipboardPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ClipboardPreferencePortable {
+}
+
+/** ClipboardPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ClipboardPreferencePortablePlural {
 }

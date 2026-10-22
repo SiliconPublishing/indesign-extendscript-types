@@ -24,7 +24,7 @@ import type { BehaviorParent } from './_base/Parents';
 /**
  * A behavior that opens a web URL in a browser.
  */
-export interface GotoURLBehavior extends InDesignPlugins.GotoURLBehavior<'single'> {
+export interface GotoURLBehavior extends InDesignEdition.GotoURLBehavior, InDesignPlugins.GotoURLBehavior<'single'> {
   /**
    * A collection of events
    */
@@ -144,7 +144,7 @@ export interface GotoURLBehavior extends InDesignPlugins.GotoURLBehavior<'single
 /**
  * A behavior that opens a web URL in a browser.
  */
-export interface GotoURLBehaviorPlural extends InDesignPlugins.GotoURLBehavior<'plural'> {
+export interface GotoURLBehaviorPlural extends InDesignEdition.GotoURLBehaviorPlural, InDesignPlugins.GotoURLBehavior<'plural'> {
   /**
    * A collection of events
    */

@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection MediaItem
  */
-export interface MediaItems<TParent = PageItemParent> extends InDesignPlugins.MediaItems {
+export interface MediaItems<TParent = PageItemParent> extends InDesignEdition.MediaItems<TParent>, InDesignPlugins.MediaItems {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

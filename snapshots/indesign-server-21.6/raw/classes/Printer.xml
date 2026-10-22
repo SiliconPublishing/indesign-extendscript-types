@@ -1,0 +1,1 @@
+<classdef name="Printer" enumeration="true">  <shortdesc>Printer options.</shortdesc>  <elements type="class">    <property name="POSTSCRIPT_FILE" rwaccess="readonly">      <shortdesc>Prints to a PostScript file.</shortdesc>      <datatype>        <type>number</type>        <value>1886611052</value>      </datatype>    </property>  </elements></classdef>

@@ -78,7 +78,7 @@ import type { FilePath } from './_base/Types';
  * The content and formatting criteria a text search matches against, set via
  * {@link Application.findTextPreferences} and used by {@link Application.findText}.
  */
-export interface FindTextPreference extends InDesignPlugins.FindTextPreference<'single'> {
+export interface FindTextPreference extends InDesignEdition.FindTextPreference, InDesignPlugins.FindTextPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -828,7 +828,7 @@ export interface FindTextPreference extends InDesignPlugins.FindTextPreference<'
  * The content and formatting criteria a text search matches against, set via
  * {@link Application.findTextPreferences} and used by {@link Application.findText}.
  */
-export interface FindTextPreferencePlural extends InDesignPlugins.FindTextPreference<'plural'> {
+export interface FindTextPreferencePlural extends InDesignEdition.FindTextPreferencePlural, InDesignPlugins.FindTextPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -26,7 +26,7 @@ export interface XMLTags
   extends
     BaseCollection<XMLTag, XMLTag, XMLTag<'plural'>>,
     IdCollection<XMLTag>,
-    NamedCollection<XMLTag>, InDesignPlugins.XMLTags {
+    NamedCollection<XMLTag>, InDesignEdition.XMLTags, InDesignPlugins.XMLTags {
   /**
    * Creates a new XML tag from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link XMLTag}.

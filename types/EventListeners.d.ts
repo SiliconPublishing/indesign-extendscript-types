@@ -27,7 +27,7 @@ export interface EventListeners
   extends
     BaseCollection<EventListener, EventListener, EventListener<'plural'>>,
     IdCollection<EventListener>,
-    NamedCollection<EventListener>, InDesignPlugins.EventListeners {
+    NamedCollection<EventListener>, InDesignEdition.EventListeners, InDesignPlugins.EventListeners {
   /**
    * Adds a new event listener.
    *

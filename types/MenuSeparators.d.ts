@@ -18,7 +18,7 @@ import type { MenuSeparator } from './MenuSeparator';
  * @collection MenuSeparator
  */
 export interface MenuSeparators
-  extends BaseCollection<MenuSeparator, MenuSeparator, MenuSeparator<'plural'>>, IdCollection<MenuSeparator>, InDesignPlugins.MenuSeparators {
+  extends BaseCollection<MenuSeparator, MenuSeparator, MenuSeparator<'plural'>>, IdCollection<MenuSeparator>, InDesignEdition.MenuSeparators, InDesignPlugins.MenuSeparators {
   /**
    * Creates and inserts a new {@link MenuSeparator} into the menu.
    *

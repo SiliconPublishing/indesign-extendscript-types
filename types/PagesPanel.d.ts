@@ -19,7 +19,7 @@ import type { Document } from './Document';
  * it affects the document. Add, move, or delete pages through
  * {@link Document.pages} and {@link Document.masterSpreads}.
  */
-export interface PagesPanel<M extends Mode = 'single'> extends Panel<M>, InDesignPlugins.PagesPanel<M>{
+export interface PagesPanel<M extends Mode = 'single'> extends Panel<M>, InDesignEdition.PagesPanel<M>, InDesignPlugins.PagesPanel<M>{
   /** Resolves the proxy into the individual {@link PagesPanel} objects it stands for. */
   getElements(): PagesPanel<'single'>[];
 

@@ -20,7 +20,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection LanguageWithVendors
  */
-export interface LanguagesWithVendors extends InDesignPlugins.LanguagesWithVendors {
+export interface LanguagesWithVendors extends InDesignEdition.LanguagesWithVendors, InDesignPlugins.LanguagesWithVendors {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

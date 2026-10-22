@@ -18,7 +18,7 @@ import type { ParagraphStyle } from './ParagraphStyle';
  * specific GREP (Regular Expression) pattern within a paragraph.
  * @collection NestedGrepStyle
  */
-export interface NestedGrepStyles extends BaseCollection<NestedGrepStyle, NestedGrepStyle, NestedGrepStyle<'plural'>>, InDesignPlugins.NestedGrepStyles {
+export interface NestedGrepStyles extends BaseCollection<NestedGrepStyle, NestedGrepStyle, NestedGrepStyle<'plural'>>, InDesignEdition.NestedGrepStyles, InDesignPlugins.NestedGrepStyles {
   /**
    * Creates a new nested GREP style rule.
    * @param withProperties Initial values for properties of the new rule.

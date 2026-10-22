@@ -22,7 +22,7 @@ export type ConditionSetEntry = [condition: Condition, visibility: boolean];
 export interface ConditionSet<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Application | Document, M>,
     IndexedDOMObject<Application | Document, M>,
-    NamableDOMObject<Application | Document, M>, InDesignPlugins.ConditionSet<M> {
+    NamableDOMObject<Application | Document, M>, InDesignEdition.ConditionSet<M>, InDesignPlugins.ConditionSet<M> {
   /** Resolves the proxy into the individual {@link ConditionSet} objects it stands for. */
   getElements(): ConditionSet<'single'>[];
 

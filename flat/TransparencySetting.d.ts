@@ -36,7 +36,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Transparency settings for the parent object as a whole.
  */
-export interface TransparencySetting extends InDesignPlugins.TransparencySetting<'single'> {
+export interface TransparencySetting extends InDesignEdition.TransparencySetting, InDesignPlugins.TransparencySetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -145,7 +145,7 @@ export interface TransparencySetting extends InDesignPlugins.TransparencySetting
 /**
  * Transparency settings for the parent object as a whole.
  */
-export interface TransparencySettingPlural extends InDesignPlugins.TransparencySetting<'plural'> {
+export interface TransparencySettingPlural extends InDesignEdition.TransparencySettingPlural, InDesignPlugins.TransparencySetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

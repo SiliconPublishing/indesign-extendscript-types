@@ -24,7 +24,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Preferences for alignment and distribution.
  */
-export interface AlignDistributePreference extends InDesignPlugins.AlignDistributePreference<'single'> {
+export interface AlignDistributePreference extends InDesignEdition.AlignDistributePreference, InDesignPlugins.AlignDistributePreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -126,7 +126,7 @@ export interface AlignDistributePreference extends InDesignPlugins.AlignDistribu
 /**
  * Preferences for alignment and distribution.
  */
-export interface AlignDistributePreferencePlural extends InDesignPlugins.AlignDistributePreference<'plural'> {
+export interface AlignDistributePreferencePlural extends InDesignEdition.AlignDistributePreferencePlural, InDesignPlugins.AlignDistributePreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

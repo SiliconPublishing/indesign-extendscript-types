@@ -26,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A {@link Hyperlink} destination that is a page within the current document.
  */
-export interface HyperlinkPageDestination extends InDesignPlugins.HyperlinkPageDestination<'single'> {
+export interface HyperlinkPageDestination extends InDesignEdition.HyperlinkPageDestination, InDesignPlugins.HyperlinkPageDestination<'single'> {
   /**
    * A collection of events
    */
@@ -170,7 +170,7 @@ export interface HyperlinkPageDestination extends InDesignPlugins.HyperlinkPageD
 /**
  * A {@link Hyperlink} destination that is a page within the current document.
  */
-export interface HyperlinkPageDestinationPlural extends InDesignPlugins.HyperlinkPageDestination<'plural'> {
+export interface HyperlinkPageDestinationPlural extends InDesignEdition.HyperlinkPageDestinationPlural, InDesignPlugins.HyperlinkPageDestination<'plural'> {
   /**
    * A collection of events
    */

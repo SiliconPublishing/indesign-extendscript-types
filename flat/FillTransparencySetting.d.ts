@@ -36,7 +36,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Transparency settings for the fill applied to the parent object.
  */
-export interface FillTransparencySetting extends InDesignPlugins.FillTransparencySetting<'single'> {
+export interface FillTransparencySetting extends InDesignEdition.FillTransparencySetting, InDesignPlugins.FillTransparencySetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -145,7 +145,7 @@ export interface FillTransparencySetting extends InDesignPlugins.FillTransparenc
 /**
  * Transparency settings for the fill applied to the parent object.
  */
-export interface FillTransparencySettingPlural extends InDesignPlugins.FillTransparencySetting<'plural'> {
+export interface FillTransparencySettingPlural extends InDesignEdition.FillTransparencySettingPlural, InDesignPlugins.FillTransparencySetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

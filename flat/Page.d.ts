@@ -61,6 +61,7 @@ import type { TrapPreset } from './TrapPreset';
 import type { XMLElement } from './XMLElement';
 import type { AnyGraphic, AnyPageItem } from './_base/Unions';
 import type { DocumentPreference } from './DocumentPreference';
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -74,7 +75,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A single page within a {@link Spread} or {@link MasterSpread}.
  */
-export interface Page<TParent = Spread | MasterSpread> extends InDesignPlugins.Page<'single'> {
+export interface Page<TParent = Spread | MasterSpread> extends InDesignEdition.Page<TParent>, InDesignPlugins.Page<'single'> {
   /**
    * A collection of events
    */
@@ -330,38 +331,10 @@ export interface Page<TParent = Spread | MasterSpread> extends InDesignPlugins.P
    * @param showingOptions If `true`, shows the link-options dialog. Defaults to `false`.
    */
   placeAndLink(parentStory: Story, placePoint?: MeasurementValue[], destinationLayer?: Layer, showingOptions?: boolean): Story;
-  /**
-   * Places a file onto the page, returning the placed object(s).
-   *
-   * Placing an image returns the **graphic** (`Image`, `PDF`, `EPS`…),
-   * not the frame InDesign creates around it. Sizing and moving belong to the frame,
-   * which is the graphic's `parent` — narrow it before use, since a graphic can also
-   * sit in a cell or a snippet:
-   *
-   * ```ts
-   * const img = page.place(file)[0];
-   * if (img && img.parent instanceof Rectangle) {
-   *   img.parent.fit(FitOptions.PROPORTIONALLY);
-   * }
-   * ```
-   *
-   * @param fileName Path to the asset to place.
-   * @param placePoint Point to place at, in the format `[x, y]`.
-   * @param destinationLayer The layer to place onto.
-   * @param showingOptions If `true`, shows the format's import-options dialog. Defaults to `false`.
-   * @param autoflowing If `true`, autoflows placed text. Defaults to `false`.
-   * @param withProperties Initial property values for the placed object(s).
-   */
-  place(fileName: FilePath, placePoint?: MeasurementValue[], destinationLayer?: Layer, showingOptions?: boolean, autoflowing?: boolean, withProperties?: object): AnyPageItem[];
   /** Removes a previous master-item override from an item on this page. */
   removeOverride(): void;
   /** Detaches an overridden master item on this page from its master. */
   detach(): void;
-  /**
-   * Selects the page in the active document window.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(existingSelection?: SelectionOptions): void;
   /**
    * Applies an affine transform to the page's content within a coordinate space.
    * @param inCoordinateSpace The space the transform is expressed in.
@@ -429,7 +402,7 @@ export interface Page<TParent = Spread | MasterSpread> extends InDesignPlugins.P
 /**
  * A single page within a {@link Spread} or {@link MasterSpread}.
  */
-export interface PagePlural<TParent = Spread | MasterSpread> extends InDesignPlugins.Page<'plural'> {
+export interface PagePlural<TParent = Spread | MasterSpread> extends InDesignEdition.PagePlural<TParent>, InDesignPlugins.Page<'plural'> {
   /**
    * A collection of events
    */
@@ -685,38 +658,10 @@ export interface PagePlural<TParent = Spread | MasterSpread> extends InDesignPlu
    * @param showingOptions If `true`, shows the link-options dialog. Defaults to `false`.
    */
   placeAndLink(parentStory: Story, placePoint?: MeasurementValue[], destinationLayer?: Layer, showingOptions?: boolean): (Story)[];
-  /**
-   * Places a file onto the page, returning the placed object(s).
-   *
-   * Placing an image returns the **graphic** (`Image`, `PDF`, `EPS`…),
-   * not the frame InDesign creates around it. Sizing and moving belong to the frame,
-   * which is the graphic's `parent` — narrow it before use, since a graphic can also
-   * sit in a cell or a snippet:
-   *
-   * ```ts
-   * const img = page.place(file)[0];
-   * if (img && img.parent instanceof Rectangle) {
-   *   img.parent.fit(FitOptions.PROPORTIONALLY);
-   * }
-   * ```
-   *
-   * @param fileName Path to the asset to place.
-   * @param placePoint Point to place at, in the format `[x, y]`.
-   * @param destinationLayer The layer to place onto.
-   * @param showingOptions If `true`, shows the format's import-options dialog. Defaults to `false`.
-   * @param autoflowing If `true`, autoflows placed text. Defaults to `false`.
-   * @param withProperties Initial property values for the placed object(s).
-   */
-  place(fileName: FilePath, placePoint?: MeasurementValue[], destinationLayer?: Layer, showingOptions?: boolean, autoflowing?: boolean, withProperties?: object): (AnyPageItem[])[];
   /** Removes a previous master-item override from an item on this page. */
   removeOverride(): (void)[];
   /** Detaches an overridden master item on this page from its master. */
   detach(): (void)[];
-  /**
-   * Selects the page in the active document window.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(existingSelection?: SelectionOptions): (void)[];
   /**
    * Applies an affine transform to the page's content within a coordinate space.
    * @param inCoordinateSpace The space the transform is expressed in.
@@ -779,4 +724,163 @@ export interface PagePlural<TParent = Spread | MasterSpread> extends InDesignPlu
    * @param showingOptions If `true`, shows the link-options dialog. Defaults to `false`.
    */
   contentPlace(pageItems: PageItem | PageItem[], linkPageItems?: boolean, linkStories?: boolean, mapStyles?: boolean, placePoint?: MeasurementValue[], destinationLayer?: Layer, showingOptions?: boolean): (PageItem[])[];
+}
+/** Page's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface PageDesktop<TParent = Spread | MasterSpread> {
+  /**
+   * Places a file onto the page, returning the placed object(s).
+   *
+   * Placing an image returns the **graphic** (`Image`, `PDF`, `EPS`…),
+   * not the frame InDesign creates around it. Sizing and moving belong to the frame,
+   * which is the graphic's `parent` — narrow it before use, since a graphic can also
+   * sit in a cell or a snippet:
+   *
+   * ```ts
+   * const img = page.place(file)[0];
+   * if (img && img.parent instanceof Rectangle) {
+   *   img.parent.fit(FitOptions.PROPORTIONALLY);
+   * }
+   * ```
+   *
+   * InDesign Server 21.6 takes `place(fileName, placePoint?, destinationLayer?, autoflowing?, withProperties?)` instead.
+   * @param fileName Path to the asset to place.
+   * @param placePoint Point to place at, in the format `[x, y]`.
+   * @param destinationLayer The layer to place onto.
+   * @param showingOptions If `true`, shows the format's import-options dialog. Defaults to `false`.
+   * @param autoflowing If `true`, autoflows placed text. Defaults to `false`.
+   * @param withProperties Initial property values for the placed object(s).
+   */
+  place(fileName: FilePath, placePoint?: MeasurementValue[], destinationLayer?: Layer, showingOptions?: boolean, autoflowing?: boolean, withProperties?: object): AnyPageItem[];
+  /**
+   * Selects the page in the active document window.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(existingSelection?: SelectionOptions): void;
+}
+
+/** Page's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface PageDesktopPlural<TParent = Spread | MasterSpread> {
+  /**
+   * Places a file onto the page, returning the placed object(s).
+   *
+   * Placing an image returns the **graphic** (`Image`, `PDF`, `EPS`…),
+   * not the frame InDesign creates around it. Sizing and moving belong to the frame,
+   * which is the graphic's `parent` — narrow it before use, since a graphic can also
+   * sit in a cell or a snippet:
+   *
+   * ```ts
+   * const img = page.place(file)[0];
+   * if (img && img.parent instanceof Rectangle) {
+   *   img.parent.fit(FitOptions.PROPORTIONALLY);
+   * }
+   * ```
+   *
+   * InDesign Server 21.6 takes `place(fileName, placePoint?, destinationLayer?, autoflowing?, withProperties?)` instead.
+   * @param fileName Path to the asset to place.
+   * @param placePoint Point to place at, in the format `[x, y]`.
+   * @param destinationLayer The layer to place onto.
+   * @param showingOptions If `true`, shows the format's import-options dialog. Defaults to `false`.
+   * @param autoflowing If `true`, autoflows placed text. Defaults to `false`.
+   * @param withProperties Initial property values for the placed object(s).
+   */
+  place(fileName: FilePath, placePoint?: MeasurementValue[], destinationLayer?: Layer, showingOptions?: boolean, autoflowing?: boolean, withProperties?: object): (AnyPageItem[])[];
+  /**
+   * Selects the page in the active document window.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(existingSelection?: SelectionOptions): (void)[];
+}
+
+/** Page's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface PageServer<TParent = Spread | MasterSpread> {
+  /**
+   * Places a file onto the page, returning the placed object(s).
+   * Placing an image returns the **graphic** (`Image`, `PDF`, `EPS`…),
+   * not the frame InDesign creates around it. Sizing and moving belong to the frame,
+   * which is the graphic's `parent` — narrow it before use, since a graphic can also
+   * sit in a cell or a snippet:
+   * ```ts
+   * const img = page.place(file)[0];
+   * if (img && img.parent instanceof Rectangle) {
+   *   img.parent.fit(FitOptions.PROPORTIONALLY);
+   * }
+   * ```
+   * InDesign desktop 21.6 takes `place(fileName, placePoint?, destinationLayer?, showingOptions?, autoflowing?, withProperties?)` instead.
+   * @param fileName Path to the asset to place.
+   * @param placePoint Point to place at, in the format `[x, y]`.
+   * @param destinationLayer The layer to place onto.
+   * @param autoflowing If `true`, autoflows placed text. Defaults to `false`.
+   * @param withProperties Initial property values for the placed object(s).
+   */
+  place(fileName: FilePath, placePoint?: MeasurementValue[], destinationLayer?: Layer, autoflowing?: boolean, withProperties?: object): AnyPageItem[];
+}
+
+/** Page's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface PageServerPlural<TParent = Spread | MasterSpread> {
+  /**
+   * Places a file onto the page, returning the placed object(s).
+   * Placing an image returns the **graphic** (`Image`, `PDF`, `EPS`…),
+   * not the frame InDesign creates around it. Sizing and moving belong to the frame,
+   * which is the graphic's `parent` — narrow it before use, since a graphic can also
+   * sit in a cell or a snippet:
+   * ```ts
+   * const img = page.place(file)[0];
+   * if (img && img.parent instanceof Rectangle) {
+   *   img.parent.fit(FitOptions.PROPORTIONALLY);
+   * }
+   * ```
+   * InDesign desktop 21.6 takes `place(fileName, placePoint?, destinationLayer?, showingOptions?, autoflowing?, withProperties?)` instead.
+   * @param fileName Path to the asset to place.
+   * @param placePoint Point to place at, in the format `[x, y]`.
+   * @param destinationLayer The layer to place onto.
+   * @param autoflowing If `true`, autoflows placed text. Defaults to `false`.
+   * @param withProperties Initial property values for the placed object(s).
+   */
+  place(fileName: FilePath, placePoint?: MeasurementValue[], destinationLayer?: Layer, autoflowing?: boolean, withProperties?: object): (AnyPageItem[])[];
+}
+
+/** Page's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface PagePortable<TParent = Spread | MasterSpread> {
+  /**
+   * Places a file onto the page, returning the placed object(s).
+   * Placing an image returns the **graphic** (`Image`, `PDF`, `EPS`…),
+   * not the frame InDesign creates around it. Sizing and moving belong to the frame,
+   * which is the graphic's `parent` — narrow it before use, since a graphic can also
+   * sit in a cell or a snippet:
+   * ```ts
+   * const img = page.place(file)[0];
+   * if (img && img.parent instanceof Rectangle) {
+   *   img.parent.fit(FitOptions.PROPORTIONALLY);
+   * }
+   * ```
+   * Portable form: the editions' parameters differ after these (desktop `place(fileName, placePoint?, destinationLayer?, showingOptions?, autoflowing?, withProperties?)`, InDesign Server `place(fileName, placePoint?, destinationLayer?, autoflowing?, withProperties?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param fileName Path to the asset to place.
+   * @param placePoint Point to place at, in the format `[x, y]`.
+   * @param destinationLayer The layer to place onto.
+   */
+  place(fileName: FilePath, placePoint?: MeasurementValue[], destinationLayer?: Layer): AnyPageItem[];
+}
+
+/** Page's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface PagePortablePlural<TParent = Spread | MasterSpread> {
+  /**
+   * Places a file onto the page, returning the placed object(s).
+   * Placing an image returns the **graphic** (`Image`, `PDF`, `EPS`…),
+   * not the frame InDesign creates around it. Sizing and moving belong to the frame,
+   * which is the graphic's `parent` — narrow it before use, since a graphic can also
+   * sit in a cell or a snippet:
+   * ```ts
+   * const img = page.place(file)[0];
+   * if (img && img.parent instanceof Rectangle) {
+   *   img.parent.fit(FitOptions.PROPORTIONALLY);
+   * }
+   * ```
+   * Portable form: the editions' parameters differ after these (desktop `place(fileName, placePoint?, destinationLayer?, showingOptions?, autoflowing?, withProperties?)`, InDesign Server `place(fileName, placePoint?, destinationLayer?, autoflowing?, withProperties?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param fileName Path to the asset to place.
+   * @param placePoint Point to place at, in the format `[x, y]`.
+   * @param destinationLayer The layer to place onto.
+   */
+  place(fileName: FilePath, placePoint?: MeasurementValue[], destinationLayer?: Layer): (AnyPageItem[])[];
 }

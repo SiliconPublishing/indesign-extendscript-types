@@ -34,14 +34,26 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { GraphicDesktop } from "./Graphic";
+import type { GraphicServer } from "./Graphic";
+import type { GraphicPortable } from "./Graphic";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A placed PICT (Macintosh Picture) graphic.
  */
-export interface PICT<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignPlugins.PICT<M> {
+export interface PICT<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignEdition.PICT<TParent, M>, InDesignPlugins.PICT<M> {
   /** Resolves the proxy into the individual {@link PICT} objects it stands for. */
   getElements(): PICT<TParent, 'single'>[];
 
   /** Clipping-path and alpha-channel settings stored in the PICT. */
   readonly clippingPath: Read<M, ClippingPathSettings>;
 }
+/** PICT's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface PICTDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicDesktop<TParent, M> {}
+
+/** PICT's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface PICTServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicServer<TParent, M> {}
+
+/** PICT's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface PICTPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicPortable<TParent, M> {}

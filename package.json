@@ -29,18 +29,44 @@
     "./authored": {
       "types": "./authored.d.ts"
     },
+    "./server": {
+      "types": "./server/index.d.ts"
+    },
+    "./server/authored": {
+      "types": "./server/authored.d.ts"
+    },
+    "./portable": {
+      "types": "./portable/index.d.ts"
+    },
+    "./portable/authored": {
+      "types": "./portable/authored.d.ts"
+    },
     "./package.json": "./package.json"
   },
   "typesVersions": {
     "*": {
       "authored": [
         "./authored.d.ts"
+      ],
+      "server": [
+        "./server/index.d.ts"
+      ],
+      "server/authored": [
+        "./server/authored.d.ts"
+      ],
+      "portable": [
+        "./portable/index.d.ts"
+      ],
+      "portable/authored": [
+        "./portable/authored.d.ts"
       ]
     }
   },
   "files": [
     "index.d.ts",
     "authored.d.ts",
+    "portable/",
+    "server/",
     "lib/",
     "types/",
     "flat/",

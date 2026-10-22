@@ -18,5 +18,5 @@ import type { IndexingSortOption } from './IndexingSortOption';
 export interface IndexingSortOptions
   extends
     BaseCollection<IndexingSortOption, IndexingSortOption, IndexingSortOption<'plural'>>,
-    NamedCollection<IndexingSortOption>, InDesignPlugins.IndexingSortOptions {
+    NamedCollection<IndexingSortOption>, InDesignEdition.IndexingSortOptions, InDesignPlugins.IndexingSortOptions {
 }

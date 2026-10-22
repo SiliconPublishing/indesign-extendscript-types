@@ -25,7 +25,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * An entry in the Articles panel: a named, ordered set of page items used to
  * drive Article-based EPUB/HTML export order, independent of layer or z-order.
  */
-export interface Article extends InDesignPlugins.Article<'single'> {
+export interface Article extends InDesignEdition.Article, InDesignPlugins.Article<'single'> {
   /**
    * A collection of events
    */
@@ -153,7 +153,7 @@ export interface Article extends InDesignPlugins.Article<'single'> {
  * An entry in the Articles panel: a named, ordered set of page items used to
  * drive Article-based EPUB/HTML export order, independent of layer or z-order.
  */
-export interface ArticlePlural extends InDesignPlugins.Article<'plural'> {
+export interface ArticlePlural extends InDesignEdition.ArticlePlural, InDesignPlugins.Article<'plural'> {
   /**
    * A collection of events
    */

@@ -18,7 +18,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection DialogRow
  */
-export interface DialogRows extends InDesignPlugins.DialogRows {
+export interface DialogRows extends InDesignEdition.DialogRows, InDesignPlugins.DialogRows {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

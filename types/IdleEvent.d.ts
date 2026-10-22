@@ -14,7 +14,7 @@ import type { LayoutWindow } from './LayoutWindow';
 /**
  * An event dispatched at idle time for a registered {@link IdleTask}.
  */
-export interface IdleEvent<M extends Mode = 'single'> extends Event<M>, InDesignPlugins.IdleEvent<M>{
+export interface IdleEvent<M extends Mode = 'single'> extends Event<M>, InDesignEdition.IdleEvent<M>, InDesignPlugins.IdleEvent<M>{
   /** Resolves the proxy into the individual {@link IdleEvent} objects it stands for. */
   getElements(): IdleEvent<'single'>[];
 

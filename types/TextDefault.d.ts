@@ -82,11 +82,12 @@ import type { SpanColumnTypeOptions } from './Enums/SpanColumnTypeOptions';
 import type { StartParagraph } from './Enums/StartParagraph';
 import type { TextStrokeAlign } from './Enums/TextStrokeAlign';
 import type { WarichuAlignment } from './Enums/WarichuAlignment';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * Application- or document-level default character and paragraph formatting applied to new text.
  */
-export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.TextDefault<M> {
+export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignEdition.TextDefault<M>, InDesignPlugins.TextDefault<M> {
   /** Resolves the proxy into the individual {@link TextDefault} objects it stands for. */
   getElements(): TextDefault<'single'>[];
 
@@ -538,11 +539,6 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
   /** The values of the applied variable font's design axes, indexed to match {@link setNthDesignAxis} and {@link isNthDesignAxisHidden}. */
   get designAxes(): Read<M, number[]>;
   set designAxes(value: number[]);
-
-  /** If true, aligns the baseline of the text to the baseline grid. */
-  get alignToBaseline(): Read<M, boolean>;
-  set alignToBaseline(value: boolean);
-
   /** The amount to indent the first line. */
   get firstLineIndent(): Read<M, number>;
   set firstLineIndent(value: MeasurementValue);
@@ -1396,3 +1392,20 @@ export interface TextDefault<M extends Mode = 'single'> extends EventTargetDOMOb
    */
   isNthDesignAxisHidden(nthAxisIndex: number): Read<M, boolean>;
 }
+/** TextDefault's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface TextDefaultDesktop<M extends Mode = 'single'> extends EditionPart {
+  /** If true, aligns the baseline of the text to the baseline grid.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get alignToBaseline(): Read<M, boolean>;
+
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set alignToBaseline(value: boolean);
+}
+
+/** TextDefault's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface TextDefaultServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** TextDefault's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface TextDefaultPortable<M extends Mode = 'single'> extends EditionPart {}

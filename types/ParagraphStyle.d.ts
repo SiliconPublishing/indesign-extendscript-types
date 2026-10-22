@@ -45,6 +45,10 @@ import type { NumberingRestartPolicy } from './NumberingRestartPolicy';
 import type { Swatch } from './Swatch';
 import type { TabStop } from './TabStop';
 import type { Tint } from './Tint';
+import type { ParagraphStyleAttributesDesktop } from "./_base/TextAttributes";
+import type { ParagraphStyleAttributesServer } from "./_base/TextAttributes";
+import type { ParagraphStyleAttributesPortable } from "./_base/TextAttributes";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A named paragraph style definition, held in a document's or the application's {@link ParagraphStyles} collection (optionally nested inside a {@link ParagraphStyleGroup}).
@@ -61,7 +65,7 @@ export interface ParagraphStyle<M extends Mode = 'single'>
     IndexedDOMObject<Document | Application | ParagraphStyleGroup, M>,
     ParagraphStyleAttributes<M, NothingEnum.NOTHING>,
     CharacterStyleAttributes<M, never, never, NothingEnum.NOTHING>,
-    TextGraphicAttributes<M, NothingEnum.NOTHING>, InDesignPlugins.ParagraphStyle<M> {
+    TextGraphicAttributes<M, NothingEnum.NOTHING>, InDesignEdition.ParagraphStyle<M>, InDesignPlugins.ParagraphStyle<M> {
   /** Resolves the proxy into the individual {@link ParagraphStyle} objects it stands for. */
   getElements(): ParagraphStyle<'single'>[];
 
@@ -93,14 +97,6 @@ export interface ParagraphStyle<M extends Mode = 'single'>
   /** If `true`, emits CSS for this style when exporting to EPUB or HTML. */
   get emitCss(): Read<M, boolean>;
   set emitCss(value: boolean);
-
-  /**
-   * A unique identifier that can be assigned to the style to differentiate it
-   * from others. Internal use only.
-   */
-  get styleUniqueId(): Read<M, string>;
-  set styleUniqueId(value: string);
-
   /** If `true`, generates a CSS class attribute for the style on export. */
   get includeClass(): Read<M, boolean>;
   set includeClass(value: boolean);
@@ -124,10 +120,48 @@ export interface ParagraphStyle<M extends Mode = 'single'>
 
   /** Whether the design axis at `nthAxisIndex` is hidden in a variable font applied through this style. */
   isNthDesignAxisHidden(nthAxisIndex: number): Read<M, boolean>;
+  /** Converts any bullets or numbering applied through this style into literal text. */
+  convertBulletsAndNumberingToText(): Read<M, void>;
+
+  /**
+   * Deletes the style.
+   * @param replacingWith The style applied to any paragraphs currently tagged with this style. Paragraphs are left unstyled if omitted.
+   */
+  remove(replacingWith?: ParagraphStyle | string): Read<M, void>;
+  /** Duplicates the paragraph style. */
+  duplicate(): Read<M, ParagraphStyle>;
+
+  /**
+   * Moves the style to a new position among its siblings.
+   * @param reference The style, group, or root relative to which the style is moved. Required when `to` is {@link LocationOptions.BEFORE} or {@link LocationOptions.AFTER}.
+   */
+  move(to: LocationOptions, reference?: StyleMoveReference): Read<M, ParagraphStyle>;
+}
+/** ParagraphStyle's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphStyleDesktop<M extends Mode = 'single'> extends EditionPart, ParagraphStyleAttributesDesktop<M, NothingEnum.NOTHING> {
+  /**
+   * A unique identifier that can be assigned to the style to differentiate it
+   * from others. Internal use only.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  get styleUniqueId(): Read<M, string>;
+
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set styleUniqueId(value: string);
+
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @internal Forcefully deletes the style, bypassing the usual safety checks. Internal use only.
+   * @param replacingWith The style applied to any paragraphs currently tagged with this style.
+   */
+  forceDelete(replacingWith?: ParagraphStyle): Read<M, void>;
 
   /**
    * Renders a sample thumbnail image of `previewText` set in this style, and
    * writes it to `to`.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param space The color space (RGB, CMYK, or LAB) `colorValue` is expressed in.
    * @param colorValue The sample text color, as component values in `space`.
    */
@@ -138,28 +172,10 @@ export interface ParagraphStyle<M extends Mode = 'single'>
     colorValue: number[],
     to: FilePath,
   ): boolean;
-
-  /** Converts any bullets or numbering applied through this style into literal text. */
-  convertBulletsAndNumberingToText(): Read<M, void>;
-
-  /**
-   * Deletes the style.
-   * @param replacingWith The style applied to any paragraphs currently tagged with this style. Paragraphs are left unstyled if omitted.
-   */
-  remove(replacingWith?: ParagraphStyle | string): Read<M, void>;
-
-  /**
-   * @internal Forcefully deletes the style, bypassing the usual safety checks. Internal use only.
-   * @param replacingWith The style applied to any paragraphs currently tagged with this style.
-   */
-  forceDelete(replacingWith?: ParagraphStyle): Read<M, void>;
-
-  /** Duplicates the paragraph style. */
-  duplicate(): Read<M, ParagraphStyle>;
-
-  /**
-   * Moves the style to a new position among its siblings.
-   * @param reference The style, group, or root relative to which the style is moved. Required when `to` is {@link LocationOptions.BEFORE} or {@link LocationOptions.AFTER}.
-   */
-  move(to: LocationOptions, reference?: StyleMoveReference): Read<M, ParagraphStyle>;
 }
+
+/** ParagraphStyle's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphStyleServer<M extends Mode = 'single'> extends EditionPart, ParagraphStyleAttributesServer<M, NothingEnum.NOTHING> {}
+
+/** ParagraphStyle's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ParagraphStylePortable<M extends Mode = 'single'> extends EditionPart, ParagraphStyleAttributesPortable<M, NothingEnum.NOTHING> {}

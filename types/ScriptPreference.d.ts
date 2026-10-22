@@ -12,12 +12,13 @@ import type { Application } from './Application';
 import type { AutoEnum } from './Enums/AutoEnum';
 import type { MeasurementUnits } from './Enums/MeasurementUnits';
 import type { UserInteractionLevels } from './Enums/UserInteractionLevels';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * Settings controlling how scripts run — dialog/alert interaction level,
  * measurement units, and whether the screen redraws during execution.
  */
-export interface ScriptPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.ScriptPreference<M> {
+export interface ScriptPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.ScriptPreference<M>, InDesignPlugins.ScriptPreference<M> {
   /** Resolves the proxy into the individual {@link ScriptPreference} objects it stands for. */
   getElements(): ScriptPreference<'single'>[];
 
@@ -35,11 +36,6 @@ export interface ScriptPreference<M extends Mode = 'single'> extends EventTarget
   /** The version of the scripting environment. */
   get version(): Read<M, string>;
   set version(value: string);
-
-  /** Controls the display of dialogs and alerts during script processing. */
-  get userInteractionLevel(): Read<M, UserInteractionLevels>;
-  set userInteractionLevel(value: UserInteractionLevels);
-
   /** The measurement unit used during script processing. */
   get measurementUnit(): Read<M, AutoEnum | MeasurementUnits>;
   set measurementUnit(value: AutoEnum | MeasurementUnits);
@@ -48,3 +44,20 @@ export interface ScriptPreference<M extends Mode = 'single'> extends EventTarget
   get enableRedraw(): Read<M, boolean>;
   set enableRedraw(value: boolean);
 }
+/** ScriptPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ScriptPreferenceDesktop<M extends Mode = 'single'> extends EditionPart {
+  /** Controls the display of dialogs and alerts during script processing.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get userInteractionLevel(): Read<M, UserInteractionLevels>;
+
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set userInteractionLevel(value: UserInteractionLevels);
+}
+
+/** ScriptPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ScriptPreferenceServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** ScriptPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ScriptPreferencePortable<M extends Mode = 'single'> extends EditionPart {}

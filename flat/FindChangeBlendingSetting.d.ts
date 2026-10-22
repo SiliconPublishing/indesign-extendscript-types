@@ -27,7 +27,7 @@ import type { BlendMode } from './Enums/BlendMode';
 /**
  * The same {@link BlendingSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeBlendingSetting extends InDesignPlugins.FindChangeBlendingSetting<'single'> {
+export interface FindChangeBlendingSetting extends InDesignEdition.FindChangeBlendingSetting, InDesignPlugins.FindChangeBlendingSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -126,7 +126,7 @@ export interface FindChangeBlendingSetting extends InDesignPlugins.FindChangeBle
 /**
  * The same {@link BlendingSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeBlendingSettingPlural extends InDesignPlugins.FindChangeBlendingSetting<'plural'> {
+export interface FindChangeBlendingSettingPlural extends InDesignEdition.FindChangeBlendingSettingPlural, InDesignPlugins.FindChangeBlendingSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

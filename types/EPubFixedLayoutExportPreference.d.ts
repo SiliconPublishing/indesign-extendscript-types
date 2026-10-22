@@ -24,7 +24,7 @@ import type { PageRangeFormat } from './Enums/PageRangeFormat';
  * metadata (title, creator, publisher, rights…), accessibility metadata, image
  * conversion, and spread/navigation options specific to fixed layout.
  */
-export interface EPubFixedLayoutExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Book | Document, M>, InDesignPlugins.EPubFixedLayoutExportPreference<M> {
+export interface EPubFixedLayoutExportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Book | Document, M>, InDesignEdition.EPubFixedLayoutExportPreference<M>, InDesignPlugins.EPubFixedLayoutExportPreference<M> {
   /** Resolves the proxy into the individual {@link EPubFixedLayoutExportPreference} objects it stands for. */
   getElements(): EPubFixedLayoutExportPreference<'single'>[];
 

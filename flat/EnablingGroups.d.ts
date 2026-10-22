@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection EnablingGroup
  */
-export interface EnablingGroups extends InDesignPlugins.EnablingGroups {
+export interface EnablingGroups extends InDesignEdition.EnablingGroups, InDesignPlugins.EnablingGroups {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

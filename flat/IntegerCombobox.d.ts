@@ -24,7 +24,7 @@ import type { WidgetParent } from './_base/Parents';
  * An editable dropdown for whole-number values (typed entries round to the
  * nearest whole number).
  */
-export interface IntegerCombobox extends InDesignPlugins.IntegerCombobox<'single'> {
+export interface IntegerCombobox extends InDesignEdition.IntegerCombobox, InDesignPlugins.IntegerCombobox<'single'> {
   /**
    * A collection of events
    */
@@ -161,7 +161,7 @@ export interface IntegerCombobox extends InDesignPlugins.IntegerCombobox<'single
  * An editable dropdown for whole-number values (typed entries round to the
  * nearest whole number).
  */
-export interface IntegerComboboxPlural extends InDesignPlugins.IntegerCombobox<'plural'> {
+export interface IntegerComboboxPlural extends InDesignEdition.IntegerComboboxPlural, InDesignPlugins.IntegerCombobox<'plural'> {
   /**
    * A collection of events
    */

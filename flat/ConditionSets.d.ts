@@ -24,7 +24,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * vs. "Sale", "Technical" vs. "User-Facing").
  * @collection ConditionSet
  */
-export interface ConditionSets extends InDesignPlugins.ConditionSets {
+export interface ConditionSets extends InDesignEdition.ConditionSets, InDesignPlugins.ConditionSets {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

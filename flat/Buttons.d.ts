@@ -29,7 +29,7 @@ import type { PageItemAddReference } from './_base/Collections';
  * representing different appearance modes.
  * @collection Button
  */
-export interface Buttons<TParent = PageItemParent> extends InDesignPlugins.Buttons {
+export interface Buttons<TParent = PageItemParent> extends InDesignEdition.Buttons<TParent>, InDesignPlugins.Buttons {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

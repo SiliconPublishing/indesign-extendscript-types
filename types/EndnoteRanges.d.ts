@@ -22,5 +22,5 @@ export interface EndnoteRanges
   extends
     BaseCollection<EndnoteRange, EndnoteRange, EndnoteRange<'plural'>>,
     IdCollection<EndnoteRange>,
-    NamedCollection<EndnoteRange>, InDesignPlugins.EndnoteRanges {
+    NamedCollection<EndnoteRange>, InDesignEdition.EndnoteRanges, InDesignPlugins.EndnoteRanges {
 }

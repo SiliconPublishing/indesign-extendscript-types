@@ -21,7 +21,7 @@ import type { CellStyle } from './CellStyle';
  *
  * @collection XMLExportMap
  */
-export interface XMLExportMaps extends BaseCollection<XMLExportMap, XMLExportMap, XMLExportMap<'plural'>>, InDesignPlugins.XMLExportMaps {
+export interface XMLExportMaps extends BaseCollection<XMLExportMap, XMLExportMap, XMLExportMap<'plural'>>, InDesignEdition.XMLExportMaps, InDesignPlugins.XMLExportMaps {
   /**
    * Creates a new XML export mapping.
    *

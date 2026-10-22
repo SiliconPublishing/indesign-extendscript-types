@@ -10,6 +10,10 @@ import type { XMLItem } from './XMLItem';
 import type { InsertionPoint } from './InsertionPoint';
 import type { Text } from './Text';
 import type { LocationOptions } from './Enums/LocationOptions';
+import type { XMLItemDesktop } from "./XMLItem";
+import type { XMLItemServer } from "./XMLItem";
+import type { XMLItemPortable } from "./XMLItem";
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -28,7 +32,7 @@ import type { XMLElement } from './XMLElement';
  * An XML processing instruction (`<?target data?>`) in a document's underlying
  * XML structure.
  */
-export interface XMLInstruction extends InDesignPlugins.XMLInstruction<'single'> {
+export interface XMLInstruction extends InDesignEdition.XMLInstruction, InDesignPlugins.XMLInstruction<'single'> {
   /**
    * A collection of events
    */
@@ -116,11 +120,6 @@ export interface XMLInstruction extends InDesignPlugins.XMLInstruction<'single'>
   readonly id: number;
   /** Deletes the XMLItem. */
   remove(): void;
-  /**
-   * Selects the object.
-   * @param existingSelection How this selection combines with the current one. Defaults to {@link SelectionOptions.REPLACE_WITH}.
-   */
-  select(existingSelection?: SelectionOptions): void;
   /** Resolves the proxy into the individual {@link XMLInstruction} objects it stands for. */
   getElements(): XMLInstruction[];
   /** The insertion point immediately before this instruction in its containing story. */
@@ -145,7 +144,7 @@ export interface XMLInstruction extends InDesignPlugins.XMLInstruction<'single'>
  * An XML processing instruction (`<?target data?>`) in a document's underlying
  * XML structure.
  */
-export interface XMLInstructionPlural extends InDesignPlugins.XMLInstruction<'plural'> {
+export interface XMLInstructionPlural extends InDesignEdition.XMLInstructionPlural, InDesignPlugins.XMLInstruction<'plural'> {
   /**
    * A collection of events
    */
@@ -233,11 +232,6 @@ export interface XMLInstructionPlural extends InDesignPlugins.XMLInstruction<'pl
   readonly id: (number)[];
   /** Deletes the XMLItem. */
   remove(): (void)[];
-  /**
-   * Selects the object.
-   * @param existingSelection How this selection combines with the current one. Defaults to {@link SelectionOptions.REPLACE_WITH}.
-   */
-  select(existingSelection?: SelectionOptions): (void)[];
   /** Resolves the proxy into the individual {@link XMLInstruction} objects it stands for. */
   getElements(): XMLInstruction[];
   /** The insertion point immediately before this instruction in its containing story. */
@@ -256,4 +250,39 @@ export interface XMLInstructionPlural extends InDesignPlugins.XMLInstruction<'pl
   move(to: LocationOptions, reference?: XMLItem | Text): (XMLInstruction)[];
   /** Duplicates the instruction. */
   duplicate(): (XMLInstruction)[];
+}
+/** XMLInstruction's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLInstructionDesktop {
+  /**
+   * Selects the object.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to {@link SelectionOptions.REPLACE_WITH}.
+   */
+  select(existingSelection?: SelectionOptions): void;
+}
+
+/** XMLInstruction's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLInstructionDesktopPlural {
+  /**
+   * Selects the object.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to {@link SelectionOptions.REPLACE_WITH}.
+   */
+  select(existingSelection?: SelectionOptions): (void)[];
+}
+
+/** XMLInstruction's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLInstructionServer {
+}
+
+/** XMLInstruction's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLInstructionServerPlural {
+}
+
+/** XMLInstruction's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface XMLInstructionPortable {
+}
+
+/** XMLInstruction's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface XMLInstructionPortablePlural {
 }

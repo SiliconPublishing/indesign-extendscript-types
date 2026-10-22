@@ -24,7 +24,7 @@ export interface CrossReferenceFormats
   extends
     BaseCollection<CrossReferenceFormat, CrossReferenceFormat, CrossReferenceFormat<'plural'>>,
     IdCollection<CrossReferenceFormat>,
-    NamedCollection<CrossReferenceFormat>, InDesignPlugins.CrossReferenceFormats {
+    NamedCollection<CrossReferenceFormat>, InDesignEdition.CrossReferenceFormats, InDesignPlugins.CrossReferenceFormats {
   /**
    * Creates a new cross-reference format from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link CrossReferenceFormat}.

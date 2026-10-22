@@ -42,7 +42,7 @@ import type { FilePath } from './_base/Types';
  * The "place gun" — content loaded onto the cursor via {@link loadPlaceGun},
  * ready to be placed with a subsequent click or drag.
  */
-export interface PlaceGun<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, InDesignPlugins.PlaceGun<M> {
+export interface PlaceGun<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, InDesignEdition.PlaceGun<M>, InDesignPlugins.PlaceGun<M> {
   /** Resolves the proxy into the individual {@link PlaceGun} objects it stands for. */
   getElements(): PlaceGun<'single'>[];
 

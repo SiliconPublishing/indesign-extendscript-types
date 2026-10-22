@@ -31,8 +31,8 @@ import { runExtendScriptFile } from '../run-extendscript.mjs';
 import { parseDictionary, readRaw } from '../dump/parse-dictionary.mjs';
 import { aliasCandidates, surfaceAdded } from '../dump/surface.mjs';
 import { sampleRuntime } from '../dump/runtime.mjs';
-import { compare } from '../compare/index.mjs';
-import { SNAPSHOT } from '../snapshot.mjs';
+import { compare, editionLibs } from '../compare/index.mjs';
+import { SERVER_SNAPSHOT, SNAPSHOT } from '../snapshot.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const dumpDir = join(root, 'tools', 'dump');
@@ -311,7 +311,9 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     }
     const app = arg('--app', 'Adobe InDesign 2026');
     const out = resolve(root, arg('--out', join('plugins', name)));
-    const baselineDir = resolve(root, arg('--baseline', SNAPSHOT));
+    // A plugin measured in InDesign Server is declared against the Server edition.
+    const edition = /server/i.test(app) ? 'server' : 'desktop';
+    const baselineDir = resolve(root, arg('--baseline', edition === 'server' ? SERVER_SNAPSHOT : SNAPSHOT));
     const snap = join(out, 'snapshot');
     mkdirSync(snap, { recursive: true });
 
@@ -368,11 +370,11 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     pkg.peerDependencies = { 'indesign-extendscript-types': `>=${JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).version}` };
     writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
 
-    // 4. Checks: typecheck with both trees; compare with the plugin's dictionary and samples.
+    // 4. Checks: typecheck with both trees of the edition; compare with the plugin's dictionary and samples.
     const problems = [];
     for (const tree of ['types', 'flat']) {
         const cfg = join(snap, `tsconfig.${tree}.json`);
-        writeFileSync(cfg, JSON.stringify({ compilerOptions: { noLib: true, target: 'es5', module: 'none', ignoreDeprecations: '5.0', strict: true, noEmit: true, types: [] }, files: [join(root, 'lib/global.d.ts'), join(root, 'lib/ScriptUI.d.ts'), join(root, tree, 'globals.d.ts'), join(out, 'index.d.ts')] }, null, 1));
+        writeFileSync(cfg, JSON.stringify({ compilerOptions: { noLib: true, target: 'es5', module: 'none', ignoreDeprecations: '5.0', strict: true, noEmit: true, types: [] }, files: [...editionLibs(edition).map((f) => join(root, f)), join(root, tree, 'editions', `${edition}.d.ts`), join(out, 'index.d.ts')] }, null, 1));
         try {
             execFileSync(join(root, 'node_modules/.bin/tsc'), ['-p', cfg], { stdio: 'pipe' });
         } catch (e) {
@@ -380,9 +382,9 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         }
     }
     const entry = join(snap, 'entry.d.ts');
-    writeFileSync(entry, `/// <reference path="${join(root, 'types/globals.d.ts')}" />\n/// <reference path="${join(out, 'index.d.ts')}" />\n`);
+    writeFileSync(entry, `/// <reference path="${join(root, 'types/editions', `${edition}.d.ts`)}" />\n/// <reference path="${join(out, 'index.d.ts')}" />\n`);
     const ours = (f) => surface.classes.includes(f.class) || surface.enums.includes(f.class) || (surface.members[f.class] && [...surface.members[f.class].props, ...surface.members[f.class].methods].some((m) => m.name === f.member));
-    const { findings } = compare({ entry: relative(root, entry), snapshot: relative(root, snap), globalClasses: [...surface.classes, ...surface.enums] });
+    const { findings } = compare({ edition, entry: relative(root, entry), snapshot: relative(root, snap), globalClasses: [...surface.classes, ...surface.enums] });
     const mine = findings.filter(ours);
     const byKind = {};
     for (const f of mine) byKind[f.kind] = (byKind[f.kind] ?? 0) + 1;

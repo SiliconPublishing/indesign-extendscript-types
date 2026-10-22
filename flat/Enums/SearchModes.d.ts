@@ -82,7 +82,10 @@ interface SearchModes_COLOR_SEARCH extends SearchModes {
   readonly [__val]: 1180921708;
 }
 
-
+/** Generated from the InDesign Server 21.6 scripting dictionary. */
+interface SearchModes_TRANSLITERATE_SEARCH extends SearchModes {
+    readonly [__val]: 1182036595;
+}
 
 /*----------------------------------------/
 /                Exports                  /
@@ -116,51 +119,51 @@ type OBJECT_SEARCH = SearchModes_OBJECT_SEARCH;
  * Color search.
  */
 type COLOR_SEARCH = SearchModes_COLOR_SEARCH;
-
+    type TRANSLITERATE_SEARCH = SearchModes_TRANSLITERATE_SEARCH;
 }
 /**
  * Which find/change engine a search uses — plain text, GREP, glyph, object, or colour.
  */
 export declare const SearchModes: typeof Enumeration & {
 
-  /**
-   * Text search.
-   */
-  readonly TEXT_SEARCH: SearchModes_TEXT_SEARCH;
-  /**
-   * Text search.
-   */
-  readonly textSearch: SearchModes_TEXT_SEARCH;
-  /**
-   * Grep search.
-   */
-  readonly GREP_SEARCH: SearchModes_GREP_SEARCH;
-  /**
-   * Grep search.
-   */
-  readonly grepSearch: SearchModes_GREP_SEARCH;
-  /**
-   * Glyph search.
-   */
-  readonly GLYPH_SEARCH: SearchModes_GLYPH_SEARCH;
-  /**
-   * Glyph search.
-   */
-  readonly glyphSearch: SearchModes_GLYPH_SEARCH;
-  /**
-   * Object search.
-   */
-  readonly OBJECT_SEARCH: SearchModes_OBJECT_SEARCH;
-  /**
-   * Object search.
-   */
-  readonly objectSearch: SearchModes_OBJECT_SEARCH;
-  /**
-   * Color search.
-   */
-  readonly COLOR_SEARCH: SearchModes_COLOR_SEARCH;
-  /**
-   * Color search.
-   */
-  readonly colorSearch: SearchModes_COLOR_SEARCH;
-}
+          /**
+           * Text search.
+           */
+          readonly TEXT_SEARCH: SearchModes_TEXT_SEARCH;
+          /**
+           * Text search.
+           */
+          readonly textSearch: SearchModes_TEXT_SEARCH;
+          /**
+           * Grep search.
+           */
+          readonly GREP_SEARCH: SearchModes_GREP_SEARCH;
+          /**
+           * Grep search.
+           */
+          readonly grepSearch: SearchModes_GREP_SEARCH;
+          /**
+           * Glyph search.
+           */
+          readonly GLYPH_SEARCH: SearchModes_GLYPH_SEARCH;
+          /**
+           * Glyph search.
+           */
+          readonly glyphSearch: SearchModes_GLYPH_SEARCH;
+          /**
+           * Object search.
+           */
+          readonly OBJECT_SEARCH: SearchModes_OBJECT_SEARCH;
+          /**
+           * Object search.
+           */
+          readonly objectSearch: SearchModes_OBJECT_SEARCH;
+          /**
+           * Color search.
+           */
+          readonly COLOR_SEARCH: SearchModes_COLOR_SEARCH;
+          /**
+           * Color search.
+           */
+          readonly colorSearch: SearchModes_COLOR_SEARCH;
+        } & InDesignEdition.SearchModes

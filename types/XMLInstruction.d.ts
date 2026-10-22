@@ -10,12 +10,16 @@ import type { XMLItem } from './XMLItem';
 import type { InsertionPoint } from './InsertionPoint';
 import type { Text } from './Text';
 import type { LocationOptions } from './Enums/LocationOptions';
+import type { XMLItemDesktop } from "./XMLItem";
+import type { XMLItemServer } from "./XMLItem";
+import type { XMLItemPortable } from "./XMLItem";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * An XML processing instruction (`<?target data?>`) in a document's underlying
  * XML structure.
  */
-export interface XMLInstruction<M extends Mode = 'single'> extends XMLItem<M>, InDesignPlugins.XMLInstruction<M>{
+export interface XMLInstruction<M extends Mode = 'single'> extends XMLItem<M>, InDesignEdition.XMLInstruction<M>, InDesignPlugins.XMLInstruction<M>{
   /** Resolves the proxy into the individual {@link XMLInstruction} objects it stands for. */
   getElements(): XMLInstruction<'single'>[];
 
@@ -40,3 +44,11 @@ export interface XMLInstruction<M extends Mode = 'single'> extends XMLItem<M>, I
   /** Duplicates the instruction. */
   duplicate(): Read<M, XMLInstruction>;
 }
+/** XMLInstruction's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLInstructionDesktop<M extends Mode = 'single'> extends EditionPart, XMLItemDesktop<M> {}
+
+/** XMLInstruction's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLInstructionServer<M extends Mode = 'single'> extends EditionPart, XMLItemServer<M> {}
+
+/** XMLInstruction's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface XMLInstructionPortable<M extends Mode = 'single'> extends EditionPart, XMLItemPortable<M> {}

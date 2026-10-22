@@ -20,7 +20,7 @@ import type { Story } from './Story';
  * @collection Window
  */
 export interface Windows
-  extends BaseCollection<Window, Window, Window<'plural'>>, NamedCollection<Window>, InDesignPlugins.Windows {
+  extends BaseCollection<Window, Window, Window<'plural'>>, NamedCollection<Window>, InDesignEdition.Windows, InDesignPlugins.Windows {
   /**
    * Creates a new window. Adding it to a {@link Document} creates a {@link LayoutWindow};
    * adding it to a {@link Story} creates a {@link StoryWindow}.

@@ -25,7 +25,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Options for applying layout attributes to any page item.
  */
-export interface TransformAttributeOption extends InDesignPlugins.TransformAttributeOption<'single'> {
+export interface TransformAttributeOption extends InDesignEdition.TransformAttributeOption, InDesignPlugins.TransformAttributeOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -133,7 +133,7 @@ export interface TransformAttributeOption extends InDesignPlugins.TransformAttri
 /**
  * Options for applying layout attributes to any page item.
  */
-export interface TransformAttributeOptionPlural extends InDesignPlugins.TransformAttributeOption<'plural'> {
+export interface TransformAttributeOptionPlural extends InDesignEdition.TransformAttributeOptionPlural, InDesignPlugins.TransformAttributeOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

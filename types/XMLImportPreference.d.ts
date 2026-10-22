@@ -17,7 +17,7 @@ import type { XMLTransformFile } from './Enums/XMLTransformFile';
  * document during import — merge behavior, table handling, and optional XSLT
  * transformation.
  */
-export interface XMLImportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.XMLImportPreference<M> {
+export interface XMLImportPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignEdition.XMLImportPreference<M>, InDesignPlugins.XMLImportPreference<M> {
   /** Resolves the proxy into the individual {@link XMLImportPreference} objects it stands for. */
   getElements(): XMLImportPreference<'single'>[];
 

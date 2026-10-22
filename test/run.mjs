@@ -3,25 +3,30 @@
 //
 //   node test/run.mjs            static: typecheck fixtures, compare declarations with the
 //                                committed snapshots (no InDesign needed)
-//   node test/run.mjs --live     also re-measure InDesign (dump/index.mjs) and run every probe in
-//                                test/probes; needs InDesign 2026 on macOS
-//   --app "Adobe InDesign 2026"  which InDesign to measure
+//   node test/run.mjs --live     also re-measure InDesign desktop and InDesign Server
+//                                (dump/index.mjs) and run every probe in test/probes on both;
+//                                needs both running on macOS
+//   --app "Adobe InDesign 2026"  which InDesign desktop to measure
+//   --server-app "Adobe InDesign Server 2026" | --no-server
 //
 // The comparison passes when every finding is informational or allow-listed
 // (tools/compare/allowlist.json), and every allow-list entry still matches something.
 import { execFileSync } from 'node:child_process';
-import { readdirSync, readFileSync } from 'node:fs';
+import { mkdtempSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { compare } from '../tools/compare/index.mjs';
 import { compareLib } from '../tools/compare/lib.mjs';
 import { runExtendScriptFile } from '../tools/run-extendscript.mjs';
-import { INDESIGN_VERSION, PACKAGE_VERSION, SNAPSHOT } from '../tools/snapshot.mjs';
+import { INDESIGN_VERSION, PACKAGE_VERSION, SERVER_SNAPSHOT, SNAPSHOT } from '../tools/snapshot.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const live = process.argv.includes('--live');
 const appIndex = process.argv.indexOf('--app');
 const app = appIndex >= 0 ? process.argv[appIndex + 1] : 'Adobe InDesign 2026';
+const serverIndex = process.argv.indexOf('--server-app');
+const serverApp = process.argv.includes('--no-server') ? null : serverIndex >= 0 ? process.argv[serverIndex + 1] : 'Adobe InDesign Server 2026';
 let failed = 0;
 
 function section(title) {
@@ -34,27 +39,29 @@ function fail(message) {
 }
 
 if (live) {
-    section(`re-measuring ${app}`);
-    execFileSync('node', [join(root, 'tools/dump/index.mjs'), '--app', app], { stdio: 'inherit' });
+    for (const [target, snapshot] of [[app, SNAPSHOT], ...(serverApp ? [[serverApp, SERVER_SNAPSHOT]] : [])]) {
+        section(`re-measuring ${target}`);
+        execFileSync('node', [join(root, 'tools/dump/index.mjs'), '--app', target, '--snapshot', snapshot], { stdio: 'inherit' });
 
-    section('probes');
-    const dir = join(root, 'test/probes');
-    for (const file of readdirSync(dir).filter((f) => f.endsWith('.jsx')).sort()) {
-        let results;
-        try {
-            results = runExtendScriptFile(join(dir, file), { app, arg: root });
-        } catch (e) {
-            fail(`${file}: ${e.message}`);
-            continue;
+        section(`probes (${target})`);
+        const dir = join(root, 'test/probes');
+        for (const file of readdirSync(dir).filter((f) => f.endsWith('.jsx')).sort()) {
+            let results;
+            try {
+                results = runExtendScriptFile(join(dir, file), { app: target, arg: root });
+            } catch (e) {
+                fail(`${file}: ${e.message}`);
+                continue;
+            }
+            const bad = results.filter((r) => !r.pass);
+            console.log(`  ${bad.length ? 'FAIL' : 'ok  '} ${file}: ${results.length - bad.length}/${results.length}`);
+            for (const r of bad) fail(`${target}: ${file}: ${r.name}: got ${JSON.stringify(r.actual)}${'expected' in r ? `, expected ${JSON.stringify(r.expected)}` : ''}`);
         }
-        const bad = results.filter((r) => !r.pass);
-        console.log(`  ${bad.length ? 'FAIL' : 'ok  '} ${file}: ${results.length - bad.length}/${results.length}`);
-        for (const r of bad) fail(`${file}: ${r.name}: got ${JSON.stringify(r.actual)}${'expected' in r ? `, expected ${JSON.stringify(r.expected)}` : ''}`);
+        // Probes that cannot close their documents before yielding (background export) label them;
+        // close them now, with anything else a failed probe left.
+        execFileSync('sleep', ['3']);
+        runExtendScriptFile(join(root, 'tools/dump/cleanup.jsx'), { app: target });
     }
-    // Probes that cannot close their documents before yielding (background export) label them;
-    // close them now, with anything else a failed probe left.
-    execFileSync('sleep', ['3']);
-    runExtendScriptFile(join(root, 'tools/dump/cleanup.jsx'), { app });
 }
 
 section(`package version ${PACKAGE_VERSION} follows the measured InDesign`);
@@ -65,14 +72,36 @@ try {
 } catch (e) {
     fail(`no snapshot for InDesign ${INDESIGN_VERSION}: ${e.message}`);
 }
+try {
+    const server = JSON.parse(readFileSync(join(root, SERVER_SNAPSHOT, 'dictionary.json'), 'utf8')).version;
+    // A Server release can lag the desktop's; the declarations then say which Server they describe.
+    console.log(`  ${server.startsWith(`${INDESIGN_VERSION}.`) ? 'ok  ' : 'note'} ${SERVER_SNAPSHOT} (InDesign Server ${server})`);
+} catch (e) {
+    fail(`no InDesign Server snapshot: ${e.message}`);
+}
 
-for (const config of ['tsconfig.json', 'tsconfig.flat.json']) {
-    section(`typecheck (tsc -p ${config})`);
-    try {
-        execFileSync(join(root, 'node_modules/.bin/tsc'), ['-p', join(root, config)], { stdio: 'pipe' });
-        console.log('  ok');
-    } catch (e) {
-        fail(`tsc:\n${e.stdout}`);
+// Every entry point: each edition, from each tree, with the fixtures for that edition.
+const EDITION_FIXTURES = { desktop: 'test/typecheck/*.ts', server: 'test/typecheck/server/*.ts', portable: 'test/typecheck/portable/*.ts' };
+const tsconfigDir = mkdtempSync(join(tmpdir(), 'idx-tsc-'));
+for (const edition of ['desktop', 'server', 'portable']) {
+    for (const tree of ['types', 'flat']) {
+        section(`typecheck: ${edition}, ${tree === 'types' ? 'authored' : 'flat'} tree`);
+        const config = join(tsconfigDir, `${edition}-${tree}.json`);
+        const libs = edition === 'desktop' ? ['lib/global.d.ts', 'lib/ScriptUI.d.ts'] : ['lib/global.d.ts'];
+        writeFileSync(
+            config,
+            JSON.stringify({
+                compilerOptions: { noLib: true, target: 'es5', module: 'none', ignoreDeprecations: '5.0', strict: true, noEmit: true, types: [] },
+                files: [...libs, `${tree}/editions/${edition}.d.ts`].map((f) => join(root, f)),
+                include: [join(root, EDITION_FIXTURES[edition])],
+            }),
+        );
+        try {
+            execFileSync(join(root, 'node_modules/.bin/tsc'), ['-p', config], { stdio: 'pipe' });
+            console.log('  ok');
+        } catch (e) {
+            fail(`tsc:\n${e.stdout}`);
+        }
     }
 }
 
@@ -93,17 +122,31 @@ try {
 
 section('declarations vs. measurements (DOM and ES3 core)');
 const allow = JSON.parse(readFileSync(join(root, 'tools/compare/allowlist.json'), 'utf8'));
-// Both trees: the authored one, and the flat one (where setters are not generic, so write types
-// are exact). Findings are merged by identity.
-const { findings: domFindings, classes } = compare();
-const { findings: flatFindings } = compare({ entry: 'flat/globals.d.ts' });
+// Every edition, from both trees: the authored one, and the flat one (where setters are not
+// generic, so write types are exact). Findings are merged by identity.
 const seenFinding = new Set();
 const findings = [];
-for (const f of [...domFindings, ...flatFindings, ...compareLib()]) {
-    const k = `${f.kind}|${f.class}|${f.member}|${f.detail}`;
-    if (!seenFinding.has(k)) {
-        seenFinding.add(k);
-        findings.push(f);
+const classes = {};
+for (const edition of ['desktop', 'server', 'portable']) {
+    for (const tree of ['types', 'flat']) {
+        const r = compare({ edition, tree });
+        classes[edition] = r.classes;
+        for (const f of r.findings) {
+            const k = `${f.kind}|${f.class}|${f.member}|${f.detail}`;
+            if (!seenFinding.has(k)) {
+                seenFinding.add(k);
+                findings.push({ ...f, edition });
+            }
+        }
+    }
+}
+for (const edition of ['desktop', 'server']) {
+    for (const f of compareLib({ edition })) {
+        const k = `${f.kind}|${f.class}|${f.member}|${f.detail}`;
+        if (!seenFinding.has(k)) {
+            seenFinding.add(k);
+            findings.push({ ...f, edition });
+        }
     }
 }
 const matches = (e, f) =>
@@ -123,8 +166,8 @@ for (const f of findings) {
     if (i >= 0) used.add(i);
     else unexplained.push(f);
 }
-console.log(`  ${classes} classes; ${findings.length} findings: ${informational} informational, ${findings.length - informational - unexplained.length} allow-listed, ${unexplained.length} unexplained`);
-for (const f of unexplained.slice(0, 50)) fail(`${f.kind} ${f.class}.${f.member}: ${f.detail}`);
+console.log(`  ${Object.entries(classes).map(([e, n]) => `${e} ${n}`).join(', ')} classes; ${findings.length} findings: ${informational} informational, ${findings.length - informational - unexplained.length} allow-listed, ${unexplained.length} unexplained`);
+for (const f of unexplained.slice(0, 50)) fail(`${f.edition}: ${f.kind} ${f.class}.${f.member}: ${f.detail}`);
 if (unexplained.length > 50) fail(`... and ${unexplained.length - 50} more`);
 allow.entries.forEach((e, i) => {
     if (!used.has(i)) fail(`stale allow-list entry (matches nothing): ${JSON.stringify(e)}`);

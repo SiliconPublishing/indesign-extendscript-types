@@ -30,7 +30,7 @@ import type { BlendMode } from './Enums/BlendMode';
 /**
  * The same {@link DropShadowSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeDropShadowSetting extends InDesignPlugins.FindChangeDropShadowSetting<'single'> {
+export interface FindChangeDropShadowSetting extends InDesignEdition.FindChangeDropShadowSetting, InDesignPlugins.FindChangeDropShadowSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -113,12 +113,16 @@ export interface FindChangeDropShadowSetting extends InDesignPlugins.FindChangeD
   /**
    * The distance between the item and its shadow.
    *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
+   *
    * **Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
    */
   get distance(): number | NothingEnum.NOTHING;
   set distance(value: MeasurementValue | NothingEnum.NOTHING);
   /**
    * The angle at which the shadow is thrown.
+   *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
    *
    * **Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
    */
@@ -179,7 +183,7 @@ export interface FindChangeDropShadowSetting extends InDesignPlugins.FindChangeD
 /**
  * The same {@link DropShadowSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeDropShadowSettingPlural extends InDesignPlugins.FindChangeDropShadowSetting<'plural'> {
+export interface FindChangeDropShadowSettingPlural extends InDesignEdition.FindChangeDropShadowSettingPlural, InDesignPlugins.FindChangeDropShadowSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -262,12 +266,16 @@ export interface FindChangeDropShadowSettingPlural extends InDesignPlugins.FindC
   /**
    * The distance between the item and its shadow.
    *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
+   *
    * **Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
    */
   get distance(): (number | NothingEnum.NOTHING)[];
   set distance(value: MeasurementValue | NothingEnum.NOTHING);
   /**
    * The angle at which the shadow is thrown.
+   *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
    *
    * **Crashes InDesign 21.6**: reading it on a FindChangeDropShadowSetting takes InDesign down (measured).
    */

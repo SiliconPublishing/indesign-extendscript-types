@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection NestedLineStyle
  */
-export interface NestedLineStyles extends InDesignPlugins.NestedLineStyles {
+export interface NestedLineStyles extends InDesignEdition.NestedLineStyles, InDesignPlugins.NestedLineStyles {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

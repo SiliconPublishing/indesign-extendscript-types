@@ -18,7 +18,7 @@ import type { Submenu } from './Submenu';
  * @collection Submenu
  */
 export interface Submenus
-  extends BaseCollection<Submenu, Submenu, Submenu<'plural'>>, NamedCollection<Submenu>, InDesignPlugins.Submenus {
+  extends BaseCollection<Submenu, Submenu, Submenu<'plural'>>, NamedCollection<Submenu>, InDesignEdition.Submenus, InDesignPlugins.Submenus {
   /**
    * Creates and inserts a new {@link Submenu} into the menu.
    *

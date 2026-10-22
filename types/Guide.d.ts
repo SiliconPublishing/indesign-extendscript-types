@@ -24,6 +24,7 @@ import type { Spread } from './Spread';
 import type { TransformationMatrix } from './TransformationMatrix';
 import type { TransformOrigin } from './_base/PageItemMixins';
 import type { MeasurementValue } from './_base/Types';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A non-printing ruler guide used to align page items and establish layout grids.
@@ -37,7 +38,7 @@ import type { MeasurementValue } from './_base/Types';
 export interface Guide<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Spread | Page | MasterSpread, M>,
     IndexedDOMObject<Spread | Page | MasterSpread, M>,
-    NamableDOMObject<Spread | Page | MasterSpread, M>, InDesignPlugins.Guide<M> {
+    NamableDOMObject<Spread | Page | MasterSpread, M>, InDesignEdition.Guide<M>, InDesignPlugins.Guide<M> {
   /** Resolves the proxy into the individual {@link Guide} objects it stands for. */
   getElements(): Guide<'single'>[];
 
@@ -144,11 +145,20 @@ export interface Guide<M extends Mode = 'single'>
     inCoordinateSpace: CoordinateSpaces,
     consideringRulerUnits?: boolean,
   ): Array<[number, number]>;
-
+}
+/** Guide's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface GuideDesktop<M extends Mode = 'single'> extends EditionPart {
   /**
    * Selects the guide in the active document window.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param existingSelection How this selection combines with the current one.
    * Defaults to {@link SelectionOptions.REPLACE_WITH}.
    */
   select(existingSelection?: SelectionOptions): Read<M, void>;
 }
+
+/** Guide's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface GuideServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** Guide's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface GuidePortable<M extends Mode = 'single'> extends EditionPart {}

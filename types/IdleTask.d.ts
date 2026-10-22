@@ -20,7 +20,7 @@ import type { Application } from './Application';
 export interface IdleTask<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Application, M>,
     IndexedDOMObject<Application, M>,
-    NamableDOMObject<Application, M>, InDesignPlugins.IdleTask<M> {
+    NamableDOMObject<Application, M>, InDesignEdition.IdleTask<M>, InDesignPlugins.IdleTask<M> {
   /** Resolves the proxy into the individual {@link IdleTask} objects it stands for. */
   getElements(): IdleTask<'single'>[];
 

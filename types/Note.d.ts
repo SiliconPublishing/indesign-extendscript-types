@@ -42,7 +42,7 @@ import type { Word } from './Word';
 export interface Note<M extends Mode = 'single'>
   extends LabelableEventDOMObject<XmlStory | Story | TextFrame | EndnoteTextFrame | InsertionPoint | Cell, M>,
     IndexedDOMObject<XmlStory | Story | TextFrame | EndnoteTextFrame | InsertionPoint | Cell, M>,
-    NamableDOMObject<XmlStory | Story | TextFrame | EndnoteTextFrame | InsertionPoint | Cell, M>, InDesignPlugins.Note<M> {
+    NamableDOMObject<XmlStory | Story | TextFrame | EndnoteTextFrame | InsertionPoint | Cell, M>, InDesignEdition.Note<M>, InDesignPlugins.Note<M> {
   /** Resolves the proxy into the individual {@link Note} objects it stands for. */
   getElements(): Note<'single'>[];
 

@@ -18,7 +18,7 @@ import type { RuleDataValue } from './RuleDataObjects';
  */
 export interface RuleDataObject<M extends Mode = 'single'>
   extends EventTargetDOMObject<PreflightProfileRule | PreflightRuleInstance, M>,
-    IndexedDOMObject<PreflightProfileRule | PreflightRuleInstance, M>, InDesignPlugins.RuleDataObject<M> {
+    IndexedDOMObject<PreflightProfileRule | PreflightRuleInstance, M>, InDesignEdition.RuleDataObject<M>, InDesignPlugins.RuleDataObject<M> {
   /** Resolves the proxy into the individual {@link RuleDataObject} objects it stands for. */
   getElements(): RuleDataObject<'single'>[];
 

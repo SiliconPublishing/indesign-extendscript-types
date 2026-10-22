@@ -67,11 +67,23 @@ import type { TextPath } from './TextPath';
 import type { TextVariableInstances } from './TextVariableInstances';
 import type { Tint } from './Tint';
 import type { XMLItem } from './XMLItem';
+import type { TextDesktop } from "./Text";
+import type { TextServer } from "./Text";
+import type { TextPortable } from "./Text";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A run of text sharing identical character formatting.
  */
-export interface TextStyleRange<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M>, InDesignPlugins.TextStyleRange<M> {
+export interface TextStyleRange<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M>, InDesignEdition.TextStyleRange<TParent, M>, InDesignPlugins.TextStyleRange<M> {
   /** Resolves the proxy into the individual {@link TextStyleRange} objects it stands for. */
   getElements(): TextStyleRange<TParent, 'single'>[];
 }
+/** TextStyleRange's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface TextStyleRangeDesktop<TParent = TextParent, M extends Mode = 'single'> extends EditionPart, TextDesktop<TParent, M> {}
+
+/** TextStyleRange's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface TextStyleRangeServer<TParent = TextParent, M extends Mode = 'single'> extends EditionPart, TextServer<TParent, M> {}
+
+/** TextStyleRange's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface TextStyleRangePortable<TParent = TextParent, M extends Mode = 'single'> extends EditionPart, TextPortable<TParent, M> {}

@@ -22,7 +22,7 @@ import type { MultiStateObject } from './MultiStateObject';
  * @collection State
  */
 export interface States
-  extends BaseCollection<State, State, State<'plural'>>, IdCollection<State>, NamedCollection<State>, InDesignPlugins.States {
+  extends BaseCollection<State, State, State<'plural'>>, IdCollection<State>, NamedCollection<State>, InDesignEdition.States, InDesignPlugins.States {
   /**
    * Creates a new visual state and adds it to the {@link MultiStateObject}.
    * @param withProperties Initial values for properties of the new {@link State}.

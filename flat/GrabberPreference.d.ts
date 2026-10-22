@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Grabber preferences.
  */
-export interface GrabberPreference extends InDesignPlugins.GrabberPreference<'single'> {
+export interface GrabberPreference extends InDesignEdition.GrabberPreference, InDesignPlugins.GrabberPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -113,7 +113,7 @@ export interface GrabberPreference extends InDesignPlugins.GrabberPreference<'si
 /**
  * Grabber preferences.
  */
-export interface GrabberPreferencePlural extends InDesignPlugins.GrabberPreference<'plural'> {
+export interface GrabberPreferencePlural extends InDesignEdition.GrabberPreferencePlural, InDesignPlugins.GrabberPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -23,7 +23,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * An InDesign UI panel, possibly grouped with others in a panel group.
  */
-export interface Panel extends InDesignPlugins.Panel<'single'> {
+export interface Panel extends InDesignEdition.Panel, InDesignPlugins.Panel<'single'> {
   /**
    * A collection of events
    */
@@ -119,7 +119,7 @@ export interface Panel extends InDesignPlugins.Panel<'single'> {
 /**
  * An InDesign UI panel, possibly grouped with others in a panel group.
  */
-export interface PanelPlural extends InDesignPlugins.Panel<'plural'> {
+export interface PanelPlural extends InDesignEdition.PanelPlural, InDesignPlugins.Panel<'plural'> {
   /**
    * A collection of events
    */

@@ -18,7 +18,7 @@ import type { ColorGroup } from './ColorGroup';
  * @collection ColorGroupSwatch
  */
 export interface ColorGroupSwatches
-  extends BaseCollection<ColorGroupSwatch, ColorGroupSwatch, ColorGroupSwatch<'plural'>>, IdCollection<ColorGroupSwatch>, InDesignPlugins.ColorGroupSwatches {
+  extends BaseCollection<ColorGroupSwatch, ColorGroupSwatch, ColorGroupSwatch<'plural'>>, IdCollection<ColorGroupSwatch>, InDesignEdition.ColorGroupSwatches, InDesignPlugins.ColorGroupSwatches {
   /**
    * Adds an existing swatch to the color group.
    *

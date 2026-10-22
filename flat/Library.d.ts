@@ -17,6 +17,7 @@ import type { Sound } from './Sound';
 import type { Graphic } from './Graphic';
 import type { XMLElement } from './XMLElement';
 import type { File, Folder } from './_base/Types';
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -32,7 +33,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * An object library file (`.indl`) that stores reusable page items, graphics,
  * and text as {@link Asset}s for drag-and-drop reuse across documents.
  */
-export interface Library extends InDesignPlugins.Library<'single'> {
+export interface Library extends InDesignEdition.Library, InDesignPlugins.Library<'single'> {
   /**
    * A collection of events
    */
@@ -124,8 +125,6 @@ export interface Library extends InDesignPlugins.Library<'single'> {
   readonly fullName: File;
   /** The full path to the library file. */
   readonly filePath: Folder;
-  /** The panel associated with this library. */
-  readonly associatedPanel: Panel;
   /** The library's assets. */
   readonly assets: Assets;
   /** Closes the library. */
@@ -145,7 +144,7 @@ export interface Library extends InDesignPlugins.Library<'single'> {
  * An object library file (`.indl`) that stores reusable page items, graphics,
  * and text as {@link Asset}s for drag-and-drop reuse across documents.
  */
-export interface LibraryPlural extends InDesignPlugins.Library<'plural'> {
+export interface LibraryPlural extends InDesignEdition.LibraryPlural, InDesignPlugins.Library<'plural'> {
   /**
    * A collection of events
    */
@@ -237,8 +236,6 @@ export interface LibraryPlural extends InDesignPlugins.Library<'plural'> {
   readonly fullName: (File)[];
   /** The full path to the library file. */
   readonly filePath: (Folder)[];
-  /** The panel associated with this library. */
-  readonly associatedPanel: (Panel)[];
   /** The library's assets. */
   readonly assets: Assets;
   /** Closes the library. */
@@ -252,4 +249,33 @@ export interface LibraryPlural extends InDesignPlugins.Library<'plural'> {
     using: Array<PageItem | Movie | Sound | Graphic | XMLElement>,
     withProperties?: Object,
   ): Asset;
+}
+/** Library's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface LibraryDesktop {
+  /** The panel associated with this library.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly associatedPanel: Panel;
+}
+
+/** Library's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface LibraryDesktopPlural {
+  /** The panel associated with this library.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly associatedPanel: (Panel)[];
+}
+
+/** Library's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface LibraryServer {
+}
+
+/** Library's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface LibraryServerPlural {
+}
+
+/** Library's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface LibraryPortable {
+}
+
+/** Library's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface LibraryPortablePlural {
 }

@@ -28,7 +28,7 @@ import type { FilePath } from './_base/Types';
  * optimized, and formatted images to copy alongside the export, and how images
  * convert to GIF or JPEG.
  */
-export interface ExportForWebPreference extends InDesignPlugins.ExportForWebPreference<'single'> {
+export interface ExportForWebPreference extends InDesignEdition.ExportForWebPreference, InDesignPlugins.ExportForWebPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -141,7 +141,7 @@ export interface ExportForWebPreference extends InDesignPlugins.ExportForWebPref
  * optimized, and formatted images to copy alongside the export, and how images
  * convert to GIF or JPEG.
  */
-export interface ExportForWebPreferencePlural extends InDesignPlugins.ExportForWebPreference<'plural'> {
+export interface ExportForWebPreferencePlural extends InDesignEdition.ExportForWebPreferencePlural, InDesignPlugins.ExportForWebPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

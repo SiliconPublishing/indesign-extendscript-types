@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection ViewZoomBehavior
  */
-export interface ViewZoomBehaviors extends InDesignPlugins.ViewZoomBehaviors {
+export interface ViewZoomBehaviors extends InDesignEdition.ViewZoomBehaviors, InDesignPlugins.ViewZoomBehaviors {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

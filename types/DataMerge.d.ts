@@ -19,7 +19,7 @@ import type { FilePath } from './_base/Types';
  * fields read from it, and drives merging records into the layout or
  * exporting the merged result directly to PDF.
  */
-export interface DataMerge<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, InDesignPlugins.DataMerge<M> {
+export interface DataMerge<M extends Mode = 'single'> extends EventTargetDOMObject<Document, M>, InDesignEdition.DataMerge<M>, InDesignPlugins.DataMerge<M> {
   /** Resolves the proxy into the individual {@link DataMerge} objects it stands for. */
   getElements(): DataMerge<'single'>[];
 

@@ -32,12 +32,16 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { PageItemDesktop } from "./PageItem";
+import type { PageItemServer } from "./PageItem";
+import type { PageItemPortable } from "./PageItem";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A page item that embeds raw HTML content (used in fixed-layout EPUB and
  * publish-online output). See {@link PageItem} for the shared page-item surface.
  */
-export interface HtmlItem<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, PageItemParent, M>, InDesignPlugins.HtmlItem<M> {
+export interface HtmlItem<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, PageItemParent, M>, InDesignEdition.HtmlItem<TParent, M>, InDesignPlugins.HtmlItem<M> {
   /** Resolves the proxy into the individual {@link HtmlItem} objects it stands for. */
   getElements(): HtmlItem<TParent, 'single'>[];
 
@@ -49,3 +53,11 @@ export interface HtmlItem<TParent = PageItemParent, M extends Mode = 'single'> e
   get fixedDimensions(): Read<M, boolean>;
   set fixedDimensions(value: boolean);
 }
+/** HtmlItem's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface HtmlItemDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemDesktop<TParent, PageItemParent, M> {}
+
+/** HtmlItem's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface HtmlItemServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemServer<TParent, PageItemParent, M> {}
+
+/** HtmlItem's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface HtmlItemPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemPortable<TParent, PageItemParent, M> {}

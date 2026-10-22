@@ -10,8 +10,7 @@ function tempFolder(name) {
 
 // Argument: the repository root (test/run.mjs passes it), for test/fixtures/media.
 function main(repo) {
-    var saved = app.scriptPreferences.userInteractionLevel;
-    app.scriptPreferences.userInteractionLevel = UserInteractionLevels.NEVER_INTERACT;
+    var saved = quiet();
     try {
         var dir = tempFolder('allowlist');
         var doc = fixtureDocument();
@@ -92,7 +91,7 @@ function main(repo) {
             return found || typeof bt.onResult === 'function';
         }, true);
     } finally {
-        app.scriptPreferences.userInteractionLevel = saved;
+        restoreInteraction(saved);
     }
     return finish();
 }

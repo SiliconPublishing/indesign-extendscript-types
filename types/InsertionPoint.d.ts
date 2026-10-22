@@ -70,6 +70,10 @@ import type { TextPath } from './TextPath';
 import type { TextVariableInstances } from './TextVariableInstances';
 import type { Tint } from './Tint';
 import type { XMLItem } from './XMLItem';
+import type { TextDesktop } from "./Text";
+import type { TextServer } from "./Text";
+import type { TextPortable } from "./Text";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A zero-width position between two characters — the target of text-insertion
@@ -79,7 +83,7 @@ import type { XMLItem } from './XMLItem';
  * {@link endnotes} collection and the endnote/text-fragment creation methods
  * below.
  */
-export interface InsertionPoint<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M>, InDesignPlugins.InsertionPoint<M> {
+export interface InsertionPoint<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M>, InDesignEdition.InsertionPoint<TParent, M>, InDesignPlugins.InsertionPoint<M> {
   /**
    * The type of pair kerning. Unlike every other text object, an insertion point also reports
    * `'Manual'` — the state it enters when {@link kerningValue} is set by hand.
@@ -105,3 +109,11 @@ export interface InsertionPoint<TParent = TextParent, M extends Mode = 'single'>
    */
   createTextFragmentLink(linkResourceURI: string, name?: string): Read<M, Link>;
 }
+/** InsertionPoint's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface InsertionPointDesktop<TParent = TextParent, M extends Mode = 'single'> extends EditionPart, TextDesktop<TParent, M> {}
+
+/** InsertionPoint's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface InsertionPointServer<TParent = TextParent, M extends Mode = 'single'> extends EditionPart, TextServer<TParent, M> {}
+
+/** InsertionPoint's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface InsertionPointPortable<TParent = TextParent, M extends Mode = 'single'> extends EditionPart, TextPortable<TParent, M> {}

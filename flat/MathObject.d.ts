@@ -30,7 +30,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * only through `Rectangle.mathObjects` or `Document.mathObjects`. Its parent is
  * always the `Rectangle` that hosts it.
  */
-export interface MathObject extends InDesignPlugins.MathObject<'single'> {
+export interface MathObject extends InDesignEdition.MathObject, InDesignPlugins.MathObject<'single'> {
   /**
    * A collection of events
    */
@@ -163,7 +163,7 @@ export interface MathObject extends InDesignPlugins.MathObject<'single'> {
  * only through `Rectangle.mathObjects` or `Document.mathObjects`. Its parent is
  * always the `Rectangle` that hosts it.
  */
-export interface MathObjectPlural extends InDesignPlugins.MathObject<'plural'> {
+export interface MathObjectPlural extends InDesignEdition.MathObjectPlural, InDesignPlugins.MathObject<'plural'> {
   /**
    * A collection of events
    */

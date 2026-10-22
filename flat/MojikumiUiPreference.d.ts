@@ -8,6 +8,7 @@
 import type { Mode, Read } from './_base/Types';
 import type { EventTargetDOMObject } from './_base/DomObjects';
 import type { DocumentOrApplication } from './_base/Parents';
+import type { EditionPart } from "./_base/Editions";
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
 import type { Events } from './Events';
@@ -22,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Mojikumi UI preferences.
  */
-export interface MojikumiUiPreference extends InDesignPlugins.MojikumiUiPreference<'single'> {
+export interface MojikumiUiPreference extends InDesignEdition.MojikumiUiPreference, InDesignPlugins.MojikumiUiPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -151,7 +152,7 @@ export interface MojikumiUiPreference extends InDesignPlugins.MojikumiUiPreferen
 /**
  * Mojikumi UI preferences.
  */
-export interface MojikumiUiPreferencePlural extends InDesignPlugins.MojikumiUiPreference<'plural'> {
+export interface MojikumiUiPreferencePlural extends InDesignEdition.MojikumiUiPreferencePlural, InDesignPlugins.MojikumiUiPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -275,4 +276,55 @@ export interface MojikumiUiPreferencePlural extends InDesignPlugins.MojikumiUiPr
   /** If true, uses full-width spacing for punctuation and for the last character in the line. */
   get lineEndPeriodOneEm(): (boolean)[];
   set lineEndPeriodOneEm(value: boolean);
+}
+/** MojikumiUiPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface MojikumiUiPreferenceDesktop {
+}
+
+/** MojikumiUiPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface MojikumiUiPreferenceDesktopPlural {
+}
+
+/** MojikumiUiPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface MojikumiUiPreferenceServer {
+  /**
+   * If true, displays table for mojikumi tsume and aki optimized for Traditional Chinese centered punctuation glyphs.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get showTradChineseDefault(): boolean;
+  set showTradChineseDefault(value: boolean);
+  /**
+   * If true, displays table for mojikumi tsume and aki optimized for Simplified Chinese punctuation glyphs.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get showSimpChineseDefault(): boolean;
+  set showSimpChineseDefault(value: boolean);
+}
+
+/** MojikumiUiPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface MojikumiUiPreferenceServerPlural {
+  /**
+   * If true, displays table for mojikumi tsume and aki optimized for Traditional Chinese centered punctuation glyphs.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get showTradChineseDefault(): (boolean)[];
+  set showTradChineseDefault(value: boolean);
+  /**
+   * If true, displays table for mojikumi tsume and aki optimized for Simplified Chinese punctuation glyphs.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get showSimpChineseDefault(): (boolean)[];
+  set showSimpChineseDefault(value: boolean);
+}
+
+/** MojikumiUiPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface MojikumiUiPreferencePortable {
+}
+
+/** MojikumiUiPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface MojikumiUiPreferencePortablePlural {
 }

@@ -16,5 +16,5 @@ import type { AutoCorrectTable } from './AutoCorrectTable';
  * @collection AutoCorrectTable
  */
 export interface AutoCorrectTables
-  extends BaseCollection<AutoCorrectTable, AutoCorrectTable, AutoCorrectTable<'plural'>>, NamedCollection<AutoCorrectTable>, InDesignPlugins.AutoCorrectTables {
+  extends BaseCollection<AutoCorrectTable, AutoCorrectTable, AutoCorrectTable<'plural'>>, NamedCollection<AutoCorrectTable>, InDesignEdition.AutoCorrectTables, InDesignPlugins.AutoCorrectTables {
 }

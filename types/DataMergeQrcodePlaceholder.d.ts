@@ -10,6 +10,7 @@ import type { EventTargetDOMObject, IndexedDOMObject } from './_base/DomObjects'
 import type { Document } from './Document';
 import type { DataMergeField } from './DataMergeField';
 import type { PageItem } from './PageItem';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A page item marked to receive a generated QR code image built from a data
@@ -17,7 +18,7 @@ import type { PageItem } from './PageItem';
  */
 export interface DataMergeQrcodePlaceholder<M extends Mode = 'single'>
   extends EventTargetDOMObject<Document, M>,
-    IndexedDOMObject<Document, M>, InDesignPlugins.DataMergeQrcodePlaceholder<M> {
+    IndexedDOMObject<Document, M>, InDesignEdition.DataMergeQrcodePlaceholder<M>, InDesignPlugins.DataMergeQrcodePlaceholder<M> {
   /** Resolves the proxy into the individual {@link DataMergeQrcodePlaceholder} objects it stands for. */
   getElements(): DataMergeQrcodePlaceholder<'single'>[];
 
@@ -27,3 +28,18 @@ export interface DataMergeQrcodePlaceholder<M extends Mode = 'single'>
   /** The page item that hosts the placeholder. */
   readonly placeholderPageItem: Read<M, PageItem>;
 }
+/** DataMergeQrcodePlaceholder's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeQrcodePlaceholderDesktop<M extends Mode = 'single'> extends EditionPart {}
+
+/** DataMergeQrcodePlaceholder's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeQrcodePlaceholderServer<M extends Mode = 'single'> extends EditionPart {
+  /**
+   * The name of the tag.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly name: Read<M, string>;
+}
+
+/** DataMergeQrcodePlaceholder's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DataMergeQrcodePlaceholderPortable<M extends Mode = 'single'> extends EditionPart {}

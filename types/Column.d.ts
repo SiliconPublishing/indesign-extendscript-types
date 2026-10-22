@@ -21,6 +21,7 @@ import type { Text } from './Text';
 import type { ColumnTypes } from './Enums/ColumnTypes';
 import type { FirstBaseline } from './Enums/FirstBaseline';
 import type { RowTypes } from './Enums/RowTypes';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A single column of a {@link Table}, spanning every row.
@@ -34,7 +35,7 @@ export interface Column<M extends Mode = 'single'>
   extends EventTargetDOMObject<Table, M>,
     IndexedDOMObject<Table, M>,
     TableGeometry<M>,
-    TableCellAttributes<M>, InDesignPlugins.Column<M>{
+    TableCellAttributes<M>, InDesignEdition.Column<M>, InDesignPlugins.Column<M>{
   /** Resolves the proxy into the individual {@link Column} objects it stands for. */
   getElements(): Column<'single'>[];
 
@@ -206,10 +207,19 @@ export interface Column<M extends Mode = 'single'>
    * @param thru The last column in the range, given as a {@link Cell}, {@link Row}, or {@link Column}.
    */
   redistribute(using: HorizontalOrVertical, thru?: Cell | Row | Column): Read<M, void>;
-
+}
+/** Column's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ColumnDesktop<M extends Mode = 'single'> extends EditionPart {
   /**
    * Selects the column in the active document window.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
    */
   select(existingSelection?: SelectionOptions): Read<M, void>;
 }
+
+/** Column's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ColumnServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** Column's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ColumnPortable<M extends Mode = 'single'> extends EditionPart {}

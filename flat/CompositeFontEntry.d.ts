@@ -24,7 +24,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * One font-substitution slot within a {@link CompositeFont}, covering a single
  * character range with its own font, scaling, and baseline-shift adjustment.
  */
-export interface CompositeFontEntry extends InDesignPlugins.CompositeFontEntry<'single'> {
+export interface CompositeFontEntry extends InDesignEdition.CompositeFontEntry, InDesignPlugins.CompositeFontEntry<'single'> {
   /**
    * A collection of events
    */
@@ -165,7 +165,7 @@ export interface CompositeFontEntry extends InDesignPlugins.CompositeFontEntry<'
  * One font-substitution slot within a {@link CompositeFont}, covering a single
  * character range with its own font, scaling, and baseline-shift adjustment.
  */
-export interface CompositeFontEntryPlural extends InDesignPlugins.CompositeFontEntry<'plural'> {
+export interface CompositeFontEntryPlural extends InDesignEdition.CompositeFontEntryPlural, InDesignPlugins.CompositeFontEntry<'plural'> {
   /**
    * A collection of events
    */

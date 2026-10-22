@@ -24,7 +24,7 @@ import type { Event } from './Event';
 /**
  * Color management settings.
  */
-export interface ColorSetting extends InDesignPlugins.ColorSetting<'single'> {
+export interface ColorSetting extends InDesignEdition.ColorSetting, InDesignPlugins.ColorSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -167,7 +167,7 @@ export interface ColorSetting extends InDesignPlugins.ColorSetting<'single'> {
 /**
  * Color management settings.
  */
-export interface ColorSettingPlural extends InDesignPlugins.ColorSetting<'plural'> {
+export interface ColorSettingPlural extends InDesignEdition.ColorSettingPlural, InDesignPlugins.ColorSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

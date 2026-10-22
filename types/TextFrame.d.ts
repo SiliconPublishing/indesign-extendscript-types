@@ -79,6 +79,10 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { PageItemDesktop } from "./PageItem";
+import type { PageItemServer } from "./PageItem";
+import type { PageItemPortable } from "./PageItem";
+import type { EditionPart } from "./_base/Editions";
 
 /** A text frame or path in a thread: a {@link TextFrame} or a {@link TextPath}. */
 export type TextThreadEnd = TextFrame | TextPath;
@@ -98,7 +102,7 @@ export interface TextFrame<TParent = PageItemParent, M extends Mode = 'single'>
     TextContainerContent<TextParent, M>,
     ShapeContainer<Character, M>,
     FormFieldContainer<Character, M>,
-    EndnoteFrameContainer<Character, M>, InDesignPlugins.TextFrame<M> {
+    EndnoteFrameContainer<Character, M>, InDesignEdition.TextFrame<TParent, M>, InDesignPlugins.TextFrame<M> {
   /** Resolves the proxy into the individual {@link TextFrame} objects it stands for. */
   getElements(): TextFrame<TParent, 'single'>[];
 
@@ -248,6 +252,14 @@ export interface TextFrame<TParent = PageItemParent, M extends Mode = 'single'>
   /** Creates a new shape from the areas where the frame and others do *not* overlap. */
   excludeOverlapPath(withItems: PageItem | PageItem[]): Read<M, PageItem>;
 }
+/** TextFrame's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface TextFrameDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemDesktop<TParent, Character, M> {}
+
+/** TextFrame's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface TextFrameServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemServer<TParent, Character, M> {}
+
+/** TextFrame's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface TextFramePortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemPortable<TParent, Character, M> {}
 
 /**
  * A text frame InDesign reports as a plain {@link TextFrame} rather than as an
@@ -256,4 +268,12 @@ export interface TextFrame<TParent = PageItemParent, M extends Mode = 'single'>
  */
 export interface PlainTextFrame<TParent = PageItemParent, M extends Mode = 'single'> extends TextFrame<TParent, M> {
 }
+/** PlainTextFrame's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface PlainTextFrameDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, TextFrameDesktop<TParent, M> {}
+
+/** PlainTextFrame's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface PlainTextFrameServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, TextFrameServer<TParent, M> {}
+
+/** PlainTextFrame's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface PlainTextFramePortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, TextFramePortable<TParent, M> {}
 

@@ -19,7 +19,7 @@ import type { XMLElement } from './XMLElement';
 export interface XMLTag<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Application | Document, M>,
     IndexedDOMObject<Application | Document, M>,
-    NamableDOMObject<Application | Document, M>, InDesignPlugins.XMLTag<M> {
+    NamableDOMObject<Application | Document, M>, InDesignEdition.XMLTag<M>, InDesignPlugins.XMLTag<M> {
   /** Resolves the proxy into the individual {@link XMLTag} objects it stands for. */
   getElements(): XMLTag<'single'>[];
 

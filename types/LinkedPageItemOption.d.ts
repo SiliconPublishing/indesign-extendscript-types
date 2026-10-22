@@ -16,7 +16,7 @@ import type { FormField } from './FormField';
  * Update behavior for a linked page item — whether InDesign warns before
  * overwriting local edits, and which kinds of edits survive an update.
  */
-export interface LinkedPageItemOption<M extends Mode = 'single'> extends EventTargetDOMObject<PageItemUnion | Application | Document | FormField, M>, InDesignPlugins.LinkedPageItemOption<M> {
+export interface LinkedPageItemOption<M extends Mode = 'single'> extends EventTargetDOMObject<PageItemUnion | Application | Document | FormField, M>, InDesignEdition.LinkedPageItemOption<M>, InDesignPlugins.LinkedPageItemOption<M> {
   /** Resolves the proxy into the individual {@link LinkedPageItemOption} objects it stands for. */
   getElements(): LinkedPageItemOption<'single'>[];
 

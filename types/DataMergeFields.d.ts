@@ -15,5 +15,5 @@ import type { DataMergeField } from './DataMergeField';
  *
  * @collection DataMergeField
  */
-export interface DataMergeFields extends BaseCollection<DataMergeField, DataMergeField, DataMergeField<'plural'>>, InDesignPlugins.DataMergeFields {
+export interface DataMergeFields extends BaseCollection<DataMergeField, DataMergeField, DataMergeField<'plural'>>, InDesignEdition.DataMergeFields, InDesignPlugins.DataMergeFields {
 }

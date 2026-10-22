@@ -18,7 +18,7 @@ import type { PreflightScopeOptions } from './Enums/PreflightScopeOptions';
  * The active preflight configuration for a book — which profile and layers
  * are checked across its documents.
  */
-export interface PreflightBookOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application | Book, M>, InDesignPlugins.PreflightBookOption<M> {
+export interface PreflightBookOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application | Book, M>, InDesignEdition.PreflightBookOption<M>, InDesignPlugins.PreflightBookOption<M> {
   /** Resolves the proxy into the individual {@link PreflightBookOption} objects it stands for. */
   getElements(): PreflightBookOption<'single'>[];
 

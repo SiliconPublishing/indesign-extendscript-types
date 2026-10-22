@@ -23,5 +23,5 @@ export interface BackgroundTasks
   extends
     BaseCollection<BackgroundTask, BackgroundTask, BackgroundTask<'plural'>>,
     IdCollection<BackgroundTask>,
-    NamedCollection<BackgroundTask>, InDesignPlugins.BackgroundTasks {
+    NamedCollection<BackgroundTask>, InDesignEdition.BackgroundTasks, InDesignPlugins.BackgroundTasks {
 }

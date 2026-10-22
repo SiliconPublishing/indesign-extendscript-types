@@ -27,7 +27,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Basic object blending settings.
  */
-export interface BlendingSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.BlendingSetting<'single'> {
+export interface BlendingSetting<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignEdition.BlendingSetting<TParent>, InDesignPlugins.BlendingSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -126,7 +126,7 @@ export interface BlendingSetting<TParent = TransparencySetting | StrokeTranspare
 /**
  * Basic object blending settings.
  */
-export interface BlendingSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignPlugins.BlendingSetting<'plural'> {
+export interface BlendingSettingPlural<TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting> extends InDesignEdition.BlendingSettingPlural<TParent>, InDesignPlugins.BlendingSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

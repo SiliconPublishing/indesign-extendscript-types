@@ -14,7 +14,7 @@ import type { BehaviorEvents } from './Enums/BehaviorEvents';
 /**
  * A behavior that moves the associated {@link MultiStateObject} to its previous state.
  */
-export interface GotoPreviousStateBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignPlugins.GotoPreviousStateBehavior<M>{
+export interface GotoPreviousStateBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignEdition.GotoPreviousStateBehavior<M>, InDesignPlugins.GotoPreviousStateBehavior<M>{
   /** Resolves the proxy into the individual {@link GotoPreviousStateBehavior} objects it stands for. */
   getElements(): GotoPreviousStateBehavior<'single'>[];
 

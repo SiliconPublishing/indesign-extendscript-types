@@ -37,6 +37,10 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { PageItemDesktop } from "./PageItem";
+import type { PageItemServer } from "./PageItem";
+import type { PageItemPortable } from "./PageItem";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * The plural proxy {@link PageItems.everyItem} hands back.
@@ -50,6 +54,14 @@ export interface PageItemsPlural<TParent = PageItemParent>
   /** Resolves the proxy into the individual page items, each at its concrete class. */
   getElements(): AnyPageItemOf<TParent>[];
 }
+/** PageItemsPlural's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface PageItemsPluralDesktop<TParent = PageItemParent> extends EditionPart, PageItemDesktop<TParent, PageItemParent, 'plural'> {}
+
+/** PageItemsPlural's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface PageItemsPluralServer<TParent = PageItemParent> extends EditionPart, PageItemServer<TParent, PageItemParent, 'plural'> {}
+
+/** PageItemsPlural's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface PageItemsPluralPortable<TParent = PageItemParent> extends EditionPart, PageItemPortable<TParent, PageItemParent, 'plural'> {}
 
 /**
  * A collection of generic {@link PageItem} objects. This collection provides
@@ -66,5 +78,5 @@ export interface PageItems<TParent = PageItemParent>
   extends
     BaseCollection<AnyPageItemOf<TParent>, PageItem, PageItemsPlural<TParent>>,
     IdCollection<AnyPageItemOf<TParent>>,
-    NamedCollection<AnyPageItemOf<TParent>>, InDesignPlugins.PageItems {
+    NamedCollection<AnyPageItemOf<TParent>>, InDesignEdition.PageItems<TParent>, InDesignPlugins.PageItems {
 }

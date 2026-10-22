@@ -29,7 +29,7 @@ import type { FilePath } from './_base/Types';
  * A soft fade to transparent along a gradient, defined by
  * {@link opacityGradientStops} and this object's angle, length, and type.
  */
-export interface GradientFeatherSetting extends InDesignPlugins.GradientFeatherSetting<'single'> {
+export interface GradientFeatherSetting extends InDesignEdition.GradientFeatherSetting, InDesignPlugins.GradientFeatherSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -140,7 +140,7 @@ export interface GradientFeatherSetting extends InDesignPlugins.GradientFeatherS
  * A soft fade to transparent along a gradient, defined by
  * {@link opacityGradientStops} and this object's angle, length, and type.
  */
-export interface GradientFeatherSettingPlural extends InDesignPlugins.GradientFeatherSetting<'plural'> {
+export interface GradientFeatherSettingPlural extends InDesignEdition.GradientFeatherSettingPlural, InDesignPlugins.GradientFeatherSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

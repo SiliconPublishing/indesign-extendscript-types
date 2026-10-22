@@ -23,7 +23,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
  * Settings for the inner-glow effect — a glow that radiates inward from the edges
  * of the object or text it's applied to.
  */
-export interface InnerGlowSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M>, InDesignPlugins.InnerGlowSetting<M> {
+export interface InnerGlowSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M>, InDesignEdition.InnerGlowSetting<M, TParent, NSet>, InDesignPlugins.InnerGlowSetting<M> {
   /** Resolves the proxy into the individual {@link InnerGlowSetting} objects it stands for. */
   getElements(): InnerGlowSetting<'single', TParent>[];
 

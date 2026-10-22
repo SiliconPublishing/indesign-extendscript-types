@@ -10,6 +10,7 @@ import type { EventTargetDOMObject, IndexedDOMObject } from './_base/DomObjects'
 import type { Document } from './Document';
 import type { DataMergeField } from './DataMergeField';
 import type { PageItem } from './PageItem';
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -25,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A page item marked to receive a generated QR code image built from a data
  * merge field's value during a merge.
  */
-export interface DataMergeQrcodePlaceholder extends InDesignPlugins.DataMergeQrcodePlaceholder<'single'> {
+export interface DataMergeQrcodePlaceholder extends InDesignEdition.DataMergeQrcodePlaceholder, InDesignPlugins.DataMergeQrcodePlaceholder<'single'> {
   /**
    * A collection of events
    */
@@ -121,7 +122,7 @@ export interface DataMergeQrcodePlaceholder extends InDesignPlugins.DataMergeQrc
  * A page item marked to receive a generated QR code image built from a data
  * merge field's value during a merge.
  */
-export interface DataMergeQrcodePlaceholderPlural extends InDesignPlugins.DataMergeQrcodePlaceholder<'plural'> {
+export interface DataMergeQrcodePlaceholderPlural extends InDesignEdition.DataMergeQrcodePlaceholderPlural, InDesignPlugins.DataMergeQrcodePlaceholder<'plural'> {
   /**
    * A collection of events
    */
@@ -211,4 +212,39 @@ export interface DataMergeQrcodePlaceholderPlural extends InDesignPlugins.DataMe
   readonly field: (DataMergeField)[];
   /** The page item that hosts the placeholder. */
   readonly placeholderPageItem: (PageItem)[];
+}
+/** DataMergeQrcodePlaceholder's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeQrcodePlaceholderDesktop {
+}
+
+/** DataMergeQrcodePlaceholder's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeQrcodePlaceholderDesktopPlural {
+}
+
+/** DataMergeQrcodePlaceholder's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeQrcodePlaceholderServer {
+  /**
+   * The name of the tag.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly name: string;
+}
+
+/** DataMergeQrcodePlaceholder's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeQrcodePlaceholderServerPlural {
+  /**
+   * The name of the tag.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly name: (string)[];
+}
+
+/** DataMergeQrcodePlaceholder's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DataMergeQrcodePlaceholderPortable {
+}
+
+/** DataMergeQrcodePlaceholder's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DataMergeQrcodePlaceholderPortablePlural {
 }

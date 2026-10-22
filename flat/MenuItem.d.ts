@@ -26,7 +26,7 @@ import type { MenuElementParent } from './_base/Parents';
  * A single choosable entry in a {@link Menu} or {@link Submenu}, backed by
  * the {@link MenuAction} that implements its behavior.
  */
-export interface MenuItem extends InDesignPlugins.MenuItem<'single'> {
+export interface MenuItem extends InDesignEdition.MenuItem, InDesignPlugins.MenuItem<'single'> {
   /**
    * A collection of events
    */
@@ -137,7 +137,7 @@ export interface MenuItem extends InDesignPlugins.MenuItem<'single'> {
  * A single choosable entry in a {@link Menu} or {@link Submenu}, backed by
  * the {@link MenuAction} that implements its behavior.
  */
-export interface MenuItemPlural extends InDesignPlugins.MenuItem<'plural'> {
+export interface MenuItemPlural extends InDesignEdition.MenuItemPlural, InDesignPlugins.MenuItem<'plural'> {
   /**
    * A collection of events
    */

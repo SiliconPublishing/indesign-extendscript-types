@@ -22,7 +22,7 @@ import type { WidgetParent } from './_base/Parents';
 /**
  * A non-editable dropdown list of fixed choices.
  */
-export interface Dropdown extends InDesignPlugins.Dropdown<'single'> {
+export interface Dropdown extends InDesignEdition.Dropdown, InDesignPlugins.Dropdown<'single'> {
   /**
    * A collection of events
    */
@@ -127,7 +127,7 @@ export interface Dropdown extends InDesignPlugins.Dropdown<'single'> {
 /**
  * A non-editable dropdown list of fixed choices.
  */
-export interface DropdownPlural extends InDesignPlugins.Dropdown<'plural'> {
+export interface DropdownPlural extends InDesignEdition.DropdownPlural, InDesignPlugins.Dropdown<'plural'> {
   /**
    * A collection of events
    */

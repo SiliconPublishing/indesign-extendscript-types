@@ -21,7 +21,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection TextPath
  */
-export interface TextPaths extends InDesignPlugins.TextPaths {
+export interface TextPaths extends InDesignEdition.TextPaths, InDesignPlugins.TextPaths {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

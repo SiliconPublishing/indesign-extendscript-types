@@ -26,7 +26,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Bookmark
  */
-export interface Bookmarks extends InDesignPlugins.Bookmarks {
+export interface Bookmarks extends InDesignEdition.Bookmarks, InDesignPlugins.Bookmarks {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -10,6 +10,7 @@ import type { EventTargetDOMObject, IndexedDOMObject } from './_base/DomObjects'
 import type { Document } from './Document';
 import type { DataMergeField } from './DataMergeField';
 import type { PageItem } from './PageItem';
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -25,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A page item marked to receive an image data merge field's file during a
  * merge.
  */
-export interface DataMergeImagePlaceholder extends InDesignPlugins.DataMergeImagePlaceholder<'single'> {
+export interface DataMergeImagePlaceholder extends InDesignEdition.DataMergeImagePlaceholder, InDesignPlugins.DataMergeImagePlaceholder<'single'> {
   /**
    * A collection of events
    */
@@ -121,7 +122,7 @@ export interface DataMergeImagePlaceholder extends InDesignPlugins.DataMergeImag
  * A page item marked to receive an image data merge field's file during a
  * merge.
  */
-export interface DataMergeImagePlaceholderPlural extends InDesignPlugins.DataMergeImagePlaceholder<'plural'> {
+export interface DataMergeImagePlaceholderPlural extends InDesignEdition.DataMergeImagePlaceholderPlural, InDesignPlugins.DataMergeImagePlaceholder<'plural'> {
   /**
    * A collection of events
    */
@@ -211,4 +212,39 @@ export interface DataMergeImagePlaceholderPlural extends InDesignPlugins.DataMer
   readonly field: (DataMergeField)[];
   /** The page item that hosts the placeholder. */
   readonly placeholderPageItem: (PageItem)[];
+}
+/** DataMergeImagePlaceholder's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeImagePlaceholderDesktop {
+}
+
+/** DataMergeImagePlaceholder's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeImagePlaceholderDesktopPlural {
+}
+
+/** DataMergeImagePlaceholder's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeImagePlaceholderServer {
+  /**
+   * The name of the tag.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly name: string;
+}
+
+/** DataMergeImagePlaceholder's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeImagePlaceholderServerPlural {
+  /**
+   * The name of the tag.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly name: (string)[];
+}
+
+/** DataMergeImagePlaceholder's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DataMergeImagePlaceholderPortable {
+}
+
+/** DataMergeImagePlaceholder's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DataMergeImagePlaceholderPortablePlural {
 }

@@ -5,8 +5,24 @@
 var __results = [];
 var __doc = null;
 
+// InDesign Server has no UI (tools/editions): desktop's documents.add and app.open take
+// showingWindow first, Server's do not; facts about the UI are probed on desktop only.
+var onServer = /Server/.test(app.name);
+function addDocument() { return onServer ? app.documents.add() : app.documents.add(false); }
+function openHidden(from) { return onServer ? app.open(from) : app.open(from, false); }
+
+// No dialogs while probing: desktop only, InDesign Server has no interaction levels. quiet()
+// returns what restoreInteraction() puts back.
+function quiet() {
+    if (/Server/.test(app.name)) return null;
+    var saved = app.scriptPreferences.userInteractionLevel;
+    app.scriptPreferences.userInteractionLevel = UserInteractionLevels.NEVER_INTERACT;
+    return saved;
+}
+function restoreInteraction(saved) { if (saved !== null) app.scriptPreferences.userInteractionLevel = saved; }
+
 function fixtureDocument() {
-    if (!__doc || !__doc.isValid) __doc = app.documents.add(false);
+    if (!__doc || !__doc.isValid) __doc = addDocument();
     return __doc;
 }
 
@@ -33,6 +49,11 @@ function probe(name, fn, expected) {
     var r = { name: name, pass: pass, actual: show(actual) };
     if (!pass && typeof expected !== 'function') r.expected = show(expected);
     __results.push(r);
+}
+
+/** A probe of something only InDesign desktop has: not run on InDesign Server. */
+function desktopProbe(name, fn, expected) {
+    if (!onServer) probe(name, fn, expected);
 }
 
 function didThrow(actual) { return typeof actual === 'string' && actual.indexOf('throws: ') === 0; }

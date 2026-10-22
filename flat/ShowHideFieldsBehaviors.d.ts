@@ -24,7 +24,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * such as a mouse click or rollover in exported interactive PDFs or EPUBs.
  * @collection ShowHideFieldsBehavior
  */
-export interface ShowHideFieldsBehaviors extends InDesignPlugins.ShowHideFieldsBehaviors {
+export interface ShowHideFieldsBehaviors extends InDesignEdition.ShowHideFieldsBehaviors, InDesignPlugins.ShowHideFieldsBehaviors {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

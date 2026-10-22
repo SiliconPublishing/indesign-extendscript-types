@@ -67,11 +67,23 @@ import type { TextPath } from './TextPath';
 import type { TextVariableInstances } from './TextVariableInstances';
 import type { Tint } from './Tint';
 import type { XMLItem } from './XMLItem';
+import type { TextDesktop } from "./Text";
+import type { TextServer } from "./Text";
+import type { TextPortable } from "./Text";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A single line of text as currently composed — it changes as the text reflows.
  */
-export interface Line<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M>, InDesignPlugins.Line<M> {
+export interface Line<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M>, InDesignEdition.Line<TParent, M>, InDesignPlugins.Line<M> {
   /** Resolves the proxy into the individual {@link Line}s it stands for. */
   getElements(): Line<TParent, 'single'>[];
 }
+/** Line's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface LineDesktop<TParent = TextParent, M extends Mode = 'single'> extends EditionPart, TextDesktop<TParent, M> {}
+
+/** Line's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface LineServer<TParent = TextParent, M extends Mode = 'single'> extends EditionPart, TextServer<TParent, M> {}
+
+/** Line's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface LinePortable<TParent = TextParent, M extends Mode = 'single'> extends EditionPart, TextPortable<TParent, M> {}

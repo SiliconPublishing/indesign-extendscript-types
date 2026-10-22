@@ -10,6 +10,8 @@ import type { DataMergeField } from './DataMergeField';
 import type { PageItem } from './PageItem';
 import type { BaseCollection } from './_base/Collections';
 import type { DataMergeImagePlaceholder } from './DataMergeImagePlaceholder';
+import type { EditionPart } from "./_base/Editions";
+import type { Read } from "./_base/Types";
 
 /**
  * A collection of {@link DataMergeImagePlaceholder} objects. These placeholders
@@ -18,7 +20,7 @@ import type { DataMergeImagePlaceholder } from './DataMergeImagePlaceholder';
  *
  * @collection DataMergeImagePlaceholder
  */
-export interface DataMergeImagePlaceholders extends BaseCollection<DataMergeImagePlaceholder, DataMergeImagePlaceholder, DataMergeImagePlaceholder<'plural'>>, InDesignPlugins.DataMergeImagePlaceholders {
+export interface DataMergeImagePlaceholders extends BaseCollection<DataMergeImagePlaceholder, DataMergeImagePlaceholder, DataMergeImagePlaceholder<'plural'>>, InDesignEdition.DataMergeImagePlaceholders, InDesignPlugins.DataMergeImagePlaceholders {
   /**
    * Creates a new data merge image placeholder.
    *
@@ -32,3 +34,19 @@ export interface DataMergeImagePlaceholders extends BaseCollection<DataMergeImag
     withProperties?: PropertiesSetter<DataMergeImagePlaceholder>,
   ): DataMergeImagePlaceholder;
 }
+/** DataMergeImagePlaceholders's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeImagePlaceholdersDesktop extends EditionPart {}
+
+/** DataMergeImagePlaceholders's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeImagePlaceholdersServer extends EditionPart {
+  /**
+   * Returns the DataMergeImagePlaceholder with the specified name.
+   * InDesign Server only.
+   * @param name The name.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  itemByName(name: string): DataMergeImagePlaceholder;
+}
+
+/** DataMergeImagePlaceholders's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DataMergeImagePlaceholdersPortable extends EditionPart {}

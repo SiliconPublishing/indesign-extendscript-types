@@ -13,7 +13,7 @@ import type { ObjectStyle } from './ObjectStyle';
  * Which effect categories an {@link ObjectStyle} enables for an object's placed
  * content, independently of the object itself, its stroke, or its fill.
  */
-export interface ObjectStyleContentEffectsCategorySettings<M extends Mode = 'single'> extends EventTargetDOMObject<ObjectStyle, M>, InDesignPlugins.ObjectStyleContentEffectsCategorySettings<M> {
+export interface ObjectStyleContentEffectsCategorySettings<M extends Mode = 'single'> extends EventTargetDOMObject<ObjectStyle, M>, InDesignEdition.ObjectStyleContentEffectsCategorySettings<M>, InDesignPlugins.ObjectStyleContentEffectsCategorySettings<M> {
   /** Resolves the proxy into the individual {@link ObjectStyleContentEffectsCategorySettings} objects it stands for. */
   getElements(): ObjectStyleContentEffectsCategorySettings<'single'>[];
 

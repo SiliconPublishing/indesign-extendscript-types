@@ -18,7 +18,7 @@ import type { BehaviorEvents } from './Enums/BehaviorEvents';
  * A behavior that jumps to a named anchor — a {@link Bookmark} or a text/page
  * hyperlink destination.
  */
-export interface GotoAnchorBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignPlugins.GotoAnchorBehavior<M>{
+export interface GotoAnchorBehavior<M extends Mode = 'single'> extends Behavior<M>, InDesignEdition.GotoAnchorBehavior<M>, InDesignPlugins.GotoAnchorBehavior<M>{
   /** Resolves the proxy into the individual {@link GotoAnchorBehavior} objects it stands for. */
   getElements(): GotoAnchorBehavior<'single'>[];
 

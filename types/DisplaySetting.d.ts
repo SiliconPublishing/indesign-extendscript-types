@@ -20,7 +20,7 @@ import type { DisplaySettingOptions } from './Enums/DisplaySettingOptions';
  * Bundles the {@link raster}, {@link vector}, and {@link transparency}
  * settings applied together wherever the preset is selected.
  */
-export interface DisplaySetting<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.DisplaySetting<M> {
+export interface DisplaySetting<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.DisplaySetting<M>, InDesignPlugins.DisplaySetting<M> {
   /** Resolves the proxy into the individual {@link DisplaySetting} objects it stands for. */
   getElements(): DisplaySetting<'single'>[];
 

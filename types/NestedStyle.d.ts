@@ -22,7 +22,7 @@ import type { ParagraphStyle } from './ParagraphStyle';
  */
 export interface NestedStyle<M extends Mode = 'single'>
   extends EventTargetDOMObject<ParagraphAttributeOwner, M>,
-    IndexedDOMObject<ParagraphAttributeOwner, M>, InDesignPlugins.NestedStyle<M> {
+    IndexedDOMObject<ParagraphAttributeOwner, M>, InDesignEdition.NestedStyle<M>, InDesignPlugins.NestedStyle<M> {
   /** Resolves the proxy into the individual {@link NestedStyle} objects it stands for. */
   getElements(): NestedStyle<'single'>[];
 

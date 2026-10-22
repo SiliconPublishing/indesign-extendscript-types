@@ -19,6 +19,13 @@ var fixtureProgress = null;
 var fixtureSkip = {};
 var fixtureSavedInteraction = null;
 
+// InDesign Server has no UI: no showingWindow parameters, no interaction levels, dialogs, panels
+// or windows (see tools/editions). Steps that need them run on desktop only.
+var fixtureServer = /Server/.test(app.name);
+function addDocument() { return fixtureServer ? app.documents.add() : app.documents.add(false); }
+function openFile(file) { return fixtureServer ? app.open(file) : app.open(file, false); }
+function desktopStep(name, fn) { if (!fixtureServer) fixtureStep(name, fn); }
+
 function fixtureStep(name, fn) {
     var key = '<fixture:' + name + '>';
     if (fixtureSkip[key]) {
@@ -63,9 +70,11 @@ function fixtureEventHandler(e) {
 function buildFixture(dir) {
     new Folder(dir).create();
     // No dialogs while building (saves, exports, placing): restored by closeFixture().
-    fixtureSavedInteraction = app.scriptPreferences.userInteractionLevel;
-    app.scriptPreferences.userInteractionLevel = UserInteractionLevels.NEVER_INTERACT;
-    var doc = root(app.documents.add(false));
+    if (!fixtureServer) {
+        fixtureSavedInteraction = app.scriptPreferences.userInteractionLevel;
+        app.scriptPreferences.userInteractionLevel = UserInteractionLevels.NEVER_INTERACT;
+    }
+    var doc = root(addDocument());
     var page, tf, story, table, rect, img, btn, mso, anchorDest, topic, ps, cs, os, fixtureGroup, fixtureMovie;
 
     // Saved, so that fullName/filePath read back and assignments and books can use it.
@@ -252,7 +261,7 @@ function buildFixture(dir) {
         root(doc.pages[2].rectangles.add({ geometricBounds: [130, 20, 160, 60] }).place(svg)[0]);
     });
     fixtureStep('placed indesign page', function () {
-        var other = app.documents.add(false);
+        var other = addDocument();
         other.pages[0].textFrames.add({ geometricBounds: [0, 0, 50, 50], contents: 'Other' });
         other.save(new File(dir + '/other.indd'));
         other.close(SaveOptions.NO);
@@ -461,7 +470,7 @@ function buildFixture(dir) {
         var f = root(doc.compositeFonts.add({ name: 'Fixture Composite' }));
         root(f.compositeFontEntries[0]);
     });
-    fixtureStep('dialog', function () {
+    desktopStep('dialog', function () {
         // Built, never shown; destroyed by closeFixture().
         var d = root(app.dialogs.add({ name: 'Fixture Dialog', canCancel: true }));
         fixtureCleanup.push(function () { d.destroy(); });
@@ -504,7 +513,7 @@ function buildFixture(dir) {
         var t = root(app.idleTasks.add({ name: 'Fixture Idle', sleep: 0 }));
         fixtureCleanup.push(function () { t.remove(); });
     });
-    fixtureStep('script menu action and Event', function () {
+    desktopStep('script menu action and Event', function () {
         var action = root(app.scriptMenuActions.add('Fixture Action'));
         fixtureCleanup.push(function () { action.remove(); });
         action.addEventListener('onInvoke', fixtureEventHandler);
@@ -517,7 +526,7 @@ function buildFixture(dir) {
     });
     fixtureStep('external page destination', function () {
         // A page of another open document; closed by closeFixture().
-        var other = app.open(new File(dir + '/other.indd'), false);
+        var other = openFile(new File(dir + '/other.indd'));
         fixtureCleanup.push(function () { other.close(SaveOptions.NO); });
         root(doc.hyperlinkExternalPageDestinations.add(other.pages[0]));
     });
@@ -531,13 +540,14 @@ function buildFixture(dir) {
         if (String(pp.printer) !== 'POSTSCRIPT_FILE') throw new Error('printer changed; not printing');
         doc.addEventListener('beforePrint', fixtureEventHandler);
         doc.addEventListener('afterPrint', fixtureEventHandler);
-        doc.print(false);
+        if (fixtureServer) doc.print();
+        else doc.print(false);
     });
-    fixtureStep('panels', function () {
+    desktopStep('panels', function () {
         var panels = app.panels;
         for (var i = 0; i < panels.length; i++) root(panels[i]);
     });
-    fixtureStep('story editor window', function () {
+    desktopStep('story editor window', function () {
         // Needs a layout window; both close with the document.
         doc.windows.add();
         root(story.storyEdit());
@@ -584,7 +594,7 @@ function closeFixture(doc) {
         }
     }
     try { removeFixtureProfile(); } catch (e) {}
-    if (fixtureSavedInteraction !== null) app.scriptPreferences.userInteractionLevel = fixtureSavedInteraction;
+    if (fixtureSavedInteraction !== null && !fixtureServer) app.scriptPreferences.userInteractionLevel = fixtureSavedInteraction;
     fixtureSavedInteraction = null;
     return problems;
 }

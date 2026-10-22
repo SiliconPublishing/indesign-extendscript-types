@@ -22,7 +22,7 @@ import type { FilePath } from './_base/Types';
 /**
  * The preferences for a caption metadata variable.
  */
-export interface CaptionMetadataVariablePreference extends InDesignPlugins.CaptionMetadataVariablePreference<'single'> {
+export interface CaptionMetadataVariablePreference extends InDesignEdition.CaptionMetadataVariablePreference, InDesignPlugins.CaptionMetadataVariablePreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -118,7 +118,7 @@ export interface CaptionMetadataVariablePreference extends InDesignPlugins.Capti
 /**
  * The preferences for a caption metadata variable.
  */
-export interface CaptionMetadataVariablePreferencePlural extends InDesignPlugins.CaptionMetadataVariablePreference<'plural'> {
+export interface CaptionMetadataVariablePreferencePlural extends InDesignEdition.CaptionMetadataVariablePreferencePlural, InDesignPlugins.CaptionMetadataVariablePreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

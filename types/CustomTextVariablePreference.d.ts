@@ -13,7 +13,7 @@ import type { SpecialCharacters } from './Enums/SpecialCharacters';
 /**
  * The preferences for a custom text variable.
  */
-export interface CustomTextVariablePreference<M extends Mode = 'single'> extends EventTargetDOMObject<TextVariable, M>, InDesignPlugins.CustomTextVariablePreference<M> {
+export interface CustomTextVariablePreference<M extends Mode = 'single'> extends EventTargetDOMObject<TextVariable, M>, InDesignEdition.CustomTextVariablePreference<M>, InDesignPlugins.CustomTextVariablePreference<M> {
   /** Resolves the proxy into the individual {@link CustomTextVariablePreference} objects it stands for. */
   getElements(): CustomTextVariablePreference<'single'>[];
 

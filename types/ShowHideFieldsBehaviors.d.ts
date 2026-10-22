@@ -26,7 +26,7 @@ export interface ShowHideFieldsBehaviors
   extends
     BaseCollection<ShowHideFieldsBehavior, ShowHideFieldsBehavior, ShowHideFieldsBehavior<'plural'>>,
     IdCollection<ShowHideFieldsBehavior>,
-    NamedCollection<ShowHideFieldsBehavior>, InDesignPlugins.ShowHideFieldsBehaviors {
+    NamedCollection<ShowHideFieldsBehavior>, InDesignEdition.ShowHideFieldsBehaviors, InDesignPlugins.ShowHideFieldsBehaviors {
   /**
    * Creates a new {@link ShowHideFieldsBehavior} and adds it to the collection.
    *

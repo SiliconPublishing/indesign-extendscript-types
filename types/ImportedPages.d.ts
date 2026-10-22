@@ -25,7 +25,7 @@ export interface ImportedPages<TParent = PageItemParent>
   extends
     BaseCollection<ImportedPage<TParent>, ImportedPage, ImportedPage<TParent, 'plural'>>,
     IdCollection<ImportedPage<TParent>>,
-    NamedCollection<ImportedPage<TParent>>, InDesignPlugins.ImportedPages {
+    NamedCollection<ImportedPage<TParent>>, InDesignEdition.ImportedPages<TParent>, InDesignPlugins.ImportedPages {
   /**
    * Creates a new imported page reference.
    * @param withProperties Initial values for properties of the new ImportedPage.

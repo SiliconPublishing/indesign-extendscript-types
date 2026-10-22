@@ -14,5 +14,5 @@ import type { Panel } from './Panel';
  *
  * @collection Panel
  */
-export interface Panels extends BaseCollection<Panel, Panel, Panel<'plural'>>, NamedCollection<Panel>, InDesignPlugins.Panels {
+export interface Panels extends BaseCollection<Panel, Panel, Panel<'plural'>>, NamedCollection<Panel>, InDesignEdition.Panels, InDesignPlugins.Panels {
 }

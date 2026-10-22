@@ -21,7 +21,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Image
  */
-export interface Images<TParent = PageItemParent> extends InDesignPlugins.Images {
+export interface Images<TParent = PageItemParent> extends InDesignEdition.Images<TParent>, InDesignPlugins.Images {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

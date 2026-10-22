@@ -26,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * script handler for each element a rule matches — the engine behind
  * Script Label-based and rule-based XML import processing.
  */
-export interface XMLRuleProcessor extends InDesignPlugins.XMLRuleProcessor<'single'> {
+export interface XMLRuleProcessor extends InDesignEdition.XMLRuleProcessor, InDesignPlugins.XMLRuleProcessor<'single'> {
   /**
    * A collection of events
    */
@@ -161,7 +161,7 @@ export interface XMLRuleProcessor extends InDesignPlugins.XMLRuleProcessor<'sing
  * script handler for each element a rule matches — the engine behind
  * Script Label-based and rule-based XML import processing.
  */
-export interface XMLRuleProcessorPlural extends InDesignPlugins.XMLRuleProcessor<'plural'> {
+export interface XMLRuleProcessorPlural extends InDesignEdition.XMLRuleProcessorPlural, InDesignPlugins.XMLRuleProcessor<'plural'> {
   /**
    * A collection of events
    */

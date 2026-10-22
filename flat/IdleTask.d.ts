@@ -27,7 +27,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * An attachable idle task, registered via {@link Application} to run
  * repeatedly whenever InDesign is idle.
  */
-export interface IdleTask extends InDesignPlugins.IdleTask<'single'> {
+export interface IdleTask extends InDesignEdition.IdleTask, InDesignPlugins.IdleTask<'single'> {
   /**
    * A collection of events
    */
@@ -148,7 +148,7 @@ export interface IdleTask extends InDesignPlugins.IdleTask<'single'> {
  * An attachable idle task, registered via {@link Application} to run
  * repeatedly whenever InDesign is idle.
  */
-export interface IdleTaskPlural extends InDesignPlugins.IdleTask<'plural'> {
+export interface IdleTaskPlural extends InDesignEdition.IdleTaskPlural, InDesignPlugins.IdleTask<'plural'> {
   /**
    * A collection of events
    */

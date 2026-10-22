@@ -20,7 +20,7 @@ import type { UIColors } from './Enums/UIColors';
  * Settings for a custom baseline grid scoped to a single text frame, endnote
  * frame, or object style, distinct from the document's default grid.
  */
-export interface BaselineFrameGridOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application | Document | TextFrame | EndnoteTextFrame | ObjectStyle, M>, InDesignPlugins.BaselineFrameGridOption<M> {
+export interface BaselineFrameGridOption<M extends Mode = 'single'> extends EventTargetDOMObject<Application | Document | TextFrame | EndnoteTextFrame | ObjectStyle, M>, InDesignEdition.BaselineFrameGridOption<M>, InDesignPlugins.BaselineFrameGridOption<M> {
   /** Resolves the proxy into the individual {@link BaselineFrameGridOption} objects it stands for. */
   getElements(): BaselineFrameGridOption<'single'>[];
 

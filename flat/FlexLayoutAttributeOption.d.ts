@@ -29,7 +29,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Options for applying flex layout attributes to a flex object.
  */
-export interface FlexLayoutAttributeOption extends InDesignPlugins.FlexLayoutAttributeOption<'single'> {
+export interface FlexLayoutAttributeOption extends InDesignEdition.FlexLayoutAttributeOption, InDesignPlugins.FlexLayoutAttributeOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -155,7 +155,7 @@ export interface FlexLayoutAttributeOption extends InDesignPlugins.FlexLayoutAtt
 /**
  * Options for applying flex layout attributes to a flex object.
  */
-export interface FlexLayoutAttributeOptionPlural extends InDesignPlugins.FlexLayoutAttributeOption<'plural'> {
+export interface FlexLayoutAttributeOptionPlural extends InDesignEdition.FlexLayoutAttributeOptionPlural, InDesignPlugins.FlexLayoutAttributeOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

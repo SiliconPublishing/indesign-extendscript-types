@@ -27,7 +27,7 @@ import type { TableCaptionPositionOptions } from './Enums/TableCaptionPositionOp
 export interface TableStyle<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document | Application | TableStyleGroup, M>,
     IndexedDOMObject<Document | Application | TableStyleGroup, M>,
-    TableStyleAttributes<M>, InDesignPlugins.TableStyle<M>{
+    TableStyleAttributes<M>, InDesignEdition.TableStyle<M>, InDesignPlugins.TableStyle<M>{
   /** Resolves the proxy into the individual {@link TableStyle} objects it stands for. */
   getElements(): TableStyle<'single'>[];
 
@@ -41,7 +41,7 @@ export interface TableStyle<M extends Mode = 'single'>
   set captionParagraphCount(value: number);
 
   /** The {@link CellStyle} applied to cells in the header column region. */
-  get headerColumnCellStyle(): Read<M, CellStyle>;
+  get headerColumnCellStyle(): Read<M, CellStyle | null>;
   set headerColumnCellStyle(value: CellStyle | string);
 
   /** The unique ID of the table style, stable across saves and reopens. */

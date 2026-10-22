@@ -23,7 +23,7 @@ import type { CrossReferenceSource } from './CrossReferenceSource';
 export interface CrossReferenceFormat<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document, M>,
     IndexedDOMObject<Document, M>,
-    NamableDOMObject<Document, M>, InDesignPlugins.CrossReferenceFormat<M> {
+    NamableDOMObject<Document, M>, InDesignEdition.CrossReferenceFormat<M>, InDesignPlugins.CrossReferenceFormat<M> {
   /** Resolves the proxy into the individual {@link CrossReferenceFormat} objects it stands for. */
   getElements(): CrossReferenceFormat<'single'>[];
 

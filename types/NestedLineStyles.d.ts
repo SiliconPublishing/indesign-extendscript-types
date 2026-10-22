@@ -17,7 +17,7 @@ import type { ParagraphStyle } from './ParagraphStyle';
  *
  * @collection NestedLineStyle
  */
-export interface NestedLineStyles extends BaseCollection<NestedLineStyle, NestedLineStyle, NestedLineStyle<'plural'>>, InDesignPlugins.NestedLineStyles {
+export interface NestedLineStyles extends BaseCollection<NestedLineStyle, NestedLineStyle, NestedLineStyle<'plural'>>, InDesignEdition.NestedLineStyles, InDesignPlugins.NestedLineStyles {
   /**
    * Creates a new nested line style rule.
    * @param withProperties Initial values for properties of the new rule.

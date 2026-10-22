@@ -38,7 +38,7 @@ import type { PropertiesSetter } from './_base/Properties';
  *
  * @collection Table
  */
-export interface Tables extends InDesignPlugins.Tables {
+export interface Tables extends InDesignEdition.Tables, InDesignPlugins.Tables {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

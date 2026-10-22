@@ -26,7 +26,7 @@ import type { Hyperlink } from './Hyperlink';
 export interface Topic<M extends Mode = 'single'>
   extends EventTargetDOMObject<IndexSection | Topic | Index, M>,
     IndexedDOMObject<IndexSection | Topic | Index, M>,
-    NamableDOMObject<IndexSection | Topic | Index, M>, InDesignPlugins.Topic<M> {
+    NamableDOMObject<IndexSection | Topic | Index, M>, InDesignEdition.Topic<M>, InDesignPlugins.Topic<M> {
   /** Resolves the proxy into the individual {@link Topic} objects it stands for. */
   getElements(): Topic<'single'>[];
 

@@ -18,7 +18,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection PathPoint
  */
-export interface PathPoints extends InDesignPlugins.PathPoints {
+export interface PathPoints extends InDesignEdition.PathPoints, InDesignPlugins.PathPoints {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

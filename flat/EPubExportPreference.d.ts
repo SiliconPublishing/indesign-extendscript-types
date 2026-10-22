@@ -40,7 +40,7 @@ import type { FilePath } from './_base/Types';
  * metadata written into the package (title, creator, rights, accessibility),
  * and the image, list, and layout conversion options for EPUB output.
  */
-export interface EPubExportPreference extends InDesignPlugins.EPubExportPreference<'single'> {
+export interface EPubExportPreference extends InDesignEdition.EPubExportPreference, InDesignPlugins.EPubExportPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -296,7 +296,7 @@ export interface EPubExportPreference extends InDesignPlugins.EPubExportPreferen
  * metadata written into the package (title, creator, rights, accessibility),
  * and the image, list, and layout conversion options for EPUB output.
  */
-export interface EPubExportPreferencePlural extends InDesignPlugins.EPubExportPreference<'plural'> {
+export interface EPubExportPreferencePlural extends InDesignEdition.EPubExportPreferencePlural, InDesignPlugins.EPubExportPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

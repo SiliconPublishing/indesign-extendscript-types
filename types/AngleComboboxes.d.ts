@@ -18,7 +18,7 @@ import type { Dialog } from './Dialog';
  * @collection AngleCombobox
  */
 export interface AngleComboboxes
-  extends BaseCollection<AngleCombobox, AngleCombobox, AngleCombobox<'plural'>>, IdCollection<AngleCombobox>, InDesignPlugins.AngleComboboxes {
+  extends BaseCollection<AngleCombobox, AngleCombobox, AngleCombobox<'plural'>>, IdCollection<AngleCombobox>, InDesignEdition.AngleComboboxes, InDesignPlugins.AngleComboboxes {
   /**
    * Creates and adds a new angle combobox control to the dialog.
    * @param withProperties Initial values for properties of the new control.

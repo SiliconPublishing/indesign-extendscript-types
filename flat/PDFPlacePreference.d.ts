@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * PDF place preferences.
  */
-export interface PDFPlacePreference extends InDesignPlugins.PDFPlacePreference<'single'> {
+export interface PDFPlacePreference extends InDesignEdition.PDFPlacePreference, InDesignPlugins.PDFPlacePreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -122,7 +122,7 @@ export interface PDFPlacePreference extends InDesignPlugins.PDFPlacePreference<'
 /**
  * PDF place preferences.
  */
-export interface PDFPlacePreferencePlural extends InDesignPlugins.PDFPlacePreference<'plural'> {
+export interface PDFPlacePreferencePlural extends InDesignEdition.PDFPlacePreferencePlural, InDesignPlugins.PDFPlacePreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -25,7 +25,7 @@ import type { PropertiesSetter } from './_base/Properties';
  *
  * @remarks Experimental — members may change in a future InDesign release.
  */
-export interface HttpLinkConnectionManagerObject extends InDesignPlugins.HttpLinkConnectionManagerObject<'single'> {
+export interface HttpLinkConnectionManagerObject extends InDesignEdition.HttpLinkConnectionManagerObject, InDesignPlugins.HttpLinkConnectionManagerObject<'single'> {
   /**
    * A collection of events
    */
@@ -125,7 +125,7 @@ export interface HttpLinkConnectionManagerObject extends InDesignPlugins.HttpLin
  *
  * @remarks Experimental — members may change in a future InDesign release.
  */
-export interface HttpLinkConnectionManagerObjectPlural extends InDesignPlugins.HttpLinkConnectionManagerObject<'plural'> {
+export interface HttpLinkConnectionManagerObjectPlural extends InDesignEdition.HttpLinkConnectionManagerObjectPlural, InDesignPlugins.HttpLinkConnectionManagerObject<'plural'> {
   /**
    * A collection of events
    */

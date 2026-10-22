@@ -17,7 +17,7 @@ import type { Dialog } from './Dialog';
  * @collection CheckboxControl
  */
 export interface CheckboxControls
-  extends BaseCollection<CheckboxControl, CheckboxControl, CheckboxControl<'plural'>>, IdCollection<CheckboxControl>, InDesignPlugins.CheckboxControls {
+  extends BaseCollection<CheckboxControl, CheckboxControl, CheckboxControl<'plural'>>, IdCollection<CheckboxControl>, InDesignEdition.CheckboxControls, InDesignPlugins.CheckboxControls {
   /**
    * Creates and adds a new checkbox control to the dialog.
    * @param withProperties Initial values for properties of the new control.

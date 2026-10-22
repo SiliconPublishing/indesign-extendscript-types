@@ -23,7 +23,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A rule mapping a character style name to another character style name, applied when importing Word or tagged-text content.
  */
-export interface CharStyleMapping extends InDesignPlugins.CharStyleMapping<'single'> {
+export interface CharStyleMapping extends InDesignEdition.CharStyleMapping, InDesignPlugins.CharStyleMapping<'single'> {
   /**
    * A collection of events
    */
@@ -125,7 +125,7 @@ export interface CharStyleMapping extends InDesignPlugins.CharStyleMapping<'sing
 /**
  * A rule mapping a character style name to another character style name, applied when importing Word or tagged-text content.
  */
-export interface CharStyleMappingPlural extends InDesignPlugins.CharStyleMapping<'plural'> {
+export interface CharStyleMappingPlural extends InDesignEdition.CharStyleMappingPlural, InDesignPlugins.CharStyleMapping<'plural'> {
   /**
    * A collection of events
    */

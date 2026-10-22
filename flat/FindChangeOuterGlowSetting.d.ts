@@ -30,7 +30,7 @@ import type { MeasurementValue } from './_base/Types';
 /**
  * The same {@link OuterGlowSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeOuterGlowSetting extends InDesignPlugins.FindChangeOuterGlowSetting<'single'> {
+export interface FindChangeOuterGlowSetting extends InDesignEdition.FindChangeOuterGlowSetting, InDesignPlugins.FindChangeOuterGlowSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -150,7 +150,7 @@ export interface FindChangeOuterGlowSetting extends InDesignPlugins.FindChangeOu
 /**
  * The same {@link OuterGlowSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeOuterGlowSettingPlural extends InDesignPlugins.FindChangeOuterGlowSetting<'plural'> {
+export interface FindChangeOuterGlowSettingPlural extends InDesignEdition.FindChangeOuterGlowSettingPlural, InDesignPlugins.FindChangeOuterGlowSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -86,6 +86,7 @@ import type { Gradient } from '../Gradient';
 import type { MixedInk } from '../MixedInk';
 import type { Text } from '../Text';
 import type { Tint } from '../Tint';
+import type { EditionPart } from "./Editions";
 
 /**
  * Fill, stroke, and gradient attributes a text run draws its glyphs with.
@@ -1514,11 +1515,6 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   /** Paragraph kashida width. 0 is none, 1 is short, 2 is medium, 3 is long */
   get paragraphKashidaWidth(): Read<M, number>;
   set paragraphKashidaWidth(value: number | NSet);
-
-  /** If true, aligns the baseline of the text to the baseline grid. */
-  get alignToBaseline(): Read<M, boolean>;
-  set alignToBaseline(value: boolean | NSet);
-
   /** First-line indent, relative to {@link leftIndent}. Negative values hang. */
   get firstLineIndent(): Read<M, number>;
   set firstLineIndent(value: MeasurementValue | NSet);
@@ -1961,6 +1957,23 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
   get numberingAlignment(): Read<M, ListAlignment>;
   set numberingAlignment(value: ListAlignment | NSet);
 }
+/** ParagraphAttributesBase's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphAttributesBaseDesktop<M extends Mode = 'single', NSet = never> extends EditionPart {
+  /** If true, aligns the baseline of the text to the baseline grid.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get alignToBaseline(): Read<M, boolean>;
+
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set alignToBaseline(value: boolean | NSet);
+}
+
+/** ParagraphAttributesBase's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphAttributesBaseServer<M extends Mode = 'single', NSet = never> extends EditionPart {}
+
+/** ParagraphAttributesBase's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ParagraphAttributesBasePortable<M extends Mode = 'single', NSet = never> extends EditionPart {}
 
 /**
  * Live paragraph-level formatting on a text range: indents, spacing,
@@ -1972,6 +1985,14 @@ export interface ParagraphAttributesBase<M extends Mode = 'single', NSet = never
  * twin is {@link ParagraphStyleAttributes}.
  */
 export interface ParagraphFormatAttributes<M extends Mode = 'single'> extends ParagraphAttributesBase<M> {}
+/** ParagraphFormatAttributes's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphFormatAttributesDesktop<M extends Mode = 'single'> extends EditionPart, ParagraphAttributesBaseDesktop<M> {}
+
+/** ParagraphFormatAttributes's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphFormatAttributesServer<M extends Mode = 'single'> extends EditionPart, ParagraphAttributesBaseServer<M> {}
+
+/** ParagraphFormatAttributes's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ParagraphFormatAttributesPortable<M extends Mode = 'single'> extends EditionPart, ParagraphAttributesBasePortable<M> {}
 
 /**
  * Paragraph formatting stored as a named **style definition**
@@ -1982,3 +2003,11 @@ export interface ParagraphFormatAttributes<M extends Mode = 'single'> extends Pa
  */
 export interface ParagraphStyleAttributes<M extends Mode = 'single', NSet = never>
   extends ParagraphAttributesBase<M, NSet> {}
+/** ParagraphStyleAttributes's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphStyleAttributesDesktop<M extends Mode = 'single', NSet = never> extends EditionPart, ParagraphAttributesBaseDesktop<M, NSet> {}
+
+/** ParagraphStyleAttributes's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ParagraphStyleAttributesServer<M extends Mode = 'single', NSet = never> extends EditionPart, ParagraphAttributesBaseServer<M, NSet> {}
+
+/** ParagraphStyleAttributes's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ParagraphStyleAttributesPortable<M extends Mode = 'single', NSet = never> extends EditionPart, ParagraphAttributesBasePortable<M, NSet> {}

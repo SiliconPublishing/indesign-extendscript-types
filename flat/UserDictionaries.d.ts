@@ -17,7 +17,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection UserDictionary
  */
-export interface UserDictionaries extends InDesignPlugins.UserDictionaries {
+export interface UserDictionaries extends InDesignEdition.UserDictionaries, InDesignPlugins.UserDictionaries {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

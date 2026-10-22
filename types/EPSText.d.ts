@@ -34,12 +34,16 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { PageItemDesktop } from "./PageItem";
+import type { PageItemServer } from "./PageItem";
+import type { PageItemPortable } from "./PageItem";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A legacy page item that holds text exported as EPS artwork rather than live
  * text. See {@link PageItem} for the shared page-item surface.
  */
-export interface EPSText<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, PageItemParent, M>, InDesignPlugins.EPSText<M> {
+export interface EPSText<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, PageItemParent, M>, InDesignEdition.EPSText<TParent, M>, InDesignPlugins.EPSText<M> {
   /** Resolves the proxy into the individual {@link EPSText} objects it stands for. */
   getElements(): EPSText<TParent, 'single'>[];
 
@@ -67,3 +71,11 @@ export interface EPSText<TParent = PageItemParent, M extends Mode = 'single'> ex
   /** Sends the item back one level within its layer. */
   sendBackward(): Read<M, void>;
 }
+/** EPSText's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface EPSTextDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemDesktop<TParent, PageItemParent, M> {}
+
+/** EPSText's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface EPSTextServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemServer<TParent, PageItemParent, M> {}
+
+/** EPSText's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface EPSTextPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemPortable<TParent, PageItemParent, M> {}

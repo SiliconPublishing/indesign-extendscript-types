@@ -13,7 +13,7 @@ import type { Image } from './Image';
 /**
  * Image I/O preferences.
  */
-export interface ImageIOPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application | Image, M>, InDesignPlugins.ImageIOPreference<M> {
+export interface ImageIOPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application | Image, M>, InDesignEdition.ImageIOPreference<M>, InDesignPlugins.ImageIOPreference<M> {
   /** Resolves the proxy into the individual {@link ImageIOPreference} objects it stands for. */
   getElements(): ImageIOPreference<'single'>[];
 

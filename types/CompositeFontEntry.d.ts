@@ -17,7 +17,7 @@ import type { Font } from './Font';
 export interface CompositeFontEntry<M extends Mode = 'single'>
   extends LabelableEventDOMObject<CompositeFont, M>,
     IndexedDOMObject<CompositeFont, M>,
-    NamableDOMObject<CompositeFont, M>, InDesignPlugins.CompositeFontEntry<M> {
+    NamableDOMObject<CompositeFont, M>, InDesignEdition.CompositeFontEntry<M>, InDesignPlugins.CompositeFontEntry<M> {
   /** Resolves the proxy into the individual {@link CompositeFontEntry} objects it stands for. */
   getElements(): CompositeFontEntry<'single'>[];
 

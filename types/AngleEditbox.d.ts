@@ -12,7 +12,7 @@ import type { NumericEditboxSurface } from './_base/WidgetMixins';
 /**
  * A numeric entry field for angle values.
  */
-export interface AngleEditbox<M extends Mode = 'single'> extends Widget<M>, NumericEditboxSurface<M>, InDesignPlugins.AngleEditbox<M>{
+export interface AngleEditbox<M extends Mode = 'single'> extends Widget<M>, NumericEditboxSurface<M>, InDesignEdition.AngleEditbox<M>, InDesignPlugins.AngleEditbox<M>{
   /** Resolves the proxy into the individual {@link AngleEditbox} objects it stands for. */
   getElements(): AngleEditbox<'single'>[];
 }

@@ -17,7 +17,7 @@ import type { File, Folder, FilePath } from './_base/Types';
  */
 export interface BookContent<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Book, M>,
-    IndexedDOMObject<Book, M>, InDesignPlugins.BookContent<M> {
+    IndexedDOMObject<Book, M>, InDesignEdition.BookContent<M>, InDesignPlugins.BookContent<M> {
   /** Resolves the proxy into the individual {@link BookContent} objects it stands for. */
   getElements(): BookContent<'single'>[];
 

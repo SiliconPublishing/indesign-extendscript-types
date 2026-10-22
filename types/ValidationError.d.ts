@@ -16,7 +16,7 @@ import type { XMLElement } from './XMLElement';
  */
 export interface ValidationError<M extends Mode = 'single'>
   extends EventTargetDOMObject<Document, M>,
-    IndexedDOMObject<Document, M>, InDesignPlugins.ValidationError<M> {
+    IndexedDOMObject<Document, M>, InDesignEdition.ValidationError<M>, InDesignPlugins.ValidationError<M> {
   /** Resolves the proxy into the individual {@link ValidationError} objects it stands for. */
   getElements(): ValidationError<'single'>[];
 

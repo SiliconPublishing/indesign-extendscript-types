@@ -24,7 +24,7 @@ export interface MovieBehaviors
   extends
     BaseCollection<MovieBehavior, MovieBehavior, MovieBehavior<'plural'>>,
     IdCollection<MovieBehavior>,
-    NamedCollection<MovieBehavior>, InDesignPlugins.MovieBehaviors {
+    NamedCollection<MovieBehavior>, InDesignEdition.MovieBehaviors, InDesignPlugins.MovieBehaviors {
   /**
    * Creates a new movie behavior.
    * @param withProperties Initial values for properties of the new {@link MovieBehavior}.

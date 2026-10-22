@@ -26,7 +26,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * the resulting object to load an SVG file.
  * @collection SVG
  */
-export interface SVGs<TParent = PageItemParent> extends InDesignPlugins.SVGs {
+export interface SVGs<TParent = PageItemParent> extends InDesignEdition.SVGs<TParent>, InDesignPlugins.SVGs {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

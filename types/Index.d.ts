@@ -27,7 +27,7 @@ import type { IndexSection } from './IndexSection';
 export interface Index<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document, M>,
     IndexedDOMObject<Document, M>,
-    NamableDOMObject<Document, M>, InDesignPlugins.Index<M> {
+    NamableDOMObject<Document, M>, InDesignEdition.Index<M>, InDesignPlugins.Index<M> {
   /** Resolves the proxy into the individual {@link Index} objects it stands for. */
   getElements(): Index<'single'>[];
 

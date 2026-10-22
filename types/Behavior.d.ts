@@ -20,7 +20,7 @@ import type { GotoURLBehavior } from './GotoURLBehavior';
  */
 export interface Behavior<M extends Mode = 'single'>
   extends LabelableEventDOMObject<BehaviorParent, M>,
-    IndexedDOMObject<BehaviorParent, M>, InDesignPlugins.Behavior<M> {
+    IndexedDOMObject<BehaviorParent, M>, InDesignEdition.Behavior<M>, InDesignPlugins.Behavior<M> {
   /** Resolves the proxy into the individual {@link Behavior} objects it stands for. */
   getElements(): Behavior<'single'>[];
 

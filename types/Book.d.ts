@@ -24,6 +24,7 @@ import type { PrinterPresetTypes } from './Enums/PrinterPresetTypes';
 import type { PrinterPreset } from './PrinterPreset';
 import type { PDFExportPreset } from './PDFExportPreset';
 import type { File, Folder, FilePath, FolderPath } from './_base/Types';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * An InDesign book — an ordered collection of {@link BookContent} documents
@@ -31,7 +32,7 @@ import type { File, Folder, FilePath, FolderPath } from './_base/Types';
  */
 export interface Book<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Application, M>,
-    IndexedDOMObject<Application, M>, InDesignPlugins.Book<M> {
+    IndexedDOMObject<Application, M>, InDesignEdition.Book<M>, InDesignPlugins.Book<M> {
   /** Resolves the proxy into the individual {@link Book} objects it stands for. */
   getElements(): Book<'single'>[];
 
@@ -177,10 +178,6 @@ export interface Book<M extends Mode = 'single'>
    * @param autoOpen If `true`, automatically opens the report after creation. Defaults to `false`.
    */
   preflight(to?: FilePath, autoOpen?: boolean): Read<M, void>;
-
-  /** Prints the book. */
-  print(printDialog?: boolean, using?: PrinterPresetTypes | PrinterPreset): Read<M, void>;
-
   /**
    * Closes the book.
    * @param saving Whether to save changes before closing. Defaults to {@link SaveOptions.ASK}.
@@ -232,4 +229,61 @@ export interface Book<M extends Mode = 'single'>
 
   /** Updates the cross-references in the entire book. */
   updateAllCrossReferences(): Read<M, void>;
+}
+/** Book's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface BookDesktop<M extends Mode = 'single'> extends EditionPart {
+  /** Prints the book.
+   * InDesign Server 21.6 takes `print(using?, withGrids?)` instead. */
+  print(printDialog?: boolean, using?: PrinterPresetTypes | PrinterPreset): Read<M, void>;
+}
+
+/** Book's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface BookServer<M extends Mode = 'single'> extends EditionPart {
+  /**
+   * Prints the book.
+   * InDesign desktop 21.6 takes `print(printDialog?, using?)` instead.
+   * @param withGrids Whether to print grids (Optional)
+   */
+  print(using?: PrinterPresetTypes | PrinterPreset, withGrids?: boolean): Read<M, void>;
+
+  /**
+   * If true, synchronize mojikumi style.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get synchronizeMojikumiStyle(): Read<M, boolean>;
+  set synchronizeMojikumiStyle(value: boolean);
+
+  /**
+   * If true, synchronize composite font.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get synchronizeCompositeFont(): Read<M, boolean>;
+  set synchronizeCompositeFont(value: boolean);
+
+  /**
+   * If true, synchronize kinsoku style.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get synchronizeKinsokuStyle(): Read<M, boolean>;
+  set synchronizeKinsokuStyle(value: boolean);
+
+  /**
+   * If true, synchronize named grid.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get synchronizeNamedGrid(): Read<M, boolean>;
+  set synchronizeNamedGrid(value: boolean);
+}
+
+/** Book's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface BookPortable<M extends Mode = 'single'> extends EditionPart {
+  /**
+   * Prints the book.
+   * Portable form: the editions' parameters differ after these (desktop `print(printDialog?, using?)`, InDesign Server `print(using?, withGrids?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   */
+  print(): Read<M, void>;
 }

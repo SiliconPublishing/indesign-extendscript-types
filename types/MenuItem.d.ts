@@ -15,7 +15,7 @@ import type { Submenu } from './Submenu';
  * A single choosable entry in a {@link Menu} or {@link Submenu}, backed by
  * the {@link MenuAction} that implements its behavior.
  */
-export interface MenuItem<M extends Mode = 'single'> extends MenuElement<M>, InDesignPlugins.MenuItem<M>{
+export interface MenuItem<M extends Mode = 'single'> extends MenuElement<M>, InDesignEdition.MenuItem<M>, InDesignPlugins.MenuItem<M>{
   /** Resolves the proxy into the individual {@link MenuItem} objects it stands for. */
   getElements(): MenuItem<'single'>[];
 

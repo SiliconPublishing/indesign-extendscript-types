@@ -66,12 +66,16 @@ import type { WMFs } from './WMFs';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { FormFieldDesktop } from "./FormField";
+import type { FormFieldServer } from "./FormField";
+import type { FormFieldPortable } from "./FormField";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A PDF list-box form field: a scrollable list of choices, optionally
  * multi-selectable, in an interactive PDF form.
  */
-export interface ListBox<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, ListBox, M>, FormFieldSurface<ListBox, M>, InDesignPlugins.ListBox<M> {
+export interface ListBox<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, ListBox, M>, FormFieldSurface<ListBox, M>, InDesignEdition.ListBox<TParent, M>, InDesignPlugins.ListBox<M> {
   /** Resolves the proxy into the individual {@link ListBox} objects it stands for. */
   getElements(): ListBox<TParent, 'single'>[];
 
@@ -103,3 +107,11 @@ export interface ListBox<TParent = PageItemParent, M extends Mode = 'single'> ex
   get multipleSelection(): Read<M, boolean>;
   set multipleSelection(value: boolean);
 }
+/** ListBox's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ListBoxDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldDesktop<TParent, ListBox, M> {}
+
+/** ListBox's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ListBoxServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldServer<TParent, ListBox, M> {}
+
+/** ListBox's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ListBoxPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldPortable<TParent, ListBox, M> {}

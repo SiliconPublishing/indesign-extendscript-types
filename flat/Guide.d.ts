@@ -24,6 +24,7 @@ import type { Spread } from './Spread';
 import type { TransformationMatrix } from './TransformationMatrix';
 import type { TransformOrigin } from './_base/PageItemMixins';
 import type { MeasurementValue } from './_base/Types';
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -44,7 +45,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * Like any master-page object, a guide placed on a {@link MasterSpread} can be
  * overridden on document pages.
  */
-export interface Guide extends InDesignPlugins.Guide<'single'> {
+export interface Guide extends InDesignEdition.Guide, InDesignPlugins.Guide<'single'> {
   /**
    * A collection of events
    */
@@ -231,12 +232,6 @@ export interface Guide extends InDesignPlugins.Guide<'single'> {
     inCoordinateSpace: CoordinateSpaces,
     consideringRulerUnits?: boolean,
   ): Array<[number, number]>;
-  /**
-   * Selects the guide in the active document window.
-   * @param existingSelection How this selection combines with the current one.
-   * Defaults to {@link SelectionOptions.REPLACE_WITH}.
-   */
-  select(existingSelection?: SelectionOptions): void;
 }
 
 /**
@@ -248,7 +243,7 @@ export interface Guide extends InDesignPlugins.Guide<'single'> {
  * Like any master-page object, a guide placed on a {@link MasterSpread} can be
  * overridden on document pages.
  */
-export interface GuidePlural extends InDesignPlugins.Guide<'plural'> {
+export interface GuidePlural extends InDesignEdition.GuidePlural, InDesignPlugins.Guide<'plural'> {
   /**
    * A collection of events
    */
@@ -435,10 +430,41 @@ export interface GuidePlural extends InDesignPlugins.Guide<'plural'> {
     inCoordinateSpace: CoordinateSpaces,
     consideringRulerUnits?: boolean,
   ): Array<[number, number]>;
+}
+/** Guide's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface GuideDesktop {
   /**
    * Selects the guide in the active document window.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one.
+   * Defaults to {@link SelectionOptions.REPLACE_WITH}.
+   */
+  select(existingSelection?: SelectionOptions): void;
+}
+
+/** Guide's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface GuideDesktopPlural {
+  /**
+   * Selects the guide in the active document window.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param existingSelection How this selection combines with the current one.
    * Defaults to {@link SelectionOptions.REPLACE_WITH}.
    */
   select(existingSelection?: SelectionOptions): (void)[];
+}
+
+/** Guide's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface GuideServer {
+}
+
+/** Guide's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface GuideServerPlural {
+}
+
+/** Guide's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface GuidePortable {
+}
+
+/** Guide's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface GuidePortablePlural {
 }

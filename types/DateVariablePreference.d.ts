@@ -12,7 +12,7 @@ import type { TextVariable } from './TextVariable';
 /**
  * The preferences for a date variable.
  */
-export interface DateVariablePreference<M extends Mode = 'single'> extends EventTargetDOMObject<TextVariable, M>, InDesignPlugins.DateVariablePreference<M> {
+export interface DateVariablePreference<M extends Mode = 'single'> extends EventTargetDOMObject<TextVariable, M>, InDesignEdition.DateVariablePreference<M>, InDesignPlugins.DateVariablePreference<M> {
   /** Resolves the proxy into the individual {@link DateVariablePreference} objects it stands for. */
   getElements(): DateVariablePreference<'single'>[];
 

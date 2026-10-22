@@ -34,14 +34,26 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { GraphicDesktop } from "./Graphic";
+import type { GraphicServer } from "./Graphic";
+import type { GraphicPortable } from "./Graphic";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A placed WMF (Windows Metafile) graphic.
  */
-export interface WMF<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignPlugins.WMF<M> {
+export interface WMF<TParent = PageItemParent, M extends Mode = 'single'> extends Graphic<TParent, M>, InDesignEdition.WMF<TParent, M>, InDesignPlugins.WMF<M> {
   /** Resolves the proxy into the individual {@link WMF} objects it stands for. */
   getElements(): WMF<TParent, 'single'>[];
 
   /** Clipping-path and alpha-channel settings stored in the WMF. */
   readonly clippingPath: Read<M, ClippingPathSettings>;
 }
+/** WMF's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface WMFDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicDesktop<TParent, M> {}
+
+/** WMF's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface WMFServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicServer<TParent, M> {}
+
+/** WMF's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface WMFPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, GraphicPortable<TParent, M> {}

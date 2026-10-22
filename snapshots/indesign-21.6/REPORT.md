@@ -22,12 +22,12 @@ declaration trees (`types/`, `flat/`) on every `npm test`.
 | Object classes read at runtime | 416 (98.3%) | 423 |
 | Members read (class.property pairs) | 16112 | |
 | Writable members tried | 8246 | |
-| Behaviour probes (test/probes) | 111 in 7 files | |
+| Behaviour probes (test/probes) | 112 in 7 files | |
 | Property reads/writes that crash InDesign | 9 | |
 
 Reads and writes that crash InDesign (documented on the declarations; skipped by the samplers).
 `Class.prop` is a read, `Class.prop:trial` a write of that kind of value, `Class[]` taking items
-from such a collection:
+from such a collection, `Class.*` the class as a whole, `Class.*:write` every write to it:
 
 - `FindChangeDropShadowSetting.distance` (InDesign 21.6)
 - `FindChangeDropShadowSetting.angle` (InDesign 21.6)
@@ -38,6 +38,7 @@ from such a collection:
 - `Events[]` (InDesign 21.6)
 - `LayoutWindow.activePage:name` (InDesign 21.6)
 - `Window.activePage:name` (InDesign 21.6)
+
 
 Object classes no fixture object reached, so checked against the dictionary only
 (7):
@@ -50,10 +51,10 @@ Object classes no fixture object reached, so checked against the dictionary only
 - `PagesPanel`: app.panels report every panel as Panel; nothing is typed PagesPanel
 - `Reply`: as PDFComment
 
-## Findings
+## Findings (every edition)
 
 - **param-type**: 229
-- **runtime-roundtrip**: 91 (informational)
+- **runtime-roundtrip**: 95 (informational)
 - **write-type**: 25
 - **read-type**: 11
 - **runtime-readonly**: 7

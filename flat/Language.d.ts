@@ -8,6 +8,7 @@
 import type { Mode, Read } from './_base/Types';
 import type { LabelableEventDOMObject, IndexedDOMObject, ReadonlyNamedDOMObject } from './_base/DomObjects';
 import type { Document } from './Document';
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -23,7 +24,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * The language on which hyphenation rules and spell checking are based, as applied to a text
  * range through its `appliedLanguage`.
  */
-export interface Language extends InDesignPlugins.Language<'single'> {
+export interface Language extends InDesignEdition.Language, InDesignPlugins.Language<'single'> {
   /**
    * A collection of events
    */
@@ -127,8 +128,6 @@ export interface Language extends InDesignPlugins.Language<'single'> {
   getElements(): Language[];
   /** The unique numeric ID of the language within its document. */
   readonly id: number;
-  /** The untranslated (English) name of the language. */
-  readonly untranslatedName: string;
   /** The full name of the language's ICU locale, used by ICU-based text services. */
   readonly icuLocaleName: string;
   /** The single-quote pair used for this language, e.g. `'‘’'`. */
@@ -149,7 +148,7 @@ export interface Language extends InDesignPlugins.Language<'single'> {
  * The language on which hyphenation rules and spell checking are based, as applied to a text
  * range through its `appliedLanguage`.
  */
-export interface LanguagePlural extends InDesignPlugins.Language<'plural'> {
+export interface LanguagePlural extends InDesignEdition.LanguagePlural, InDesignPlugins.Language<'plural'> {
   /**
    * A collection of events
    */
@@ -253,8 +252,6 @@ export interface LanguagePlural extends InDesignPlugins.Language<'plural'> {
   getElements(): Language[];
   /** The unique numeric ID of the language within its document. */
   readonly id: (number)[];
-  /** The untranslated (English) name of the language. */
-  readonly untranslatedName: (string)[];
   /** The full name of the language's ICU locale, used by ICU-based text services. */
   readonly icuLocaleName: (string)[];
   /** The single-quote pair used for this language, e.g. `'‘’'`. */
@@ -269,4 +266,33 @@ export interface LanguagePlural extends InDesignPlugins.Language<'plural'> {
   /** The source of the spell-checking dictionary applied to text in this language. */
   get spellingVendor(): (string)[];
   set spellingVendor(value: string);
+}
+/** Language's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface LanguageDesktop {
+  /** The untranslated (English) name of the language.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly untranslatedName: string;
+}
+
+/** Language's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface LanguageDesktopPlural {
+  /** The untranslated (English) name of the language.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  readonly untranslatedName: (string)[];
+}
+
+/** Language's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface LanguageServer {
+}
+
+/** Language's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface LanguageServerPlural {
+}
+
+/** Language's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface LanguagePortable {
+}
+
+/** Language's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface LanguagePortablePlural {
 }

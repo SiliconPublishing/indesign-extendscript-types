@@ -19,6 +19,7 @@ import type { EditingState } from './Enums/EditingState';
 import type { LinkStatus } from './Enums/LinkStatus';
 import type { LinkResourceRenditionType } from './Enums/LinkResourceRenditionType';
 import type { FilePath, FolderPath } from './_base/Types';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A link to a placed or embedded file — an image, story, movie, or sound —
@@ -27,7 +28,7 @@ import type { FilePath, FolderPath } from './_base/Types';
  */
 export interface Link<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Story | Graphic | Movie | Sound, M>,
-    IndexedDOMObject<Story | Graphic | Movie | Sound, M>, InDesignPlugins.Link<M> {
+    IndexedDOMObject<Story | Graphic | Movie | Sound, M>, InDesignEdition.Link<M>, InDesignPlugins.Link<M> {
   /** Resolves the proxy into the individual {@link Link} objects it stands for. */
   getElements(): Link<'single'>[];
 
@@ -118,13 +119,6 @@ export interface Link<M extends Mode = 'single'>
 
   /** Reinitializes the link to a new resource URI. */
   reinitLink(linkResourceURI: string): Read<M, void>;
-
-  /** Opens the source file in the default editor for its file type. */
-  editOriginal(): Read<M, void>;
-
-  /** Selects the link in the document. */
-  show(): Read<M, void>;
-
   /** Opens the file system to the folder containing the source file and selects it. */
   revealInSystem(): Read<M, void>;
 
@@ -138,7 +132,24 @@ export interface Link<M extends Mode = 'single'>
    * @param forceSave If `true`, forcibly saves a version. Defaults to `false`.
    */
   copyLink(to: FilePath | FolderPath, versionComments?: string, forceSave?: boolean): Read<M, void>;
+}
+/** Link's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface LinkDesktop<M extends Mode = 'single'> extends EditionPart {
+  /** Opens the source file in the default editor for its file type.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  editOriginal(): Read<M, void>;
 
-  /** Opens the source file in InDesign for SharedContent links. */
+  /** Selects the link in the document.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  show(): Read<M, void>;
+
+  /** Opens the source file in InDesign for SharedContent links.
+   * Desktop only: InDesign Server 21.6 does not have it. */
   goToSource(): Read<M, void>;
 }
+
+/** Link's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface LinkServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** Link's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface LinkPortable<M extends Mode = 'single'> extends EditionPart {}

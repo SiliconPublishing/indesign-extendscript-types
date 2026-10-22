@@ -1,0 +1,1 @@
+<classdef name="Leading" enumeration="true">  <shortdesc>Leading type options.</shortdesc>  <elements type="class">    <property name="AUTO" rwaccess="readonly">      <shortdesc>Apply auto leading.</shortdesc>      <datatype>        <type>number</type>        <value>1635019116</value>      </datatype>    </property>  </elements></classdef>

@@ -21,5 +21,5 @@ import type { Library } from './Library';
  * @collection Asset
  */
 export interface Assets
-  extends BaseCollection<Asset, Asset, Asset<'plural'>>, IdCollection<Asset>, NamedCollection<Asset>, InDesignPlugins.Assets {
+  extends BaseCollection<Asset, Asset, Asset<'plural'>>, IdCollection<Asset>, NamedCollection<Asset>, InDesignEdition.Assets, InDesignPlugins.Assets {
 }

@@ -63,6 +63,10 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { PageItemDesktop } from "./PageItem";
+import type { PageItemServer } from "./PageItem";
+import type { PageItemPortable } from "./PageItem";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A flex-layout container page item (CSS-flexbox-style arrangement of child
@@ -74,7 +78,7 @@ export interface FlexObject<TParent = PageItemParent, M extends Mode = 'single'>
     // has no flex participation in the C++ layout engine.
     Omit<ShapeContainer<FlexObject>, 'epstexts'>,
     FormFieldContainer<FlexObject, M>,
-    EndnoteFrameContainer<FlexObject, M>, InDesignPlugins.FlexObject<M> {
+    EndnoteFrameContainer<FlexObject, M>, InDesignEdition.FlexObject<TParent, M>, InDesignPlugins.FlexObject<M> {
   /** Resolves the proxy into the individual {@link FlexObject} objects it stands for. */
   getElements(): FlexObject<TParent, 'single'>[];
 
@@ -175,3 +179,11 @@ export interface FlexObject<TParent = PageItemParent, M extends Mode = 'single'>
    */
   addPageItemAtEnd(addPageItem: PageItem): Read<M, void>;
 }
+/** FlexObject's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface FlexObjectDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemDesktop<TParent, FlexObject, M> {}
+
+/** FlexObject's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface FlexObjectServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemServer<TParent, FlexObject, M> {}
+
+/** FlexObject's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface FlexObjectPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemPortable<TParent, FlexObject, M> {}

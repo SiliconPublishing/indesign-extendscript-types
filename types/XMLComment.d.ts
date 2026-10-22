@@ -10,11 +10,15 @@ import type { XMLItem } from './XMLItem';
 import type { InsertionPoint } from './InsertionPoint';
 import type { Text } from './Text';
 import type { LocationOptions } from './Enums/LocationOptions';
+import type { XMLItemDesktop } from "./XMLItem";
+import type { XMLItemServer } from "./XMLItem";
+import type { XMLItemPortable } from "./XMLItem";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A comment (`<!-- ... -->`) in a document's underlying XML structure.
  */
-export interface XMLComment<M extends Mode = 'single'> extends XMLItem<M>, InDesignPlugins.XMLComment<M>{
+export interface XMLComment<M extends Mode = 'single'> extends XMLItem<M>, InDesignEdition.XMLComment<M>, InDesignPlugins.XMLComment<M>{
   /** Resolves the proxy into the individual {@link XMLComment} objects it stands for. */
   getElements(): XMLComment<'single'>[];
 
@@ -35,3 +39,11 @@ export interface XMLComment<M extends Mode = 'single'> extends XMLItem<M>, InDes
   /** Duplicates the comment. */
   duplicate(): Read<M, XMLComment>;
 }
+/** XMLComment's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLCommentDesktop<M extends Mode = 'single'> extends EditionPart, XMLItemDesktop<M> {}
+
+/** XMLComment's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface XMLCommentServer<M extends Mode = 'single'> extends EditionPart, XMLItemServer<M> {}
+
+/** XMLComment's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface XMLCommentPortable<M extends Mode = 'single'> extends EditionPart, XMLItemPortable<M> {}

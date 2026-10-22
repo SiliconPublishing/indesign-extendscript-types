@@ -16,7 +16,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Change
  */
-export interface Changes extends InDesignPlugins.Changes {
+export interface Changes extends InDesignEdition.Changes, InDesignPlugins.Changes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

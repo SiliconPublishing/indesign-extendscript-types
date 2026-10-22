@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection AnimationBehavior
  */
-export interface AnimationBehaviors extends InDesignPlugins.AnimationBehaviors {
+export interface AnimationBehaviors extends InDesignEdition.AnimationBehaviors, InDesignPlugins.AnimationBehaviors {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

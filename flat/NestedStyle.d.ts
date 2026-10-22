@@ -30,7 +30,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * start of the paragraph up to (or through) a delimiter, repeated a given
  * number of times.
  */
-export interface NestedStyle extends InDesignPlugins.NestedStyle<'single'> {
+export interface NestedStyle extends InDesignEdition.NestedStyle, InDesignPlugins.NestedStyle<'single'> {
   /**
    * A collection of events
    */
@@ -146,7 +146,7 @@ export interface NestedStyle extends InDesignPlugins.NestedStyle<'single'> {
  * start of the paragraph up to (or through) a delimiter, repeated a given
  * number of times.
  */
-export interface NestedStylePlural extends InDesignPlugins.NestedStyle<'plural'> {
+export interface NestedStylePlural extends InDesignEdition.NestedStylePlural, InDesignPlugins.NestedStyle<'plural'> {
   /**
    * A collection of events
    */

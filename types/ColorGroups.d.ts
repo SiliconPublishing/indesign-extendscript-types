@@ -24,7 +24,7 @@ export interface ColorGroups
   extends
     BaseCollection<ColorGroup, ColorGroup, ColorGroup<'plural'>>,
     IdCollection<ColorGroup>,
-    NamedCollection<ColorGroup>, InDesignPlugins.ColorGroups {
+    NamedCollection<ColorGroup>, InDesignEdition.ColorGroups, InDesignPlugins.ColorGroups {
   /**
    * Creates a new color group from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link ColorGroup}.

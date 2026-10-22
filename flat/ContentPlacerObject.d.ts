@@ -24,7 +24,7 @@ import type { FilePath } from './_base/Types';
  * The content-linking placer used to load page items for link-aware pasting
  * or placement (Edit > Content Placer workflows).
  */
-export interface ContentPlacerObject extends InDesignPlugins.ContentPlacerObject<'single'> {
+export interface ContentPlacerObject extends InDesignEdition.ContentPlacerObject, InDesignPlugins.ContentPlacerObject<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -128,7 +128,7 @@ export interface ContentPlacerObject extends InDesignPlugins.ContentPlacerObject
  * The content-linking placer used to load page items for link-aware pasting
  * or placement (Edit > Content Placer workflows).
  */
-export interface ContentPlacerObjectPlural extends InDesignPlugins.ContentPlacerObject<'plural'> {
+export interface ContentPlacerObjectPlural extends InDesignEdition.ContentPlacerObjectPlural, InDesignPlugins.ContentPlacerObject<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -67,12 +67,24 @@ import type { TextPath } from './TextPath';
 import type { TextVariableInstances } from './TextVariableInstances';
 import type { Tint } from './Tint';
 import type { XMLItem } from './XMLItem';
+import type { TextDesktop } from "./Text";
+import type { TextServer } from "./Text";
+import type { TextPortable } from "./Text";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A single column of composed text — one per column in a multi-column frame,
  * or per frame in a story threaded across frames.
  */
-export interface TextColumn<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M>, InDesignPlugins.TextColumn<M> {
+export interface TextColumn<TParent = TextParent, M extends Mode = 'single'> extends Text<TParent, M>, InDesignEdition.TextColumn<TParent, M>, InDesignPlugins.TextColumn<M> {
   /** Resolves the proxy into the individual {@link TextColumn} objects it stands for. */
   getElements(): TextColumn<TParent, 'single'>[];
 }
+/** TextColumn's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface TextColumnDesktop<TParent = TextParent, M extends Mode = 'single'> extends EditionPart, TextDesktop<TParent, M> {}
+
+/** TextColumn's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface TextColumnServer<TParent = TextParent, M extends Mode = 'single'> extends EditionPart, TextServer<TParent, M> {}
+
+/** TextColumn's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface TextColumnPortable<TParent = TextParent, M extends Mode = 'single'> extends EditionPart, TextPortable<TParent, M> {}

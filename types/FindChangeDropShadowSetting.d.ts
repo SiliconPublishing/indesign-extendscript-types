@@ -17,7 +17,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
 /**
  * The same {@link DropShadowSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeDropShadowSetting<M extends Mode = 'single'> extends DropShadowSetting<M, FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting, NothingEnum.NOTHING>, InDesignPlugins.FindChangeDropShadowSetting<M>{
+export interface FindChangeDropShadowSetting<M extends Mode = 'single'> extends DropShadowSetting<M, FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting, NothingEnum.NOTHING>, InDesignEdition.FindChangeDropShadowSetting<M>, InDesignPlugins.FindChangeDropShadowSetting<M>{
   /** Resolves the proxy into the individual {@link FindChangeDropShadowSetting} objects it stands for. */
   getElements(): FindChangeDropShadowSetting<'single'>[];
 }

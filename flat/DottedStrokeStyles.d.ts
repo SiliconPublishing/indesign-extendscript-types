@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection DottedStrokeStyle
  */
-export interface DottedStrokeStyles extends InDesignPlugins.DottedStrokeStyles {
+export interface DottedStrokeStyles extends InDesignEdition.DottedStrokeStyles, InDesignPlugins.DottedStrokeStyles {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

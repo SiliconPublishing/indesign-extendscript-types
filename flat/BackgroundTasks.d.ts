@@ -21,7 +21,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection BackgroundTask
  */
-export interface BackgroundTasks extends InDesignPlugins.BackgroundTasks {
+export interface BackgroundTasks extends InDesignEdition.BackgroundTasks, InDesignPlugins.BackgroundTasks {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -29,7 +29,7 @@ import type { MeasurementValue } from './_base/Types';
 /**
  * The same {@link FeatherSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeFeatherSetting extends InDesignPlugins.FindChangeFeatherSetting<'single'> {
+export interface FindChangeFeatherSetting extends InDesignEdition.FindChangeFeatherSetting, InDesignPlugins.FindChangeFeatherSetting<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -131,7 +131,7 @@ export interface FindChangeFeatherSetting extends InDesignPlugins.FindChangeFeat
 /**
  * The same {@link FeatherSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeFeatherSettingPlural extends InDesignPlugins.FindChangeFeatherSetting<'plural'> {
+export interface FindChangeFeatherSettingPlural extends InDesignEdition.FindChangeFeatherSettingPlural, InDesignPlugins.FindChangeFeatherSetting<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

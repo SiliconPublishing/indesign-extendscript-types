@@ -26,7 +26,7 @@ import type { Event } from './Event';
  * document during import — merge behavior, table handling, and optional XSLT
  * transformation.
  */
-export interface XMLImportPreference extends InDesignPlugins.XMLImportPreference<'single'> {
+export interface XMLImportPreference extends InDesignEdition.XMLImportPreference, InDesignPlugins.XMLImportPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -151,7 +151,7 @@ export interface XMLImportPreference extends InDesignPlugins.XMLImportPreference
  * document during import — merge behavior, table handling, and optional XSLT
  * transformation.
  */
-export interface XMLImportPreferencePlural extends InDesignPlugins.XMLImportPreference<'plural'> {
+export interface XMLImportPreferencePlural extends InDesignEdition.XMLImportPreferencePlural, InDesignPlugins.XMLImportPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

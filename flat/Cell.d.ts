@@ -55,6 +55,7 @@ import type { ColumnTypes } from './Enums/ColumnTypes';
 import type { AnyGraphic, AnyPageItem } from './_base/Unions';
 import type { FirstBaseline } from './Enums/FirstBaseline';
 import type { RowTypes } from './Enums/RowTypes';
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -91,7 +92,7 @@ import type { TextStyleRanges } from './TextStyleRanges';
  * names on {@link Row} and {@link Column}, since all three describe the same
  * grid.
  */
-export interface Cell extends InDesignPlugins.Cell<'single'> {
+export interface Cell extends InDesignEdition.Cell, InDesignPlugins.Cell<'single'> {
   /**
    * A collection of events
    */
@@ -677,11 +678,6 @@ export interface Cell extends InDesignPlugins.Cell<'single'> {
    * @param clearingOverridesThroughRootCellStyle If `true`, clears every override regardless of whether it is also defined in the underlying cell style. Defaults to `false`.
    */
   clearCellStyleOverrides(clearingOverridesThroughRootCellStyle?: boolean): void;
-  /**
-   * Selects the cell in the active document window.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(existingSelection?: SelectionOptions): void;
 }
 
 /**
@@ -694,7 +690,7 @@ export interface Cell extends InDesignPlugins.Cell<'single'> {
  * names on {@link Row} and {@link Column}, since all three describe the same
  * grid.
  */
-export interface CellPlural extends InDesignPlugins.Cell<'plural'> {
+export interface CellPlural extends InDesignEdition.CellPlural, InDesignPlugins.Cell<'plural'> {
   /**
    * A collection of events
    */
@@ -1280,9 +1276,39 @@ export interface CellPlural extends InDesignPlugins.Cell<'plural'> {
    * @param clearingOverridesThroughRootCellStyle If `true`, clears every override regardless of whether it is also defined in the underlying cell style. Defaults to `false`.
    */
   clearCellStyleOverrides(clearingOverridesThroughRootCellStyle?: boolean): (void)[];
+}
+/** Cell's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface CellDesktop {
   /**
    * Selects the cell in the active document window.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(existingSelection?: SelectionOptions): void;
+}
+
+/** Cell's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface CellDesktopPlural {
+  /**
+   * Selects the cell in the active document window.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
    */
   select(existingSelection?: SelectionOptions): (void)[];
+}
+
+/** Cell's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface CellServer {
+}
+
+/** Cell's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface CellServerPlural {
+}
+
+/** Cell's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface CellPortable {
+}
+
+/** Cell's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface CellPortablePlural {
 }

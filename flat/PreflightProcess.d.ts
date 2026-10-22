@@ -44,7 +44,7 @@ export type PreflightAggregatedResult = [
  * A preflight check running (or completed) against a {@link Document}, created
  * by {@link Application.preflightProcesses}.
  */
-export interface PreflightProcess extends InDesignPlugins.PreflightProcess<'single'> {
+export interface PreflightProcess extends InDesignEdition.PreflightProcess, InDesignPlugins.PreflightProcess<'single'> {
   /**
    * A collection of events
    */
@@ -163,7 +163,7 @@ export interface PreflightProcess extends InDesignPlugins.PreflightProcess<'sing
  * A preflight check running (or completed) against a {@link Document}, created
  * by {@link Application.preflightProcesses}.
  */
-export interface PreflightProcessPlural extends InDesignPlugins.PreflightProcess<'plural'> {
+export interface PreflightProcessPlural extends InDesignEdition.PreflightProcessPlural, InDesignPlugins.PreflightProcess<'plural'> {
   /**
    * A collection of events
    */

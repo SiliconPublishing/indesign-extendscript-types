@@ -22,7 +22,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Font locking preferences.
  */
-export interface FontLockingPreference extends InDesignPlugins.FontLockingPreference<'single'> {
+export interface FontLockingPreference extends InDesignEdition.FontLockingPreference, InDesignPlugins.FontLockingPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -115,7 +115,7 @@ export interface FontLockingPreference extends InDesignPlugins.FontLockingPrefer
 /**
  * Font locking preferences.
  */
-export interface FontLockingPreferencePlural extends InDesignPlugins.FontLockingPreference<'plural'> {
+export interface FontLockingPreferencePlural extends InDesignEdition.FontLockingPreferencePlural, InDesignPlugins.FontLockingPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

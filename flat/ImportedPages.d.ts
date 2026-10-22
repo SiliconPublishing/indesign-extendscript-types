@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection ImportedPage
  */
-export interface ImportedPages<TParent = PageItemParent> extends InDesignPlugins.ImportedPages {
+export interface ImportedPages<TParent = PageItemParent> extends InDesignEdition.ImportedPages<TParent>, InDesignPlugins.ImportedPages {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

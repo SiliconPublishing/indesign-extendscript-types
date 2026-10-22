@@ -19,7 +19,7 @@ import type { Word } from './Word';
  *
  * @collection Text
  */
-export interface Texts<TParent = TextParent> extends BaseCollection<Text<TParent>, Text, Text<TParent, 'plural'>, Text<TParent, 'plural'>>, InDesignPlugins.Texts {
+export interface Texts<TParent = TextParent> extends BaseCollection<Text<TParent>, Text, Text<TParent, 'plural'>, Text<TParent, 'plural'>>, InDesignEdition.Texts<TParent>, InDesignPlugins.Texts {
   /**
    * Returns the contiguous {@link Text} range between two bounds (inclusive).
    *

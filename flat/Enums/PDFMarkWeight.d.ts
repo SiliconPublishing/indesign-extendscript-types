@@ -60,7 +60,35 @@ interface PDFMarkWeight_P50PT extends PDFMarkWeight {
   readonly [__val]: 892350576;
 }
 
+/** Generated from the InDesign Server 21.6 scripting dictionary. */
+interface PDFMarkWeight_P05MM extends PDFMarkWeight {
+    readonly [__val]: 808807789;
+}
 
+/** Generated from the InDesign Server 21.6 scripting dictionary. */
+interface PDFMarkWeight_P07MM extends PDFMarkWeight {
+    readonly [__val]: 808938861;
+}
+
+/** Generated from the InDesign Server 21.6 scripting dictionary. */
+interface PDFMarkWeight_P10MM extends PDFMarkWeight {
+    readonly [__val]: 825257325;
+}
+
+/** Generated from the InDesign Server 21.6 scripting dictionary. */
+interface PDFMarkWeight_P15MM extends PDFMarkWeight {
+    readonly [__val]: 825585005;
+}
+
+/** Generated from the InDesign Server 21.6 scripting dictionary. */
+interface PDFMarkWeight_P20MM extends PDFMarkWeight {
+    readonly [__val]: 842034541;
+}
+
+/** Generated from the InDesign Server 21.6 scripting dictionary. */
+interface PDFMarkWeight_P30MM extends PDFMarkWeight {
+    readonly [__val]: 858811757;
+}
 
 /*----------------------------------------/
 /                Exports                  /
@@ -84,38 +112,43 @@ type P25PT = PDFMarkWeight_P25PT;
  * Printer mark line weight of 0.50 points.
  */
 type P50PT = PDFMarkWeight_P50PT;
-
+    type P05MM = PDFMarkWeight_P05MM;
+    type P07MM = PDFMarkWeight_P07MM;
+    type P10MM = PDFMarkWeight_P10MM;
+    type P15MM = PDFMarkWeight_P15MM;
+    type P20MM = PDFMarkWeight_P20MM;
+    type P30MM = PDFMarkWeight_P30MM;
 }
 /**
  * The stroke weight used to draw printer marks on the exported PDF.
  */
 export declare const PDFMarkWeight: typeof Enumeration & {
 
-  /**
-   * Printer mark line weight of 0.125 points.
-   */
-  readonly P125PT: PDFMarkWeight_P125PT;
-  /**
-   * Printer mark line weight of 0.125 points.
-   */
-  readonly p125pt: PDFMarkWeight_P125PT;
+          /**
+           * Printer mark line weight of 0.125 points.
+           */
+          readonly P125PT: PDFMarkWeight_P125PT;
+          /**
+           * Printer mark line weight of 0.125 points.
+           */
+          readonly p125pt: PDFMarkWeight_P125PT;
 
-  /**
-   * Printer mark line weight of 0.25 points.
-   */
-  readonly P25PT: PDFMarkWeight_P25PT;
-  /**
-   * Printer mark line weight of 0.25 points.
-   */
-  readonly p25pt: PDFMarkWeight_P25PT;
+          /**
+           * Printer mark line weight of 0.25 points.
+           */
+          readonly P25PT: PDFMarkWeight_P25PT;
+          /**
+           * Printer mark line weight of 0.25 points.
+           */
+          readonly p25pt: PDFMarkWeight_P25PT;
 
-  /**
-   * Printer mark line weight of 0.50 points.
-   */
-  readonly P50PT: PDFMarkWeight_P50PT;
-  /**
-   * Printer mark line weight of 0.50 points.
-   */
-  readonly p50pt: PDFMarkWeight_P50PT;
+          /**
+           * Printer mark line weight of 0.50 points.
+           */
+          readonly P50PT: PDFMarkWeight_P50PT;
+          /**
+           * Printer mark line weight of 0.50 points.
+           */
+          readonly p50pt: PDFMarkWeight_P50PT;
 
-}
+        } & InDesignEdition.PDFMarkWeight

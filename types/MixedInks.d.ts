@@ -25,7 +25,7 @@ export interface MixedInks
   extends
     BaseCollection<MixedInk, MixedInk, MixedInk<'plural'>>,
     IdCollection<MixedInk>,
-    NamedCollection<MixedInk>, InDesignPlugins.MixedInks {
+    NamedCollection<MixedInk>, InDesignEdition.MixedInks, InDesignPlugins.MixedInks {
   /**
    * Creates a new mixed ink swatch.
    *

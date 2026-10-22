@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection NumberingList
  */
-export interface NumberingLists extends InDesignPlugins.NumberingLists {
+export interface NumberingLists extends InDesignEdition.NumberingLists, InDesignPlugins.NumberingLists {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

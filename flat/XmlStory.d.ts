@@ -97,6 +97,10 @@ import type { Cell } from "./Cell";
 import type { Row } from "./Row";
 import type { Column } from "./Column";
 import type { Table } from "./Table";
+import type { ParagraphFormatAttributesDesktop } from "./_base/TextAttributes";
+import type { ParagraphFormatAttributesServer } from "./_base/TextAttributes";
+import type { ParagraphFormatAttributesPortable } from "./_base/TextAttributes";
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -180,7 +184,7 @@ import type { OverrideType } from './Enums/OverrideType';
  * check-in/out, revert, the story editor, and XML markup — since an XmlStory
  * has no on-page presence yet.
  */
-export interface XmlStory extends InDesignPlugins.XmlStory<'single'> {
+export interface XmlStory extends InDesignEdition.XmlStory, InDesignPlugins.XmlStory<'single'> {
   /**
    * A collection of events
    */
@@ -860,9 +864,6 @@ export interface XmlStory extends InDesignPlugins.XmlStory<'single'> {
   /** Paragraph kashida width. 0 is none, 1 is short, 2 is medium, 3 is long */
   get paragraphKashidaWidth(): number;
   set paragraphKashidaWidth(value: number | never);
-  /** If true, aligns the baseline of the text to the baseline grid. */
-  get alignToBaseline(): boolean;
-  set alignToBaseline(value: boolean | never);
   /** First-line indent, relative to {@link leftIndent}. Negative values hang. */
   get firstLineIndent(): number;
   set firstLineIndent(value: MeasurementValue | never);
@@ -1484,22 +1485,6 @@ export interface XmlStory extends InDesignPlugins.XmlStory<'single'> {
    * @param reference Required when `to` is {@link LocationOptions.BEFORE} or {@link LocationOptions.AFTER}.
    */
   duplicate(to: LocationOptions, reference?: TextDuplicateReference): Text;
-  /**
-   * Exports the story to a file on a background thread, returning the
-   * {@link BackgroundTask} that tracks it.
-   * @param format An {@link ExportFormat} or a matching file-type extension string.
-   * @param to Destination path.
-   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
-   * @param using An export preset such as a {@link PDFExportPreset}.
-   */
-  asynchronousExportFile(
-    format: ExportFormat | string,
-    to: FilePath,
-    showingOptions?: boolean,
-    using?: PDFExportPreset,
-    versionComments?: string,
-    forceSave?: boolean,
-  ): BackgroundTask;
   // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
 
   /**
@@ -1508,11 +1493,6 @@ export interface XmlStory extends InDesignPlugins.XmlStory<'single'> {
    */
   get idmlComponentName(): string;
   set idmlComponentName(value: string);
-  /**
-   * Opens the story in a story editor window.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  storyEdit(): StoryWindow;
   /**
    * Deletes the Story.
    * Generated from the InDesign 21.6 scripting dictionary.
@@ -1548,17 +1528,6 @@ export interface XmlStory extends InDesignPlugins.XmlStory<'single'> {
    */
   markup(using: XMLElement): void;
   /**
-   * Exports the object(s) to a file.
-   * @param format The export format, specified as an enumeration value or as an extension that appears in the Save as type or Format menu in the Export dialog. Can accept: ExportFormat enumerator or String.
-   * @param to The path to the export file.
-   * @param showingOptions If true, displays the export options dialog. (Optional)
-   * @param using The export style. (Optional)
-   * @param versionComments The comment for this version. (Optional)
-   * @param forceSave If true, forcibly saves a version. (Optional)
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): void;
-  /**
    * Checks out the story.
    * Generated from the InDesign 21.6 scripting dictionary.
    */
@@ -1587,7 +1556,7 @@ export interface XmlStory extends InDesignPlugins.XmlStory<'single'> {
  * check-in/out, revert, the story editor, and XML markup — since an XmlStory
  * has no on-page presence yet.
  */
-export interface XmlStoryPlural extends InDesignPlugins.XmlStory<'plural'> {
+export interface XmlStoryPlural extends InDesignEdition.XmlStoryPlural, InDesignPlugins.XmlStory<'plural'> {
   /**
    * A collection of events
    */
@@ -2267,9 +2236,6 @@ export interface XmlStoryPlural extends InDesignPlugins.XmlStory<'plural'> {
   /** Paragraph kashida width. 0 is none, 1 is short, 2 is medium, 3 is long */
   get paragraphKashidaWidth(): (number)[];
   set paragraphKashidaWidth(value: number | never);
-  /** If true, aligns the baseline of the text to the baseline grid. */
-  get alignToBaseline(): (boolean)[];
-  set alignToBaseline(value: boolean | never);
   /** First-line indent, relative to {@link leftIndent}. Negative values hang. */
   get firstLineIndent(): (number)[];
   set firstLineIndent(value: MeasurementValue | never);
@@ -2891,22 +2857,6 @@ export interface XmlStoryPlural extends InDesignPlugins.XmlStory<'plural'> {
    * @param reference Required when `to` is {@link LocationOptions.BEFORE} or {@link LocationOptions.AFTER}.
    */
   duplicate(to: LocationOptions, reference?: TextDuplicateReference): (Text)[];
-  /**
-   * Exports the story to a file on a background thread, returning the
-   * {@link BackgroundTask} that tracks it.
-   * @param format An {@link ExportFormat} or a matching file-type extension string.
-   * @param to Destination path.
-   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
-   * @param using An export preset such as a {@link PDFExportPreset}.
-   */
-  asynchronousExportFile(
-    format: ExportFormat | string,
-    to: FilePath,
-    showingOptions?: boolean,
-    using?: PDFExportPreset,
-    versionComments?: string,
-    forceSave?: boolean,
-  ): BackgroundTask;
   // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
 
   /**
@@ -2915,11 +2865,6 @@ export interface XmlStoryPlural extends InDesignPlugins.XmlStory<'plural'> {
    */
   get idmlComponentName(): (string)[];
   set idmlComponentName(value: string);
-  /**
-   * Opens the story in a story editor window.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  storyEdit(): (StoryWindow)[];
   /**
    * Deletes the Story.
    * Generated from the InDesign 21.6 scripting dictionary.
@@ -2955,17 +2900,6 @@ export interface XmlStoryPlural extends InDesignPlugins.XmlStory<'plural'> {
    */
   markup(using: XMLElement): (void)[];
   /**
-   * Exports the object(s) to a file.
-   * @param format The export format, specified as an enumeration value or as an extension that appears in the Save as type or Format menu in the Export dialog. Can accept: ExportFormat enumerator or String.
-   * @param to The path to the export file.
-   * @param showingOptions If true, displays the export options dialog. (Optional)
-   * @param using The export style. (Optional)
-   * @param versionComments The comment for this version. (Optional)
-   * @param forceSave If true, forcibly saves a version. (Optional)
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (void)[];
-  /**
    * Checks out the story.
    * Generated from the InDesign 21.6 scripting dictionary.
    */
@@ -2982,4 +2916,145 @@ export interface XmlStoryPlural extends InDesignPlugins.XmlStory<'plural'> {
    * Generated from the InDesign 21.6 scripting dictionary.
    */
   revert(): (boolean)[];
+}
+/** XmlStory's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface XmlStoryDesktop {
+  /** If true, aligns the baseline of the text to the baseline grid.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get alignToBaseline(): boolean;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set alignToBaseline(value: boolean | never);
+  /**
+   * Opens the story in a story editor window.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  storyEdit(): StoryWindow;
+  /**
+   * Exports the object(s) to a file.
+   * InDesign Server 21.6 takes `exportFile(format, to, using?, versionComments?, forceSave?)` instead.
+   * @param format The export format, specified as an enumeration value or as an extension that appears in the Save as type or Format menu in the Export dialog. Can accept: ExportFormat enumerator or String.
+   * @param to The path to the export file.
+   * @param showingOptions If true, displays the export options dialog. (Optional)
+   * @param using The export style. (Optional)
+   * @param versionComments The comment for this version. (Optional)
+   * @param forceSave If true, forcibly saves a version. (Optional)
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): void;
+  /**
+   * Exports the story to a file on a background thread, returning the
+   * {@link BackgroundTask} that tracks it.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
+   * @param using An export preset such as a {@link PDFExportPreset}.
+   */
+  asynchronousExportFile(
+    format: ExportFormat | string,
+    to: FilePath,
+    showingOptions?: boolean,
+    using?: PDFExportPreset,
+    versionComments?: string,
+    forceSave?: boolean,
+  ): BackgroundTask;
+}
+
+/** XmlStory's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface XmlStoryDesktopPlural {
+  /** If true, aligns the baseline of the text to the baseline grid.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get alignToBaseline(): (boolean)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set alignToBaseline(value: boolean | never);
+  /**
+   * Opens the story in a story editor window.
+   * Generated from the InDesign 21.6 scripting dictionary.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  storyEdit(): (StoryWindow)[];
+  /**
+   * Exports the object(s) to a file.
+   * InDesign Server 21.6 takes `exportFile(format, to, using?, versionComments?, forceSave?)` instead.
+   * @param format The export format, specified as an enumeration value or as an extension that appears in the Save as type or Format menu in the Export dialog. Can accept: ExportFormat enumerator or String.
+   * @param to The path to the export file.
+   * @param showingOptions If true, displays the export options dialog. (Optional)
+   * @param using The export style. (Optional)
+   * @param versionComments The comment for this version. (Optional)
+   * @param forceSave If true, forcibly saves a version. (Optional)
+   * Generated from the InDesign 21.6 scripting dictionary.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (void)[];
+  /**
+   * Exports the story to a file on a background thread, returning the
+   * {@link BackgroundTask} that tracks it.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
+   * @param using An export preset such as a {@link PDFExportPreset}.
+   */
+  asynchronousExportFile(
+    format: ExportFormat | string,
+    to: FilePath,
+    showingOptions?: boolean,
+    using?: PDFExportPreset,
+    versionComments?: string,
+    forceSave?: boolean,
+  ): BackgroundTask;
+}
+
+/** XmlStory's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface XmlStoryServer {
+  /**
+   * Exports the object(s) to a file.
+   * InDesign desktop 21.6 takes `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)` instead.
+   * @param format The export format, specified as an enumeration value or as an extension that appears in the Save as type or Format menu in the Export dialog. Can accept: ExportFormat enumerator or String.
+   * @param to The path to the export file.
+   * @param using The export style. (Optional)
+   * @param versionComments The comment for this version. (Optional)
+   * @param forceSave If true, forcibly saves a version. (Optional) Generated from the InDesign 21.6 scripting dictionary.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): void;
+}
+
+/** XmlStory's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface XmlStoryServerPlural {
+  /**
+   * Exports the object(s) to a file.
+   * InDesign desktop 21.6 takes `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)` instead.
+   * @param format The export format, specified as an enumeration value or as an extension that appears in the Save as type or Format menu in the Export dialog. Can accept: ExportFormat enumerator or String.
+   * @param to The path to the export file.
+   * @param using The export style. (Optional)
+   * @param versionComments The comment for this version. (Optional)
+   * @param forceSave If true, forcibly saves a version. (Optional) Generated from the InDesign 21.6 scripting dictionary.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): (void)[];
+}
+
+/** XmlStory's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface XmlStoryPortable {
+  /**
+   * Exports the object(s) to a file.
+   * Portable form: the editions' parameters differ after these (desktop `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)`, InDesign Server `exportFile(format, to, using?, versionComments?, forceSave?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param format The export format, specified as an enumeration value or as an extension that appears in the Save as type or Format menu in the Export dialog. Can accept: ExportFormat enumerator or String.
+   * @param to The path to the export file.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath): void;
+}
+
+/** XmlStory's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface XmlStoryPortablePlural {
+  /**
+   * Exports the object(s) to a file.
+   * Portable form: the editions' parameters differ after these (desktop `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)`, InDesign Server `exportFile(format, to, using?, versionComments?, forceSave?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param format The export format, specified as an enumeration value or as an extension that appears in the Save as type or Format menu in the Export dialog. Can accept: ExportFormat enumerator or String.
+   * @param to The path to the export file.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath): (void)[];
 }

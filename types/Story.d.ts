@@ -92,6 +92,10 @@ import type { TabStop } from './TabStop';
 import type { Tables } from './Tables';
 import type { TextVariableInstances } from './TextVariableInstances';
 import type { Tint } from './Tint';
+import type { ParagraphFormatAttributesDesktop } from "./_base/TextAttributes";
+import type { ParagraphFormatAttributesServer } from "./_base/TextAttributes";
+import type { ParagraphFormatAttributesPortable } from "./_base/TextAttributes";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * The full flowing text content of one thread of linked frames — the
@@ -110,7 +114,7 @@ export interface Story<M extends Mode = 'single'>
     CharacterFormatAttributes<M>,
     ParagraphFormatAttributes<M>,
     TextGraphicAttributes<M>,
-    TextRangeContent<Story, M>, InDesignPlugins.Story<M> {
+    TextRangeContent<Story, M>, InDesignEdition.Story<M>, InDesignPlugins.Story<M> {
   /** Resolves the proxy into the individual {@link Story} objects it stands for. */
   getElements(): Story<'single'>[];
 
@@ -326,26 +330,6 @@ export interface Story<M extends Mode = 'single'>
    * @param reference Required when `to` is {@link LocationOptions.BEFORE} or {@link LocationOptions.AFTER}.
    */
   move(to: LocationOptions, reference?: TextDuplicateReference): Read<M, Text>;
-
-  /** Opens the story in a {@link StoryWindow} story-editor window. */
-  storyEdit(): Read<M, StoryWindow>;
-
-  /**
-   * Exports the story to a file.
-   * @param format An {@link ExportFormat} or a matching file-type extension string.
-   * @param to Destination path.
-   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
-   * @param using An export preset such as a {@link PDFExportPreset}.
-   */
-  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): Read<M, void>;
-
-  /**
-   * Exports the story to a file on a background thread, returning the running {@link BackgroundTask}.
-   * @param format An {@link ExportFormat} or a matching file-type extension string.
-   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
-   */
-  asynchronousExportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): Read<M, BackgroundTask>;
-
   /**
    * Sets the Nth design axis of a variable font applied within the story.
    * @param nthAxisIndex Index of the design axis.
@@ -355,4 +339,51 @@ export interface Story<M extends Mode = 'single'>
 
   /** Whether the Nth design axis of the story's variable font is hidden. @param nthAxisIndex Index of the design axis. */
   isNthDesignAxisHidden(nthAxisIndex: number): Read<M, boolean>;
+}
+/** Story's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface StoryDesktop<M extends Mode = 'single'> extends EditionPart, ParagraphFormatAttributesDesktop<M> {
+  /** Opens the story in a {@link StoryWindow} story-editor window.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  storyEdit(): Read<M, StoryWindow>;
+
+  /**
+   * Exports the story to a file.
+   * InDesign Server 21.6 takes `exportFile(format, to, using?, versionComments?, forceSave?)` instead.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
+   * @param using An export preset such as a {@link PDFExportPreset}.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): Read<M, void>;
+
+  /**
+   * Exports the story to a file on a background thread, returning the running {@link BackgroundTask}.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param showingOptions If `true`, shows the export-options dialog. Defaults to `false`.
+   */
+  asynchronousExportFile(format: ExportFormat | string, to: FilePath, showingOptions?: boolean, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): Read<M, BackgroundTask>;
+}
+
+/** Story's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface StoryServer<M extends Mode = 'single'> extends EditionPart, ParagraphFormatAttributesServer<M> {
+  /**
+   * Exports the story to a file.
+   * InDesign desktop 21.6 takes `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)` instead.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   * @param using An export preset such as a {@link PDFExportPreset}.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath, using?: PDFExportPreset, versionComments?: string, forceSave?: boolean): Read<M, void>;
+}
+
+/** Story's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface StoryPortable<M extends Mode = 'single'> extends EditionPart, ParagraphFormatAttributesPortable<M> {
+  /**
+   * Exports the story to a file.
+   * Portable form: the editions' parameters differ after these (desktop `exportFile(format, to, showingOptions?, using?, versionComments?, forceSave?)`, InDesign Server `exportFile(format, to, using?, versionComments?, forceSave?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   * @param format An {@link ExportFormat} or a matching file-type extension string.
+   * @param to Destination path.
+   */
+  exportFile(format: ExportFormat | string, to: FilePath): Read<M, void>;
 }

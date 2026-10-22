@@ -42,7 +42,7 @@ import type { PrintLayerOptions } from './Enums/PrintLayerOptions';
 export interface PrinterPreset<M extends Mode = 'single'>
   extends EventTargetDOMObject<Application, M>,
     IndexedDOMObject<Application, M>,
-    NamableDOMObject<Application, M>, InDesignPlugins.PrinterPreset<M> {
+    NamableDOMObject<Application, M>, InDesignEdition.PrinterPreset<M>, InDesignPlugins.PrinterPreset<M> {
   /** Resolves the proxy into the individual {@link PrinterPreset} objects it stands for. */
   getElements(): PrinterPreset<'single'>[];
 

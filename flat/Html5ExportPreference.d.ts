@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * HTML5 export preferences.
  */
-export interface Html5ExportPreference extends InDesignPlugins.Html5ExportPreference<'single'> {
+export interface Html5ExportPreference extends InDesignEdition.Html5ExportPreference, InDesignPlugins.Html5ExportPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -116,7 +116,7 @@ export interface Html5ExportPreference extends InDesignPlugins.Html5ExportPrefer
 /**
  * HTML5 export preferences.
  */
-export interface Html5ExportPreferencePlural extends InDesignPlugins.Html5ExportPreference<'plural'> {
+export interface Html5ExportPreferencePlural extends InDesignEdition.Html5ExportPreferencePlural, InDesignPlugins.Html5ExportPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

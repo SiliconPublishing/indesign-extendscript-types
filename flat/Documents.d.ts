@@ -13,6 +13,7 @@ import type {
   BaseCollection,
 } from './_base/Collections';
 import type { Document } from './Document';
+import type { EditionPart } from "./_base/Editions";
 import type { DocumentPlural } from './Document';
 import type { NothingEnum } from './Enums/NothingEnum';
 
@@ -23,7 +24,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Document
  */
-export interface Documents extends InDesignPlugins.Documents {
+export interface Documents extends InDesignEdition.Documents, InDesignPlugins.Documents {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**
@@ -120,8 +121,12 @@ export interface Documents extends InDesignPlugins.Documents {
    * @param name The name of the item.
    */
   itemByName(name: string): Document;
+}
+/** Documents's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DocumentsDesktop {
   /**
    * Creates a new document from a properties bag alone.
+   * InDesign Server 21.6 takes `add(documentPreset?, withProperties?)` instead.
    * @param withProperties Initial values for properties of the new {@link Document}.
    */
   add(withProperties: PropertiesSetter<Document>): Document;
@@ -131,6 +136,7 @@ export interface Documents extends InDesignPlugins.Documents {
    * If a `documentPreset` is supplied, the new document is initialized with the preset's page
    * size, margins, columns, and other settings. Without a preset, InDesign applies the
    * current application defaults.
+   * InDesign Server 21.6 takes `add(documentPreset?, withProperties?)` instead.
    * @param showingWindow If `true`, the new document window is displayed immediately. If `false`, the document is created in the background for faster processing. Defaults to `true`.
    * @param documentPreset The {@link DocumentPreset} to apply to the new document.
    * @param withProperties Initial values for properties of the new Document.
@@ -140,4 +146,42 @@ export interface Documents extends InDesignPlugins.Documents {
     documentPreset?: DocumentPreset,
     withProperties?: PropertiesSetter<Document>,
   ): Document;
+}
+
+/** Documents's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DocumentsServer {
+  /**
+   * Creates a new document from a properties bag alone.
+   * InDesign desktop 21.6 takes `add(showingWindow?, documentPreset?, withProperties?)` instead.
+   * @param documentPreset The document preset to use. (Optional)
+   * @param withProperties Initial values for properties of the new Document (Optional)
+   */
+  add(documentPreset?: DocumentPreset, withProperties?: object): Document;
+  /**
+   * Creates and optionally displays a new InDesign document.
+   * If a `documentPreset` is supplied, the new document is initialized with the preset's page
+   * size, margins, columns, and other settings. Without a preset, InDesign applies the
+   * current application defaults.
+   * InDesign desktop 21.6 takes `add(showingWindow?, documentPreset?, withProperties?)` instead.
+   * @param documentPreset The {@link DocumentPreset} to apply to the new document.
+   * @param withProperties Initial values for properties of the new Document.
+   */
+  add(documentPreset?: DocumentPreset, withProperties?: PropertiesSetter<Document>): Document;
+}
+
+/** Documents's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DocumentsPortable {
+  /**
+   * Creates a new document from a properties bag alone.
+   * Portable form: the editions' parameters differ after these (desktop `add(showingWindow?, documentPreset?, withProperties?)`, InDesign Server `add(documentPreset?, withProperties?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   */
+  add(): Document;
+  /**
+   * Creates and optionally displays a new InDesign document.
+   * If a `documentPreset` is supplied, the new document is initialized with the preset's page
+   * size, margins, columns, and other settings. Without a preset, InDesign applies the
+   * current application defaults.
+   * Portable form: the editions' parameters differ after these (desktop `add(showingWindow?, documentPreset?, withProperties?)`, InDesign Server `add(documentPreset?, withProperties?)`). Cast to `InDesignDesktop` or `InDesignServer` types for the rest.
+   */
+  add(): Document;
 }

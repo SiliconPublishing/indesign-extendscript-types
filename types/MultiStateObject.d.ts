@@ -53,6 +53,10 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { FormFieldDesktop } from "./FormField";
+import type { FormFieldServer } from "./FormField";
+import type { FormFieldPortable } from "./FormField";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A multi-state object: a page item that cycles through multiple named
@@ -60,7 +64,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * content and the base building block {@link Button} specializes with PDF
  * behaviors.
  */
-export interface MultiStateObject<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, MultiStateObject, M>, InDesignPlugins.MultiStateObject<M> {
+export interface MultiStateObject<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, MultiStateObject, M>, InDesignEdition.MultiStateObject<TParent, M>, InDesignPlugins.MultiStateObject<M> {
   /** Resolves the proxy into the individual {@link MultiStateObject} objects it stands for. */
   getElements(): MultiStateObject<TParent, 'single'>[];
 
@@ -140,3 +144,11 @@ export interface MultiStateObject<TParent = PageItemParent, M extends Mode = 'si
   /** Releases all of this object's states as independent page items, then destroys this object. */
   releaseAsObjects(): Read<M, void>;
 }
+/** MultiStateObject's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface MultiStateObjectDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldDesktop<TParent, MultiStateObject, M> {}
+
+/** MultiStateObject's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface MultiStateObjectServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldServer<TParent, MultiStateObject, M> {}
+
+/** MultiStateObject's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface MultiStateObjectPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldPortable<TParent, MultiStateObject, M> {}

@@ -10,6 +10,8 @@ import type { DataMergeField } from './DataMergeField';
 import type { PageItem } from './PageItem';
 import type { BaseCollection } from './_base/Collections';
 import type { DataMergeQrcodePlaceholder } from './DataMergeQrcodePlaceholder';
+import type { EditionPart } from "./_base/Editions";
+import type { Read } from "./_base/Types";
 
 /**
  * A collection of {@link DataMergeQrcodePlaceholder} objects. These placeholders
@@ -18,7 +20,7 @@ import type { DataMergeQrcodePlaceholder } from './DataMergeQrcodePlaceholder';
  *
  * @collection DataMergeQrcodePlaceholder
  */
-export interface DataMergeQrcodePlaceholders extends BaseCollection<DataMergeQrcodePlaceholder, DataMergeQrcodePlaceholder, DataMergeQrcodePlaceholder<'plural'>>, InDesignPlugins.DataMergeQrcodePlaceholders {
+export interface DataMergeQrcodePlaceholders extends BaseCollection<DataMergeQrcodePlaceholder, DataMergeQrcodePlaceholder, DataMergeQrcodePlaceholder<'plural'>>, InDesignEdition.DataMergeQrcodePlaceholders, InDesignPlugins.DataMergeQrcodePlaceholders {
   /**
    * Creates a new data merge QR code placeholder.
    *
@@ -32,3 +34,19 @@ export interface DataMergeQrcodePlaceholders extends BaseCollection<DataMergeQrc
     withProperties?: PropertiesSetter<DataMergeQrcodePlaceholder>,
   ): DataMergeQrcodePlaceholder;
 }
+/** DataMergeQrcodePlaceholders's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeQrcodePlaceholdersDesktop extends EditionPart {}
+
+/** DataMergeQrcodePlaceholders's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeQrcodePlaceholdersServer extends EditionPart {
+  /**
+   * Returns the DataMergeQrcodePlaceholder with the specified name.
+   * InDesign Server only.
+   * @param name The name.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   */
+  itemByName(name: string): DataMergeQrcodePlaceholder;
+}
+
+/** DataMergeQrcodePlaceholders's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DataMergeQrcodePlaceholdersPortable extends EditionPart {}

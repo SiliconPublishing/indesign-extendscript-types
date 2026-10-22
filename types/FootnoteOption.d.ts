@@ -22,7 +22,7 @@ import type { FootnoteRestarting } from './Enums/FootnoteRestarting';
 /**
  * Options for specifying default footnote formatting.
  */
-export interface FootnoteOption<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.FootnoteOption<M> {
+export interface FootnoteOption<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignEdition.FootnoteOption<M>, InDesignPlugins.FootnoteOption<M> {
   /** Resolves the proxy into the individual {@link FootnoteOption} objects it stands for. */
   getElements(): FootnoteOption<'single'>[];
 

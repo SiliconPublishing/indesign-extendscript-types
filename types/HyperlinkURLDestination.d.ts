@@ -16,7 +16,7 @@ import type { Hyperlink } from './Hyperlink';
 export interface HyperlinkURLDestination<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document, M>,
     IndexedDOMObject<Document, M>,
-    NamableDOMObject<Document, M>, InDesignPlugins.HyperlinkURLDestination<M> {
+    NamableDOMObject<Document, M>, InDesignEdition.HyperlinkURLDestination<M>, InDesignPlugins.HyperlinkURLDestination<M> {
   /** Resolves the proxy into the individual {@link HyperlinkURLDestination} objects it stands for. */
   getElements(): HyperlinkURLDestination<'single'>[];
 

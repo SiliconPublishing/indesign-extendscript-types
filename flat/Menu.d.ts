@@ -26,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
 /**
  * A top-level application menu (for example the Edit or Object menu).
  */
-export interface Menu extends InDesignPlugins.Menu<'single'> {
+export interface Menu extends InDesignEdition.Menu, InDesignPlugins.Menu<'single'> {
   /**
    * A collection of events
    */
@@ -132,7 +132,7 @@ export interface Menu extends InDesignPlugins.Menu<'single'> {
 /**
  * A top-level application menu (for example the Edit or Object menu).
  */
-export interface MenuPlural extends InDesignPlugins.Menu<'plural'> {
+export interface MenuPlural extends InDesignEdition.MenuPlural, InDesignPlugins.Menu<'plural'> {
   /**
    * A collection of events
    */

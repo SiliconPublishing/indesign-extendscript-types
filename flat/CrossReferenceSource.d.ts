@@ -27,7 +27,7 @@ import type { Document } from './Document';
  * "See page 12") describing another location, formatted by its
  * {@link appliedFormat}.
  */
-export interface CrossReferenceSource extends InDesignPlugins.CrossReferenceSource<'single'> {
+export interface CrossReferenceSource extends InDesignEdition.CrossReferenceSource, InDesignPlugins.CrossReferenceSource<'single'> {
   /**
    * A collection of events
    */
@@ -158,7 +158,7 @@ export interface CrossReferenceSource extends InDesignPlugins.CrossReferenceSour
  * "See page 12") describing another location, formatted by its
  * {@link appliedFormat}.
  */
-export interface CrossReferenceSourcePlural extends InDesignPlugins.CrossReferenceSource<'plural'> {
+export interface CrossReferenceSourcePlural extends InDesignEdition.CrossReferenceSourcePlural, InDesignPlugins.CrossReferenceSource<'plural'> {
   /**
    * A collection of events
    */

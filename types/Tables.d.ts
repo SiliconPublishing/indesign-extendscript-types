@@ -57,5 +57,5 @@ export interface Tables
       | Character
       | Story
       | Cell
-    >, InDesignPlugins.Tables {
+    >, InDesignEdition.Tables, InDesignPlugins.Tables {
 }

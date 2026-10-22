@@ -12,7 +12,7 @@ import type { TextVariable } from './TextVariable';
 /**
  * The preferences for a file name variable.
  */
-export interface FileNameVariablePreference<M extends Mode = 'single'> extends EventTargetDOMObject<TextVariable, M>, InDesignPlugins.FileNameVariablePreference<M> {
+export interface FileNameVariablePreference<M extends Mode = 'single'> extends EventTargetDOMObject<TextVariable, M>, InDesignEdition.FileNameVariablePreference<M>, InDesignPlugins.FileNameVariablePreference<M> {
   /** Resolves the proxy into the individual {@link FileNameVariablePreference} objects it stands for. */
   getElements(): FileNameVariablePreference<'single'>[];
 

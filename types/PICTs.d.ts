@@ -19,5 +19,5 @@ import type { PageItemParent } from './_base/Parents';
  * @collection PICT
  */
 export interface PICTs<TParent = PageItemParent>
-  extends BaseCollection<PICT<TParent>, PICT, PICT<TParent, 'plural'>>, IdCollection<PICT<TParent>>, NamedCollection<PICT<TParent>>, InDesignPlugins.PICTs {
+  extends BaseCollection<PICT<TParent>, PICT, PICT<TParent, 'plural'>>, IdCollection<PICT<TParent>>, NamedCollection<PICT<TParent>>, InDesignEdition.PICTs<TParent>, InDesignPlugins.PICTs {
 }

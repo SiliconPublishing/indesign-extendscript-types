@@ -28,5 +28,5 @@ export interface RadioButtons<TParent = PageItemParent>
     BaseCollection<RadioButton<TParent>, RadioButton, RadioButton<TParent, 'plural'>>,
     IdCollection<RadioButton<TParent>>,
     NamedCollection<RadioButton<TParent>>,
-    AddablePageItemCollection<RadioButton<TParent>, RadioButton>, InDesignPlugins.RadioButtons {
+    AddablePageItemCollection<RadioButton<TParent>, RadioButton>, InDesignEdition.RadioButtons<TParent>, InDesignPlugins.RadioButtons {
 }

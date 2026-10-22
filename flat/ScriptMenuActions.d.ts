@@ -22,7 +22,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection ScriptMenuAction
  */
-export interface ScriptMenuActions extends InDesignPlugins.ScriptMenuActions {
+export interface ScriptMenuActions extends InDesignEdition.ScriptMenuActions, InDesignPlugins.ScriptMenuActions {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -15,7 +15,7 @@ import type { Swatch } from './Swatch';
  */
 export interface ColorGroupSwatch<M extends Mode = 'single'>
   extends EventTargetDOMObject<ColorGroup, M>,
-    IndexedDOMObject<ColorGroup, M>, InDesignPlugins.ColorGroupSwatch<M> {
+    IndexedDOMObject<ColorGroup, M>, InDesignEdition.ColorGroupSwatch<M>, InDesignPlugins.ColorGroupSwatch<M> {
   /** Resolves the proxy into the individual {@link ColorGroupSwatch} objects it stands for. */
   getElements(): ColorGroupSwatch<'single'>[];
 

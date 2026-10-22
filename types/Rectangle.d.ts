@@ -68,13 +68,17 @@ import type { WMFs } from './WMFs';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { SplineItemDesktop } from "./SplineItem";
+import type { SplineItemServer } from "./SplineItem";
+import type { SplineItemPortable } from "./SplineItem";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A rectangular frame — the most common page item, used for graphic frames,
  * color blocks, and placed images.
  */
 export interface Rectangle<TParent = PageItemParent, M extends Mode = 'single'>
-  extends SplineItem<TParent, Rectangle, M>, InDesignPlugins.Rectangle<M> {
+  extends SplineItem<TParent, Rectangle, M>, InDesignEdition.Rectangle<TParent, M>, InDesignPlugins.Rectangle<M> {
   /** Resolves the proxy into the individual {@link Rectangle}s it stands for. */
   getElements(): Rectangle<TParent, 'single'>[];
 
@@ -94,3 +98,11 @@ export interface Rectangle<TParent = PageItemParent, M extends Mode = 'single'>
   /** Removes the frame's fitting options, resetting them to the initial (no auto-fit) state. */
   clearFrameFittingOptions(): Read<M, void>;
 }
+/** Rectangle's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface RectangleDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, SplineItemDesktop<TParent, Rectangle, M> {}
+
+/** Rectangle's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface RectangleServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, SplineItemServer<TParent, Rectangle, M> {}
+
+/** Rectangle's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface RectanglePortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, SplineItemPortable<TParent, Rectangle, M> {}

@@ -20,7 +20,7 @@ import type { Dialog } from './Dialog';
 export interface MeasurementComboboxes
   extends
     BaseCollection<MeasurementCombobox, MeasurementCombobox, MeasurementCombobox<'plural'>>,
-    IdCollection<MeasurementCombobox>, InDesignPlugins.MeasurementComboboxes {
+    IdCollection<MeasurementCombobox>, InDesignEdition.MeasurementComboboxes, InDesignPlugins.MeasurementComboboxes {
   /**
    * Creates a new measurement combobox control from a properties bag alone.
    * @param withProperties Initial values for properties of the new {@link MeasurementCombobox}.

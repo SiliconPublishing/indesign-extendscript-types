@@ -24,7 +24,7 @@ export interface ObjectStyleGroups
   extends
     BaseCollection<ObjectStyleGroup, ObjectStyleGroup, ObjectStyleGroup<'plural'>>,
     IdCollection<ObjectStyleGroup>,
-    NamedCollection<ObjectStyleGroup>, InDesignPlugins.ObjectStyleGroups {
+    NamedCollection<ObjectStyleGroup>, InDesignEdition.ObjectStyleGroups, InDesignPlugins.ObjectStyleGroups {
   /**
    * Creates a new object style group.
    *

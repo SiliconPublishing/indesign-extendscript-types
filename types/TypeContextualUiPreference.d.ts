@@ -13,7 +13,7 @@ import type { Application } from './Application';
  * Contextual UI preferences shown while editing text, such as prompts for
  * alternates and fractions.
  */
-export interface TypeContextualUiPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.TypeContextualUiPreference<M> {
+export interface TypeContextualUiPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.TypeContextualUiPreference<M>, InDesignPlugins.TypeContextualUiPreference<M> {
   /** Resolves the proxy into the individual {@link TypeContextualUiPreference} objects it stands for. */
   getElements(): TypeContextualUiPreference<'single'>[];
 

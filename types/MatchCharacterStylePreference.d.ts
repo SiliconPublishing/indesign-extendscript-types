@@ -15,7 +15,7 @@ import type { SearchStrategies } from './Enums/SearchStrategies';
 /**
  * The preferences for a running header/footer (match character style) variable.
  */
-export interface MatchCharacterStylePreference<M extends Mode = 'single'> extends EventTargetDOMObject<TextVariable, M>, InDesignPlugins.MatchCharacterStylePreference<M> {
+export interface MatchCharacterStylePreference<M extends Mode = 'single'> extends EventTargetDOMObject<TextVariable, M>, InDesignEdition.MatchCharacterStylePreference<M>, InDesignPlugins.MatchCharacterStylePreference<M> {
   /** Resolves the proxy into the individual {@link MatchCharacterStylePreference} objects it stands for. */
   getElements(): MatchCharacterStylePreference<'single'>[];
 

@@ -38,7 +38,7 @@ import type { Swatch } from './Swatch';
  * Stores the same border, inset and alternating-fill attributes a live {@link Table} carries,
  * but as a reusable named definition rather than formatting applied to one table.
  */
-export interface TableStyle extends InDesignPlugins.TableStyle<'single'> {
+export interface TableStyle extends InDesignEdition.TableStyle, InDesignPlugins.TableStyle<'single'> {
   /**
    * A collection of events
    */
@@ -495,7 +495,7 @@ export interface TableStyle extends InDesignPlugins.TableStyle<'single'> {
   get captionParagraphCount(): number;
   set captionParagraphCount(value: number);
   /** The {@link CellStyle} applied to cells in the header column region. */
-  get headerColumnCellStyle(): CellStyle;
+  get headerColumnCellStyle(): CellStyle | null;
   set headerColumnCellStyle(value: CellStyle | string);
   /** The unique ID of the table style, stable across saves and reopens. */
   readonly id: number;
@@ -525,7 +525,7 @@ export interface TableStyle extends InDesignPlugins.TableStyle<'single'> {
  * Stores the same border, inset and alternating-fill attributes a live {@link Table} carries,
  * but as a reusable named definition rather than formatting applied to one table.
  */
-export interface TableStylePlural extends InDesignPlugins.TableStyle<'plural'> {
+export interface TableStylePlural extends InDesignEdition.TableStylePlural, InDesignPlugins.TableStyle<'plural'> {
   /**
    * A collection of events
    */
@@ -982,7 +982,7 @@ export interface TableStylePlural extends InDesignPlugins.TableStyle<'plural'> {
   get captionParagraphCount(): (number)[];
   set captionParagraphCount(value: number);
   /** The {@link CellStyle} applied to cells in the header column region. */
-  get headerColumnCellStyle(): (CellStyle)[];
+  get headerColumnCellStyle(): (CellStyle | null)[];
   set headerColumnCellStyle(value: CellStyle | string);
   /** The unique ID of the table style, stable across saves and reopens. */
   readonly id: (number)[];

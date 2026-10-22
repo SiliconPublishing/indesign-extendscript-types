@@ -26,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A named, reusable set of preflight rules that a {@link PreflightProcess}
  * checks a document against.
  */
-export interface PreflightProfile extends InDesignPlugins.PreflightProfile<'single'> {
+export interface PreflightProfile extends InDesignEdition.PreflightProfile, InDesignPlugins.PreflightProfile<'single'> {
   /**
    * A collection of events
    */
@@ -160,7 +160,7 @@ export interface PreflightProfile extends InDesignPlugins.PreflightProfile<'sing
  * A named, reusable set of preflight rules that a {@link PreflightProcess}
  * checks a document against.
  */
-export interface PreflightProfilePlural extends InDesignPlugins.PreflightProfile<'plural'> {
+export interface PreflightProfilePlural extends InDesignEdition.PreflightProfilePlural, InDesignPlugins.PreflightProfile<'plural'> {
   /**
    * A collection of events
    */

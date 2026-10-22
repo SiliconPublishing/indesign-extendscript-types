@@ -26,7 +26,7 @@ import type { PageItemAddReference } from './_base/Collections';
  *
  * @collection Movie
  */
-export interface Movies<TParent = PageItemParent> extends InDesignPlugins.Movies {
+export interface Movies<TParent = PageItemParent> extends InDesignEdition.Movies<TParent>, InDesignPlugins.Movies {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

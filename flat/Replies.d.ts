@@ -21,7 +21,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection Reply
  */
-export interface Replies extends InDesignPlugins.Replies {
+export interface Replies extends InDesignEdition.Replies, InDesignPlugins.Replies {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

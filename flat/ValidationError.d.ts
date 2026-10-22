@@ -24,7 +24,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A single XML validation failure reported when a {@link Document}'s XML
  * content is checked against its DTD.
  */
-export interface ValidationError extends InDesignPlugins.ValidationError<'single'> {
+export interface ValidationError extends InDesignEdition.ValidationError, InDesignPlugins.ValidationError<'single'> {
   /**
    * A collection of events
    */
@@ -122,7 +122,7 @@ export interface ValidationError extends InDesignPlugins.ValidationError<'single
  * A single XML validation failure reported when a {@link Document}'s XML
  * content is checked against its DTD.
  */
-export interface ValidationErrorPlural extends InDesignPlugins.ValidationError<'plural'> {
+export interface ValidationErrorPlural extends InDesignEdition.ValidationErrorPlural, InDesignPlugins.ValidationError<'plural'> {
   /**
    * A collection of events
    */

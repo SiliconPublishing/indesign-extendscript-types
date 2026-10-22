@@ -20,7 +20,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection StyleExportTagMap
  */
-export interface StyleExportTagMaps extends InDesignPlugins.StyleExportTagMaps {
+export interface StyleExportTagMaps extends InDesignEdition.StyleExportTagMaps, InDesignPlugins.StyleExportTagMaps {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

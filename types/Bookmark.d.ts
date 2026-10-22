@@ -14,6 +14,7 @@ import type { HyperlinkPageDestination } from './HyperlinkPageDestination';
 import type { HyperlinkExternalPageDestination } from './HyperlinkExternalPageDestination';
 import type { Page } from './Page';
 import type { LocationOptions } from './Enums/LocationOptions';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * An entry in the document's bookmark tree, providing hierarchical PDF
@@ -23,7 +24,7 @@ import type { LocationOptions } from './Enums/LocationOptions';
 export interface Bookmark<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document | Bookmark, M>,
     IndexedDOMObject<Document | Bookmark, M>,
-    NamableDOMObject<Document | Bookmark, M>, InDesignPlugins.Bookmark<M> {
+    NamableDOMObject<Document | Bookmark, M>, InDesignEdition.Bookmark<M>, InDesignPlugins.Bookmark<M> {
   /** Resolves the proxy into the individual {@link Bookmark} objects it stands for. */
   getElements(): Bookmark<'single'>[];
 
@@ -51,10 +52,18 @@ export interface Bookmark<M extends Mode = 'single'>
    * @param reference The reference bookmark or document. Required when `to` is {@link LocationOptions.BEFORE} or {@link LocationOptions.AFTER}.
    */
   move(to?: LocationOptions, reference?: Bookmark | Document): Read<M, Bookmark>;
-
-  /** Navigates to the bookmark's destination. */
-  showBookmark(): Read<M, void>;
-
   /** Deletes the bookmark. */
   remove(): Read<M, void>;
 }
+/** Bookmark's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface BookmarkDesktop<M extends Mode = 'single'> extends EditionPart {
+  /** Navigates to the bookmark's destination.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  showBookmark(): Read<M, void>;
+}
+
+/** Bookmark's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface BookmarkServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** Bookmark's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface BookmarkPortable<M extends Mode = 'single'> extends EditionPart {}

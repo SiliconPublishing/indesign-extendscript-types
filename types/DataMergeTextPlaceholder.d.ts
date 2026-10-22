@@ -11,6 +11,7 @@ import type { Document } from './Document';
 import type { DataMergeField } from './DataMergeField';
 import type { InsertionPoint } from './InsertionPoint';
 import type { Story } from './Story';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A location in story text marked to receive a data merge field's text value
@@ -18,7 +19,7 @@ import type { Story } from './Story';
  */
 export interface DataMergeTextPlaceholder<M extends Mode = 'single'>
   extends EventTargetDOMObject<Document, M>,
-    IndexedDOMObject<Document, M>, InDesignPlugins.DataMergeTextPlaceholder<M> {
+    IndexedDOMObject<Document, M>, InDesignEdition.DataMergeTextPlaceholder<M>, InDesignPlugins.DataMergeTextPlaceholder<M> {
   /** Resolves the proxy into the individual {@link DataMergeTextPlaceholder} objects it stands for. */
   getElements(): DataMergeTextPlaceholder<'single'>[];
 
@@ -35,3 +36,18 @@ export interface DataMergeTextPlaceholder<M extends Mode = 'single'>
    * {@link storyOffset}. */
   readonly length: Read<M, number>;
 }
+/** DataMergeTextPlaceholder's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeTextPlaceholderDesktop<M extends Mode = 'single'> extends EditionPart {}
+
+/** DataMergeTextPlaceholder's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DataMergeTextPlaceholderServer<M extends Mode = 'single'> extends EditionPart {
+  /**
+   * The name of the tag.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  readonly name: Read<M, string>;
+}
+
+/** DataMergeTextPlaceholder's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DataMergeTextPlaceholderPortable<M extends Mode = 'single'> extends EditionPart {}

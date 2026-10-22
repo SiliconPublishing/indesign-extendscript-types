@@ -20,7 +20,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection MenuAction
  */
-export interface MenuActions extends InDesignPlugins.MenuActions {
+export interface MenuActions extends InDesignEdition.MenuActions, InDesignPlugins.MenuActions {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

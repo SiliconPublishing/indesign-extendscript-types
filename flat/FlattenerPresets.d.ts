@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * vector preservation.
  * @collection FlattenerPreset
  */
-export interface FlattenerPresets extends InDesignPlugins.FlattenerPresets {
+export interface FlattenerPresets extends InDesignEdition.FlattenerPresets, InDesignPlugins.FlattenerPresets {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

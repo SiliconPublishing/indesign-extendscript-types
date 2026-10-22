@@ -12,7 +12,7 @@ import type { Application } from './Application';
 /**
  * Font locking preferences.
  */
-export interface FontLockingPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.FontLockingPreference<M> {
+export interface FontLockingPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.FontLockingPreference<M>, InDesignPlugins.FontLockingPreference<M> {
   /** Resolves the proxy into the individual {@link FontLockingPreference} objects it stands for. */
   getElements(): FontLockingPreference<'single'>[];
 

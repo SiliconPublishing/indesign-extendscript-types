@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * The preferences for a custom text variable.
  */
-export interface CustomTextVariablePreference extends InDesignPlugins.CustomTextVariablePreference<'single'> {
+export interface CustomTextVariablePreference extends InDesignEdition.CustomTextVariablePreference, InDesignPlugins.CustomTextVariablePreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -113,7 +113,7 @@ export interface CustomTextVariablePreference extends InDesignPlugins.CustomText
 /**
  * The preferences for a custom text variable.
  */
-export interface CustomTextVariablePreferencePlural extends InDesignPlugins.CustomTextVariablePreference<'plural'> {
+export interface CustomTextVariablePreferencePlural extends InDesignEdition.CustomTextVariablePreferencePlural, InDesignPlugins.CustomTextVariablePreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

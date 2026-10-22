@@ -14,5 +14,5 @@ import type { Menu } from './Menu';
  *
  * @collection Menu
  */
-export interface Menus extends BaseCollection<Menu, Menu, Menu<'plural'>>, NamedCollection<Menu>, InDesignPlugins.Menus {
+export interface Menus extends BaseCollection<Menu, Menu, Menu<'plural'>>, NamedCollection<Menu>, InDesignEdition.Menus, InDesignPlugins.Menus {
 }

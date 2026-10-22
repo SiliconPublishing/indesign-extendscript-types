@@ -126,7 +126,10 @@ interface ImportFormat_TABLE_AND_CELL_STYLES_FORMAT extends ImportFormat {
   readonly [__val]: 1700021107;
 }
 
-
+/** Generated from the InDesign Server 21.6 scripting dictionary. */
+interface ImportFormat_NAMED_GRIDS_FORMAT extends ImportFormat {
+    readonly [__val]: 1315394420;
+}
 
 /*----------------------------------------/
 /                Exports                  /
@@ -180,83 +183,83 @@ type CELL_STYLES_FORMAT = ImportFormat_CELL_STYLES_FORMAT;
  * Imports table and cell styles.
  */
 type TABLE_AND_CELL_STYLES_FORMAT = ImportFormat_TABLE_AND_CELL_STYLES_FORMAT;
-
+    type NAMED_GRIDS_FORMAT = ImportFormat_NAMED_GRIDS_FORMAT;
 }
 /**
  * Style import options.
  */
 export declare const ImportFormat: typeof Enumeration & {
 
-  /**
-   * Imports character styles.
-   */
-  readonly CHARACTER_STYLES_FORMAT: ImportFormat_CHARACTER_STYLES_FORMAT;
-  /**
-   * Imports character styles.
-   */
-  readonly characterStylesFormat: ImportFormat_CHARACTER_STYLES_FORMAT;
-  /**
-   * Imports paragraph styles.
-   */
-  readonly PARAGRAPH_STYLES_FORMAT: ImportFormat_PARAGRAPH_STYLES_FORMAT;
-  /**
-   * Imports paragraph styles.
-   */
-  readonly paragraphStylesFormat: ImportFormat_PARAGRAPH_STYLES_FORMAT;
-  /**
-   * Imports character and paragraph styles.
-   */
-  readonly TEXT_STYLES_FORMAT: ImportFormat_TEXT_STYLES_FORMAT;
-  /**
-   * Imports character and paragraph styles.
-   */
-  readonly textStylesFormat: ImportFormat_TEXT_STYLES_FORMAT;
-  /**
-   * Imports table of contents styles.
-   */
-  readonly TOC_STYLES_FORMAT: ImportFormat_TOC_STYLES_FORMAT;
-  /**
-   * Imports table of contents styles.
-   */
-  readonly tocStylesFormat: ImportFormat_TOC_STYLES_FORMAT;
-  /**
-   * Imports object styles.
-   */
-  readonly OBJECT_STYLES_FORMAT: ImportFormat_OBJECT_STYLES_FORMAT;
-  /**
-   * Imports object styles.
-   */
-  readonly objectStylesFormat: ImportFormat_OBJECT_STYLES_FORMAT;
-  /**
-   * Imports stroke styles.
-   */
-  readonly STROKE_STYLES_FORMAT: ImportFormat_STROKE_STYLES_FORMAT;
-  /**
-   * Imports stroke styles.
-   */
-  readonly strokeStylesFormat: ImportFormat_STROKE_STYLES_FORMAT;
-  /**
-   * Imports table styles.
-   */
-  readonly TABLE_STYLES_FORMAT: ImportFormat_TABLE_STYLES_FORMAT;
-  /**
-   * Imports table styles.
-   */
-  readonly tableStylesFormat: ImportFormat_TABLE_STYLES_FORMAT;
-  /**
-   * Imports cell styles.
-   */
-  readonly CELL_STYLES_FORMAT: ImportFormat_CELL_STYLES_FORMAT;
-  /**
-   * Imports cell styles.
-   */
-  readonly cellStylesFormat: ImportFormat_CELL_STYLES_FORMAT;
-  /**
-   * Imports table and cell styles.
-   */
-  readonly TABLE_AND_CELL_STYLES_FORMAT: ImportFormat_TABLE_AND_CELL_STYLES_FORMAT;
-  /**
-   * Imports table and cell styles.
-   */
-  readonly tableAndCellStylesFormat: ImportFormat_TABLE_AND_CELL_STYLES_FORMAT;
-}
+          /**
+           * Imports character styles.
+           */
+          readonly CHARACTER_STYLES_FORMAT: ImportFormat_CHARACTER_STYLES_FORMAT;
+          /**
+           * Imports character styles.
+           */
+          readonly characterStylesFormat: ImportFormat_CHARACTER_STYLES_FORMAT;
+          /**
+           * Imports paragraph styles.
+           */
+          readonly PARAGRAPH_STYLES_FORMAT: ImportFormat_PARAGRAPH_STYLES_FORMAT;
+          /**
+           * Imports paragraph styles.
+           */
+          readonly paragraphStylesFormat: ImportFormat_PARAGRAPH_STYLES_FORMAT;
+          /**
+           * Imports character and paragraph styles.
+           */
+          readonly TEXT_STYLES_FORMAT: ImportFormat_TEXT_STYLES_FORMAT;
+          /**
+           * Imports character and paragraph styles.
+           */
+          readonly textStylesFormat: ImportFormat_TEXT_STYLES_FORMAT;
+          /**
+           * Imports table of contents styles.
+           */
+          readonly TOC_STYLES_FORMAT: ImportFormat_TOC_STYLES_FORMAT;
+          /**
+           * Imports table of contents styles.
+           */
+          readonly tocStylesFormat: ImportFormat_TOC_STYLES_FORMAT;
+          /**
+           * Imports object styles.
+           */
+          readonly OBJECT_STYLES_FORMAT: ImportFormat_OBJECT_STYLES_FORMAT;
+          /**
+           * Imports object styles.
+           */
+          readonly objectStylesFormat: ImportFormat_OBJECT_STYLES_FORMAT;
+          /**
+           * Imports stroke styles.
+           */
+          readonly STROKE_STYLES_FORMAT: ImportFormat_STROKE_STYLES_FORMAT;
+          /**
+           * Imports stroke styles.
+           */
+          readonly strokeStylesFormat: ImportFormat_STROKE_STYLES_FORMAT;
+          /**
+           * Imports table styles.
+           */
+          readonly TABLE_STYLES_FORMAT: ImportFormat_TABLE_STYLES_FORMAT;
+          /**
+           * Imports table styles.
+           */
+          readonly tableStylesFormat: ImportFormat_TABLE_STYLES_FORMAT;
+          /**
+           * Imports cell styles.
+           */
+          readonly CELL_STYLES_FORMAT: ImportFormat_CELL_STYLES_FORMAT;
+          /**
+           * Imports cell styles.
+           */
+          readonly cellStylesFormat: ImportFormat_CELL_STYLES_FORMAT;
+          /**
+           * Imports table and cell styles.
+           */
+          readonly TABLE_AND_CELL_STYLES_FORMAT: ImportFormat_TABLE_AND_CELL_STYLES_FORMAT;
+          /**
+           * Imports table and cell styles.
+           */
+          readonly tableAndCellStylesFormat: ImportFormat_TABLE_AND_CELL_STYLES_FORMAT;
+        } & InDesignEdition.ImportFormat

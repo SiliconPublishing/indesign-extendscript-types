@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection CompositeFontEntry
  */
-export interface CompositeFontEntries extends InDesignPlugins.CompositeFontEntries {
+export interface CompositeFontEntries extends InDesignEdition.CompositeFontEntries, InDesignPlugins.CompositeFontEntries {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

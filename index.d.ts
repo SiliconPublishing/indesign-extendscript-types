@@ -10,9 +10,11 @@
  *     "noLib": true,
  *     "types": ["indesign-extendscript-types"]
  *
- * For the authored, fully generic tree use `"types": ["indesign-extendscript-types/authored"]`
- * instead — never both.
+ * This is InDesign desktop. For InDesign Server use `indesign-extendscript-types/server`; for
+ * scripts that must run on both, `indesign-extendscript-types/portable` (only what both have, in
+ * the form both take). For the authored, fully generic tree add `/authored`
+ * (`indesign-extendscript-types/authored`, `.../server/authored`, ...). Use exactly one.
  */
 /// <reference path="./lib/global.d.ts" />
 /// <reference path="./lib/ScriptUI.d.ts" />
-/// <reference path="./flat/globals.d.ts" />
+/// <reference path="./flat/editions/desktop.d.ts" />

@@ -17,7 +17,7 @@ import type { FlattenerLevel } from './Enums/FlattenerLevel';
 export interface FlattenerPreset<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Application, M>,
     IndexedDOMObject<Application, M>,
-    NamableDOMObject<Application, M>, InDesignPlugins.FlattenerPreset<M> {
+    NamableDOMObject<Application, M>, InDesignEdition.FlattenerPreset<M>, InDesignPlugins.FlattenerPreset<M> {
   /** Resolves the proxy into the individual {@link FlattenerPreset} objects it stands for. */
   getElements(): FlattenerPreset<'single'>[];
 

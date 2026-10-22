@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * percentages.
  * @collection RealEditbox
  */
-export interface RealEditboxes extends InDesignPlugins.RealEditboxes {
+export interface RealEditboxes extends InDesignEdition.RealEditboxes, InDesignPlugins.RealEditboxes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

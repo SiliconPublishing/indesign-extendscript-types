@@ -17,7 +17,7 @@ import type { NothingEnum } from "./Enums/NothingEnum";
 /**
  * The same {@link OuterGlowSetting} settings, applied as find/change criteria.
  */
-export interface FindChangeOuterGlowSetting<M extends Mode = 'single'> extends OuterGlowSetting<M, FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting, NothingEnum.NOTHING>, InDesignPlugins.FindChangeOuterGlowSetting<M>{
+export interface FindChangeOuterGlowSetting<M extends Mode = 'single'> extends OuterGlowSetting<M, FindChangeTransparencySetting | FindChangeStrokeTransparencySetting | FindChangeFillTransparencySetting, NothingEnum.NOTHING>, InDesignEdition.FindChangeOuterGlowSetting<M>, InDesignPlugins.FindChangeOuterGlowSetting<M>{
   /** Resolves the proxy into the individual {@link FindChangeOuterGlowSetting} objects it stands for. */
   getElements(): FindChangeOuterGlowSetting<'single'>[];
 }

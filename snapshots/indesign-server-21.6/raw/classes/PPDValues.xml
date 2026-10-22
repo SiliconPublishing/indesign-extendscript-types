@@ -1,0 +1,1 @@
+<classdef name="PPDValues" enumeration="true">  <shortdesc>PPD options.</shortdesc>  <elements type="class">    <property name="DEVICE_INDEPENDENT" rwaccess="readonly">      <shortdesc>Device-independent.</shortdesc>      <datatype>        <type>number</type>        <value>1684367716</value>      </datatype>    </property>  </elements></classdef>

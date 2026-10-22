@@ -3,9 +3,8 @@
 #include "_harness.jsxinc"
 
 function main(repo) {
-    var saved = app.scriptPreferences.userInteractionLevel;
+    var saved = quiet();
     try {
-        app.scriptPreferences.userInteractionLevel = UserInteractionLevels.NEVER_INTERACT;
         var doc = fixtureDocument();
 
         // --- References that go stale -------------------------------------------------------
@@ -37,9 +36,27 @@ function main(repo) {
             return m.exportTag + '/' + m.isValid + '/' + m.exportType;
         }, 'p/true/EPUB');
 
+        probe('resolve() of a graphic layer\'s specifier gives a husk: properties undefined, parent the Document', function () {
+            var src = addDocument();
+            src.pages[0].textFrames.add({ geometricBounds: [0, 0, 10, 10], contents: 'x' });
+            var pdf = new File(Folder.temp.fsName + '/idx-probe-layers.pdf');
+            src.exportFile(ExportFormat.PDF_TYPE, pdf);
+            src.close(SaveOptions.NO);
+            var d = addDocument();
+            try {
+                var gl = d.pages[0].rectangles.add({ geometricBounds: [0, 0, 10, 10] }).place(pdf)[0].graphicLayerOptions.graphicLayers[0];
+                var again = resolve(gl.toSpecifier());
+                var husk;
+                try { husk = again.isValid + '/' + again.locked + '/' + again.parent.constructor.name; } catch (e) { husk = 'throws'; }
+                return gl.locked + '/' + gl.parent.constructor.name + ' -> ' + husk;
+            } finally {
+                d.close(SaveOptions.NO);
+            }
+        }, 'false/GraphicLayerOption -> true/undefined/Document');
+
         // --- Dialogs and interaction ----------------------------------------------------------
-        probe('NEVER_INTERACT turns a would-be dialog into "User canceled this action"', function () {
-            var d = app.documents.add(false);
+        desktopProbe('NEVER_INTERACT turns a would-be dialog into "User canceled this action"', function () {
+            var d = addDocument();
             try {
                 d.pages[0].textFrames.add({ geometricBounds: [0, 0, 10, 10], contents: 'x' });
                 d.importPdfComments(new File(Folder.temp.fsName + '/idx-no-such-comments.pdf'));
@@ -50,15 +67,15 @@ function main(repo) {
 
         // --- Documents ---------------------------------------------------------------------
         probe('a new document measures in picas by default', function () {
-            var d = app.documents.add(false);
+            var d = addDocument();
             var u = String(d.viewPreferences.horizontalMeasurementUnits);
             d.close(SaveOptions.NO);
             return u;
         }, function (a) { return a === 'PICAS' || a === 'POINTS' || a === 'MILLIMETERS' || a === 'INCHES'; });
 
         // --- Background export -----------------------------------------------------------------
-        probe('reading isValid on a running BackgroundTask garbles it; the document cannot close before the script yields', function () {
-            var d = app.documents.add(false);
+        desktopProbe('reading isValid on a running BackgroundTask garbles it; the document cannot close before the script yields', function () {
+            var d = addDocument();
             d.label = 'idx-async'; // closed by tools/dump/cleanup.jsx once the export has run
             for (var i = 0; i < 10; i++) d.pages.add().textFrames.add({ geometricBounds: [0, 0, 300, 300], contents: 'p' + i });
             var t = d.asynchronousExportFile(ExportFormat.PDF_TYPE, new File(Folder.temp.fsName + '/idx-probe-async.pdf'));
@@ -68,9 +85,9 @@ function main(repo) {
             var closed;
             try { d.close(SaveOptions.NO); closed = 'closed'; } catch (e) { closed = 'close refused'; }
             return before + '/' + valid + '/' + after + '/' + closed;
-        }, 'RUNNING/true/undefined/close refused');
-        probe('asynchronousExportFile rejects EPUB', function () {
-            var d = app.documents.add(false);
+        }, function (a) { return /^(RUNNING|QUEUED)\/true\/undefined\/close refused$/.test(a); });
+        desktopProbe('asynchronousExportFile rejects EPUB', function () {
+            var d = addDocument();
             try { return d.asynchronousExportFile(ExportFormat.EPUB, new File(Folder.temp.fsName + '/x.epub')); }
             finally { d.close(SaveOptions.NO); }
         }, didThrow);
@@ -113,7 +130,7 @@ function main(repo) {
         probe('there is no JSON', function () { return typeof JSON; }, 'undefined');
         probe('there is no Array.prototype.forEach', function () { return typeof [].forEach; }, 'undefined');
     } finally {
-        app.scriptPreferences.userInteractionLevel = saved;
+        restoreInteraction(saved);
     }
     return finish();
 }

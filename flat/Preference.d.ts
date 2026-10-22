@@ -66,7 +66,7 @@ import type { FilePath } from './_base/Types';
  * A settings object reached through a {@link Preferences} collection before you know which
  * kind it is — transparency, text wrap, find/change, and so on.
  */
-export interface Preference extends InDesignPlugins.Preference<'single'> {
+export interface Preference extends InDesignEdition.Preference, InDesignPlugins.Preference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -154,7 +154,7 @@ export interface Preference extends InDesignPlugins.Preference<'single'> {
  * A settings object reached through a {@link Preferences} collection before you know which
  * kind it is — transparency, text wrap, find/change, and so on.
  */
-export interface PreferencePlural extends InDesignPlugins.Preference<'plural'> {
+export interface PreferencePlural extends InDesignEdition.PreferencePlural, InDesignPlugins.Preference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

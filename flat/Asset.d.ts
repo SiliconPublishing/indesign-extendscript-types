@@ -13,6 +13,7 @@ import type { Text } from './Text';
 import type { PageItem } from './PageItem';
 import type { AssetType } from './Enums/AssetType';
 import type { SelectionOptions } from './Enums/SelectionOptions';
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -28,7 +29,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * A stored item in an object {@link Library} — reusable content (a page item,
  * graphic, or text) that can be placed back into any document.
  */
-export interface Asset extends InDesignPlugins.Asset<'single'> {
+export interface Asset extends InDesignEdition.Asset, InDesignPlugins.Asset<'single'> {
   /**
    * A collection of events
    */
@@ -147,18 +148,13 @@ export interface Asset extends InDesignPlugins.Asset<'single'> {
   remove(): void;
   /** Places the asset into the specified document or text. */
   placeAsset(on: Document | Text): PageItem[];
-  /**
-   * Selects the asset in the Library panel.
-   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
-   */
-  select(existingSelection?: SelectionOptions): void;
 }
 
 /**
  * A stored item in an object {@link Library} — reusable content (a page item,
  * graphic, or text) that can be placed back into any document.
  */
-export interface AssetPlural extends InDesignPlugins.Asset<'plural'> {
+export interface AssetPlural extends InDesignEdition.AssetPlural, InDesignPlugins.Asset<'plural'> {
   /**
    * A collection of events
    */
@@ -277,9 +273,39 @@ export interface AssetPlural extends InDesignPlugins.Asset<'plural'> {
   remove(): (void)[];
   /** Places the asset into the specified document or text. */
   placeAsset(on: Document | Text): (PageItem[])[];
+}
+/** Asset's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface AssetDesktop {
   /**
    * Selects the asset in the Library panel.
+   * Desktop only: InDesign Server 21.6 does not have it.
+   * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
+   */
+  select(existingSelection?: SelectionOptions): void;
+}
+
+/** Asset's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface AssetDesktopPlural {
+  /**
+   * Selects the asset in the Library panel.
+   * Desktop only: InDesign Server 21.6 does not have it.
    * @param existingSelection How this selection combines with the current one. Defaults to `SelectionOptions.REPLACE_WITH`.
    */
   select(existingSelection?: SelectionOptions): (void)[];
+}
+
+/** Asset's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface AssetServer {
+}
+
+/** Asset's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface AssetServerPlural {
+}
+
+/** Asset's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface AssetPortable {
+}
+
+/** Asset's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface AssetPortablePlural {
 }

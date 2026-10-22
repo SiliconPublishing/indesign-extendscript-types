@@ -8,31 +8,19 @@
 import type { Mode, Read } from './_base/Types';
 import type { EventTargetDOMObject } from './_base/DomObjects';
 import type { Application } from './Application';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * Settings controlling what format content copies and pastes in, and whether
  * PDF data placed on the system clipboard survives quitting the application.
  */
-export interface ClipboardPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.ClipboardPreference<M> {
+export interface ClipboardPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.ClipboardPreference<M>, InDesignPlugins.ClipboardPreference<M> {
   /** Resolves the proxy into the individual {@link ClipboardPreference} objects it stands for. */
   getElements(): ClipboardPreference<'single'>[];
 
   /** If true, includes text attributes when pasting text. */
   get preferStyledTextWhenPasting(): Read<M, boolean>;
   set preferStyledTextWhenPasting(value: boolean);
-
-  /** If true, shows the Auto Style option. */
-  get showAutoStyleOption(): Read<M, boolean>;
-  set showAutoStyleOption(value: boolean);
-
-  /** If true, pastes PDF if available. */
-  get preferPDFWhenPasting(): Read<M, boolean>;
-  set preferPDFWhenPasting(value: boolean);
-
-  /** If true, copies PDF to the clipboard. */
-  get copyPDFToClipboard(): Read<M, boolean>;
-  set copyPDFToClipboard(value: boolean);
-
   /** If true, objects cut or copied from different layers retain their layer assignment when pasted. */
   get pasteRemembersLayers(): Read<M, boolean>;
   set pasteRemembersLayers(value: boolean);
@@ -40,8 +28,48 @@ export interface ClipboardPreference<M extends Mode = 'single'> extends EventTar
   /** If true, preserves PDF data on the system clipboard when the application exits. */
   get preservePdfClipboardAtQuit(): Read<M, boolean>;
   set preservePdfClipboardAtQuit(value: boolean);
+}
+/** ClipboardPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ClipboardPreferenceDesktop<M extends Mode = 'single'> extends EditionPart {
+  /** If true, pastes PDF if available.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get preferPDFWhenPasting(): Read<M, boolean>;
 
-  /** If true, shows paste options when pasting. */
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set preferPDFWhenPasting(value: boolean);
+
+  /** If true, copies PDF to the clipboard.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get copyPDFToClipboard(): Read<M, boolean>;
+
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set copyPDFToClipboard(value: boolean);
+
+  /** If true, shows the Auto Style option.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get showAutoStyleOption(): Read<M, boolean>;
+
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set showAutoStyleOption(value: boolean);
+
+  /** If true, shows paste options when pasting.
+   * Desktop only: InDesign Server 21.6 does not have it. */
   get showPasteOptions(): Read<M, boolean>;
+
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
   set showPasteOptions(value: boolean);
 }
+
+/** ClipboardPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ClipboardPreferenceServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** ClipboardPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ClipboardPreferencePortable<M extends Mode = 'single'> extends EditionPart {}

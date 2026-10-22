@@ -42,6 +42,10 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { PageItemDesktop } from "./PageItem";
+import type { PageItemServer } from "./PageItem";
+import type { PageItemPortable } from "./PageItem";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * An interactive PDF form field a document can contain — a button, check
@@ -52,7 +56,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * {@link RadioButton}, {@link TextBox}, {@link SignatureField}, and
  * {@link MultiStateObject}.
  */
-export interface FormField<TParent = PageItemParent, TChildParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, TChildParent, M>, InDesignPlugins.FormField<M> {
+export interface FormField<TParent = PageItemParent, TChildParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, TChildParent, M>, InDesignEdition.FormField<TParent, TChildParent, M>, InDesignPlugins.FormField<M> {
   /** Resolves the proxy into the individual {@link FormField} objects it stands for. */
   getElements(): FormField<TParent, TChildParent, 'single'>[];
 
@@ -67,6 +71,14 @@ export interface FormField<TParent = PageItemParent, TChildParent = PageItemPare
   get description(): Read<M, string>;
   set description(value: string);
 }
+/** FormField's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface FormFieldDesktop<TParent = PageItemParent, TChildParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemDesktop<TParent, TChildParent, M> {}
+
+/** FormField's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface FormFieldServer<TParent = PageItemParent, TChildParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemServer<TParent, TChildParent, M> {}
+
+/** FormField's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface FormFieldPortable<TParent = PageItemParent, TChildParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemPortable<TParent, TChildParent, M> {}
 
 /**
  * A form control InDesign reports as a plain {@link FormField} rather than as a button, check
@@ -81,3 +93,11 @@ export interface PlainFormField<
   M extends Mode = 'single',
 > extends FormField<TParent, TChildParent, M> {
 }
+/** PlainFormField's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface PlainFormFieldDesktop<TParent = PageItemParent, TChildParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldDesktop<TParent, TChildParent, M> {}
+
+/** PlainFormField's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface PlainFormFieldServer<TParent = PageItemParent, TChildParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldServer<TParent, TChildParent, M> {}
+
+/** PlainFormField's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface PlainFormFieldPortable<TParent = PageItemParent, TChildParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldPortable<TParent, TChildParent, M> {}

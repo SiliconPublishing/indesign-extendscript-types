@@ -50,12 +50,15 @@ import type { UIColors } from './Enums/UIColors';
 import type { VerticalJustification } from './Enums/VerticalJustification';
 import type { VerticallyRelativeTo } from './Enums/VerticallyRelativeTo';
 import type { ObjectStyle } from './ObjectStyle';
+import type { EditionPart } from "./_base/Editions";
+import type { FrameTypes } from "./Enums/FrameTypes";
+import type { StoryHorizontalOrVertical } from "./Enums/StoryHorizontalOrVertical";
 
 /**
  * The formatting to apply to objects found by a find/change object operation, set via
  * {@link Application.changeObjectPreferences} and used by {@link Application.changeObject}.
  */
-export interface ChangeObjectPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.ChangeObjectPreference<M> {
+export interface ChangeObjectPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.ChangeObjectPreference<M>, InDesignPlugins.ChangeObjectPreference<M> {
   /** Resolves the proxy into the individual {@link ChangeObjectPreference} objects it stands for. */
   getElements(): ChangeObjectPreference<'single'>[];
 
@@ -526,3 +529,27 @@ export interface ChangeObjectPreference<M extends Mode = 'single'> extends Event
   /** Provides the actual text for the object. */
   actualText(): Read<M, string>;
 }
+/** ChangeObjectPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ChangeObjectPreferenceDesktop<M extends Mode = 'single'> extends EditionPart {}
+
+/** ChangeObjectPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ChangeObjectPreferenceServer<M extends Mode = 'single'> extends EditionPart {
+  /**
+   * The type of text frame. Can return: FrameTypes enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get frameType(): Read<M, FrameTypes | NothingEnum>;
+  set frameType(value: FrameTypes | NothingEnum);
+
+  /**
+   * The orientation of the text in the story. Can return: StoryHorizontalOrVertical enumerator or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get storyOrientation(): Read<M, StoryHorizontalOrVertical | NothingEnum>;
+  set storyOrientation(value: StoryHorizontalOrVertical | NothingEnum);
+}
+
+/** ChangeObjectPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ChangeObjectPreferencePortable<M extends Mode = 'single'> extends EditionPart {}

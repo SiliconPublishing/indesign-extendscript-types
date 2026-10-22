@@ -19,6 +19,7 @@ import type { EditingState } from './Enums/EditingState';
 import type { LinkStatus } from './Enums/LinkStatus';
 import type { LinkResourceRenditionType } from './Enums/LinkResourceRenditionType';
 import type { FilePath, FolderPath } from './_base/Types';
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -34,7 +35,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * tracking the source file's status ({@link status}, {@link edited},
  * {@link needed}) and providing update/relink/embed operations.
  */
-export interface Link extends InDesignPlugins.Link<'single'> {
+export interface Link extends InDesignEdition.Link, InDesignPlugins.Link<'single'> {
   /**
    * A collection of events
    */
@@ -196,10 +197,6 @@ export interface Link extends InDesignPlugins.Link<'single'> {
   relinkTextFragmentLink(linkResourceURI: string, name?: string): void;
   /** Reinitializes the link to a new resource URI. */
   reinitLink(linkResourceURI: string): void;
-  /** Opens the source file in the default editor for its file type. */
-  editOriginal(): void;
-  /** Selects the link in the document. */
-  show(): void;
   /** Opens the file system to the folder containing the source file and selects it. */
   revealInSystem(): void;
   /** Opens Adobe Bridge and selects the source file. */
@@ -211,8 +208,6 @@ export interface Link extends InDesignPlugins.Link<'single'> {
    * @param forceSave If `true`, forcibly saves a version. Defaults to `false`.
    */
   copyLink(to: FilePath | FolderPath, versionComments?: string, forceSave?: boolean): void;
-  /** Opens the source file in InDesign for SharedContent links. */
-  goToSource(): void;
 }
 
 /**
@@ -220,7 +215,7 @@ export interface Link extends InDesignPlugins.Link<'single'> {
  * tracking the source file's status ({@link status}, {@link edited},
  * {@link needed}) and providing update/relink/embed operations.
  */
-export interface LinkPlural extends InDesignPlugins.Link<'plural'> {
+export interface LinkPlural extends InDesignEdition.LinkPlural, InDesignPlugins.Link<'plural'> {
   /**
    * A collection of events
    */
@@ -382,10 +377,6 @@ export interface LinkPlural extends InDesignPlugins.Link<'plural'> {
   relinkTextFragmentLink(linkResourceURI: string, name?: string): (void)[];
   /** Reinitializes the link to a new resource URI. */
   reinitLink(linkResourceURI: string): (void)[];
-  /** Opens the source file in the default editor for its file type. */
-  editOriginal(): (void)[];
-  /** Selects the link in the document. */
-  show(): (void)[];
   /** Opens the file system to the folder containing the source file and selects it. */
   revealInSystem(): (void)[];
   /** Opens Adobe Bridge and selects the source file. */
@@ -397,6 +388,45 @@ export interface LinkPlural extends InDesignPlugins.Link<'plural'> {
    * @param forceSave If `true`, forcibly saves a version. Defaults to `false`.
    */
   copyLink(to: FilePath | FolderPath, versionComments?: string, forceSave?: boolean): (void)[];
-  /** Opens the source file in InDesign for SharedContent links. */
+}
+/** Link's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface LinkDesktop {
+  /** Opens the source file in the default editor for its file type.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  editOriginal(): void;
+  /** Selects the link in the document.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  show(): void;
+  /** Opens the source file in InDesign for SharedContent links.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  goToSource(): void;
+}
+
+/** Link's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface LinkDesktopPlural {
+  /** Opens the source file in the default editor for its file type.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  editOriginal(): (void)[];
+  /** Selects the link in the document.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  show(): (void)[];
+  /** Opens the source file in InDesign for SharedContent links.
+   * Desktop only: InDesign Server 21.6 does not have it. */
   goToSource(): (void)[];
+}
+
+/** Link's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface LinkServer {
+}
+
+/** Link's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface LinkServerPlural {
+}
+
+/** Link's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface LinkPortable {
+}
+
+/** Link's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface LinkPortablePlural {
 }

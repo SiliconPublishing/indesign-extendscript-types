@@ -27,7 +27,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection PageReference
  */
-export interface PageReferences extends InDesignPlugins.PageReferences {
+export interface PageReferences extends InDesignEdition.PageReferences, InDesignPlugins.PageReferences {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

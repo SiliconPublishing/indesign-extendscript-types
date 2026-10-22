@@ -36,7 +36,7 @@ import type { TagType } from './Enums/TagType';
  * role, alt text, actual text), and how it converts to an image (format,
  * resolution, quality) when it can't export as native markup.
  */
-export interface ObjectExportOption<M extends Mode = 'single'> extends EventTargetDOMObject<ObjectStyle | Polygon | GraphicLine | Rectangle | Oval | Group | TextFrame | EndnoteTextFrame, M>, InDesignPlugins.ObjectExportOption<M> {
+export interface ObjectExportOption<M extends Mode = 'single'> extends EventTargetDOMObject<ObjectStyle | Polygon | GraphicLine | Rectangle | Oval | Group | TextFrame | EndnoteTextFrame, M>, InDesignEdition.ObjectExportOption<M>, InDesignPlugins.ObjectExportOption<M> {
   /** Resolves the proxy into the individual {@link ObjectExportOption} objects it stands for. */
   getElements(): ObjectExportOption<'single'>[];
 

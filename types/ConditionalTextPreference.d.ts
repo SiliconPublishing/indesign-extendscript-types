@@ -14,7 +14,7 @@ import type { ConditionIndicatorMode } from './Enums/ConditionIndicatorMode';
 /**
  * Conditional text preferences.
  */
-export interface ConditionalTextPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.ConditionalTextPreference<M> {
+export interface ConditionalTextPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignEdition.ConditionalTextPreference<M>, InDesignPlugins.ConditionalTextPreference<M> {
   /** Resolves the proxy into the individual {@link ConditionalTextPreference} objects it stands for. */
   getElements(): ConditionalTextPreference<'single'>[];
 

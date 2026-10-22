@@ -22,7 +22,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Image preferences.
  */
-export interface ImagePreference extends InDesignPlugins.ImagePreference<'single'> {
+export interface ImagePreference extends InDesignEdition.ImagePreference, InDesignPlugins.ImagePreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -112,7 +112,7 @@ export interface ImagePreference extends InDesignPlugins.ImagePreference<'single
 /**
  * Image preferences.
  */
-export interface ImagePreferencePlural extends InDesignPlugins.ImagePreference<'plural'> {
+export interface ImagePreferencePlural extends InDesignEdition.ImagePreferencePlural, InDesignPlugins.ImagePreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

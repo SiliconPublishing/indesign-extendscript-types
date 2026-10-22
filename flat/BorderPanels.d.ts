@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection BorderPanel
  */
-export interface BorderPanels extends InDesignPlugins.BorderPanels {
+export interface BorderPanels extends InDesignEdition.BorderPanels, InDesignPlugins.BorderPanels {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -19,7 +19,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection TabStop
  */
-export interface TabStops extends InDesignPlugins.TabStops {
+export interface TabStops extends InDesignEdition.TabStops, InDesignPlugins.TabStops {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

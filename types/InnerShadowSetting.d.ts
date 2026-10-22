@@ -20,12 +20,14 @@ import type { NothingEnum } from "./Enums/NothingEnum";
 /**
  * Inner shadow effect settings.
  */
-export interface InnerShadowSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M>, InDesignPlugins.InnerShadowSetting<M> {
+export interface InnerShadowSetting<M extends Mode = 'single', TParent = TransparencySetting | StrokeTransparencySetting | FillTransparencySetting | ContentTransparencySetting, NSet = never> extends EventTargetDOMObject<TParent, M>, InDesignEdition.InnerShadowSetting<M, TParent, NSet>, InDesignPlugins.InnerShadowSetting<M> {
   /** Resolves the proxy into the individual {@link InnerShadowSetting} objects it stands for. */
   getElements(): InnerShadowSetting<'single', TParent>[];
 
   /**
    * The horizontal offset of the shadow.
+   *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
    *
    * **Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
    */
@@ -34,6 +36,8 @@ export interface InnerShadowSetting<M extends Mode = 'single', TParent = Transpa
 
   /**
    * The vertical offset of the shadow.
+   *
+   * *Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
    *
    * **Crashes InDesign 21.6**: reading it on a FindChangeInnerShadowSetting takes InDesign down (measured).
    */

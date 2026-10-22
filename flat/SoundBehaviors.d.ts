@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * — play, stop, pause, or resume — in interactive exports.
  * @collection SoundBehavior
  */
-export interface SoundBehaviors extends InDesignPlugins.SoundBehaviors {
+export interface SoundBehaviors extends InDesignEdition.SoundBehaviors, InDesignPlugins.SoundBehaviors {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -54,6 +54,10 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { PageItemDesktop } from "./PageItem";
+import type { PageItemServer } from "./PageItem";
+import type { PageItemPortable } from "./PageItem";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A group of page items combined so they can be selected, moved, and
@@ -64,7 +68,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * page items, and {@link articleChildren} tracks which are also members of an
  * {@link Article} for reading-order export.
  */
-export interface Group<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, Group, M>, PageItemContainer<Group, M>, InDesignPlugins.Group<M> {
+export interface Group<TParent = PageItemParent, M extends Mode = 'single'> extends PageItem<TParent, Group, M>, PageItemContainer<Group, M>, InDesignEdition.Group<TParent, M>, InDesignPlugins.Group<M> {
   /** Resolves the proxy into the individual {@link Group} objects it stands for. */
   getElements(): Group<TParent, 'single'>[];
 
@@ -98,3 +102,11 @@ export interface Group<TParent = PageItemParent, M extends Mode = 'single'> exte
   /** Sends the group backward one step in the stacking order. */
   sendBackward(): Read<M, void>;
 }
+/** Group's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface GroupDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemDesktop<TParent, Group, M> {}
+
+/** Group's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface GroupServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemServer<TParent, Group, M> {}
+
+/** Group's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface GroupPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, PageItemPortable<TParent, Group, M> {}

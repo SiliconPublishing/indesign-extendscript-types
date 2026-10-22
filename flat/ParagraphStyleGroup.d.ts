@@ -31,7 +31,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * nestable inside a document's or the application's
  * {@link ParagraphStyleGroups} collection (or another group).
  */
-export interface ParagraphStyleGroup extends InDesignPlugins.ParagraphStyleGroup<'single'> {
+export interface ParagraphStyleGroup extends InDesignEdition.ParagraphStyleGroup, InDesignPlugins.ParagraphStyleGroup<'single'> {
   /**
    * A collection of events
    */
@@ -161,7 +161,7 @@ export interface ParagraphStyleGroup extends InDesignPlugins.ParagraphStyleGroup
  * nestable inside a document's or the application's
  * {@link ParagraphStyleGroups} collection (or another group).
  */
-export interface ParagraphStyleGroupPlural extends InDesignPlugins.ParagraphStyleGroup<'plural'> {
+export interface ParagraphStyleGroupPlural extends InDesignEdition.ParagraphStyleGroupPlural, InDesignPlugins.ParagraphStyleGroup<'plural'> {
   /**
    * A collection of events
    */

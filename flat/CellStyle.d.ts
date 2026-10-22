@@ -18,6 +18,7 @@ import type { CellStyles } from './CellStyles';
 import type { FirstBaseline } from './Enums/FirstBaseline';
 import type { NothingEnum } from './Enums/NothingEnum';
 import type { ParagraphStyle } from './ParagraphStyle';
+import type { EditionPart } from "./_base/Editions";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -40,7 +41,7 @@ import type { VerticalJustification } from './Enums/VerticalJustification';
  * every attribute a live {@link Cell} carries. Reading an attribute that was never set
  * returns `NothingEnum.NOTHING` rather than a live default.
  */
-export interface CellStyle extends InDesignPlugins.CellStyle<'single'> {
+export interface CellStyle extends InDesignEdition.CellStyle, InDesignPlugins.CellStyle<'single'> {
   /**
    * A collection of events
    */
@@ -385,7 +386,7 @@ export interface CellStyle extends InDesignPlugins.CellStyle<'single'> {
  * every attribute a live {@link Cell} carries. Reading an attribute that was never set
  * returns `NothingEnum.NOTHING` rather than a live default.
  */
-export interface CellStylePlural extends InDesignPlugins.CellStyle<'plural'> {
+export interface CellStylePlural extends InDesignEdition.CellStylePlural, InDesignPlugins.CellStyle<'plural'> {
   /**
    * A collection of events
    */
@@ -721,4 +722,41 @@ export interface CellStylePlural extends InDesignPlugins.CellStyle<'plural'> {
    * @param reference The style, group, or root relative to which the style is moved. Required when `to` is {@link LocationOptions.BEFORE} or {@link LocationOptions.AFTER}.
    */
   move(to: LocationOptions, reference?: StyleMoveReference): (CellStyle)[];
+}
+/** CellStyle's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface CellStyleDesktop {
+}
+
+/** CellStyle's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface CellStyleDesktopPlural {
+}
+
+/** CellStyle's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface CellStyleServer {
+  /**
+   * Whether the direction of the text in a cell runs against the story direction. Can return: Boolean or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get rotationRunsAgainstStory(): boolean | NothingEnum;
+  set rotationRunsAgainstStory(value: boolean | NothingEnum);
+}
+
+/** CellStyle's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface CellStyleServerPlural {
+  /**
+   * Whether the direction of the text in a cell runs against the story direction. Can return: Boolean or NothingEnum enumerator.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get rotationRunsAgainstStory(): (boolean | NothingEnum)[];
+  set rotationRunsAgainstStory(value: boolean | NothingEnum);
+}
+
+/** CellStyle's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface CellStylePortable {
+}
+
+/** CellStyle's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface CellStylePortablePlural {
 }

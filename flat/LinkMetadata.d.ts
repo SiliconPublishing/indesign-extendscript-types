@@ -24,7 +24,7 @@ import type { FilePath } from './_base/Types';
  * Read-only metadata read from a {@link Link}'s source file — author, keywords,
  * copyright, and creation/modification dates, drawn from the file's XMP data.
  */
-export interface LinkMetadata extends InDesignPlugins.LinkMetadata<'single'> {
+export interface LinkMetadata extends InDesignEdition.LinkMetadata, InDesignPlugins.LinkMetadata<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -150,7 +150,7 @@ export interface LinkMetadata extends InDesignPlugins.LinkMetadata<'single'> {
  * Read-only metadata read from a {@link Link}'s source file — author, keywords,
  * copyright, and creation/modification dates, drawn from the file's XMP data.
  */
-export interface LinkMetadataPlural extends InDesignPlugins.LinkMetadata<'plural'> {
+export interface LinkMetadataPlural extends InDesignEdition.LinkMetadataPlural, InDesignPlugins.LinkMetadata<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

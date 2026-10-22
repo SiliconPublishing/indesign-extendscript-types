@@ -25,7 +25,7 @@ import type { PropertiesSetter } from './_base/Properties';
  *
  * @collection Note
  */
-export interface Notes extends InDesignPlugins.Notes {
+export interface Notes extends InDesignEdition.Notes, InDesignPlugins.Notes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

@@ -14,6 +14,9 @@ import type { ObjectStyle } from './ObjectStyle';
 import type { Story } from './Story';
 import type { XmlStory } from './XmlStory';
 import type { StoryDirectionOptions } from './Enums/StoryDirectionOptions';
+import type { EditionPart } from "./_base/Editions";
+import type { FrameTypes } from "./Enums/FrameTypes";
+import type { StoryHorizontalOrVertical } from "./Enums/StoryHorizontalOrVertical";
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
 import type { Events } from './Events';
@@ -28,7 +31,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Story preferences.
  */
-export interface StoryPreference extends InDesignPlugins.StoryPreference<'single'> {
+export interface StoryPreference extends InDesignEdition.StoryPreference, InDesignPlugins.StoryPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -124,7 +127,7 @@ export interface StoryPreference extends InDesignPlugins.StoryPreference<'single
 /**
  * Story preferences.
  */
-export interface StoryPreferencePlural extends InDesignPlugins.StoryPreference<'plural'> {
+export interface StoryPreferencePlural extends InDesignEdition.StoryPreferencePlural, InDesignPlugins.StoryPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -215,4 +218,55 @@ export interface StoryPreferencePlural extends InDesignPlugins.StoryPreference<'
   /** The direction of the story. */
   get storyDirection(): (StoryDirectionOptions)[];
   set storyDirection(value: StoryDirectionOptions);
+}
+/** StoryPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface StoryPreferenceDesktop {
+}
+
+/** StoryPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface StoryPreferenceDesktopPlural {
+}
+
+/** StoryPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface StoryPreferenceServer {
+  /**
+   * The type of text frame.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get frameType(): FrameTypes;
+  set frameType(value: FrameTypes);
+  /**
+   * The orientation of the text in the story.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get storyOrientation(): StoryHorizontalOrVertical;
+  set storyOrientation(value: StoryHorizontalOrVertical);
+}
+
+/** StoryPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface StoryPreferenceServerPlural {
+  /**
+   * The type of text frame.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get frameType(): (FrameTypes)[];
+  set frameType(value: FrameTypes);
+  /**
+   * The orientation of the text in the story.
+   * Generated from the InDesign Server 21.6 scripting dictionary.
+   * InDesign Server only.
+   */
+  get storyOrientation(): (StoryHorizontalOrVertical)[];
+  set storyOrientation(value: StoryHorizontalOrVertical);
+}
+
+/** StoryPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface StoryPreferencePortable {
+}
+
+/** StoryPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface StoryPreferencePortablePlural {
 }

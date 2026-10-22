@@ -25,7 +25,7 @@ import type { FilePath } from './_base/Types';
  * Replacement criteria for the Find/Change Glyph feature — the glyph identity
  * (GID/CID, font, design-axis coordinates) that matched text is changed to.
  */
-export interface ChangeGlyphPreference extends InDesignPlugins.ChangeGlyphPreference<'single'> {
+export interface ChangeGlyphPreference extends InDesignEdition.ChangeGlyphPreference, InDesignPlugins.ChangeGlyphPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -136,7 +136,7 @@ export interface ChangeGlyphPreference extends InDesignPlugins.ChangeGlyphPrefer
  * Replacement criteria for the Find/Change Glyph feature — the glyph identity
  * (GID/CID, font, design-axis coordinates) that matched text is changed to.
  */
-export interface ChangeGlyphPreferencePlural extends InDesignPlugins.ChangeGlyphPreference<'plural'> {
+export interface ChangeGlyphPreferencePlural extends InDesignEdition.ChangeGlyphPreferencePlural, InDesignPlugins.ChangeGlyphPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

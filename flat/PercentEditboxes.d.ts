@@ -18,7 +18,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection PercentEditbox
  */
-export interface PercentEditboxes extends InDesignPlugins.PercentEditboxes {
+export interface PercentEditboxes extends InDesignEdition.PercentEditboxes, InDesignPlugins.PercentEditboxes {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

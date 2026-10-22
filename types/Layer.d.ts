@@ -46,7 +46,7 @@ import type { AnyGraphic, AnyPageItem } from './_base/Unions';
 export interface Layer<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Document, M>,
     IndexedDOMObject<Document, M>,
-    NamableDOMObject<Document, M>, InDesignPlugins.Layer<M> {
+    NamableDOMObject<Document, M>, InDesignEdition.Layer<M>, InDesignPlugins.Layer<M> {
   /** Resolves the proxy into the individual {@link Layer} objects it stands for. */
   getElements(): Layer<'single'>[];
 

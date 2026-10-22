@@ -19,7 +19,7 @@ import type { PDFComment } from './PDFComment';
 export interface Reply<M extends Mode = 'single'>
   extends LabelableEventDOMObject<PDFComment, M>,
     IndexedDOMObject<PDFComment, M>,
-    NamableDOMObject<PDFComment, M>, InDesignPlugins.Reply<M> {
+    NamableDOMObject<PDFComment, M>, InDesignEdition.Reply<M>, InDesignPlugins.Reply<M> {
   /** Resolves the proxy into the individual {@link Reply} objects it stands for. */
   getElements(): Reply<'single'>[];
 

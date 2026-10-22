@@ -28,5 +28,5 @@ export interface Footnotes
     BaseCollection<Footnote, Footnote, Footnote<'plural'>>,
     IdCollection<Footnote>,
     NamedCollection<Footnote>,
-    AddableTextElementCollection<Footnote, Note | InsertionPoint>, InDesignPlugins.Footnotes {
+    AddableTextElementCollection<Footnote, Note | InsertionPoint>, InDesignEdition.Footnotes, InDesignPlugins.Footnotes {
 }

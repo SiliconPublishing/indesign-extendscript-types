@@ -17,7 +17,7 @@ import type { Dialog } from './Dialog';
  * @collection IntegerEditbox
  */
 export interface IntegerEditboxes
-  extends BaseCollection<IntegerEditbox, IntegerEditbox, IntegerEditbox<'plural'>>, IdCollection<IntegerEditbox>, InDesignPlugins.IntegerEditboxes {
+  extends BaseCollection<IntegerEditbox, IntegerEditbox, IntegerEditbox<'plural'>>, IdCollection<IntegerEditbox>, InDesignEdition.IntegerEditboxes, InDesignPlugins.IntegerEditboxes {
   /**
    * Creates and adds a new integer editbox control to the dialog.
    * @param withProperties Initial values for properties of the new control.

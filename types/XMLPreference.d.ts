@@ -15,7 +15,7 @@ import type { UIColors } from './Enums/UIColors';
  * cell, and image elements, and whether an element is removed along with the
  * content it tags.
  */
-export interface XMLPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.XMLPreference<M> {
+export interface XMLPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignEdition.XMLPreference<M>, InDesignPlugins.XMLPreference<M> {
   /** Resolves the proxy into the individual {@link XMLPreference} objects it stands for. */
   getElements(): XMLPreference<'single'>[];
 

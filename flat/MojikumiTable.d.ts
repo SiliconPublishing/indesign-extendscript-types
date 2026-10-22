@@ -39,7 +39,7 @@ export type MojikumiAkiOverride = [
 /**
  * A named mojikumi (Japanese glyph-spacing) table.
  */
-export interface MojikumiTable extends InDesignPlugins.MojikumiTable<'single'> {
+export interface MojikumiTable extends InDesignEdition.MojikumiTable, InDesignPlugins.MojikumiTable<'single'> {
   /**
    * A collection of events
    */
@@ -159,7 +159,7 @@ export interface MojikumiTable extends InDesignPlugins.MojikumiTable<'single'> {
 /**
  * A named mojikumi (Japanese glyph-spacing) table.
  */
-export interface MojikumiTablePlural extends InDesignPlugins.MojikumiTable<'plural'> {
+export interface MojikumiTablePlural extends InDesignEdition.MojikumiTablePlural, InDesignPlugins.MojikumiTable<'plural'> {
   /**
    * A collection of events
    */

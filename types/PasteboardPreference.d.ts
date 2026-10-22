@@ -10,11 +10,12 @@ import type { EventTargetDOMObject } from './_base/DomObjects';
 import type { DocumentOrApplication } from './_base/Parents';
 import type { MeasurementValue } from './_base/Types';
 import type { UIColors } from './Enums/UIColors';
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * Pasteboard preferences.
  */
-export interface PasteboardPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.PasteboardPreference<M> {
+export interface PasteboardPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignEdition.PasteboardPreference<M>, InDesignPlugins.PasteboardPreference<M> {
   /** Resolves the proxy into the individual {@link PasteboardPreference} objects it stands for. */
   getElements(): PasteboardPreference<'single'>[];
 
@@ -33,8 +34,21 @@ export interface PasteboardPreference<M extends Mode = 'single'> extends EventTa
   /** The color of slug guides, specified either as an array of three doubles, each in the range 0 to 255, representing R, G, and B values, or as a UI color. */
   get slugGuideColor(): Read<M, number[] | UIColors>;
   set slugGuideColor(value: number[] | UIColors);
-
-  /** If true, match the Preview Background color to Theme Color, else use the color-value specified in Preview Background color drop down. */
+}
+/** PasteboardPreference's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface PasteboardPreferenceDesktop<M extends Mode = 'single'> extends EditionPart {
+  /** If true, match the Preview Background color to Theme Color, else use the color-value specified in Preview Background color drop down.
+   * Desktop only: InDesign Server 21.6 does not have it. */
   get matchPreviewBackgroundToThemeColor(): Read<M, boolean>;
+
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
   set matchPreviewBackgroundToThemeColor(value: boolean);
 }
+
+/** PasteboardPreference's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface PasteboardPreferenceServer<M extends Mode = 'single'> extends EditionPart {}
+
+/** PasteboardPreference's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface PasteboardPreferencePortable<M extends Mode = 'single'> extends EditionPart {}

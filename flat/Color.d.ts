@@ -28,7 +28,7 @@ import type { SwatchParent } from './_base/Parents';
  * A solid color swatch — process or spot, in the RGB, CMYK, LAB, or mixed-ink
  * color space.
  */
-export interface Color extends InDesignPlugins.Color<'single'> {
+export interface Color extends InDesignEdition.Color, InDesignPlugins.Color<'single'> {
   /**
    * A collection of events
    */
@@ -167,7 +167,7 @@ export interface Color extends InDesignPlugins.Color<'single'> {
  * A solid color swatch — process or spot, in the RGB, CMYK, LAB, or mixed-ink
  * color space.
  */
-export interface ColorPlural extends InDesignPlugins.Color<'plural'> {
+export interface ColorPlural extends InDesignEdition.ColorPlural, InDesignPlugins.Color<'plural'> {
   /**
    * A collection of events
    */

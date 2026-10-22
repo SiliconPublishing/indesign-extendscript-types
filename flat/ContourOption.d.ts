@@ -24,7 +24,7 @@ import type { FilePath } from './_base/Types';
  * Settings for tracing a custom text-wrap outline around a graphic's shape —
  * from an embedded clipping path, an alpha channel, or detected edges.
  */
-export interface ContourOption extends InDesignPlugins.ContourOption<'single'> {
+export interface ContourOption extends InDesignEdition.ContourOption, InDesignPlugins.ContourOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -156,7 +156,7 @@ export interface ContourOption extends InDesignPlugins.ContourOption<'single'> {
  * Settings for tracing a custom text-wrap outline around a graphic's shape —
  * from an embedded clipping path, an alpha channel, or detected edges.
  */
-export interface ContourOptionPlural extends InDesignPlugins.ContourOption<'plural'> {
+export interface ContourOptionPlural extends InDesignEdition.ContourOptionPlural, InDesignPlugins.ContourOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

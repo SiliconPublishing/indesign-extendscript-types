@@ -24,7 +24,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Chapter numbering preferences.
  */
-export interface ChapterNumberPreference extends InDesignPlugins.ChapterNumberPreference<'single'> {
+export interface ChapterNumberPreference extends InDesignEdition.ChapterNumberPreference, InDesignPlugins.ChapterNumberPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -120,7 +120,7 @@ export interface ChapterNumberPreference extends InDesignPlugins.ChapterNumberPr
 /**
  * Chapter numbering preferences.
  */
-export interface ChapterNumberPreferencePlural extends InDesignPlugins.ChapterNumberPreference<'plural'> {
+export interface ChapterNumberPreferencePlural extends InDesignEdition.ChapterNumberPreferencePlural, InDesignPlugins.ChapterNumberPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

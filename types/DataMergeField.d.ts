@@ -20,7 +20,7 @@ import type { DataMergeTextPlaceholder } from './DataMergeTextPlaceholder';
  */
 export interface DataMergeField<M extends Mode = 'single'>
   extends EventTargetDOMObject<DataMerge, M>,
-    IndexedDOMObject<DataMerge, M>, InDesignPlugins.DataMergeField<M> {
+    IndexedDOMObject<DataMerge, M>, InDesignEdition.DataMergeField<M>, InDesignPlugins.DataMergeField<M> {
   /** Resolves the proxy into the individual {@link DataMergeField} objects it stands for. */
   getElements(): DataMergeField<'single'>[];
 

@@ -24,7 +24,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection TextColumn
  */
-export interface TextColumns<TParent = TextParent> extends InDesignPlugins.TextColumns {
+export interface TextColumns<TParent = TextParent> extends InDesignEdition.TextColumns<TParent>, InDesignPlugins.TextColumns {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**

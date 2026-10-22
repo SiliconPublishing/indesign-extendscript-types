@@ -18,7 +18,7 @@ import type { MixedInkGroup } from './MixedInkGroup';
  */
 export interface Ink<M extends Mode = 'single'>
   extends LabelableEventDOMObject<DocumentOrApplication, M>,
-    IndexedDOMObject<DocumentOrApplication, M>, InDesignPlugins.Ink<M> {
+    IndexedDOMObject<DocumentOrApplication, M>, InDesignEdition.Ink<M>, InDesignPlugins.Ink<M> {
   /** Resolves the proxy into the individual {@link Ink} objects it stands for. */
   getElements(): Ink<'single'>[];
 

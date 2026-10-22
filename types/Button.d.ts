@@ -76,6 +76,10 @@ import type { TransparencySetting } from './TransparencySetting';
 import type { XMLElement } from './XMLElement';
 import type { NamableDOMObject } from './_base/DomObjects';
 import type { GraphicAttributes } from './_base/GraphicAttributes';
+import type { FormFieldDesktop } from "./FormField";
+import type { FormFieldServer } from "./FormField";
+import type { FormFieldPortable } from "./FormField";
+import type { EditionPart } from "./_base/Editions";
 
 /**
  * A PDF push-button form field, the richest {@link FormField} leaf.
@@ -84,7 +88,7 @@ import type { GraphicAttributes } from './_base/GraphicAttributes';
  * {@link Path paths}, and the full set of PDF interactive behaviors —
  * page/view/state navigation, media playback, form submission.
  */
-export interface Button<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, Button, M>, InDesignPlugins.Button<M> {
+export interface Button<TParent = PageItemParent, M extends Mode = 'single'> extends FormField<TParent, Button, M>, InDesignEdition.Button<TParent, M>, InDesignPlugins.Button<M> {
   /** Resolves the proxy into the individual {@link Button} objects it stands for. */
   getElements(): Button<TParent, 'single'>[];
 
@@ -231,3 +235,11 @@ export interface Button<TParent = PageItemParent, M extends Mode = 'single'> ext
   /** Converts the button to the page item currently shown in its active state; page items from other states are lost. */
   convertToObject(): Read<M, void>;
 }
+/** Button's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface ButtonDesktop<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldDesktop<TParent, Button, M> {}
+
+/** Button's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface ButtonServer<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldServer<TParent, Button, M> {}
+
+/** Button's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface ButtonPortable<TParent = PageItemParent, M extends Mode = 'single'> extends EditionPart, FormFieldPortable<TParent, Button, M> {}

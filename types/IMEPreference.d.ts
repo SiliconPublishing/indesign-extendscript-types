@@ -12,7 +12,7 @@ import type { Application } from './Application';
 /**
  * Input method editor (IME) preferences.
  */
-export interface IMEPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignPlugins.IMEPreference<M> {
+export interface IMEPreference<M extends Mode = 'single'> extends EventTargetDOMObject<Application, M>, InDesignEdition.IMEPreference<M>, InDesignPlugins.IMEPreference<M> {
   /** Resolves the proxy into the individual {@link IMEPreference} objects it stands for. */
   getElements(): IMEPreference<'single'>[];
 

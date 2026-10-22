@@ -24,7 +24,7 @@ export interface GotoStateBehaviors
   extends
     BaseCollection<GotoStateBehavior, GotoStateBehavior, GotoStateBehavior<'plural'>>,
     IdCollection<GotoStateBehavior>,
-    NamedCollection<GotoStateBehavior>, InDesignPlugins.GotoStateBehaviors {
+    NamedCollection<GotoStateBehavior>, InDesignEdition.GotoStateBehaviors, InDesignPlugins.GotoStateBehaviors {
   /**
    * Creates a new goto state behavior.
    * @param withProperties Initial values for properties of the new {@link GotoStateBehavior}.

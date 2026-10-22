@@ -24,7 +24,7 @@ import type { WidgetParent } from './_base/Parents';
  * A non-interactive text label, typically identifying another control or
  * group of controls.
  */
-export interface StaticText extends InDesignPlugins.StaticText<'single'> {
+export interface StaticText extends InDesignEdition.StaticText, InDesignPlugins.StaticText<'single'> {
   /**
    * A collection of events
    */
@@ -130,7 +130,7 @@ export interface StaticText extends InDesignPlugins.StaticText<'single'> {
  * A non-interactive text label, typically identifying another control or
  * group of controls.
  */
-export interface StaticTextPlural extends InDesignPlugins.StaticText<'plural'> {
+export interface StaticTextPlural extends InDesignEdition.StaticTextPlural, InDesignPlugins.StaticText<'plural'> {
   /**
    * A collection of events
    */

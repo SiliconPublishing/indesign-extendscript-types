@@ -42,7 +42,7 @@ import type { SVGs } from './SVGs';
 export interface Snippet<M extends Mode = 'single'>
   extends LabelableEventDOMObject<PlaceGun, M>,
     IndexedDOMObject<PlaceGun, M>,
-    NamableDOMObject<PlaceGun, M>, InDesignPlugins.Snippet<M> {
+    NamableDOMObject<PlaceGun, M>, InDesignEdition.Snippet<M>, InDesignPlugins.Snippet<M> {
   /** Resolves the proxy into the individual {@link Snippet} objects it stands for. */
   getElements(): Snippet<'single'>[];
 

@@ -25,7 +25,7 @@ import type { BehaviorParent } from './_base/Parents';
 /**
  * A behavior that jumps to the previous view in the navigation history.
  */
-export interface GotoPreviousViewBehavior extends InDesignPlugins.GotoPreviousViewBehavior<'single'> {
+export interface GotoPreviousViewBehavior extends InDesignEdition.GotoPreviousViewBehavior, InDesignPlugins.GotoPreviousViewBehavior<'single'> {
   /**
    * A collection of events
    */
@@ -145,7 +145,7 @@ export interface GotoPreviousViewBehavior extends InDesignPlugins.GotoPreviousVi
 /**
  * A behavior that jumps to the previous view in the navigation history.
  */
-export interface GotoPreviousViewBehaviorPlural extends InDesignPlugins.GotoPreviousViewBehavior<'plural'> {
+export interface GotoPreviousViewBehaviorPlural extends InDesignEdition.GotoPreviousViewBehaviorPlural, InDesignPlugins.GotoPreviousViewBehavior<'plural'> {
   /**
    * A collection of events
    */

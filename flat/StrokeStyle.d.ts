@@ -27,7 +27,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * {@link DottedStrokeStyle}, or {@link StripedStrokeStyle} — applicable via
  * `strokeType` on any drawable object.
  */
-export interface StrokeStyle extends InDesignPlugins.StrokeStyle<'single'> {
+export interface StrokeStyle extends InDesignEdition.StrokeStyle, InDesignPlugins.StrokeStyle<'single'> {
   /**
    * A collection of events
    */
@@ -136,7 +136,7 @@ export interface StrokeStyle extends InDesignPlugins.StrokeStyle<'single'> {
  * {@link DottedStrokeStyle}, or {@link StripedStrokeStyle} — applicable via
  * `strokeType` on any drawable object.
  */
-export interface StrokeStylePlural extends InDesignPlugins.StrokeStyle<'plural'> {
+export interface StrokeStylePlural extends InDesignEdition.StrokeStylePlural, InDesignPlugins.StrokeStyle<'plural'> {
   /**
    * A collection of events
    */

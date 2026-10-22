@@ -18,7 +18,7 @@ import type { FilePath } from './_base/Types';
 export interface MotionPreset<M extends Mode = 'single'>
   extends LabelableEventDOMObject<Application | Document, M>,
     IndexedDOMObject<Application | Document, M>,
-    NamableDOMObject<Application | Document, M>, InDesignPlugins.MotionPreset<M> {
+    NamableDOMObject<Application | Document, M>, InDesignEdition.MotionPreset<M>, InDesignPlugins.MotionPreset<M> {
   /** Resolves the proxy into the individual {@link MotionPreset} objects it stands for. */
   getElements(): MotionPreset<'single'>[];
 

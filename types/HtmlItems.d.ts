@@ -28,5 +28,5 @@ export interface HtmlItems<TParent = PageItemParent>
     BaseCollection<HtmlItem<TParent>, HtmlItem, HtmlItem<TParent, 'plural'>>,
     IdCollection<HtmlItem<TParent>>,
     NamedCollection<HtmlItem<TParent>>,
-    AddablePageItemCollection<HtmlItem<TParent>, HtmlItem>, InDesignPlugins.HtmlItems {
+    AddablePageItemCollection<HtmlItem<TParent>, HtmlItem>, InDesignEdition.HtmlItems<TParent>, InDesignPlugins.HtmlItems {
 }

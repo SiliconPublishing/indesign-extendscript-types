@@ -13,7 +13,7 @@ import type { MenuItem } from './MenuItem';
  * A {@link MenuAction} implemented entirely by script, dispatching an
  * `onInvoke` event to its listeners when chosen.
  */
-export interface ScriptMenuAction<M extends Mode = 'single'> extends MenuAction<M>, InDesignPlugins.ScriptMenuAction<M>{
+export interface ScriptMenuAction<M extends Mode = 'single'> extends MenuAction<M>, InDesignEdition.ScriptMenuAction<M>, InDesignPlugins.ScriptMenuAction<M>{
   /** Resolves the proxy into the individual {@link ScriptMenuAction} objects it stands for. */
   getElements(): ScriptMenuAction<'single'>[];
 

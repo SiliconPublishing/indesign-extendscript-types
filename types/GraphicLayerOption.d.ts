@@ -17,7 +17,7 @@ import type { UpdateLinkOptions } from './Enums/UpdateLinkOptions';
  * Layer visibility and link-update settings for a placed multi-layered
  * graphic, such as a layered PDF or Photoshop file.
  */
-export interface GraphicLayerOption<M extends Mode = 'single'> extends EventTargetDOMObject<Image | PDF | ImportedPage, M>, InDesignPlugins.GraphicLayerOption<M> {
+export interface GraphicLayerOption<M extends Mode = 'single'> extends EventTargetDOMObject<Image | PDF | ImportedPage, M>, InDesignEdition.GraphicLayerOption<M>, InDesignPlugins.GraphicLayerOption<M> {
   /** Resolves the proxy into the individual {@link GraphicLayerOption} objects it stands for. */
   getElements(): GraphicLayerOption<'single'>[];
 

@@ -25,7 +25,7 @@ export interface SoundBehaviors
   extends
     BaseCollection<SoundBehavior, SoundBehavior, SoundBehavior<'plural'>>,
     IdCollection<SoundBehavior>,
-    NamedCollection<SoundBehavior>, InDesignPlugins.SoundBehaviors {
+    NamedCollection<SoundBehavior>, InDesignEdition.SoundBehaviors, InDesignPlugins.SoundBehaviors {
   /**
    * Creates a new {@link SoundBehavior} and adds it to the collection.
    * @param withProperties Initial values for properties of the new {@link SoundBehavior},

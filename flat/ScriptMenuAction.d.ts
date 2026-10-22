@@ -24,7 +24,7 @@ import type { Application } from './Application';
  * A {@link MenuAction} implemented entirely by script, dispatching an
  * `onInvoke` event to its listeners when chosen.
  */
-export interface ScriptMenuAction extends InDesignPlugins.ScriptMenuAction<'single'> {
+export interface ScriptMenuAction extends InDesignEdition.ScriptMenuAction, InDesignPlugins.ScriptMenuAction<'single'> {
   /**
    * A collection of events
    */
@@ -154,7 +154,7 @@ export interface ScriptMenuAction extends InDesignPlugins.ScriptMenuAction<'sing
  * A {@link MenuAction} implemented entirely by script, dispatching an
  * `onInvoke` event to its listeners when chosen.
  */
-export interface ScriptMenuActionPlural extends InDesignPlugins.ScriptMenuAction<'plural'> {
+export interface ScriptMenuActionPlural extends InDesignEdition.ScriptMenuActionPlural, InDesignPlugins.ScriptMenuAction<'plural'> {
   /**
    * A collection of events
    */

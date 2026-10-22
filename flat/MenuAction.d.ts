@@ -26,7 +26,7 @@ import type { PropertiesSetter } from './_base/Properties';
  * InDesign command is backed by one, alongside script-defined
  * {@link ScriptMenuAction}s.
  */
-export interface MenuAction extends InDesignPlugins.MenuAction<'single'> {
+export interface MenuAction extends InDesignEdition.MenuAction, InDesignPlugins.MenuAction<'single'> {
   /**
    * A collection of events
    */
@@ -150,7 +150,7 @@ export interface MenuAction extends InDesignPlugins.MenuAction<'single'> {
  * InDesign command is backed by one, alongside script-defined
  * {@link ScriptMenuAction}s.
  */
-export interface MenuActionPlural extends InDesignPlugins.MenuAction<'plural'> {
+export interface MenuActionPlural extends InDesignEdition.MenuActionPlural, InDesignPlugins.MenuAction<'plural'> {
   /**
    * A collection of events
    */

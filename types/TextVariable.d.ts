@@ -48,7 +48,7 @@ export type TextVariableOptions =
 export interface TextVariable<M extends Mode = 'single'>
   extends EventTargetDOMObject<Application | Document, M>,
     IndexedDOMObject<Application | Document, M>,
-    NamableDOMObject<Application | Document, M>, InDesignPlugins.TextVariable<M> {
+    NamableDOMObject<Application | Document, M>, InDesignEdition.TextVariable<M>, InDesignPlugins.TextVariable<M> {
   /** Resolves the proxy into the individual {@link TextVariable} objects it stands for. */
   getElements(): TextVariable<'single'>[];
 

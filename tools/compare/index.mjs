@@ -1,8 +1,13 @@
 #!/usr/bin/env node
 // Compares the declarations against the measured scripting dictionary.
 //
-//   node tools/compare/index.mjs [--entry types/globals.d.ts] [--snapshot snapshots/indesign-21.6]
-//                                [--json out.json] [--md out.md]
+//   node tools/compare/index.mjs [--edition desktop|server|portable] [--tree types|flat]
+//                                [--entry <file>] [--snapshot <dir>] [--json out.json]
+//
+// Each edition is compared with its own measurements: desktop with snapshots/indesign-<ver>,
+// server with snapshots/indesign-server-<ver>, portable with what both dictionaries share
+// (tools/editions/model.mjs) and desktop's runtime samples of it. The entry defaults to the
+// edition's file in the tree (types/editions/desktop.d.ts, ...).
 //
 // Each DOM class is instantiated with its default type arguments (`InDesign.TextFrame`) through a
 // synthetic source file, and its members, inherited ones included, are compared with the
@@ -34,7 +39,8 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import ts from 'typescript';
 import { TypeAtoms, covered, observedCovered, superclasses } from './atoms.mjs';
-import { SNAPSHOT } from '../snapshot.mjs';
+import { SERVER_SNAPSHOT, SNAPSHOT } from '../snapshot.mjs';
+import { portableDictionary } from '../editions/model.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 
@@ -110,7 +116,7 @@ function dictMembers(cls, dict) {
 // Declaration side
 // ---------------------------------------------------------------------------------------------
 
-function createProgram(entry, classNames, enumNames, globalNames = new Set()) {
+function createProgram(entry, classNames, enumNames, globalNames = new Set(), libs = ['lib/global.d.ts', 'lib/ScriptUI.d.ts']) {
     const dir = mkdtempSync(join(tmpdir(), 'idx-compare-'));
     const probe = join(dir, 'probe.ts');
     const lines = [`/// <reference path="${resolve(root, entry)}" />`];
@@ -121,7 +127,7 @@ function createProgram(entry, classNames, enumNames, globalNames = new Set()) {
         if (enumNames.has(n)) lines.push(`declare const __value_${n}: typeof ${q};`);
     }
     writeFileSync(probe, lines.join('\n'));
-    const files = ['lib/global.d.ts', 'lib/ScriptUI.d.ts'].map((f) => join(root, f));
+    const files = libs.map((f) => join(root, f));
     const program = ts.createProgram([...files, probe], {
         noLib: true,
         target: ts.ScriptTarget.ES5,
@@ -173,18 +179,43 @@ const sameParam = (declared, dictName) => declared === dictName || (RESERVED_PAR
 
 // ---------------------------------------------------------------------------------------------
 
+const readSnapshot = (snapshot, file, fallback) => {
+    const path = join(root, snapshot, file);
+    if (!existsSync(path)) {
+        if (fallback !== undefined) return fallback;
+        throw new Error(`${snapshot}/${file} is missing`);
+    }
+    return JSON.parse(readFileSync(path, 'utf8'));
+};
+
+/** The libraries an edition's entry point loads: InDesign Server has no ScriptUI. */
+export const editionLibs = (edition) => (edition === 'desktop' ? ['lib/global.d.ts', 'lib/ScriptUI.d.ts'] : ['lib/global.d.ts']);
+
+/** What an edition is measured to have: dictionary, enumerator aliases, runtime samples. */
+export function editionData(edition, snapshot) {
+    const load = (snap) => ({
+        dict: readSnapshot(snap, 'dictionary.json').classes,
+        enumAliases: readSnapshot(snap, 'enum-aliases.json'),
+        runtime: readSnapshot(snap, 'runtime.json', { samples: {} }),
+        writes: readSnapshot(snap, 'writes.json', { writes: {} }).writes,
+        crashers: readSnapshot(snap, 'runtime-crashers.json', {}),
+    });
+    if (snapshot) return load(snapshot);
+    if (edition === 'desktop') return load(SNAPSHOT);
+    if (edition === 'server') return load(SERVER_SNAPSHOT);
+    const d = load(SNAPSHOT);
+    const s = load(SERVER_SNAPSHOT);
+    const enumAliases = {};
+    for (const [e, list] of Object.entries(d.enumAliases)) enumAliases[e] = list.filter((a) => (s.enumAliases[e] ?? []).includes(a));
+    return { ...d, dict: portableDictionary(d.dict, s.dict), enumAliases };
+}
+
 /** globalClasses: dictionary classes declared as plain globals (a plugin's, by tools/plugin). */
-export function compare({ entry = 'types/globals.d.ts', snapshot = SNAPSHOT, globalClasses = [] } = {}) {
-    const dict = JSON.parse(readFileSync(join(root, snapshot, 'dictionary.json'), 'utf8')).classes;
+export function compare({ edition = 'desktop', tree = 'types', entry = `${tree}/editions/${edition}.d.ts`, snapshot, globalClasses = [] } = {}) {
+    const { dict, enumAliases, runtime, writes, crashers } = editionData(edition, snapshot);
     const names = Object.keys(dict).sort();
-    const enumAliases = JSON.parse(readFileSync(join(root, snapshot, 'enum-aliases.json'), 'utf8'));
-    const runtime = JSON.parse(readFileSync(join(root, snapshot, 'runtime.json'), 'utf8'));
-    const writes = existsSync(join(root, snapshot, 'writes.json')) ? JSON.parse(readFileSync(join(root, snapshot, 'writes.json'), 'utf8')).writes : {};
-    const crashers = existsSync(join(root, snapshot, 'runtime-crashers.json'))
-        ? JSON.parse(readFileSync(join(root, snapshot, 'runtime-crashers.json'), 'utf8'))
-        : {};
     const enumNames = new Set(names.filter((n) => dict[n].kind === 'enum'));
-    const { program, probe } = createProgram(entry, names, enumNames, new Set(globalClasses));
+    const { program, probe } = createProgram(entry, names, enumNames, new Set(globalClasses), editionLibs(edition));
     const checker = program.getTypeChecker();
     const sf = program.getSourceFile(probe);
     const atoms = new TypeAtoms(ts, checker, enumNames);
@@ -378,7 +409,9 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         return i >= 0 ? process.argv[i + 1] : d;
     };
     const t0 = Date.now();
-    const { findings, classes } = compare({ entry: opt('--entry', 'types/globals.d.ts'), snapshot: opt('--snapshot', SNAPSHOT) });
+    const edition = opt('--edition', 'desktop');
+    const tree = opt('--tree', 'types');
+    const { findings, classes } = compare({ edition, tree, entry: opt('--entry', `${tree}/editions/${edition}.d.ts`), snapshot: opt('--snapshot') });
     console.log(`${classes} dictionary classes, ${findings.length} findings in ${((Date.now() - t0) / 1000).toFixed(1)}s`);
     console.log(summarize(findings));
     const json = opt('--json');

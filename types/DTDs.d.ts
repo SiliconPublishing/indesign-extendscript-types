@@ -14,5 +14,5 @@ import type { DTD } from './DTD';
  *
  * @collection DTD
  */
-export interface DTDs extends BaseCollection<DTD, DTD, DTD<'plural'>>, IdCollection<DTD>, InDesignPlugins.DTDs {
+export interface DTDs extends BaseCollection<DTD, DTD, DTD<'plural'>>, IdCollection<DTD>, InDesignEdition.DTDs, InDesignPlugins.DTDs {
 }

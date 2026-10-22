@@ -12,6 +12,7 @@ import type { File } from './_base/Types';
 import type { UserInteractionLevels } from './Enums/UserInteractionLevels';
 import type { Document } from './Document';
 import type { LayoutWindow } from './LayoutWindow';
+import type { EditionPart } from "./_base/Editions";
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
 import type { EventString } from './_base/DomObjects';
@@ -21,7 +22,7 @@ import type { EventPhases } from './Enums/EventPhases';
  * An event dispatched during a document lifecycle transition — creation,
  * opening, saving, reverting, or closing.
  */
-export interface DocumentEvent extends InDesignPlugins.DocumentEvent<'single'> {
+export interface DocumentEvent extends InDesignEdition.DocumentEvent, InDesignPlugins.DocumentEvent<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -97,16 +98,13 @@ export interface DocumentEvent extends InDesignPlugins.DocumentEvent<'single'> {
   readonly parent: DocumentOrApplication;
   /** The full path to the document, including its name. */
   readonly fullName: File;
-  /** Controls the display of dialogs and alerts while this event's handler runs. */
-  get userInteractionLevel(): UserInteractionLevels;
-  set userInteractionLevel(value: UserInteractionLevels);
 }
 
 /**
  * An event dispatched during a document lifecycle transition — creation,
  * opening, saving, reverting, or closing.
  */
-export interface DocumentEventPlural extends InDesignPlugins.DocumentEvent<'plural'> {
+export interface DocumentEventPlural extends InDesignEdition.DocumentEventPlural, InDesignPlugins.DocumentEvent<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -182,7 +180,41 @@ export interface DocumentEventPlural extends InDesignPlugins.DocumentEvent<'plur
   readonly parent: (DocumentOrApplication)[];
   /** The full path to the document, including its name. */
   readonly fullName: (File)[];
-  /** Controls the display of dialogs and alerts while this event's handler runs. */
-  get userInteractionLevel(): (UserInteractionLevels)[];
+}
+/** DocumentEvent's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DocumentEventDesktop {
+  /** Controls the display of dialogs and alerts while this event's handler runs.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get userInteractionLevel(): UserInteractionLevels;
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
   set userInteractionLevel(value: UserInteractionLevels);
+}
+
+/** DocumentEvent's members only InDesign desktop has, or has differently (tools/codemod/editions.mjs). */
+export interface DocumentEventDesktopPlural {
+  /** Controls the display of dialogs and alerts while this event's handler runs.
+   * Desktop only: InDesign Server 21.6 does not have it. */
+  get userInteractionLevel(): (UserInteractionLevels)[];
+  /**
+   * Desktop only: InDesign Server 21.6 does not have it.
+   */
+  set userInteractionLevel(value: UserInteractionLevels);
+}
+
+/** DocumentEvent's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DocumentEventServer {
+}
+
+/** DocumentEvent's members only InDesign Server has, or has differently (tools/codemod/editions.mjs). */
+export interface DocumentEventServerPlural {
+}
+
+/** DocumentEvent's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DocumentEventPortable {
+}
+
+/** DocumentEvent's members as both InDesign desktop and InDesign Server have them (tools/codemod/editions.mjs). */
+export interface DocumentEventPortablePlural {
 }

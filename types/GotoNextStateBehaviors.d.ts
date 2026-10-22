@@ -25,7 +25,7 @@ export interface GotoNextStateBehaviors
   extends
     BaseCollection<GotoNextStateBehavior, GotoNextStateBehavior, GotoNextStateBehavior<'plural'>>,
     IdCollection<GotoNextStateBehavior>,
-    NamedCollection<GotoNextStateBehavior>, InDesignPlugins.GotoNextStateBehaviors {
+    NamedCollection<GotoNextStateBehavior>, InDesignEdition.GotoNextStateBehaviors, InDesignPlugins.GotoNextStateBehaviors {
   /**
    * Creates a new {@link GotoNextStateBehavior} from a properties bag alone.
    */

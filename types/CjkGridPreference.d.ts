@@ -15,7 +15,7 @@ import type { UIColors } from './Enums/UIColors';
  * displayed — grid color, snap-to-grid, the zoom level below which grids hide,
  * and per-cell coloring.
  */
-export interface CjkGridPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignPlugins.CjkGridPreference<M> {
+export interface CjkGridPreference<M extends Mode = 'single'> extends EventTargetDOMObject<DocumentOrApplication, M>, InDesignEdition.CjkGridPreference<M>, InDesignPlugins.CjkGridPreference<M> {
   /** Resolves the proxy into the individual {@link CjkGridPreference} objects it stands for. */
   getElements(): CjkGridPreference<'single'>[];
 

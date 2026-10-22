@@ -24,7 +24,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Change color preferences.
  */
-export interface ChangeColorPreference extends InDesignPlugins.ChangeColorPreference<'single'> {
+export interface ChangeColorPreference extends InDesignEdition.ChangeColorPreference, InDesignPlugins.ChangeColorPreference<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -117,7 +117,7 @@ export interface ChangeColorPreference extends InDesignPlugins.ChangeColorPrefer
 /**
  * Change color preferences.
  */
-export interface ChangeColorPreferencePlural extends InDesignPlugins.ChangeColorPreference<'plural'> {
+export interface ChangeColorPreferencePlural extends InDesignEdition.ChangeColorPreferencePlural, InDesignPlugins.ChangeColorPreference<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

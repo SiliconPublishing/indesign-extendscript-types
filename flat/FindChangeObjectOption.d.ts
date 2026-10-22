@@ -23,7 +23,7 @@ import type { FilePath } from './_base/Types';
 /**
  * Options controlling which objects a find/change operation considers.
  */
-export interface FindChangeObjectOption extends InDesignPlugins.FindChangeObjectOption<'single'> {
+export interface FindChangeObjectOption extends InDesignEdition.FindChangeObjectOption, InDesignPlugins.FindChangeObjectOption<'single'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.
@@ -128,7 +128,7 @@ export interface FindChangeObjectOption extends InDesignPlugins.FindChangeObject
 /**
  * Options controlling which objects a find/change operation considers.
  */
-export interface FindChangeObjectOptionPlural extends InDesignPlugins.FindChangeObjectOption<'plural'> {
+export interface FindChangeObjectOptionPlural extends InDesignEdition.FindChangeObjectOptionPlural, InDesignPlugins.FindChangeObjectOption<'plural'> {
   /**
        * Indicates whether the underlying InDesign DOM object still exists and is valid.
        * Returns `false` if the object has been deleted, closed, or invalidated.

@@ -23,7 +23,7 @@ import type { NothingEnum } from './Enums/NothingEnum';
  *
  * @collection HyperlinkTextSource
  */
-export interface HyperlinkTextSources extends InDesignPlugins.HyperlinkTextSources {
+export interface HyperlinkTextSources extends InDesignEdition.HyperlinkTextSources, InDesignPlugins.HyperlinkTextSources {
   /** The number of objects in the collection. */
       readonly length: number | NothingEnum.NOTHING;
       /**
