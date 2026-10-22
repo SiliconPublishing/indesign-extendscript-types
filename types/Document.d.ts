@@ -1376,16 +1376,4 @@ export interface Document<M extends Mode = 'single'>
 
   /** Internal use only — reserved for the InDesign engineering team. */
   internalMethod(internalParameter1: string, internalParameter2: string): Read<M, string>;
-
-  // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
-
-  /**
-   * Place a HTTP link
-   * @param httpurls URL strings to the assets seperated by space.
-   * @param showingOptions Whether to display the import options dialog. (Optional)
-   * @param createLink Whether to create a link for the placed asset. (Optional)
-   * @param replaceSelected Whether to replace the selected item. (Optional)
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  placeHTTPLink(httpurls: string, showingOptions?: boolean, createLink?: boolean, replaceSelected?: boolean): Read<M, void>;
 }

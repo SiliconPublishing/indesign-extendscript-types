@@ -1,5 +1,5 @@
 {
- "ms": 17513,
+ "ms": 22125,
  "timedOut": false,
  "fixtureErrors": [
   "text variable Fixture XRef Chapter: The property is not applicable in the current state."
@@ -31,6 +31,7 @@
   "AutoCorrectPreference",
   "AutoCorrectTable",
   "AutoCorrectTables",
+  "BackgroundTask",
   "BackgroundTasks",
   "BaselineFrameGridOption",
   "Behavior",
@@ -270,7 +271,6 @@
   "Guides",
   "HTMLExportPreference",
   "HTMLFXLExportPreference",
-  "HTTPLinkPreferences",
   "HiddenTexts",
   "Html5ExportPreference",
   "HtmlItem",
@@ -661,7 +661,6 @@
   "Event",
   "PrintEvent",
   "DocumentEvent",
-  "BackgroundTask",
   "IdleEvent"
  ],
  "samples": {
@@ -883,36 +882,6 @@
   },
   "DocumentEvent.index": {
    "number": 1
-  },
-  "Application.cacheSize": {
-   "number": 3
-  },
-  "Application.frameioServerURL": {
-   "string": 3
-  },
-  "Application.frameioAccessToken": {
-   "string": 3
-  },
-  "Application.frameioRefreshToken": {
-   "string": 3
-  },
-  "Application.frameioAuthTokenStatus": {
-   "number": 3
-  },
-  "Application.cacheDir": {
-   "File": 3
-  },
-  "Application.cacheLimit": {
-   "number": 3
-  },
-  "Application.linkStatusInterval": {
-   "number": 3
-  },
-  "Application.httpLinkPreferences": {
-   "HTTPLinkPreferences": 3
-  },
-  "Application.cepUserGuid": {
-   "string": 3
   },
   "Application.conditionalTextPreferences": {
    "ConditionalTextPreference": 3
@@ -1352,11 +1321,11 @@
   "Application.parent": {
    "Application": 3
   },
-  "Application.preferences": {
-   "Preferences": 3
-  },
   "Application.conditions": {
    "Conditions": 3
+  },
+  "Application.preferences": {
+   "Preferences": 3
   },
   "Application.conditionSets": {
    "ConditionSets": 3
@@ -20411,15 +20380,6 @@
   "Image.graphics": {
    "Graphics": 3
   },
-  "Link.autoUpdateLink": {
-   "boolean": 3
-  },
-  "Link.uriType": {
-   "enum:1699113324:FILE": 3
-  },
-  "Link.uriPath": {
-   "string": 3
-  },
   "Link.versionState": {
    "enum:1986221653:VERSION_UNKNOWN": 3
   },
@@ -31519,21 +31479,6 @@
   "Snippet.signatureFields": {
    "SignatureFields": 3
   },
-  "HTTPLinkPreferences.linkResolution": {
-   "enum:1699500666:LOW_RES": 3
-  },
-  "HTTPLinkPreferences.isValid": {
-   "boolean": 6
-  },
-  "HTTPLinkPreferences.parent": {
-   "Application": 3
-  },
-  "HTTPLinkPreferences.events": {
-   "Events": 3
-  },
-  "HTTPLinkPreferences.eventListeners": {
-   "EventListeners": 3
-  },
   "ConditionalTextPreference.showConditionIndicators": {
    "enum:1698908531:SHOW_INDICATORS": 3
   },
@@ -34777,7 +34722,7 @@
    "boolean": 3
   },
   "GeneralPreference.toolsPanel": {
-   "enum:1163092844:SINGLE_COLUMN": 3
+   "enum:1162109804:DOUBLE_COLUMN": 3
   },
   "GeneralPreference.autoCollapseIconPanels": {
    "boolean": 3
@@ -43927,8 +43872,11 @@
   "FindChangeContentTransparencySetting.preferences": {
    "Preferences": 3
   },
-  "Preference.linkResolution": {
-   "enum:1699500666:LOW_RES": 1
+  "Preference.showConditionIndicators": {
+   "enum:1698908531:SHOW_INDICATORS": 1
+  },
+  "Preference.activeConditionSet": {
+   "null": 1
   },
   "Preference.isValid": {
    "boolean": 6
@@ -44444,6 +44392,39 @@
   },
   "AutoCorrectTable.eventListeners": {
    "EventListeners": 3
+  },
+  "BackgroundTask.name": {
+   "string": 1
+  },
+  "BackgroundTask.documentName": {
+   "string": 1
+  },
+  "BackgroundTask.percentDone": {
+   "number": 1
+  },
+  "BackgroundTask.status": {
+   "enum:1699837285:QUEUED": 1
+  },
+  "BackgroundTask.alerts": {
+   "array<>": 1
+  },
+  "BackgroundTask.id": {
+   "number": 1
+  },
+  "BackgroundTask.isValid": {
+   "boolean": 2
+  },
+  "BackgroundTask.parent": {
+   "throws": 1
+  },
+  "BackgroundTask.index": {
+   "throws": 1
+  },
+  "BackgroundTask.events": {
+   "throws": 1
+  },
+  "BackgroundTask.eventListeners": {
+   "throws": 1
   },
   "DocumentPreset.name": {
    "string": 3
@@ -49359,39 +49340,6 @@
   },
   "GraphicLayer.currentVisibility": {
    "boolean": 1
-  },
-  "BackgroundTask.name": {
-   "string": 1
-  },
-  "BackgroundTask.documentName": {
-   "string": 1
-  },
-  "BackgroundTask.percentDone": {
-   "number": 1
-  },
-  "BackgroundTask.status": {
-   "enum:1700033141:RUNNING": 1
-  },
-  "BackgroundTask.alerts": {
-   "array<>": 1
-  },
-  "BackgroundTask.id": {
-   "number": 1
-  },
-  "BackgroundTask.isValid": {
-   "boolean": 2
-  },
-  "BackgroundTask.parent": {
-   "throws": 1
-  },
-  "BackgroundTask.index": {
-   "throws": 1
-  },
-  "BackgroundTask.events": {
-   "throws": 1
-  },
-  "BackgroundTask.eventListeners": {
-   "throws": 1
   },
   "IdleEvent.timeAllocated": {
    "number": 1

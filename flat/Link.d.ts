@@ -19,8 +19,6 @@ import type { EditingState } from './Enums/EditingState';
 import type { LinkStatus } from './Enums/LinkStatus';
 import type { LinkResourceRenditionType } from './Enums/LinkResourceRenditionType';
 import type { FilePath, FolderPath } from './_base/Types';
-import type { LinkUriType } from "./Enums/LinkUriType";
-import type { File } from "./_base/Types";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
 import type { InDesignEventMap } from './_base/Events';
@@ -215,35 +213,6 @@ export interface Link {
   copyLink(to: FilePath | FolderPath, versionComments?: string, forceSave?: boolean): void;
   /** Opens the source file in InDesign for SharedContent links. */
   goToSource(): void;
-  // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
-
-  /**
-   * The URI type of the link.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  readonly uriType: LinkUriType;
-  /**
-   * The path to the asset referenced by the URI. Can return: String or File.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  readonly uriPath: string | File;
-  /**
-   * If true, the link auto updates when the linked asset changes.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  get autoUpdateLink(): boolean;
-  set autoUpdateLink(value: boolean);
-  /**
-   * Updates the HTTP link.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  updateHTTPLink(): Link;
-  /**
-   * Points the link to a new asset.
-   * @param to The full URI to the new HTTP asset.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  relinkHTTPLink(to: string): void;
 }
 
 /**
@@ -430,33 +399,4 @@ export interface LinkPlural {
   copyLink(to: FilePath | FolderPath, versionComments?: string, forceSave?: boolean): (void)[];
   /** Opens the source file in InDesign for SharedContent links. */
   goToSource(): (void)[];
-  // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
-
-  /**
-   * The URI type of the link.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  readonly uriType: (LinkUriType)[];
-  /**
-   * The path to the asset referenced by the URI. Can return: String or File.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  readonly uriPath: (string | File)[];
-  /**
-   * If true, the link auto updates when the linked asset changes.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  get autoUpdateLink(): (boolean)[];
-  set autoUpdateLink(value: boolean);
-  /**
-   * Updates the HTTP link.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  updateHTTPLink(): (Link)[];
-  /**
-   * Points the link to a new asset.
-   * @param to The full URI to the new HTTP asset.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  relinkHTTPLink(to: string): (void)[];
 }

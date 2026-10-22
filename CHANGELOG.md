@@ -15,7 +15,7 @@ InDesign 2026 (21.6.0.57).
   accepted by `itemByRange()`.
 - **Measured types:** about 540 declarations widened by what InDesign returned or accepted
   (unset style attributes as `NothingEnum.NOTHING`, swatch names, `null`s, unit strings);
-  33 members, 1 class, 2 enumerations and 2 enumerators the 21.6 dictionary has and upstream lacked;
+  14 members and 2 enumerators the 21.6 dictionary has and upstream lacked;
   six crash-prone members documented.
 - **Tooling:** dumps, runtime samplers, codemod, flattener (verified against upstream's own flat
   tree), comparer, probes and `npm test`.

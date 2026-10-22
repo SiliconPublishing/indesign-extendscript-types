@@ -1,5 +1,5 @@
 {
- "ms": 26157,
+ "ms": 28568,
  "timedOut": false,
  "fixtureErrors": [
   "text variable Fixture XRef Chapter: The property is not applicable in the current state."
@@ -13431,19 +13431,6 @@
    "roundtrip": "rejects: graphics is undefined",
    "nothing": "rejects: graphics is undefined"
   },
-  "Link.autoUpdateLink": {
-   "roundtrip": "ok",
-   "nothing": "rejects: Invalid value for set property 'autoUpdateLink'. Expected Boolean, but received NOTHING."
-  },
-  "Link.uriType": {
-   "roundtrip": "rejects: 'uriType' is a read only property.",
-   "number": "rejects: 'uriType' is a read only property.",
-   "nothing": "rejects: 'uriType' is a read only property."
-  },
-  "Link.uriPath": {
-   "roundtrip": "rejects: 'uriPath' is a read only property.",
-   "nothing": "rejects: 'uriPath' is a read only property."
-  },
   "Link.versionState": {
    "roundtrip": "rejects: 'versionState' is a read only property.",
    "number": "rejects: 'versionState' is a read only property.",
@@ -25597,7 +25584,7 @@
   "LayoutWindow.zoomPercentage": {
    "roundtrip": "ok",
    "nothing": "rejects: Invalid value for set property 'zoomPercentage'. Expected Real (5 - 4000), but received NOTHING.",
-   "unit": "rejects: Invalid value for set property 'zoomPercentage'. Expected Real (5 - 4000), but received \"113.956832820914pt\"."
+   "unit": "rejects: Invalid value for set property 'zoomPercentage'. Expected Real (5 - 4000), but received \"121.208631273154pt\"."
   },
   "LayoutWindow.activeSpread": {
    "roundtrip": "ok",
@@ -35861,7 +35848,7 @@
   "Window.zoomPercentage": {
    "roundtrip": "ok",
    "nothing": "rejects: Invalid value for set property 'zoomPercentage'. Expected Real (5 - 4000), but received NOTHING.",
-   "unit": "rejects: Invalid value for set property 'zoomPercentage'. Expected Real (5 - 4000), but received \"113.956832820914pt\"."
+   "unit": "rejects: Invalid value for set property 'zoomPercentage'. Expected Real (5 - 4000), but received \"121.208631273154pt\"."
   },
   "Window.activeSpread": {
    "roundtrip": "ok",

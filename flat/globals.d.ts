@@ -197,7 +197,6 @@ declare global {
   export import GridAlignment = Enums.GridAlignment;
   export import GridViewSettings = Enums.GridViewSettings;
   export import GuideTypeOptions = Enums.GuideTypeOptions;
-  export import HTTPLinkResolution = Enums.HTTPLinkResolution;
   export import HeaderColumnsPositionTypes = Enums.HeaderColumnsPositionTypes;
   export import HeaderFooterBreakTypes = Enums.HeaderFooterBreakTypes;
   export import HeaderTypes = Enums.HeaderTypes;
@@ -249,7 +248,6 @@ declare global {
   export import LineSpacingType = Enums.LineSpacingType;
   export import LinkResourceRenditionType = Enums.LinkResourceRenditionType;
   export import LinkStatus = Enums.LinkStatus;
-  export import LinkUriType = Enums.LinkUriType;
   export import ListAlignment = Enums.ListAlignment;
   export import ListType = Enums.ListType;
   export import LiveDrawingOptions = Enums.LiveDrawingOptions;
@@ -1760,9 +1758,6 @@ declare global {
   type HTMLFXLExportPreference = DOM.HTMLFXLExportPreference;
   /** The HTMLFXLExportPreference class: `instanceof HTMLFXLExportPreference`, `HTMLFXLExportPreference.reflect`. */
   var HTMLFXLExportPreference: DOMClass<DOM.HTMLFXLExportPreference>;
-  type HTTPLinkPreferences = DOM.HTTPLinkPreferences;
-  /** The HTTPLinkPreferences class: `instanceof HTTPLinkPreferences`, `HTTPLinkPreferences.reflect`. */
-  var HTTPLinkPreferences: DOMClass<DOM.HTTPLinkPreferences>;
   type HiddenText = DOM.HiddenText;
   /** The HiddenText class: `instanceof HiddenText`, `HiddenText.reflect`. */
   var HiddenText: DOMClass<DOM.HiddenText>;

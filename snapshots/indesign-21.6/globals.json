@@ -4839,29 +4839,6 @@
   ],
   "source": "function HTMLFXLExportPreference() {\n   "
  },
- "HTTPLinkPreferences": {
-  "global": true,
-  "type": "function",
-  "statics": [
-   "prototype",
-   "arguments",
-   "length",
-   "arity",
-   "name",
-   "__proto__"
-  ],
-  "source": "function HTTPLinkPreferences() {\n    [na"
- },
- "HTTPLinkResolution": {
-  "global": true,
-  "type": "object",
-  "statics": [
-   "LOW_RES",
-   "HIGH_RES",
-   "__proto__"
-  ],
-  "source": "[object Enumeration]"
- },
  "HeaderColumnsPositionTypes": {
   "global": true,
   "type": "object",
@@ -6305,20 +6282,6 @@
    "LINK_MISSING",
    "LINK_EMBEDDED",
    "LINK_INACCESSIBLE",
-   "__proto__"
-  ],
-  "source": "[object Enumeration]"
- },
- "LinkUriType": {
-  "global": true,
-  "type": "object",
-  "statics": [
-   "FILE",
-   "VERSION_CUE",
-   "BUZZWORD",
-   "HTTP",
-   "HTTPS",
-   "OTHER",
    "__proto__"
   ],
   "source": "[object Enumeration]"

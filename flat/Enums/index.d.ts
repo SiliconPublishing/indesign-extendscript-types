@@ -437,5 +437,3 @@ export * from './XMLFileEncoding';
 export * from './XMLImportStyles';
 export * from './XMLTransformFile';
 export * from './ZoomOptions';
-export * from "./HTTPLinkResolution";
-export * from "./LinkUriType";

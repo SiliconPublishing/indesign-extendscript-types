@@ -229,7 +229,6 @@ import type { MenuActions } from './MenuActions';
 import type { ScriptMenuActions } from './ScriptMenuActions';
 import type { Menus } from './Menus';
 import type { SelectionItem } from './_base/Unions';
-import type { HTTPLinkPreferences } from "./HTTPLinkPreferences";
 import type { ScriptArg } from "./ScriptArg";
 import type { Events } from './Events';
 import type { EventListeners } from './EventListeners';
@@ -1169,85 +1168,10 @@ export interface Application {
   // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
 
   /**
-   * The current size of the Connector HTTP cache.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  readonly cacheSize: number;
-  /**
-   * The preference properties that define preferences for HTTP links.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  readonly httpLinkPreferences: HTTPLinkPreferences;
-  /**
    * Arguments to pass to a script.
    * Generated from the InDesign 21.6 scripting dictionary.
    */
   readonly scriptArgs: ScriptArg;
-  /**
-   * Frame.io OAuth2 authentication server URL.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  get frameioServerURL(): string;
-  set frameioServerURL(value: string);
-  /**
-   * Frame.io OAuth2 access token.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  get frameioAccessToken(): string;
-  set frameioAccessToken(value: string);
-  /**
-   * Frame.io OAuth2 refresh token.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  get frameioRefreshToken(): string;
-  set frameioRefreshToken(value: string);
-  /**
-   * The Frame.io authentication token status.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  get frameioAuthTokenStatus(): number;
-  set frameioAuthTokenStatus(value: number);
-  /**
-   * The directory location of the Connector HTTP cache.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  get cacheDir(): File;
-  set cacheDir(value: FilePath);
-  /**
-   * The maximum size limit of the Connector HTTP cache in MB. Set to 0 for no limit.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  get cacheLimit(): number;
-  set cacheLimit(value: number);
-  /**
-   * The number of seconds between HTTP link status updates.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  get linkStatusInterval(): number;
-  set linkStatusInterval(value: number);
-  /**
-   * The CEP usser GUID.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  get cepUserGuid(): string;
-  set cepUserGuid(value: string);
-  /**
-   * Clear the Connector HTTP cache.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  clearHTTPCache(): void;
-  /**
-   * Trim the Connector HTTP cache.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  trimHTTPCache(): void;
-  /**
-   * Frame's license activated.
-   * @param licenseActivated Is license is activated.
-   * @param adobeUserId UXP Adobe user id. (Optional)
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  frameLicenseActivated(licenseActivated: boolean, adobeUserId?: string): void;
 }
 
 /**
@@ -2178,83 +2102,8 @@ export interface ApplicationPlural {
   // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
 
   /**
-   * The current size of the Connector HTTP cache.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  readonly cacheSize: (number)[];
-  /**
-   * The preference properties that define preferences for HTTP links.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  readonly httpLinkPreferences: (HTTPLinkPreferences)[];
-  /**
    * Arguments to pass to a script.
    * Generated from the InDesign 21.6 scripting dictionary.
    */
   readonly scriptArgs: (ScriptArg)[];
-  /**
-   * Frame.io OAuth2 authentication server URL.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  get frameioServerURL(): (string)[];
-  set frameioServerURL(value: string);
-  /**
-   * Frame.io OAuth2 access token.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  get frameioAccessToken(): (string)[];
-  set frameioAccessToken(value: string);
-  /**
-   * Frame.io OAuth2 refresh token.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  get frameioRefreshToken(): (string)[];
-  set frameioRefreshToken(value: string);
-  /**
-   * The Frame.io authentication token status.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  get frameioAuthTokenStatus(): (number)[];
-  set frameioAuthTokenStatus(value: number);
-  /**
-   * The directory location of the Connector HTTP cache.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  get cacheDir(): (File)[];
-  set cacheDir(value: FilePath);
-  /**
-   * The maximum size limit of the Connector HTTP cache in MB. Set to 0 for no limit.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  get cacheLimit(): (number)[];
-  set cacheLimit(value: number);
-  /**
-   * The number of seconds between HTTP link status updates.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  get linkStatusInterval(): (number)[];
-  set linkStatusInterval(value: number);
-  /**
-   * The CEP usser GUID.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  get cepUserGuid(): (string)[];
-  set cepUserGuid(value: string);
-  /**
-   * Clear the Connector HTTP cache.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  clearHTTPCache(): (void)[];
-  /**
-   * Trim the Connector HTTP cache.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  trimHTTPCache(): (void)[];
-  /**
-   * Frame's license activated.
-   * @param licenseActivated Is license is activated.
-   * @param adobeUserId UXP Adobe user id. (Optional)
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  frameLicenseActivated(licenseActivated: boolean, adobeUserId?: string): (void)[];
 }

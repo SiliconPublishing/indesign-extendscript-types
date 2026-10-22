@@ -4547,6 +4547,11 @@
      "dataType": "Object"
     },
     {
+     "name": "prototype",
+     "type": "readwrite",
+     "dataType": "Object"
+    },
+    {
      "name": "arguments",
      "type": "readwrite",
      "dataType": "Object"

@@ -1046,10 +1046,6 @@
   "ruler",
   "liquid"
  ],
- "HTTPLinkResolution": [
-  "lowRes",
-  "highRes"
- ],
  "HeaderColumnsPositionTypes": [
   "headerColumnsLeft",
   "headerColumnsRight"
@@ -1466,14 +1462,6 @@
   "linkMissing",
   "linkEmbedded",
   "linkInaccessible"
- ],
- "LinkUriType": [
-  "file",
-  "versionCue",
-  "buzzword",
-  "http",
-  "https",
-  "other"
  ],
  "ListAlignment": [
   "leftAlign",

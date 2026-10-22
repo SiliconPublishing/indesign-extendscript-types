@@ -19,8 +19,6 @@ import type { EditingState } from './Enums/EditingState';
 import type { LinkStatus } from './Enums/LinkStatus';
 import type { LinkResourceRenditionType } from './Enums/LinkResourceRenditionType';
 import type { FilePath, FolderPath } from './_base/Types';
-import type { LinkUriType } from "./Enums/LinkUriType";
-import type { File } from "./_base/Types";
 
 /**
  * A link to a placed or embedded file — an image, story, movie, or sound —
@@ -143,38 +141,4 @@ export interface Link<M extends Mode = 'single'>
 
   /** Opens the source file in InDesign for SharedContent links. */
   goToSource(): Read<M, void>;
-
-  // ---- Generated from the InDesign 21.6 dictionary (not in upstream) ----
-
-  /**
-   * The URI type of the link.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  readonly uriType: Read<M, LinkUriType>;
-
-  /**
-   * The path to the asset referenced by the URI. Can return: String or File.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  readonly uriPath: Read<M, string | File>;
-
-  /**
-   * If true, the link auto updates when the linked asset changes.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  get autoUpdateLink(): Read<M, boolean>;
-  set autoUpdateLink(value: boolean);
-
-  /**
-   * Updates the HTTP link.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  updateHTTPLink(): Read<M, Link>;
-
-  /**
-   * Points the link to a new asset.
-   * @param to The full URI to the new HTTP asset.
-   * Generated from the InDesign 21.6 scripting dictionary.
-   */
-  relinkHTTPLink(to: string): Read<M, void>;
 }
