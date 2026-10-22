@@ -15,6 +15,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import ts from 'typescript';
+import { SNAPSHOT } from '../snapshot.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 
@@ -75,7 +76,7 @@ function createProgram() {
     return { program, probe };
 }
 
-export function compareLib({ snapshot = 'snapshots/indesign-21.6' } = {}) {
+export function compareLib({ snapshot = SNAPSHOT } = {}) {
     const core = JSON.parse(readFileSync(join(root, snapshot, 'corejs.json'), 'utf8'));
     const { program, probe } = createProgram();
     const checker = program.getTypeChecker();
@@ -146,7 +147,7 @@ export function compareLib({ snapshot = 'snapshots/indesign-21.6' } = {}) {
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
     const i = process.argv.indexOf('--snapshot');
-    const findings = compareLib({ snapshot: i >= 0 ? process.argv[i + 1] : 'snapshots/indesign-21.6' });
+    const findings = compareLib({ snapshot: i >= 0 ? process.argv[i + 1] : SNAPSHOT });
     const by = {};
     for (const f of findings) by[f.kind] = (by[f.kind] ?? 0) + 1;
     console.log(`${findings.length} findings`, by);

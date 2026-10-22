@@ -14,6 +14,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { inlineIncludes, runExtendScript, runExtendScriptFile } from '../run-extendscript.mjs';
+import { INDESIGN_VERSION, SNAPSHOT } from '../snapshot.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..', '..');
@@ -54,7 +55,7 @@ closed;`;
  * prelude: ExtendScript prepended to the sampler, such as a plugin's pluginFixture() (tools/plugin).
  * snapshot: relative to the repository, or absolute.
  */
-export function sampleRuntime({ app = 'Adobe InDesign 2026', snapshot = 'snapshots/indesign-21.6', script = 'runtime.jsx', prelude = '', maxCrashes = 15 } = {}) {
+export function sampleRuntime({ app = 'Adobe InDesign 2026', snapshot = SNAPSHOT, script = 'runtime.jsx', prelude = '', maxCrashes = 15 } = {}) {
     const crashFile = join(resolve(root, snapshot), 'runtime-crashers.json');
     const source = `${prelude}\n${inlineIncludes(readFileSync(join(here, script), 'utf8'), here)}`;
     const crashers = existsSync(crashFile) ? JSON.parse(readFileSync(crashFile, 'utf8')) : {};
@@ -78,7 +79,7 @@ export function sampleRuntime({ app = 'Adobe InDesign 2026', snapshot = 'snapsho
                 throw new Error(`${e.message}\n  (last step: ${last})`);
             }
             console.log(`  InDesign went down at ${last}; blocklisting it and retrying`);
-            crashers[last] = { crashes: true, version: '21.6', error: String(e.message).split('\n')[0].slice(0, 200) };
+            crashers[last] = { crashes: true, version: INDESIGN_VERSION, error: String(e.message).split('\n')[0].slice(0, 200) };
             writeFileSync(crashFile, JSON.stringify(crashers, null, 1) + '\n');
             waitForApp(app);
             closeRecoveredFixtures(app);
@@ -115,7 +116,7 @@ export function sampleAsync({ app = 'Adobe InDesign 2026' } = {}) {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-    const snapshot = arg('--snapshot', 'snapshots/indesign-21.6');
+    const snapshot = arg('--snapshot', SNAPSHOT);
     const writes = process.argv.includes('--writes');
     const r = sampleRuntime({ app: arg('--app', 'Adobe InDesign 2026'), snapshot, script: writes ? 'writes.jsx' : 'runtime.jsx' });
     if (!writes) {

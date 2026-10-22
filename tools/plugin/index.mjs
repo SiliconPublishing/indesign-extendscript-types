@@ -32,6 +32,7 @@ import { parseDictionary, readRaw } from '../dump/parse-dictionary.mjs';
 import { aliasCandidates, surfaceAdded } from '../dump/surface.mjs';
 import { sampleRuntime } from '../dump/runtime.mjs';
 import { compare } from '../compare/index.mjs';
+import { SNAPSHOT } from '../snapshot.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const dumpDir = join(root, 'tools', 'dump');
@@ -310,7 +311,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     }
     const app = arg('--app', 'Adobe InDesign 2026');
     const out = resolve(root, arg('--out', join('plugins', name)));
-    const baselineDir = resolve(root, arg('--baseline', 'snapshots/indesign-21.6'));
+    const baselineDir = resolve(root, arg('--baseline', SNAPSHOT));
     const snap = join(out, 'snapshot');
     mkdirSync(snap, { recursive: true });
 

@@ -18,6 +18,7 @@ import { fileURLToPath } from 'node:url';
 import { runExtendScriptFile } from '../run-extendscript.mjs';
 import { parseDictionary, readRaw } from './parse-dictionary.mjs';
 import { aliasCandidates, surfaceAdded } from './surface.mjs';
+import { SNAPSHOT } from '../snapshot.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..', '..');
@@ -28,7 +29,7 @@ function arg(name, fallback) {
 }
 
 const app = arg('--app', 'Adobe InDesign 2026');
-const out = resolve(root, arg('--snapshot', 'snapshots/indesign-21.6'));
+const out = resolve(root, arg('--snapshot', SNAPSHOT));
 const write = (file, value) => writeFileSync(join(out, file), JSON.stringify(value, null, 1) + '\n');
 mkdirSync(out, { recursive: true });
 

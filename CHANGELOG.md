@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 (indesign-extendscript-types)
+## 21.6.0 (indesign-extendscript-types)
 
 First ExtendScript edition, converted from indesign-uxp-types 1.0.0 and measured against
 InDesign 2026 (21.6.0.57).

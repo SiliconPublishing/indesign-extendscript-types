@@ -8,11 +8,12 @@ import { cpSync, mkdirSync, mkdtempSync, readFileSync, symlinkSync, writeFileSyn
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { SNAPSHOT } from '../../tools/snapshot.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const work = mkdtempSync(join(tmpdir(), 'idx-plugin-test-'));
 const raw = join(work, 'raw');
-cpSync(join(root, 'snapshots/indesign-21.6/raw'), raw, { recursive: true });
+cpSync(join(root, SNAPSHOT, 'raw'), raw, { recursive: true });
 
 const prop = (name, type, rw, desc, extra = '') =>
     `<property name="${name}" rwaccess="${rw}"><shortdesc>${desc}</shortdesc><datatype><type>${type}</type>${extra}</datatype></property>`;

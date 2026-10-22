@@ -16,6 +16,7 @@ import { fileURLToPath } from 'node:url';
 import { compare } from '../tools/compare/index.mjs';
 import { compareLib } from '../tools/compare/lib.mjs';
 import { runExtendScriptFile } from '../tools/run-extendscript.mjs';
+import { INDESIGN_VERSION, PACKAGE_VERSION, SNAPSHOT } from '../tools/snapshot.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const live = process.argv.includes('--live');
@@ -54,6 +55,15 @@ if (live) {
     // close them now, with anything else a failed probe left.
     execFileSync('sleep', ['3']);
     runExtendScriptFile(join(root, 'tools/dump/cleanup.jsx'), { app });
+}
+
+section(`package version ${PACKAGE_VERSION} follows the measured InDesign`);
+try {
+    const measured = JSON.parse(readFileSync(join(root, SNAPSHOT, 'dictionary.json'), 'utf8')).version;
+    if (!measured.startsWith(`${INDESIGN_VERSION}.`)) fail(`${SNAPSHOT} was measured on InDesign ${measured}`);
+    else console.log(`  ok   ${SNAPSHOT} (InDesign ${measured})`);
+} catch (e) {
+    fail(`no snapshot for InDesign ${INDESIGN_VERSION}: ${e.message}`);
 }
 
 for (const config of ['tsconfig.json', 'tsconfig.flat.json']) {

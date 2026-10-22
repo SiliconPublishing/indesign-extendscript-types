@@ -21,9 +21,9 @@ import { widenByRuntime } from './widen.mjs';
 import { fillFromDictionary } from './fill.mjs';
 import { addPluginHooks } from './plugin-hooks.mjs';
 import { writeFlat } from '../flatten/index.mjs';
+import { SNAPSHOT } from '../snapshot.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
-const SNAPSHOT = 'snapshots/indesign-21.6';
 
 function arg(name, fallback) {
     const i = process.argv.indexOf(name);

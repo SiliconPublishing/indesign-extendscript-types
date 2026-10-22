@@ -15,8 +15,8 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { Node } from 'ts-morph';
 import { hookDeclarations } from './plugin-hooks.mjs';
+import { SNAPSHOT } from '../snapshot.mjs';
 
-const SNAPSHOT = 'snapshots/indesign-21.6';
 
 export function generateGlobals(project, typesDir, root, hooks = []) {
     const dictionary = JSON.parse(readFileSync(join(root, SNAPSHOT, 'dictionary.json'), 'utf8')).classes;

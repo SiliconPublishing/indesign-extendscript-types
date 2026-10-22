@@ -34,6 +34,7 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import ts from 'typescript';
 import { TypeAtoms, covered, observedCovered, superclasses } from './atoms.mjs';
+import { SNAPSHOT } from '../snapshot.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 
@@ -173,7 +174,7 @@ const sameParam = (declared, dictName) => declared === dictName || (RESERVED_PAR
 // ---------------------------------------------------------------------------------------------
 
 /** globalClasses: dictionary classes declared as plain globals (a plugin's, by tools/plugin). */
-export function compare({ entry = 'types/globals.d.ts', snapshot = 'snapshots/indesign-21.6', globalClasses = [] } = {}) {
+export function compare({ entry = 'types/globals.d.ts', snapshot = SNAPSHOT, globalClasses = [] } = {}) {
     const dict = JSON.parse(readFileSync(join(root, snapshot, 'dictionary.json'), 'utf8')).classes;
     const names = Object.keys(dict).sort();
     const enumAliases = JSON.parse(readFileSync(join(root, snapshot, 'enum-aliases.json'), 'utf8'));
@@ -377,7 +378,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         return i >= 0 ? process.argv[i + 1] : d;
     };
     const t0 = Date.now();
-    const { findings, classes } = compare({ entry: opt('--entry', 'types/globals.d.ts'), snapshot: opt('--snapshot', 'snapshots/indesign-21.6') });
+    const { findings, classes } = compare({ entry: opt('--entry', 'types/globals.d.ts'), snapshot: opt('--snapshot', SNAPSHOT) });
     console.log(`${classes} dictionary classes, ${findings.length} findings in ${((Date.now() - t0) / 1000).toFixed(1)}s`);
     console.log(summarize(findings));
     const json = opt('--json');

@@ -8,10 +8,11 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { compare } from './compare/index.mjs';
 import { compareLib } from './compare/lib.mjs';
+import { SNAPSHOT } from './snapshot.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const i = process.argv.indexOf('--snapshot');
-const snapshot = i >= 0 ? process.argv[i + 1] : 'snapshots/indesign-21.6';
+const snapshot = i >= 0 ? process.argv[i + 1] : SNAPSHOT;
 const read = (f) => JSON.parse(readFileSync(join(root, snapshot, f), 'utf8'));
 
 const dict = read('dictionary.json');

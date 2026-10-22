@@ -7,7 +7,9 @@ hover documentation and type checking in VS Code or any TypeScript-aware editor,
 you compile to ES3 or for `.jsx` files checked in place.
 
 - **InDesign 2026 (21.6)**. Every class, property, method, parameter and enumerator in InDesign's
-  own scripting dictionary is checked against the declarations on every test run.
+  own scripting dictionary is checked against the declarations on every test run. The package
+  version follows InDesign: `21.6.x` is measured against InDesign 21.6, and the patch number is
+  ours, for fixes to the declarations.
 - **Measured, not guessed.** A live InDesign was asked what it returns, what it accepts and what it
   throws, and the declarations follow the answers (see [How it is measured](#how-it-is-measured)).
 - **Converted from [indesign-uxp-types](https://github.com/vamitul/indesign-uxp-types)** by Vlad
@@ -183,8 +185,10 @@ npm run plugin -- --name <package> [--setup file.jsx]   # declarations for a plu
 - **A new upstream release:** `git fetch upstream && npm run build && npm test`. The codemod
   (`tools/codemod/`) starts from a pristine `git archive` of `upstream/main`. Each rule reports how
   often it applied and stops the build when an upstream change moves its anchor.
-- **A new InDesign version:** re-run the dumps into a new snapshot folder, then `npm test`. Members
-  the dictionary has and upstream lacks are generated (`tools/codemod/fill.mjs`). Getters and
+- **A new InDesign version:** set `version` in `package.json` to the new release (`22.0.0` for
+  InDesign 22.0); every tool then defaults to `snapshots/indesign-22.0/`. Run `npm run dump` and the
+  samplers into it, then `npm test`. Members the dictionary has and upstream lacks are generated
+  (`tools/codemod/fill.mjs`). Getters and
   setters are widened by what the runtime samples observed (`tools/codemod/widen.mjs`), and the
   rest shows up as findings.
 - **One-off corrections** go in `overlays/patches.json`, each naming the probe that justifies it.
