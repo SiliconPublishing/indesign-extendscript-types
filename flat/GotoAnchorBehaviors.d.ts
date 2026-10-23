@@ -58,7 +58,9 @@ export interface GotoAnchorBehaviors extends InDesignEdition.GotoAnchorBehaviors
    * * To convert this proxy into a standard JavaScript array of individual objects, call `.getElements()` on the result.
    * * A range of text (`characters`, `words`, ...) is one piece of text: its reads are
    * one-element arrays, `story.characters.itemByRange(2, 5).contents` → `['cdef']` (which prints
-   * as `cdef`), and `parentStory` → `[story]`. Take `[0]`, or `getElements()` for the characters.
+   * as `cdef`), and `parentStory` → `[story]`: take `[0]`. `getElements()` resolves the whole range
+   * to a single `Text` (`contents` a plain string), the form to pass on; its `characters` are the
+   * individual characters.
    * Per-item members such as `parentTextFrames` give one array per item.
    * @param from The object or index at the beginning of the range.
    * @param to The object or index at the end of the range.

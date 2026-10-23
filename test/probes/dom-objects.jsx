@@ -48,8 +48,10 @@ function main() {
         var story = page.textFrames.add({ geometricBounds: [40, 0, 60, 30], contents: 'abcdefghij' }).parentStory;
         var range = story.characters.itemByRange(2, 5);
         var c = range.contents;
-        return [range.constructor.name, String(range), c instanceof Array, c.length, c[0], range.parentStory instanceof Array].join('|');
-    }, 'Character|[object Text]|true|1|cdef|true');
+        var els = range.getElements();
+        return [range.constructor.name, String(range), c instanceof Array, c.length, c[0], range.parentStory instanceof Array,
+            els.length, els[0].constructor.name, typeof els[0].contents, els[0].characters.length].join('|');
+    }, 'Character|[object Text]|true|1|cdef|true|1|Text|string|4');
     probe('everyItem() constructor is the item class', function () { return doc.pages.everyItem().constructor.name; }, 'Page');
     probe('properties reads an object', function () { return typeof page.properties; }, 'object');
     probe('reflect is a read-only key on every object', function () { var o = {}; o.reflect = 1; }, didThrow);
