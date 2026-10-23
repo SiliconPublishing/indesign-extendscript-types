@@ -1,5 +1,12 @@
 # Changelog
 
+## 21.6.2
+
+- `itemByRange` on text: corrected documentation. `getElements()` resolves a text range to a single
+  `Text` (its `contents` a plain string), not to the individual characters; those are its
+  `characters`. Measured for all eight text collections on InDesign and InDesign Server 21.6, and
+  already typed that way (`Text[]`).
+
 ## 21.6.1
 
 Fixes from migrating a 60k-line ExtendScript codebase, each measured on InDesign 21.6 and

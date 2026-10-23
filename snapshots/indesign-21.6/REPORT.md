@@ -22,7 +22,7 @@ declaration trees (`types/`, `flat/`) on every `npm test`.
 | Object classes read at runtime | 416 (98.3%) | 423 |
 | Members read (class.property pairs) | 16112 | |
 | Writable members tried | 8246 | |
-| Behaviour probes (test/probes) | 117 in 7 files | |
+| Behaviour probes (test/probes) | 118 in 7 files | |
 | Property reads/writes that crash InDesign | 9 | |
 
 Reads and writes that crash InDesign (documented on the declarations; skipped by the samplers).

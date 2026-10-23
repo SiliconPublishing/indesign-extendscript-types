@@ -28,3 +28,6 @@ var vbAlias = ScriptLanguage.visualBasic;
 // A text range reads one-element arrays.
 var range = page.textFrames[0].parentStory.characters.itemByRange(2, 5);
 var contents = range.contents[0];
+// getElements() resolves the range to one Text.
+var whole: InDesign.Text = range.getElements()[0];
+var wordRange: InDesign.Text[] = page.textFrames[0].parentStory.words.itemByRange(0, 1).getElements();

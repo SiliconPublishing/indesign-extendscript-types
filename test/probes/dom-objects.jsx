@@ -52,6 +52,17 @@ function main() {
         return [range.constructor.name, String(range), c instanceof Array, c.length, c[0], range.parentStory instanceof Array,
             els.length, els[0].constructor.name, typeof els[0].contents, els[0].characters.length].join('|');
     }, 'Character|[object Text]|true|1|cdef|true|1|Text|string|4');
+    probe('a range of any text collection resolves to one Text', function () {
+        var story = page.textFrames.add({ geometricBounds: [70, 0, 200, 200], contents: 'one two\rthree four' }).parentStory;
+        var kinds = ['characters', 'words', 'lines', 'paragraphs', 'textStyleRanges', 'insertionPoints', 'texts', 'textColumns'];
+        var out = [];
+        for (var i = 0; i < kinds.length; i++) {
+            var c = story[kinds[i]];
+            var els = c.itemByRange(0, c.length > 1 ? 1 : 0).getElements();
+            out.push(els.length + els[0].constructor.name);
+        }
+        return out.join(',');
+    }, '1Text,1Text,1Text,1Text,1Text,1Text,1Text,1Text');
     probe('everyItem() constructor is the item class', function () { return doc.pages.everyItem().constructor.name; }, 'Page');
     probe('properties reads an object', function () { return typeof page.properties; }, 'object');
     probe('reflect is a read-only key on every object', function () { var o = {}; o.reflect = 1; }, didThrow);
