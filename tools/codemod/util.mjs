@@ -9,3 +9,10 @@ export function ensureImport(sf, name, modulePath, src) {
     if (!spec.startsWith('.')) spec = `./${spec}`;
     sf.addImportDeclaration({ isTypeOnly: true, namedImports: [name], moduleSpecifier: spec });
 }
+
+/** ts-morph indents a type alias it adds to an enumeration's namespace; upstream writes them at column 0. */
+export function alignEnumAliases(sf) {
+    const text = sf.getFullText();
+    const aligned = text.replace(/^ +(type \w+ = \w+;)$/gm, '$1');
+    if (aligned !== text) sf.replaceWithText(aligned);
+}

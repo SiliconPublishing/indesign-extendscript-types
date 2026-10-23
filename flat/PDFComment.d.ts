@@ -108,15 +108,15 @@ export interface PDFComment extends InDesignEdition.PDFComment, InDesignPlugins.
    */
   readonly index: number;
   /**
-       * Indicates whether the underlying InDesign DOM object still exists and is valid.
-       * Returns `false` if the object has been deleted, closed, or invalidated.
-       */
-      readonly isValid: boolean;
-      /**
-       * Reflection on this object: its class name and its properties and methods, as the scripting
-       * dictionary describes them.
-       */
-      readonly reflect: Reflection;
+   * Indicates whether the underlying InDesign DOM object still exists and is valid.
+   * Returns `false` if the object has been deleted, closed, or invalidated.
+   */
+  readonly isValid: boolean;
+  /**
+   * Reflection on this object: its class name and its properties and methods, as the scripting
+   * dictionary describes them.
+   */
+  readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -143,9 +143,9 @@ export interface PDFComment extends InDesignEdition.PDFComment, InDesignPlugins.
    */
   toSpecifier(): string;
   /**
-       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
-       */
-      toString(): string;
+     * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+     */
+    toString(): string;
   /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */
@@ -244,15 +244,15 @@ export interface PDFCommentPlural extends InDesignEdition.PDFCommentPlural, InDe
    */
   readonly index: (number)[];
   /**
-       * Indicates whether the underlying InDesign DOM object still exists and is valid.
-       * Returns `false` if the object has been deleted, closed, or invalidated.
-       */
-      readonly isValid: boolean;
-      /**
-       * Reflection on this object: its class name and its properties and methods, as the scripting
-       * dictionary describes them.
-       */
-      readonly reflect: Reflection;
+   * Indicates whether the underlying InDesign DOM object still exists and is valid.
+   * Returns `false` if the object has been deleted, closed, or invalidated.
+   */
+  readonly isValid: boolean;
+  /**
+   * Reflection on this object: its class name and its properties and methods, as the scripting
+   * dictionary describes them.
+   */
+  readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -279,9 +279,9 @@ export interface PDFCommentPlural extends InDesignEdition.PDFCommentPlural, InDe
    */
   toSpecifier(): string;
   /**
-       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
-       */
-      toString(): string;
+     * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+     */
+    toString(): string;
   /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */

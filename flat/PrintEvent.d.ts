@@ -21,15 +21,15 @@ import type { EventPhases } from './Enums/EventPhases';
  */
 export interface PrintEvent extends InDesignEdition.PrintEvent, InDesignPlugins.PrintEvent<'single'> {
   /**
-       * Indicates whether the underlying InDesign DOM object still exists and is valid.
-       * Returns `false` if the object has been deleted, closed, or invalidated.
-       */
-      readonly isValid: boolean;
-      /**
-       * Reflection on this object: its class name and its properties and methods, as the scripting
-       * dictionary describes them.
-       */
-      readonly reflect: Reflection;
+   * Indicates whether the underlying InDesign DOM object still exists and is valid.
+   * Returns `false` if the object has been deleted, closed, or invalidated.
+   */
+  readonly isValid: boolean;
+  /**
+   * Reflection on this object: its class name and its properties and methods, as the scripting
+   * dictionary describes them.
+   */
+  readonly reflect: Reflection;
   /**
    * A snapshot of every editable property on this object.
    *
@@ -52,9 +52,9 @@ export interface PrintEvent extends InDesignEdition.PrintEvent, InDesignPlugins.
    */
   toSpecifier(): string;
   /**
-       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
-       */
-      toString(): string;
+     * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+     */
+    toString(): string;
   /**
    * The index of the object within its containing parent.
    */
@@ -100,15 +100,15 @@ export interface PrintEvent extends InDesignEdition.PrintEvent, InDesignPlugins.
  */
 export interface PrintEventPlural extends InDesignEdition.PrintEventPlural, InDesignPlugins.PrintEvent<'plural'> {
   /**
-       * Indicates whether the underlying InDesign DOM object still exists and is valid.
-       * Returns `false` if the object has been deleted, closed, or invalidated.
-       */
-      readonly isValid: boolean;
-      /**
-       * Reflection on this object: its class name and its properties and methods, as the scripting
-       * dictionary describes them.
-       */
-      readonly reflect: Reflection;
+   * Indicates whether the underlying InDesign DOM object still exists and is valid.
+   * Returns `false` if the object has been deleted, closed, or invalidated.
+   */
+  readonly isValid: boolean;
+  /**
+   * Reflection on this object: its class name and its properties and methods, as the scripting
+   * dictionary describes them.
+   */
+  readonly reflect: Reflection;
   /**
    * A snapshot of every editable property on this object.
    *
@@ -131,9 +131,9 @@ export interface PrintEventPlural extends InDesignEdition.PrintEventPlural, InDe
    */
   toSpecifier(): string;
   /**
-       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
-       */
-      toString(): string;
+     * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+     */
+    toString(): string;
   /**
    * The index of the object within its containing parent.
    */

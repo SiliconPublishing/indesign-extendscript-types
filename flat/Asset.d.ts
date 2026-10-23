@@ -89,15 +89,15 @@ export interface Asset extends InDesignEdition.Asset, InDesignPlugins.Asset<'sin
    */
   readonly index: number;
   /**
-       * Indicates whether the underlying InDesign DOM object still exists and is valid.
-       * Returns `false` if the object has been deleted, closed, or invalidated.
-       */
-      readonly isValid: boolean;
-      /**
-       * Reflection on this object: its class name and its properties and methods, as the scripting
-       * dictionary describes them.
-       */
-      readonly reflect: Reflection;
+   * Indicates whether the underlying InDesign DOM object still exists and is valid.
+   * Returns `false` if the object has been deleted, closed, or invalidated.
+   */
+  readonly isValid: boolean;
+  /**
+   * Reflection on this object: its class name and its properties and methods, as the scripting
+   * dictionary describes them.
+   */
+  readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -124,9 +124,9 @@ export interface Asset extends InDesignEdition.Asset, InDesignPlugins.Asset<'sin
    */
   toSpecifier(): string;
   /**
-       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
-       */
-      toString(): string;
+     * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+     */
+    toString(): string;
   /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */
@@ -214,15 +214,15 @@ export interface AssetPlural extends InDesignEdition.AssetPlural, InDesignPlugin
    */
   readonly index: (number)[];
   /**
-       * Indicates whether the underlying InDesign DOM object still exists and is valid.
-       * Returns `false` if the object has been deleted, closed, or invalidated.
-       */
-      readonly isValid: boolean;
-      /**
-       * Reflection on this object: its class name and its properties and methods, as the scripting
-       * dictionary describes them.
-       */
-      readonly reflect: Reflection;
+   * Indicates whether the underlying InDesign DOM object still exists and is valid.
+   * Returns `false` if the object has been deleted, closed, or invalidated.
+   */
+  readonly isValid: boolean;
+  /**
+   * Reflection on this object: its class name and its properties and methods, as the scripting
+   * dictionary describes them.
+   */
+  readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -249,9 +249,9 @@ export interface AssetPlural extends InDesignEdition.AssetPlural, InDesignPlugin
    */
   toSpecifier(): string;
   /**
-       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
-       */
-      toString(): string;
+     * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+     */
+    toString(): string;
   /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */

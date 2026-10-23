@@ -1,5 +1,23 @@
 # Changelog
 
+## 21.6.1
+
+Fixes from migrating a 60k-line ExtendScript codebase, each measured on InDesign 21.6 and
+InDesign Server 21.6 (probes in `test/probes/`):
+
+- **Collection `length` is `number`** again. 21.6.0 declared `number | NothingEnum.NOTHING` for
+  every collection, because the dictionary says `CellStyles`/`CharacterStyles.length` "Can return"
+  NothingEnum; a count never reads back NOTHING (and throws once its parent is gone).
+- **Bounds read as `InDesign.Bounds`** (four numbers) instead of `number[]`: `geometricBounds`,
+  `visibleBounds`, hyperlink destinations' `viewBounds`. One item's bounds can be assigned to
+  another's.
+- **`GradientStop.stopColor`** takes a `Tint` or a `Swatch`, and reads back a `Tint`.
+- **`ScriptLanguage.VISUAL_BASIC`** (and `visualBasic`) is back: Windows only, so absent from the
+  macOS dictionary the declarations are measured against.
+- Documented: text ranges (`itemByRange` on text) read one-element arrays; edition casts reach one
+  object only; `$.global` for desktop-only globals; a migration section in the README.
+- Generated declarations are indented like upstream's (two spaces).
+
 ## 21.6.0 (indesign-extendscript-types)
 
 First ExtendScript edition, converted from indesign-uxp-types 1.0.0 and measured against

@@ -121,6 +121,19 @@
       "kind": "lib-global",
       "member": "^globalThis$",
       "reason": "TypeScript's own intrinsic; not declared by lib/ and not usable in ExtendScript."
+    },
+    {
+      "kind": "read-type",
+      "class": "^(CellStyles|CharacterStyles)$",
+      "member": "^length$",
+      "reason": "The dictionary says these counts \"Can return NothingEnum\"; a collection length is always a number, and throws once the parent is gone.",
+      "probe": "dom-objects: collection length is a number, even where the dictionary says it can be NOTHING"
+    },
+    {
+      "kind": "enum-member",
+      "class": "^ScriptLanguage$",
+      "member": "^(VISUAL_BASIC|visualBasic)$",
+      "reason": "Windows only (VBScript); the snapshots are measured on macOS, whose dictionary lacks it. Kept from upstream (tools/codemod PLATFORM_ONLY)."
     }
   ]
 }

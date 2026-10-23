@@ -88,15 +88,15 @@ export interface Color extends InDesignEdition.Color, InDesignPlugins.Color<'sin
    */
   readonly index: number;
   /**
-       * Indicates whether the underlying InDesign DOM object still exists and is valid.
-       * Returns `false` if the object has been deleted, closed, or invalidated.
-       */
-      readonly isValid: boolean;
-      /**
-       * Reflection on this object: its class name and its properties and methods, as the scripting
-       * dictionary describes them.
-       */
-      readonly reflect: Reflection;
+   * Indicates whether the underlying InDesign DOM object still exists and is valid.
+   * Returns `false` if the object has been deleted, closed, or invalidated.
+   */
+  readonly isValid: boolean;
+  /**
+   * Reflection on this object: its class name and its properties and methods, as the scripting
+   * dictionary describes them.
+   */
+  readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -123,9 +123,9 @@ export interface Color extends InDesignEdition.Color, InDesignPlugins.Color<'sin
    */
   toSpecifier(): string;
   /**
-       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
-       */
-      toString(): string;
+     * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+     */
+    toString(): string;
   /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */
@@ -227,15 +227,15 @@ export interface ColorPlural extends InDesignEdition.ColorPlural, InDesignPlugin
    */
   readonly index: (number)[];
   /**
-       * Indicates whether the underlying InDesign DOM object still exists and is valid.
-       * Returns `false` if the object has been deleted, closed, or invalidated.
-       */
-      readonly isValid: boolean;
-      /**
-       * Reflection on this object: its class name and its properties and methods, as the scripting
-       * dictionary describes them.
-       */
-      readonly reflect: Reflection;
+   * Indicates whether the underlying InDesign DOM object still exists and is valid.
+   * Returns `false` if the object has been deleted, closed, or invalidated.
+   */
+  readonly isValid: boolean;
+  /**
+   * Reflection on this object: its class name and its properties and methods, as the scripting
+   * dictionary describes them.
+   */
+  readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -262,9 +262,9 @@ export interface ColorPlural extends InDesignEdition.ColorPlural, InDesignPlugin
    */
   toSpecifier(): string;
   /**
-       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
-       */
-      toString(): string;
+     * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+     */
+    toString(): string;
   /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */
@@ -369,15 +369,15 @@ export interface PlainColor {
    */
   readonly index: number;
   /**
-       * Indicates whether the underlying InDesign DOM object still exists and is valid.
-       * Returns `false` if the object has been deleted, closed, or invalidated.
-       */
-      readonly isValid: boolean;
-      /**
-       * Reflection on this object: its class name and its properties and methods, as the scripting
-       * dictionary describes them.
-       */
-      readonly reflect: Reflection;
+   * Indicates whether the underlying InDesign DOM object still exists and is valid.
+   * Returns `false` if the object has been deleted, closed, or invalidated.
+   */
+  readonly isValid: boolean;
+  /**
+   * Reflection on this object: its class name and its properties and methods, as the scripting
+   * dictionary describes them.
+   */
+  readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -404,9 +404,9 @@ export interface PlainColor {
    */
   toSpecifier(): string;
   /**
-       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
-       */
-      toString(): string;
+     * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+     */
+    toString(): string;
   /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */
@@ -511,15 +511,15 @@ export interface PlainColorPlural {
    */
   readonly index: (number)[];
   /**
-       * Indicates whether the underlying InDesign DOM object still exists and is valid.
-       * Returns `false` if the object has been deleted, closed, or invalidated.
-       */
-      readonly isValid: boolean;
-      /**
-       * Reflection on this object: its class name and its properties and methods, as the scripting
-       * dictionary describes them.
-       */
-      readonly reflect: Reflection;
+   * Indicates whether the underlying InDesign DOM object still exists and is valid.
+   * Returns `false` if the object has been deleted, closed, or invalidated.
+   */
+  readonly isValid: boolean;
+  /**
+   * Reflection on this object: its class name and its properties and methods, as the scripting
+   * dictionary describes them.
+   */
+  readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -546,9 +546,9 @@ export interface PlainColorPlural {
    */
   toSpecifier(): string;
   /**
-       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
-       */
-      toString(): string;
+     * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+     */
+    toString(): string;
   /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */

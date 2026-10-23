@@ -51,6 +51,7 @@ import type { Event } from './Event';
 import type { FilePath } from './_base/Types';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+import type { Bounds } from './_base/Types';
 import type { BoundsArray } from './_base/Types';
 import type { Flip } from './Enums/Flip';
 import type { AnchorPoint } from './Enums/AnchorPoint';
@@ -153,15 +154,15 @@ export interface PageItemsPlural<TParent = PageItemParent> {
    */
   extractLabel(key: string): (string)[];
   /**
-       * Indicates whether the underlying InDesign DOM object still exists and is valid.
-       * Returns `false` if the object has been deleted, closed, or invalidated.
-       */
-      readonly isValid: boolean;
-      /**
-       * Reflection on this object: its class name and its properties and methods, as the scripting
-       * dictionary describes them.
-       */
-      readonly reflect: Reflection;
+   * Indicates whether the underlying InDesign DOM object still exists and is valid.
+   * Returns `false` if the object has been deleted, closed, or invalidated.
+   */
+  readonly isValid: boolean;
+  /**
+   * Reflection on this object: its class name and its properties and methods, as the scripting
+   * dictionary describes them.
+   */
+  readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -188,9 +189,9 @@ export interface PageItemsPlural<TParent = PageItemParent> {
    */
   toSpecifier(): string;
   /**
-       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
-       */
-      toString(): string;
+     * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+     */
+    toString(): string;
   /**
    * The index of the object within its containing parent.
    */
@@ -199,14 +200,14 @@ export interface PageItemsPlural<TParent = PageItemParent> {
    * Bounds excluding stroke width, ordered `[y1, x1, y2, x2]`. Reads in the
    * current ruler units; assignment accepts unit strings such as `'12pt'`.
    */
-  get geometricBounds(): (number[])[];
+  get geometricBounds(): (Bounds)[];
   set geometricBounds(value: BoundsArray);
   /**
    * Bounds including stroke width (and drop shadows / effects), ordered
    * `[y1, x1, y2, x2]`. Wider than {@link geometricBounds} by the stroke's
    * outer extent.
    */
-  get visibleBounds(): (number[])[];
+  get visibleBounds(): (Bounds)[];
   set visibleBounds(value: BoundsArray);
   /** Rotation applied to the item, in degrees. Range `-360` to `360`. */
   get rotationAngle(): (number)[];
@@ -726,15 +727,18 @@ export interface PageItemsPluralPortable<TParent = PageItemParent> {
  * @collection PageItem
  */
 export interface PageItems<TParent = PageItemParent> extends InDesignEdition.PageItems<TParent>, InDesignPlugins.PageItems {
-  /** The number of objects in the collection. */
-      readonly length: number | NothingEnum.NOTHING;
-      /**
-       * The object at the given position: `doc.pages[0]`. Out of range gives an invalid object, not
-       * `undefined` (check `isValid`).
-       */
-      readonly [index: number]: AnyPageItemOf<TParent>;
-      /** Reflection on the collection. */
-      readonly reflect: Reflection;
+  /**
+   * The number of objects in the collection. Reading it throws once the collection's parent is gone
+   * (probe "collection length throws once its parent is gone").
+   */
+  readonly length: number;
+  /**
+   * The object at the given position: `doc.pages[0]`. Out of range gives an invalid object, not
+   * `undefined` (check `isValid`).
+   */
+  readonly [index: number]: AnyPageItemOf<TParent>;
+  /** Reflection on the collection. */
+  readonly reflect: Reflection;
   /** Displays the number of elements in the Collection. */
   count(): number;
   /**
@@ -757,6 +761,10 @@ export interface PageItems<TParent = PageItemParent> extends InDesignEdition.Pag
    * * Names are accepted, as with {@link item}: `layers.itemByRange('Top', 'Bottom')`.
    * * Like `everyItem()`, this returns a plural proxy. Operations applied to this proxy are broadcast directly within the native engine for maximum performance.
    * * To convert this proxy into a standard JavaScript array of individual objects, call `.getElements()` on the result.
+   * * A range of text (`characters`, `words`, ...) is one piece of text: its reads are
+   * one-element arrays, `story.characters.itemByRange(2, 5).contents` → `['cdef']` (which prints
+   * as `cdef`), and `parentStory` → `[story]`. Take `[0]`, or `getElements()` for the characters.
+   * Per-item members such as `parentTextFrames` give one array per item.
    * @param from The object or index at the beginning of the range.
    * @param to The object or index at the end of the range.
    * @returns A plural proxy representing the items in the resolved range.
@@ -811,7 +819,7 @@ export interface PageItems<TParent = PageItemParent> extends InDesignEdition.Pag
   /** Generates a string which, if executed, will return the Collection. */
   toSource(): string;
   /** `"[object CollectionName]"`, such as `"[object Pages]"`. */
-      toString(): string;
+    toString(): string;
   /** * Returns the object with the specified ID.
    * * If the item does not exist, it returns an unresolved proxy (check `.isValid`).
    * @param id The unique ID.

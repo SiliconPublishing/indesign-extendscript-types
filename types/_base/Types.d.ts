@@ -89,6 +89,13 @@ export type BoundsArray = [
 ];
 
 /**
+ * Bounds as InDesign reads them back: always four numbers in the current measurement units,
+ * `[y1, x1, y2, x2]` (top, left, bottom, right). Assignable to {@link BoundsArray}, so one item's
+ * bounds can be copied onto another.
+ */
+export type Bounds = [y1: number, x1: number, y2: number, x2: number];
+
+/**
  * Whether a DOM object is a single resolved object or a plural proxy standing
  * in for many of them.
  */

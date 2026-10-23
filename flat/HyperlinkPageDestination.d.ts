@@ -9,7 +9,7 @@ import type { Mode, Read } from './_base/Types';
 import type { LabelableEventDOMObject, IndexedDOMObject, NamableDOMObject } from './_base/DomObjects';
 import type { Document } from './Document';
 import type { Page } from './Page';
-import type { BoundsArray } from './_base/Types';
+import type { Bounds, BoundsArray } from './_base/Types';
 import type { HyperlinkDestinationPageSetting } from './Enums/HyperlinkDestinationPageSetting';
 import type { Hyperlink } from './Hyperlink';
 import type { Events } from './Events';
@@ -86,15 +86,15 @@ export interface HyperlinkPageDestination extends InDesignEdition.HyperlinkPageD
    */
   readonly index: number;
   /**
-       * Indicates whether the underlying InDesign DOM object still exists and is valid.
-       * Returns `false` if the object has been deleted, closed, or invalidated.
-       */
-      readonly isValid: boolean;
-      /**
-       * Reflection on this object: its class name and its properties and methods, as the scripting
-       * dictionary describes them.
-       */
-      readonly reflect: Reflection;
+   * Indicates whether the underlying InDesign DOM object still exists and is valid.
+   * Returns `false` if the object has been deleted, closed, or invalidated.
+   */
+  readonly isValid: boolean;
+  /**
+   * Reflection on this object: its class name and its properties and methods, as the scripting
+   * dictionary describes them.
+   */
+  readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -121,9 +121,9 @@ export interface HyperlinkPageDestination extends InDesignEdition.HyperlinkPageD
    */
   toSpecifier(): string;
   /**
-       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
-       */
-      toString(): string;
+     * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+     */
+    toString(): string;
   /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */
@@ -153,7 +153,7 @@ export interface HyperlinkPageDestination extends InDesignEdition.HyperlinkPageD
    * The view rectangle, ordered `[y1, x1, y2, x2]` (top, left, bottom,
    * right). Only meaningful when {@link viewSetting} is fixed.
    */
-  get viewBounds(): number[];
+  get viewBounds(): Bounds;
   set viewBounds(value: BoundsArray);
   /**
    * The zoom percentage used when this destination is reached. Range `5` to
@@ -230,15 +230,15 @@ export interface HyperlinkPageDestinationPlural extends InDesignEdition.Hyperlin
    */
   readonly index: (number)[];
   /**
-       * Indicates whether the underlying InDesign DOM object still exists and is valid.
-       * Returns `false` if the object has been deleted, closed, or invalidated.
-       */
-      readonly isValid: boolean;
-      /**
-       * Reflection on this object: its class name and its properties and methods, as the scripting
-       * dictionary describes them.
-       */
-      readonly reflect: Reflection;
+   * Indicates whether the underlying InDesign DOM object still exists and is valid.
+   * Returns `false` if the object has been deleted, closed, or invalidated.
+   */
+  readonly isValid: boolean;
+  /**
+   * Reflection on this object: its class name and its properties and methods, as the scripting
+   * dictionary describes them.
+   */
+  readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -265,9 +265,9 @@ export interface HyperlinkPageDestinationPlural extends InDesignEdition.Hyperlin
    */
   toSpecifier(): string;
   /**
-       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
-       */
-      toString(): string;
+     * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+     */
+    toString(): string;
   /**
    * The name of the object, and what the containing collection's `itemByName` looks up.
    */
@@ -297,7 +297,7 @@ export interface HyperlinkPageDestinationPlural extends InDesignEdition.Hyperlin
    * The view rectangle, ordered `[y1, x1, y2, x2]` (top, left, bottom,
    * right). Only meaningful when {@link viewSetting} is fixed.
    */
-  get viewBounds(): (number[])[];
+  get viewBounds(): (Bounds)[];
   set viewBounds(value: BoundsArray);
   /**
    * The zoom percentage used when this destination is reached. Range `5` to

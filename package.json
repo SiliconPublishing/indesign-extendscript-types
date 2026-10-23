@@ -1,6 +1,6 @@
 {
   "name": "indesign-extendscript-types",
-  "version": "21.6.0",
+  "version": "21.6.1",
   "description": "TypeScript declarations for the Adobe InDesign ExtendScript DOM, converted from indesign-uxp-types and measured against InDesign.",
   "author": "Jeremiah Lynn",
   "license": "MIT",

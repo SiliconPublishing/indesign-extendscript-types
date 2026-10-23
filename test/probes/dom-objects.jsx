@@ -27,6 +27,29 @@ function main() {
     probe('collection toString()', function () { return doc.pages.toString(); }, '[object Pages]');
     probe('collection reflect', function () { return doc.pages.reflect.name; }, 'Pages');
     probe('everyItem() reads arrays', function () { return doc.pages.everyItem().name instanceof Array; }, true);
+    probe('collection length is a number, even where the dictionary says it can be NOTHING', function () {
+        return [typeof doc.characterStyles.length, typeof doc.cellStyles.length, doc.pages[0].polygons.length].join('/');
+    }, 'number/number/0');
+    probe('collection length throws once its parent is gone', function () {
+        var tf = page.textFrames.add({ geometricBounds: [0, 0, 10, 10], contents: 'x' });
+        var texts = tf.parentStory.texts;
+        tf.remove();
+        return texts.length;
+    }, function (a) { return didThrow(a); });
+    probe('bounds always have four entries', function () {
+        var r = page.rectangles.add({ geometricBounds: [0, 0, 10, 10] });
+        var g = page.groups.add([page.ovals.add({ geometricBounds: [20, 0, 30, 10] }), page.ovals.add({ geometricBounds: [20, 20, 30, 30] })]);
+        var d = doc.hyperlinkPageDestinations.add(page);
+        var lengths = [r.geometricBounds.length, r.visibleBounds.length, g.geometricBounds.length, g.visibleBounds.length, d.viewBounds.length].join(',');
+        r.geometricBounds = g.geometricBounds;
+        return lengths + ' ' + r.geometricBounds.join(',');
+    }, function (a) { return /^4,4,4,4,4 20,0,30,30$/.test(a); });
+    probe('a text range reads one-element arrays (one Text), not single values', function () {
+        var story = page.textFrames.add({ geometricBounds: [40, 0, 60, 30], contents: 'abcdefghij' }).parentStory;
+        var range = story.characters.itemByRange(2, 5);
+        var c = range.contents;
+        return [range.constructor.name, String(range), c instanceof Array, c.length, c[0], range.parentStory instanceof Array].join('|');
+    }, 'Character|[object Text]|true|1|cdef|true');
     probe('everyItem() constructor is the item class', function () { return doc.pages.everyItem().constructor.name; }, 'Page');
     probe('properties reads an object', function () { return typeof page.properties; }, 'object');
     probe('reflect is a read-only key on every object', function () { var o = {}; o.reflect = 1; }, didThrow);

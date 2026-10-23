@@ -46,6 +46,14 @@ function main() {
         app.generalPreferences.useApplicationFrame = v;
         return 'ok';
     }, 'ok');
+    probe('a gradient stop takes a tint or a swatch', function () {
+        var black = doc.swatches.itemByName('Black');
+        var stop = doc.gradients.add({ name: 'Probe Gradient' }).gradientStops[0];
+        stop.stopColor = doc.tints.add(black, { tintValue: 40 });
+        var tint = stop.stopColor.constructor.name;
+        stop.stopColor = black;
+        return black.constructor.name + ' ' + tint + ' ' + stop.stopColor.constructor.name;
+    }, 'Swatch Tint Color');
     probe('motionPathPoints reads an array', function () {
         var o = doc.pages[0].ovals.add({ geometricBounds: [0, 0, 10, 10] });
         return o.animationSettings.motionPathPoints instanceof Array;

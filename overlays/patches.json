@@ -54,6 +54,66 @@
       "probe": "allowlist: MasterSpread.primaryTextFrame rejects NothingEnum.NOTHING",
       "find": "Key extends 'primaryTextFrame' ? PageItem | string | NothingEnum",
       "replace": "Key extends 'primaryTextFrame' ? PageItem | string"
+    },
+    {
+      "file": "GradientStop.d.ts",
+      "probe": "styles-and-params: a gradient stop takes a tint or a swatch",
+      "find": "  get stopColor(): Read<M, MixedInk | Color>;\n  set stopColor(value: MixedInk | Color);",
+      "replace": "  get stopColor(): Read<M, MixedInk | Color | import('./Tint').Tint>;\n  set stopColor(value: MixedInk | Color | import('./Tint').Tint | import('./Swatch').Swatch);"
+    },
+    {
+      "file": "_base/PageItemMixins.d.ts",
+      "probe": "dom-objects: bounds always have four entries",
+      "find": "  get geometricBounds(): Read<M, number[]>;",
+      "replace": "  get geometricBounds(): Read<M, Bounds>;"
+    },
+    {
+      "file": "_base/PageItemMixins.d.ts",
+      "probe": "dom-objects: bounds always have four entries",
+      "find": "  get visibleBounds(): Read<M, number[]>;",
+      "replace": "  get visibleBounds(): Read<M, Bounds>;"
+    },
+    {
+      "file": "HyperlinkPageDestination.d.ts",
+      "probe": "dom-objects: bounds always have four entries",
+      "find": "  get viewBounds(): Read<M, number[]>;",
+      "replace": "  get viewBounds(): Read<M, Bounds>;"
+    },
+    {
+      "file": "HyperlinkExternalPageDestination.d.ts",
+      "probe": "dom-objects: bounds always have four entries",
+      "find": "  get viewBounds(): Read<M, number[]>;",
+      "replace": "  get viewBounds(): Read<M, Bounds>;"
+    },
+    {
+      "file": "_base/Types.d.ts",
+      "probe": "dom-objects: bounds always have four entries",
+      "find": "export type BoundsArray = [\n  MeasurementValue,\n  MeasurementValue,\n  MeasurementValue,\n  MeasurementValue,\n];",
+      "replace": "export type BoundsArray = [\n  MeasurementValue,\n  MeasurementValue,\n  MeasurementValue,\n  MeasurementValue,\n];\n\n/**\n * Bounds as InDesign reads them back: always four numbers in the current measurement units,\n * `[y1, x1, y2, x2]` (top, left, bottom, right). Assignable to {@link BoundsArray}, so one item's\n * bounds can be copied onto another.\n */\nexport type Bounds = [y1: number, x1: number, y2: number, x2: number];"
+    },
+    {
+      "file": "_base/PageItemMixins.d.ts",
+      "probe": "dom-objects: bounds always have four entries",
+      "find": "import type { BoundsArray, MeasurementValue } from './Types';",
+      "replace": "import type { Bounds, BoundsArray, MeasurementValue } from './Types';"
+    },
+    {
+      "file": "HyperlinkPageDestination.d.ts",
+      "probe": "dom-objects: bounds always have four entries",
+      "find": "import type { BoundsArray } from './_base/Types';",
+      "replace": "import type { Bounds, BoundsArray } from './_base/Types';"
+    },
+    {
+      "file": "HyperlinkExternalPageDestination.d.ts",
+      "probe": "dom-objects: bounds always have four entries",
+      "find": "import type { FilePath, File, BoundsArray } from './_base/Types';",
+      "replace": "import type { FilePath, File, Bounds, BoundsArray } from './_base/Types';"
+    },
+    {
+      "file": "_base/Collections.d.ts",
+      "probe": "dom-objects: a text range reads one-element arrays (one Text), not single values",
+      "find": "   * * To convert this proxy into a standard JavaScript array of individual objects, call `.getElements()` on the result.\n   * @param from The object or index at the beginning of the range.",
+      "replace": "   * * To convert this proxy into a standard JavaScript array of individual objects, call `.getElements()` on the result.\n   * * A range of text (`characters`, `words`, ...) is one piece of text: its reads are\n   * one-element arrays, `story.characters.itemByRange(2, 5).contents` → `['cdef']` (which prints\n   * as `cdef`), and `parentStory` → `[story]`. Take `[0]`, or `getElements()` for the characters.\n   * Per-item members such as `parentTextFrames` give one array per item.\n   * @param from The object or index at the beginning of the range."
     }
   ]
 }

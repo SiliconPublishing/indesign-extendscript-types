@@ -56,7 +56,10 @@ export function widenByRuntime(project, src, root, snapshot) {
     const observations = { ...runtime.samples };
     const RETURNS = { String: 'string', 'NothingEnum enumerator': `enum:${dict.NothingEnum.enumValues.NOTHING}:NOTHING`, File: 'File' };
     for (const c of Object.values(dict)) {
-        if (c.kind === 'enum') continue;
+        // Not for collections: CellStyles/CharacterStyles.length "Can return NothingEnum" in the
+        // dictionary, but a count never reads back NOTHING (probe "collection length"), and
+        // length is declared once for every collection.
+        if (c.kind === 'enum' || c.methods.some((m) => m.name === 'everyItem')) continue;
         const chain = [];
         for (let k = c; k; k = k.superclass ? dict[k.superclass] : null) chain.push(k);
         for (const p of chain.flatMap((k) => k.props)) {

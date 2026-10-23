@@ -25,7 +25,7 @@ import { join } from 'node:path';
 import { Node, SyntaxKind } from 'ts-morph';
 import { editionModel } from '../editions/model.mjs';
 import { aliasesFor, importRefs, memberTexts, tsType } from './fill.mjs';
-import { ensureImport } from './util.mjs';
+import { alignEnumAliases, ensureImport } from './util.mjs';
 
 export const EDITIONS = ['Desktop', 'Server', 'Portable'];
 
@@ -334,6 +334,7 @@ export function splitEditions(project, src, root, { desktop: desktopSnapshot, se
             ns?.addTypeAlias({ name: n, type: `${e}_${n}` });
         }
         constDecl.setType(`${constDecl.getTypeNodeOrThrow().getText()} & InDesignEdition.${e}`);
+        alignEnumAliases(sf);
         enumHooks.push({
             name: e,
             Desktop: only.desktop.flatMap((n) => [n, ...aliasesFor(n, desktopAliases[e] ?? [])].map((k) => [k, n])),

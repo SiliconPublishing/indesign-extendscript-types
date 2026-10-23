@@ -28,7 +28,6 @@ import type {
 import type { Table } from './Table';
 import type { LocationOptions } from './Enums/LocationOptions';
 import type { TablePlural } from './Table';
-import type { NothingEnum } from './Enums/NothingEnum';
 import type { PropertiesSetter } from './_base/Properties';
 
 /**
@@ -39,15 +38,18 @@ import type { PropertiesSetter } from './_base/Properties';
  * @collection Table
  */
 export interface Tables extends InDesignEdition.Tables, InDesignPlugins.Tables {
-  /** The number of objects in the collection. */
-      readonly length: number | NothingEnum.NOTHING;
-      /**
-       * The object at the given position: `doc.pages[0]`. Out of range gives an invalid object, not
-       * `undefined` (check `isValid`).
-       */
-      readonly [index: number]: Table;
-      /** Reflection on the collection. */
-      readonly reflect: Reflection;
+  /**
+   * The number of objects in the collection. Reading it throws once the collection's parent is gone
+   * (probe "collection length throws once its parent is gone").
+   */
+  readonly length: number;
+  /**
+   * The object at the given position: `doc.pages[0]`. Out of range gives an invalid object, not
+   * `undefined` (check `isValid`).
+   */
+  readonly [index: number]: Table;
+  /** Reflection on the collection. */
+  readonly reflect: Reflection;
   /** Displays the number of elements in the Collection. */
   count(): number;
   /**
@@ -70,6 +72,10 @@ export interface Tables extends InDesignEdition.Tables, InDesignPlugins.Tables {
    * * Names are accepted, as with {@link item}: `layers.itemByRange('Top', 'Bottom')`.
    * * Like `everyItem()`, this returns a plural proxy. Operations applied to this proxy are broadcast directly within the native engine for maximum performance.
    * * To convert this proxy into a standard JavaScript array of individual objects, call `.getElements()` on the result.
+   * * A range of text (`characters`, `words`, ...) is one piece of text: its reads are
+   * one-element arrays, `story.characters.itemByRange(2, 5).contents` → `['cdef']` (which prints
+   * as `cdef`), and `parentStory` → `[story]`. Take `[0]`, or `getElements()` for the characters.
+   * Per-item members such as `parentTextFrames` give one array per item.
    * @param from The object or index at the beginning of the range.
    * @param to The object or index at the end of the range.
    * @returns A plural proxy representing the items in the resolved range.
@@ -124,7 +130,7 @@ export interface Tables extends InDesignEdition.Tables, InDesignPlugins.Tables {
   /** Generates a string which, if executed, will return the Collection. */
   toSource(): string;
   /** `"[object CollectionName]"`, such as `"[object Pages]"`. */
-      toString(): string;
+    toString(): string;
   /** * Returns the object with the specified ID.
    * * If the item does not exist, it returns an unresolved proxy (check `.isValid`).
    * @param id The unique ID.

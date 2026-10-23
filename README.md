@@ -76,6 +76,12 @@ if (app.name.indexOf('Server') >= 0) (app as InDesignServer.Application).console
 else (app as InDesignDesktop.Application).activeDocument.save();
 ```
 
+A cast reaches one object, not what it returns:
+`(app as InDesignDesktop.Application).scriptPreferences` is the shared `ScriptPreference`, so cast
+that too (`as InDesignDesktop.ScriptPreference`) to reach `userInteractionLevel`. A global only one
+edition has (`UserInteractionLevels`, `LayoutWindow`, ...) is not declared by `portable` at all;
+reach it as `$.global.UserInteractionLevels` inside the guarded branch.
+
 On the desktop and Server entries, members the other edition lacks or takes differently say so in
 their documentation. The editions are measured separately (`snapshots/indesign-<ver>/` and
 `snapshots/indesign-server-<ver>/`); see `REPORT.md` in each for the versions.
@@ -112,6 +118,10 @@ Each line is a probe in `test/probes/` that runs against InDesign.
 - **Files are `File` and `Folder` objects, returned directly**, not promises. `doc.fullName` is a
   `File`, `doc.filePath` a `Folder`, and file parameters take a `File`, a `Folder` or a path string.
   `itemByRange()` takes names too.
+- **Bounds read back as four numbers** (`InDesign.Bounds`) and are written as four numbers or unit
+  strings (`InDesign.BoundsArray`), so `b.geometricBounds = a.geometricBounds` works. The package's
+  helper types (`InDesign.FilePath`, `InDesign.FolderPath`, `InDesign.MeasurementValue`, ...) are
+  under `InDesign.` too, also from JSDoc: `/** @type {InDesign.Bounds} */`.
 - **Unset style attributes read back as `NothingEnum.NOTHING`** (UXP gives `null`), and styles and
   find/change preferences accept it to unset; text objects do not. Many object-valued properties
   can also come back as a string (a swatch name such as `"Text Color"`, a missing font) or `null`
@@ -146,6 +156,29 @@ Each line is a probe in `test/probes/` that runs against InDesign.
 
 In a `.jsx` file, TypeScript does not type the parameter of a function assigned to a property
 (`bt.onResult = function (reply) {}`); add `/** @param {BridgeTalk} reply */` or write `.ts`.
+
+## Migrating from hand-written declarations
+
+What moving a large ExtendScript codebase onto this package takes, beyond fixing what the types
+now catch:
+
+- **`Window`, `Button`, `Group`, `Image`, `Panel`, `StaticText`, `Event` are ScriptUI's.** A JSDoc
+  `@param {Group}` meaning InDesign's group is ScriptUI's type, and the mismatch can degrade a
+  whole module to `any`, hiding its other errors. Write `InDesign.Group`.
+- **Enumerators are objects, not numbers.** `obj[SomeEnum.X]` keys by the enumerator's *name*
+  (its `toString()`), whatever the object's declared index; write `obj[Number(e)]` or
+  `obj[String(e)]` so the key is what you mean.
+- **DOM classes are not constructors.** A helper typed `(cls: abstract new (...args: any[]) => T)`
+  rejects `TextFrame`; accept `DOMClass<T>` as well.
+- **Desktop-only globals in portable code** go through `$.global` (see the editions section).
+- **`lib/typescript.d.ts` already declares `ReturnType`, `Extract`, `Partial`, ...** under `noLib`; a
+  project that declared its own gets duplicate identifiers. Delete them.
+- **`FolderPath` is strict.** InDesign often accepts a `File` where it wants a folder
+  (`app.unpackageUCF`), but the declarations take a `Folder` or a path string, which catches
+  `File`s that were meant to be folders.
+- **ES5 array methods** (`map`, `forEach`, ...) are not declared, as the engine lacks them. A
+  project with its own polyfills declares them with `interface Array<T> { map<U>(...): U[] }`,
+  which merges.
 
 ## Declarations for plugins
 

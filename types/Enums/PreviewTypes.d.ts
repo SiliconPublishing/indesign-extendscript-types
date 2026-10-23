@@ -51,7 +51,7 @@ interface PreviewTypes_TIFF_PREVIEW extends PreviewTypes {
 
 /** Generated from the InDesign 21.6 scripting dictionary (macOS only). */
 interface PreviewTypes_PICT_PREVIEW extends PreviewTypes {
-    readonly [__val]: 1164996724;
+  readonly [__val]: 1164996724;
 }
 
 /*----------------------------------------/
@@ -71,7 +71,7 @@ type NONE = PreviewTypes_NONE;
  * Saves the preview in TIFF format.
  */
 type TIFF_PREVIEW = PreviewTypes_TIFF_PREVIEW;
-    type PICT_PREVIEW = PreviewTypes_PICT_PREVIEW;
+type PICT_PREVIEW = PreviewTypes_PICT_PREVIEW;
 }
 /**
  * Whether a preview image is saved inside the document, and in what format.
@@ -95,6 +95,6 @@ export declare const PreviewTypes: typeof Enumeration & {
    * Saves the preview in TIFF format.
    */
   readonly tiffPreview: PreviewTypes_TIFF_PREVIEW;
-    readonly PICT_PREVIEW: PreviewTypes_PICT_PREVIEW;
-    readonly pictPreview: PreviewTypes_PICT_PREVIEW;
+  readonly PICT_PREVIEW: PreviewTypes_PICT_PREVIEW;
+  readonly pictPreview: PreviewTypes_PICT_PREVIEW;
 }

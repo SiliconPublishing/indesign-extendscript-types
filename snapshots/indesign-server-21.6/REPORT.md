@@ -22,7 +22,7 @@ declaration trees (`types/`, `flat/`) on every `npm test`.
 | Object classes read at runtime | 354 (94.1%) | 376 |
 | Members read (class.property pairs) | 14888 | |
 | Writable members tried | 8061 | |
-| Behaviour probes (test/probes) | 106 in 7 files | |
+| Behaviour probes (test/probes) | 111 in 7 files | |
 | Property reads/writes that crash InDesign | 7 | |
 | Classes or writes not sampled here (see below) | 10 | |
 
@@ -71,14 +71,15 @@ Object classes no fixture object reached, so checked against the dictionary only
 - **param-type**: 229
 - **runtime-roundtrip**: 95 (informational)
 - **write-type**: 25
-- **read-type**: 11
+- **read-type**: 13
 - **runtime-readonly**: 7
 - **params**: 5
 - **runtime-crash**: 4 (informational)
 - **lib-unreflected**: 4
 - **lib-global**: 3
+- **enum-member**: 2
 - **lib-missing**: 2
 
 Every finding that is not informational is explained by an entry in
-`tools/compare/allowlist.json` (17 entries, each with its reason and, where measured,
+`tools/compare/allowlist.json` (19 entries, each with its reason and, where measured,
 its probe); `npm test` fails on any other.

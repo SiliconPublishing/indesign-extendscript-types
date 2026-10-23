@@ -21,8 +21,8 @@ export interface GradientStop<M extends Mode = 'single'>
   getElements(): GradientStop<'single'>[];
 
   /** The swatch applied at this stop — a solid {@link Color} or a {@link MixedInk}. */
-  get stopColor(): Read<M, MixedInk | Color>;
-  set stopColor(value: MixedInk | Color | string);
+  get stopColor(): Read<M, MixedInk | Color | import('./Tint').Tint>;
+  set stopColor(value: MixedInk | Color | import('./Tint').Tint | import('./Swatch').Swatch | string);
 
   /** The position of the stop along the gradient, as a percentage of its length. */
   get location(): Read<M, number>;

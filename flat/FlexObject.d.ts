@@ -77,6 +77,7 @@ import type { Event } from './Event';
 import type { FilePath } from './_base/Types';
 import type { PropertiesGetter } from './_base/Properties';
 import type { PropertiesSetter } from './_base/Properties';
+import type { Bounds } from './_base/Types';
 import type { BoundsArray } from './_base/Types';
 import type { Flip } from './Enums/Flip';
 import type { AnchorPoint } from './Enums/AnchorPoint';
@@ -173,15 +174,15 @@ export interface FlexObject<TParent = PageItemParent> extends InDesignEdition.Fl
    */
   extractLabel(key: string): string;
   /**
-       * Indicates whether the underlying InDesign DOM object still exists and is valid.
-       * Returns `false` if the object has been deleted, closed, or invalidated.
-       */
-      readonly isValid: boolean;
-      /**
-       * Reflection on this object: its class name and its properties and methods, as the scripting
-       * dictionary describes them.
-       */
-      readonly reflect: Reflection;
+   * Indicates whether the underlying InDesign DOM object still exists and is valid.
+   * Returns `false` if the object has been deleted, closed, or invalidated.
+   */
+  readonly isValid: boolean;
+  /**
+   * Reflection on this object: its class name and its properties and methods, as the scripting
+   * dictionary describes them.
+   */
+  readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -208,9 +209,9 @@ export interface FlexObject<TParent = PageItemParent> extends InDesignEdition.Fl
    */
   toSpecifier(): string;
   /**
-       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
-       */
-      toString(): string;
+     * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+     */
+    toString(): string;
   /**
    * The index of the object within its containing parent.
    */
@@ -219,14 +220,14 @@ export interface FlexObject<TParent = PageItemParent> extends InDesignEdition.Fl
    * Bounds excluding stroke width, ordered `[y1, x1, y2, x2]`. Reads in the
    * current ruler units; assignment accepts unit strings such as `'12pt'`.
    */
-  get geometricBounds(): number[];
+  get geometricBounds(): Bounds;
   set geometricBounds(value: BoundsArray);
   /**
    * Bounds including stroke width (and drop shadows / effects), ordered
    * `[y1, x1, y2, x2]`. Wider than {@link geometricBounds} by the stroke's
    * outer extent.
    */
-  get visibleBounds(): number[];
+  get visibleBounds(): Bounds;
   set visibleBounds(value: BoundsArray);
   /** Rotation applied to the item, in degrees. Range `-360` to `360`. */
   get rotationAngle(): number;
@@ -812,15 +813,15 @@ export interface FlexObjectPlural<TParent = PageItemParent> extends InDesignEdit
    */
   extractLabel(key: string): (string)[];
   /**
-       * Indicates whether the underlying InDesign DOM object still exists and is valid.
-       * Returns `false` if the object has been deleted, closed, or invalidated.
-       */
-      readonly isValid: boolean;
-      /**
-       * Reflection on this object: its class name and its properties and methods, as the scripting
-       * dictionary describes them.
-       */
-      readonly reflect: Reflection;
+   * Indicates whether the underlying InDesign DOM object still exists and is valid.
+   * Returns `false` if the object has been deleted, closed, or invalidated.
+   */
+  readonly isValid: boolean;
+  /**
+   * Reflection on this object: its class name and its properties and methods, as the scripting
+   * dictionary describes them.
+   */
+  readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -847,9 +848,9 @@ export interface FlexObjectPlural<TParent = PageItemParent> extends InDesignEdit
    */
   toSpecifier(): string;
   /**
-       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
-       */
-      toString(): string;
+     * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+     */
+    toString(): string;
   /**
    * The index of the object within its containing parent.
    */
@@ -858,14 +859,14 @@ export interface FlexObjectPlural<TParent = PageItemParent> extends InDesignEdit
    * Bounds excluding stroke width, ordered `[y1, x1, y2, x2]`. Reads in the
    * current ruler units; assignment accepts unit strings such as `'12pt'`.
    */
-  get geometricBounds(): (number[])[];
+  get geometricBounds(): (Bounds)[];
   set geometricBounds(value: BoundsArray);
   /**
    * Bounds including stroke width (and drop shadows / effects), ordered
    * `[y1, x1, y2, x2]`. Wider than {@link geometricBounds} by the stroke's
    * outer extent.
    */
-  get visibleBounds(): (number[])[];
+  get visibleBounds(): (Bounds)[];
   set visibleBounds(value: BoundsArray);
   /** Rotation applied to the item, in degrees. Range `-360` to `360`. */
   get rotationAngle(): (number)[];

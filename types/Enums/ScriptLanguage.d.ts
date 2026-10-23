@@ -73,7 +73,7 @@ interface ScriptLanguage_JAVASCRIPT extends ScriptLanguage {
 
 /** Generated from the InDesign 21.6 scripting dictionary (macOS only). */
 interface ScriptLanguage_APPLESCRIPT_LANGUAGE extends ScriptLanguage {
-    readonly [__val]: 1095978087;
+  readonly [__val]: 1095978087;
 }
 
 /*----------------------------------------/
@@ -103,7 +103,7 @@ type UXPSCRIPT = ScriptLanguage_UXPSCRIPT;
  * The JavaScript language.
  */
 type JAVASCRIPT = ScriptLanguage_JAVASCRIPT;
-    type APPLESCRIPT_LANGUAGE = ScriptLanguage_APPLESCRIPT_LANGUAGE;
+type APPLESCRIPT_LANGUAGE = ScriptLanguage_APPLESCRIPT_LANGUAGE;
 }
 /**
  * The language of the script to execute.
@@ -118,6 +118,11 @@ export declare const ScriptLanguage: typeof Enumeration & {
    * Language not specified.
    */
   readonly unknown: ScriptLanguage_UNKNOWN;
+
+  /** The VBScript language. (Windows only: not in the macOS dictionary these declarations are measured against, so not measured.) */
+  readonly VISUAL_BASIC: ScriptLanguage_VISUAL_BASIC;
+  /** The VBScript language. (Windows only: not in the macOS dictionary these declarations are measured against, so not measured.) */
+  readonly visualBasic: ScriptLanguage_VISUAL_BASIC;
   /**
    * The UxpScript language.
    */
@@ -135,6 +140,6 @@ export declare const ScriptLanguage: typeof Enumeration & {
    * The JavaScript language.
    */
   readonly javascript: ScriptLanguage_JAVASCRIPT;
-    readonly APPLESCRIPT_LANGUAGE: ScriptLanguage_APPLESCRIPT_LANGUAGE;
-    readonly applescriptLanguage: ScriptLanguage_APPLESCRIPT_LANGUAGE;
+  readonly APPLESCRIPT_LANGUAGE: ScriptLanguage_APPLESCRIPT_LANGUAGE;
+  readonly applescriptLanguage: ScriptLanguage_APPLESCRIPT_LANGUAGE;
 }

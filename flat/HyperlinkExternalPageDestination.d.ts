@@ -8,7 +8,7 @@
 import type { Mode, Read } from './_base/Types';
 import type { LabelableEventDOMObject, IndexedDOMObject } from './_base/DomObjects';
 import type { Document } from './Document';
-import type { FilePath, File, BoundsArray } from './_base/Types';
+import type { FilePath, File, Bounds, BoundsArray } from './_base/Types';
 import type { HyperlinkDestinationPageSetting } from './Enums/HyperlinkDestinationPageSetting';
 import type { Hyperlink } from './Hyperlink';
 import type { Events } from './Events';
@@ -81,15 +81,15 @@ export interface HyperlinkExternalPageDestination extends InDesignEdition.Hyperl
    */
   extractLabel(key: string): string;
   /**
-       * Indicates whether the underlying InDesign DOM object still exists and is valid.
-       * Returns `false` if the object has been deleted, closed, or invalidated.
-       */
-      readonly isValid: boolean;
-      /**
-       * Reflection on this object: its class name and its properties and methods, as the scripting
-       * dictionary describes them.
-       */
-      readonly reflect: Reflection;
+   * Indicates whether the underlying InDesign DOM object still exists and is valid.
+   * Returns `false` if the object has been deleted, closed, or invalidated.
+   */
+  readonly isValid: boolean;
+  /**
+   * Reflection on this object: its class name and its properties and methods, as the scripting
+   * dictionary describes them.
+   */
+  readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -116,9 +116,9 @@ export interface HyperlinkExternalPageDestination extends InDesignEdition.Hyperl
    */
   toSpecifier(): string;
   /**
-       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
-       */
-      toString(): string;
+     * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+     */
+    toString(): string;
   /**
    * The index of the object within its containing parent.
    */
@@ -147,7 +147,7 @@ export interface HyperlinkExternalPageDestination extends InDesignEdition.Hyperl
    * The view rectangle, ordered `[y1, x1, y2, x2]` (top, left, bottom,
    * right). Only meaningful when {@link viewSetting} is fixed.
    */
-  get viewBounds(): number[];
+  get viewBounds(): Bounds;
   set viewBounds(value: BoundsArray);
   /**
    * The zoom percentage used when this destination is reached. Range `5` to
@@ -221,15 +221,15 @@ export interface HyperlinkExternalPageDestinationPlural extends InDesignEdition.
    */
   extractLabel(key: string): (string)[];
   /**
-       * Indicates whether the underlying InDesign DOM object still exists and is valid.
-       * Returns `false` if the object has been deleted, closed, or invalidated.
-       */
-      readonly isValid: boolean;
-      /**
-       * Reflection on this object: its class name and its properties and methods, as the scripting
-       * dictionary describes them.
-       */
-      readonly reflect: Reflection;
+   * Indicates whether the underlying InDesign DOM object still exists and is valid.
+   * Returns `false` if the object has been deleted, closed, or invalidated.
+   */
+  readonly isValid: boolean;
+  /**
+   * Reflection on this object: its class name and its properties and methods, as the scripting
+   * dictionary describes them.
+   */
+  readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -256,9 +256,9 @@ export interface HyperlinkExternalPageDestinationPlural extends InDesignEdition.
    */
   toSpecifier(): string;
   /**
-       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
-       */
-      toString(): string;
+     * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+     */
+    toString(): string;
   /**
    * The index of the object within its containing parent.
    */
@@ -287,7 +287,7 @@ export interface HyperlinkExternalPageDestinationPlural extends InDesignEdition.
    * The view rectangle, ordered `[y1, x1, y2, x2]` (top, left, bottom,
    * right). Only meaningful when {@link viewSetting} is fixed.
    */
-  get viewBounds(): (number[])[];
+  get viewBounds(): (Bounds)[];
   set viewBounds(value: BoundsArray);
   /**
    * The zoom percentage used when this destination is reached. Range `5` to

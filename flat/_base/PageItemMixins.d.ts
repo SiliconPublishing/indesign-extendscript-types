@@ -48,7 +48,7 @@ import type { Spread } from '../Spread';
 import type { TextBoxes } from '../TextBoxes';
 import type { TextFrames } from '../TextFrames';
 import type { TransformationMatrix } from '../TransformationMatrix';
-import type { BoundsArray, MeasurementValue } from './Types';
+import type { Bounds, BoundsArray, MeasurementValue } from './Types';
 import type { PageItemParent } from './Parents';
 import type { AnyGraphic, AnyPageItem } from './Unions';
 import type { Button } from '../Button';
@@ -363,7 +363,7 @@ export interface TransformableItem<M extends Mode = 'single'> {
    * Bounds excluding stroke width, ordered `[y1, x1, y2, x2]`. Reads in the
    * current ruler units; assignment accepts unit strings such as `'12pt'`.
    */
-  get geometricBounds(): Read<M, number[]>;
+  get geometricBounds(): Read<M, Bounds>;
   set geometricBounds(value: BoundsArray);
 
   /**
@@ -371,7 +371,7 @@ export interface TransformableItem<M extends Mode = 'single'> {
    * `[y1, x1, y2, x2]`. Wider than {@link geometricBounds} by the stroke's
    * outer extent.
    */
-  get visibleBounds(): Read<M, number[]>;
+  get visibleBounds(): Read<M, Bounds>;
   set visibleBounds(value: BoundsArray);
 
   /** Rotation applied to the item, in degrees. Range `-360` to `360`. */

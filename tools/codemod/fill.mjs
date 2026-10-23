@@ -8,7 +8,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { Node, SyntaxKind } from 'ts-morph';
-import { ensureImport } from './util.mjs';
+import { alignEnumAliases, ensureImport } from './util.mjs';
 
 const NUMBER_WORDS = /^(Long Long Integer|Long Integer|Short Integer|Real|Integer|Number)s?$/;
 
@@ -252,6 +252,7 @@ export function fillFromDictionary(project, src, root, snapshot, { wholeOnly = f
             for (const a of aliasesFor(name, aliases[e.name] ?? [])) literal.addProperty({ name: a, isReadonly: true, type: iname });
             added.enumerators.push(`${e.name}.${name}`);
         }
+        alignEnumAliases(sf);
     }
     return added;
 }

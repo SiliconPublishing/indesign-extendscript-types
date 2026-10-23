@@ -15,7 +15,6 @@ import type { Paragraph } from './Paragraph';
 import type { Word } from './Word';
 import type { LinePlural } from './Line';
 import type { TextPlural } from './Text';
-import type { NothingEnum } from './Enums/NothingEnum';
 
 /**
  * A collection of {@link Line} objects. A line is a horizontal run of text
@@ -24,15 +23,18 @@ import type { NothingEnum } from './Enums/NothingEnum';
  * @collection Line
  */
 export interface Lines<TParent = TextParent> extends InDesignEdition.Lines<TParent>, InDesignPlugins.Lines {
-  /** The number of objects in the collection. */
-      readonly length: number | NothingEnum.NOTHING;
-      /**
-       * The object at the given position: `doc.pages[0]`. Out of range gives an invalid object, not
-       * `undefined` (check `isValid`).
-       */
-      readonly [index: number]: Line<TParent>;
-      /** Reflection on the collection. */
-      readonly reflect: Reflection;
+  /**
+   * The number of objects in the collection. Reading it throws once the collection's parent is gone
+   * (probe "collection length throws once its parent is gone").
+   */
+  readonly length: number;
+  /**
+   * The object at the given position: `doc.pages[0]`. Out of range gives an invalid object, not
+   * `undefined` (check `isValid`).
+   */
+  readonly [index: number]: Line<TParent>;
+  /** Reflection on the collection. */
+  readonly reflect: Reflection;
   /** Displays the number of elements in the Collection. */
   count(): number;
   /**
@@ -96,7 +98,7 @@ export interface Lines<TParent = TextParent> extends InDesignEdition.Lines<TPare
   /** Generates a string which, if executed, will return the Collection. */
   toSource(): string;
   /** `"[object CollectionName]"`, such as `"[object Pages]"`. */
-      toString(): string;
+    toString(): string;
   /**
    * Returns the contiguous {@link Text} range between two bounds (inclusive).
    *

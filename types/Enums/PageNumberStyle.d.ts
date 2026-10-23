@@ -172,7 +172,7 @@ interface PageNumberStyle_TRIPLE_LEADING_ZEROS extends PageNumberStyle {
 
 /** Generated from the InDesign Server 21.6 scripting dictionary. */
 interface PageNumberStyle_FULL_WIDTH_ARABIC extends PageNumberStyle {
-    readonly [__val]: 1296455521;
+  readonly [__val]: 1296455521;
 }
 
 /*----------------------------------------/
@@ -248,7 +248,7 @@ type DOUBLE_LEADING_ZEROS = PageNumberStyle_DOUBLE_LEADING_ZEROS;
  * Uses Arabic numerals and formats all page numbers as four digits.
  */
 type TRIPLE_LEADING_ZEROS = PageNumberStyle_TRIPLE_LEADING_ZEROS;
-    type FULL_WIDTH_ARABIC = PageNumberStyle_FULL_WIDTH_ARABIC;
+type FULL_WIDTH_ARABIC = PageNumberStyle_FULL_WIDTH_ARABIC;
 }
 /**
  * The numbering system page numbers are drawn in — Arabic, Roman, letters, Kanji, Hebrew, or a
@@ -256,110 +256,110 @@ type TRIPLE_LEADING_ZEROS = PageNumberStyle_TRIPLE_LEADING_ZEROS;
  */
 export declare const PageNumberStyle: typeof Enumeration & {
 
-          /**
-           * Uses uppercase Roman numerals.
-           */
-          readonly UPPER_ROMAN: PageNumberStyle_UPPER_ROMAN;
-          /**
-           * Uses uppercase Roman numerals.
-           */
-          readonly upperRoman: PageNumberStyle_UPPER_ROMAN;
-          /**
-           * Uses lowercase Roman numerals.
-           */
-          readonly LOWER_ROMAN: PageNumberStyle_LOWER_ROMAN;
-          /**
-           * Uses lowercase Roman numerals.
-           */
-          readonly lowerRoman: PageNumberStyle_LOWER_ROMAN;
-          /**
-           * Uses uppercase letters.
-           */
-          readonly UPPER_LETTERS: PageNumberStyle_UPPER_LETTERS;
-          /**
-           * Uses uppercase letters.
-           */
-          readonly upperLetters: PageNumberStyle_UPPER_LETTERS;
-          /**
-           * Uses lowercase letters.
-           */
-          readonly LOWER_LETTERS: PageNumberStyle_LOWER_LETTERS;
-          /**
-           * Uses lowercase letters.
-           */
-          readonly lowerLetters: PageNumberStyle_LOWER_LETTERS;
-          /**
-           * Uses Arabic numerals.
-           */
-          readonly ARABIC: PageNumberStyle_ARABIC;
-          /**
-           * Uses Arabic numerals.
-           */
-          readonly arabic: PageNumberStyle_ARABIC;
+      /**
+       * Uses uppercase Roman numerals.
+       */
+      readonly UPPER_ROMAN: PageNumberStyle_UPPER_ROMAN;
+      /**
+       * Uses uppercase Roman numerals.
+       */
+      readonly upperRoman: PageNumberStyle_UPPER_ROMAN;
+      /**
+       * Uses lowercase Roman numerals.
+       */
+      readonly LOWER_ROMAN: PageNumberStyle_LOWER_ROMAN;
+      /**
+       * Uses lowercase Roman numerals.
+       */
+      readonly lowerRoman: PageNumberStyle_LOWER_ROMAN;
+      /**
+       * Uses uppercase letters.
+       */
+      readonly UPPER_LETTERS: PageNumberStyle_UPPER_LETTERS;
+      /**
+       * Uses uppercase letters.
+       */
+      readonly upperLetters: PageNumberStyle_UPPER_LETTERS;
+      /**
+       * Uses lowercase letters.
+       */
+      readonly LOWER_LETTERS: PageNumberStyle_LOWER_LETTERS;
+      /**
+       * Uses lowercase letters.
+       */
+      readonly lowerLetters: PageNumberStyle_LOWER_LETTERS;
+      /**
+       * Uses Arabic numerals.
+       */
+      readonly ARABIC: PageNumberStyle_ARABIC;
+      /**
+       * Uses Arabic numerals.
+       */
+      readonly arabic: PageNumberStyle_ARABIC;
 
-          /**
-           * Uses Kanji.
-           */
-          readonly KANJI: PageNumberStyle_KANJI;
-          /**
-           * Uses Kanji.
-           */
-          readonly kanji: PageNumberStyle_KANJI;
+      /**
+       * Uses Kanji.
+       */
+      readonly KANJI: PageNumberStyle_KANJI;
+      /**
+       * Uses Kanji.
+       */
+      readonly kanji: PageNumberStyle_KANJI;
 
-          /**
-           * Uses Arabic Alif Ba Tah numbering.
-           */
-          readonly ARABIC_ALIF_BA_TAH: PageNumberStyle_ARABIC_ALIF_BA_TAH;
-          /**
-           * Uses Arabic Alif Ba Tah numbering.
-           */
-          readonly arabicAlifBaTah: PageNumberStyle_ARABIC_ALIF_BA_TAH;
-          /**
-           * Uses Arabic Abjad numbering.
-           */
-          readonly ARABIC_ABJAD: PageNumberStyle_ARABIC_ABJAD;
-          /**
-           * Uses Arabic Abjad numbering.
-           */
-          readonly arabicAbjad: PageNumberStyle_ARABIC_ABJAD;
-          /**
-           * Uses Hebrew Biblical numbering.
-           */
-          readonly HEBREW_BIBLICAL: PageNumberStyle_HEBREW_BIBLICAL;
-          /**
-           * Uses Hebrew Biblical numbering.
-           */
-          readonly hebrewBiblical: PageNumberStyle_HEBREW_BIBLICAL;
-          /**
-           * Uses Hebrew non-standard numbering.
-           */
-          readonly HEBREW_NON_STANDARD: PageNumberStyle_HEBREW_NON_STANDARD;
-          /**
-           * Uses Hebrew non-standard numbering.
-           */
-          readonly hebrewNonStandard: PageNumberStyle_HEBREW_NON_STANDARD;
-          /**
-           * Uses Arabic numerals and formats all page numbers as two digits.
-           */
-          readonly SINGLE_LEADING_ZEROS: PageNumberStyle_SINGLE_LEADING_ZEROS;
-          /**
-           * Uses Arabic numerals and formats all page numbers as two digits.
-           */
-          readonly singleLeadingZeros: PageNumberStyle_SINGLE_LEADING_ZEROS;
-          /**
-           * Uses Arabic numerals and formats all page numbers as three digits.
-           */
-          readonly DOUBLE_LEADING_ZEROS: PageNumberStyle_DOUBLE_LEADING_ZEROS;
-          /**
-           * Uses Arabic numerals and formats all page numbers as three digits.
-           */
-          readonly doubleLeadingZeros: PageNumberStyle_DOUBLE_LEADING_ZEROS;
-          /**
-           * Uses Arabic numerals and formats all page numbers as four digits.
-           */
-          readonly TRIPLE_LEADING_ZEROS: PageNumberStyle_TRIPLE_LEADING_ZEROS;
-          /**
-           * Uses Arabic numerals and formats all page numbers as four digits.
-           */
-          readonly tripleLeadingZeros: PageNumberStyle_TRIPLE_LEADING_ZEROS;
-        } & InDesignEdition.PageNumberStyle
+      /**
+       * Uses Arabic Alif Ba Tah numbering.
+       */
+      readonly ARABIC_ALIF_BA_TAH: PageNumberStyle_ARABIC_ALIF_BA_TAH;
+      /**
+       * Uses Arabic Alif Ba Tah numbering.
+       */
+      readonly arabicAlifBaTah: PageNumberStyle_ARABIC_ALIF_BA_TAH;
+      /**
+       * Uses Arabic Abjad numbering.
+       */
+      readonly ARABIC_ABJAD: PageNumberStyle_ARABIC_ABJAD;
+      /**
+       * Uses Arabic Abjad numbering.
+       */
+      readonly arabicAbjad: PageNumberStyle_ARABIC_ABJAD;
+      /**
+       * Uses Hebrew Biblical numbering.
+       */
+      readonly HEBREW_BIBLICAL: PageNumberStyle_HEBREW_BIBLICAL;
+      /**
+       * Uses Hebrew Biblical numbering.
+       */
+      readonly hebrewBiblical: PageNumberStyle_HEBREW_BIBLICAL;
+      /**
+       * Uses Hebrew non-standard numbering.
+       */
+      readonly HEBREW_NON_STANDARD: PageNumberStyle_HEBREW_NON_STANDARD;
+      /**
+       * Uses Hebrew non-standard numbering.
+       */
+      readonly hebrewNonStandard: PageNumberStyle_HEBREW_NON_STANDARD;
+      /**
+       * Uses Arabic numerals and formats all page numbers as two digits.
+       */
+      readonly SINGLE_LEADING_ZEROS: PageNumberStyle_SINGLE_LEADING_ZEROS;
+      /**
+       * Uses Arabic numerals and formats all page numbers as two digits.
+       */
+      readonly singleLeadingZeros: PageNumberStyle_SINGLE_LEADING_ZEROS;
+      /**
+       * Uses Arabic numerals and formats all page numbers as three digits.
+       */
+      readonly DOUBLE_LEADING_ZEROS: PageNumberStyle_DOUBLE_LEADING_ZEROS;
+      /**
+       * Uses Arabic numerals and formats all page numbers as three digits.
+       */
+      readonly doubleLeadingZeros: PageNumberStyle_DOUBLE_LEADING_ZEROS;
+      /**
+       * Uses Arabic numerals and formats all page numbers as four digits.
+       */
+      readonly TRIPLE_LEADING_ZEROS: PageNumberStyle_TRIPLE_LEADING_ZEROS;
+      /**
+       * Uses Arabic numerals and formats all page numbers as four digits.
+       */
+      readonly tripleLeadingZeros: PageNumberStyle_TRIPLE_LEADING_ZEROS;
+    } & InDesignEdition.PageNumberStyle

@@ -8,7 +8,7 @@
 import type { Mode, Read } from './_base/Types';
 import type { LabelableEventDOMObject, IndexedDOMObject } from './_base/DomObjects';
 import type { Document } from './Document';
-import type { FilePath, File, BoundsArray } from './_base/Types';
+import type { FilePath, File, Bounds, BoundsArray } from './_base/Types';
 import type { HyperlinkDestinationPageSetting } from './Enums/HyperlinkDestinationPageSetting';
 import type { Hyperlink } from './Hyperlink';
 
@@ -50,7 +50,7 @@ export interface HyperlinkExternalPageDestination<M extends Mode = 'single'>
    * The view rectangle, ordered `[y1, x1, y2, x2]` (top, left, bottom,
    * right). Only meaningful when {@link viewSetting} is fixed.
    */
-  get viewBounds(): Read<M, number[]>;
+  get viewBounds(): Read<M, Bounds>;
   set viewBounds(value: BoundsArray);
 
   /**

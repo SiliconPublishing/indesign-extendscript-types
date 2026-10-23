@@ -66,15 +66,15 @@ export interface GradientStop extends InDesignEdition.GradientStop, InDesignPlug
     captures?: boolean,
   ): boolean;
   /**
-       * Indicates whether the underlying InDesign DOM object still exists and is valid.
-       * Returns `false` if the object has been deleted, closed, or invalidated.
-       */
-      readonly isValid: boolean;
-      /**
-       * Reflection on this object: its class name and its properties and methods, as the scripting
-       * dictionary describes them.
-       */
-      readonly reflect: Reflection;
+   * Indicates whether the underlying InDesign DOM object still exists and is valid.
+   * Returns `false` if the object has been deleted, closed, or invalidated.
+   */
+  readonly isValid: boolean;
+  /**
+   * Reflection on this object: its class name and its properties and methods, as the scripting
+   * dictionary describes them.
+   */
+  readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -101,9 +101,9 @@ export interface GradientStop extends InDesignEdition.GradientStop, InDesignPlug
    */
   toSpecifier(): string;
   /**
-       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
-       */
-      toString(): string;
+     * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+     */
+    toString(): string;
   /**
    * The index of the object within its containing parent.
    */
@@ -111,8 +111,8 @@ export interface GradientStop extends InDesignEdition.GradientStop, InDesignPlug
   /** Resolves the proxy into the individual {@link GradientStop} objects it stands for. */
   getElements(): GradientStop[];
   /** The swatch applied at this stop — a solid {@link Color} or a {@link MixedInk}. */
-  get stopColor(): MixedInk | Color;
-  set stopColor(value: MixedInk | Color | string);
+  get stopColor(): MixedInk | Color | import('./Tint').Tint;
+  set stopColor(value: MixedInk | Color | import('./Tint').Tint | import('./Swatch').Swatch | string);
   /** The position of the stop along the gradient, as a percentage of its length. */
   get location(): number;
   set location(value: number);
@@ -168,15 +168,15 @@ export interface GradientStopPlural extends InDesignEdition.GradientStopPlural, 
     captures?: boolean,
   ): boolean;
   /**
-       * Indicates whether the underlying InDesign DOM object still exists and is valid.
-       * Returns `false` if the object has been deleted, closed, or invalidated.
-       */
-      readonly isValid: boolean;
-      /**
-       * Reflection on this object: its class name and its properties and methods, as the scripting
-       * dictionary describes them.
-       */
-      readonly reflect: Reflection;
+   * Indicates whether the underlying InDesign DOM object still exists and is valid.
+   * Returns `false` if the object has been deleted, closed, or invalidated.
+   */
+  readonly isValid: boolean;
+  /**
+   * Reflection on this object: its class name and its properties and methods, as the scripting
+   * dictionary describes them.
+   */
+  readonly reflect: Reflection;
   /**
    * The immediate parent object of this element in the InDesign DOM hierarchy.
    */
@@ -203,9 +203,9 @@ export interface GradientStopPlural extends InDesignEdition.GradientStopPlural, 
    */
   toSpecifier(): string;
   /**
-       * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
-       */
-      toString(): string;
+     * `"[object ClassName]"`, such as `"[object Page]"`. Use {@link toSpecifier} for the object's path.
+     */
+    toString(): string;
   /**
    * The index of the object within its containing parent.
    */
@@ -213,8 +213,8 @@ export interface GradientStopPlural extends InDesignEdition.GradientStopPlural, 
   /** Resolves the proxy into the individual {@link GradientStop} objects it stands for. */
   getElements(): GradientStop[];
   /** The swatch applied at this stop — a solid {@link Color} or a {@link MixedInk}. */
-  get stopColor(): (MixedInk | Color)[];
-  set stopColor(value: MixedInk | Color | string);
+  get stopColor(): (MixedInk | Color | import('./Tint').Tint)[];
+  set stopColor(value: MixedInk | Color | import('./Tint').Tint | import('./Swatch').Swatch | string);
   /** The position of the stop along the gradient, as a percentage of its length. */
   get location(): (number)[];
   set location(value: number);

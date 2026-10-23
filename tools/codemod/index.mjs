@@ -15,7 +15,7 @@ import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, renameSync, r
 import { tmpdir } from 'node:os';
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { Node, Project, SyntaxKind } from 'ts-morph';
+import { IndentationText, Node, Project, SyntaxKind } from 'ts-morph';
 import { generateGlobals } from './globals.mjs';
 import { widenByRuntime } from './widen.mjs';
 import { fillFromDictionary } from './fill.mjs';
@@ -228,6 +228,11 @@ export declare class Enumeration {
 // AST rules: run once over the whole project after the text rules.
 // ---------------------------------------------------------------------------------------------
 
+// Enumerators that exist only on another platform than the one measured (macOS): upstream's are
+// kept, with their camelCase alias, rather than dropped for being absent from the dictionary.
+const PLATFORM_ONLY = { ScriptLanguage: { VISUAL_BASIC: 'Windows' } };
+const camelAlias = (e) => e.toLowerCase().replace(/_([a-z0-9])/g, (_, c) => c.toUpperCase());
+
 const AST_RULES = [
     {
         // `constructorName` throws in ExtendScript ("Object does not support the property or method
@@ -282,13 +287,18 @@ const AST_RULES = [
                     const name = v.getName();
                     const cls = dictionary[name];
                     if (!cls || cls.kind !== 'enum') continue;
-                    const keep = new Set([...Object.keys(cls.enumValues), ...(measured[name] ?? [])]);
+                    const platform = PLATFORM_ONLY[name] ?? {};
+                    const keep = new Set([...Object.keys(cls.enumValues), ...(measured[name] ?? []), ...Object.keys(platform).flatMap((e) => [e, camelAlias(e)])]);
                     const literal = v.getTypeNodeOrThrow().getDescendantsOfKind(SyntaxKind.TypeLiteral)[0];
                     for (const m of literal.getProperties()) {
                         if (!keep.has(m.getName())) {
                             m.remove();
                             n++;
+                            continue;
                         }
+                        const e = Object.keys(platform).find((k) => m.getName() === k || m.getName() === camelAlias(k));
+                        const doc = e && m.getJsDocs()[0];
+                        if (doc) doc.setDescription(`${doc.getDescription().trim()} (${platform[e]} only: not in the macOS dictionary these declarations are measured against, so not measured.)`);
                     }
                 }
             }
@@ -301,16 +311,17 @@ const AST_RULES = [
         apply(project) {
             const iface = project.getSourceFileOrThrow(join(project.__dir, '_base/DomObjects.d.ts')).getInterfaceOrThrow('InDesignDOMObject');
             iface.getPropertyOrThrow('isValid').replaceWithText(`/**
-   * Indicates whether the underlying InDesign DOM object still exists and is valid.
-   * Returns \`false\` if the object has been deleted, closed, or invalidated.
-   */
-  readonly isValid: boolean;
+ * Indicates whether the underlying InDesign DOM object still exists and is valid.
+ * Returns \`false\` if the object has been deleted, closed, or invalidated.
+ */
+readonly isValid: boolean;
 
-  /**
-   * Reflection on this object: its class name and its properties and methods, as the scripting
-   * dictionary describes them.
-   */
-  readonly reflect: Reflection;`);
+/**
+ * Reflection on this object: its class name and its properties and methods, as the scripting
+ * dictionary describes them.
+ */
+readonly reflect: Reflection;
+`);
             iface.getMethodOrThrow('toString').replaceWithText(`/**
    * \`"[object ClassName]"\`, such as \`"[object Page]"\`. Use {@link toSpecifier} for the object's path.
    */
@@ -330,17 +341,22 @@ const AST_RULES = [
         expect: [1, 1],
         apply(project) {
             const iface = project.getSourceFileOrThrow(join(project.__dir, '_base/Collections.d.ts')).getInterfaceOrThrow('BaseCollection');
-            iface.getPropertyOrThrow('length').replaceWithText(`/** The number of objects in the collection. */
-  readonly length: number;
+            // Written at column 0: replaceWithText indents every line after the first (two spaces,
+            // the project's manipulation setting).
+            iface.getPropertyOrThrow('length').replaceWithText(`/**
+ * The number of objects in the collection. Reading it throws once the collection's parent is gone
+ * (probe "collection length throws once its parent is gone").
+ */
+readonly length: number;
 
-  /**
-   * The object at the given position: \`doc.pages[0]\`. Out of range gives an invalid object, not
-   * \`undefined\` (check \`isValid\`).
-   */
-  readonly [index: number]: T;
+/**
+ * The object at the given position: \`doc.pages[0]\`. Out of range gives an invalid object, not
+ * \`undefined\` (check \`isValid\`).
+ */
+readonly [index: number]: T;
 
-  /** Reflection on the collection. */
-  readonly reflect: Reflection;`);
+/** Reflection on the collection. */
+readonly reflect: Reflection;`);
             iface.getMethodOrThrow('toString').replaceWithText(`/** \`"[object CollectionName]"\`, such as \`"[object Pages]"\`. */
   toString(): string;`);
             return 1;
@@ -370,7 +386,8 @@ export function runCodemod({ from = 'upstream/main', out = join(root, 'types') }
     let ok = true;
 
     // Text rules.
-    const project = new Project({ skipAddingFilesFromTsConfig: true, compilerOptions: { noLib: true } });
+    // Upstream indents by two spaces; ts-morph's insertions follow this setting.
+    const project = new Project({ skipAddingFilesFromTsConfig: true, compilerOptions: { noLib: true }, manipulationSettings: { indentationText: IndentationText.TwoSpaces } });
     project.__dir = src;
     const files = project.addSourceFilesAtPaths(join(src, '**/*.d.ts'));
     const counts = TEXT_RULES.map(() => 0);

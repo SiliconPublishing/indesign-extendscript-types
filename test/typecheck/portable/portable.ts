@@ -25,3 +25,7 @@ SaveOptions.ASK;
 new Window('dialog');
 // @ts-expect-error desktop and Server differ in what Button is, so there is no Button type
 var b: Button;
+
+// Shared everyday code: counts, bounds copies.
+for (var i = 0; i < app.documents.length; i++) $.writeln(app.documents[i].name);
+doc.pages[0].rectangles[0].geometricBounds = doc.pages[0].ovals[0].geometricBounds;
